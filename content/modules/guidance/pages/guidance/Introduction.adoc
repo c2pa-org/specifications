@@ -1,0 +1,28 @@
+:revdate: {docdate}
+:version-label!:
+:sectnums:
+:sectnumlevels: 5
+:chapter-label: Introduction
+:source-highlighter: rouge
+
+## Introduction
+
+### Overview
+
+The Coalition for Content Provenance and Authenticity (C2PA) has developed their https://c2pa.org/public-draft/[technical specification] for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements. 
+
+The specification has been, and continues to be, informed by scenarios, workflows and requirements gathered from industry experts and partner organizations. However many of these requirements are not normative in nature or may differ between organizations or workflows - in those cases it is important to provide non-normative guidance to implementers - which is the goal of this document.
+
+### Scope
+
+This guidance document describes non-normative technical aspects of the C2PA architecture including construction and consumption of the C2PA manifest and its components and the digital signature technology for enabling tamper-evidence as well as establishing trust. It will also address areas where implementors can extend the C2PA architecture and its ecosystem.
+
+The C2PA also created their https://c2pa.org/principles/[Guiding Principles] that address areas such as respecting privacy and personal control of data with a critical eye toward potential abuse and misuse. This guidance document also will help implementors to understand how these concerns should be addressed in their implementations.
+
+One area of guidance that is not covered in this document is that of User Experience, as that is covered in a [separate document].
+
+## How to use this document
+
+Rather than reading this document from beginning to end, it is recommended that as an implementor is first designing each aspect of their solution, they should review the relevant section of this document to ensure that they take advantage of the guidance provided.  
+
+

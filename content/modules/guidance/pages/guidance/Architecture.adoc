@@ -1,0 +1,74 @@
+:revdate: {docdate}
+:version-label!:
+:sectnums:
+:sectnumlevels: 5
+:chapter-label: Architecture
+:source-highlighter: rouge
+
+## Architecture
+
+### Assertions
+
+[NOTE]
+.Items for future guidance
+====
+Guidance is required around which assertions should be chosen and when by different types of implementations.
+====
+
+### Claim
+
+[NOTE]
+.Items for future guidance
+====
+====
+
+
+### Manifest
+
+#### General
+A C2PA claim generator adds a new manifest to the existing asset's manifest store to reflect whatever changes it has made. If anything needs to be removed, then the specific assertions are redacted and the redaction reflected in the new manifest.
+
+#### Frequency of Creation
+The C2PA recommends that a manifest be created for an asset when a significant event in the lifecycle of the asset takes place, such as its initial creation or an  "Export" operation from an editing tool. As the creation of a manifest is not a lightweight operation, due to the need to digitally sign the claim as well as potentially retrieve credentials from online services, it is recommended to do it as infrequently as possible. Additionally, the fewer the manifests, the easier validation will be.
+
+#### Standard vs. Update Manifests
+Normally, an asset's digital content will be modified between "significant events". As such, a standard manifest which includes hard bindings between that digital content and the manifest are provided.  However, there are times in an asset's life where a change is required to the C2PA manifest but the digital content is not impacted.  For example, the addition of some new assertion or even the redaction of an existing assertion. In those cases, an update manifest is used.
+
+#### External Manifest Stores
+The C2PA architecture supports manifest stores external to the asset they are associated with.  This is useful when working with a file format that does not support embedding (i.e., text or XML) or when storing the manifest store separately improves workflows (e.g., searching on manifest data in a CMS).
+
+When storing manifest stores in a cloud service, and serving them via http Link headers (as described in the C2PA specification), having the manifest store available at the same origin as the asset is recommended as it would reduce requirements on https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS[Cross-Origin Resource Sharing (CORS)]. However, it is worth noting that doing so does not provide any additional privacy or security protection of either the manifest store or the asset.
+
+#### Can an application remove an existing manifest store?
+Completely removing an embedded manifest store from an asset is not recommend, unless the manifest store is being "externalized" - meaning that an embedded manifest store is replaced by a URI to an external location. This would be useful in scenarios where the size of assets is important but continues to support access to the asset's provenance.
+
+[NOTE]
+====
+Clarification of C2PA's position needs to be evaluated in the context of the current industry practices in view that stripping of metadata.  Currently such an action is encouraged by both MPEG https://ccpaworld.slack.com/archives/C01LA2UTX32/p1627075105074700 and JPEG WGs. In addition many publishers including the NYT are stripping image metadata https://blog.imatag.com/state-of-image-metadata-in-news-sites-2019-update.
+====
+
+#### Can an application replace an existing manifest store?
+Replacing an existing manifest store with a different manifest store is not recommended since doing so would completely change the provenance of an asset. However, there are some use cases where it could be appropriate.  For example, a publisher may wish to remove all details about the capture and edit of an image and leave only their own publishing information.
+
+### Ingredients
+Ingredients are the key to the establishment of the provenance of an asset, by serving as a listing of what other assets went into the creation of the current asset. Each ingredient that is used can itself contain its provenance, thus creating a rich provenance for the current asset and all of its ingredients.
+
+Each ingredient can either be documented as the `parentOf` the current asset or a `componentOf` that asset. The value of `parentOf` is used in the common case where one asset is opened in an editing application, modified, and then saved or exported as another asset.  That original version is the `parentOf` the final (now current) asset. Alternatively, when one asset is created from a series of other assets (such as audio and video clips), those sources are identified as `componentOf` ingredients. 
+
+#### Redaction of Ingredient Assertions
+
+[NOTE]
+.Items for future guidance
+====
+====
+
+
+### Use of W3C Verifiable Credentials
+
+[NOTE]
+.Items for future guidance
+====
+- When to use them, for humans, organizations and assets
+- How to validate them
+====
+
