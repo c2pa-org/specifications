@@ -1,0 +1,112 @@
+:revdate: {docdate}
+:version-label!:
+:sectnums:
+:sectnumlevels: 5
+:chapter-label: Introduction
+:source-highlighter: rouge
+
+## Introduction
+
+### Overview
+
+With the increasing velocity of digital content and the increasing availability of powerful creation and editing techniques, establishing the provenance of media is critical to ensure transparency, understanding, and ultimately, trust.
+
+We are witnessing extraordinary challenges to trust in media. As social platforms amplify
+the reach and influence of certain content via ever more complex and opaque algorithms,
+mis-attributed and mis-contextualized content spreads quickly. Whether inadvertent
+misinformation or deliberate deception via disinformation, inauthentic content is
+on the rise.
+
+Currently, creators who wish to include metadata about their work (for example authorship)
+cannot do so in a secure, tamper-evident and standardized way across platforms. Without this
+attribution information, publishers and consumers lack critical context for determining the
+authenticity of media.
+
+Provenance empowers content creators and editors, regardless of their geographic location or degree of access to technology, to disclose information about who created or changed an asset, what was changed and how it was changed. Content with provenance provides indicators of authenticity so that consumers can have awareness of who has altered content and what exactly has been changed. This ability to provide provenance for creators, publishers and consumers is essential to facilitating trust online.
+
+To address this issue at scale for publishers, creators and consumers, the Coalition for Content Provenance and Authenticity (C2PA) has developed this technical specification for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements. 
+
+This specification has been, and continues to be, informed by scenarios, workflows and requirements gathered from industry experts and partner organizations, including the https://www.originproject.info/[Project Origin Alliance] and the https://contentauthenticity.org/[Content Authenticity Initiative (CAI)]. It is also possible that regulatory bodies and governmental agencies could utilize this specification to establish standards for digital provenance.
+
+### Scope
+
+This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined xref:_trust_model[trust model]. Included in this document is information about how to create and process a C2PA manifest and its components, including the use of digital signature technology for enabling tamper-evidence as well as establishing trust.
+
+Prior to developing this specification, the C2PA created our https://c2pa.org/principles/[Guiding Principles] that enabled us to remain focused on ensuring that the specification can be used in ways that respect privacy and personal control of data with a critical eye toward potential abuse and misuse. For example, the creators and publishers of the media assets always have control over whether provenance data is included as well as what specific pieces of data are included.
+
+[IMPORTANT]
+====
+From the overarching goals section of the guiding principles:
+
+[quote]
+----
+C2PA specifications SHOULD NOT provide value judgments about whether a given set of provenance data is 'good' or 'bad,' merely whether the assertions included within can be validated as associated with the underlying asset, correctly formed, and free from tampering.
+----
+====
+
+It is important that the specification does not negatively impact content accessibility for consumers.
+
+Other documents from the C2PA will address specific implementation considerations such as expected user experiences and details of our threat and harms modelling.
+
+### Technical Overview
+
+The C2PA information comprises a series of statements that cover areas such as asset creation, authorship, edit actions, capture device details, bindings to content and many other subjects. These statements, called xref:_assertion[Assertions], make up the provenance of a given asset and represent a series of trust signals that can be used by a human to improve their view of trustworthiness concerning the asset. Assertions are wrapped up with additional information into a xref:_digital_signatures[digitally signed] entity called a xref:_claim[Claim].
+
+The https://www.w3.org/TR/vc-data-model[W3C Verifiable Credentials] of individual actors that are involved in the creation of the assertions can be added to the C2PA information to provide additional trust signals to the process of assessing trustworthiness of the asset.
+
+These assertions, claims, credentials and signatures are all bound together into a verifiable unit called a xref:_manifest[Manifest] by a hardware or software component called a Claim Generator. The set of manifests, as stored in the asset's Manifest Store, represent its provenance data.
+
+.A C2PA Manifest and its constituent parts
+ifdef::backend-html5,backend-pdf[]
+image::images/C2PA_Manifest.svg[A C2PA Manifest and its parts,width=333,height=328,align="center"]
+endif::[]
+ifdef::backend-docbook5[]
+image::images/C2PA_Manifest.png[A C2PA Manifest and its parts,width=333,height=328,align="center"]
+endif::[]
+
+### Establishing Trust
+
+The basis of making trust decisions in C2PA, our xref:_trust_model[Trust Model], is the identity of the actor associated with the cryptographic signing key used to sign the claim in the active manifest. The identity of a signatory is not necessarily a human actor, and the identity presented may be a pseudonym, completely anonymous, or pertain to a service or trusted hardware device with its own identity, including an application running inside such a service or trusted hardware. C2PA manifests can be validated indefinitely regardless of whether the cryptographic credentials used to sign its contents are later expired or revoked.
+
+### Example
+
+A very common scenario will be a user (called an actor in the C2PA ecosystem) taking a photograph with their C2PA-enabled camera (or phone). In that instance, the camera would create a C2PA manifest containing some such assertions including information about the camera itself, a thumbnail of the image and some cryptographic hashes that bind the photograph to the manifest. These assertions would then be listed in the Claim, which would be digitally signed and then the entire manifest would be embedded into the output JPEG. This manifest would remain valid indefinitely.
+
+.Photo manifest
+ifdef::backend-html5,backend-pdf[]
+[plantuml,target=PhotoManifest,format=svg,width=333,height=328,align="center"]
+endif::[]
+ifdef::backend-docbook5[]
+[plantuml,target=PhotoManifest,format=png,width=333,height=328,align="center"]
+endif::[]
+....
+include::../diagrams/Photo_Manifest.puml[]
+....
+
+A manifest consumer, such as a C2PA validator, could help users to establish the trustworthiness of the asset by first validating the digital signature and its associated credential. It can also check each of the assertions for validity and present the information contained in them, and the signature, to the user in a way that they can then make an informed decision about the trustworthiness of the digital content.
+
+### Design Goals
+
+In the creation of the C2PA architecture, it was important to establish some clear goals for the work to ensure that the technology was usable across a wide spectrum of hardware and software implementations worldwide and accessible to all.
+
+Some of those goals were:
+
+* Maintain the provenance of the asset across multiple tools, from creation through all subsequent modification and publication/distribution.
+* Support all standard asset formats supported by common authoring tools, across media types such as images, videos, audio, and documents.
+* Create only the minimum required novel technology by relying on well-established techniques.
+* Do not require cloud storage but allow for it.
+* Allow flexibility in the nature of information stored.
+* Allow for information to be subsequently redacted, provided that the author permits it.
+
+## Glossary
+
+include::Glossary.adoc[]
+
+## Normative References
+
+include::NormRefs.adoc[]
+
+## Standard Terms
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in https://tools.ietf.org/html/bcp14[BCP 14], https://tools.ietf.org/html/rfc2119[RFC 2119], and https://tools.ietf.org/html/rfc8174[RFC 8174] when they appear in any casing (upper, lower or mixed).
+

@@ -1,0 +1,22 @@
+:revdate: {docdate}
+:version-label!: 
+:sectnums:
+:sectnumlevels: 5 
+:chapter-label: Architecture
+:source-highlighter: rouge
+
+include::Assertions.adoc[]
+
+include::Unique_Identifiers.adoc[]
+
+include::Verifiable_Credentials.adoc[]
+
+include::Content_Binding.adoc[]
+
+include::Claims.adoc[]
+
+include::Manifests.adoc[]
+
+include::Entities.adoc[]
+
+include::Cryptography.adoc[]

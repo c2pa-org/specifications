@@ -1,0 +1,10 @@
+:revdate: {docdate}
+:version-label!: 
+:sectnums:
+:sectnumlevels: 5 
+:chapter-label: Patent Policy
+:source-highlighter: rouge
+
+## Patent Policy
+
+A statement about the C2PA's patent policy will appear here in the final 1.0 document.

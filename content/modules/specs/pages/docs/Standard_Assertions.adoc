@@ -1,0 +1,685 @@
+:revdate: {docdate}
+:version-label!: 
+:sectnums:
+:sectnumlevels: 5 
+:chapter-label:
+:source-highlighter: rouge
+
+## C2PA Standard Assertions
+
+### Introduction
+
+This section of the document lists the standard set of assertions for use by C2PA implementations, describing their syntax, usage, etc. To keep things simple, all example JUMBF URIs have been shortened for illustrative purposes - full URIs are necessary in the actual data.
+
+All C2PA standardized assertions use the JSON JUMBF content type, the CBOR JUMBF content type, or the Embedded File content type from ISO 19566-5:AMD-1. Entity-specific assertions can be any of those, any of the other JUMBF content types from ISO 19566-5, B.1 (such as XML) or may create its own (as per the instructions in ISO 19566-5, Table B.1).  The Codestream content type shall not be used for a C2PA assertion.
+
+NOTE: CBOR is not currently defined in 19566-5, but an upcoming update will define the type as `cbor`.
+
+Unless otherwise mentioned, all assertions documented in this standard set of assertions shall be serialized as CBOR. For all assertions are of type CBOR, their schemas shall be defined using https://datatracker.ietf.org/doc/html/rfc8610[CDDL].  For those defined using JSON, their schemas shall be defined using https://json-schema.org/specification-links.html#draft-7[JSON Schema].  
+
+All assertions shall have a label as described in <<_labels>> and shall be versioned as described in <<_versioning>>.
+
+### Use of CBOR
+
+All CBOR encoded data in a C2PA manifest shall comply with the https://www.rfc-editor.org/rfc/rfc8949.html#name-core-deterministic-encoding["Core Deterministic Encoding Requirements" of CBOR].
+
+When converting JSON data, based on one of the JSON Schemas documented here, to CBOR for the purposes of including as a valid C2PA assertion, the following shall be done:
+
+- A JSON `null` shall be serialized as Null (major type 7, additional information 22).
+- A JSON `false` shall be serialized as False (major type 7, additional information 20).
+- A JSON `true` shall be serialized as True (major type 7, additional information 21).
+- A JSON number shall be serialized either as an integer (major type 0 or 1) or a floating-point value (major type 7, additional information 25 through 27).
+- A JSON string that does not have an alternate semantic type (e.g., date-time or uri) shall either be serialized as a fixed-length UTF-8 string (major type 3) without any null termination, if human consumable, or a byte string (major type 2) if not. For Base64-encoded strings, unless specified otherwise, they shall be encoded in CBOR as a byte string (major type 2) after decoding from Base64.
+- A JSON string that is identified as a `date-time` shall be serialized with https://www.rfc-editor.org/rfc/rfc8949.html#stringdatetimesect[tag 0] (major type 6)
+- A JSON string that is identified as a `URI` shall be serialized with https://www.rfc-editor.org/rfc/rfc8949.html#stringdatetimesect[tag 32] (major type 6)
+- A JSON array shall be serialized as an array (major type 4).
+- A JSON object shall be serialized as a map (major type 5), with each key being serialized as a UTF-8 string (major type 3).
+- If a JSON object contains a key that is defined (by a specific schema) as optional, then either the key with an associated value shall be included in the map or neither its key nor any value shall be included in the map.
+- Indefinite-length items (additional information 31) shall not be used.  Accordingly, break codes (major type 7 and additional information value 31) shall not be used.
+- A JSON `null`, a JSON array of length zero, nor a JSON string of length zero shall be used unless they are (a) the value of a required (by a specific schema) key in a JSON object or (b) there are explicitly defined semantics (by a specific schema) for their usage.
+
+
+NOTE: The above list is based on an inversion of https://www.rfc-editor.org/rfc/rfc8949.html#name-converting-from-cbor-to-jso[section 6.1 of CBOR] with additions from C2PA best practices.
+
+### Metadata About Assertions
+
+In many cases, it is useful or even necessary to provide additional information about an assertion, such as the date and time when it was generated or other data that may help manifest consumers to make informed decisions about the provenance or veracity of the assertion data. Below shows the core schemas used inside other assertions.
+
+In CDDL:
+
+[source,cddl]
+----
+include::../schemas/cddl/assertion-metadata-common.cddl[]
+----
+
+In JSON Schema:
+
+[source,json]
+----
+include::../schemas/json/assertion-metadata.json[]
+----
+
+In most cases, this assertion specific metadata will appear directly inside of other assertions (e.g., ingredients) as the value of their `metadata` field. However, assertions not in JSON or CBOR, such as thumbnails, will need their information stored as a separate, independent, xref:_assertion_metadata[`assertion metadata` assertion]. The label for the `assertion metadata` assertion is `c2pa.assertion.metadata`.
+
+#### Details
+
+##### Data Source
+This `dataSource` field is an optional field that allows the claim signer to inform downstream manifest consumers about the source from which the assertion contents originated. If no `dataSource` is provided for a given assertion, the `dataSource` is considered to be the `Signer`.
+
+[NOTE]
+====
+By default, all assertions are sourced to the Signer, as the Trust Model is rooted in trust of the Signer. Where a different source is indicated, it will be a useful Trust Signal to a manifest consumer.
+====
+
+The value of the field is a `dataSource` object that is composed of three fields: `type`, `details`, and if applicable, `credential`. 
+
+The dataSource `type` field defines the type of the dataSource. It is assembled with labels in the format described in <<_labels>>. The value can be one of the following specification-defined values, or entity-specific labels can be used as an extension mechanism.
+
+[width="100%",cols="3,10",options="header"]
+|=======================
+|Value of `type`        |   Meaning
+| `signer`				|	The assertion contents came from the Signer 
+|`claimGenerator.REE`   |   Assertion contents came from a claim generator running in a rich execution environment (REE), such as a desktop or mobile operating system
+|`claimGenerator.TEE`   |   Assertion contents came from a claim generator running in a trusted execution environment (TEE), such as a trusted OS
+|`localProvider.REE`   |   Assertion contents came from a data source running in an REE on the same physical computing device as the claim generator
+|`localProvider.TEE`   |   Assertion contents came from a data source running in a TEE on the same physical computing device as the claim generator
+|`remoteProvider`   |   Assertion contents came from a remote data source controlled by the signer or claim generator vendor 
+|`remoteProvider.external`   |   Assertion contents came from an external, remote data source that is not the signer or claim generator vendor
+|`humanEntry.anonymous`   |   Assertion contents were entered by a human that wishes to remain anonymous
+|`humanEntry.identified`   |   Assertion contents were entered by an identified human actor(s), specified in the `actors` field of the `dataSource`.
+|=======================
+
+The `details` field is a human-readable string that provides additional information about the dataSource, e.g. the name of the API used to provide the assertion contents, or the URL of the server from which the contents were provided. For example, a broad location assertion source may have a `type` value of `remoteProvider.3rdParty`, with the `details` value set to `www.googleapis.com/geolocation/v1/geolocate`. 
+
+If the value of the `type` field is `humanEntry.identified`, then an `actors` field shall contain an array of one or more actor objects as defined in <<_common_data_model_actor>>.
+
+##### Review Ratings
+When present, the `reviewRatings` array provides a place for the claim generator to provide one or more `rating` objects on the quality (or lack thereof) of an assertion. A `reviewRatings` shall not be present if a `dataSource` object is present with a `type` field whose value is either `humanEntry.anonymous` or `humanEntry.credentialed`.
+
+The `value` field of the `rating` object shall be present with any integer value from _1_ (worst) through _5_ (best). If present, the `explanation` field shall contain a human-consumable string description of the type of rating. In addition, an optional machine-readable `code` field which defines assertion-specific evaluation outcome codes may be provided. The value of the `code` field is assembled with labels in the format described in <<_labels>>. The value can be one of the following specification-defined values, or entity-specific labels can be used as an extension mechanism.
+
+[width="100%",cols="4,4,10",options="header"]
+|=======================
+|Value of `code`        |   Applicable Assertion | Meaning
+|`actions.unknownActionsPerformed`   |   `c2pa.actions` | The `actions` assertion does not contain a full list of all actions performed in the authoring tool (e.g. because of the use of a 3rd party filter whose effect is unknown to the authoring tool)
+|`actions.placedIngredientNotFound`   |   `c2pa.actions` | The `actions` assertion being reviewed has a `placed` action without a resolvable `ingredient` URI. `value` should be `1`.
+|`ingredient.actionMissing`   |   `c2pa.ingredient` | The `ingredient` assertion being reviewed does not have at least one action that references it in its claim. `value` should be `1`.
+|`ingredient.notVisible` | `c2pa.ingredient` | The `ingredient` assertion being reviewed is not visible in the digital content bound to that manifest. `value` should be `1`.
+|`depthMap.sceneMismatch`   |   `c2pa.depthmap.GDepth` | The contents of the depth map assertion do not correspond to the scene portrayed in the primary presentation in the asset (e.g. because of a picture-of-picture attack)
+|`thumbnail.primaryMismatch`   |   `c2pa.thumbnail.claim` | The thumbnail's contents do not match the contents of the primary presentation in the asset.
+|`stds.schema-org.CreativeWork.misattributed`   |   `stds.schema-org.CreativeWork` | One or more of the roles listed in a `CreativeWork` assertion is misattributed to the wrong actor (e.g. the wrong credit is given for the `editor` role)
+|`stds.schema-org.CreativeWork.missingAttribution`   |   `stds.schema-org.CreativeWork` | An attribution for a role in a `CreativeWork` assertion is missing (e.g. a person who played the role of `producer` isn't credited)
+|`stds.iptc.location.inaccurate`   |   `stds.iptc` | The reported location is inaccurate (e.g. reported to be in New York, NY but appears to be in another city entirely)
+|=======================
+
+##### References
+Because the `reference` field of the `assertion metadata` assertion is a standard xref:_uri_references[`hashed_uri`], it is also possible to have an xref:_assertion_metadata[`assertion metadata` assertion] refer to assertions in other manifests than the active one. For example, the active manifest could include an `assertion metadata` assertion that validates the `precise location` assertion present in an ingredient's manifest.
+
+##### DateTime
+If a `dateTime` field is present, its value shall be a date time string that complies with ISO 8601.
+
+### Standard C2PA Assertion Summary
+
+The standard C2PA assertions are:
+
+[cols="20%,20%,20%,40%"]
+|===
+| Type | Assertion  | Schema | Serialization
+
+| Assertion Metadata | c2pa.assertion.metadata | C2PA | CBOR
+| Data Hash | c2pa.hash.data | C2PA | CBOR 
+| BMFF-based Hash | c2pa.hash.bmff | C2PA | CBOR
+| Soft Binding | c2pa.soft-binding | C2PA | CBOR 
+| Cloud Data | c2pa.cloud-data |  C2PA | CBOR
+| Thumbnail | c2pa.thumbnail.claim (claim creation time) c2pa.thumbnail.ingredient (importing an ingredient) |  C2PA | Embedded File
+| Actions | c2pa.actions | C2PA | CBOR 
+| Ingredient | c2pa.ingredient | C2PA | CBOR
+| GDepth Depthmap | c2pa.depthmap.GDepth | https://developers.google.com/depthmap-metadata/reference | CBOR
+| Exif information | stds.exif | C2PA | JSON-LD
+| IPTC Photo Metadata | stds.iptc.photo-metadata | C2PA | JSON-LD
+| Claim Review | stds.schema-org.ClaimReview | Schema.org ClaimReview | JSON-LD
+| Creative Work | stds.schema-org.CreativeWork | Schema.org CreativeWork | JSON-LD
+|===
+
+### Data Hash
+
+Portion(s) of a non-BMFF-based asset that a claim generator wishes to uniquely identify with a hard binding (aka cryptographic hash) shall be described using data hash assertions. The types of hashes which can be created and stored in such an assertion are described in <<_hashing>> and the value shall be present in the `hash` field.
+
+Each data hash assertion defines a specified range of bytes over which the hash has been computed. By default, this range is the entire asset containing this assertion or the entire asset referred to by the `url` value in the assertion.  If only a portion of the asset shall be hashed, then the range(s) to be excluded shall be present in the array value of the `exclusions` field.
+
+NOTE: The `url` value provides flexibility for hashing assets that may be represented in multiple chunks or portions, local or remote.
+
+A Data Hash assertion shall have a label of `c2pa.hash.data`.
+
+A Data Hash assertion must not appear in a _xref:_cloud_data[Cloud Data assertion].
+
+#### Schema and Example
+
+The https://datatracker.ietf.org/doc/html/rfc8610[CDDL Definition] for this type is:
+
+[source,cddl]
+----
+include::../schemas/cddl/data-hash.cddl[]
+----
+
+An example in CBOR-Diag is shown below:
+
+[source,json]
+----
+include::../schemas/cddl/examples/data-hash.cbordiag[]
+----
+
+Normally, the `start` and `length` values of an `exclusion` shall be written in their preferred serialization (i.e., "as short as possible"). However, when a data hash assertion needs to be created but the `start` and `length` values are not yet known, they shall be created "as large as possible", which would be as a 32-bit integer. 
+
+The `pad` value shall always be present but shall be a byte string of length 0 unless used to replace (aka "pad") bytes during multiple pass processing.
+
+NOTE: <<_multiple_step_processing>> describes how to fill in the correct values and adjust the padding.
+
+#### Special consideration for JPEG-1
+
+When hashing a JPEG-1 (.jpg) file into which the C2PA Manifest will be embedded, the APP11 marker (`FFEB`)  and the segment's length (`Lp`) of all APP11 segments containing the JUMBF data shall be included in the exclusion range.
+
+NOTE: All the APP11 segments containing the C2PA Manifest JUMBF are contiguous so that only a single range is required.
+
+#### Special consideration for PNG
+
+When hashing a PNG (.png) file into which the C2PA Manifest will be embedded, it is important that the `Length` and the `'caBX'` (representing the chunk type) of the chunk containing the JUMBF data be included in the exclusion range.
+
+### BMFF-Based Hash
+
+Portion(s) of a BMFF-based asset that a claim generator wishes to uniquely identify with a hard binding (aka cryptographic hash) shall be described using BMFF-based Hash assertions.
+
+A BMFF-based Hash assertion shall have a label of `c2pa.hash.bmff`.
+
+A BMFF-based Hash assertion must not appear in a xref:_cloud_data[Cloud Data assertion].
+
+To create the hash specified in the value field of a bmff hash, all bytes of the file are added to the hash excluding those BMFF boxes which match any exclusion entry in the exclusions array.  Any box included in the hash also includes its box headers; any box excluded from the hash also excludes its box headers.
+
+A box matches an exclusion entry in the exclusions array if and only if all of the following conditions are met.
+
+- The box's location in the file exactly matches the exclusion entry's xpath field.
+- If length is specified in the exclusion entry, the box's length exactly matches the exclusion entry's length field.  Note: The length includes the box headers.
+- If version is specified in the exclusion entry, the box is a FullBox and the box's version exactly matches the exclusion entry's version field.
+- If flags (byte array of exactly 3 bytes) is specified in the exclusion entry and the box is a FullBox.  If exact is set to true or not specified, the box's flags (bit(24), i.e., 3 bytes) also exactly matches the exclusion entry's flags field.  If exact is set to false, the bitwise-and of the box's flags (bit(24), i.e., 3 bytes) with the exclusion entry exactly mathes the exclusion entry (i.e. the box has at least those bits set but may also have additional bits set).
+- If data (array of objects) is specified in the exclusion entry, then for each item in the array, the box's binary data at that item's offset field exactly matches that item's bytes field.
+
+The xpath syntax shall be limited to the following strict subset.
+
+- Only abbreviated syntax shall be used.
+- Only full paths shall be used.
+- Only node selection via `node` or `node[integer]` shall be used.
+- Descendent syntax, i.e., `//`, shall NOT be used.
+- All nodes shall be BMFF `4cc` codes.
+
+Complete Syntax:
+
+[source]
+----
+  xpath = '/' nodes
+  nodes = node
+        | node '/' nodes
+  node = box4cc
+       | box4cc '[' integer ']'
+Where:
+  box4cc is any 4cc allowed by ISO/IEC 14496-12 for a BMFF box.
+  integer is any non-zero positive integer with no leading zeros.
+----
+
+A non-leaf xpath node shall only point to a container box that has no fields of its own (i.e. contains no data, only child boxes) and that does not inherit from FullBox.  This ensures that a c2pa validator does not need to be aware of the syntax and semantics of unusual boxes that contain other boxes.  If a child box of such an unusual box needs to be excluded in full or in part, the exclusion's xpath shall point to the unusual box itself and the subset member shall exclude the byte ranges containing the excluded child box data.  For example, the `sgpd` box contains other boxes but is unusual in that it inherits from FullBox; as such, if excluding child box(es) from `sgpd` is required, the assertion shall use an xpath pointing to the `sgpd` itself (e.g. `/moof/traf/sgpd`) and shall use the subset member to exclude the desired bytes.
+
+If the manifest is embedded into the file, the box containing it shall be one of the entries in the exclusions array and all file offsets shall be excluded wherever they appear.  Refer to <<_embedding_manifests_into_bmff_based_assets>> for more information.
+
+Because the box that contains the manifest is at the root and always excludes file offsets, the hash can be computed before the manifest is created and the manifest can then be added without changing any existing portion of the file or invalidating the hash.
+
+If a non-root excluded box is removed after the manifest is created, it shall be replaced with a `free` box of the same size to ensure that the hash of its parent box is not invalidated due to its size changing.  If it is expected that a non-root excluded box may be added after the manifest is created, then, at manifest creation time, a `free` box shall be inserted with sufficient space for the excluded box and that `free` box shall also be excluded by an exclusion entry using its full xpath.  When the excluded box is added, the `free` box shall be shrunk (or removed) to make space for the added box.
+
+#### Schema and Example
+
+The https://datatracker.ietf.org/doc/html/rfc8610[CDDL Definition] for this type is:
+
+[source,cddl]
+----
+include::../schemas/cddl/bmff-hash.cddl[]
+----
+
+An example in CBOR-Diag for a monolithic mp4 file asset where the `mdat` box is validated as a unit is shown below:
+
+[source,json]
+----
+include::../schemas/cddl/examples/bmff-hash.cbordiag[]
+----
+
+An example in CBOR-Diag for an asset composed of fragmented mp4 files is shown below:
+
+[source,json]
+----
+include::../schemas/cddl/examples/bmff-hash-merkle.cbordiag[]
+----
+
+A pseudo-code implementation of this algorithm follows.
+
+[source]
+----
+offset = 0
+While (offset < length of file)
+	Starting at offset, locate the first byte of the first box that matches any entry in the exclusions array, call this first_excluded_byte
+		If no such box is found, set first_excluded_byte = length of file
+	Determine the length of that box, call this excluded_byte_count
+		If no such box was found, set excluded_byte_count = 0
+	To the hash, add all bytes between offset and first_excluded_byte minus one (inclusive)
+	If first_excluded_byte < length of file and there exists a subset array within the exclusion that determined the value of first_excluded_byte
+		set next_included_begin = first_excluded_byte
+		For each entry in the subset array within the exclusion that determined the value of first_excluded_byte
+			Set next_excluded_begin = this subset array entry's offset field plus first_excluded_byte
+			If next_excluded_begin > next_included_begin
+				To the hash, add all bytes between next_included_begin and next_excluded_begin minus one (inclusive)
+			Set next_included_begin  = this subset array entry's length field plus next_excluded_begin
+		If next_included_begin < first_excluded_byte + excluded_byte_count
+			To the hash, add all bytes between next_included_begin and first_excluded_byte + excluded_byte_count minus one (inclusive)
+	Set offset = first_excluded_byte + excluded_byte_count
+----
+
+#### Exclusion list profiles
+
+##### Basic profile
+
+Typical untimed media (e.g., still photos) and timed media (e.g. videos with or without audio tracks, whether fragmented or not) need only include the mandatory exclusions listed in xref:exclusion_list_requirements[Exclusion List Requirements].
+
+[NOTE]
+.Editor's Note
+====
+Additional recommended exclusions for other types of media should be added here as needed.
+====
+
+### Soft Binding
+
+If a claim generator wishes to provide a soft binding for the asset's content, it shall be described using a soft binding assertion. The types of soft bindings which can be created and stored in such an assertion are described in <<_soft_bindings>>. 
+
+NOTE: The `url` value provides flexibility for hashing assets that may be represented in multiple chunks or portions, local or remote.
+
+A Soft Binding assertion shall have a label of `c2pa.soft-binding`.
+
+#### Schema and Example
+
+The https://datatracker.ietf.org/doc/html/rfc8610[CDDL Definition] for this type is:
+
+[source,cddl]
+----
+include::../schemas/cddl/soft-binding.cddl[]
+----
+
+An example in CBOR-Diag is shown below:
+
+[source,json]
+----
+include::../schemas/cddl/examples/soft-binding.cbordiag[]
+----
+
+The soft binding algorithm used shall be present as the value of the `alg` field, and the blocks over which is was applied shall be listed in the `blocks` field.  If the algorithm used requires any additional parameters, they should be present as the value of `alg-params`.
+
+### Cloud Data
+
+There are use cases where storing the data for the assertion remotely, such as in the cloud, is better than embedded inside the asset, especially when the data is large. For any such cases, it is possible to use a special type of assertion that serves as a reference to that information. For privacy and reliability reasons, data referenced through a cloud data assertion shall be considered optional: their contents should not be retrieved as part of manifest validation. A validator may retrieve the contents later to serve an application-dependent need, such as further exploration of the provenance history.
+
+A Cloud Data assertion shall have a label of `c2pa.cloud-data`.
+
+A Cloud Data assertion must not refer to an assertion with the label `c2pa.hash.data` or `c2pa.hash.bmff`.
+
+#### Schema and Example
+
+The https://datatracker.ietf.org/doc/html/rfc8610[CDDL Definition] for this type is:
+
+[source,cddl]
+----
+include::../schemas/cddl/cloud-data.cddl[]
+----
+
+An example in CBOR-Diag is shown below:
+
+[source,json]
+----
+include::../schemas/cddl/examples/cloud-data.cbordiag[]
+----
+
+To allow external references to content, this type uses the `hashed-ext-uri` type which is a variation on the `hashed-uri` type used elsewhere in this specification. The CDDL definition for `hashed-ext-uri` is:
+
+[source,cddl]
+----
+include::../schemas/cddl/hashed-ext-uri.cddl[]
+----
+
+NOTE: In keeping with common practice, it is recommended that the `https` scheme be used to retrieve assertion data to protect the privacy of the data in transit, but `http` is also permitted because the data's integrity is protected by the `hash` field and this privacy may not be required in all circumstances. Authors of manifests with cloud-hosted data should choose the scheme to suit their needs.
+
+### Thumbnail
+
+A *thumbnail* assertion provides an approximate visual representation of the asset at a specific event in the lifecycle of an asset. There are currently two specific events - ingredient import and claim creation - each using a unique label for the assertion.
+
+For thumbnails created at claim creation time, the Thumbnail assertion shall have a label that starts with `c2pa.thumbnail.claim` and be followed by the https://www.iana.org/assignments/media-types/media-types.xhtml#image[IANA registry] image type (e.g., `c2pa.thumbnail.claim.png`). For each of these types of thumbnails, there can be only one per claim.
+
+When importing an ingredient (see <<_adding_ingredients>>), it is preferable to reference that ingredient's own manifest-stored thumbnail. However, some ingredients may not include a thumbnail assertion, or even a manifest. In that case, a new thumbnail of the ingredient should be generated, and a new thumbnail assertion in the active manifest created. The Thumbnail assertion shall have a label that starts with `c2pa.thumbnail.ingredient` and be followed by an underscore (`_` (U+005F)) then a unique ID such as a simple monotonically increasing integer and ending with the image type. For example, an ingredient thumbnail of type `jpeg` could have label `c2pa.thumbnail.ingredient_1.jpg`.
+
+The data in a thumbnail assertion is the bits of a file (such as a raster image) in whatever format is desired by the claim generator. The Embedded File content type (ISO 19566-5:AMD-1), `bfdb`, shall be used to contain the thumbnail's data.
+
+### Actions
+
+An *actions* assertion provides information on edits and other actions taken that affect the asset's content. There will be an array of actions - each action declaring _what_ took place on the asset, _when_ it took place, along with possible other information such as what software performed the action.
+
+An Actions assertion shall have a label of `c2pa.actions`.
+
+Actions are modeled after https://github.com/adobe/xmp-docs/blob/master/XMPNamespaces/XMPDataTypes/ResourceEvent.md[XMP ResourceEvents]. 
+
+For each action present in the array, the value of the `action` field shall be either a well-known common action name (`c2pa.resized`, `c2pa.edited`, etc.) or entity-specific action name (`adobe.ps.gaussian_blur`, etc.). The value of the `when` field should be the ISO 8601-compliant string of when the action was performed.
+
+The set of defined names, prefixed with `c2pa.` are:
+
+[cols="26%,56%,18%"]
+|===
+|Action |Meaning |Source
+
+|c2pa.converted |  | XMP
+|c2pa.copied |  | XMP
+|c2pa.created |  | XMP
+|c2pa.cropped |  | XMP
+|c2pa.edited |  | XMP
+|c2pa.filtered |  | XMP
+|c2pa.formatted |  | XMP
+|c2pa.version_updated |  | XMP
+|c2pa.printed |  | XMP
+|c2pa.published |  | XMP
+|c2pa.managed |  | XMP
+|c2pa.produced |  | XMP
+|c2pa.resized |  | XMP
+|c2pa.saved |  | XMP
+|c2pa.transcoded | A direct conversion of one encoding to another, including resolution scaling, bitrate adjustment and encoding format change. Does not include any adjustments that would affect the "editorial" meaning of the content. | C2PA
+|c2pa.repackaged | A conversion of one packaging or container format to another. Content may be repackaged without transcoding. Does not include any adjustments that would affect the "editorial" meaning of the content. | C2PA
+|c2pa.placed | Added/Placed an ingredient into the asset | C2PA
+|c2pa.unknown | Something happened, but the claim_generator can't specify what | C2PA
+|===
+
+In addition, an action may include a `actors` key which can point to the xref:_identity[identity] of one or more human actor who performed the action as described in <<_common_data_model_actor>>.
+
+When using a `c2pa.transcoded`, `c2pa.repackaged`, or a `c2pa.placed` action, the `parameters` field shall contain the JUMBF URI to the related ingredient assertion.
+
+#### Asset Renditions
+
+Asset renditions are a common occurrence when distributing media on the internet. These renditions are often created for the purpose of delivering media to consumers in differing connectivity, screen resolution, and other environments. We can use the `actions` assertion to help consuming actors understand the intention of certain claim creators to create asset renditions.
+
+The presence of only the `c2pa.transcoded` and/or `c2pa.repackaged` actions in a `c2pa.actions` assertion provides a signal to the manifest consumer that the signer is asserting that no "editorial" changes have happened between the ingredient asset(s) and this one. Editorial changes are those that alter the intent and/or meaning of the content.
+
+The additional presence of a single "parentOf" ingredient provides a further signal to the manifest consumer that the signer is asserting that the asset has been derived directly from that parent.
+
+#### Schema and Example
+
+The https://datatracker.ietf.org/doc/html/rfc8610[CDDL Definition] for this type is:
+
+[source,cddl]
+----
+include::../schemas/cddl/actions.cddl[]
+----
+
+An example in CBOR-Diag is shown below:
+
+[source,json]
+----
+include::../schemas/cddl/examples/actions.cbordiag[]
+----
+
+### Ingredient
+
+When assets are composed together, for example placing an image into a layer in Photoshop or an audio clip into a video in Premiere, it is important that information about any claim from the placed asset be recorded into the new asset to provide a way to understand the entire history of the new composed asset. This is also true when an existing asset is used to create a derived asset or asset rendition.
+
+An Ingredient assertion shall have a label of `c2pa.ingredient`.
+
+NOTE: Since there will most likely be more than one ingredient assertion, the use of the monotonically increasing index in the label would be used (e.g., `c2pa.ingredient\__1`, `c2pa.ingredient__2`).
+
+#### Concept
+The concept of ingredients in C2PA is modelled on the XMP Ingredient and Pantry model, as described in the https://wwwimages2.adobe.com/content/dam/acom/en/devnet/xmp/pdfs/DynamicMediaXMPPartnerGuide.pdf[Partner Guide to XMP for Dynamic Media] and http://wwwimages.adobe.com/content/dam/acom/en/products/xmp/Pdfs/XMPAssetRelationships.pdf[Asset Relationships in XMP]. That model relies on the fact that each asset used in the construction of a document has, at the time of inclusion, at least one xref:_unique_identifiers[unique identifier]. 
+
+If the ingredient being added contains XMP, then asset's `xmpMM:DocumentID` becomes the `documentID` field while the `xmpMM:InstanceID` becomes the `instanceID`. However, if the ingredient being added does not have any associated XMP, then it may be possible for the XMP to be created and added to the ingredient itself and the identifiers used as described above. 
+
+When it is not possible or desirable to create XMP for an ingredient, then some other xref:_unique_identifiers[unique identifier] for the ingredient shall be used instead for the required values. In this situation, the `instanceID` field shall contain the unique identifier and the `documentID` field shall not be present.
+
+#### Relationship
+When adding an ingredient, its relationship to the current asset shall be described. These are the possible values of the `relationship` field and their meanings:
+
+|===
+| Value | Meaning
+
+|`parentOf` | The current asset is a derived asset or asset rendition of this ingredient. This relationship value is also used with xref:_update_manifests[update manifests].
+
+|`componentOf` | The current asset is composed of multiple parts, this ingredient being one of them.
+|===
+
+#### Title
+
+The value of `dc:title` shall be a human-readable name for the ingredient, which may be taken either from the asset's XMP or the asset's name in a local or remote (e.g., cloud-based) filesystem. The https://www.iana.org/assignments/media-types/media-types.xhtml[Media Type] of the ingredient shall be declared in `dc:format`.
+
+#### Schema and Example
+
+The https://datatracker.ietf.org/doc/html/rfc8610[CDDL Definition] for this type is:
+
+[source,cddl]
+----
+include::../schemas/cddl/ingredient.cddl[]
+----
+
+An example in CBOR-Diag is shown below:
+
+[source,json]
+----
+include::../schemas/cddl/examples/ingredient.cbordiag[]
+----
+
+#### Thumbnails
+When adding an ingredient, it may be useful to also include a thumbnail of the ingredient to help establish the state of the ingredient at the time of import. For that purpose, an ingredient import thumbnail should be added as described in <<_thumbnails>> and referenced herein via a URI reference.
+
+#### Existing manifests
+If the ingredient has an existing C2PA Manifest Store, then all manifests in the store (both standard and updates) shall be copied into the C2PA Manifest Store for the asset. The xref:_uri_references[URI reference] to the ingredient's active xref:_c2pa_box_details[C2PA Manifest] shall be stored as the value of `c2pa_manifest`. In addition, it is recommended that the C2PA validator validate the ingredient's active C2PA manifest and document the validation status in the `validationStatus` field. When present, the value of the `validationStatus` field shall contain at least one entry in the array.
+
+A `validationStatus` object consists of a `code` value that describes the validation status of a specific part of the manifest and an optional `url` field with a JUMBF URI reference to that element in the manifest. Depending on the code, the `url` could be to a claim, a claim signature or a specific assertion. It may also contain an optional description of the validation status if there is a need for additional human readable explanation.
+
+##### Success codes
+
+[width="100%",cols="4,10,5",options="header"]
+|=======================
+| Value        |   Meaning  | `url` Usage
+|`claimSignature.validated`   |  The claim signature referenced in the ingredient's claim validated | C2PA Claim Signature Box
+|`signingCredential.trusted` |   The signing credential is listed on the validator's trust list.  | C2PA Claim Signature Box
+|`timeStamp.trusted` |   The time-stamp credential is listed on the validator's trust list.  | C2PA Claim Signature Box
+|`assertion.hashedURI.match`   |   The hash of the the referenced assertion in the ingredient's manifest matches the corresponding hash in the assertion's hashed URI in the claim.  | C2PA Assertion
+|`assertion.dataHash.match`   |   Hash of a byte range of the asset matches the hash declared in the data hash assertion.   | C2PA Assertion
+|`assertion.bmffHash.match`   |   Hash of a box-based asset matches the hash declared in the BMFF hash assertion.   | C2PA Assertion
+|`assertion.accessible`   |   A non-embedded (remote) assertion was accessible at the time of validation.   | C2PA Assertion
+|=======================
+
+##### Failure codes
+
+[width="100%",cols="4,10,5",options="header"]
+|=======================
+| Value        |   Meaning  | `url` Usage
+|`claim.missing`   |   The referenced claim in the ingredient's manifest cannot be found. | C2PA Claim Box
+|`claimSignature.missing`   |   The claim signature referenced in the ingredient's claim cannot be found in its manifest. | C2PA Claim Signature Box
+|`claimSignature.mismatch`   |   The claim signature referenced in the ingredient's claim failed to validate.  | C2PA Claim Signature Box
+|`signingCredential.untrusted` |   The signing credential is not listed on the validator's trust list.  | C2PA Claim Signature Box
+|`signingCredential.revoked`   |   Signing credential has been revoked by the issuer.  | C2PA Claim Signature Box
+|`signingCredential.expired`   |   Signing credential has expired.  | C2PA Claim Signature Box
+|`timeStamp.untrusted` |   The time-stamp credential is not listed on the validator's trust list.  | C2PA Claim Signature Box
+|`timeStamp.outsideValidity`   |   The signed time-stamp attribute in the signature falls outside the validity window of the signing certificate.  | C2PA Claim Signature Box
+|`assertion.hashedURI.mismatch`   |   The hash of the the referenced assertion in the ingredient's manifest does not match the corresponding hash in the assertion's hashed URI in the claim.  | C2PA Assertion
+|`assertion.missing`   |   An assertion listed in the ingredient's claim is missing from the ingredient's manifest. | C2PA Claim Box
+|`assertion.undeclared`   |   An assertion was found in the ingredient's manifest that was not explicitly declared in the ingredient's claim. | C2PA Claim Box or C2PA Assertion
+|`assertion.inaccessible`   |   A non-embedded (remote) assertion was inaccessible at the time of validation.   | C2PA Assertion
+|`assertion.notRedacted`   |   An assertion was declared as redacted in the ingredient's claim but is still present in the ingredient's manifest.  | C2PA Assertion
+|`assertion.action.redacted`   |   An `action` assertion was redacted when the ingredient's claim was created.   | C2PA Assertion
+|`assertion.dataHash.mismatch`   |   Hash of a byte range of the asset does not match the hash declared in the data hash assertion.   | C2PA Assertion
+|`assertion.bmffHash.mismatch`   |   Hash of a box-based asset does not match the hash declared in the BMFF hash assertion.   | C2PA Assertion
+|=======================
+
+
+### Depthmap
+
+A Depthmap assertion provides a 3D description of the scene being captured by a camera. A Depthmap assertion may contain a pre-computed https://en.wikipedia.org/wiki/Depth_map[depth map], or data which can later be used to compute a depth map by downstream ingestion or viewing software (e.g., left/right stereo images).
+
+All Depthmap assertions shall have a label that starts with `c2pa.depthmap` and be followed by a third section that identifies the type of depth map.
+
+C2PA Depthmap assertions shall be captured optically, not inferred from a single 2D image via, for example, a machine learning model.
+
+#### GDepth Depthmap
+
+A GDepth depth map assertion leverages the well-established https://developers.google.com/depthmap-metadata/reference[GDepth format] to encode a pre-computed depth map.
+
+A GDepth Depthmap assertion shall have a label of `c2pa.depthmap.GDepth`.
+
+The schema for the data stored in this assertion should always mirror the schema at https://developers.google.com/depthmap-metadata/reference.
+
+NOTE: There is no need to worry about splitting up the GDepth data when it grows beyond 64KB, as that limit existed in XMP to accommodate APP1 segment size limitations.
+
+#### Schema and Example
+
+The https://datatracker.ietf.org/doc/html/rfc8610[CDDL Definition] for this type is:
+
+[source,cddl]
+----
+include::../schemas/cddl/depthmap-gdepth.cddl[]
+----
+
+An example in CBOR-Diag is shown below:
+
+[source,json]
+----
+include::../schemas/cddl/examples/depthmap-gdepth.cbordiag[]
+----
+
+As defined by the GDepth specification, the following fields shall be present in all GDepth depth map assertions
+
+- GDepth:Format
+- GDepth:Near
+- GDepth:Far
+- GDepth:Mime
+- GDepth:Data
+
+### Exif Information
+
+The *Exif* assertion can be used to ensure that Exif information, for example about the capture device, is added to the asset in a way that can be validated cryptographically. It is preferable to copy this information from the `Exif` block or from the https://github.com/adobe/xmp-docs/blob/master/XMPNamespaces/exif.md[EXIF namespace] of the XMP block. Information should be copied to JSON-LD using the XMP field names specified in the https://www.cipa.jp/std/documents/download_e.html?DC-010-2020_E[Exif 2.32 metadata for XMP] specification. When copying the information from XMP, the data shall be re-serialized according to the rules of the https://www.iso.org/standard/79384.html[JSON-LD serialization of XMP].
+
+An Exif Information assertion shall have a label of `stds.exif`.
+
+Any property from the https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E[latest version of the Exif specification (currently 2.32)] can be added to the stds.exif assertion, with the exception of the MakerNote (37500, 0x927c) field, the contents of which are vendor-specific.
+
+This assertion should be used to assert the precise location associated with the content using the Exif GPS properties (those starting `exif:GPS`). For broad information about the location, see <<_iptc_photo_metadata>>.
+
+An example of an Exif assertion:
+
+[source,json]
+----
+include::../examples/json-ld/exif-metadata.jsonld[]
+----
+
+[NOTE]
+====
+Although the redaction process works in such a way that only an entire assertion can be redacted (see <<_redaction_of_assertions>>), the use of an xref:_update_manifest[update manifest] enables only partial redaction by removing the original and then placing the new, reduced, versions in the update manifest.  
+
+For example, an assertion containing both location data and camera information which may need to have the location data redacted which could be done through an update manifest with a new `stds.exif` assertion with only the camera information.
+====
+
+### IPTC Photo Metadata
+
+The https://iptc.org/[International Press Telecommunications Council] defines a standard set of descriptive, administrative and rights metadata typically used by photographers, distributors, news organizations, archivists, and developers. Early versions of the standard used IPTC's binary https://www.iptc.org/standards/iim/[Information Interchange Model (IPTC-IIM)] format and later versions introduced XMP support for all IIM fields, plus a new set of fields which can only be expressed in XMP. Together, these are called the http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata[IPTC Photo Metadata Standard].
+
+The IPTC Photo Metadata assertion can be used to ensure that IPTC Photo Metadata, for example describing ownership, rights and descriptive metadata about an image, is added to the asset in a way that can be validated cryptographically.
+
+It is preferable to copy this information from the IPTC-IIM or XMP block. Information should be copied to JSON-LD using the XMP field names specified in the https://www.cipa.jp/std/documents/download_e.html?DC-010-2020_E[Exif 2.32 metadata for XMP] specification. When copying the information from XMP, the data shall be re-serialized according to the rules of the https://www.iso.org/standard/79384.html[JSON-LD serialization of XMP].
+
+IPTC Photo Metadata properties can be copied to the C2PA assertion store as an assertion with the label `stds.iptc.photo-metadata`. The data should be in JSON-LD format using the XMP field names and structures specified in the http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#metadata-properties-2[IPTC Photo Metadata Specification].
+
+Any property from the http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata[IPTC Photo Metadata Standard] can be added to the `stds.iptc.photo-metadata` assertion.
+
+In particular, the Location Created property can be used to assert the broad location associated with an asset. To assert the precise GPS location associated with an asset, the <<_exif_information,Exif information>> assertion should be used.
+
+An example of an IPTC Photo Metadata assertion including location information:
+
+[source,json]
+----
+include::../examples/json-ld/iptc-photo-metadata.jsonld[]
+----
+<1> https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#date-created[Date Created]
+<2> https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#creator[Creator]
+<3> https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#copyright-notice[Copyright Notice]
+<4> https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#credit-line[Credit Line]
+<5> https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#licensor[Licensor]
+<6> https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#web-statement-of-rights[Web Statement of Rights]
+<7> https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#rights-usage-terms[Rights Usage Terms]
+<8> https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#location-created[Location Created]
+<9> https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#person-shown-in-the-image[Person Shown in the Image]
+
+[NOTE]
+====
+Although the redaction process works in such a way that only an entire assertion can be redacted (see <<_redaction_of_assertions>>), the use of an xref:_update_manifest[update manifest] enables only partial redaction by removing the original and then placing the new, reduced, versions in the update manifest.  
+
+For example, an assertion containing location properties, creator name and other information  may need to have the creator name redacted which could be done through an update manifest with a new `stds.iptc.photo-metadata` assertion with the other information still present.
+====
+
+### Use of Schema.org
+
+https://schema.org/[Schema.org] is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet. As such, they provide numerous JSON-based grammars that one may wish to include as an assertion. When using a schema.org type as a C2PA assertion, we require a full JSON-LD serialisation. As such, the top-level `@context` field must have a value of `http://schema.org`.
+
+All Schema.org assertions shall have a label that starts with `schema.org` and be followed by the name of the schema that is being used. For example, `schema.org.ImageObject` can be used to include something extra about an image. Since schemas on https://schema.org/[Schema.org] are not versioned as described https://schema.org/docs/howwework.html[here], no version indicator is used in their labels.
+
+#### Claim Review
+
+A schema that is used by the publishing community for web sites has https://www.blog.google/products/search/bringing-fact-check-information-google-images/[recently also been introduced for images]. A https://schema.org/ClaimReview[ClaimReview] is used as 'A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed).'
+
+A ClaimReview assertion shall have a label of `stds.schema-org.ClaimReview`.
+
+Inside the assertion (which, as described previously, is serialised as JSON-LD), the top-level `@type` field should be set to a value of `ClaimReview`.
+
+[NOTE]
+====
+The "Claim" in ClaimReview refers to a "claim made (or reported) in some creative work", not the C2PA claim block. ClaimReview assertions should be used as a way to mark the current asset as a review of the claims of another work, not any specific part of the C2PA manifest. To provide a review of a specific assertion, use an xref:_assertion_metadata[assertion metadata assertion].
+
+An an example: an image infographic has been assembled that fact-checks some other claim that is currently in public distribution. The image infographic includes a ClaimReview assertion which references the text of the claim its reviewing, a fact-checking rating of the claim, and zero to many links to other works (e.g., articles, videos, images) that are making that claim.
+====
+
+The reviewRating property inside the ClaimReview assertion is of type https://schema.org/Rating[Rating]. Depending on how your organisation does fact-checking reviews, you may have a numerical rating, a true or false, or some other textual description of how the asset has reviewed a claim. https://www.claimreviewproject.com/user-guide provides a good guide on how to use the ClaimReview vocabulary.
+
+A partial https://json-schema.org/[JSON Schema] for this type is:
+
+NOTE: This schema does not validate all aspects of the referenced schema.org types (just the top-level ClaimReview and Review properties). Please refer to https://schema.org for the details on referenced types, and https://json-ld.org/ for how to reference them in the assertion.
+
+[source,json]
+----
+include::../schemas/json/claim-review.json[]
+----
+
+#### Creative Work
+
+Schema.org provides a well-known and well-deployed set of types and metadata fields. One of the core types is https://schema.org/CreativeWork[CreativeWork], which is intended to describe any representation of creative effort. This assertion allows an asserter to provide various pieces of information about the asset, including who they are, and the date/time of publication.
+
+A Creative Work assertion shall have a label of `stds.schema-org.CreativeWork`.
+
+Inside the assertion (which, as described previously, is serialised as JSON-LD), the top-level `@type` field should be set to a value of `CreativeWork`. The JSON-LD document's root subject is the bound asset of the claim that this assertion is part of.
+
+A partial https://json-schema.org/[JSON Schema] for this type is:
+
+NOTE: This schema does not validate all aspects of the schema.org types, a valid CreativeWork assertion is free to use any types or vocabulary specified by schema.org.
+
+[source,json]
+----
+include::../schemas/json/creative-work.json[]
+----
+
+It is possible to associate identifying information about an actor with their specific role in the Creative Work as described xref:_common_data_model_actor[below].
+
+### Common Data Model: Actor
+
+An xref:_actor[actor] object references a particular person or organisation. A valid actor object shall have either: 
+
+a. an `identifier` field containing an identifier, or,
++
+NOTE: Since this field is a URL, it is possible to use various identity schemes such as https://openid.net/connect/[OpenID], https://www.w3.org/wiki/WebID[WebID] or https://isni.org/[ISNI].
+
+b. a `credentials` or `credential` field containing at least one xref:_uri_references[`hashed_uri`] to a xref:_w3c_verifiable_credentials[W3C Verifiable Credential] in the xref:_VCStore[Credential Store] that is associated with the actor, or,
++
+NOTE: Most references to a W3C Verifiable Credentials are via a `credentials` field, the Creative Work assertion uses a `credential` field in order to align with the `schema.org` model of singular field names. 
+
+c. both (in which case, the `id` field in the `credentialSubject` W3C Verifiable Credential object should match the `identifier` field of the actor)

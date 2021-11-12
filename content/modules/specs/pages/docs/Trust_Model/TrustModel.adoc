@@ -1,0 +1,221 @@
+:revdate: {docdate}
+:version-label!: 
+:sectnums:
+:sectnumlevels: 5 
+:chapter-label: Trust Model
+
+## Trust Model
+
+### Overview
+
+[ditaa,target=TrustModel,svg, align="center"]
+....
++--------+                +---------+                    +---------+
+|        |Trusts signer to|         |  Trusts issuer to  |         |
+| Signer |  secure their  | Identity|  identify signers  |Validator|
+|        |<---------------+ Issuer  |<-------------------+         |
+|cFFB    |  credentials   |cBFB     |                    |cFBB     |
++--------+                +---------+                    +---------+
+    ^                                                        ^
+    :                                                        :
+    :                     +=========+  Trusts validator to   :
+    :Trusts assertions are:         :  check validity and    :
+    +=====================+ Consumer+========================+
+      made by the signer  :         :  correctly identify
+                          +=========+  signers
+....
+
+The above model shows, in yellow, green and red, the three entities specified in the trust model, which is concerned with trust in a signer's identity. In dashed lines, below, is the consumer (who is not specified in the trust model), who uses the identity of the signer, along with other trust signals, to decide whether the assertions made about an asset are true. 
+
+### Identity of Signers
+
+Identity in the trust model is the means by which a cryptographic signing key is associated with an actor for the basis of making trust decisions based on any structure (including, but not limited to, claims and manifests) signed with that key. The identity of a signatory is not necessarily a human actor, and the identity presented may be a pseudonym, completely anonymous, or pertain to a service or trusted hardware device with its own identity, including an application running inside such a service or trusted hardware.
+
+The credential should be listed in the COSE unprotected headers of the `COSE_Sign1_Tagged` structure used for digital signatures in all C2PA manifests. The credential may appear in the protected headers, though as all credential types are themselves signed objects and so carry their own integrity protection, this is not necessary. Regardless, exactly one instance of an identity credential must appear in the union of the protected and unprotected headers. `COSE_Sign1_Tagged` structures with no credentials, or two or more credentials, must be rejected. Repeating the same credential more than once, including separately in the protected and unprotected headers, is also an instance of two or more credentials and must be rejected.
+
+Each credential type will define the following data to be provided to the validator:
+
+* How the credential is stored in the header value,
+* How a trust chain is computed from the signer to an entry in the validator's trust anchor store for C2PA signers,
+* The public key in the credential used to validate the signature, and
+* The time validity period of the credential.
+
+The name of the header to indicate credential type, how the credential is stored in the header value, and how trust chains are constructed are specified for each credential type in <<_credential_types>>.
+
+### Signer Credential Trust
+
+As part of the validation of an asset, the signer's credential is validated as being trusted to sign manifests. Credential types are defined in <<_credential_types>>.
+
+A validator shall maintain the following trust anchor stores:
+
+* One trust anchor store per credential type for C2PA signers, and
+* A single store of X.509 certificate trust anchors for Time Stamp Authorities.
+[NOTE]
+Only RFC 3161-compliant Time Stamp Authorities are supported, and RFC 3161 only supports X.509 certificates for validating time-stamps.
+
+In this section, "user" refers to human actors that are using C2PA-compliant validators in consumption and authoring scenarios.
+
+A validator should allow these trust anchor stores to be configured by the user, and should provide default options or offer lists maintained by external parties that the user may opt into to populate the validator's trust anchor store for C2PA signers or Time Stamp Authorities.
+
+A validator may also allow the user to create and maintain a private credential store of signing credentials for each credential type. This store is intended as an "address book" of credentials they have chosen to trust based on an out-of-band relationship. For example, a journalist may choose to add sources to their private credential store to facilitate accepting and validating media with C2PA provenance data attached, even though the sources themselves would have no reason to be on an externally-maintained trust list used broadly by the general public. Credentials in the private credential store may be self-issued, and may be anonymous or pseudonymous (that is, containing no identifying information about the signer, or information that only identifies by pseudonym). The private credential store shall only apply to validating signed C2PA manifests, and shall not apply to validating time-stamps. The private credential store shall only allow trust in signer certificates directly; entries in the private credential store cannot issue credentials and shall not be included as trust anchors during validation.
+
+A validator must not be pre-configured with any entries in a private credential store.
+
+A validator must only add entries to a private credential store in response to a user request to trust the credential. Similarly, a validator must only remove entries from a private credential store in response to a user request to stop trusting the credential.
+
+### Credential Types
+
+Each credential type defined in this section may be used to sign C2PA manifests.
+
+#### X.509 Certificates
+
+X.509 Certificates are stored as defined by the draft specification https://datatracker.ietf.org/doc/draft-ietf-cose-x509/[CBOR Object Signing and Encryption (COSE): Header parameters for carrying and referencing X.509 certificates (draft-ietf-cose-x509)] section 2. This is a draft at the time of publication of this specification, and therefore an integer header map key has not been permanently assigned for this header. Therefore, this specification shall use the string `x5chain` as the key for this header. The definition of `x5chain` at time of this specification's publication is copied below. The definition here shall be used in this specification; further updates to the draft and eventual publication as a standard will be incorporated by a future version of this specification.
+
+[quote]
+----
+x5chain:  This header parameter contains an ordered array of X.509 certificates.  The certificates are to be ordered starting with the certificate containing the end-entity key followed by the certificate which signed it and so on.  There is no requirement for the entire chain to be present in the element if there is reason to believe that the relying party already has, or can locate the missing certificates.  This means that the relying party is still required to do path building, but that a candidate path is proposed in this header parameter.
+
+The trust mechanism MUST process any certificates in this parameter as untrusted input.  The presence of a self-signed certificate in the parameter MUST NOT cause the update of the set of trust anchors without some out-of-band confirmation.  As the contents of this header parameter are untrusted input, the header parameter can be in either the protected or unprotected header bucket.
+
+ This header parameter allows for a single X.509 certificate or a chain of X.509 certificates to be carried in the message.
+
+      *  If a single certificate is conveyed, it is placed in a CBOR byte string.
+
+      *  If multiple certificates are conveyed, a CBOR array of byte strings is used, with each certificate being in its own byte string.
+----
+
+When creating the `x5chain` header as part of signing, the signer's certificate and all intermediate certificate authorities shall be included in the header's value. The trust anchor's certificate (also called the root certificate) should not be included.
+
+The `subjectPublicKeyInfo` element of the first or only certificate will be the public key used to validate the signature. The `validity` element of the `tbsCertificate` sequence provides the time validity period of the certificate.
+
+##### Certificate Profile
+
+Except for certificates accepted through the private credential store for X.509 certificates, all certificates must comply with this Certificate Profile.
+
+Certificates must be signed with an algorithm supported by the C2PA certificate signature algorithm list in this section, and rejected if not. These identifiers are taken from the relevant standards including, but not limited to, https://datatracker.ietf.org/doc/html/rfc3279[RFC 3279], https://datatracker.ietf.org/doc/html/rfc5758[RFC 5758], https://datatracker.ietf.org/doc/html/rfc8017[RFC 8017] and https://datatracker.ietf.org/doc/html/rfc8410[RFC 8410] which define their mappings to object identifiers (OIDs). This section defines a list of allowed values for the `algorithm` field of the `signatureAlgorithm` field of certificates signing C2PA manifests (the "allowed list").
+
+The allowed list is:
+
+* `ecdsa-with-SHA256`
+* `ecdsa-with-SHA384`
+* `ecdsa-with-SHA512`
+* `sha256WithRSAEncryption`
+* `sha384WithRSAEncryption`
+* `sha512WithRSAEncryption`
+* `id-RSASSA-PSS`
+* `id-Ed25519`
+
+Certificates must also fulfill the following requirements:
+
+* If the `algorithm` field of the `signatureAlgorithm` field is `id-RSASSA-PSS`, the `parameters` field is of type `RSASSA-PSS-params`. Its fields shall have the following requirements: https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.3[RFC 8017 section A.2.3]
+** The `hashAlgorithm` field shall be present.
+** The `algorithm` field of the `hashAlgorithm` field shall be one of the following values:
+*** `id-sha256`
+*** `id-sha384`
+*** `id-sha512`
+** The `maskGenAlgorithm` field shall be present.
+** The `algorithm` field of the `parameters` field of the `maskGenAlgorithm` field shall be equal to the `algorithm` field of the `hashAlgorithm` field.
+* If the `algorithm` field of the `algorithm` field of the certificate's `subjectPublicKeyInfo` is `id-ecPublicKey`, the `parameters` field shall be one of the following named curves: https://datatracker.ietf.org/doc/html/rfc5480#section-2.1.1.1[RFC 5480 section 2.1.1.1]
+** `prime256v1`
+** `secp384r1`
+** `secp521r1`
+* If the `algorithm` field of the `algorithm` field of the certificate's `subjectPublicKeyInfo` is `rsaEncryption` or `rsaPSS`, the `modulus` field of the `parameters` field shall have a length of at least 2048 bits.
+* Version must be v3. https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.1[RFC 5280 section 4.1.2.1]
+* The `issuerUniqueID` and `subjectUniqueID` optional fields of the `TBSCertificate` sequence must not be present. https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.8[RFC 5280 section 4.1.2.8]
+* The Basic Constraints extension must follow https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.9[RFC 5280 section 4.2.1.9]. In particular, it must be present with the `cA` boolean asserted if the certificate issues certificates, and not asserted if it does not.
+* The Authority Key Identifier extension must be present in any certificate that is not self-signed. https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.1[RFC 5280 section 4.2.1.1]
+* The Subject Key Identifier extension must be present in any certificate that acts as a CA. It should be present in end entity certificates. https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.2[RFC 5280 section 4.2.1.2]
+* The Key Usage extension must be present and should be marked as critical. Certificates used to sign C2PA manifests must assert the `digitalSignature` bit. The `keyCertSign` bit must only be asserted if the `cA` boolean is asserted in the Basic Constraints extension. https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.3[RFC 5280 section 4.2.1.3]
+* The Extended Key Usage (EKU) extension must be present and non-empty in any certificate where the Basic Constraints extension is absent or the `cA` boolean is not asserted. These are commonly called "end entity" or "leaf" certificates. https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.12[RFC 5280 section 4.2.1.12]
+** The `anyExtendedKeyUsage` EKU (2.5.29.37.0) must not be present.
+** A certificate that signs C2PA manifests must be valid for the `id-kp-emailProtection` (1.3.6.1.5.5.7.3.4) purpose.
+** A certificate that signs time-stamping countersignatures must be valid for the `id-kp-timeStamping` (1.3.6.1.5.5.7.3.8) purpose.
+** A certificate that signs OCSP responses for certificates must be valid for the `id-kp-OCSPSigning` (1.3.6.1.5.5.7.3.9) purpose.
+** A certificate must not be valid for more than one of the three purposes listed above.
+** A certificate should not be valid for any other purposes outside of the purposes listed above, but the presence of any other EKUs shall not cause the certificate to be rejected.
+
+###### Certificate Trust Chain
+
+When validating a certificate as the signing credential, if the certificate is present in the private credential store for X.509 certificates, the certificate is accepted. The private credential store is not consulted when validating time-stamps.
+
+If the certificate is not present in the private credential store, or the validator does not implement one, the trust chain shall be built and validated according to the procedure in https://datatracker.ietf.org/doc/html/rfc5280#section-6[RFC 5280 section 6] for the particular purpose required (signing, time-stamping, or OCSP signing) and for the appropriate trust anchor store for that purpose. Any failure of that validation algorithm shall mean the chain must be rejected. The private credential store is never included when building certificate chains; certificates in the private credential store cannot act as CAs.
+
+Only end entity certificates shall be used to sign C2PA manifests or time-stamps. A CA certificate must not be used for these purposes. Any CA certificate (where the `cA` boolean in the Basic Constraints extension is asserted) being used to validate a signature on a C2PA manifest, time-stamp, or OCSP response must be rejected.
+
+##### Certificate Revocation 
+
+X.509 certificates support revocation status queries. C2PA uses the Online Certificate Status Protocol (OCSP) and OCSP stapling to implement revocation. C2PA does not use Certificate Revocation Lists (CRLs).
+
+[NOTE]
+====
+Using CRLs requires downloading the entire list of revoked certificates for each Certificate Authority encountered, which can be time-consuming. Although a CRL could be included in the same way an OCSP response is stapled, the potential size of a CRL relative to an OCSP response also makes this undesirable.
+====
+
+A conforming CA should include an AuthorityInfoAccess (AIA) extension (https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.2.1[RFC 5280 section 4.2.2.1]) to provide access information for an Online Certificate Status Protocol (OCSP) service operated by the CA. 
+
+If the certificate has an AIA extension, revocation information shall be stored in an unprotected header of the `COSE_Sign1` structure with the string key `rVals` and the value shall follow the following CDDL:
+
+[source,cddl]
+------
+include::../../schemas/cddl/rVals.cddl[]
+------
+
+[NOTE]
+The above definition is a CBOR adaptation of a subset of the schema from https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.01.01_60/ts_11918201v010101p.pdf[JAdES section 5.3.5.2], which only stores OCSP responses, and stores them as binary strings.
+
+Before signing a claim, if a signer's certificate has the AIA extension, a signer should query the OCSP service indicated therein, capture the response, and store it in an element of the `ocspVals` array of the `rVals` header.
+
+[discrete]
+###### Validating the Certificate Revocation Information
+
+A validator must follow the requirements of https://datatracker.ietf.org/doc/html/rfc6960[RFC 6960], in particular https://datatracker.ietf.org/doc/html/rfc6960#section-3[section 3], when constructing an OCSP query and accepting an OCSP response. If the response is not accepted, or contains a `certStatus` of `unknown`, nothing can be concluded about the certificate's revocation status, and therefore:
+
+* If the unusable response is in an `rVals` header, the validator must proceed as if the header was absent.
+* If the unusable response is received in reply to an OCSP query at validation time, the validator must proceed as if it chose not to make the query.
+
+An accepted OCSP response in the `rVals` header establishes that the signer's certificate was not revoked at the time of signing if all of the following requirements are met:
+
+* The manifest has a valid time-stamp, and the attested time falls within the `(thisUpdate,nextUpdate)` interval of the response,
+* The `certStatus` field of the response is `good`, or `revoked` but with a `revocationReason` of `removeFromCRL`, and
+* The signer of the response is an "authorized responder" as defined by https://datatracker.ietf.org/doc/html/rfc6960#section-4.2.2.2[RFC 6960 section 4.2.2.2].
+
+[NOTE]
+The `removeFromCRL` is unique amongst the values of `revocationReason` because it is equivalent to a `good` response. Despite being a type of `revoked` response, this response indicates the certificate had temporarily been put "on hold" (the `certificateHold` reason) previously due to some concern about its integrity, but that the concern has been resolved and the issuer is stating the certificate remains trustworthy.
+
+Validators must check the `revocationReason` of any `revoked` response to disambiguiate the `removedFromCRL` case from an actual revocation.
+
+If the `rVals` header is not present or does not contain an accepted OCSP response, or if the manifest does not have a time-stamp, but the certificate has an AIA extension, the validator may choose to query the OCSP responder, as described in <<_validate_the_credential_revocation_information>>. If it does, and the response is accepted per the requirements of RFC 6960, it shall establish the signer's certificate was not revoked at the time of signing if either of the following requirements is fulfilled:
+
+* The manifest has a valid time-stamp, and the attested time falls within the `(thisUpdate,nextUpdate)` interval of the response, or
+* The manifest does not have a valid time-stamp but the current time falls within the `(thisUpdate,nextUpdate)` interval of the response,
+
+And both of the following requirements are fulfilled:
+
+* The `certStatus` field of the response is `good`, or `revoked` but with a `revocationReason` of `removeFromCRL`, and
+* The signer of the response is an "authorized responder" as defined by https://datatracker.ietf.org/doc/html/rfc6960#section-4.2.2.2[RFC 6960 section 4.2.2.2].
+
+If the `certStatus` field of the response is `revoked` but with a `revocationReason` that is not `removeFromCRL`, it shall establish the signer's certificate was not revoked at the time of signing if both of the following requirements are met:
+
+* The manifest has a valid time-stamp, and the attested time falls within the `(thisUpdate,nextUpdate)` interval of the response, and
+* The `revocationTime` in the response is after the attested time-stamp.
+
+Otherwise, the certificate shall be considered revoked at the time of signing and the claim shall be rejected.
+
+### Identity In Assertions
+
+Some assertions (such as `stds.schema-org.CreativeWork`) allow a person's identity to be associated in a defined way with the asset. This identity is purely scoped via the definition in each assertion and does not imply any larger involvement or responsibility for any assertion made in the claim, or the asset itself. All assertions, as stated below, are made by a signer.
+
+### Statements
+
+A validator is a manifest consumer that will produce some xref:_validation[validation] statements about that asset. The actor consuming the asset, usually through their user agent and its user interface, then has to interpret those statements to arrive at a set of conclusions of their own about the provenance of the asset they are consuming. These conclusions will be drawn from these statements, the set of trust relationships that consumer currently has with the actors in the asset, and the contents of the asset itself. 
+
+A validator can make the following true or false statements about the asset they are validating, and no more.
+
+. The active manifest has not been modified since the active manifest was signed
+. The portions of the asset that are covered by content bindings have not been modified since the active manifest was produced
+. The claim was produced by a claim generator (typically software), and signed by an actor identified in the subject field of the signing credential
+. The assertions of the active manifest are statements by the signer and their contents are not verified
+. The assertions of the active manifest have not been modified since the active manifest was produced
+. The assets referred to by ingredient assertions are not (necessarily) available at validation of the active manifest, and therefore their hashes cannot be validated
+. The ingredient assertion may contain a https://schema.org/ClaimReview[ClaimReview], that indicates the active manifest signer's assessment of the validation state of the ingredient asset's hashes at the time of adding the ingredient
+. The content of ingredient assertions, like all other assertions, is not independently validated

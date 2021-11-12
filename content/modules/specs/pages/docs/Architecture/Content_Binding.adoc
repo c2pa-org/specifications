@@ -1,0 +1,79 @@
+:revdate: {docdate}
+:version-label!: 
+:sectnums:
+:sectnumlevels: 5 
+:chapter-label:
+:source-highlighter: rouge
+
+## Binding to Content
+
+### Overview
+
+A key aspect to the xref:_standard_manifests[standard C2PA manifest] is the presence of one or more data structures, called content bindings, that can uniquely identify portions of the asset. There are two types of bindings that are supported by C2PA - hard bindings and soft bindings. A hard binding (also known as a cryptographic binding) enables the validator to ensure that (a) this manifest belongs with this asset and (b) that the asset has not been modified, by determining values that can match only this asset and no other, not even other assets derived from it or renditions produced from it.  A soft binding is computed from the digital content of an asset, rather than its raw bits.  A soft binding is useful for identifying derived assets and asset renditions.
+
+### Hard Bindings
+
+#### Hashing using byte ranges
+The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm, as described in <<_hashing>>, over some or all of the bytes of an asset. This approach can be used on any type of asset. 
+
+When using this form of hard binding, one or more xref:_data_hash[data hash assertions] is used to define the range of bytes that are hashed (and those that are not). Because each data hash assertion defines a byte range and optional URL, it is flexible enough to be usable whether the asset is a single binary or represented in multiple chunks or portions, local or remote.
+
+#### Hashing a BMFF-formatted asset
+If the asset is based on https://www.iso.org/standard/74428.html[ISO BMFF] then a hard binding optimized for the box-based format (called xref:_bmff_based_hash[BMFF-based hash assertions]) may be used instead. 
+
+For a monolithic mp4 file asset where the `mdat` box is validated as a unit, the assertion is validated nearly identically to a data hash assertion.  It simply uses a box exclusion list instead of byte ranges to define the range of bytes that are hashed (and those that are not).
+
+For a monolithic mp4 file asset where the `mdat` box is validated piecemeal or an asset composed of fragmented mp4 files, the assertion itself must be combined with chunk-specific hashing information which is located as specified in <<_embedding_manifests_into_bmff_based_assets>>.  Validating a given chunk requires first validating the `merkle` field's `initHash` over the corresponding initialization segment and then locating the correct entry in the `merkle` field's `hashes` array and validating it against the hash of the chunk's data plus (if needed) deriving the hash using the other `hashes` specified in the chunk's C2PA-specific box.
+
+.Validating the initialization segment
+ifdef::backend-html5,backend-pdf[]
+image::images/bmff_validation1.svg[Validating the initialization segment,align="center"]
+endif::[]
+ifdef::backend-docbook5[]
+image::images/bmff_validation1.png[Validating the initialization segment,align="center"]
+endif::[]
+
+// INTERNAL NOTE: the SVG is too complex for AsciiDoc, so we use PNG for both
+.Validating the chunk's data
+ifdef::backend-html5,backend-pdf[]
+image::images/bmff_validation2.png[Validating the chunk's data,align="center"]
+endif::[]
+ifdef::backend-docbook5[]
+image::images/bmff_validation2.png[Validating the chunk's data,align="center"]
+endif::[]
+
+#### Asset Metadata Bindings
+
+In those workflows which embed XMP or other forms of asset metadata into the asset, the asset's asset metadata should not be excluded by xref:_data_hash[data hash assertions].
+
+This means that by default all asset metadata (including Exif metadata and IPTC metadata in either IPTC-IIM or XMP format) will be included in the xref:_data_hash[data hash assertions], but with no provenance information such as *who* made the claims.
+
+To explicitly assert the same claims in a C2PA assertion with verifiable provenance, the Exif or IPTC fields should be copied to a `stds.exif` or `stds.iptc.photo-metadata` assertion, as appropriate (see <<_exif_information>> and <<_iptc_photo_metadata>>).
+
+NOTE: We recommend that existing Exif, IPTC-IIM and/or XMP asset metadata be left untouched in the asset. This will allow for compatibility with tools which do not yet support C2PA metadata.
+
+### Soft Bindings
+
+Soft bindings are described using xref:_soft_binding[soft binding assertions] such as via a perceptual hash computed from the digital content or a watermark embedded within the digital content. These soft bindings enable digital content to be matched even if the underlying bits differ, for example due to an asset rendition in a different resolution or encoding format. Additionally, should a C2PA manifest be removed from an asset, but a copy of that manifest remains in a provenance store elsewhere, the manifest and asset may be matched using available soft bindings.
+
+Because they serve a different purpose, a soft binding shall not be used as a _hard binding_. 
+
+All soft bindings shall be generated using one of the algorithms listed as supported by this specification. This section defines both:
+
+* A list of algorithms that are allowed for generating soft bindings of new content as well as required for validating or locating existing content (the allowed list), and
+* A list of algorithms that are required to be supported for validating or locating existing content but are not allowed for generating soft bindings of new content (the deprecated list).
+
+This list of allowed algorithms will define the string algorithm identifier to be used as the algorithm identifier in the corresponding field and the content types over which it is applicable. In cases where there are different versions of an algorithm, each will be defined using different string algorithm identifiers.  Any technical documentation sufficient for the soft binding algorithm to be uniquely identified and utilized, should be referenced.
+
+Each algorithm should be defined along with the names and values of all parameters affecting the operation of that algorithm. When doing so, it shall describe the manner in which those parameters must be encoded within the `alg-params` field of the xref:_soft_binding[soft binding assertion].  An algorithm that is instantiated over a different parameter set will be considered a different algorithm.
+
+Each algorithm may also define an encoding scheme for specifying the portion of digital content over which a soft binding is computed (namely, the `extent` field of the `scope` object within the xref:_soft_binding[soft binding assertion]).  An algorithm that encodes the `extent` differently will be considered a different algorithm. 
+ 
+It is recommended that the string identifiers for soft binding algorithms conform to how they are referred to in common practice.
+
+There are no soft binding algorithms defined in the approved list nor in the deprecated list in this version of the specification.   
+
+[NOTE]
+====
+The C2PA is currently evaluating various soft binding algorithms. One of the many possible options includes the https://iscc.codes/[ISCC - International Standard Content Code]. The ISCC is an identifier and fingerprint for digital assets that supports all major content types (e.g., text, image, audio, video). The ISCC uses is similarity-preserving hashes generated both from metadata and content. 
+====

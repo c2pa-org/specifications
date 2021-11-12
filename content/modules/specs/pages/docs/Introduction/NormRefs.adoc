@@ -1,0 +1,45 @@
+:revdate: {docdate}
+:version-label!: 
+:sectnums:
+:sectnumlevels: 5 
+:chapter-label:
+:source-highlighter: rouge
+
+### Core Formats
+
+* https://tools.ietf.org/html/rfc8949[CBOR]
+* https://tools.ietf.org/html/rfc8259[JSON]
+* https://www.w3.org/TR/json-ld11/[JSON-LD]
+* https://www.iso.org/standard/73604.html[JPEG universal metadata box format] (JUMBF)
+* https://www.iso.org/standard/74428.html[ISO Base Media File Format] (BMFF)
+
+### Schemas
+
+* https://datatracker.ietf.org/doc/html/rfc8610[CDDL]
+* https://json-schema.org/specification-links.html#2020-12[JSON Schema]
+* https://www.dublincore.org/specifications/dublin-core/dces/[Dublin Core Metadata Initiative]
+
+
+### Digital & Electronic Signatures
+* https://tools.ietf.org/html/rfc5280[X.509 Certificates]
+* https://tools.ietf.org/html/rfc7518[JSON Web Algorithms] (JWA)
+* https://tools.ietf.org/html/rfc8152[CBOR Object Signing and Encryption] (COSE)
+* https://tools.ietf.org/html/rfc8230[Using RSA Algorithms with COSE Messages]
+* https://tools.ietf.org/html/rfc6960[Online Certificate Status Protocol] (OCSP)
+* https://tools.ietf.org/html/rfc3161[Internet X.509 PKI Time-Stamp Protocol]
+* https://datatracker.ietf.org/doc/draft-ietf-cose-x509/[CBOR Object Signing and Encryption (COSE): Header parameters for carrying and referencing X.509 certificates]
+* https://tools.ietf.org/html/rfc3279[Algorithms and Identifiers for the Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile]
+* https://tools.ietf.org/html/rfc5758[Internet X.509 Public Key Infrastructure: Additional Algorithms and Identifiers for DSA and ECDSA]
+* https://tools.ietf.org/html/rfc8410[Algorithm Identifiers for Ed25519, Ed448, X25519, and X448 for Use in the Internet X.509 Public Key Infrastructure]
+* https://tools.ietf.org/html/rfc8017[PKCS #1: RSA Cryptography Specifications Version 2.2]
+* https://tools.ietf.org/html/rfc8032[Edwards-Curve Digital Signature Algorithm (EdDSA)]
+* https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.01.01_60/ts_11918201v010101p.pdf[JSON Advanced Electronic Signatures] (JAdES)
+* https://datatracker.ietf.org/doc/html/rfc6234[US Secure Hash Algorithms]
+
+### Other
+
+* https://www.iso.org/standard/75163.html[eXtensible Metadata Platform] (XMP)
+* https://www.iso.org/standard/79384.html[JSON-LD serialization of XMP]
+* http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata[IPTC Photo Metadata Standard]
+* https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E[EXIF]
+* https://tools.ietf.org/html/rfc4122[UUID]

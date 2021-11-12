@@ -1,6 +1,6 @@
+* xref:specs:C2PA_Specification.adoc[Technical Specifications]
 * xref:explainer:Explainer.adoc[Explainer]
 * xref:guidance:Guidance.adoc[Guidance for Implementors]
-* Security
-** xref:security:Security_Considerations.adoc[]
-** xref:security:Harms_Modelling.adoc[]
 * xref:ux:UX_Recommendations.adoc[User Experience Guidance]
+* xref:security:Security_Considerations.adoc[]
+* xref:security:Harms_Modelling.adoc[]
