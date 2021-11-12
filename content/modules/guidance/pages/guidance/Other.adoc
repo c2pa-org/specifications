@@ -1,0 +1,124 @@
+
+:revdate: {docdate}
+:version-label!:
+:sectnums:
+:sectnumlevels: 5
+:chapter-label: Additional Guidance
+:source-highlighter: rouge
+
+## Additional Guidance
+
+### Distributed Ledger Technology (DLT) and C2PA
+
+Distributed Ledger Technologies (DLTs) enable multiple parties to collaborate to produce a tamper-evident, distributed data store.
+
+DLT enables a ledger to be shared across a set of DLT nodes and synchronized between the DLT nodes using a consensus mechanism.
+
+In such a distributed system, control is distributed among the persons or organizations participating in the operation of the system (ISO 22739:2020).
+
+Data stored on a DLT is immutable; once committed to a DLT, data cannot be changed or deleted.  The ordering of data stored within a DLT is also immutable.
+
+C2PA manifests store data on asset provenance that in most cases should similarly be immutable.  However redaction mechanisms exist to remove past assertion data from a manifest.  For example, to ensure the privacy of a creator, removing identity data from the assertion store and updating the manifest to record the event of that redaction.   Other circumstances that may involve redaction could be the removal of personally identifiable information (PII) to comply with relevant legislation on data protection.  Whilst the C2PA redaction mechanism provides for the deletion of data, the prior existence of that data and the act of redaction will be visible to the manifest consumer.
+
+For this reason we make a general recommendation that C2PA manifests should not be stored on DLTs, since the data immutability guarantees of DLTs prevent redaction of manifests stored within them.
+
+DLTs may, however, be used to underwrite the integrity of a datastore containing C2PA manifests (for example a cloud database).  For example, a hash of a manifest, or other cryptographic proof, may be stored immutably within a DLT.  This may be used to prove that the manifest has not been altered, or deleted (non-repudiation).
+
+We outline several possible ways that DLT may be used to implement or instantiate aspects of the C2PA specification:
+
+1. Underwriting the integrity of manifest stores
++
+Consider the case of an external manifest store, where manifests might stored decoupled from the digital content they describe. Such an external provenance datastore may be used to store manifests and query those manifests via a lookup service using either a hard or a soft binding, for example to recover provenance for assets where manifests have been removed or corrupted.
++
+The user of such a datastore trusts the governance of that datastore operator not to manipulate or remove manifests stored within.  In other words, trust is centralized within the provider of the datastore.  A DLT may be used to store hashes of manifests as they are committed to the provenance datastore to assure consumers of the integrity of that datastore without the need to trust the datastore provider.
++
+A related application of DLT related to soft binding is in the creation of a federated lookup service for soft bindings.  It is unlikely that a single provenance datastore will exist for all manifests resolvable via soft bindings; multiple such datastores are likely to emerge for any given vertical (e.g. news journalism).  A distributed key-value store on DLT may resolve a soft binding to a provider running a provenance datastore, which may in turn run the query and return the relevant stored manifest.
++
+NOTE: Given the high throughput and low latency requirements for storing manifests, it is advisable that a Layer 2 solution or other efficient consensus mechanism for DLT (such as proof of stake, or proof of history) is used to mitigate adverse cost or energy usage.
+
+2. Decentralized and self-sovereign identity
++
+A separate use of DLT within the scope of C2PA might include the use of self-sovereign identity (SSI) schemes based upon DLT storage of DIDs.  C2PA is agnostic to the provider of identity data and provides for the concept of an actor which is representable either via a simple identifier (such as a DID) or via a W3C Verifiable Credential (which could include a DID). In some use cases it may be preferable for users to create their own identity wallets rather than rely on a centralized or third party identity provider.  In such cases DIDs stored on a DLT may provide a decentralized mechanism to ground trust in the public keys of SSI wallet holders.
+
+3. Decentralized signing
++
+A smart contract is a computer program stored in a DLT system wherein the outcome of any execution of the program is recorded on the distributed ledger (ISO 22739:2020).  Smart contracts may be configurable via a tokenized consensus mechanism.  For example, a smart contract that may be upgraded or configured according to a vote by holders of a particular cryptographic token.  Such contracts are referred to as ‘decentralized autonomous organizations’ or DAOs.  Like regular programs, a DAO may be used to store and process data and even take payments for doing so.
++
+A DAO might be set up to sign claims autonomously, according to a certificate installed by its operators.  This would provide a decentralized alternative to the claim signing services run by centralized organizations tied to particular geographies or legislative zones.
++
+Alternatively, or in addition, a DAO might be used to set up and manage a certificate trust list.  Signing of claims is grounded in public key cryptography rooted in a trust list managed by a federation of partners.  Since C2PA allows for the existence of multiple such trust lists, the DLT may be leveraged to manage the trust list via a tokenized governance system.  This might be attractive to content creators and consumers wishing to utilize a decentralized governance for such a list, and in turn agency over the issuance and revocation of signing certificates
+
+
+### Digital Non-Fungible Tokens (NFTs)
+
+Digital NFTs (hereafter, NFTs) are digital tokens that represent assets - most commonly, creative works.  NFTs are created and traded on distributed ledgers (DLT).
+
+NFTs represent assets via an indirection (linking) mechanism. A standard ERC-721 compliant NFT links via URI to a metadata file, that in turn links via URI to an asset. Commonly these URIs incorporate a hashed component, providing cryptographic proof for the uniqueness of the linked metadata, and the URI linking to the asset from that metadata also incorporates a hashed component. For example, the URIs are commonly content IDs (CIDs) on a distributed filesystem such as the InterPlanetary File System (IPFS).
+
+The provenance of NFT ownership is recorded through the immutable transaction history on the DLT (i.e. who currently owns or has owned the NFT).
+
+C2PA specifies a technology for describing the provenance of an asset's creation (who created it, what was done to it, etc.).  This is distinct from the provenance of NFT ownership recorded by the DLT.
+
+Much as with physical artwork, both the provenance of ownership and the provenance of creation, ascribe value to an NFT.
+
+C2PA may add value to NFTs by attesting to the provenance of their linked asset's creation, and also leverage that provenance to mitigate the threat of that asset being misappropriated.
+
+It is common for valuable NFTs to copied and placed on the market anew (re-minting) by someone other than their creator, in order to misappropriate and potentially to gain reward for another creator's work.
+
+C2PA provides for the assertion of identity within a manifest, and is agnostic to the identity system used.  One or more identity assertions may be used to encode the wallet address(es) identifying the creator on the DLT(s) they intend to mint the asset on.
+
+When a consumer, or a marketplace, encounters an NFT with a C2PA manifest in it, they may verify that the NFT being minted or offered for sale by a particular DLT user (identified by their wallet address) matches the identifier signed into the C2PA asset.
+
+Additional checks can be made that the C2PA manifest signed to include that wallet address is known to come from a public key maintained by the content creator.  This and other checks, for example on the wallet originating the minting transaction, may be used to additionally prevent spoofing or (‘sleep minting’) of NFTs.
+
+NFTs may still be misappropriated by stripping metadata including C2PA manifest from the asset, prior to minting it.  This may be remediated through use of soft-bindings to recover a manifest from a provenance datastore, as with general metadata stripping attacks.
+
+
+### Playback verification for audio/video content
+
+[NOTE]
+.Items for future guidance
+====
+A useful thing to add would be the steps a client audio/video player should perform to verify an actual content file for MP4/fMP4.
+	https://github.com/c2pa-org/specs-core/issues/518
+====
+
+
+### Attribution, Rights and Licensing
+
+The standard assertions defined for use in a C2PA Manifest include opportunities to add information about the attribution, rights and licenses of the associated asset. 
+
+The following table shows which assertions and the specific fields thereof can be used for which type of information.
+
+[cols="33%, 3*"]
+|===
+| Assertion | Attribution | Rights | Licensing
+
+| Creative Work +
+(for all assets)
+| author, contributor, creator 
+| copyrightHolder, copyrightNotice, copyrightYear 
+| acquireLicense, license, usageInfo
+
+| IPTC Photo Metadata +
+(for images)
+|dc:creator, plus:ImageCreator 
+| dc:rights, plus:CopyrightOwners, xmpRights:webStatement 
+| plus:Licensor
+
+| Exif information +
+(for images)
+| dc:creator 
+| dc:rights
+|
+|===
+
+While adding this information to a C2PA Manifest via the standard assertions will provide a tamper-evident declaration of the information, it may also be important to include a duplicate of the information in their standard locations within assets as defined by as schema.org, IPTC or Exif standards. The reason for providing both versions is that currently existing solution won't look for the information in the C2PA Manifest. For example, providing values for `acquireLicense` and `license`` in a _Creative Work_ assertion will not invoke the https://developers.google.com/search/docs/advanced/structured-data/image-license-metadata/[Licensable badge in Google Images]. The values would also need to be provided as structured data in the corresponding HTML page, as required by the specification of schema.org.
+
+### GDPR
+
+[NOTE]
+.Items for future guidance
+====
+Another topic needs to be around GDPR and other related legal aspects as discussed in https://github.com/c2pa-org/specs-core/issues/114[c2pa-org/specs-core#114]
+====

@@ -1,0 +1,35 @@
+=== Threats and Security Considerations
+
+This section provides a summary of information security considerations and processes for technology described in the C2PA core specification. More detailed content will be provided in future releases of C2PA material including the Guidance document.
+
+==== Context
+
+Information security is a principal concern of C2PA. C2PA maintains a threat model and security considerations for the C2PA specification. This effort complements other security-related work within C2PA. Associated documentation is currently in development. A draft version of this content is expected to be included in a future public release of C2PA material, and will be referenced here when available.
+
+The C2PA is developing security considerations documentation that includes:
+
+* A summary of relevant security features of C2PA technology
+* Security considerations for practical use of C2PA technology
+* Threats to C2PA technology and respective treatment of those threats, including countermeasures
+
+==== Threat modeling process overview
+
+The C2PA builds security into our designs as they are being developed, but also expects that security design and threat modeling will continue as the system, ecosystem, and threat landscape evolve.
+
+To this end, the C2PA uses a focused threat modeling process to support development of a strong security and privacy design. Outcomes of the effort directly support development of explicit threats and security considerations documentation, but also facilitate security thinking throughout the design process.
+
+The threat modeling process combines synchronous (live) threat modeling sessions with focused groups of SMEs with asynchronous development of content. The number of attendees in each synchronous session is kept small to promote efficient discussions, but all members of the C2PA have the opportunity to participate via either modality.
+
+Like other security activities, we expect our threat modeling process to evolve with the C2PA ecosystem. Process documentation is considered a guide rather than a strict directive on how threat modeling works within the C2PA.
+
+===== References
+
+A variety of references and experiences are used to inform threat modeling and related security activities for the C2PA. This section provides a subset of public documents for reference.
+
+* https://datatracker.ietf.org/doc/html/rfc3552#page-26[IETF on security considerations]
+* https://datatracker.ietf.org/doc/html/rfc6973#section-7[IETF on privacy considerations (guidelines)]
+* https://www.w3.org/TR/security-privacy-questionnaire/[W3C security and privacy self-review questionnaire]
+* https://datatracker.ietf.org/doc/html/rfc6819[OAuth2 threat model (example)]
+* https://shostack.org/books/threat-modeling-book[Threat Modeling: Designing for Security]
+* https://owasp.org/www-community/Threat_Modeling[OWASP Threat Modeling]
+* https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling[Microsoft Threat Modeling]

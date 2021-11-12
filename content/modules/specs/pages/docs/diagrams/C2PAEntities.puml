@@ -1,0 +1,87 @@
+@startuml C2PA_Entity_Diagram
+
+	legend
+		* All relationships are singular unless otherwise specified
+		* Red lines represent embedded/contains
+		* Blue lines represent linked references
+		* Text in //italics// means optional elements
+	endlegend
+
+	' hide the spot
+	' hide any empty things...
+	hide circle
+	hide empty members
+
+	' styling
+	' NOTE: entity is an alias for class
+	skinparam ObjectFontStyle bold
+	skinparam ClassFontStyle bold
+
+	' avoid problems with angled crows feet
+	'skinparam linetype ortho
+
+	entity Asset {
+		Content
+		..
+		Metadata
+		..
+		Manifest
+	}
+	entity Assertion {
+		//Metadata//
+	}
+	entity Credential {
+	}
+	entity Binding {
+	}
+	entity Ingredient {
+		Information
+		..
+		//Manifest//
+	}
+	entity Claim {
+		Assertions
+		..
+		//Redactions//
+		..
+		ClaimSignature
+	}
+
+	entity ClaimSignature {
+		Identity Credential
+		..
+		//Trusted TimeStamp//
+	}
+	entity Manifest {
+		AssertionStore
+		..
+		//CredentialStore//
+		..
+		Claim
+		..
+		ClaimSignature
+	}
+	entity IngredientManifest {
+	}
+	entity Redaction {
+	}
+
+	Asset <--[hidden]- Manifest
+	Asset::Manifest ---d> Manifest
+	Binding ---> Asset::Content #blue;text:blue : references
+	Binding ---> Asset::Metadata #blue;text:blue : references
+
+	Manifest::AssertionStore --> "many" Assertion : contains
+	Manifest::AssertionStore --> "many" Binding : contains
+	Manifest::AssertionStore --> "many" Ingredient : may contain
+	Manifest::CredentialStore --> "many"  Credential : may contain
+	Manifest::Claim ---> Claim
+	Manifest::ClaimSignature ---> ClaimSignature
+
+	Ingredient::Manifest --> IngredientManifest #blue;text:blue : may reference
+
+	Claim::Assertions ---> "many" Assertion #blue;text:blue : references 
+	Claim::Redactions --> "many" Redaction #blue;text:blue : may reference
+	Claim::ClaimSignature ---> ClaimSignature #blue;text:blue : references
+
+@enduml

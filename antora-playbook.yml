@@ -1,0 +1,16 @@
+site:
+  title: C2PA Specifications
+  url: https://c2pa.org/specifications
+  start_page: index.adoc
+content:
+  sources:
+  - url: .
+    branches: HEAD
+    start_path: content
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+asciidoc:
+  extensions:
+  - asciidoctor-kroki

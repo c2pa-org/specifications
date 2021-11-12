@@ -1,0 +1,437 @@
+:revdate: {docdate}
+:version-label!: 
+:sectnums:
+:sectnumlevels: 5 
+:chapter-label:
+:source-highlighter: rouge
+
+## Manifests
+
+### Use of JUMBF
+
+In order to support many of the requirements of C2PA, C2PA Manifests needed to be stored (serialized) into a structured binary data store that enabled some specific functionality including:
+
+- Ability to store multiple manifests (e.g., parents and ingredients) in a single container
+- Ability to refer to individual elements (both within and across manifests) via URIs
+- Ability to clearly identify the parts of an element to be hashed
+- Ability to store pre-defined data types used by C2PA (e.g., JSON and CBOR)
+- Ability to store arbitrary data formats (e.g., XML, JPEG, etc.)
+
+In addition to supporting all of the requirements above, our chosen container format - https://www.iso.org/standard/73604.html[JUMBF, ISO 19566-5] - is also natively supported by the JPEG family of formats and is compatible with the box-based model (i.e. https://www.iso.org/standard/68960.html[ISOBMFF, ISO 14496-12]) used by many common image and video file formats. Using JUMBF enables all the same benefits (and a few extras, such as xref:_uri_references[URI References]) while being able to work with classic image formats, such as JPEG/JFIF and PNG as well as 3D and document (e.g., PDF) formats. This serialized format shall be used also in formats that do not natively support JUMBF, or when manifests are stored separately from the asset, such as in a separate file or URI location.
+
+A C2PA Manifest Consumer shall never process an assertion, assertion store, claim, claim signature or manifest that is not contained inside of a C2PA Manifest Store.
+
+[NOTE]
+====
+Since most of the standard assertions, as well the claim signature, are serialized as CBOR, using CBOR for the entire manifest was considered but not chosen because CBOR is not a container format. It could be used as one through having to re-define how CBOR would be used to provide the features natively supported by JUMBF. 
+
+For example, to store a "blob of JSON" inside of CBOR, and know that it is JSON (and not some other format) would require designing a data structure for storing such things. Then the parent structure would need to be defined as to how to carry that structure. This same concept would also have to be done for each of the native features of JUMBF.
+
+While it would certainly be possible to re-implement all of the required functionality entirely in CBOR, it would be a lot of work and would not fully remove the need for a JUMBF/BMFF parser in all implementations.
+====
+
+#### C2PA Box details
+
+C2PA data is serialized into a JUMBF-compatible box structure, and the outermost box is referred to as the C2PA Manifest Store. An example C2PA Manifest Store, with a single manifest, might look like this:
+
+.C2PA Manifest Store
+ifdef::backend-html5,backend-pdf[]
+image::images/JUMBF-Single.svg[C2PA Manifest Store,width=301,align="center"]
+endif::[]
+ifdef::backend-docbook5[]
+image::images/JUMBF-Single.png[C2PA Manifest Store,width=301,align="center"]
+endif::[]
+
+The C2PA Manifest Store is a JUMBF superbox composed of a series of other JUMBF boxes and superboxes, each identified by their own UUID and label in their JUMBF Description box. The C2PA Manifest Store shall have a label of `c2pa`, a UUID of `0x63327061-0011-0010-8000-00AA00389B71` (`c2pa`) and shall contain one or more C2PA Manifest superboxes.
+
+Each C2PA Manifest superbox shall contain the data created at the time a claim is issued including the C2PA Assertion Store, a C2PA Claim, and a C2PA Claim Signature. It may also contain a xref:_vcstore[C2PA Credential Store]. 
+
+The UUID for each C2PA Manifest shall be either `0x63326D61-0011-0010-8000-00AA00389B71` (`c2ma`) or `0x6332756D-0011-0010-8000-00AA00389B71` (`c2um`) depending on the xref:_types_of_manifests[type of manifest]. In order to enable uniquely identifying each manifest, they shall be labelled with a https://tools.ietf.org/html/rfc4122[RFC 4122, UUID] optionally proceeded by an identifier of the claim generator and a `:`. An example label for the fictitious ACME claim generator might look like `acme:urn:uuid:F9168C5E-CEB2-4FAA-B6BF-329BF39FA1E4`.
+
+The C2PA xref:_assertion_store[Assertion Store] is a superbox that shall have a label of `c2pa.assertions` and a UUID of `0x63326173-0011-0010-8000-00AA00389B71` (`c2as`). It shall contain one or more JUMBF superboxes whose JUMBF type defines the BMFF type of the sub-boxes that contain the assertion data (see ISO 19566-5, Annex B, Table B.1 and ISO 19566-5/AMD-1, Annex B). These superboxes shall each have a label as defined in xref:_c2pa_standard_assertions[Standard Assertions]. The JUMBF Content Type (ISO 19566-5, Annex B) box(es) contained in each assertion superbox may be of either CBOR Content Type (`cbor`), JSON Content Type (`json`), Embedded File Content Type (`bfdb` & `bidb`) or UUID Content Type (`uuid`).
+
+The C2PA xref:_claims[Claim] box shall have a label of `c2pa.claim`, a UUID of `0x6332636C-0011-0010-8000-00AA00389B71` (`c2cl`) and shall consist of a single CBOR Content Type box (`cbor`). 
+
+The C2PA xref:_digital_signatures[Claim Signature] box shall have a label of `c2pa.signature`, a UUID of `0x63326373-0011-0010-8000-00AA00389B71` (`c2cs`) and shall consist of a single CBOR Content Type box (`cbor`).
+
+##### Credential Storage
+
+A C2PA Credential Store (VCStore) is a JUMBF superbox that shall contain one or more JSON Content Type boxes (ISO 19566-5, Annex B.4). It shall have a label of `c2pa.credentials` and a UUID of `0x63327663-0011-0010-8000-00AA00389B71` (`c2vc`).
+
+When storing W3C Verifiable Credentials in a VCStore, each one shall be labelled with the value of the `id` field of the `credentialSubject` of the VC itself. Since the `id` is guaranteed to be unique, this ensures that the URI to that credential will be unique.
+
+.C2PA Manifest Block with Credentials
+ifdef::backend-html5,backend-pdf[]
+image::images/JUMBF-Single-Credentials.svg[C2PA Manifest Block with a Credential Store,width=301,align="center"]
+endif::[]
+ifdef::backend-docbook5[]
+image::images/JUMBF-Single-Credentials.png[C2PA Manifest Block with a Credential Store,width=301,align="center"]
+endif::[]
+
+##### Ingredient Storage
+
+When a C2PA Manifest includes xref:_ingredients[ingredient assertions], and an ingredient contains a C2PA manifest, that manifest must be brought into this asset to ensure that the provenance data is kept intact. Such ingredient manifests are added to the C2PA Manifest Store as a child of the C2PA Manifest for the asset itself.
+
+.C2PA Manifest Block With an Ingredient
+ifdef::backend-html5,backend-pdf[]
+image::images/JUMBF-Single-Ingredients.svg[C2PA Manifest Block with an Ingredient,width=301,align="center"]
+endif::[]
+ifdef::backend-docbook5[]
+image::images/JUMBF-Single-Ingredients.png[C2PA Manifest Block with an Ingredient,width=301,align="center"]
+endif::[]
+
+### Types of Manifests
+
+#### Commonalities
+
+All C2PA Manifests shall contain an xref:_assertion_store[assertion store] with at least one xref:_assertions[assertion], a xref:_claims[claim] and a xref:_signing_a_claim[claim signature]. It may also contain a xref:_vcstore[credential store].
+
+#### Standard Manifests
+
+A standard manifest (UUID: `0x63326D61-0011-0010-8000-00AA00389B71` (`c2ma`)) shall contain at least one xref:_binding_to_content[hard binding to content] assertion - either a `c2pa.hash.data` or a `c2pa.hash.bmff` based on the type of asset for which the manifest is destined. Because of this requirement, they are the predominant type of manifest that will be present in C2PA provenance data. 
+
+#### Update Manifests
+
+There are, however, provenance workflows where additional assertions need to be added but the digital content is not changed. In these workflows, an update manifest (UUID: `0x6332756D-0011-0010-8000-00AA00389B71` (`c2um`)) can be used. An update manifest shall not contain assertions of types `c2pa.hash.data` or `c2pa.hash.bmff` because the content has not changed and therefore the bindings need not be updated.  It shall also not contain an assertion of type `c2pa.actions` because that assertion is defined to describe "changes to the digital content". The update manifest shall contain exactly one `c2pa.ingredient` assertion that (a) includes a `c2pa_manifest` field with a value that is the xref:_uri_references[URI reference] to that xref:_c2pa_box_details[C2PA Manifest] that is being updated and (b) has the value of `parentOf` for the `relationship` field.
+
+NOTE: The ingredient's manifest (referenced via the `c2pa_manifest` field) can be either a standard manifest or an update manifest.
+
+### Embedding manifests into assets
+
+#### Embedding manifests into non-BMFF-based assets
+
+When embedding the C2PA Manifest Store into an asset, the location will vary based on the type of the asset. Here are some well-known types and the location to use:
+
+JPEG:: Refer to <<_embedding_manifests_into_jpeg-1>> for more information.
++
+PNG:: Refer to <<_embedding_manifests_into_png>> for more information.
++
+PDF::  Refer to <<_embedding_manifests_into_pdfs>> for more information.
++
+FLAC:: Refer to <<_embedding_manifests_into_id3>> for more information.
++
+.EDITORS NOTE
+NOTE: C2PA is asking for feedback from the audio community if embedding the manifest in an ID3v2 container will work with FLAC or if we will need to use the native FLAC container.
++
+MP3:: Refer to <<_embedding_manifests_into_id3>> for more information.
++
+BMFF-based formats:: The box specified in <<_embedding_manifests_into_bmff_based_assets>>.
++
+NOTE: A C2PA Manifest Store can be embedded in BMFF-based downloadable audio files using codecs such as the Advanced Audio Codec (AAC) or the Apple Lossless Audio Codec (ALAC). 
+
+Additional locations for other file formats will be added in the future.
+
+NOTE: Non-BMFF-based audio formats which are being considered for addition to this specification include MP3, Ogg Vorbis and the native container version of the Free Lossless Audio Codec (Native FLAC).
+
+NOTE: Many classic image formats such as GIF and BMP do not support the embedding of arbitrary data, so that the use of an external manifest is required.
+
+##### Embedding manifests into JPEG-1
+
+The C2PA Manifest shall be embedded as the data contained in an *APP11* Marker as defined in https://www.iso.org/standard/66071.html[JPEG XT, ISO/IEC 18477-3]. 
+
+Since a single marker segment in JPEG-1 cannot be larger than 64K, it is likely that multiple *APP11* segments will be required, and they shall be constructed as per the JPEG-1 standard and https://www.iso.org/standard/73604.html[ISO 19566-5, D.2]. When writing multiple segments, they shall be written in sequential order and they shall be contiguous (i.e. one segment immediately following the next).
+
+##### Embedding manifests into PNG
+
+The C2PA Manifest shall be embedded using an ancillary, private, not safe to copy, chunk type of `'caBX'` (as per https://www.w3.org/TR/2003/REC-PNG-20031110/[PNG, 4.7.2]). It is recommended that the `'caBX'` chuck precede the `'IDAT'` chunks.
+
+NOTE: Although PNG supports it, it's considered bad-form to have a data block after the `'IDAT'` and before the `'IEND'`. (The exception being animated PNG blocks)
+
+
+##### Embedding manifests into PDFs
+
+The C2PA Manifest shall be embedded using an embedded file specification (ISO 32000, 7.11.3). The file specification dictionary shall have an **AFRelationship** key whose value is _C2PA_Manifest_. If the C2PA manifest is embedded into an encrypted PDF, the embedded file stream shall use an `Identity` crypt filter.
+
+The embedded file specification shall be the value (via indirect object) of the **AF** key in the document catalog dictionary. It shall also be referenced (via indirect object) either from the _EmbeddedFiles_ NameTree (`/Catalog/Names/EmbeddedFiles`) or from a _FileAttachment_ annotation. The annotation approach shall be used when adding a C2PA Manifest to a PDF that already has an existing PDF signature in order to avoid invalidating its `DocMDP` restrictions. 
+
+It is possible to add a PDF signature (certifying or approval) to a PDF following the inclusion of a C2PA Manifest Store, but only if it the addition is known at the time of the creation of the active manifest. Since the PDF signature will change the contents of the PDF after the C2PA manifest is signed, the size and location of value of its `Contents` key must be determined before C2PA signing and added to the list of exclusions in the `data.hash` assertion, so that the C2PA signature is not invalidated by the addition of the PDF signature.
+
+NOTE: Adding the PDF signature in addition to the C2PA's claim signature improves compatibility with the existing PDF ecosystem.
+
+##### Embedding manifests into ID3
+
+The C2PA Manifest Store shall be embedded into a ID3v2-compatible, compressed audio file (e.g., MP3 or FLAC) file as the Encapulated object data of a General Encapsulated Object (GEOB) as defined in https://id3.org/id3v2.3.0#General_encapsulated_object. The GEOB's `MIME type` field shall be present and shall use the value for the media type for JUMBF as described in <<_external_manifests>>.
+
+#### Embedding manifests into BMFF-based assets
+
+##### The `'uuid'` Box for C2PA
+
+All BMFF-based C2PA assets, whether they are timed (e.g., videos with or without audio tracks), untimed (e.g., still photos) or mixed (e.g., live or animated photos) audiovisual media, shall use a `'uuid'` box that adheres to the following syntax and semantics defined below.
+
+[NOTE]
+.EDITORS NOTE
+====
+The reason that a `'uuid'` box instead of a `'c2pa'` box is being used is that browsers based on Chromium will immediately fail playback when they encounter any unknown top-level boxes.
+====
+
+Some file formats that are BMFF-based and would be supported via this method include:
+
+* MPEG-4 code-points, either complete (`.mp4`) or fragmented (`.m4s`); downloadable audio files (`.m4a`)
+* HEIF (`.heif`, `.heic`)
+* AVIF (`.avif`)
+
+###### Definition
+
+Box Type: `'uuid'`
+Extended Box Type: 0xD8, 0xFE, 0xC3, 0xD6, 0x1B, 0x0E, 0x48, 0x3C, 0x92, 0x97, 0x58, 0x28, 0x87, 0x7E, 0xC4, 0x81
+Container: File
+Mandatory: No
+Quantity: Zero or more
+
+The Coalition for Content Provenance and Authenticity (`'uuid'` with aforementioned uuid) box embeds provenance into BMFF. One such box contains a manifest store, and there may be one or more auxiliary boxes containing additional information required for validation.
+
+###### Syntax
+
+[source]
+----
+aligned(8) class ContentProvenanceBox extends FullBox(`'uuid'`, extended_type = 0xD8 0xFE 0xC3 0xD6 0x1B 0x0E 0x48 0x3C 0x92 0x97 0xE8 0x28 0x87 0x7E 0xC4 0x81, version = 0, 0) {
+    string box_purpose;
+    bit(8) data[];
+}
+----
+
+###### Semantics
+
+[cols="1,1"]
+|===
+| box_purpose
+| [indicates purpose of box]
+
+| data
+| [depends on box_purpose]
+|===
+
+The box_purpose and fields that depend on it are described below for each box purpose.
+
+[NOTE]
+====
+Regarding unique ids:
+
+There are cases, such as fragmented MP4 (fMP4), where the id for a subset of the asset, such as the track_id field of the `'tkhd'` box, is only locally unique to a subset of the overall asset rather than globally unique to the asset.
+
+Because a globally unique id is required to determine what to hash, a unique id is included.  This unique id does not equal any value from the original asset; each value is instead defined when the manifest is created.  The unique id is then combined with an associated local id to form an id that's globally unique to the entire asset.
+====
+
+##### Box Containing the Manifest
+
+The box containing the manifest shall appear before the first `'mdat'` box in the file.
+
+The fields in the corresponding box described above shall be set as follows.
+
+[cols="1,1"]
+|===
+| box_purpose
+| For a manifest, this value shall be `manifest`.
+
+| data
+| When box_purpose is `manifest`, the first 8 bytes shall be the absolute file offset to the first auxiliary `'uuid'` C2PA box with box_purpose equal to `merkle`.  If this file contains no such boxes, the first 8 bytes shall be zero.  Those 8 bytes shall be followed by the raw manifest bytes followed by zero or more unused padding bytes.
+|===
+
+For fragmented mp4 files, an identical `'uuid'` C2PA box of type `manifest` shall be present in each initialization segment; the manifest must be identical.
+
+##### Auxiliary `'c2pa'` Boxes for Large and Fragmented Files
+
+Some files have one or more very large `'mdat'` boxes (e.g., large video or image files which may be downloaded and rendered progressively) or large numbers of independent 'mdat' boxes (e.g., fMP4 where each fragment can be downloaded independently).
+
+In these cases, it is unreasonable to require a client to completely download all `'mdat'` box(es) before validating any portion of the asset.  Avoiding that necessity is resolved by using multiple hashes.
+
+For each large `'mdat'` box, subsets of the box have individual hashes that can be validated independently; how to determine these subsets is specified below.  For fMP4 content where each `'mdat'` box can be downloaded independently, each fragment has its own individual hash.
+
+In the simplest case, all of these hashes are stored in the manifest. Each subset has an auxiliary `'uuid'` C2PA  box that declares how to locate its hash in the manifest; refer to the note regarding unique ids above for why this is the case.
+
+However, for sufficiently large assets, including every subset's hash in the manifest itself would increase the size of the manifest to one or more megabytes.
+
+Avoiding such a large manifest for a large asset is achieved by using one or more Merkle Trees.
+* For a large non-fragmented asset that contains one or more `'mdat'` boxes in a single large file, one Merkle Tree is used for each `'mdat'` box.
+* For a large fragmented asset that contains a set of `'mdat'` boxes for a single track which may be spread across multiple files, one Merkle Tree is used for each track.
+
+In either case:
+* Each leaf node of any given Merkle Tree is the subset's hash.
+* The manifest stores one row of each Merkle Tree.
+* The auxiliary `'uuid'` C2PA box that exists for each subset indicates which Merkle Tree row in the manifest it requires and which leaf node it represents. It also includes any additional hash(es) from the Merkle Tree necessary to derive a hash in the manifest's Merkle Tree row.
+
+The selection of which Merkle Tree row to store in the manifest creates a size tradeoff within the asset.  Specifically, storing a single hash per Merkle Tree in the manifest minimizes the size of the manifest but requires log2(subsets) to be stored in each subset-specific box.  Each time the number of hashes stored in the manifest for a Merkle Tree is doubled (by moving "down" one Merkle Tree row), the number of hashes stored in each subset-specific box decreases by one.  Thus, increasing the size of the manifest decreases the size of the entire asset and vice-versa, and since hashes for individual subsets are replicated across subsets as required to derive a manifest-specified hash, the tradeoff is not 1 to 1.
+
+Making this size traceoff is left up to the implementation creating the manifest; this spec neither mandates nor recommends that any specific Merkle Tree row be stored in the manifest.  That said, because the simplest case of storing all subset hashes in the manifest is equivalent to using a Merkle Tree where the leaf nodes are stored in the manifest, the same Merkle Tree construction is used for multiple hashes in all cases.  That construction is defined as follows.
+
+The portion of the manifest containing the BMFF Hash shall include the `merkle` field.  Refer to <<_hashing_a_bmff_formatted_asset>> for more information.
+
+For large `'mdat'` boxes that can be validated piecemeal, two or more auxiliary `'uuid'` C2PA boxes with box_purpose set to `'merkle'` as described below shall be included in the single asset file.  They shall follow the last `'mdat'` box in the file.
+
+For timed-media where an `'stco'` or `'co64'` box is present, the hash used for a given leaf node in the merkle tree shall be computed over an individual subset of samples as defined by that box.
+
+For untimed-media where an `'iloc'` box is present (such as HEIF or AVIF), the hash used for a given leaf node in the merkle tree shall be computed over an individual item as defined by that box.
+
+Regardless of the subset-defining mechanism, all such auxiliary `'uuid'` C2PA boxes shall occur in the same sequence as the subsets they hash as specified by the `'stco'`, `'co64'`, or `'iloc'` box regardless of their location in the `'mdat'`.  They shall also be grouped such that a single Merkle Tree's auxiliary `'uuid'` C2PA boxes are sequential with no intervening boxes.
+
+[NOTE]
+.EDITORS NOTE
+====
+Are there other scenarios where an `'mdat'` can be large enough to be worth dividing where neither `'stco'`, `'co64'`, nor `'iloc'` is present?  If so, what box(es) should be used to decide on subset division points?
+====
+
+For fragmented mp4 files, one auxiliary `'uuid'` C2PA box with box_purpose set to `'merkle'` as described below shall be included in each fragment file per `'moof'` / `'mdat'` pair in that file.  Each one shall be between the `'moof'` and `'mdat'` box it covers.  The hash used for a given leaf node in the merkle tree shall be over all data following the last `'mdat'` box preceding that `'uuid'` C2PA box (or start of file) and preceding the first `'moof'` box following that `'uuid'` C2PA box (or end of file) except data excluded by the exclusion list.
+
+[NOTE]
+====
+This specification does not enable support for fMP4 assets where individual fragments contain more than one `'moof'` box and/or `'mdat'` box.
+====
+
+Regardless of how the asset is structured, the fields in the corresponding box described above shall be set as follows.
+
+[cols="1,1"]
+|===
+| box_purpose
+| For an auxiliary `'uuid'` C2PA box, this value shall be `merkle`.
+
+| data
+| When box_purpose is `merkle`, this value shall contain raw CBOR bytes indicating how to validate a portion of the asset as defined as follows.  If there are multiple auxiliary `'uuid'` C2PA boxes with box_purpose `merkle` for a given merkle tree in a single file, each shall be followed by sufficient padding bytes (zero or more) to make all auxiliary `'uuid'` C2PA boxes for that merkle tree a fixed size.
+|===
+
+[NOTE]
+====
+When there are more than one of these boxes in a single file, i.e., the case where there are large `'mdat'`(s) being validated piecemeal, a fixed size is required in order to enable a progressively downloading client to only download the boxes it needs to begin validation rather than the entire merkle tree.  Such a client can download enough of the first of these boxes based on the file offset in the `manifest` to determine if its uniqueId and localId match the 'mdat' it is trying to validate.  If they do, it can determine the file offset to the box it needs to validate by multiplying the subset number by that size then download just that box.  Otherwise, it can determine the file offset to the beginning of the next merkle tree by multiplying that fixed size by the current merkle tree's total number of leaf nodes, and it can repeat this process until it locates the box it needs.  The total download size for this subset of boxes is very small relative to the size of a single subset.
+====
+
+[NOTE]
+====
+A fragmented mp4 asset may also be stored as a single flat mp4 file with a single `moov` for all tracks and then `moof`/`mdat` pairs for each fragment.  Such a file shall be handled as if the individual fragments were moved into their own files, manifest and subset processing was performed, and then the files were appended together.
+====
+
+###### Schema and Example
+
+The https://datatracker.ietf.org/doc/html/rfc8610[CDDL Definition] for this type is:
+
+[source,cddl]
+----
+include::../../schemas/cddl/bmff-merkle.cddl[]
+----
+
+An example in CBOR-Diag is shown below:
+
+[source,json]
+----
+include::../../schemas/cddl/examples/bmff-merkle.cbordiag[]
+----
+
+For files that use a `'tkhd'` box to indicate individual tracks, the localId in the preceding CBOR shall be set to the track_id field of the `'tkhd'` box pertaining to the `'mdat'` being hashed.
+
+[NOTE]
+.EDITORS NOTE
+====
+How do we handle the case where there are multiple `'mdat'` boxes for untimed media, e.g. a file that includes multiple image `'mdat'` boxes?
+How do we handle the case where there are multiple `'mdat'` boxes of different types, e.g. a file that has both audio/video `'mdat'` boxes as well as an image `'mdat'` box (e.g. for a thumbnail)?
+For scenarios such as these, a `tkhd` box alone cannot be used to reference the complete set of different `mdat` boxes when there are more than one; it may not be present at all.
+What box value(s) should be used for localId instead?
+====
+
+##### Dynamic stream generation
+
+Many adaptive bitrate streaming (ABR) implementations store a single version of an asset, e.g., as a flat MP4 or in another intermediate format, and generate individual asset streams using various codecs, bitrates, etc. at consumption time. As a result, such a server must either hash said streams and create a manifest each time the content is consumed or, if generation is deterministic, create and cache the hashes and manifests once and then embed them at consumption time.
+
+This also means that such a server must have a signing identity of its own that will be trusted by validators or be able to sign the generated files on behalf of the content creator in a secure and trustworthy manner.
+
+##### Exclusion List Requirements
+
+For all `c2pa.hash.bmff` assertions, the following entries shall always appear on the exclusion list.
+
+The entire `'uuid'` C2PA box shall be excluded.  (The `'data'` field is ensuring that other `'uuid'` boxes are not excluded.)
+
+[source]
+----
+xpath = "/uuid"
+data = [ { offset = 8, data = "2P7D1hsOSDySl1goh37EgQ==" } ]
+----
+
+The entire `'ftyp'`, `'iloc'`, and `'tfra'` boxes shall be excluded.
+
+[source]
+----
+xpath = "/ftyp"
+----
+
+[source]
+----
+xpath = "/meta/iloc"
+----
+
+[source]
+----
+xpath = "/mfra/tfra"
+----
+
+The entire `'stco'` and `'co64'` box except for the first 16 bytes shall be excluded.
+
+[source]
+----
+xpath = "/moov/trak/mdia/minf/stbl/stco"
+subset = [ { offset = 16, length = 0 } ]
+----
+
+[source]
+----
+xpath = "/moov/trak/mdia/minf/stbl/co64"
+subset = [ { offset  = 16, length = 0 } ]
+----
+
+The `'base_data_offset'` field of the `'tfhd'` box shall be excluded.  Note that this field only appears when the lowest order bit of flags is set to 1.
+This field must be excluded because it is a file offset and including it would invalidate the hash once the manifest was embedded into the file.
+Failing to include the remaining fields of this box in the hash would enable the audio/video speed to be increased or decreased without invalidating the hash, thus defeating a stated goal of C2PA.
+
+[source]
+----
+xpath = "/moof/traf/tfhd"
+flags = "AAAB"
+exact = false
+subset = [ { 16, 8 } ]
+----
+
+The `'data_offset'` field of the `'trun'` box shall be excluded.  Note that this field only appears when the lowest order bit of flags is set to 1.
+This field must be excluded because it is a file offset and including it would invalidate the hash once the manifest was embedded into the file.
+Failing to include the remaining fields of this box in the hash would enable the audio/video speed to be increased or decreased without invalidating the hash, thus defeating a stated goal of C2PA.
+
+[source]
+----
+xpath = "/moof/traf/trun"
+flags = "AAAB"
+exact = false
+subset = [ { 16, 4 } ]
+----
+
+##### Timed-media streams that are neither audio nor video
+
+Timed-media streams that are neither audio nor video, such as text streams for captions, that the claim generator wishes to make tamper evident shall be handled the same way as audio and video streams.
+
+##### External references
+
+Externally referenced content declared inside BMFF boxes, such as in a `'dref'`, `'url'`, or `'urn'` box, that the claim generator wishes to make tamper evident shall *not* exclude the referencing box AND shall include a separate xref:_cloud_data[cloud data assertion] for each external reference to be hashed.
+
+##### Size requirements
+
+If a BMFF-based asset uses 32-bit sizes or offsets in any box(es), e.g. the `'stco'` box, and adding boxes to conform to this specification will push the file size over 4 gigabytes, it is the responsibility of the manifest creator to edit the file to use appropriate sizes and offsets, e.g. by replacing the `'stco'` box with a `'co64'` box, before creating the manifest.
+
+### External Manifests
+
+In some cases, it may not be possible (or practical) to embed a C2PA Manifest Store in an asset. In those cases, keeping the manifest externally to the asset is an acceptable model for providing providence to assets. The manifest should be stored in a location that is easily locatable by a manifest consumer working with the asset, such as xref:_by_reference/uri[by reference or URI]. As the C2PA Manifest Store is a JUMBF box, it shall be served with a JUMBF Media Type.
+
+[NOTE]
+.Editors Note
+====
+The C2PA will work with the ISO JPEG Systems committee to register a media type for JUMBF with IANA.
+====
+
+Some common reasons to use an external manifest are:
+- It may not be technically possible, such as with a `.txt` file.
+- It may not be practical, such as when the size of the manifest is larger than the asset's digital content.
+- It may not be appropriate, such as when it would modify an asset that shouldn't be modified.
+NOTE: a good example of this is creating a manifest for a pre-existing asset.
+
+### Embedding a Reference to the Active Manifest
+
+If the asset has embedded XMP, it is recommended that the claim generator add a https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/provenance[*dcterms:provenance*] key to the XMP, the value (a URI reference) being where to locate the active C2PA Manifest. The URI shall either be a JUMBF URI for an embedded manifest or a standard URI for any non-embedded scenarios, whether stored remotely or locally on the same storage system as the asset itself.
+
+An example JUMBF URI would be stored as:
+
+```xml
+<dcterms:provenance>self#jumbf=c2pa/urn:uuid:F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4</dcterms:provenance>
+```

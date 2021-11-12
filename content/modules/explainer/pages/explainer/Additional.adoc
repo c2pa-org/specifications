@@ -1,0 +1,20 @@
+:revdate: {docdate}
+:version-label!:
+:sectnums:
+:sectnumlevels: 5
+:chapter-label: Additional Material
+
+
+## Stakeholder Feedback
+[NOTE]
+====
+Implementors and other stakeholders may already have publicly stated positions on this work. They will be listed here with links to evidence as appropriate.
+====
+
+## References
+[NOTE]
+====
+Any additional documents, articles, books, etc. that would be useful to read to get a better understanding of the work of the C2PA will go here.
+====
+
+

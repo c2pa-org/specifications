@@ -1,0 +1,46 @@
+:revdate: {docdate}
+:version-label!:
+:sectnums:
+:sectnumlevels: 5
+:chapter-label: Use-Case Examples
+
+
+
+## Use-case Examples
+
+The following is a non-exhaustive list of potential and general use-cases of the C2PA Specifications. Some of these are taken from, or built upon, the use-cases developed within the https://www.originproject.info/[Project Origin Alliance] and the https://contentauthenticity.org/[Content Authenticity Initiative (CAI)] frameworks.  Each use-case wil l be described using some generic personas to help make the flow clear.
+
+For technical use-case examples, see [Non-normative guidelines].
+
+### Helping consumers check the provenance of the media they are consuming
+Alice sends a video to a friend, Bob. The video includes text with alarming and controversial allegations. Bob immediately seeks confirmation of its validity, starting with its provenance.
+
+The video that Alice sent contains C2PA provenance. With a C2PA-enabled application, Bob is able to establish that this video has been validated as being published by an organisation he can trust and is held in public high regard. 
+
+### Enhancing clarity around provenance and edits for journalistic work
+A photojournalist uses a C2PA-enabled capture device during a newsworthy event they are covering. The assets are then brought into a C2PA-enabled editing application, and after editing it, they are sent to a photo editor. The editor makes additional edits also using a C2PA-enabled application. The finalized asset is moved into the content management system of a news organization, which is also C2PA-enabled, before posting the asset to social media.
+
+### Offering publishers opportunities to improve their brand value
+A news publisher is concerned about standards of public comprehension and brand value of its publications which it makes available online through a number of social media platforms. To improve audience confidence about their content, it wishes to provide a means for the audience to verify the content that originated through its output. 
+
+For content that is consumed without any C2PA provenance, the publisher hopes that the consumer will take extra steps to verify the provenance and authenticity of the asset, instead of immediately attributing it to the site on which it is published.
+
+### Providing quality data for indexer / platform content decisions
+A news video is posted to a social media platform. By utilizing the C2PA-enabled provenance in the video, the social media platform is able to verify that it came from the same source that posted it.                		
+
+### Assisting 'Intelligence' investigators to confirm provenance and integrity of media
+An individual in a news/other context using open-source intelligence techniques (OSINT) can use the presence of C2PA provenance in assets to better confirm the history and integrity of media. Additionally, an individual may use a [decoupled binding database] to re-correlate relevant media to its C2PA provenance.		
+
+### Finding media from an event
+An important news event happens and there is a lot of media coverage that reporters want to go through. Reporters connect to a C2PA-enabled media portal and are able to use aspects of the media and its provenance to run queries such as 
+
+* Find all assets from any identified source, or a particular set of sources;
+* Find all assets from the square kilometre with these central coordinates;
+* Find all assets created between time 'x' and 'y'		
+
+### Enhance the evidentiary value of critical footage 
+A human rights defender manages to capture footage containing C2PA-enabled provenance of police violence during a protest. The human rights defender sends the footage to a human rights organization that verifies that the asset meets video-as-evidence criteria. The human rights organization redacts information about the defender using a C2PA-enabled editing application in order to protect their identity. The C2PA-verified asset is then used to improve the chances of that footage being admissible in court proceedings. 
+
+### Enforcing disclaimer laws on retouched/edited images 
+To prevent dangerous stereotypes of ideal bodies, a government enacts a law that requires advertisers and social media influencers to specify that their image has been edited if any aspect of a body's size, shape or skin has been altered. By having their C2PA-enabled editing application add information about each action performed, they can easily comply and the government can easily confirm.
+
