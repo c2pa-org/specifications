@@ -1,0 +1,5 @@
+name: specifications
+title: C2PA Specifications
+version: '1.0'
+nav:
+- modules/nav.adoc  
