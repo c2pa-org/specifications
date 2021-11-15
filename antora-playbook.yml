@@ -9,7 +9,9 @@ content:
     start_path: content
 ui:
   bundle:
-    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+#    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+#    url: https://github.com/asciidoctor/asciidoctor-docs-ui/releases/download/prod-267/ui-bundle.zip
+    url: ./../c2pa-docs-ui/build/ui-bundle.zip
     snapshot: true
   supplemental_files:
   - path: ui.yml
