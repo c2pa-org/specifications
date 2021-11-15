@@ -4,9 +4,12 @@ site:
   start_page: index.adoc
 content:
   sources:
-  - url: .
+  - url: ./
     branches: HEAD
-    start_path: content
+    start_path: docs
+  - url: ./../specs-core
+    branches: HEAD
+    start_path: docs
   - url: ./../threats-harms
     branches: HEAD
     start_path: docs
