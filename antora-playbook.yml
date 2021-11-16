@@ -1,7 +1,7 @@
 site:
   title: C2PA Specifications
   url: https://c2pa.org/specifications
-  start_page: index.adoc
+  start_page: specifications::index.adoc
 content:
   sources:
   - url: ./
