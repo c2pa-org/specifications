@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="333px" height="328px" viewBox="0 0 333 328" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>C2PA_Manifest</title>
+    <g id="C2PA_Manifest" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="C2PA-Manifest" transform="translate(41.000000, 43.000000)">
+            <g id="Manifest">
+                <path d="M4,0 L256,0 C258.209139,-4.05812251e-16 260,1.790861 260,4 L260,31 L260,31 L0,31 L0,4 C-2.705415e-16,1.790861 1.790861,4.05812251e-16 4,0 Z" id="Background" fill="#FF9600"></path>
+                <text id="C2PA-Manifest" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="10" y="21">C2PA Manifest </tspan>
+                </text>
+            </g>
+            <g id="Padding-Group-4" transform="translate(0.000000, 30.000000)">
+                <path d="M259,1 L259,209 C259,209.828427 258.664214,210.578427 258.12132,211.12132 C257.578427,211.664214 256.828427,212 256,212 L256,212 L4,212 C3.17157288,212 2.42157288,211.664214 1.87867966,211.12132 C1.33578644,210.578427 1,209.828427 1,209 L1,209 L1,1 L259,1 Z" id="Rectangle" stroke="#FF9600" stroke-width="2" fill="#FFFFFF"></path>
+                <g id="Stacked-Group-5" transform="translate(8.000000, 10.000000)">
+                    <g id="Claim" transform="translate(0.000000, 115.000000)">
+                        <rect id="Rectangle" fill="#FF3A01" x="0" y="0" width="244" height="33" rx="3"></rect>
+                        <text font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" fill="#FFFFFF">
+                            <tspan x="8" y="18">C</tspan>
+                            <tspan x="17.312" y="18" letter-spacing="0.192">l</tspan>
+                            <tspan x="22.08" y="18">aim</tspan>
+                        </text>
+                    </g>
+                    <g id="Claim-Sig" transform="translate(0.000000, 156.000000)">
+                        <rect id="Rectangle" fill="#FF9600" x="0" y="0" width="244" height="36" rx="3"></rect>
+                        <text id="Claim-Signature" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" fill="#FFFFFF">
+                            <tspan x="33" y="21">Claim Signature</tspan>
+                        </text>
+                        <g id="lock" transform="translate(8.000000, 8.000000)" fill="#FFFFFF">
+                            <path d="M8.5,0 C11.241872,0 13.4794199,2.12234819 13.5952867,4.78311365 L13.6,5 L13.6,6.66666667 L15.3,6.66666667 C16.2384,6.66666667 17,7.41166667 17,8.33333333 L17,18.3333333 C17,19.2533333 16.2384,20 15.3,20 L1.7,20 C0.7599,20 -1.15996102e-12,19.2533333 -1.15996102e-12,18.3333333 L-1.15996102e-12,8.33333333 C-1.15996102e-12,7.41166667 0.7599,6.66666667 1.7,6.66666667 L3.4,6.66666667 L3.4,5 C3.4,2.4337021 5.37692998,0.302139589 7.96935235,0.0281944854 L8.19303556,0.00929593037 L8.5,0 Z M8.5,11.6666667 L8.35314518,11.6727749 C7.48201551,11.7455771 6.8,12.4601754 6.8,13.3333333 C6.8,14.2533333 7.5599,15 8.5,15 C9.4384,15 10.2,14.2533333 10.2,13.3333333 C10.2,12.4116667 9.4384,11.6666667 8.5,11.6666667 L8.5,11.6666667 Z M8.51105,1.66616667 L8.27553844,1.67377891 C6.55807745,1.78302088 5.20009796,3.13822981 5.10529006,4.81268297 L5.1,5 L5.1,6.66666667 L11.9,6.66666667 L11.9,5 C11.9,3.15919768 10.3771977,1.66666667 8.51105,1.66616667 Z" id="Combined-Shape"></path>
+                        </g>
+                    </g>
+                    <g id="Assertion-Store">
+                        <rect id="Rectangle" stroke="#979797" fill="#5647ED" x="0.5" y="0.5" width="243" height="106"></rect>
+                        <text id="Assertions" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" fill="#FFFFFF">
+                            <tspan x="5" y="24">Assertions</tspan>
+                        </text>
+                        <g id="Padding-Group-6" transform="translate(3.000000, 40.000000)" fill="#0DBAAC">
+                            <rect id="Background" x="0" y="0" width="55" height="55" rx="3"></rect>
+                        </g>
+                        <g id="Padding-Group-6" transform="translate(125.000000, 40.000000)" fill="#0DBAAC">
+                            <rect id="Background" x="0" y="0" width="55" height="55" rx="3"></rect>
+                        </g>
+                        <g id="Padding-Group-6" transform="translate(186.000000, 40.000000)" fill="#0DBAAC">
+                            <rect id="Background" x="0" y="0" width="55" height="55" rx="3"></rect>
+                        </g>
+                        <g id="Padding-Group-6" transform="translate(64.000000, 40.000000)" fill="#0DBAAC">
+                            <rect id="Background" x="0" y="0" width="55" height="55" rx="3"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
