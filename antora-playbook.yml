@@ -4,24 +4,24 @@ site:
   start_page: specifications::index.adoc
 content:
   sources:
-  - url: ./
-    branches: HEAD
+  - url: https://github.com/c2pa-org/specifications
+    branches: main
     start_path: docs
-  - url: ./../specs-core
-    branches: HEAD
+  - url: https://github.com/c2pa-org/specs-core
+    branches: main
     start_path: docs
-  - url: ./../threats-harms
-    branches: HEAD
+  - url: https://github.com/c2pa-org/threats-harms
+    branches: main
     start_path: docs
-  - url: ./../ux
-    branches: HEAD
+  - url: https://github.com/c2pa-org/ux
+    branches: main
     start_path: docs
-  - url: ./../documentation
-    branches: HEAD
+  - url: https://github.com/c2pa-org/documentation
+    branches: main
     start_path: docs
 ui:
   bundle:
-    url: ./../c2pa-docs-ui/build/ui-bundle.zip
+    url: https://github.com/c2pa-org/c2pa-docs-ui/raw/main/build/ui-bundle.zip
     snapshot: true
   supplemental_files:
   - path: ui.yml

@@ -1,16 +1,26 @@
 site:
   title: C2PA Specifications
   url: https://c2pa.org/specifications
-  start_page: index.adoc
+  start_page: specifications::index.adoc
 content:
   sources:
-  - url: .
+  - url: ./
     branches: HEAD
-    start_path: content
+    start_path: docs
+  - url: ./../specs-core
+    branches: HEAD
+    start_path: docs
+  - url: ./../threats-harms
+    branches: HEAD
+    start_path: docs
+  - url: ./../ux
+    branches: HEAD
+    start_path: docs
+  - url: ./../documentation
+    branches: HEAD
+    start_path: docs
 ui:
   bundle:
-#    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
-#    url: https://github.com/asciidoctor/asciidoctor-docs-ui/releases/download/prod-267/ui-bundle.zip
     url: ./../c2pa-docs-ui/build/ui-bundle.zip
     snapshot: true
   supplemental_files:
