@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>C2PA User Experience Guidance for Implementers :: C2PA Specifications</title>
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.0/ux/UX_Recommendations.html">
+    <meta name="page-spec" content="specifications:ux:UX_Recommendations.adoc">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <a class="navbar-item title" href="../../..">C2PA Specifications</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-item" href="https://asciidoctor.zulipchat.com" target="_blank" rel="noopener" data-title="Communication">
+            <span class="icon"><img src="../../../_/img/octicons-24.svg#view-comment-discussion"></span>
+          </a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item has-icon" href="https://github.com/c2pa-org" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-mark-github"></span>
+              <span>Repository</span>
+            </a>
+            <a class="navbar-item has-icon" href="https://twitter.com/c2pa" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-hash"></span>
+              <span>Tweets</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active is-loading" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">C2PA Specifications</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../specs/C2PA_Specification.html">Technical Specifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../explainer/Explainer.html">Explainer</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../guidance/Guidance.html">Guidance for Implementors</a>
+  </li>
+  <li class="nav-item is-current-url" data-depth="1">
+    <a class="nav-link" href="UX_Recommendations.html">User Experience Guidance</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../security/Security_Considerations.html">C2PA Security Considerations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../security/Harms_Modelling.html">C2PA Harms Modelling</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+  <script>
+;(function () {
+  var panel = document.querySelector('.nav-panel-menu')
+  var page
+  var hash = window.location.hash
+  if (hash) {
+    if (~hash.indexOf('%')) hash = decodeURIComponent(hash)
+    if (~hash.indexOf('"')) hash = hash.replace(/(?=")/g, '\\')
+    var link = panel.querySelector('.nav-link[href="' + hash + '"]')
+    if (link) page = link.parentNode
+    else if ((page = panel.querySelector('.is-current-url'))) page.classList.add('is-provisional')
+  } else {
+    page = panel.querySelector('.is-current-url')
+  }
+  if (page) {
+    var ancestor = page
+    while ((ancestor = ancestor.parentNode) && ancestor !== panel) {
+      if (ancestor.className === 'nav-item') ancestor.classList.add('is-current-path', 'is-active')
+    }
+    page.classList.add('is-current-page', 'is-active')
+    if (panel.scrollHeight > panel.clientHeight) {
+      var panelRect = panel.getBoundingClientRect()
+      var linkRect = page.querySelector('.nav-link').getBoundingClientRect()
+      panel.scrollTop += Math.round(linkRect.top - panelRect.top - (panelRect.height - linkRect.height) * 0.5)
+    }
+  } else {
+    panel.scrollTop = 0
+  }
+  panel.classList.remove('is-loading')
+})()
+  </script>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">C2PA Specifications</span>
+    <span class="version">1.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">C2PA Specifications</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">C2PA Specifications</a></li>
+    <li><a href="UX_Recommendations.html">User Experience Guidance</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">C2PA User Experience Guidance for Implementers</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_principles">2. Principles</a>
+<ul class="sectlevel2">
+<li><a href="#_designing_for_trust">2.1. Designing for trust</a></li>
+<li><a href="#_quality">2.2. Quality</a></li>
+<li><a href="#_accessibility">2.3. Accessibility</a></li>
+<li><a href="#_consistency">2.4. Consistency</a></li>
+<li><a href="#_summary_vs_comprehensive">2.5. Summary vs comprehensive</a></li>
+<li><a href="#_linked">2.6. Linked</a></li>
+</ul>
+</li>
+<li><a href="#_user_experience_overview">3. User experience overview</a>
+<ul class="sectlevel2">
+<li><a href="#_levels_of_information_disclosure">3.1. Levels of Information Disclosure</a></li>
+</ul>
+</li>
+<li><a href="#_l1_indicator_of_c2pa_data">4. L1 – indicator of C2PA data</a>
+<ul class="sectlevel2">
+<li><a href="#_appearance">4.1. Appearance</a></li>
+<li><a href="#_placement_and_interaction">4.2. Placement and interaction</a></li>
+</ul>
+</li>
+<li><a href="#_l2_progressive_disclosures">5. L2 – progressive disclosures</a>
+<ul class="sectlevel2">
+<li><a href="#_minimum_viable_provenance">5.1. Minimum viable provenance</a></li>
+<li><a href="#_discrete_displays">5.2. Discrete displays</a></li>
+<li><a href="#_summary_displays">5.3. Summary displays</a></li>
+<li><a href="#_non_editorial_transform">5.4. Non-Editorial Transform</a></li>
+<li><a href="#_missing_data">5.5. Missing data</a></li>
+<li><a href="#_broken_bindings_untrusted_signers">5.6. Broken bindings &amp; untrusted signers</a></li>
+</ul>
+</li>
+<li><a href="#_applications_and_use_cases">6. Applications and Use cases</a>
+<ul class="sectlevel2">
+<li><a href="#_arts_and_entertainment">6.1. Arts and entertainment</a></li>
+<li><a href="#_news">6.2. News</a></li>
+<li><a href="#_social_sites">6.3. Social sites</a></li>
+<li><a href="#_e_commerce_and_retail">6.4. E-commerce and retail</a></li>
+<li><a href="#_travel">6.5. Travel</a></li>
+</ul>
+</li>
+<li><a href="#_open_issues">7. Open issues</a>
+<ul class="sectlevel2">
+<li><a href="#_video">7.1. Video</a></li>
+<li><a href="#_user_research">7.2. User research</a></li>
+</ul>
+</li>
+<li><a href="#_public_review_feedback_and_evolution">8. Public Review, Feedback and Evolution</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="http://creativecommons.org/licenses/by/4.0/"><img src="_images/CCby4.png" alt="Creative Commons License"></a>
+</div>
+</div>
+<div class="paragraph text-center">
+<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<!-- toc disabled -->
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders, with the results balancing uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>TODO: Asset journey example of problems across fragmented data sharing vs. what C2PA is intending to do</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_principles"><a class="anchor" href="#_principles"></a>2. Principles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The UX recommendations aim to define best practices for presenting C2PA provenance to consumers. The recommendations strive to describe standard, readily recognizable experiences that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>provide asset creators a means to capture information and history about the content they are creating, and</p>
+</li>
+<li>
+<p>provide asset consumers information and history about the content they are experiencing, thereby empowering them to understand where it came from and decide how much to trust it.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>User interfaces designed for the consumption of C2PA provenance must be informed by the context of the asset. We have studied 4 primary user groups and a collection of contexts in which C2PA assets are encountered. These user groups have been defined in the <a href="https://c2pa.org/principles/">C2PA Guiding Principles</a> as Consumers, Creators, Publishers and Verifiers (or Investigators). To serve the needs of each of these groups across common contexts, exemplary user interfaces are presented for many common cases. These are recommendations, not mandates, and we expect best practices to evolve.</p>
+</div>
+<div class="sect2">
+<h3 id="_designing_for_trust"><a class="anchor" href="#_designing_for_trust"></a>2.1. Designing for trust</h3>
+<div class="paragraph">
+<p>A unique aspect of this approach is that rather than attempt to determine the veracity of an asset, it enables users to make their own judgement by presenting the most salient and/or comprehensive provenance information. As such it is critical that users develop trust in the system itself, over the individual data presented. Exposing the C2PA Trust Model and Trust Signals in a way that balances transparency and intuitiveness is the critical design goal addressed here. There is no design pattern that can guarantee to engender trustworthiness across multiple contexts, and while we anticipate a degree of contextual customization (see applications and examples), we recommend all implementations adhere to the following general principles.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_quality"><a class="anchor" href="#_quality"></a>2.2. Quality</h3>
+<div class="paragraph">
+<p>Implementations should be created using industry standard, robust user interface technologies.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_accessibility"><a class="anchor" href="#_accessibility"></a>2.3. Accessibility</h3>
+<div class="paragraph">
+<p>Implementations should adhere to accepted, current accessibility standards to ensure no users are excluded. For an example of such criteria, see the <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines (WCAG)</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_consistency"><a class="anchor" href="#_consistency"></a>2.4. Consistency</h3>
+<div class="paragraph">
+<p>Wherever suitable, UX patterns should match those outlined here. In the case that this would break contextual paradigms of the platform, lean on precedent whether in the OS or app design. Users should not have to learn new paradigms or terminology in different contexts in order to access the information.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary_vs_comprehensive"><a class="anchor" href="#_summary_vs_comprehensive"></a>2.5. Summary vs comprehensive</h3>
+<div class="paragraph">
+<p>In many cases, a subset of the available information will be the most useful to a user in a given context. A link through to the full information should always be made available, however.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_linked"><a class="anchor" href="#_linked"></a>2.6. Linked</h3>
+<div class="paragraph">
+<p>Some data will assert an individual or organization, wherever possible, a links out should be made available, to allow the user to make a judgement on those actors' trustworthiness.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_experience_overview"><a class="anchor" href="#_user_experience_overview"></a>3. User experience overview</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_levels_of_information_disclosure"><a class="anchor" href="#_levels_of_information_disclosure"></a>3.1. Levels of Information Disclosure</h3>
+<div class="paragraph">
+<p>Because the complete set of C2PA data for a given asset can be overwhelming to a user, we describe 4 levels of progressive disclosure which guide the designs:</p>
+</div>
+<div id="figure-0" class="imageblock">
+<div class="content">
+<img src="_images/disclosure_summary@2x.png" alt="Figure 1">
+</div>
+<div class="title">Figure 1. Disclosure levels</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Level 1</dt>
+<dd>
+<p>An indication that C2PA data is present and its cryptographic validation status.</p>
+</dd>
+<dt class="hdlist1">Level 2</dt>
+<dd>
+<p>A summary of C2PA data available for a given asset. Should provide enough information for the particular content, user, and context to allow the consumer to understand to a sufficient degree how the asset came to its current state.</p>
+</dd>
+<dt class="hdlist1">Level 3</dt>
+<dd>
+<p>A detailed display of all relevant provenance data. Note that the relevance of certain items over others is contextual and determined by the UX implementor.</p>
+</dd>
+<dt class="hdlist1">Level 4</dt>
+<dd>
+<p>For sophisticated, forensic investigatory usage, a standalone tool capable of revealing all the granular detail of signatures and trust signals is recommended.
+In addition to these standard levels, there will be common tools available for those interested in a full forensic view of the provenance data. This would reveal all available C2PA data across all manifests for an asset, including signature details.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_l1_indicator_of_c2pa_data"><a class="anchor" href="#_l1_indicator_of_c2pa_data"></a>4. L1 – indicator of C2PA data</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="_images/L1@2x.png" alt="Figure 2">
+</div>
+<div class="title">Figure 2. The L1 indicator</div>
+</div>
+<div class="sect2">
+<h3 id="_appearance"><a class="anchor" href="#_appearance"></a>4.1. Appearance</h3>
+<div class="paragraph">
+<p>Following the consistency principle, it is important in developing trust that users can learn to easily recognize the presence of the system and that their expectations are met regardless of context. As such, the L1 indicator should be consistent in its appearance across all contexts and devices to the degree that it clearly represents the presence of C2PA data. L1 can be applied using only the icon, the title, or both. If using the icon alone, ensure its appearance meets accessibility criteria so that consumers can easily identify its presence on or near the C2PA-enabled content. We recommend adhering to the “information seal” icon and working title “Content Credentials” for recognition and learned understanding of C2PA-enabled content.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_placement_and_interaction"><a class="anchor" href="#_placement_and_interaction"></a>4.2. Placement and interaction</h3>
+<div class="paragraph">
+<p>For flexibility across implementations, there are two recommended placements for L1 indicators when C2PA-enabled content is present: on top of the content or somewhere close enough that its relationship to the content is clear. If L1 is positioned on top of the content, a hover state may be applied so as not to permanently obstruct the content below. Applications may differ depending on device, such as revealing L1 via long-press on mobile. A new user experience guidance is recommended for initial implementation rollout to make clear how to identify L1 indicators.
+Behavior of L1 indicators should reveal L2 progressive disclosure, either via a hover or click interaction. Within L2 user interfaces, L1 can continue to be used to indicate the presence of C2PA-enabled ingredients.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_l2_progressive_disclosures"><a class="anchor" href="#_l2_progressive_disclosures"></a>5. L2 – progressive disclosures</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_minimum_viable_provenance"><a class="anchor" href="#_minimum_viable_provenance"></a>5.1. Minimum viable provenance</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/discrete-1@2x.png" alt="Figure 3">
+</div>
+<div class="title">Figure 3. Minimum viable provenance display</div>
+</div>
+<div class="paragraph">
+<p>If L1 indicates the presence of C2PA data, L2 is where consumers can begin to view and interact with the data. The minimum L2 user experience is defined as the display of nothing more than the base required C2PA manifest data: the signing entity, the claim generator and date. The signer is a top trust signal that allows the consumers to make their judgement trusting that the information available has been 'backed' by a legitimate entity. We anticipate that additional varying assertion data will be included by implementers, and recommend including the manifest thumbnail, signer logo, and a link to L3 where consumers can find more assertion data if available.</p>
+</div>
+<div class="paragraph">
+<p>L2 styles, fonts, etc. can be customized to fit the given context. Iconography and terminology used to describe assertions should be consistent wherever possible. We anticipate the need for L2 generally to be real-estate efficient as it appears within the implementer’s context, so we suggest streamlining the data displayed to provide enough information for the particular content, user, and context to allow the consumer to understand to a sufficient degree how the asset came to its current state.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_discrete_displays"><a class="anchor" href="#_discrete_displays"></a>5.2. Discrete displays</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/discrete-2@2x.png" alt="Figure 4">
+</div>
+<div class="title">Figure 4. Discrete manifest display</div>
+</div>
+<div class="paragraph">
+<p>A discrete manifest display only represents a single manifest. It could be the active manifest, as this is the most recent version tied to the C2PA-enabled content, or another manifest determined by the implementer. For example, if the active manifest is actually a transcode since the C2PA-enabled content is being delivered by a CDN, the implementer may choose to display the second most recent manifest. The determination for displaying a discrete manifest should be if there is substantive assertion data in a given manifest the implementer believes is most relevant to its audience. A shortcoming of discrete displays it that the highlighted manifest may not represent the complete history of the C2PA-enabled content, and may require consumers to navigate away from the implementer’s context to L3 to learn more.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary_displays"><a class="anchor" href="#_summary_displays"></a>5.3. Summary displays</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/summary-1@2x.png" alt="Figure 5">
+</div>
+<div class="title">Figure 5. Summary display, example 1</div>
+</div>
+<div class="paragraph">
+<p>A summary display represents the collection of manifests related to the C2PA-enabled content. Manifests should be presented in reverse chronological order, starting with the active manifest at the top and the origin ingredients below. Origin ingredients represent the beginning of their respective history branches.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/summary-2@2x.png" alt="Figure 6">
+</div>
+<div class="title">Figure 6. Summary display, example 2</div>
+</div>
+<div class="paragraph">
+<p>Summary displays should show at minimum the origin ingredients and active manifests, or if screen real estate allows, with at least one manifest in between.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/summary-3@2x.png" alt="Figure 7">
+</div>
+<div class="title">Figure 7. Summary display, example 3</div>
+</div>
+<div class="paragraph">
+<p>In order to provide users with a succinct summary and to allow for limited screen real estate, the manifests in between origin and active can be collapsed and represented as a numerical count. We recommend a baseline rule for collapsing manifests if the total number exceeds four or more. However, this threshold can be altered according to context. In keeping with the core recommendations, a link to the full set of data in L3 should always follow the summary list of manifests.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/summary-4@2x.png" alt="Figure 8">
+</div>
+<div class="title">Figure 8. Summary display, two origins</div>
+</div>
+<div class="paragraph">
+<p>When multiple origins are present, either as multiple ingredients in a single manifest or across multiple manifests, they can be summarized in the origin section of the UI. The L1 indicator can be used as a badge on ingredient thumbnails to distinguish C2PA-enabled assets.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/summary-5@2x.png" alt="Figure 9">
+</div>
+<div class="title">Figure 9. Summary display, multiple origins</div>
+</div>
+<div class="paragraph">
+<p>L2 UI is flexible enough to allow for various combinations of manifest counts and origin assets.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_non_editorial_transform"><a class="anchor" href="#_non_editorial_transform"></a>5.4. Non-Editorial Transform</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/transcode-1@2x.png" alt="Figure 10">
+</div>
+<div class="title">Figure 10. Non-editorial transform, example 1</div>
+</div>
+<div class="paragraph">
+<p>Non-editorial transforms or transcode manifests can be included in L2 UI. However, because transcode manifests do not typically contain data of significant user value, we recommend deprioritizing them in the summary display.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/transcode-3@2x.png" alt="Figure 11">
+</div>
+<div class="title">Figure 11. Non-editorial transform, example 2</div>
+</div>
+<div class="paragraph">
+<p>Transcode manifests can be combined with other summary UI elements.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/transcode-4@2x.png" alt="Figure 12">
+</div>
+<div class="title">Figure 12. Non-editorial transform, example 3</div>
+</div>
+<div class="paragraph">
+<p>If a transcode manifest appears between the active and origin manifests, it can also be collapsed into the "Additional steps" row.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_missing_data"><a class="anchor" href="#_missing_data"></a>5.5. Missing data</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/error-1@2x.png" alt="Figure 13">
+</div>
+<div class="title">Figure 13. Missing data, example 1</div>
+</div>
+<div class="paragraph">
+<p>There will be instances when C2PA-enabled content is missing data. Most commonly, this will happen if the content is edited without capturing C2PA data. In this event, the L2 and L3 UI should reflect when data is missing, as well as the manifest data that came before or after. It should be noted that because the relationship with prior manifests is tenuous, a dotted line can be drawn to suggest the connection is not the same as between valid, intact manifests. Note that the missing or incomplete data should not automatically signal that one should discount the content as untrustworthy. For this reason, we discourage against the use of an indicator designed to trigger alarm, which should be reserved for more apparent tamper-evident use cases, in favor of a more descriptive and neutral indicator.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/error-2@2x.png" alt="Figure 14">
+</div>
+<div class="title">Figure 14. Missing data, example 2</div>
+</div>
+<div class="paragraph">
+<p>Following the established pattern of collapsing additional manifest, missing data steps can be called out via the text string (Figure 13) to bring awareness to the questionable validity of ingredients.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_broken_bindings_untrusted_signers"><a class="anchor" href="#_broken_bindings_untrusted_signers"></a>5.6. Broken bindings &amp; untrusted signers</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/error-3@2x.png" alt="Figure 15">
+</div>
+<div class="title">Figure 15. Error display</div>
+</div>
+<div class="paragraph">
+<p>There may be instances when C2PA-enabled content has been maliciously edited to tamper with C2PA data, or is signed by an untrustworthy entity. In this case, no additional prior data can be displayed.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_applications_and_use_cases"><a class="anchor" href="#_applications_and_use_cases"></a>6. Applications and Use cases</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As above, L2 assumes some level of contextual customization will be beneficial to make C2PA data helpful to users. Rather than recommend customizations based on a fixed set of applications, instead we have categorized the ways that assets are used to communicate aspects of reality to users, and provide a recommended customization based on that. The following examples represent a range of potentially common applications:</p>
+</div>
+<div class="sect2">
+<h3 id="_arts_and_entertainment"><a class="anchor" href="#_arts_and_entertainment"></a>6.1. Arts and entertainment</h3>
+<div class="paragraph">
+<p>Depicted is a discrete manifest showing an identity assertion, indicating the uploader is the same as the content producer.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/arts@2x.png" alt="Figure 16">
+</div>
+<div class="title">Figure 16. Entertainment example</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_news"><a class="anchor" href="#_news"></a>6.2. News</h3>
+<div class="paragraph">
+<p>An example of photojournalism, wherein steps between the origin and published manifests are displayed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/news@2x.png" alt="Figure 17">
+</div>
+<div class="title">Figure 17. News example</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_social_sites"><a class="anchor" href="#_social_sites"></a>6.3. Social sites</h3>
+<div class="paragraph">
+<p>A transcode manifest is depicted, representing C2PA content shared on a social network.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/social@2x.png" alt="Figure 18">
+</div>
+<div class="title">Figure 18. Social media example</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_e_commerce_and_retail"><a class="anchor" href="#_e_commerce_and_retail"></a>6.4. E-commerce and retail</h3>
+<div class="paragraph">
+<p>Depicted is a more complex summary, indicating the shared content on the retail platform is an edited composite of two images. Buyer beware!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/retail@2x.png" alt="Figure 19">
+</div>
+<div class="title">Figure 19. E-commerce example</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_travel"><a class="anchor" href="#_travel"></a>6.5. Travel</h3>
+<div class="paragraph">
+<p>A travel company publishing a photo captured by a C2PA-enabled camera app.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/travel@2x.png" alt="Figure 20">
+</div>
+<div class="title">Figure 20. Travel example</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_open_issues"><a class="anchor" href="#_open_issues"></a>7. Open issues</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_video"><a class="anchor" href="#_video"></a>7.1. Video</h3>
+<div class="paragraph">
+<p>As a time-based media, video provenance represents a significant challenge to distill into simple consumer UI. Topics we are actively exploring relate to the visual representation of ingredients, the volume of potential edits, and assertions tied to temporal segments. We aim to provide more detailed recommendations for video content by the v1.0 spec.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user_research"><a class="anchor" href="#_user_research"></a>7.2. User research</h3>
+<div class="paragraph">
+<p>Correctly identifying and displaying trust signals are a paramount concern for our overall user experience. We strive to understand the value consumers will apply to content attribution through ongoing user research studies and usability testing.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_public_review_feedback_and_evolution"><a class="anchor" href="#_public_review_feedback_and_evolution"></a>8. Public Review, Feedback and Evolution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The team authoring the UX recommendations is cognizant of its limitations and potential biases, recognizing that feedback, review, user testing and ongoing evolution is a requirement for success. This guidance is therefore an evolving document, informed by real world experiences deploying C2PA UX across a wide variety of applications and scenarios.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <div class="footer-main">
+    <figure class="footer-brand">
+      <a class="logo" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <figcaption class="footer-brand-name"><a href="https://c2pa.org">C2PA</a></figcaption>
+    </figure>
+    <ul class="footer-brand-links">
+      <li><a href="https://c2pa.org" target="_blank" rel="noopener">Home</a></li>
+      <li><a href="https://c2pa.org/specifications">Docs</a></li>
+      <li><a href="https://github.com/c2pa-org" target="_blank" rel="noopener">Project</a></li>
+    </ul>
+    <p class="footer-brand-follow">
+      <a href="https://twitter.com/c2pa" title="Follow us on Twitter" target="_blank" rel="noopener"><img src="../../../_/img/twitter-logo.svg" alt="Twitter logo" class="logo" width="28"><span class="handle">@c2pa</span></a>
+    </p>
+  </div>
+  <div class="footer-legal">
+    <p>Copyright © 2021 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
+  </div>
+  <div class="footer-thanks">
+    <p>Thanks to our <a href="https://c2pa.org/membership/" target="_blank" rel="noopener">membership</a> for helping to make this project possible.</p>
+    <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
+  </div>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/specifications/1.0/ux/UX_Recommendations.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+
+  </body>
+</html>

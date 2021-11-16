@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Page Not Found :: C2PA Specifications</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="/specifications/_/css/site.css">
+<link rel="stylesheet" href="/specifications/_/css/search.css">
+    <link rel="icon" href="/specifications/_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="status-404">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="/specifications/_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <a class="navbar-item title" href="/specifications">C2PA Specifications</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-item" href="https://asciidoctor.zulipchat.com" target="_blank" rel="noopener" data-title="Communication">
+            <span class="icon"><img src="/specifications/_/img/octicons-24.svg#view-comment-discussion"></span>
+          </a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item has-icon" href="https://github.com/c2pa-org" target="_blank" rel="noopener">
+              <span class="icon"><img src="/specifications/_/img/octicons-16.svg#view-mark-github"></span>
+              <span>Repository</span>
+            </a>
+            <a class="navbar-item has-icon" href="https://twitter.com/c2pa" target="_blank" rel="noopener">
+              <span class="icon"><img src="/specifications/_/img/octicons-16.svg#view-hash"></span>
+              <span>Tweets</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-explore is-active" data-panel="explore">
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="/specifications/specifications/1.0/index.html">C2PA Specifications</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="/specifications/specifications/1.0/index.html">1.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Page Not Found</h1>
+<div class="paragraph">
+<p>The page you&#8217;re looking for does not exist. It may have been moved. You can follow one of the links in the navigation on the left.</p>
+</div>
+<div class="paragraph">
+<p>If you arrived on this page by clicking a link on another site, please notify the owner of that site that the link is broken.
+If you typed the URL of this page manually, please double check that you entered the address correctly.</p>
+</div>
+</article>
+<script>
+;(function (pathname, returnLink) {
+  if (!returnLink) return
+  var startPages = [
+    { name: "specifications", title: "C2PA Specifications", url: "/specifications/specifications/1.0/index.html", prefix: "/specifications/specifications" },
+    { name: "specifications", title: "C2PA Specifications", version: "1.0", url: "/specifications/specifications/1.0/index.html", prefix: "/specifications/specifications/1.0" },
+  ].reduce(function (accum, it) {
+    var prefix = it.prefix
+    delete it.prefix
+    if (('version' in it) && !it.url.startsWith(prefix + '/')) {
+      var prefixSegments = prefix.split('/')
+      var versionSegmentIdx = prefixSegments.findIndex((segment) => segment === it.version)
+      prefixSegments.splice(versionSegmentIdx, 1, it.url.split('/')[versionSegmentIdx])
+      prefix = prefixSegments.join('/')
+    }
+    accum[prefix] = it
+    return accum
+  }, {})
+  var returnTo
+  var segments = pathname.split('/').slice(0, -1)
+  while (segments.length > 1) {
+    if ((returnTo = startPages[segments.join('/')])) break
+    segments.pop()
+  }
+  if (returnTo) {
+    returnLink.href = returnTo.url
+    returnLink.innerText =
+      'start page for the ' + returnTo.title + ' ' +
+      (returnTo.version ? returnTo.version + ' ' : '') +
+      'documentation'
+  }
+})(window.location.pathname, document.getElementById('return-link'))
+</script>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <div class="footer-main">
+    <figure class="footer-brand">
+      <a class="logo" href="https://c2pa.org"><img src="/specifications/_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <figcaption class="footer-brand-name"><a href="https://c2pa.org">C2PA</a></figcaption>
+    </figure>
+    <ul class="footer-brand-links">
+      <li><a href="https://c2pa.org" target="_blank" rel="noopener">Home</a></li>
+      <li><a href="https://c2pa.org/specifications">Docs</a></li>
+      <li><a href="https://github.com/c2pa-org" target="_blank" rel="noopener">Project</a></li>
+    </ul>
+    <p class="footer-brand-follow">
+      <a href="https://twitter.com/c2pa" title="Follow us on Twitter" target="_blank" rel="noopener"><img src="/specifications/_/img/twitter-logo.svg" alt="Twitter logo" class="logo" width="28"><span class="handle">@c2pa</span></a>
+    </p>
+  </div>
+  <div class="footer-legal">
+    <p>Copyright © 2021 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
+  </div>
+  <div class="footer-thanks">
+    <p>Thanks to our <a href="https://c2pa.org/membership/" target="_blank" rel="noopener">membership</a> for helping to make this project possible.</p>
+    <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
+  </div>
+</footer>
+<script id="site-script" src="/specifications/_/js/site.js" data-ui-root-path="/specifications/_"></script>
+<script async src="/specifications/_/js/vendor/highlight.js"></script>
+<script src="/specifications/_/js/vendor/lunr.js"></script>
+<script src="/specifications/_/js/vendor/search.js" id="search-script" data-base-path="/specifications" data-page-path=""></script>
+<script async src="/specifications/_/../search-index.js"></script>
+
+  </body>
+</html>

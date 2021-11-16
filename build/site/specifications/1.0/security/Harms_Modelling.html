@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>C2PA Harms Modelling :: C2PA Specifications</title>
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.0/security/Harms_Modelling.html">
+    <meta name="page-spec" content="specifications:security:Harms_Modelling.adoc">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <a class="navbar-item title" href="../../..">C2PA Specifications</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-item" href="https://asciidoctor.zulipchat.com" target="_blank" rel="noopener" data-title="Communication">
+            <span class="icon"><img src="../../../_/img/octicons-24.svg#view-comment-discussion"></span>
+          </a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item has-icon" href="https://github.com/c2pa-org" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-mark-github"></span>
+              <span>Repository</span>
+            </a>
+            <a class="navbar-item has-icon" href="https://twitter.com/c2pa" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-hash"></span>
+              <span>Tweets</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active is-loading" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">C2PA Specifications</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../specs/C2PA_Specification.html">Technical Specifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../explainer/Explainer.html">Explainer</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../guidance/Guidance.html">Guidance for Implementors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ux/UX_Recommendations.html">User Experience Guidance</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="Security_Considerations.html">C2PA Security Considerations</a>
+  </li>
+  <li class="nav-item is-current-url" data-depth="1">
+    <a class="nav-link" href="Harms_Modelling.html">C2PA Harms Modelling</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+  <script>
+;(function () {
+  var panel = document.querySelector('.nav-panel-menu')
+  var page
+  var hash = window.location.hash
+  if (hash) {
+    if (~hash.indexOf('%')) hash = decodeURIComponent(hash)
+    if (~hash.indexOf('"')) hash = hash.replace(/(?=")/g, '\\')
+    var link = panel.querySelector('.nav-link[href="' + hash + '"]')
+    if (link) page = link.parentNode
+    else if ((page = panel.querySelector('.is-current-url'))) page.classList.add('is-provisional')
+  } else {
+    page = panel.querySelector('.is-current-url')
+  }
+  if (page) {
+    var ancestor = page
+    while ((ancestor = ancestor.parentNode) && ancestor !== panel) {
+      if (ancestor.className === 'nav-item') ancestor.classList.add('is-current-path', 'is-active')
+    }
+    page.classList.add('is-current-page', 'is-active')
+    if (panel.scrollHeight > panel.clientHeight) {
+      var panelRect = panel.getBoundingClientRect()
+      var linkRect = page.querySelector('.nav-link').getBoundingClientRect()
+      panel.scrollTop += Math.round(linkRect.top - panelRect.top - (panelRect.height - linkRect.height) * 0.5)
+    }
+  } else {
+    panel.scrollTop = 0
+  }
+  panel.classList.remove('is-loading')
+})()
+  </script>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">C2PA Specifications</span>
+    <span class="version">1.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">C2PA Specifications</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">C2PA Specifications</a></li>
+    <li><a href="Harms_Modelling.html">C2PA Harms Modelling</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">C2PA Harms Modelling</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_harms_misuse_and_abuse_framework">1. Harms, Misuse, and Abuse Framework</a></li>
+<li><a href="#_methodology">2. Methodology</a>
+<ul class="sectlevel2">
+<li><a href="#_phase_i_purposes_use_cases_users_and_stakeholders">2.1. Phase I: Purposes, Use-cases, Users and Stakeholders</a></li>
+<li><a href="#_phase_ii_harm_taxonomy_and_assessment">2.2. Phase II: Harm Taxonomy and Assessment</a></li>
+<li><a href="#_phase_iii_due_diligence_actions">2.3. Phase III: Due Diligence Actions</a></li>
+</ul>
+</li>
+<li><a href="#_harms_misuse_and_abuse_initial_assessment_overview">3. Harms, Misuse, and Abuse Initial Assessment - Overview</a></li>
+<li><a href="#_public_review_and_feedback">4. Public Review and Feedback</a></li>
+<li><a href="#_due_diligence_actions">5. Due Diligence Actions</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="http://creativecommons.org/licenses/by/4.0/"><img src="_images/CCby4.png" alt="Creative Commons License"></a>
+</div>
+</div>
+<div class="paragraph text-center">
+<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<!-- toc disabled -->
+</div>
+</div>
+<div class="sect1">
+<h2 id="_harms_misuse_and_abuse_framework"><a class="anchor" href="#_harms_misuse_and_abuse_framework"></a>1. Harms, Misuse, and Abuse Framework</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Harms modelling focuses on analyzing how a socio-technical system might negatively impact users and other stakeholders. The process of harms modelling systematically requires combining knowledge about a system architecture and its user affordances, with historical and contextual evidence about the impact of similar existing systems on different social groups. This combined information frames the ability to comprehensively anticipate harm.</p>
+</div>
+<div class="paragraph">
+<p>Harms modelling considers the ramifications of a technological system both from the perspective of the technology developers as well as users and non-user stakeholders. In other words, harms modelling considers what kinds of harms may result from the configuration of a system as well as what kinds of harms may result from both its intended use and unintended use. It is necessary to combine all of these considerations to achieve a comprehensive perspective on potential harms, particularly on those that may be unanticipated by system developers but highly evident to disproportionately impacted social groups. Following principles from justice-oriented technology development and design justice, it is essential to include comprehensive and ongoing consultations with communities likely to be impacted by the specification, and to place emphasis on those who already face similar systemic harms.</p>
+</div>
+<div class="paragraph">
+<p>In designing our harms modelling approach, we drew inspiration from different approaches to technology impact assessment, including the fields of value-driven design, human rights due diligence, security-focused threat modelling frameworks, and harms modelling methodologies. After a review of potential methodologies, it was determined that adapted versions of <a href="https://docs.microsoft.com/en-us/azure/architecture/guide/responsible-innovation/harms-modeling/">Microsoft’s Harms Modelling Framework</a> and <a href="https://www.bsr.org/en/our-insights/report-view/human-rights-due-diligence-of-products-and-services">BSR’s Human Rights Due Diligence Assessment</a> would be used to guide the harms modelling process for C2PA. We also collaborated with colleagues conducting parallel exercises in threat modelling exercises as part of the Technical Working Group and engaged with the User Experience research and Decoupled Manifest Task Forces within C2PA.</p>
+</div>
+<div class="paragraph">
+<p>Below we present some of the modifications we made from existing frameworks for technology impact assessment:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Human rights-focused harm taxonomy</dt>
+<dd>
+<p>We wanted to ensure more well-established human rights, privacy and security concerns were analysed as elements of broader forms of harm around social inequality and discrimination, and in relation to issues potentially affecting the particular users and stakeholders of the C2PA (such as media entities, citizen journalists, and human rights defenders). For this reason we modified the harm taxonomy particular to the Microsoft Harms Modelling Framework to reflect these issue intersections, stakeholders, and users. The reader will note that in this iteration, some harm taxonomy categories are broader than others. This reflects the fact that there is significant overlap between categories and using both broad and narrow categories helped us to consider a range of potential harms/misuses/abuses.</p>
+</dd>
+<dt class="hdlist1">Temporality</dt>
+<dd>
+<p>We found it important to analyze harms and impacts not as a static snapshot in time but as an ongoing process with particular considerations for every stage of technological design, development and use (and potentially non-use). This is reflected in the following scenarios of analysis: 1) Initial Adoption; 2) Wide Adoption and 3) Ongoing Maintenance. These scenarios are explained further in the Harms, Misuse, and Abuse Initial Assessment section.</p>
+</dd>
+<dt class="hdlist1">Assigning values for severity, scale, likelihood, frequency and impact</dt>
+<dd>
+<p>In this initial stage of analysis, we have conducted an internal process to understand severity, scale, likelihood, frequency and impact of potential harms. We have done so in consultation with issue experts within the C2PA and based on C2PA member WITNESS’s work on trade-offs and risks within authenticity and provenance infrastructure <a href="https://lab.witness.org/ticks-or-it-didnt-happen/">(see Ticks or It Didn’t Happen: Confronting Key Dilemmas in Building Authenticity Infrastructure for Multimedia)</a>. However, we see this exercise as an important starting point for feedback rather than a final analysis. Further stages of harm analysis will be conducted in consultation with outside groups, particularly from communities with lived, practice and expert knowledge, and those who will be disproportionately impacted by harms and are often most excluded from design. This analysis should be ongoing, considering that the degree of severity, likelihood, and impact will likely change and become more evident after the technology is deployed.</p>
+</dd>
+<dt class="hdlist1">Considering accountability</dt>
+<dd>
+<p>Acknowledging that ethical analyses and threat modelling processes are sometimes done behind closed doors, we find it important to emphasize that our harm analysis should be inclusive and it should guide future processes related to governance and compliance.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_methodology"><a class="anchor" href="#_methodology"></a>2. Methodology</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are three phases to our methodology. These phases do not reflect a chronological order, they frame specific processes that will need to be continuously iterated as more actors join the discussion and analysis.</p>
+</div>
+<div class="sect2">
+<h3 id="_phase_i_purposes_use_cases_users_and_stakeholders"><a class="anchor" href="#_phase_i_purposes_use_cases_users_and_stakeholders"></a>2.1. Phase I: Purposes, Use-cases, Users and Stakeholders</h3>
+<div class="paragraph">
+<p>Phase I includes defining the purposes of the technology, its use-cases and stakeholders as it pertains to the harms, misuse and abuse assessment. As with other parts of the C2PA standards development, we began with the Purposes/Use-Cases/Users/Stakeholders from two initiatives, the Content Authenticity Initiative and Project Origin and expanded to other potential scenarios.
+Some of the questions we were attempting to answer were:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Purposes</dt>
+<dd>
+<p>What problem will be solved? For who? What new capability will be possible? For who?</p>
+</dd>
+<dt class="hdlist1">Use-cases</dt>
+<dd>
+<p>What will the C2PA standard be used for? What context will the C2PA standard likely be used in?</p>
+</dd>
+<dt class="hdlist1">Users/Actors</dt>
+<dd>
+<p>Who will directly interact with the C2PA standard?</p>
+</dd>
+<dt class="hdlist1">Stakeholders</dt>
+<dd>
+<p>Who will be impacted by the use of the C2PA standard including non-users?</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_phase_ii_harm_taxonomy_and_assessment"><a class="anchor" href="#_phase_ii_harm_taxonomy_and_assessment"></a>2.2. Phase II: Harm Taxonomy and Assessment</h3>
+<div class="paragraph">
+<p>In Phase II, we reviewed and adapted Microsoft’s taxonomy of harm to better reflect the context and implications of the C2PA standard and inform it via the other frameworks noted above. This process was intertwined with the actual assessment of the identified harms. The guiding questions in this phase were:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How could people be harmed by the use of C2PA? What use-cases are most likely to cause harm? To whom?</p>
+</li>
+<li>
+<p>What use-cases are most likely to cause harm? To whom?</p>
+</li>
+<li>
+<p>How could a misuse or abuse of C2PA lead to harm? Who would be affected?</p>
+</li>
+<li>
+<p>What contextual evidence from either an existing technology or societal phenomenon either provides direct evidence of this harm or harm in a related context?</p>
+</li>
+<li>
+<p>What is the severity, scale, frequency, likelihood, and disproportionate impact on vulnerable groups of a particular potential harm?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_phase_iii_due_diligence_actions"><a class="anchor" href="#_phase_iii_due_diligence_actions"></a>2.3. Phase III: Due Diligence Actions</h3>
+<div class="paragraph">
+<p>Phase III is aimed at mitigating potential abuse and misuse, and offering considerations and guidelines for the protection of human rights and for the optimization of the benefits that prompted the development of the C2PA standard. The questions that will guide this phase are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How could the C2PA standard be designed to prevent harmful impacts?</p>
+</li>
+<li>
+<p>How could the C2PA standard be built to protect human rights?</p>
+</li>
+<li>
+<p>What guidance, compliance requirements or technical steps can address these?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_harms_misuse_and_abuse_initial_assessment_overview"><a class="anchor" href="#_harms_misuse_and_abuse_initial_assessment_overview"></a>3. Harms, Misuse, and Abuse Initial Assessment - Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The C2PA standard is still in the design stage, and reflects a system specification not a specific product, so the potential harms identified thus far reflect system-level considerations that may not be relevant for all products built using these specifications. A more detailed harms, misuse and abuse assessment will be continuously updated and be available for review through this <a href="https://c2pa.org/public-draft/Harms_Misuse_Abuse_Assessment.pdf">link</a>.</p>
+</div>
+<div class="paragraph">
+<p>In an effort to establish a common basis for an analysis and to guide our internal and now public discussions, we propose some scenarios based on three temporal stages of the development and adoption cycle of the C2PA standard. The assessment of the identified harms responds to each one of these scenarios.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Scenario 1: Initial Adoption</dt>
+<dd>
+<p>In this scenario, we assume that the tool will be deployed by a few key actors across multiple industries. These actors will be primarily, though not exclusively, members of the C2PA. Some of these early adopters are actors with significant influence over their respective industries, and we assume that their example and authority could lead to a scenario of wide adoption.</p>
+</dd>
+<dt class="hdlist1">Scenario 2: Wide Adoption</dt>
+<dd>
+<p>We assume for this scenario that the C2PA standard could be widely used at a global scale, and that it will be a credible reference of the authenticity and provenance of digital assets. In this scenario, it would be more widely used in social media platforms, by a diversity of media producers and be discussed in legislation or regulation. Despite its widespread use, there would continue to be many actors across different industries, vulnerable groups and geographic locations that do not/cannot use the standard.</p>
+</dd>
+<dt class="hdlist1">Scenario 3: Ongoing maintenance</dt>
+<dd>
+<p>This scenario crosscuts through the previous two, and reflects the issue of continuous improvement and adaptation of the specification as a response to a dynamic context and threat landscape.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The table below lists the identified harms and classifies them under their respective category and type of harm. In the upcoming versions of the specifications, each harm will be analyzed to determine its severity, scale, likelihood and frequency, in addition to the disproportionate risks to vulnerable groups globally.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 62%;">
+<caption class="title">Table 1. Identified Harms (version 0.8)</caption>
+<colgroup>
+<col style="width: 32%;">
+<col style="width: 34%;">
+<col style="width: 34%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Category</th>
+<th class="tableblock halign-left valign-top">Type of Harm</th>
+<th class="tableblock halign-left valign-top">Harm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Risk of injury</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emotional or psychological distress; Physical harm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Misinformation and Malinformation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="8"><p class="tableblock">Denial of consequential services</p></td>
+<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock">Opportunity loss</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Educational discrimination</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Digital divide/technological discrimination (1)(2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Journalistic Freedom and Independence</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Loss of choice/network and filter bubble</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock">Economic loss</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Devaluation of individual expertise</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Differential pricing for goods and services</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Increased abuse of systems of creative ownerships</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creative ownership impersonation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="11"><p class="tableblock">Infringement on human rights</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dignity loss</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public shaming, malinformation and targeted exposure and harassment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Liberty loss, discrimination and due process</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Augmented Policing and Surveillance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Loss of Effective Remedy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Privacy loss</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interference with private life</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reduction in options for anonymity and pseudonymity</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Never forgotten</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Constraints on Freedom of Expression</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inability to freely and fully develop personality and creative practice</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enforcement of extralegal or restrictive laws on freedom of expression</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Freedom of Association, Assembly and Movement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forced association (Requiring participation in the use of techno logy or surveillance to take part in society)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Loss of freedom of movement or assembly to navigate the physical or virtual world with desired anonymity</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Environmental impact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High energy consumption</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock">Erosion of Social and Democratic Structures</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manipulation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Misinformation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Over-reliance on systems</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Overconfidence in technical signals</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Amplification of power inequality</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Social detriment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Journalistic plurality and diversity</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_public_review_and_feedback"><a class="anchor" href="#_public_review_and_feedback"></a>4. Public Review and Feedback</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Recognizing the limitations and biases of C2PA members and to ensure feedback on harm, misuse and abuse scenarios and responses, we now solicit input from as many voices as possible, particularly from people and groups across the globe that may consider themselves likely to be impacted by the implementation of this standard. This feedback should center on communities with lived, practical and technical experience of the impact of similar technologies, as well as communities most likely to experience potential harms and that are often excluded from technology design and implementation decision-making.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_due_diligence_actions"><a class="anchor" href="#_due_diligence_actions"></a>5. Due Diligence Actions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The aim of due diligence actions is to mitigate potential abuse and misuse, to offer considerations and guidelines for the protection of human rights, to identify compliance or non-compliance standards, and ensure the optimization of the benefits in terms of trust in media, user control and transparency that prompted the development of the C2PA standard.</p>
+</div>
+<div class="paragraph">
+<p>Due diligence actions will be developed parallel to the public review and feedback process.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <div class="footer-main">
+    <figure class="footer-brand">
+      <a class="logo" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <figcaption class="footer-brand-name"><a href="https://c2pa.org">C2PA</a></figcaption>
+    </figure>
+    <ul class="footer-brand-links">
+      <li><a href="https://c2pa.org" target="_blank" rel="noopener">Home</a></li>
+      <li><a href="https://c2pa.org/specifications">Docs</a></li>
+      <li><a href="https://github.com/c2pa-org" target="_blank" rel="noopener">Project</a></li>
+    </ul>
+    <p class="footer-brand-follow">
+      <a href="https://twitter.com/c2pa" title="Follow us on Twitter" target="_blank" rel="noopener"><img src="../../../_/img/twitter-logo.svg" alt="Twitter logo" class="logo" width="28"><span class="handle">@c2pa</span></a>
+    </p>
+  </div>
+  <div class="footer-legal">
+    <p>Copyright © 2021 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
+  </div>
+  <div class="footer-thanks">
+    <p>Thanks to our <a href="https://c2pa.org/membership/" target="_blank" rel="noopener">membership</a> for helping to make this project possible.</p>
+    <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
+  </div>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/specifications/1.0/security/Harms_Modelling.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+
+  </body>
+</html>

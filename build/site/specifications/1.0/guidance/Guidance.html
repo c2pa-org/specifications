@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>C2PA Implementation Guidance :: C2PA Specifications</title>
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.0/guidance/Guidance.html">
+    <meta name="page-spec" content="specifications:guidance:Guidance.adoc">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <a class="navbar-item title" href="../../..">C2PA Specifications</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-item" href="https://asciidoctor.zulipchat.com" target="_blank" rel="noopener" data-title="Communication">
+            <span class="icon"><img src="../../../_/img/octicons-24.svg#view-comment-discussion"></span>
+          </a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item has-icon" href="https://github.com/c2pa-org" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-mark-github"></span>
+              <span>Repository</span>
+            </a>
+            <a class="navbar-item has-icon" href="https://twitter.com/c2pa" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-hash"></span>
+              <span>Tweets</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active is-loading" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">C2PA Specifications</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../specs/C2PA_Specification.html">Technical Specifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../explainer/Explainer.html">Explainer</a>
+  </li>
+  <li class="nav-item is-current-url" data-depth="1">
+    <a class="nav-link" href="Guidance.html">Guidance for Implementors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ux/UX_Recommendations.html">User Experience Guidance</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../security/Security_Considerations.html">C2PA Security Considerations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../security/Harms_Modelling.html">C2PA Harms Modelling</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+  <script>
+;(function () {
+  var panel = document.querySelector('.nav-panel-menu')
+  var page
+  var hash = window.location.hash
+  if (hash) {
+    if (~hash.indexOf('%')) hash = decodeURIComponent(hash)
+    if (~hash.indexOf('"')) hash = hash.replace(/(?=")/g, '\\')
+    var link = panel.querySelector('.nav-link[href="' + hash + '"]')
+    if (link) page = link.parentNode
+    else if ((page = panel.querySelector('.is-current-url'))) page.classList.add('is-provisional')
+  } else {
+    page = panel.querySelector('.is-current-url')
+  }
+  if (page) {
+    var ancestor = page
+    while ((ancestor = ancestor.parentNode) && ancestor !== panel) {
+      if (ancestor.className === 'nav-item') ancestor.classList.add('is-current-path', 'is-active')
+    }
+    page.classList.add('is-current-page', 'is-active')
+    if (panel.scrollHeight > panel.clientHeight) {
+      var panelRect = panel.getBoundingClientRect()
+      var linkRect = page.querySelector('.nav-link').getBoundingClientRect()
+      panel.scrollTop += Math.round(linkRect.top - panelRect.top - (panelRect.height - linkRect.height) * 0.5)
+    }
+  } else {
+    panel.scrollTop = 0
+  }
+  panel.classList.remove('is-loading')
+})()
+  </script>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">C2PA Specifications</span>
+    <span class="version">1.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">C2PA Specifications</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">C2PA Specifications</a></li>
+    <li><a href="Guidance.html">Guidance for Implementors</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">C2PA Implementation Guidance</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">1. Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_overview">1.1. Overview</a></li>
+<li><a href="#_scope">1.2. Scope</a></li>
+</ul>
+</li>
+<li><a href="#_how_to_use_this_document">2. How to use this document</a></li>
+<li><a href="#_architecture">3. Architecture</a>
+<ul class="sectlevel2">
+<li><a href="#_assertions">3.1. Assertions</a></li>
+<li><a href="#_claim">3.2. Claim</a></li>
+<li><a href="#_manifest">3.3. Manifest</a></li>
+<li><a href="#_ingredients">3.4. Ingredients</a></li>
+<li><a href="#_use_of_w3c_verifiable_credentials">3.5. Use of W3C Verifiable Credentials</a></li>
+</ul>
+</li>
+<li><a href="#_guidance_on_the_use_of_content_bindings">4. Guidance on the use of Content Bindings</a>
+<ul class="sectlevel2">
+<li><a href="#_guidance_on_hard_bindings">4.1. Guidance on Hard Bindings</a></li>
+<li><a href="#_guidance_on_use_of_soft_bindings">4.2. Guidance on use of Soft Bindings</a></li>
+</ul>
+</li>
+<li><a href="#_trust">5. Trust</a>
+<ul class="sectlevel2">
+<li><a href="#_cryptography">5.1. Cryptography</a></li>
+<li><a href="#_digital_signatures">5.2. Digital Signatures</a></li>
+<li><a href="#_trust_model">5.3. Trust Model</a></li>
+</ul>
+</li>
+<li><a href="#_validation">6. Validation</a>
+<ul class="sectlevel2">
+<li><a href="#_validation_security_practices">6.1. Validation security practices</a></li>
+</ul>
+</li>
+<li><a href="#_additional_guidance">7. Additional Guidance</a>
+<ul class="sectlevel2">
+<li><a href="#_distributed_ledger_technology_dlt_and_c2pa">7.1. Distributed Ledger Technology (DLT) and C2PA</a></li>
+<li><a href="#_digital_non_fungible_tokens_nfts">7.2. Digital Non-Fungible Tokens (NFTs)</a></li>
+<li><a href="#_playback_verification_for_audiovideo_content">7.3. Playback verification for audio/video content</a></li>
+<li><a href="#_attribution_rights_and_licensing">7.4. Attribution, Rights and Licensing</a></li>
+<li><a href="#_gdpr">7.5. GDPR</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="http://creativecommons.org/licenses/by/4.0/"><img src="_images/CCby4.png" alt="Creative Commons License"></a>
+</div>
+</div>
+<div class="paragraph text-center">
+<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<!-- toc disabled -->
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview"><a class="anchor" href="#_overview"></a>1.1. Overview</h3>
+<div class="paragraph">
+<p>The Coalition for Content Provenance and Authenticity (C2PA) has developed their <a href="https://c2pa.org/public-draft/">technical specification</a> for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.</p>
+</div>
+<div class="paragraph">
+<p>The specification has been, and continues to be, informed by scenarios, workflows and requirements gathered from industry experts and partner organizations. However many of these requirements are not normative in nature or may differ between organizations or workflows - in those cases it is important to provide non-normative guidance to implementers - which is the goal of this document.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scope"><a class="anchor" href="#_scope"></a>1.2. Scope</h3>
+<div class="paragraph">
+<p>This guidance document describes non-normative technical aspects of the C2PA architecture including construction and consumption of the C2PA manifest and its components and the digital signature technology for enabling tamper-evidence as well as establishing trust. It will also address areas where implementors can extend the C2PA architecture and its ecosystem.</p>
+</div>
+<div class="paragraph">
+<p>The C2PA also created their <a href="https://c2pa.org/principles/">Guiding Principles</a> that address areas such as respecting privacy and personal control of data with a critical eye toward potential abuse and misuse. This guidance document also will help implementors to understand how these concerns should be addressed in their implementations.</p>
+</div>
+<div class="paragraph">
+<p>One area of guidance that is not covered in this document is that of User Experience, as that is covered in a [separate document].</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_use_this_document"><a class="anchor" href="#_how_to_use_this_document"></a>2. How to use this document</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rather than reading this document from beginning to end, it is recommended that as an implementor is first designing each aspect of their solution, they should review the relevant section of this document to ensure that they take advantage of the guidance provided.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_architecture"><a class="anchor" href="#_architecture"></a>3. Architecture</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_assertions"><a class="anchor" href="#_assertions"></a>3.1. Assertions</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Items for future guidance</div>
+<div class="paragraph">
+<p>Guidance is required around which assertions should be chosen and when by different types of implementations.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_claim"><a class="anchor" href="#_claim"></a>3.2. Claim</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Items for future guidance</div>
+
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifest"><a class="anchor" href="#_manifest"></a>3.3. Manifest</h3>
+<div class="sect3">
+<h4 id="_general"><a class="anchor" href="#_general"></a>3.3.1. General</h4>
+<div class="paragraph">
+<p>A C2PA claim generator adds a new manifest to the existing asset&#8217;s manifest store to reflect whatever changes it has made. If anything needs to be removed, then the specific assertions are redacted and the redaction reflected in the new manifest.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_frequency_of_creation"><a class="anchor" href="#_frequency_of_creation"></a>3.3.2. Frequency of Creation</h4>
+<div class="paragraph">
+<p>The C2PA recommends that a manifest be created for an asset when a significant event in the lifecycle of the asset takes place, such as its initial creation or an  "Export" operation from an editing tool. As the creation of a manifest is not a lightweight operation, due to the need to digitally sign the claim as well as potentially retrieve credentials from online services, it is recommended to do it as infrequently as possible. Additionally, the fewer the manifests, the easier validation will be.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_standard_vs_update_manifests"><a class="anchor" href="#_standard_vs_update_manifests"></a>3.3.3. Standard vs. Update Manifests</h4>
+<div class="paragraph">
+<p>Normally, an asset&#8217;s digital content will be modified between "significant events". As such, a standard manifest which includes hard bindings between that digital content and the manifest are provided.  However, there are times in an asset&#8217;s life where a change is required to the C2PA manifest but the digital content is not impacted.  For example, the addition of some new assertion or even the redaction of an existing assertion. In those cases, an update manifest is used.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_external_manifest_stores"><a class="anchor" href="#_external_manifest_stores"></a>3.3.4. External Manifest Stores</h4>
+<div class="paragraph">
+<p>The C2PA architecture supports manifest stores external to the asset they are associated with.  This is useful when working with a file format that does not support embedding (i.e., text or XML) or when storing the manifest store separately improves workflows (e.g., searching on manifest data in a CMS).</p>
+</div>
+<div class="paragraph">
+<p>When storing manifest stores in a cloud service, and serving them via http Link headers (as described in the C2PA specification), having the manifest store available at the same origin as the asset is recommended as it would reduce requirements on <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing (CORS)</a>. However, it is worth noting that doing so does not provide any additional privacy or security protection of either the manifest store or the asset.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_can_an_application_remove_an_existing_manifest_store"><a class="anchor" href="#_can_an_application_remove_an_existing_manifest_store"></a>3.3.5. Can an application remove an existing manifest store?</h4>
+<div class="paragraph">
+<p>Completely removing an embedded manifest store from an asset is not recommend, unless the manifest store is being "externalized" - meaning that an embedded manifest store is replaced by a URI to an external location. This would be useful in scenarios where the size of assets is important but continues to support access to the asset&#8217;s provenance.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Clarification of C2PA&#8217;s position needs to be evaluated in the context of the current industry practices in view that stripping of metadata.  Currently such an action is encouraged by both MPEG <a href="https://ccpaworld.slack.com/archives/C01LA2UTX32/p1627075105074700" class="bare">https://ccpaworld.slack.com/archives/C01LA2UTX32/p1627075105074700</a> and JPEG WGs. In addition many publishers including the NYT are stripping image metadata <a href="https://blog.imatag.com/state-of-image-metadata-in-news-sites-2019-update" class="bare">https://blog.imatag.com/state-of-image-metadata-in-news-sites-2019-update</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_can_an_application_replace_an_existing_manifest_store"><a class="anchor" href="#_can_an_application_replace_an_existing_manifest_store"></a>3.3.6. Can an application replace an existing manifest store?</h4>
+<div class="paragraph">
+<p>Replacing an existing manifest store with a different manifest store is not recommended since doing so would completely change the provenance of an asset. However, there are some use cases where it could be appropriate.  For example, a publisher may wish to remove all details about the capture and edit of an image and leave only their own publishing information.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ingredients"><a class="anchor" href="#_ingredients"></a>3.4. Ingredients</h3>
+<div class="paragraph">
+<p>Ingredients are the key to the establishment of the provenance of an asset, by serving as a listing of what other assets went into the creation of the current asset. Each ingredient that is used can itself contain its provenance, thus creating a rich provenance for the current asset and all of its ingredients.</p>
+</div>
+<div class="paragraph">
+<p>Each ingredient can either be documented as the <code>parentOf</code> the current asset or a <code>componentOf</code> that asset. The value of <code>parentOf</code> is used in the common case where one asset is opened in an editing application, modified, and then saved or exported as another asset.  That original version is the <code>parentOf</code> the final (now current) asset. Alternatively, when one asset is created from a series of other assets (such as audio and video clips), those sources are identified as <code>componentOf</code> ingredients.</p>
+</div>
+<div class="sect3">
+<h4 id="_redaction_of_ingredient_assertions"><a class="anchor" href="#_redaction_of_ingredient_assertions"></a>3.4.1. Redaction of Ingredient Assertions</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Items for future guidance</div>
+
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_of_w3c_verifiable_credentials"><a class="anchor" href="#_use_of_w3c_verifiable_credentials"></a>3.5. Use of W3C Verifiable Credentials</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Items for future guidance</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When to use them, for humans, organizations and assets</p>
+</li>
+<li>
+<p>How to validate them</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_guidance_on_the_use_of_content_bindings"><a class="anchor" href="#_guidance_on_the_use_of_content_bindings"></a>4. Guidance on the use of Content Bindings</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_guidance_on_hard_bindings"><a class="anchor" href="#_guidance_on_hard_bindings"></a>4.1. Guidance on Hard Bindings</h3>
+<div class="paragraph">
+<p>Every C2PA manifest is required to have a hard binding to its associated digital asset. Use of hard bindings prevents collision-based attacks associated with soft bindings described below.</p>
+</div>
+<div class="paragraph">
+<p>Selection of the specific hashing algorithm to use for a hard binding should be made based on the requirements of the workflow. In the absence of some compelling reason to do otherwise, it is recommended to use SHA-256.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_guidance_on_use_of_soft_bindings"><a class="anchor" href="#_guidance_on_use_of_soft_bindings"></a>4.2. Guidance on use of Soft Bindings</h3>
+<div class="paragraph">
+<p>Asset metadata (including any manifest present) may be routinely removed or corrupted by legacy or non-C2PA capable platforms during distribution.  This is common, for example, on social media platforms that display asset renditions (e.g. altering the resolution, form factor or quality of the digital content) that do not have the appropriate C2PA manifests declaring those modifications.  Whilst these renditions may not create user perceptible change, they nevertheless change the underlying binary representation of the digital content.</p>
+</div>
+<div class="paragraph">
+<p>Soft bindings provide a means for identifying manifests that have become `decoupled’ from their associated assets in these circumstances.</p>
+</div>
+<div class="paragraph">
+<p>Examples of soft bindings are content fingerprints (such as perceptual hashes) computed from the digital content, or watermarks embedded within the digital content.</p>
+</div>
+<div class="paragraph">
+<p>Consider a repository (provenance datastore) into which manifests may be stored.  A content creator may, at the time of publishing an asset, opt in to the additional storage of that asset’s manifest into the provenance datastore.  For this workflow, the manifest contains at least one soft binding - for example, a perceptual hash of the digital content.</p>
+</div>
+<div class="paragraph">
+<p>Soft bindings may be used to identify manifests that have become decoupled from their associated assets.  When a consumer encounters an asset with no manifest, but would like information on the asset&#8217;s provenance, they may compute a soft binding and use it to query the provenance datastore.  The provenance datastore would return any manifests that match that soft binding, for subsequent validation.</p>
+</div>
+<div class="paragraph">
+<p>An alternative application of soft bindings is to mitigate the threat whereby an attacker substitutes the manifest within an asset with another valid manifest in an attempt to explain that asset with false provenance.  In circumstances where a consumer wishes for further information on the asset&#8217;s provenance, a similar query may be made using the soft binding to return alternative manifests within the repository for the consumer’s consideration.  Information within the returned manifests (such as timestamps or digital signatures) may inform subsequent trust decisions made by the consumer on that asset.</p>
+</div>
+<div class="sect3">
+<h4 id="_illustrative_scenarios_for_the_use_of_soft_bindings"><a class="anchor" href="#_illustrative_scenarios_for_the_use_of_soft_bindings"></a>4.2.1. Illustrative Scenarios for the use of Soft Bindings</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Recovery from stripping of metadata</p>
+<div class="paragraph">
+<p>Alice is a photojournalist, and captures a photo of an important event, editing it to enhance visibility of some of the content. Alice’s camera device is C2PA capable, as is her image editing tool, and so a C2PA manifest is added to document the capture and editing of her photo. The C2PA manifest is signed by Alice’s own key. Bob works for Acme Corp, a news publisher, who wishes to license Alice’s photo for their publication. Bob decides to trust the content from Alice due to the presence of a C2PA manifest documenting its provenance. Bob incorporates the photo into a composed image for his publication, using a C2PA capable editing tool. The C2PA manifest is signed by Acme Corp. A soft binding assertion is computed by Acme Corp and added to the manifest prior to signing. A copy of the manifest is stored within a provenance datastore maintained by a consortium of news providers. Bob publishes the photo and it is soon redistributed around social media.</p>
+</div>
+<div class="paragraph">
+<p>Charlie is a news consumer and member of the general public. Charlie views a rendition of the photo on social media. The social media platform is not C2PA capable and no C2PA manifest is contained within the rendition. Furthermore, the rendition of the photo has different resolution / form factor and changed by the social media platform.</p>
+</div>
+<div class="paragraph">
+<p>Charlie wants to know about the provenance of the photo, since it documents an important event. Charlie right-clicks and submits the photo via a browser plug-in to a look-up service operated by a federation of news organisations, of which Acme Corp is a member. Charlie’s browser software computes the soft binding of the photo and send it to that service. Charlie is directed to a web page generated by the service showing matching assets. Charlie visually verifies that the retrieved asset matches the photo he is interested in, and views the manifest. Charlie uses the information in the manifest to help make an informed trust decision based on the provenance of the photo.</p>
+</div>
+</li>
+<li>
+<p>Recovery from adversarial substitution of manifest</p>
+<div class="paragraph">
+<p>Alice is a citizen journalist, and captures a video of major civil unrest using a C2PA capable device, and edits it using C2PA capable editing software. After signing the manifest in her video, a copy of the manifest is stored within a provenance datastore maintained by a consortium of news providers. The manifest contains both a hard and a soft binding. Several years pass.</p>
+</div>
+<div class="paragraph">
+<p>Mallory wishes to use Alice’s video to substantiate his story about a recent civil unrest. Mallory strips the C2PA manifest  from Alice’s video and substitutes his own manifest. The manifest is signed and the video asset is distributed online.</p>
+</div>
+<div class="paragraph">
+<p>Bob is a news producer who receives Mallory’s video. Bob suspects the video is fake news. Bob computes a soft binding of the video and submits it to a provenance service of which his organization is a member. The service retrieves the manifest associated with Alice’s video. Bob visually verifies the retrieved manifest matches the video (it includes a thumbnail) and validates the manifest. Bob notices that Alice’s manifest contains signed assertions with a timestamp earlier than those of Mallory’s video. Bob uses knowledge of this previous existing manifest to help make a more informed trust decision on whether to trust the provenance of Mallory’s video.  Bob concludes not to trust Mallory&#8217;s video, since an earlier manifest explains the video with an alternative provenance trail.</p>
+</div>
+</li>
+<li>
+<p>Preserving provenance through non-C2PA capable toolchains</p>
+<div class="paragraph">
+<p>Acme Corp maintains a content production pipeline where some stages are non-C2PA capable. Bob receives a photograph from freelance photographer Alice, containing a valid C2PA manifest. Bob&#8217;s software inserts into the digital content of the image a watermark containing a unique identifier, and records the unique identifier as a soft binding assertion in the manifest. The manifest is placed within a provenance datastore maintained internally by Acme Corp. The content passes through legacy content production processes that strip the C2PA manifest. The final stages of production are C2PA compliant. The watermark is read from the image and submitted as a query to the provenance datastore run internally by Acme Corp. After passing through the non-C2PA tools, the manifest is automatically matched using the embedded watermark, and is included as an ingredient in a new manifest, which documents that actions have been performed on the content prior to entering the C2PA capable final stage of the pipeline.  The manifest is embedded into the asset in the usual way. The content is published and provenance of the image may be traced back to Alice by end consumers of the content.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_guidance_on_soft_binding_implementation"><a class="anchor" href="#_guidance_on_soft_binding_implementation"></a>4.2.2. Guidance on Soft Binding Implementation</h4>
+<div class="paragraph">
+<p>Soft bindings are not guaranteed to be exact, and so care should be taken in their use.  Consider perceptual hashing; a common form of soft binding algorithm.  By design, multiple renditions of the same digital content may generate the same soft binding.  However different digital content, or renditions thereof, may generate the same soft binding either in error or due to attacks on the hashing function (for example, adversarial attacks on machine learning models).  Therefore we make the following design recommendation on the implementation of soft bindings in C2PA.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Soft bindings must not be substituted for hard bindings in order to bind claims within a manifest.</p>
+</li>
+<li>
+<p>The matches made using a soft binding must be interactively verified via human-in-the-loop checking.  For example, a thumbnail of an image stored within the manifest might be displayed to aid visual verification of the match made using a soft binding.</p>
+</li>
+<li>
+<p>Hard bindings (cryptographic hashes) may be used as an alternative to soft bindings, to query manifests within a provenance datastore.   However this method will fail if the digital content has been modified (for example, is an asset rendition).</p>
+</li>
+<li>
+<p>We recommend that services provided for the lookup of manifests using hard or soft bindings advertise the types of binding that may be used as query, using the unique identifier of that binding (per the hard or soft binding registry).</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_trust_and_privacy_considerations"><a class="anchor" href="#_trust_and_privacy_considerations"></a>4.2.3. Trust and Privacy Considerations</h4>
+<div class="paragraph">
+<p>To mitigate risks to user privacy, we recommend that the consumer should be informed explicitly (for example, via opt in) to the querying of the provenance datastore.  For example, a consumer may interactively initiate a query for an asset containing no manifest in order to to recover provenance information about that asset.</p>
+</div>
+<div class="paragraph">
+<p>To mitigate risks to user privacy and to preserve bandwidth, we recommend that the soft binding used to query the provenance datastore is computed on the client side to avoid transmission of query asset to the lookup service.</p>
+</div>
+<div class="paragraph">
+<p>It is unlikely that a single centralized provenance datastore will emerge for all content.   Rather it is anticipated that decentralized model will evolve in which multiple federated provenance datastores might emerge for different industry verticals, for example a coalition of news broadcasters might maintain a federated service for soft binding lookup based upon their own provenance datastores.</p>
+</div>
+<div class="paragraph">
+<p>To promote the interoperability of independent services that query provenance datastores, we recommend that a standard communication protocol be established for clients to send queries to the soft binding lookup services and for returning manifests to clients.</p>
+</div>
+<div class="paragraph">
+<p>Trust in the lookup process is derived from trust in the integrity of the provenance datastore.  It may be desirable to use a decentralized, immutable data technology, such as a distributed ledger or blockchain, to underwrite the integrity of the provenance datastore.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_trust"><a class="anchor" href="#_trust"></a>5. Trust</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_cryptography"><a class="anchor" href="#_cryptography"></a>5.1. Cryptography</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Items for future guidance</div>
+
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_digital_signatures"><a class="anchor" href="#_digital_signatures"></a>5.2. Digital Signatures</h3>
+<div class="sect3">
+<h4 id="_revocation_information"><a class="anchor" href="#_revocation_information"></a>5.2.1. Revocation Information</h4>
+<div class="paragraph">
+<p>C2PA strongly recommends that claim generators retrieve and attach credential freshness information at signing time. This information should be added into the COSE signature as described in the specification.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Attaching freshness information to the signature allows validators to conclude the manifest is still valid a) even if the signing credential has since expired or been revoked and b) without the need of an online query.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_protecting_claim_signing_keys"><a class="anchor" href="#_protecting_claim_signing_keys"></a>5.2.2. Protecting claim signing keys</h4>
+<div class="paragraph">
+<p>In practice, C2PA claim signing keys will be issued to systems that perform claim signing operations. These systems may make these operations available to end users and/or be deployed to user-owned platforms (e.g., mobile phones).  Issuance or disclosure of claim signing keys to malicious actors enables attackers to create claim signatures on arbitrary assets using the compromised identity. The resulting manifests are valid in terms of the C2PA specification, but effectively allow for spoofing provenance.</p>
+</div>
+<div class="paragraph">
+<p>It is therefore important that systems that manage C2PA claim signing keys adhere to security and key management best practices. This includes leveraging platform-specific features (e.g., hardware security modules and cloud key management services), minimizing key reuse, and revoking keys when compromise is suspected. For more information on key management, see the <a href="https://csrc.nist.gov/Projects/Key-Management/Key-Management-Guidelines">NIST Key Management Guidelines</a>.</p>
+</div>
+<div class="sect4">
+<h5 id="_securing_claim_generation_and_signing_operations"><a class="anchor" href="#_securing_claim_generation_and_signing_operations"></a>5.2.2.1. Securing claim generation and signing operations</h5>
+<div class="paragraph">
+<p>Some C2PA claim generation and signing systems may be exposed to untrusted users. Exploitation or misuse of these systems may allow attackers to create claim signatures on arbitrary assets using identities provided by the system. The resulting manifests are valid in terms of the C2PA specification, but effectively allow for spoofing provenance. The impact of such an attack may be amplified if identities are shared between users, and/or if the attack goes undetected for an extended period of time.</p>
+</div>
+<div class="paragraph">
+<p>C2PA claim generation and signing systems should consider industry best practices for information security, secure development and operation, and anti-abuse practices, including leveraging available platform-specific features for deployment (e.g.,  <a href="https://developer.android.com/training/safetynet">Android SafetyNet</a>, <a href="https://developer.apple.com/documentation/devicecheck">Apple DeviceCheck and AppAttest</a>).</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_use_of_self_signed_certificates"><a class="anchor" href="#_use_of_self_signed_certificates"></a>5.2.3. Use of Self-Signed Certificates</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Items for future guidance</div>
+
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_trust_model"><a class="anchor" href="#_trust_model"></a>5.3. Trust Model</h3>
+<div class="sect3">
+<h4 id="_trust_lists"><a class="anchor" href="#_trust_lists"></a>5.3.1. Trust Lists</h4>
+<div class="paragraph">
+<p>The C2PA does not mandate the use of any specific "list of certificates or CAs that can be used to verify the trustworthiness of the signer of a manifest". There exists a variety of complexities in choosing the membership for such a list, and implementers should understand them prior to the creation of their list. The C2PA will continue to improve their guidance in this matter as the ecosystem grows.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Items for future guidance</div>
+<div class="paragraph">
+<p>Include information about creating, managing, using, etc.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Multiple lists</p>
+</li>
+<li>
+<p>Managing the "private list" (security and general operational considerations)</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_validation"><a class="anchor" href="#_validation"></a>6. Validation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_validation_security_practices"><a class="anchor" href="#_validation_security_practices"></a>6.1. Validation security practices</h3>
+<div class="paragraph">
+<p>Special care should be taken when implementing validators. Like other software that processes untrusted input, validators may be the target of memory safety attacks, parser attacks, request forgery attacks against adjacent systems (e.g., when retrieving remote content or decoupled manifests), information leaks (e.g., via OCSP queries), denial of service attacks, and so on. Thus, it is important that these validators adhere to secure development and operations practices associated with their respective execution environment.</p>
+</div>
+<div class="paragraph">
+<p>A manifest consumer that is performing validation (e.g., a web browser) may detect and mitigate attempted compromise of C2PA manifests or even the complete removal of C2PA manifests. It is recommended that manifest consumers consider forthcoming C2PA User Experience guidance, retrieval of decoupled manifests via <a href="#_guidance_on_use_of_soft_bindings">soft bindings</a> when appropriate, and other forthcoming C2PA recommendations to mitigate the impact of these types of attacks.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_additional_guidance"><a class="anchor" href="#_additional_guidance"></a>7. Additional Guidance</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_distributed_ledger_technology_dlt_and_c2pa"><a class="anchor" href="#_distributed_ledger_technology_dlt_and_c2pa"></a>7.1. Distributed Ledger Technology (DLT) and C2PA</h3>
+<div class="paragraph">
+<p>Distributed Ledger Technologies (DLTs) enable multiple parties to collaborate to produce a tamper-evident, distributed data store.</p>
+</div>
+<div class="paragraph">
+<p>DLT enables a ledger to be shared across a set of DLT nodes and synchronized between the DLT nodes using a consensus mechanism.</p>
+</div>
+<div class="paragraph">
+<p>In such a distributed system, control is distributed among the persons or organizations participating in the operation of the system (ISO 22739:2020).</p>
+</div>
+<div class="paragraph">
+<p>Data stored on a DLT is immutable; once committed to a DLT, data cannot be changed or deleted.  The ordering of data stored within a DLT is also immutable.</p>
+</div>
+<div class="paragraph">
+<p>C2PA manifests store data on asset provenance that in most cases should similarly be immutable.  However redaction mechanisms exist to remove past assertion data from a manifest.  For example, to ensure the privacy of a creator, removing identity data from the assertion store and updating the manifest to record the event of that redaction.   Other circumstances that may involve redaction could be the removal of personally identifiable information (PII) to comply with relevant legislation on data protection.  Whilst the C2PA redaction mechanism provides for the deletion of data, the prior existence of that data and the act of redaction will be visible to the manifest consumer.</p>
+</div>
+<div class="paragraph">
+<p>For this reason we make a general recommendation that C2PA manifests should not be stored on DLTs, since the data immutability guarantees of DLTs prevent redaction of manifests stored within them.</p>
+</div>
+<div class="paragraph">
+<p>DLTs may, however, be used to underwrite the integrity of a datastore containing C2PA manifests (for example a cloud database).  For example, a hash of a manifest, or other cryptographic proof, may be stored immutably within a DLT.  This may be used to prove that the manifest has not been altered, or deleted (non-repudiation).</p>
+</div>
+<div class="paragraph">
+<p>We outline several possible ways that DLT may be used to implement or instantiate aspects of the C2PA specification:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Underwriting the integrity of manifest stores</p>
+<div class="paragraph">
+<p>Consider the case of an external manifest store, where manifests might stored decoupled from the digital content they describe. Such an external provenance datastore may be used to store manifests and query those manifests via a lookup service using either a hard or a soft binding, for example to recover provenance for assets where manifests have been removed or corrupted.</p>
+</div>
+<div class="paragraph">
+<p>The user of such a datastore trusts the governance of that datastore operator not to manipulate or remove manifests stored within.  In other words, trust is centralized within the provider of the datastore.  A DLT may be used to store hashes of manifests as they are committed to the provenance datastore to assure consumers of the integrity of that datastore without the need to trust the datastore provider.</p>
+</div>
+<div class="paragraph">
+<p>A related application of DLT related to soft binding is in the creation of a federated lookup service for soft bindings.  It is unlikely that a single provenance datastore will exist for all manifests resolvable via soft bindings; multiple such datastores are likely to emerge for any given vertical (e.g. news journalism).  A distributed key-value store on DLT may resolve a soft binding to a provider running a provenance datastore, which may in turn run the query and return the relevant stored manifest.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Given the high throughput and low latency requirements for storing manifests, it is advisable that a Layer 2 solution or other efficient consensus mechanism for DLT (such as proof of stake, or proof of history) is used to mitigate adverse cost or energy usage.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Decentralized and self-sovereign identity</p>
+<div class="paragraph">
+<p>A separate use of DLT within the scope of C2PA might include the use of self-sovereign identity (SSI) schemes based upon DLT storage of DIDs.  C2PA is agnostic to the provider of identity data and provides for the concept of an actor which is representable either via a simple identifier (such as a DID) or via a W3C Verifiable Credential (which could include a DID). In some use cases it may be preferable for users to create their own identity wallets rather than rely on a centralized or third party identity provider.  In such cases DIDs stored on a DLT may provide a decentralized mechanism to ground trust in the public keys of SSI wallet holders.</p>
+</div>
+</li>
+<li>
+<p>Decentralized signing</p>
+<div class="paragraph">
+<p>A smart contract is a computer program stored in a DLT system wherein the outcome of any execution of the program is recorded on the distributed ledger (ISO 22739:2020).  Smart contracts may be configurable via a tokenized consensus mechanism.  For example, a smart contract that may be upgraded or configured according to a vote by holders of a particular cryptographic token.  Such contracts are referred to as ‘decentralized autonomous organizations’ or DAOs.  Like regular programs, a DAO may be used to store and process data and even take payments for doing so.</p>
+</div>
+<div class="paragraph">
+<p>A DAO might be set up to sign claims autonomously, according to a certificate installed by its operators.  This would provide a decentralized alternative to the claim signing services run by centralized organizations tied to particular geographies or legislative zones.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, or in addition, a DAO might be used to set up and manage a certificate trust list.  Signing of claims is grounded in public key cryptography rooted in a trust list managed by a federation of partners.  Since C2PA allows for the existence of multiple such trust lists, the DLT may be leveraged to manage the trust list via a tokenized governance system.  This might be attractive to content creators and consumers wishing to utilize a decentralized governance for such a list, and in turn agency over the issuance and revocation of signing certificates</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_digital_non_fungible_tokens_nfts"><a class="anchor" href="#_digital_non_fungible_tokens_nfts"></a>7.2. Digital Non-Fungible Tokens (NFTs)</h3>
+<div class="paragraph">
+<p>Digital NFTs (hereafter, NFTs) are digital tokens that represent assets - most commonly, creative works.  NFTs are created and traded on distributed ledgers (DLT).</p>
+</div>
+<div class="paragraph">
+<p>NFTs represent assets via an indirection (linking) mechanism. A standard ERC-721 compliant NFT links via URI to a metadata file, that in turn links via URI to an asset. Commonly these URIs incorporate a hashed component, providing cryptographic proof for the uniqueness of the linked metadata, and the URI linking to the asset from that metadata also incorporates a hashed component. For example, the URIs are commonly content IDs (CIDs) on a distributed filesystem such as the InterPlanetary File System (IPFS).</p>
+</div>
+<div class="paragraph">
+<p>The provenance of NFT ownership is recorded through the immutable transaction history on the DLT (i.e. who currently owns or has owned the NFT).</p>
+</div>
+<div class="paragraph">
+<p>C2PA specifies a technology for describing the provenance of an asset&#8217;s creation (who created it, what was done to it, etc.).  This is distinct from the provenance of NFT ownership recorded by the DLT.</p>
+</div>
+<div class="paragraph">
+<p>Much as with physical artwork, both the provenance of ownership and the provenance of creation, ascribe value to an NFT.</p>
+</div>
+<div class="paragraph">
+<p>C2PA may add value to NFTs by attesting to the provenance of their linked asset&#8217;s creation, and also leverage that provenance to mitigate the threat of that asset being misappropriated.</p>
+</div>
+<div class="paragraph">
+<p>It is common for valuable NFTs to copied and placed on the market anew (re-minting) by someone other than their creator, in order to misappropriate and potentially to gain reward for another creator&#8217;s work.</p>
+</div>
+<div class="paragraph">
+<p>C2PA provides for the assertion of identity within a manifest, and is agnostic to the identity system used.  One or more identity assertions may be used to encode the wallet address(es) identifying the creator on the DLT(s) they intend to mint the asset on.</p>
+</div>
+<div class="paragraph">
+<p>When a consumer, or a marketplace, encounters an NFT with a C2PA manifest in it, they may verify that the NFT being minted or offered for sale by a particular DLT user (identified by their wallet address) matches the identifier signed into the C2PA asset.</p>
+</div>
+<div class="paragraph">
+<p>Additional checks can be made that the C2PA manifest signed to include that wallet address is known to come from a public key maintained by the content creator.  This and other checks, for example on the wallet originating the minting transaction, may be used to additionally prevent spoofing or (‘sleep minting’) of NFTs.</p>
+</div>
+<div class="paragraph">
+<p>NFTs may still be misappropriated by stripping metadata including C2PA manifest from the asset, prior to minting it.  This may be remediated through use of soft-bindings to recover a manifest from a provenance datastore, as with general metadata stripping attacks.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_playback_verification_for_audiovideo_content"><a class="anchor" href="#_playback_verification_for_audiovideo_content"></a>7.3. Playback verification for audio/video content</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Items for future guidance</div>
+<div class="paragraph">
+<p>A useful thing to add would be the steps a client audio/video player should perform to verify an actual content file for MP4/fMP4.
+	<a href="https://github.com/c2pa-org/specs-core/issues/518" class="bare">https://github.com/c2pa-org/specs-core/issues/518</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_attribution_rights_and_licensing"><a class="anchor" href="#_attribution_rights_and_licensing"></a>7.4. Attribution, Rights and Licensing</h3>
+<div class="paragraph">
+<p>The standard assertions defined for use in a C2PA Manifest include opportunities to add information about the attribution, rights and licenses of the associated asset.</p>
+</div>
+<div class="paragraph">
+<p>The following table shows which assertions and the specific fields thereof can be used for which type of information.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 91.6666%;">
+<col style="width: 2.7777%;">
+<col style="width: 2.7777%;">
+<col style="width: 2.778%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Assertion</th>
+<th class="tableblock halign-left valign-top">Attribution</th>
+<th class="tableblock halign-left valign-top">Rights</th>
+<th class="tableblock halign-left valign-top">Licensing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creative Work<br>
+(for all assets)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">author, contributor, creator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">copyrightHolder, copyrightNotice, copyrightYear</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">acquireLicense, license, usageInfo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPTC Photo Metadata<br>
+(for images)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dc:creator, plus:ImageCreator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dc:rights, plus:CopyrightOwners, xmpRights:webStatement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">plus:Licensor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exif information<br>
+(for images)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dc:creator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dc:rights</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>While adding this information to a C2PA Manifest via the standard assertions will provide a tamper-evident declaration of the information, it may also be important to include a duplicate of the information in their standard locations within assets as defined by as schema.org, IPTC or Exif standards. The reason for providing both versions is that currently existing solution won&#8217;t look for the information in the C2PA Manifest. For example, providing values for <code>acquireLicense</code> and <code>license`</code> in a <em>Creative Work</em> assertion will not invoke the <a href="https://developers.google.com/search/docs/advanced/structured-data/image-license-metadata/">Licensable badge in Google Images</a>. The values would also need to be provided as structured data in the corresponding HTML page, as required by the specification of schema.org.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gdpr"><a class="anchor" href="#_gdpr"></a>7.5. GDPR</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Items for future guidance</div>
+<div class="paragraph">
+<p>Another topic needs to be around GDPR and other related legal aspects as discussed in <a href="https://github.com/c2pa-org/specs-core/issues/114">c2pa-org/specs-core#114</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <div class="footer-main">
+    <figure class="footer-brand">
+      <a class="logo" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <figcaption class="footer-brand-name"><a href="https://c2pa.org">C2PA</a></figcaption>
+    </figure>
+    <ul class="footer-brand-links">
+      <li><a href="https://c2pa.org" target="_blank" rel="noopener">Home</a></li>
+      <li><a href="https://c2pa.org/specifications">Docs</a></li>
+      <li><a href="https://github.com/c2pa-org" target="_blank" rel="noopener">Project</a></li>
+    </ul>
+    <p class="footer-brand-follow">
+      <a href="https://twitter.com/c2pa" title="Follow us on Twitter" target="_blank" rel="noopener"><img src="../../../_/img/twitter-logo.svg" alt="Twitter logo" class="logo" width="28"><span class="handle">@c2pa</span></a>
+    </p>
+  </div>
+  <div class="footer-legal">
+    <p>Copyright © 2021 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
+  </div>
+  <div class="footer-thanks">
+    <p>Thanks to our <a href="https://c2pa.org/membership/" target="_blank" rel="noopener">membership</a> for helping to make this project possible.</p>
+    <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
+  </div>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/specifications/1.0/guidance/Guidance.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+
+  </body>
+</html>
