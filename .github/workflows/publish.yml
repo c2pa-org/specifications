@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '14'
       - name: Install Antora
-        run: npm i --no-optional --silent @antora/cli@2.3.4 @antora/site-generator-default@2.3.4 @asciidoctor-kroki
+        run: npm i --no-optional --silent @antora/cli@2.3.4 @antora/site-generator-default@2.3.4 asciidoctor-kroki
       - name: Run Antora
         run: $(npm bin)/antora --fetch antora-playbook.yml
       - name: Publish to GitHub Pages
