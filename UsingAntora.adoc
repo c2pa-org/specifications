@@ -1,0 +1,47 @@
+:revealjs_theme: white
+
+= C2PA and Antora
+
+== Repo Organization
+
+[plantuml, antora-layout]
+....
+@startwbs
+* docs
+**> modules
+***> <name>
+**** pages
+**** //partials//
+**** //images//
+**** //attachments//
+**** //other//
+@endwbs
+....
+
+
+[.columns]
+== Cross-Document Linking
+
+.Examples
+* pass:[xref:_lower_case_with_underbars[Internal Link]]
+* pass:[xref:MODULE:DOCUMENT.adoc#SECTION[External Link]]
+* pass:[xref:MODULE:../partials/DOCUMENT.adoc#SECTION[External Link]]
+
+[.columns]
+== Building the Site
+
+[.column]
+--
+* github repo: `specifications`
+* run script `buildsite.sh`
+** uses `antora-playbook.yml`
+** auto-downloads `main` branches of "child" repos
+* output in `build/site/index.html`
+* create PR, push changes, merge PR
+** site will be auto-published to https://c2pa.org/specifications/specifications/1.0/index.html[gh-pages]
+--
+
+== Building Local Site
+
+Local builds can be done with installed `antora` and the `antora-playbook-local.yml`
+
