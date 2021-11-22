@@ -2,6 +2,21 @@
 
 = C2PA and Antora
 
+== Status
+
+All existing repos have been reorganized & we have a https://c2pa.org/specifications/specifications/1.0/index.html[site]!
+
+NOTE: I will probably fix the URL...
+
+[.columns]
+== Outstanding issues
+
+* Review all document links
+** Broken Links
+** Cross-document links
+* Add "Download PDF" options to main page
+
+
 == Repo Organization
 
 [plantuml, antora-layout]
@@ -34,7 +49,8 @@
 --
 * github repo: `specifications`
 * run script `buildsite.sh`
-** uses `antora-playbook.yml`
+** uses dockerized antora 
+** uses standard `antora-playbook.yml`
 ** auto-downloads `main` branches of "child" repos
 * output in `build/site/index.html`
 * create PR, push changes, merge PR
@@ -45,3 +61,4 @@
 
 Local builds can be done with installed `antora` and the `antora-playbook-local.yml`
 
+ 
