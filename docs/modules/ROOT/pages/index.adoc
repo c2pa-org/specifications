@@ -12,11 +12,4 @@ This site contains the various specifications and documents produced by the C2PA
 * xref:security:Harms_Modelling.adoc[Harms Modelling] 
 
 
-PDF Versions of these documents are also available
-
-* link:{attachmentsdir}/C2PA_Specification.pdf[Technical Specifications] 
-* link:{attachmentsdir}/Explainer.pdf[Explainer] 
-* link:{attachmentsdir}/Guidance.pdf[Guidance for Implementers] 
-* link:{attachmentsdir}/UX_Recommendations.pdf[User Experience Guidance] 
-* link:{attachmentsdir}/Security_Considerations.pdf[Security Considerations] 
-* link:{attachmentsdir}/Harms_Modelling.pdf[Harms Modelling] 
+PDF Versions of these documents are also available via the Download button in the page header.
