@@ -411,7 +411,7 @@ C2PA specifications SHOULD NOT provide value judgments about whether a given set
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="_images/C2PA_Manifest.svg" alt="A C2PA Manifest and its parts" width="333" height="328">
+<img src="_images/Manifest.drawio.svg" alt="A C2PA Manifest and its parts" height="150">
 </div>
 <div class="title">Figure 1. A C2PA Manifest and its constituent parts</div>
 </div>
@@ -427,11 +427,11 @@ C2PA specifications SHOULD NOT provide value judgments about whether a given set
 <div class="paragraph">
 <p>A very common scenario will be a user (called an actor in the C2PA ecosystem) taking a photograph with their C2PA-enabled camera (or phone). In that instance, the camera would create a C2PA manifest containing some such assertions including information about the camera itself, a thumbnail of the image and some cryptographic hashes that bind the photograph to the manifest. These assertions would then be listed in the Claim, which would be digitally signed and then the entire manifest would be embedded into the output JPEG. This manifest would remain valid indefinitely.</p>
 </div>
-<div class="imageblock text-center kroki">
+<div class="imageblock text-center">
 <div class="content">
-<img src="https://kroki.io/plantuml/svg/eNqtVE1v2zAMPde_guihPdXYumsQoEm3YcO6DvOxKApGpm0utmRI8tpg6H8fJaex0yZtBkwHAxIf6cfHjwTknALWtbl30PAD6xJ-o2XTOTCLX6S8A9aA4MRSE-SMpcUmCX7R6653SpI-UsU5ga8IXGv8-A31Cqhp_UqsgndpmkZzNCq2qqbh3gMbahZk3VNo51d1-FO4uSXrFoUIKNO0RpP2mZgJrDDGwLR3qqnw4A1YLisv5IOZjU6SoyHCJ_nQDNWytKbT-dzUxk4mCl05ncIVlhIb38bPa-QGMi41-s7SyDUyKYITKFQLQAfHV6i5IOch88bSMfyJoDFQbGPgGDKGCSbALpwjGzJ7GXDb49j53KX0wMUuTDgbBeHiPdzshIQzOVEmp2lyFM_X7Pr72bdLqZHtVMgf7tlXa2NOHrmWfipiZyjhYXFt6xzloUAel33ftJXxZu9fUefA_tTB5x8Z1EZhyDndCb998fqY7BNFnbeY-qprFlqYpirU8u5d2uryAJXOX1WJG2mDKcxYo13Bl3CDS5S2-C-cK3RVmku4A3h-OLia89n1z1EplZE2Zh1mr7ezLoxtovaAC9P5ULm1TdlV643siLZiBYEfOViwzgf3UO6qDysDcnj1XtFlM151HIc4jLskGeSY71FjS4lnQgw9bakgS1pJbutsNhPoekTo1PD-bC8krye6Jy1XDmkNsd5IMJMMI5XJyZJWU5hfZx_hkkv2WP8LoVDUsGfObmQ356Rvc3Ovz6ZR7S3sadR_A4s7N-LQbeH2wVyZbBf7MfkLXrq3wA==" alt="Photo manifest" width="333" height="328">
+<img src="_images/Photo_Manifest.svg" alt="Example C2PA Manifest of a Photograph" width="284" height="424">
 </div>
-<div class="title">Figure 2. Photo manifest</div>
+<div class="title">Figure 2. Example C2PA Manifest of a Photograph</div>
 </div>
 <div class="paragraph">
 <p>A manifest consumer, such as a C2PA validator, could help users to establish the trustworthiness of the asset by first validating the digital signature and its associated credential. It can also check each of the assertions for validity and present the information contained in them, and the signature, to the user in a way that they can then make an informed decision about the trustworthiness of the digital content.</p>
@@ -707,7 +707,7 @@ Details on how one determines which <em>manifest</em> is the <em>origin</em> are
 </div>
 </div>
 <div class="sect3">
-<h4 id="_provenance_datastore"><a class="anchor" href="#_provenance_datastore"></a>2.4.3. Provenance datastore</h4>
+<h4 id="_manifest_repository"><a class="anchor" href="#_manifest_repository"></a>2.4.3. Manifest Repository</h4>
 <div class="paragraph">
 <p>A repository into which C2PA <em>manifests</em> can be placed, and which can be searched using a <em>content binding</em>.</p>
 </div>
@@ -1772,7 +1772,7 @@ While it is possible to add the XMP data to the list of exclusions in a data has
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="_images/JUMBF-Single.svg" alt="C2PA Manifest Store" width="301">
+<img src="_images/ManifestStore.svg" alt="C2PA Manifest Store" width="240" height="500">
 </div>
 <div class="title">Figure 8. C2PA Manifest Store</div>
 </div>
@@ -1804,21 +1804,21 @@ While it is possible to add the XMP data to the list of exclusions in a data has
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="_images/JUMBF-Single-Credentials.svg" alt="C2PA Manifest Block with a Credential Store" width="301">
+<img src="_images/ManifestStore_Credential.svg" alt="C2PA Manifest Store with Credentials" width="244" height="500">
 </div>
-<div class="title">Figure 9. C2PA Manifest Block with Credentials</div>
+<div class="title">Figure 9. C2PA Manifest Store with Credentials</div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_ingredient_storage"><a class="anchor" href="#_ingredient_storage"></a>10.1.1.2. Ingredient Storage</h5>
 <div class="paragraph">
-<p>When a C2PA Manifest includes <a href="#_ingredients">ingredient assertions</a>, and an ingredient contains a C2PA manifest, that manifest must be brought into this asset to ensure that the provenance data is kept intact. Such ingredient manifests are added to the C2PA Manifest Store as a child of the C2PA Manifest for the asset itself.</p>
+<p>When a C2PA Manifest includes <a href="#_ingredients">ingredient assertions</a>, and an ingredient contains a C2PA manifest, that manifest must be brought into this asset to ensure that the provenance data is kept intact. Such ingredient manifests are added to the C2PA Manifest Store as a peer of the C2PA Manifest for the asset itself.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="_images/JUMBF-Single-Ingredients.svg" alt="C2PA Manifest Block with an Ingredient" width="301">
+<img src="_images/ManifestStore_Ingredient.svg" alt="C2PA Manifest Store with Ingredient" width="240" height="500">
 </div>
-<div class="title">Figure 10. C2PA Manifest Block With an Ingredient</div>
+<div class="title">Figure 10. C2PA Manifest Store With an Ingredient</div>
 </div>
 </div>
 </div>
@@ -1938,7 +1938,7 @@ Non-BMFF-based audio formats which are being considered for addition to this spe
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Many classic image formats such as GIF and BMP do not support the embedding of arbitrary data, so that the use of an external manifest is required.
+Many classic image formats such as GIF and BMP do not support the embedding of arbitrary data, so that the use of an <a href="#_external_manifests">external manifest</a> is required.
 </td>
 </tr>
 </table>
@@ -2423,7 +2423,7 @@ subset = [ { 16, 4 } ]</code></pre>
 <div class="sect2">
 <h3 id="_external_manifests"><a class="anchor" href="#_external_manifests"></a>10.4. External Manifests</h3>
 <div class="paragraph">
-<p>In some cases, it may not be possible (or practical) to embed a C2PA Manifest Store in an asset. In those cases, keeping the manifest externally to the asset is an acceptable model for providing providence to assets. The manifest should be stored in a location that is easily locatable by a manifest consumer working with the asset, such as <a href="#_by_reference/uri">by reference or URI</a>. As the C2PA Manifest Store is a JUMBF box, it shall be served with a JUMBF Media Type.</p>
+<p>In some cases, it may not be possible (or practical) to embed a C2PA Manifest Store in an asset. In those cases, keeping the manifest externally to the asset is an acceptable model for providing providence to assets. The manifest should be stored in a location, referred to as a manifest repository, that is easily locatable by a manifest consumer working with the asset, such as <a href="#_by_reference/uri">by reference or URI</a>. As the C2PA Manifest Store is a JUMBF box, it shall be served with a JUMBF Media Type.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2585,13 +2585,13 @@ Parenthetical notes in the lists below are explainers provided only as an aid to
 <div class="ulist">
 <ul>
 <li>
-<p><code>ES256</code> (ECDSA using P-256 and SHA-256)</p>
+<p><code>ES256</code> (ECDSA with SHA-256)</p>
 </li>
 <li>
-<p><code>ES384</code> (ECDSA using P-384 and SHA-384)</p>
+<p><code>ES384</code> (ECDSA with SHA-384)</p>
 </li>
 <li>
-<p><code>ES512</code> (ECDSA using P-521 and SHA-512)</p>
+<p><code>ES512</code> (ECDSA with SHA-512)</p>
 </li>
 <li>
 <p><code>PS256</code> (RSASSA-PSS using SHA-256 and MGF1 with SHA-256)</p>

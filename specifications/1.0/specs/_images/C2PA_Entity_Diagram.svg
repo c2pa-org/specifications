@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1000px" preserveAspectRatio="none" style="width:760px;height:1000px;background:#FFFFFF;" version="1.1" viewBox="0 0 760 1000" width="760px" zoomAndPan="magnify"><defs><filter height="300%" id="f1bth3nenvo8zj" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[751a80e395721099d806782fc3bbd655]
+class Asset--><rect codeLine="22" fill="#FEFECE" filter="url(#f1bth3nenvo8zj)" height="86.3828" id="Asset" style="stroke:#A80036;stroke-width:1.5;" width="64" x="531.0464" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="40" x="543.0464" y="23.1387">Asset</text><line style="stroke:#A80036;stroke-width:1.5;" x1="532.0464" x2="594.0464" y1="30.9688" y2="30.9688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="44" x="537.0464" y="45.1792">Content</text><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="532.0464" x2="594.0464" y1="51.7734" y2="51.7734"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="52" x="537.0464" y="65.9839">Metadata</text><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="532.0464" x2="594.0464" y1="72.5781" y2="72.5781"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="48" x="537.0464" y="86.7886">Manifest</text><!--MD5=[030fb27d31e47a9081912f52ec8aa49a]
+class Assertion--><rect codeLine="29" fill="#FEFECE" filter="url(#f1bth3nenvo8zj)" height="44.7734" id="Assertion" style="stroke:#A80036;stroke-width:1.5;" width="74" x="29.0464" y="833.5"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="68" x="32.0464" y="849.6387">Assertion</text><line style="stroke:#A80036;stroke-width:1.5;" x1="30.0464" x2="102.0464" y1="857.4688" y2="857.4688"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="52" x="35.0464" y="871.6792">Metadata</text><!--MD5=[270a02414e6f22a29d048d08eafde2d4]
+class Credential--><rect codeLine="32" fill="#FEFECE" filter="url(#f1bth3nenvo8zj)" height="23.9688" id="Credential" style="stroke:#A80036;stroke-width:1.5;" width="80" x="148.0464" y="445"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="74" x="151.0464" y="461.1387">Credential</text><!--MD5=[8bc3de938a7e31712b006f9406671d3e]
+class Binding--><rect codeLine="34" fill="#FEFECE" filter="url(#f1bth3nenvo8zj)" height="23.9688" id="Binding" style="stroke:#A80036;stroke-width:1.5;" width="59" x="578.5464" y="445"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="53" x="581.5464" y="461.1387">Binding</text><!--MD5=[91ffdd76f1c8795364bfc7c752e5da6a]
+class Ingredient--><rect codeLine="36" fill="#FEFECE" filter="url(#f1bth3nenvo8zj)" height="65.5781" id="Ingredient" style="stroke:#A80036;stroke-width:1.5;" width="80" x="271.0464" y="425"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="74" x="274.0464" y="441.1387">Ingredient</text><line style="stroke:#A80036;stroke-width:1.5;" x1="272.0464" x2="350.0464" y1="448.9688" y2="448.9688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="65" x="277.0464" y="463.1792">Information</text><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="272.0464" x2="350.0464" y1="469.7734" y2="469.7734"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="47" x="277.0464" y="483.9839">Manifest</text><!--MD5=[7095d094788fc8e7b2ad0a29574f50bc]
+class Claim--><rect codeLine="41" fill="#FEFECE" filter="url(#f1bth3nenvo8zj)" height="86.3828" id="Claim" style="stroke:#A80036;stroke-width:1.5;" width="99" x="317.5464" y="574"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="38" x="348.0464" y="590.1387">Claim</text><line style="stroke:#A80036;stroke-width:1.5;" x1="318.5464" x2="415.5464" y1="597.9688" y2="597.9688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="61" x="323.5464" y="612.1792">Assertions</text><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="318.5464" x2="415.5464" y1="618.7734" y2="618.7734"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="62" x="323.5464" y="632.9839">Redactions</text><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="318.5464" x2="415.5464" y1="639.5781" y2="639.5781"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="323.5464" y="653.7886">ClaimSignature</text><!--MD5=[258396dc4f71fae142cc4a42aabdac0d]
+class ClaimSignature--><rect codeLine="49" fill="#FEFECE" filter="url(#f1bth3nenvo8zj)" height="65.5781" id="ClaimSignature" style="stroke:#A80036;stroke-width:1.5;" width="123" x="306.5464" y="823"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="108" x="314.0464" y="839.1387">ClaimSignature</text><line style="stroke:#A80036;stroke-width:1.5;" x1="307.5464" x2="428.5464" y1="846.9688" y2="846.9688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="312.5464" y="861.1792">Identity Credential</text><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="307.5464" x2="428.5464" y1="867.7734" y2="867.7734"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="111" x="312.5464" y="881.9839">Trusted TimeStamp</text><!--MD5=[bc6d56fff33115396b36caccb440b7b0]
+class Manifest--><rect codeLine="54" fill="#FEFECE" filter="url(#f1bth3nenvo8zj)" height="107.1875" id="Manifest" style="stroke:#A80036;stroke-width:1.5;" width="100" x="377.0464" y="237"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="62" x="396.0464" y="253.1387">Manifest</text><line style="stroke:#A80036;stroke-width:1.5;" x1="378.0464" x2="476.0464" y1="260.9688" y2="260.9688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="85" x="383.0464" y="275.1792">AssertionStore</text><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="378.0464" x2="476.0464" y1="281.7734" y2="281.7734"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="88" x="383.0464" y="295.9839">CredentialStore</text><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="378.0464" x2="476.0464" y1="302.5781" y2="302.5781"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="32" x="383.0464" y="316.7886">Claim</text><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="378.0464" x2="476.0464" y1="323.3828" y2="323.3828"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="383.0464" y="337.5933">ClaimSignature</text><!--MD5=[7237e14c80a03c2b972bf07029592998]
+class IngredientManifest--><rect codeLine="63" fill="#FEFECE" filter="url(#f1bth3nenvo8zj)" height="23.9688" id="IngredientManifest" style="stroke:#A80036;stroke-width:1.5;" width="142" x="132.0464" y="603.5"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="136" x="135.0464" y="619.6387">IngredientManifest</text><!--MD5=[e92c7f44aca8c8351fe78ff7f8736806]
+class Redaction--><rect codeLine="65" fill="#FEFECE" filter="url(#f1bth3nenvo8zj)" height="23.9688" id="Redaction" style="stroke:#A80036;stroke-width:1.5;" width="77" x="355.5464" y="738"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="71" x="358.5464" y="754.1387">Redaction</text><!--MD5=[867efe36aca51a0480e90abc9fc757b5]
+reverse link Asset to Manifest--><!--MD5=[e1a9f74eda5aa083c77ab7c0dc8ef21f]
+link Asset to Manifest--><path codeLine="69" d="M530.0464,80.5 C494.8364,80.5 516.7364,122.45 506.0464,156 C499.3964,176.89 501.1464,183.54 491.0464,203 C486.6164,211.55 481.3164,220.13 475.7064,228.37 " fill="none" id="Asset-to-Manifest" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="472.5564,232.92,480.9837,227.823,475.415,228.8178,474.4202,223.2491,472.5564,232.92" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[627a9f60c8988ca346dbcbe5a12ee25f]
+link Binding to Asset--><path codeLine="70" d="M607.8764,444.89 C606.9164,383.59 602.0364,87.97 597.1864,45.57 " fill="none" id="Binding-to-Asset" style="stroke:#0000FF;stroke-width:1.0;"/><polygon fill="#0000FF" points="596.0464,40.5,594.1,50.1546,597.1341,45.3803,601.9084,48.4143,596.0464,40.5" style="stroke:#0000FF;stroke-width:1.0;"/><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="68" x="604.0464" y="199.0669">references</text><!--MD5=[627a9f60c8988ca346dbcbe5a12ee25f]
+link Binding to Asset--><path codeLine="71" d="M615.4064,444.86 C638.9064,407.84 708.9964,285.56 679.0464,186 C660.3164,123.71 662.7664,63.86 601.3764,60.64 " fill="none" id="Binding-to-Asset-1" style="stroke:#0000FF;stroke-width:1.0;"/><polygon fill="#0000FF" points="596.0464,60.5,604.9406,64.73,601.0447,60.6285,605.1462,56.7327,596.0464,60.5" style="stroke:#0000FF;stroke-width:1.0;"/><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="68" x="684.0464" y="199.0669">references</text><!--MD5=[b21706687f8daa8f2b6b42ee86b3fe33]
+link Manifest to Assertion--><path codeLine="73" d="M376.0464,270.5 C198.4264,270.5 22.0464,278.37 22.0464,456 C22.0464,456 22.0464,456 22.0464,751 C22.0464,779.25 35.9864,808.65 48.1764,828.95 " fill="none" id="Manifest-to-Assertion" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="50.9064,833.4,49.6198,823.6355,48.2962,829.1354,42.7964,827.8117,50.9064,833.4" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54" x="23.0464" y="620.0669">contains</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="36" x="6" y="822.4258">many</text><!--MD5=[d7ba3069a9af64a8608d625b183ab2e4]
+link Manifest to Binding--><path codeLine="74" d="M478.0464,270.5 C535.6964,270.5 491.6264,344.75 526.0464,391 C541.8464,412.23 566.2164,430.34 584.2864,442.01 " fill="none" id="Manifest-to-Binding" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="588.7364,444.84,583.264,436.6514,584.5093,442.1695,578.9912,443.4148,588.7364,444.84" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54" x="527.0464" y="387.0669">contains</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="36" x="537.346" y="433.831">many</text><!--MD5=[ca94f8475202c61de09571080d60d106]
+link Manifest to Ingredient--><path codeLine="75" d="M376.0464,270.5 C321.0064,270.5 323.8164,321.27 308.0464,374 C304.1164,387.13 303.5664,401.98 304.4064,415.39 " fill="none" id="Manifest-to-Ingredient" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="304.8164,420.65,308.1103,411.3683,304.4307,415.6649,300.1341,411.9853,304.8164,420.65" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="79" x="309.0464" y="387.0669">may contain</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="36" x="266.7341" y="413.8864">many</text><!--MD5=[fce345ec6403ae93b637ddae7e7990c6]
+link Manifest to Credential--><path codeLine="76" d="M376.0464,290.5 C295.8364,290.5 268.2964,313.14 216.0464,374 C199.7964,392.93 192.8464,421.75 189.9764,439.7 " fill="none" id="Manifest-to-Credential" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="189.2064,444.89,194.476,436.5695,189.9355,439.9434,186.5615,435.4029,189.2064,444.89" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="79" x="217.0464" y="387.0669">may contain</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="36" x="146.2599" y="433.9016">many</text><!--MD5=[4a48084651621bfda7e9ef945ff48b8b]
+link Manifest to Claim--><path codeLine="77" d="M376.0464,310.5 C361.1564,310.5 373.2164,329.6 377.0464,344 C380.9364,358.6 389.3864,359.34 393.0464,374 C394.8764,381.33 393.4864,383.46 393.0464,391 C389.5764,450.89 380.9164,519.36 374.5364,564.56 " fill="none" id="Manifest-to-Claim" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="373.8064,569.68,379.0255,561.3277,374.5055,564.7291,371.1041,560.2091,373.8064,569.68" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9dfc7ed2cb1f626e3173921ca9f0b4d3]
+link Manifest to ClaimSignature--><path codeLine="78" d="M478.0464,330.5 C522.5264,330.5 486.0464,486.02 486.0464,530.5 C486.0464,530.5 486.0464,530.5 486.0464,751 C486.0464,783.14 461.1064,807.71 434.1564,824.88 " fill="none" id="Manifest-to-ClaimSignature" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="429.8164,827.57,439.5704,826.2068,434.0604,824.9264,435.3407,819.4164,429.8164,827.57" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5d81c94755e3ffa427b497e3896f4455]
+link Ingredient to IngredientManifest--><path codeLine="80" d="M270.0464,479 C243.6564,479 217.3864,562.62 207.3264,598.48 " fill="none" id="Ingredient-to-IngredientManifest" style="stroke:#0000FF;stroke-width:1.0;"/><polygon fill="#0000FF" points="205.9664,603.41,212.2164,595.7984,207.2965,598.5902,204.5047,593.6702,205.9664,603.41" style="stroke:#0000FF;stroke-width:1.0;"/><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="93" x="233.0464" y="536.0669">may reference</text><!--MD5=[a5508973dcaefcba102f1e18c2ecfd2e]
+link Claim to Assertion--><path codeLine="82" d="M317.0464,607.5 C290.6164,607.5 307.8864,640.62 291.0464,661 C254.6364,705.06 231.6464,701.04 188.0464,738 C152.7764,767.9 114.7064,805.32 90.6464,829.67 " fill="none" id="Claim-to-Assertion" style="stroke:#0000FF;stroke-width:1.0;"/><polygon fill="#0000FF" points="86.9064,833.47,96.0698,829.8602,90.4132,829.906,90.3674,824.2493,86.9064,833.47" style="stroke:#0000FF;stroke-width:1.0;"/><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="68" x="189.0464" y="754.5669">references</text><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="36" x="97.35" y="822.5146">many</text><!--MD5=[362bf3e2a2009deb1f968e0223b64dab]
+link Claim to Redaction--><path codeLine="83" d="M418.0464,627.5 C432.9464,627.5 424.6864,648.21 417.0464,661 C403.3564,683.9 378.3964,667.9 365.0464,691 C356.8564,705.19 367.3464,721.99 377.9364,733.85 " fill="none" id="Claim-to-Redaction" style="stroke:#0000FF;stroke-width:1.0;"/><polygon fill="#0000FF" points="381.4964,737.67,378.2784,728.3617,378.0843,734.0152,372.4308,733.821,381.4964,737.67" style="stroke:#0000FF;stroke-width:1.0;"/><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="93" x="366.0464" y="704.0669">may reference</text><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="36" x="333.4673" y="726.9611">many</text><!--MD5=[6a3c8528e269db7868b7212fdb529d2e]
+link Claim to ClaimSignature--><path codeLine="84" d="M317.0464,647.5 C289.3764,647.5 256.9964,736.63 268.0464,762 C277.9064,784.63 296.2864,804.24 314.6364,819.54 " fill="none" id="Claim-to-ClaimSignature" style="stroke:#0000FF;stroke-width:1.0;"/><polygon fill="#0000FF" points="318.7864,822.93,314.359,814.1324,314.9185,819.7615,309.2894,820.321,318.7864,822.93" style="stroke:#0000FF;stroke-width:1.0;"/><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="68" x="269.0464" y="754.5669">references</text><rect fill="#DDDDDD" height="75.1875" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="404" x="171.0232" y="909.5781"/><ellipse cx="182.5232" cy="923.375" fill="#000000" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:0.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="379" x="190.0232" y="927.5732">All relationships are singular unless otherwise specified</text><ellipse cx="182.5232" cy="939.6719" fill="#000000" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:0.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="280" x="190.0232" y="943.8701">Red lines represent embedded/contains</text><ellipse cx="182.5232" cy="955.9688" fill="#000000" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:0.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="263" x="190.0232" y="960.167">Blue lines represent linked references</text><ellipse cx="182.5232" cy="972.2656" fill="#000000" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:0.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="190.0232" y="976.4639">Text in</text><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="37" x="240.0232" y="976.4639">italics</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="175" x="281.0232" y="976.4639">means optional elements</text><!--MD5=[bcbf121570b7744c6a90631dd35d9870]
+@startuml C2PA_Entity_Diagram
+
+	legend
+		* All relationships are singular unless otherwise specified
+		* Red lines represent embedded/contains
+		* Blue lines represent linked references
+		* Text in //italics// means optional elements
+	endlegend
+
+	' hide the spot
+	' hide any empty things...
+	hide circle
+	hide empty members
+
+	' styling
+	' NOTE: entity is an alias for class
+	skinparam ObjectFontStyle bold
+	skinparam ClassFontStyle bold
+
+	' avoid problems with angled crows feet
+	'skinparam linetype ortho
+
+	entity Asset {
+		Content
+		..
+		Metadata
+		..
+		Manifest
+	}
+	entity Assertion {
+		//Metadata//
+	}
+	entity Credential {
+	}
+	entity Binding {
+	}
+	entity Ingredient {
+		Information
+		..
+		//Manifest//
+	}
+	entity Claim {
+		Assertions
+		..
+		//Redactions//
+		..
+		ClaimSignature
+	}
+
+	entity ClaimSignature {
+		Identity Credential
+		..
+		//Trusted TimeStamp//
+	}
+	entity Manifest {
+		AssertionStore
+		..
+		//CredentialStore//
+		..
+		Claim
+		..
+		ClaimSignature
+	}
+	entity IngredientManifest {
+	}
+	entity Redaction {
+	}
+
+	Asset <- -[hidden]- Manifest
+	Asset::Manifest - - -d> Manifest
+	Binding - - -> Asset::Content #blue;text:blue : references
+	Binding - - -> Asset::Metadata #blue;text:blue : references
+
+	Manifest::AssertionStore - -> "many" Assertion : contains
+	Manifest::AssertionStore - -> "many" Binding : contains
+	Manifest::AssertionStore - -> "many" Ingredient : may contain
+	Manifest::CredentialStore - -> "many"  Credential : may contain
+	Manifest::Claim - - -> Claim
+	Manifest::ClaimSignature - - -> ClaimSignature
+
+	Ingredient::Manifest - -> IngredientManifest #blue;text:blue : may reference
+
+	Claim::Assertions - - -> "many" Assertion #blue;text:blue : references 
+	Claim::Redactions - -> "many" Redaction #blue;text:blue : may reference
+	Claim::ClaimSignature - - -> ClaimSignature #blue;text:blue : references
+
+@enduml
+
+@startuml C2PA_Entity_Diagram
+
+	legend
+		* All relationships are singular unless otherwise specified
+		* Red lines represent embedded/contains
+		* Blue lines represent linked references
+		* Text in //italics// means optional elements
+	endlegend
+
+	hide circle
+	hide empty members
+
+	skinparam ObjectFontStyle bold
+	skinparam ClassFontStyle bold
+
+
+	entity Asset {
+		Content
+		..
+		Metadata
+		..
+		Manifest
+	}
+	entity Assertion {
+		//Metadata//
+	}
+	entity Credential {
+	}
+	entity Binding {
+	}
+	entity Ingredient {
+		Information
+		..
+		//Manifest//
+	}
+	entity Claim {
+		Assertions
+		..
+		//Redactions//
+		..
+		ClaimSignature
+	}
+
+	entity ClaimSignature {
+		Identity Credential
+		..
+		//Trusted TimeStamp//
+	}
+	entity Manifest {
+		AssertionStore
+		..
+		//CredentialStore//
+		..
+		Claim
+		..
+		ClaimSignature
+	}
+	entity IngredientManifest {
+	}
+	entity Redaction {
+	}
+
+	Asset <- -[hidden]- Manifest
+	Asset::Manifest - - -d> Manifest
+	Binding - - -> Asset::Content #blue;text:blue : references
+	Binding - - -> Asset::Metadata #blue;text:blue : references
+
+	Manifest::AssertionStore - -> "many" Assertion : contains
+	Manifest::AssertionStore - -> "many" Binding : contains
+	Manifest::AssertionStore - -> "many" Ingredient : may contain
+	Manifest::CredentialStore - -> "many"  Credential : may contain
+	Manifest::Claim - - -> Claim
+	Manifest::ClaimSignature - - -> ClaimSignature
+
+	Ingredient::Manifest - -> IngredientManifest #blue;text:blue : may reference
+
+	Claim::Assertions - - -> "many" Assertion #blue;text:blue : references 
+	Claim::Redactions - -> "many" Redaction #blue;text:blue : may reference
+	Claim::ClaimSignature - - -> ClaimSignature #blue;text:blue : references
+
+@enduml
+
+PlantUML version 1.2021.15(Tue Nov 30 16:45:34 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

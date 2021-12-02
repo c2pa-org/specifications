@@ -316,12 +316,12 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="_external_manifest_stores"><a class="anchor" href="#_external_manifest_stores"></a>3.3.4. External Manifest Stores</h4>
+<h4 id="_manifest_repositories"><a class="anchor" href="#_manifest_repositories"></a>3.3.4. Manifest Repositories</h4>
 <div class="paragraph">
-<p>The C2PA architecture supports manifest stores external to the asset they are associated with.  This is useful when working with a file format that does not support embedding (i.e., text or XML) or when storing the manifest store separately improves workflows (e.g., searching on manifest data in a CMS).</p>
+<p>The C2PA architecture supports manifest stores external to the asset they are associated with, in the form of a manifest repository.  This is useful when working with a file format that does not support embedding (i.e., text or XML) or when storing the manifest store separately improves workflows (e.g., searching on manifest data in a CMS).</p>
 </div>
 <div class="paragraph">
-<p>When storing manifest stores in a cloud service, and serving them via http Link headers (as described in the C2PA specification), having the manifest store available at the same origin as the asset is recommended as it would reduce requirements on <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing (CORS)</a>. However, it is worth noting that doing so does not provide any additional privacy or security protection of either the manifest store or the asset.</p>
+<p>When using a cloud service to manage the manifest repository, and serving the manifest stores via http Link headers (as described in the C2PA specification), having the manifest store available at the same origin as the asset is recommended as it would reduce requirements on <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing (CORS)</a>. However, it is worth noting that doing so does not provide any additional privacy or security protection of either the manifest store or the asset.</p>
 </div>
 </div>
 <div class="sect3">
@@ -348,6 +348,12 @@
 <h4 id="_can_an_application_replace_an_existing_manifest_store"><a class="anchor" href="#_can_an_application_replace_an_existing_manifest_store"></a>3.3.6. Can an application replace an existing manifest store?</h4>
 <div class="paragraph">
 <p>Replacing an existing manifest store with a different manifest store is not recommended since doing so would completely change the provenance of an asset. However, there are some use cases where it could be appropriate.  For example, a publisher may wish to remove all details about the capture and edit of an image and leave only their own publishing information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_manifests_for_existing_media"><a class="anchor" href="#_manifests_for_existing_media"></a>3.3.7. Manifests for existing media</h4>
+<div class="paragraph">
+<p>It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described <a href="#_external_manifests">here</a>, all assets can have provenance, no matter their age.</p>
 </div>
 </div>
 </div>
