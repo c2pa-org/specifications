@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="853px" preserveAspectRatio="none" style="width:569px;height:853px;background:#FFFFFF;" version="1.1" viewBox="0 0 569 853" width="569px" zoomAndPan="magnify"><defs><filter height="300%" id="fg4eiyo2m2bc0" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[c280f77a5f6db6e252f8c12aedbb84e9]
+cluster c2pa--><rect fill="#E6E6FA" filter="url(#fg4eiyo2m2bc0)" height="834" style="stroke:#800080;stroke-width:1.5;" width="550" x="7" y="7"/><line style="stroke:#800080;stroke-width:1.5;" x1="7" x2="557" y1="27.2969" y2="27.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="115" x="224.5" y="21.9951">Manifest Store</text><!--MD5=[3b347f6dd8c057f98c92a5cf15085a16]
+cluster c2ma--><rect fill="#90EE90" filter="url(#fg4eiyo2m2bc0)" height="767" style="stroke:#008000;stroke-width:1.5;" width="502" x="31" y="50"/><line style="stroke:#008000;stroke-width:1.5;" x1="31" x2="533" y1="70.2969" y2="70.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="67" x="248.5" y="64.9951">Manifest</text><!--MD5=[5496e38eb3ab2c934e61ff45ec539389]
+cluster c2as--><rect fill="#ADD8E6" filter="url(#fg4eiyo2m2bc0)" height="460" style="stroke:#0000FF;stroke-width:1.5;" width="349" x="108" y="93"/><line style="stroke:#0000FF;stroke-width:1.5;" x1="108" x2="457" y1="113.2969" y2="113.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="124" x="220.5" y="107.9951">Assertion Store</text><!--MD5=[343f7082fd7fa30e5e63daa4a145afde]
+cluster stds.exif--><rect fill="#E0FFFF" filter="url(#fg4eiyo2m2bc0)" height="121" style="stroke:#0000FF;stroke-width:1.5;" width="293" x="135.5" y="136"/><line style="stroke:#0000FF;stroke-width:1.5;" x1="135.5" x2="428.5" y1="156.2969" y2="156.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="68" x="248" y="150.9951">stds.exif</text><!--MD5=[850043fa8c7ab84110a63e95b68402a2]
+cluster         c2pa.thumbnail.claim.jpg          --><rect fill="#E0FFFF" filter="url(#fg4eiyo2m2bc0)" height="87" style="stroke:#0000FF;stroke-width:1.5;" width="300" x="132.5" y="281"/><line style="stroke:#0000FF;stroke-width:1.5;" x1="132.5" x2="432.5" y1="301.2969" y2="301.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="194" x="180.5" y="295.9951">c2pa.thumbnail.claim.jpg</text><!--MD5=[a151eddc5f40536620306c01da06b237]
+cluster             c2pa.hash.data                     --><rect fill="#E0FFFF" filter="url(#fg4eiyo2m2bc0)" height="137" style="stroke:#0000FF;stroke-width:1.5;" width="301" x="132" y="392"/><line style="stroke:#0000FF;stroke-width:1.5;" x1="132" x2="433" y1="412.2969" y2="412.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="120" x="200" y="406.9951">c2pa.hash.data</text><!--MD5=[2a0893eea9f2cd7010a518f9a4c7c49c]
+cluster c2cl--><rect fill="#FFB6C1" filter="url(#fg4eiyo2m2bc0)" height="105" style="stroke:#FF0000;stroke-width:1.5;" width="338" x="113" y="577"/><line style="stroke:#FF0000;stroke-width:1.5;" x1="113" x2="451" y1="597.2969" y2="597.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="42" x="243.5" y="591.9951">Claim</text><!--MD5=[3e49f57d6a96ac62d1222a0286a1e0c4]
+cluster c2cs--><rect fill="#FFE4B5" filter="url(#fg4eiyo2m2bc0)" height="87" style="stroke:#FF4500;stroke-width:1.5;" width="454" x="55" y="706"/><line style="stroke:#FF4500;stroke-width:1.5;" x1="55" x2="509" y1="726.2969" y2="726.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="123" x="218" y="720.9951">Claim Signature</text><!--MD5=[23bc7945312e1f0a2e37cebfe503a03b]
+entity A1--><rect fill="#FEFECE" filter="url(#fg4eiyo2m2bc0)" height="68.8906" style="stroke:#000000;stroke-width:1.5;" width="261" x="151.5" y="171.5"/><path d="M168.3333,184.9635 L164.8333,191.9635 L166,191.9635 L169.5,184.9635 L168.3333,184.9635 M163.6667,186.1302 L162.5,188.4635 L163.6667,190.7969 L164.8333,190.7969 L163.6667,188.4635 L164.8333,186.1302 L163.6667,186.1302 M169.5,186.1302 L170.6667,188.4635 L169.5,190.7969 L170.6667,190.7969 L171.8333,188.4635 L170.6667,186.1302 L169.5,186.1302 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="221" x="176.8333" y="194.4951">JSON-LD structure with details of</text><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="241" x="161.5" y="210.792">the camera used to take the photo</text><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="144" x="161.5" y="227.0889">and it's GPS location.</text><!--MD5=[406a5e0ae180932da9bcb21c819a1904]
+entity A2--><rect fill="#FEFECE" filter="url(#fg4eiyo2m2bc0)" height="36.2969" style="stroke:#000000;stroke-width:1.5;" width="159.3333" x="202.5" y="316"/><path d="M213.5,329.4635 L213.5,338.7969 L222.8333,338.7969 L222.8333,329.4635 L213.5,329.4635 M214.6667,330.6302 L221.6667,330.6302 L221.6667,334.1302 L220.5,332.9635 L219.3333,334.1302 L221.6667,336.4635 L221.6667,337.6302 L220.5,337.6302 L215.8333,332.9635 L214.6667,334.1302 L214.6667,330.6302 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="124" x="227.8333" y="338.9951">Binary Image Data</text><!--MD5=[b4296d86aafbbd2074f03a740cb37cff]
+entity A4--><rect fill="#FEFECE" filter="url(#fg4eiyo2m2bc0)" height="85.1875" style="stroke:#000000;stroke-width:1.5;" width="224" x="170" y="427.5"/><path d="M186.8333,440.9635 L183.3333,447.9635 L184.5,447.9635 L188,440.9635 L186.8333,440.9635 M182.1667,442.1302 L181,444.4635 L182.1667,446.7969 L183.3333,446.7969 L182.1667,444.4635 L183.3333,442.1302 L182.1667,442.1302 M188,442.1302 L189.1667,444.4635 L188,446.7969 L189.1667,446.7969 L190.3333,444.4635 L189.1667,442.1302 L188,442.1302 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="184" x="195.3333" y="450.4951">CBOR structure containing</text><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="148" x="180" y="466.792">information about the</text><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="204" x="180" y="483.0889">cryptographic hashes binding</text><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="103" x="180" y="499.3857">to the content.</text><!--MD5=[16fab723be418f7eaf2ea4bd895a8e51]
+entity C--><rect fill="#FEFECE" filter="url(#fg4eiyo2m2bc0)" height="52.5938" style="stroke:#000000;stroke-width:1.5;" width="306" x="129" y="612.5"/><path d="M145.8333,625.9635 L142.3333,632.9635 L143.5,632.9635 L147,625.9635 L145.8333,625.9635 M141.1667,627.1302 L140,629.4635 L141.1667,631.7969 L142.3333,631.7969 L141.1667,629.4635 L142.3333,627.1302 L141.1667,627.1302 M147,627.1302 L148.1667,629.4635 L147,631.7969 L148.1667,631.7969 L149.3333,629.4635 L148.1667,627.1302 L147,627.1302 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="219" x="154.3333" y="635.4951">CBOR structure with references</text><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="286" x="139" y="651.792">to the Assertions and the Claim Signature</text><!--MD5=[c3d963de545692ce062b829afe2e18c4]
+entity CS--><rect fill="#FEFECE" filter="url(#fg4eiyo2m2bc0)" height="36.2969" style="stroke:#000000;stroke-width:1.5;" width="190.3333" x="187" y="741"/><path d="M204.4167,754.4635 C202.8067,754.4635 201.5,755.7702 201.5,757.3802 C201.5,757.5669 201.5,757.7535 201.535,757.9285 L198,761.4635 L198,763.7969 L201.5,763.7969 L201.5,761.4635 L203.8333,761.4635 L203.8333,760.2969 L203.8683,760.2619 C204.0433,760.2969 204.23,760.2969 204.4167,760.2969 C206.0267,760.2969 207.3333,758.9902 207.3333,757.3802 C207.3333,755.7702 206.0267,754.4635 204.4167,754.4635 M205,755.6302 C205.6417,755.6302 206.1667,756.1552 206.1667,756.7969 C206.1667,757.4385 205.6417,757.9635 205,757.9635 C204.3583,757.9635 203.8333,757.4385 203.8333,756.7969 C203.8333,756.1552 204.3583,755.6302 205,755.6302 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="155" x="212.3333" y="763.9951">COSE Digital Signature</text><!--MD5=[082e6bf065252b468f048fb3d9caee96]
+@startuml Photo_Manifest
+
+    ' allows mixing various objects in a single diagram
+    allow_mixing
+
+    !include manifest_styling.iuml
+
+	' Diagram!
+    card c2pa as "Manifest Store" <<c2pa>> {
+        card c2ma as "Manifest" <<c2ma>> {
+            card c2as as "Assertion Store" <<c2as>> {
+                card "stds.exif" <<as>> {
+                    rectangle A1 [
+                        <&code> JSON-LD structure with details of 
+                        the camera used to take the photo
+                        and it's GPS location.
+                    ]
+                }
+
+                card "        c2pa.thumbnail.claim.jpg          " <<as>> {
+                    rectangle A2 [
+                        <&image> Binary Image Data
+                    ]
+                }
+
+                card "            c2pa.hash.data                     " <<as>> {
+                    rectangle A4 [
+                        <&code> CBOR structure containing
+						information about the
+						cryptographic hashes binding
+						to the content.
+                    ]
+                }
+            }
+
+            card c2cl as "               Claim                      " <<c2cl>> {
+                rectangle C [
+                    <&code> CBOR structure with references
+                    to the Assertions and the Claim Signature
+                ]
+            }
+
+            card c2cs as "                               Claim Signature                                " <<c2cs>> {
+                rectangle CS [
+					<&key> COSE Digital Signature
+                ]
+            }
+        }
+    }
+
+    ' c2as -[hidden]right-> c2cl
+    ' c2cl -[hidden]right-> c2cs
+
+@enduml
+
+@startuml Photo_Manifest
+
+    allow_mixing
+
+    hide circle
+    hide empty members
+	hide stereotype
+
+    skinparam defaultFontName Source Sans Pro
+	skinparam componentStyle rectangle
+    left to right direction
+
+
+	skinparam card<<c2pa>> {
+    	borderColor Purple
+		backgroundColor Lavender
+	}
+
+	skinparam card<<c2ma>> {
+    	borderColor Green
+		backgroundColor LightGreen
+	}
+
+	skinparam card<<c2vc>> {
+    	borderColor Gold
+		backgroundColor LemonChiffon
+	}
+
+	skinparam card<<vc>> {
+    	borderColor DarkViolet
+		backgroundColor LavenderBlush
+	}
+
+	skinparam card<<c2as>> {
+    	borderColor Blue
+		backgroundColor LightBlue
+	}
+
+	skinparam card<<as>> {
+    	borderColor Blue
+		backgroundColor LightCyan
+	}
+
+	skinparam card<<c2cl>> {
+    	borderColor Red
+		backgroundColor LightPink
+	}
+
+	skinparam card<<c2cs>> {
+    	borderColor OrangeRed
+		backgroundColor Moccasin
+	}
+
+
+    card c2pa as "Manifest Store" <<c2pa>> {
+        card c2ma as "Manifest" <<c2ma>> {
+            card c2as as "Assertion Store" <<c2as>> {
+                card "stds.exif" <<as>> {
+                    rectangle A1 [
+                        <&code> JSON-LD structure with details of 
+                        the camera used to take the photo
+                        and it's GPS location.
+                    ]
+                }
+
+                card "        c2pa.thumbnail.claim.jpg          " <<as>> {
+                    rectangle A2 [
+                        <&image> Binary Image Data
+                    ]
+                }
+
+                card "            c2pa.hash.data                     " <<as>> {
+                    rectangle A4 [
+                        <&code> CBOR structure containing
+						information about the
+						cryptographic hashes binding
+						to the content.
+                    ]
+                }
+            }
+
+            card c2cl as "               Claim                      " <<c2cl>> {
+                rectangle C [
+                    <&code> CBOR structure with references
+                    to the Assertions and the Claim Signature
+                ]
+            }
+
+            card c2cs as "                               Claim Signature                                " <<c2cs>> {
+                rectangle CS [
+					<&key> COSE Digital Signature
+                ]
+            }
+        }
+    }
+
+
+@enduml
+
+PlantUML version 1.2021.15(Tue Nov 30 16:45:34 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
