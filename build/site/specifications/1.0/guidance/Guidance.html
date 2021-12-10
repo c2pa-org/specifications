@@ -25,17 +25,6 @@
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-        <div class="navbar-item has-dropdown is-hoverable">
-          <div class="navbar-link">Download</div>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="./specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
-            <a class="navbar-item" href="./explainer/_attachments/Explainer.pdf">Explainer</a> 
-            <a class="navbar-item" href="./guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
-            <a class="navbar-item" href="./ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
-            <a class="navbar-item" href="./security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
-            <a class="navbar-item" href="./security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
-          </div>
-        </div>
           <div class="navbar-item">
             <input id="search-input" type="text" placeholder="Search docs">
           </div>
@@ -239,10 +228,10 @@
 <div class="sect2">
 <h3 id="_scope"><a class="anchor" href="#_scope"></a>1.2. Scope</h3>
 <div class="paragraph">
-<p>This guidance document describes non-normative technical aspects of the C2PA architecture including construction and consumption of the C2PA manifest and its components and the digital signature technology for enabling tamper-evidence as well as establishing trust. It will also address areas where implementers can extend the C2PA architecture and its ecosystem.</p>
+<p>This guidance document describes non-normative technical aspects of the C2PA architecture including construction and consumption of the C2PA manifest and its components and the digital signature technology for enabling tamper-evidence as well as establishing trust. It will also address areas where implementors can extend the C2PA architecture and its ecosystem.</p>
 </div>
 <div class="paragraph">
-<p>The C2PA also created their <a href="https://c2pa.org/principles/">Guiding Principles</a> that address areas such as respecting privacy and personal control of data with a critical eye toward potential abuse and misuse. This guidance document also will help implementers to understand how these concerns should be addressed in their implementations.</p>
+<p>The C2PA also created their <a href="https://c2pa.org/principles/">Guiding Principles</a> that address areas such as respecting privacy and personal control of data with a critical eye toward potential abuse and misuse. This guidance document also will help implementors to understand how these concerns should be addressed in their implementations.</p>
 </div>
 <div class="paragraph">
 <p>One area of guidance that is not covered in this document is that of User Experience, as that is covered in a [separate document].</p>
@@ -254,7 +243,7 @@
 <h2 id="_how_to_use_this_document"><a class="anchor" href="#_how_to_use_this_document"></a>2. How to use this document</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Rather than reading this document from beginning to end, it is recommended that as an implementer is first designing each aspect of their solution, they should review the relevant section of this document to ensure that they take advantage of the guidance provided.</p>
+<p>Rather than reading this document from beginning to end, it is recommended that as an implementor is first designing each aspect of their solution, they should review the relevant section of this document to ensure that they take advantage of the guidance provided.</p>
 </div>
 </div>
 </div>
@@ -316,12 +305,12 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="_manifest_repositories"><a class="anchor" href="#_manifest_repositories"></a>3.3.4. Manifest Repositories</h4>
+<h4 id="_external_manifest_stores"><a class="anchor" href="#_external_manifest_stores"></a>3.3.4. External Manifest Stores</h4>
 <div class="paragraph">
-<p>The C2PA architecture supports manifest stores external to the asset they are associated with, in the form of a manifest repository.  This is useful when working with a file format that does not support embedding (i.e., text or XML) or when storing the manifest store separately improves workflows (e.g., searching on manifest data in a CMS).</p>
+<p>The C2PA architecture supports manifest stores external to the asset they are associated with.  This is useful when working with a file format that does not support embedding (i.e., text or XML) or when storing the manifest store separately improves workflows (e.g., searching on manifest data in a CMS).</p>
 </div>
 <div class="paragraph">
-<p>When using a cloud service to manage the manifest repository, and serving the manifest stores via http Link headers (as described in the C2PA specification), having the manifest store available at the same origin as the asset is recommended as it would reduce requirements on <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing (CORS)</a>. However, it is worth noting that doing so does not provide any additional privacy or security protection of either the manifest store or the asset.</p>
+<p>When storing manifest stores in a cloud service, and serving them via http Link headers (as described in the C2PA specification), having the manifest store available at the same origin as the asset is recommended as it would reduce requirements on <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing (CORS)</a>. However, it is worth noting that doing so does not provide any additional privacy or security protection of either the manifest store or the asset.</p>
 </div>
 </div>
 <div class="sect3">
@@ -348,12 +337,6 @@
 <h4 id="_can_an_application_replace_an_existing_manifest_store"><a class="anchor" href="#_can_an_application_replace_an_existing_manifest_store"></a>3.3.6. Can an application replace an existing manifest store?</h4>
 <div class="paragraph">
 <p>Replacing an existing manifest store with a different manifest store is not recommended since doing so would completely change the provenance of an asset. However, there are some use cases where it could be appropriate.  For example, a publisher may wish to remove all details about the capture and edit of an image and leave only their own publishing information.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_manifests_for_existing_media"><a class="anchor" href="#_manifests_for_existing_media"></a>3.3.7. Manifests for existing media</h4>
-<div class="paragraph">
-<p>It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described <a href="#_external_manifests">here</a>, all assets can have provenance, no matter their age.</p>
 </div>
 </div>
 </div>
