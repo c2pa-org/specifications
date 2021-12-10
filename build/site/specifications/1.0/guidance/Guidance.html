@@ -25,6 +25,17 @@
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Download</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="./specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="./explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="./guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="./ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="./security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
+            <a class="navbar-item" href="./security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
+          </div>
+        </div>
           <div class="navbar-item">
             <input id="search-input" type="text" placeholder="Search docs">
           </div>
@@ -219,7 +230,7 @@
 <div class="sect2">
 <h3 id="_overview"><a class="anchor" href="#_overview"></a>1.1. Overview</h3>
 <div class="paragraph">
-<p>The Coalition for Content Provenance and Authenticity (C2PA) has developed their <a href="https://c2pa.org/public-draft/">technical specification</a> for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.</p>
+<p>The Coalition for Content Provenance and Authenticity (C2PA) has developed their <a href="../specs/C2PA_Specification.html" class="page">technical specification</a> for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.</p>
 </div>
 <div class="paragraph">
 <p>The specification has been, and continues to be, informed by scenarios, workflows and requirements gathered from industry experts and partner organizations. However many of these requirements are not normative in nature or may differ between organizations or workflows - in those cases it is important to provide non-normative guidance to implementers - which is the goal of this document.</p>
@@ -228,10 +239,10 @@
 <div class="sect2">
 <h3 id="_scope"><a class="anchor" href="#_scope"></a>1.2. Scope</h3>
 <div class="paragraph">
-<p>This guidance document describes non-normative technical aspects of the C2PA architecture including construction and consumption of the C2PA manifest and its components and the digital signature technology for enabling tamper-evidence as well as establishing trust. It will also address areas where implementors can extend the C2PA architecture and its ecosystem.</p>
+<p>This guidance document describes non-normative technical aspects of the C2PA architecture including construction and consumption of the C2PA manifest and its components and the digital signature technology for enabling tamper-evidence as well as establishing trust. It will also address areas where implementers can extend the C2PA architecture and its ecosystem.</p>
 </div>
 <div class="paragraph">
-<p>The C2PA also created their <a href="https://c2pa.org/principles/">Guiding Principles</a> that address areas such as respecting privacy and personal control of data with a critical eye toward potential abuse and misuse. This guidance document also will help implementors to understand how these concerns should be addressed in their implementations.</p>
+<p>The C2PA also created their <a href="https://c2pa.org/principles/">Guiding Principles</a> that address areas such as respecting privacy and personal control of data with a critical eye toward potential abuse and misuse. This guidance document also will help implementers to understand how these concerns should be addressed in their implementations.</p>
 </div>
 <div class="paragraph">
 <p>One area of guidance that is not covered in this document is that of User Experience, as that is covered in a [separate document].</p>
@@ -243,7 +254,7 @@
 <h2 id="_how_to_use_this_document"><a class="anchor" href="#_how_to_use_this_document"></a>2. How to use this document</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Rather than reading this document from beginning to end, it is recommended that as an implementor is first designing each aspect of their solution, they should review the relevant section of this document to ensure that they take advantage of the guidance provided.</p>
+<p>Rather than reading this document from beginning to end, it is recommended that as an implementer is first designing each aspect of their solution, they should review the relevant section of this document to ensure that they take advantage of the guidance provided.</p>
 </div>
 </div>
 </div>
@@ -305,12 +316,12 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="_external_manifest_stores"><a class="anchor" href="#_external_manifest_stores"></a>3.3.4. External Manifest Stores</h4>
+<h4 id="_manifest_repositories"><a class="anchor" href="#_manifest_repositories"></a>3.3.4. Manifest Repositories</h4>
 <div class="paragraph">
-<p>The C2PA architecture supports manifest stores external to the asset they are associated with.  This is useful when working with a file format that does not support embedding (i.e., text or XML) or when storing the manifest store separately improves workflows (e.g., searching on manifest data in a CMS).</p>
+<p>The C2PA architecture supports manifest stores external to the asset they are associated with, in the form of a manifest repository.  This is useful when working with a file format that does not support embedding (i.e., text or XML) or when storing the manifest store separately improves workflows (e.g., searching on manifest data in a CMS).</p>
 </div>
 <div class="paragraph">
-<p>When storing manifest stores in a cloud service, and serving them via http Link headers (as described in the C2PA specification), having the manifest store available at the same origin as the asset is recommended as it would reduce requirements on <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing (CORS)</a>. However, it is worth noting that doing so does not provide any additional privacy or security protection of either the manifest store or the asset.</p>
+<p>When using a cloud service to manage the manifest repository, and serving the manifest stores via http Link headers (as described in the C2PA specification), having the manifest store available at the same origin as the asset is recommended as it would reduce requirements on <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing (CORS)</a>. However, it is worth noting that doing so does not provide any additional privacy or security protection of either the manifest store or the asset.</p>
 </div>
 </div>
 <div class="sect3">
@@ -337,6 +348,12 @@
 <h4 id="_can_an_application_replace_an_existing_manifest_store"><a class="anchor" href="#_can_an_application_replace_an_existing_manifest_store"></a>3.3.6. Can an application replace an existing manifest store?</h4>
 <div class="paragraph">
 <p>Replacing an existing manifest store with a different manifest store is not recommended since doing so would completely change the provenance of an asset. However, there are some use cases where it could be appropriate.  For example, a publisher may wish to remove all details about the capture and edit of an image and leave only their own publishing information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_manifests_for_existing_media"><a class="anchor" href="#_manifests_for_existing_media"></a>3.3.7. Manifests for existing media</h4>
+<div class="paragraph">
+<p>It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described <a href="#_external_manifests">here</a>, all assets can have provenance, no matter their age.</p>
 </div>
 </div>
 </div>
@@ -410,7 +427,7 @@
 <p>Asset metadata (including any manifest present) may be routinely removed or corrupted by legacy or non-C2PA capable platforms during distribution.  This is common, for example, on social media platforms that display asset renditions (e.g. altering the resolution, form factor or quality of the digital content) that do not have the appropriate C2PA manifests declaring those modifications.  Whilst these renditions may not create user perceptible change, they nevertheless change the underlying binary representation of the digital content.</p>
 </div>
 <div class="paragraph">
-<p>Soft bindings provide a means for identifying manifests that have become `decoupled’ from their associated assets in these circumstances.</p>
+<p>Soft bindings provide a means for identifying manifests that have become 'decoupled' from their associated assets in these circumstances.</p>
 </div>
 <div class="paragraph">
 <p>Examples of soft bindings are content fingerprints (such as perceptual hashes) computed from the digital content, or watermarks embedded within the digital content.</p>
@@ -464,7 +481,7 @@
 <div class="sect3">
 <h4 id="_guidance_on_soft_binding_implementation"><a class="anchor" href="#_guidance_on_soft_binding_implementation"></a>4.2.2. Guidance on Soft Binding Implementation</h4>
 <div class="paragraph">
-<p>Soft bindings are not guaranteed to be exact, and so care should be taken in their use.  Consider perceptual hashing; a common form of soft binding algorithm.  By design, multiple renditions of the same digital content may generate the same soft binding.  However different digital content, or renditions thereof, may generate the same soft binding either in error or due to attacks on the hashing function (for example, adversarial attacks on machine learning models).  Therefore we make the following design recommendation on the implementation of soft bindings in C2PA.</p>
+<p>Soft bindings are not guaranteed to be exact, and so care should be taken in their use.  Consider perceptual hashing; a common form of soft binding algorithm.  By design, multiple renditions of the same digital content may generate the same soft binding.  However different digital content, or renditions thereof, may generate the same soft binding either in error or due to attacks on the hashing function (for example, adversarial attacks on machine learning models). Therefore we make the following design recommendation on the implementation of soft bindings in C2PA.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -472,13 +489,16 @@
 <p>Soft bindings must not be substituted for hard bindings in order to bind claims within a manifest.</p>
 </li>
 <li>
-<p>The matches made using a soft binding must be interactively verified via human-in-the-loop checking.  For example, a thumbnail of an image stored within the manifest might be displayed to aid visual verification of the match made using a soft binding.</p>
+<p>The matches made using a soft binding must be interactively verified via human-in-the-loop checking. For example, a thumbnail of an image stored within the manifest might be displayed to aid visual verification of the match made using a soft binding.</p>
 </li>
 <li>
-<p>Hard bindings (cryptographic hashes) may be used as an alternative to soft bindings, to query manifests within a provenance datastore.   However this method will fail if the digital content has been modified (for example, is an asset rendition).</p>
+<p>Hard bindings (cryptographic hashes) may be used as an alternative to soft bindings, to query manifests within a provenance datastore. However this method will fail if the digital content has been modified (for example, is an asset rendition).</p>
 </li>
 <li>
 <p>We recommend that services provided for the lookup of manifests using hard or soft bindings advertise the types of binding that may be used as query, using the unique identifier of that binding (per the hard or soft binding registry).</p>
+</li>
+<li>
+<p>We recommend that claim generators that add soft binding assertions to an asset&#8217;s manifest do so as an opt-in addition and not make it mandatory.</p>
 </li>
 </ol>
 </div>
@@ -486,19 +506,22 @@
 <div class="sect3">
 <h4 id="_trust_and_privacy_considerations"><a class="anchor" href="#_trust_and_privacy_considerations"></a>4.2.3. Trust and Privacy Considerations</h4>
 <div class="paragraph">
-<p>To mitigate risks to user privacy, we recommend that the consumer should be informed explicitly (for example, via opt in) to the querying of the provenance datastore.  For example, a consumer may interactively initiate a query for an asset containing no manifest in order to to recover provenance information about that asset.</p>
+<p>To mitigate risks to user privacy, we recommend that the consumer should be informed explicitly (for example, via opt in) to the querying of the provenance datastore. For example, a consumer may interactively initiate a query for an asset containing no manifest in order to recover provenance information about that asset.</p>
+</div>
+<div class="paragraph">
+<p>We also recommend that content creators be informed of the trade offs involved in using provenance datastores that allow for asset link-up with soft bindings; that is, on the one hand, identifying manifests that have become 'decoupled' from their associated assets, while on the other hand, privacy risks that may result from a soft binding link-up to an earlier manifest with, for example, redacted information.</p>
 </div>
 <div class="paragraph">
 <p>To mitigate risks to user privacy and to preserve bandwidth, we recommend that the soft binding used to query the provenance datastore is computed on the client side to avoid transmission of query asset to the lookup service.</p>
 </div>
 <div class="paragraph">
-<p>It is unlikely that a single centralized provenance datastore will emerge for all content.   Rather it is anticipated that decentralized model will evolve in which multiple federated provenance datastores might emerge for different industry verticals, for example a coalition of news broadcasters might maintain a federated service for soft binding lookup based upon their own provenance datastores.</p>
+<p>It is unlikely that a single centralized provenance datastore will emerge for all content. Rather it is anticipated that decentralized model will evolve in which multiple federated provenance datastores might emerge for different industry verticals, for example a coalition of news broadcasters might maintain a federated service for soft binding lookup based upon their own provenance datastores.</p>
 </div>
 <div class="paragraph">
 <p>To promote the interoperability of independent services that query provenance datastores, we recommend that a standard communication protocol be established for clients to send queries to the soft binding lookup services and for returning manifests to clients.</p>
 </div>
 <div class="paragraph">
-<p>Trust in the lookup process is derived from trust in the integrity of the provenance datastore.  It may be desirable to use a decentralized, immutable data technology, such as a distributed ledger or blockchain, to underwrite the integrity of the provenance datastore.</p>
+<p>Trust in the lookup process is derived from trust in the integrity of the provenance datastore. It may be desirable to use a decentralized, immutable data technology, such as a distributed ledger or blockchain, to underwrite the integrity of the provenance datastore.</p>
 </div>
 </div>
 </div>
@@ -509,26 +532,28 @@
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_cryptography"><a class="anchor" href="#_cryptography"></a>5.1. Cryptography</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Items for future guidance</div>
-
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>C2PA prescribes cryptographic algorithms permitted for hashing (or message digest), and digital signatures both of manifests and of signing credentials. This list contains algorithms instantiated at multiple different security levels. Unless there are particular application needs or policy requirements that call for a higher security level, C2PA recommends using the following algorithms, key types, and key sizes.</p>
+</div>
+<div class="paragraph">
+<p>For hashing, C2PA recommends using SHA2-256. Standalone hashes are used in multiple places, including hard bindings of content, lists of assertions in claims, and in <code>hashed-uri</code> and <code>hashed-uri-ext</code> structures.</p>
+</div>
+<div class="paragraph">
+<p>When generating a key pair for certification in a signing credential, C2PA recommends an elliptic curve cryptography (ECC) key pair on the P-256 elliptic curve or the X25519 elliptic curve. If using ECC is not desired, as an alternate, C2PA recommends an RSA key pair with a modulus length of 2048 bits.</p>
+</div>
+<div class="paragraph">
+<p>When choosing a signature algorithm for signing manifests, C2PA recommends:
+* <code>ES256</code> (ECDSA with SHA-256) when using an ECC key pair on the P-256, P-384, or P-521 elliptic curves,
+* <code>EdDSA</code> (Ed25519) when using an ECC key pair on the X25519 elliptic curve, or
+* <code>PS256</code> (RSASSA-PSS using SHA-256 and MGF1 with SHA-256) when using an RSA key pair.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_digital_signatures"><a class="anchor" href="#_digital_signatures"></a>5.2. Digital Signatures</h3>
 <div class="sect3">
-<h4 id="_revocation_information"><a class="anchor" href="#_revocation_information"></a>5.2.1. Revocation Information</h4>
+<h4 id="_revocation_information_and_time_stamps"><a class="anchor" href="#_revocation_information_and_time_stamps"></a>5.2.1. Revocation Information and Time-stamps</h4>
 <div class="paragraph">
-<p>C2PA strongly recommends that claim generators retrieve and attach credential freshness information at signing time. This information should be added into the COSE signature as described in the specification.</p>
+<p>C2PA strongly recommends that claim generators retrieve and attach time-stamps and credential freshness information at signing time. This information should be added into the COSE signature as described in the specification.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -537,7 +562,7 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Attaching freshness information to the signature allows validators to conclude the manifest is still valid a) even if the signing credential has since expired or been revoked and b) without the need of an online query.
+Attaching a time-stamp and freshness information to the signature allows validators to conclude the manifest is still valid a) even if the signing credential has since expired or was revoked after signing time and b) without the need of an online query.
 </td>
 </tr>
 </table>
@@ -562,19 +587,28 @@ Attaching freshness information to the signature allows validators to conclude t
 </div>
 </div>
 <div class="sect3">
-<h4 id="_use_of_self_signed_certificates"><a class="anchor" href="#_use_of_self_signed_certificates"></a>5.2.3. Use of Self-Signed Certificates</h4>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Items for future guidance</div>
-
-</td>
-</tr>
-</table>
+<h4 id="_verifying_suitability_of_signing_credentials"><a class="anchor" href="#_verifying_suitability_of_signing_credentials"></a>5.2.3. Verifying Suitability of Signing Credentials</h4>
+<div class="paragraph">
+<p>If possible, a claim generator should attempt to validate that the signing credential used is suitable for the expected audience of validators for the asset. C2PA currently only supports X.509 certificates as signing credentials. A claim generator should be configured with the same trust anchor list and Extended Key Usage (EKU) list as the validators. Then, at signing time, the claim generator should:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Validate that the certificate fulfills all the requirements for C2PA signing credentials as described Certificate Profile section of the Trust Model chapter.</p>
+</li>
+<li>
+<p>Validate that a chain of trust can be computed from the signing certificate to an entry in the trust anchor list using the contents of the <code>x5chain</code> COSE header, following the procedure in <a href="https://datatracker.ietf.org/doc/html/rfc5280#section-6">RFC 5280 section 6</a>. This header will include both the signing certificate and any intermediate certification authorities required to build a trust chain to the trust anchor.</p>
+</li>
+<li>
+<p>Validate that the signing certificate is valid for one of the Extended Key Usages listed.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If the claim generator is not configured with the trust anchor list and EKU list as the validators, it should not attempt any validation and sign with the provided credential.</p>
+</div>
+<div class="paragraph">
+<p>If it is so configured and validation fails, the claim generator should warn its user with an explanation of the problem, but should allow the user to choose to proceed with signing. Users may choose to sign in situations where they know their audience has a different trust anchor or EKU list configuration.</p>
 </div>
 </div>
 </div>
@@ -585,30 +619,29 @@ Attaching freshness information to the signature allows validators to conclude t
 <div class="paragraph">
 <p>The C2PA does not mandate the use of any specific "list of certificates or CAs that can be used to verify the trustworthiness of the signer of a manifest". There exists a variety of complexities in choosing the membership for such a list, and implementers should understand them prior to the creation of their list. The C2PA will continue to improve their guidance in this matter as the ecosystem grows.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Items for future guidance</div>
 <div class="paragraph">
-<p>Include information about creating, managing, using, etc.</p>
+<p>Although consumers should be able to modify the configuration of their validators, implementers should discourage consumers from adding or removing individual trust anchors. If appropriate for the application, implementers should provide users with a selection of lists they can choose from. Certain applications may have only one list of trust anchors, and others may have more than one list of trust anchors.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Multiple lists</p>
-</li>
-<li>
-<p>Managing the "private list" (security and general operational considerations)</p>
-</li>
-</ul>
 </div>
-</td>
-</tr>
-</table>
+<div class="sect3">
+<h4 id="_use_of_the_private_credential_store_also_known_as_the_address_book"><a class="anchor" href="#_use_of_the_private_credential_store_also_known_as_the_address_book"></a>5.3.2. Use of the Private Credential Store (also known as the "address book")</h4>
+<div class="paragraph">
+<p>The identity of signers will typically be established by identity providers through the use of trust lists, as there is no expectation that signers and validators will be directly known to one another. There are exceptions, however, where two users who do know one another will want to be able to validate assets signed by the other. For example, a journalist working for a well-known media organization may have a signing credential for their organization, but still wish to receive C2PA-protected assets from sources who are otherwise anonymous. The source&#8217;s validator may already trust the journalist&#8217;s credential based on its issuance from a trusted identity provider, but the source almost certainly will not have such a credential. In this case, the source can generate their own signing credential. Such a credential would not be trusted in general, as it is not issued by a recognized identity provider, but in this special case it can be communicated to the journalist, who can elect to add it to their private credential store.</p>
+</div>
+<div class="paragraph">
+<p>The private credential store is only usable for the purpose of directly trusting assets signed by a credential that would not otherwise be accepted. Credentials in the private credential store cannot act as identity providers and issue credentials for others.</p>
+</div>
+<div class="paragraph">
+<p>Implementers who want to provide this functionality should allow such a consumer to generate a credential with a simple user interface. In the case of X.509 certificates, this takes the form of a self-signed certificate. Implementers should follow the Certificate Profile in the specification when generating the certificate. Consumers can have the option to provide personally identifying information to be placed in the certificate if desired, but should not be required to do so; where such fields are required in the credential, the implementation can place non-identifying default values. Implementers should also allow the consumer to choose a validity period for the certificate after which it will become invalid, to suit the expected length of time the credential will be required. C2PA recommends a suggested default of one year.</p>
+</div>
+<div class="paragraph">
+<p>Implementers should also consumers to import and export these credentials, but stress that importing such a credential should only be permitted if the consumer has personal knowledge the credential originates from the known source. Consumers should also be directed to remove credentials when assets signed with them no longer need to be validated, or the consumer learns the signing credential has been compromised or lost.</p>
+</div>
+<div class="paragraph">
+<p>Implementers should enforce time validity periods on credentials in the private credential store, and either warn about or reject manifests signed by credentials that have expired. Implementers may provide functionality to time-stamp a single asset or otherwise mark it as requiring preservation, and continue to validate that particular manifest when needed.</p>
+</div>
+<div class="paragraph">
+<p>Consumers should only accept credentials from others with whom they have an existing relationship and an out-of-band reason to believe the credential belongs to the intended subject.</p>
 </div>
 </div>
 </div>

@@ -1,4 +1,4 @@
-<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="201px" height="301px" viewBox="-0.5 -0.5 201 301" content="&lt;mxfile&gt;&lt;diagram id=&quot;7obOEI9IPgsgN9EZozkg&quot; name=&quot;Page-1&quot;&gt;3ZbBjpswEIafJndswGGPWQLtZaVKOfRsYACrBiPjFNKnrwkmAQHZREq00nJAnn88tufzaGBj+0X7Q9Iq/xAJ8A22knZj7zcYu9jV70449cIWoV7IJEt6aSQc2D8womXUI0ugnkxUQnDFqqkYi7KEWE00KqVoptNSwae7VjSDmXCIKZ+rv1mi8l71XOuq/wSW5cPOyDKegg6TjVDnNBHNSLKDje1LIVQ/KlofeMdu4NLHhSvey8EklOqeANwH/KX8aHLz8a+dVj5oyVKolTmmOg251w0rOC219Z4yzn3BhTx77MQFL3G0Xisp/sDI4+HIJqTzmOBwGrl3A2/fRZrTgFTQrmaELpx0fYEoQMmTnjIEDGhNbTnGbK4XhYfryEeXZA8iNcWRXZa+8tMDg3AZpzPDuatrnQ0TZf0ASRRRBHiJpGWRYBd2EaJUIz09P+uE0fsOBfhewvgm4c8BI7IAGD0D8HYGeIa1yZmCQ0Xjzm50/9FZ56rQK+6RHtK66ltCylpIFqqYgpfGS+xJ7EGU3svQuV2lnzJ0FhA6TyDofROC5MsIvn0TgujritCdf3Y4ZcUDLTL1YogXEUWe6+gv8WorDD0/8P2XtELk3tkLyRMYkjWG1oFlJVVHCY/wTIEs80y2b5F1i2cYkBfxvNgv4KnN62/W2Tf6V7WD/w==&lt;/diagram&gt;&lt;/mxfile&gt;">
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="201px" height="301px" viewBox="-0.5 -0.5 201 301" content="&lt;mxfile&gt;&lt;diagram id=&quot;7obOEI9IPgsgN9EZozkg&quot; name=&quot;Page-1&quot;&gt;3ZZNb6MwEEB/Te6YrzjHlED3UmmlHPZsYABrDUbGKWR//ZpgCizOtkipKjWHCL/xgP08Gtg5Qdk9C1IXLzwFtrOttNs5p51te9Ze/ffgOoCD4w0gFzQdEJrAmf4BDS1NLzSFZjFRcs4krZcw4VUFiVwwIgRvl9MyzpZPrUkOK3BOCFvTXzSVxUCxZ038B9C8GJ+MLB0pyThZg6YgKW9nyAl3TiA4l8NV2QXAenejlyEvuhN9W5iASn4kwR4SXgm76L0F9s+jIi+kohk0Ui9TXse9Ny0tGanU6CmjjAWccXGLOKkHOHUVb6Tgv2EWwXbs+H4f0cnRMvPkhfjUZ66Xr3f0CkJCN0N6O8/AS5DiqqaM0VGtri1XD9vpoOzxOIrZITkjJLo48rdbT/7UhVZo1umudB6bRi2d8qrZYBLFBIFtMmlZfniM+gxeyRnPbr/7htHTEYW20bC91fA/ghFeG0a+wTB6hOH9yvDKa1tQCeeaJP24VQ1IbbuQpbrjCalL0tRDT8hoB6mhjAngLDHJ9xMMcWaU6G6ViN6tUteg0H2AQfxNDPpfZvDwTQyirytCb/3eYYSWG3pkhhNIjIpi7LnqVXy3F0Y4CIPgc3oh+mAv9B/g0L/n0DrTvCLyImCLzwx8s890f4it//mMQv+TfBoq8lE61XD6zLrFZt+qTvgX&lt;/diagram&gt;&lt;/mxfile&gt;">
     <defs/>
     <g>
         <path d="M 0 23 L 0 0 L 200 0 L 200 23" fill="#d5e8d4" stroke="#82b366" stroke-miterlimit="10" pointer-events="all"/>
@@ -9,30 +9,30 @@
                 C2PA Manifest
             </text>
         </g>
-        <path d="M 20 63 L 20 40 L 180 40 L 180 63" fill="#1ba1e2" stroke="#006eaf" stroke-miterlimit="10" pointer-events="all"/>
-        <path d="M 20 63 L 20 140 L 180 140 L 180 63" fill="#1ba1e2" stroke="#006eaf" stroke-miterlimit="10" pointer-events="all"/>
-        <path d="M 20 63 L 180 63" fill="none" stroke="#006eaf" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 20 203 L 20 180 L 180 180 L 180 203" fill="#1ba1e2" stroke="#006eaf" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 20 203 L 20 280 L 180 280 L 180 203" fill="#1ba1e2" stroke="#006eaf" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 20 203 L 180 203" fill="none" stroke="#006eaf" stroke-miterlimit="10" pointer-events="all"/>
         <g fill="#ffffff" font-family="Helvetica" font-weight="bold" text-anchor="middle" font-size="12px">
-            <text x="99.5" y="56">
+            <text x="99.5" y="196">
                 Assertions
             </text>
         </g>
-        <rect x="30" y="80" width="40" height="40" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all"/>
-        <rect x="80" y="80" width="40" height="40" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all"/>
-        <rect x="130" y="80" width="40" height="40" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all"/>
-        <path d="M 20 173 L 20 150 L 180 150 L 180 173" fill="#f8cecc" stroke="#b85450" stroke-miterlimit="10" pointer-events="all"/>
-        <path d="M 20 173 L 20 210 L 180 210 L 180 173" fill="#f8cecc" stroke="#b85450" stroke-miterlimit="10" pointer-events="all"/>
-        <path d="M 20 173 L 180 173" fill="none" stroke="#b85450" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="30" y="220" width="40" height="40" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all"/>
+        <rect x="80" y="220" width="40" height="40" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all"/>
+        <rect x="130" y="220" width="40" height="40" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all"/>
+        <path d="M 20 133 L 20 110 L 180 110 L 180 133" fill="#f8cecc" stroke="#b85450" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 20 133 L 20 170 L 180 170 L 180 133" fill="#f8cecc" stroke="#b85450" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 20 133 L 180 133" fill="none" stroke="#b85450" stroke-miterlimit="10" pointer-events="all"/>
         <g fill="#000000" font-family="Helvetica" font-weight="bold" text-anchor="middle" font-size="12px">
-            <text x="99.5" y="166">
+            <text x="99.5" y="126">
                 Claim
             </text>
         </g>
-        <path d="M 20 243 L 20 220 L 180 220 L 180 243" fill="#ffe6cc" stroke="#d79b00" stroke-miterlimit="10" pointer-events="all"/>
-        <path d="M 20 243 L 20 280 L 180 280 L 180 243" fill="#ffe6cc" stroke="#d79b00" stroke-miterlimit="10" pointer-events="all"/>
-        <path d="M 20 243 L 180 243" fill="none" stroke="#d79b00" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 20 63 L 20 40 L 180 40 L 180 63" fill="#ffe6cc" stroke="#d79b00" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 20 63 L 20 100 L 180 100 L 180 63" fill="#ffe6cc" stroke="#d79b00" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 20 63 L 180 63" fill="none" stroke="#d79b00" stroke-miterlimit="10" pointer-events="all"/>
         <g fill="#000000" font-family="Helvetica" font-weight="bold" text-anchor="middle" font-size="12px">
-            <text x="99.5" y="236">
+            <text x="99.5" y="56">
                 Claim Signature
             </text>
         </g>
