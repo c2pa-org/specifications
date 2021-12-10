@@ -25,17 +25,6 @@
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-        <div class="navbar-item has-dropdown is-hoverable">
-          <div class="navbar-link">Download</div>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="./specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
-            <a class="navbar-item" href="./explainer/_attachments/Explainer.pdf">Explainer</a> 
-            <a class="navbar-item" href="./guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
-            <a class="navbar-item" href="./ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
-            <a class="navbar-item" href="./security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
-            <a class="navbar-item" href="./security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
-          </div>
-        </div>
           <div class="navbar-item">
             <input id="search-input" type="text" placeholder="Search docs">
           </div>
@@ -411,7 +400,7 @@ C2PA specifications SHOULD NOT provide value judgments about whether a given set
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="_images/Manifest.drawio.svg" alt="A C2PA Manifest and its parts" height="150">
+<img src="_images/C2PA_Manifest.svg" alt="A C2PA Manifest and its parts" width="333" height="328">
 </div>
 <div class="title">Figure 1. A C2PA Manifest and its constituent parts</div>
 </div>
@@ -427,11 +416,11 @@ C2PA specifications SHOULD NOT provide value judgments about whether a given set
 <div class="paragraph">
 <p>A very common scenario will be a user (called an actor in the C2PA ecosystem) taking a photograph with their C2PA-enabled camera (or phone). In that instance, the camera would create a C2PA manifest containing some such assertions including information about the camera itself, a thumbnail of the image and some cryptographic hashes that bind the photograph to the manifest. These assertions would then be listed in the Claim, which would be digitally signed and then the entire manifest would be embedded into the output JPEG. This manifest would remain valid indefinitely.</p>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock text-center kroki">
 <div class="content">
-<img src="_images/Photo_Manifest.svg" alt="Example C2PA Manifest of a Photograph" width="284" height="424">
+<img src="https://kroki.io/plantuml/svg/eNqtVE1v2zAMPde_guihPdXYumsQoEm3YcO6DvOxKApGpm0utmRI8tpg6H8fJaex0yZtBkwHAxIf6cfHjwTknALWtbl30PAD6xJ-o2XTOTCLX6S8A9aA4MRSE-SMpcUmCX7R6653SpI-UsU5ga8IXGv8-A31Cqhp_UqsgndpmkZzNCq2qqbh3gMbahZk3VNo51d1-FO4uSXrFoUIKNO0RpP2mZgJrDDGwLR3qqnw4A1YLisv5IOZjU6SoyHCJ_nQDNWytKbT-dzUxk4mCl05ncIVlhIb38bPa-QGMi41-s7SyDUyKYITKFQLQAfHV6i5IOch88bSMfyJoDFQbGPgGDKGCSbALpwjGzJ7GXDb49j53KX0wMUuTDgbBeHiPdzshIQzOVEmp2lyFM_X7Pr72bdLqZHtVMgf7tlXa2NOHrmWfipiZyjhYXFt6xzloUAel33ftJXxZu9fUefA_tTB5x8Z1EZhyDndCb998fqY7BNFnbeY-qprFlqYpirU8u5d2uryAJXOX1WJG2mDKcxYo13Bl3CDS5S2-C-cK3RVmku4A3h-OLia89n1z1EplZE2Zh1mr7ezLoxtovaAC9P5ULm1TdlV643siLZiBYEfOViwzgf3UO6qDysDcnj1XtFlM151HIc4jLskGeSY71FjS4lnQgw9bakgS1pJbutsNhPoekTo1PD-bC8krye6Jy1XDmkNsd5IMJMMI5XJyZJWU5hfZx_hkkv2WP8LoVDUsGfObmQ356Rvc3Ovz6ZR7S3sadR_A4s7N-LQbeH2wVyZbBf7MfkLXrq3wA==" alt="Photo manifest" width="333" height="328">
 </div>
-<div class="title">Figure 2. Example C2PA Manifest of a Photograph</div>
+<div class="title">Figure 2. Photo manifest</div>
 </div>
 <div class="paragraph">
 <p>A manifest consumer, such as a C2PA validator, could help users to establish the trustworthiness of the asset by first validating the digital signature and its associated credential. It can also check each of the assertions for validity and present the information contained in them, and the signature, to the user in a way that they can then make an informed decision about the trustworthiness of the digital content.</p>
@@ -570,6 +559,18 @@ For the purposes of this definition, we will extend the typical definition of "f
 <div class="paragraph">
 <p>A representation of an <em>asset</em> (either as a part of an <em>asset</em> or a completely new <em>asset</em>) where the <em>digital content</em> has had a 'non-editorial transformation' <em>action</em> (e.g., re-encoding or scaling) applied but where the <em>asset metadata</em> has not been modified.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is also referred to as a <em>Facsimile Asset</em>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p><strong>EXAMPLE:</strong> A video file that is re-encoded for reduced screen resolution or network bandwidth.</p>
 </div>
@@ -707,7 +708,7 @@ Details on how one determines which <em>manifest</em> is the <em>origin</em> are
 </div>
 </div>
 <div class="sect3">
-<h4 id="_manifest_repository"><a class="anchor" href="#_manifest_repository"></a>2.4.3. Manifest Repository</h4>
+<h4 id="_provenance_datastore"><a class="anchor" href="#_provenance_datastore"></a>2.4.3. Provenance datastore</h4>
 <div class="paragraph">
 <p>A repository into which C2PA <em>manifests</em> can be placed, and which can be searched using a <em>content binding</em>.</p>
 </div>
@@ -943,7 +944,7 @@ label = 1*("." 1(ALPHA / "_" ) *( DIGIT / ALPHA / "_" ) )</code></pre>
 <p>Assertions that are present in an asset-embedded manifest may be removed from that asset&#8217;s manifest when the asset is <a href="#_ingredient_storage">used as an ingredient</a>. This process is called redaction.</p>
 </div>
 <div class="paragraph">
-<p>Redaction involves removing either the entire assertion from the manifest&#8217;s assertion store or retaining the labelled assertion container but replacing its data with zeros (binary <code>\0</code> values). In addition, a record that something was removed must be added to the <a href="#_claims">claim</a> in the form of a <a href="#_uri_references">URI reference</a> to the redaction assertion in the <code>redacted_assertions</code> field of the claim.</p>
+<p>Redaction involves removing either the entire assertion from the manifest&#8217;s assertion store or retaining the labeled assertion container but replacing its data with zeros (binary <code>\0</code> values). In addition, a record that something was removed must be added to the <a href="#_claims">claim</a> in the form of a <a href="#_uri_references">URI reference</a> to the redaction assertion in the <code>redacted_assertions</code> field of the claim.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1122,7 +1123,7 @@ Cloud data assertions use a different schema for URIs which is described in <a h
 </td>
 <td class="content">
 <div class="paragraph">
-<p>JSON-LD serialization is mandated as it is the most commonly used of the three syntaxes presented in section 6 of the W3C Verifiable Credentials specification. It is also the one that aligns best with its extensibility model, which could be useful to some implementers.</p>
+<p>JSON-LD serialization is mandated as it is the most commonly used of the three syntaxes presented in section 6 of the W3C Verifiable Credentials specification. It is also the one that aligns best with its extensibility model, which could be useful to some implementors.</p>
 </div>
 </td>
 </tr>
@@ -1772,7 +1773,7 @@ While it is possible to add the XMP data to the list of exclusions in a data has
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="_images/ManifestStore.svg" alt="C2PA Manifest Store" width="240" height="500">
+<img src="_images/JUMBF-Single.svg" alt="C2PA Manifest Store" width="301">
 </div>
 <div class="title">Figure 8. C2PA Manifest Store</div>
 </div>
@@ -1804,21 +1805,21 @@ While it is possible to add the XMP data to the list of exclusions in a data has
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="_images/ManifestStore_Credential.svg" alt="C2PA Manifest Store with Credentials" width="244" height="500">
+<img src="_images/JUMBF-Single-Credentials.svg" alt="C2PA Manifest Block with a Credential Store" width="301">
 </div>
-<div class="title">Figure 9. C2PA Manifest Store with Credentials</div>
+<div class="title">Figure 9. C2PA Manifest Block with Credentials</div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_ingredient_storage"><a class="anchor" href="#_ingredient_storage"></a>10.1.1.2. Ingredient Storage</h5>
 <div class="paragraph">
-<p>When a C2PA Manifest includes <a href="#_ingredients">ingredient assertions</a>, and an ingredient contains a C2PA manifest, that manifest must be brought into this asset to ensure that the provenance data is kept intact. Such ingredient manifests are added to the C2PA Manifest Store as a peer of the C2PA Manifest for the asset itself.</p>
+<p>When a C2PA Manifest includes <a href="#_ingredients">ingredient assertions</a>, and an ingredient contains a C2PA manifest, that manifest must be brought into this asset to ensure that the provenance data is kept intact. Such ingredient manifests are added to the C2PA Manifest Store as a child of the C2PA Manifest for the asset itself.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="_images/ManifestStore_Ingredient.svg" alt="C2PA Manifest Store with Ingredient" width="240" height="500">
+<img src="_images/JUMBF-Single-Ingredients.svg" alt="C2PA Manifest Block with an Ingredient" width="301">
 </div>
-<div class="title">Figure 10. C2PA Manifest Store With an Ingredient</div>
+<div class="title">Figure 10. C2PA Manifest Block With an Ingredient</div>
 </div>
 </div>
 </div>
@@ -1938,7 +1939,7 @@ Non-BMFF-based audio formats which are being considered for addition to this spe
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Many classic image formats such as GIF and BMP do not support the embedding of arbitrary data, so that the use of an <a href="#_external_manifests">external manifest</a> is required.
+Many classic image formats such as GIF and BMP do not support the embedding of arbitrary data, so that the use of an external manifest is required.
 </td>
 </tr>
 </table>
@@ -1997,7 +1998,7 @@ Adding the PDF signature in addition to the C2PA&#8217;s claim signature improve
 <div class="sect4">
 <h5 id="_embedding_manifests_into_id3"><a class="anchor" href="#_embedding_manifests_into_id3"></a>10.3.1.4. Embedding manifests into ID3</h5>
 <div class="paragraph">
-<p>The C2PA Manifest Store shall be embedded into a ID3v2-compatible, compressed audio file (e.g., MP3 or FLAC) file as the Encapsulated object data of a General Encapsulated Object (GEOB) as defined in <a href="https://id3.org/id3v2.3.0#General_encapsulated_object" class="bare">https://id3.org/id3v2.3.0#General_encapsulated_object</a>. The GEOB&#8217;s <code>MIME type</code> field shall be present and shall use the value for the media type for JUMBF as described in <a href="#_external_manifests">Section 10.4, &#8220;External Manifests&#8221;</a>.</p>
+<p>The C2PA Manifest Store shall be embedded into a ID3v2-compatible, compressed audio file (e.g., MP3 or FLAC) file as the Encapulated object data of a General Encapsulated Object (GEOB) as defined in <a href="https://id3.org/id3v2.3.0#General_encapsulated_object" class="bare">https://id3.org/id3v2.3.0#General_encapsulated_object</a>. The GEOB&#8217;s <code>MIME type</code> field shall be present and shall use the value for the media type for JUMBF as described in <a href="#_external_manifests">Section 10.4, &#8220;External Manifests&#8221;</a>.</p>
 </div>
 </div>
 </div>
@@ -2166,7 +2167,7 @@ Quantity: Zero or more</p>
 <p>The selection of which Merkle Tree row to store in the manifest creates a size tradeoff within the asset.  Specifically, storing a single hash per Merkle Tree in the manifest minimizes the size of the manifest but requires log2(subsets) to be stored in each subset-specific box.  Each time the number of hashes stored in the manifest for a Merkle Tree is doubled (by moving "down" one Merkle Tree row), the number of hashes stored in each subset-specific box decreases by one.  Thus, increasing the size of the manifest decreases the size of the entire asset and vice-versa, and since hashes for individual subsets are replicated across subsets as required to derive a manifest-specified hash, the tradeoff is not 1 to 1.</p>
 </div>
 <div class="paragraph">
-<p>Making this size tradeoff is left up to the implementation creating the manifest; this spec neither mandates nor recommends that any specific Merkle Tree row be stored in the manifest.  That said, because the simplest case of storing all subset hashes in the manifest is equivalent to using a Merkle Tree where the leaf nodes are stored in the manifest, the same Merkle Tree construction is used for multiple hashes in all cases.  That construction is defined as follows.</p>
+<p>Making this size traceoff is left up to the implementation creating the manifest; this spec neither mandates nor recommends that any specific Merkle Tree row be stored in the manifest.  That said, because the simplest case of storing all subset hashes in the manifest is equivalent to using a Merkle Tree where the leaf nodes are stored in the manifest, the same Merkle Tree construction is used for multiple hashes in all cases.  That construction is defined as follows.</p>
 </div>
 <div class="paragraph">
 <p>The portion of the manifest containing the BMFF Hash shall include the <code>merkle</code> field.  Refer to <a href="#_hashing_a_bmff_formatted_asset">Section 8.2.2, &#8220;Hashing a BMFF-formatted asset&#8221;</a> for more information.</p>
@@ -2280,7 +2281,7 @@ bmff-merkle-map = {
 </div>
 </div>
 <div class="paragraph">
-<p>An example in CBOR Diagnostic Format (<code>.cbordiag</code>) is shown below:</p>
+<p>An example in CBOR-Diag is shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2423,7 +2424,7 @@ subset = [ { 16, 4 } ]</code></pre>
 <div class="sect2">
 <h3 id="_external_manifests"><a class="anchor" href="#_external_manifests"></a>10.4. External Manifests</h3>
 <div class="paragraph">
-<p>In some cases, it may not be possible (or practical) to embed a C2PA Manifest Store in an asset. In those cases, keeping the manifest externally to the asset is an acceptable model for providing providence to assets. The manifest should be stored in a location, referred to as a manifest repository, that is easily locatable by a manifest consumer working with the asset, such as <a href="#_by_reference/uri">by reference or URI</a>. As the C2PA Manifest Store is a JUMBF box, it shall be served with a JUMBF Media Type.</p>
+<p>In some cases, it may not be possible (or practical) to embed a C2PA Manifest Store in an asset. In those cases, keeping the manifest externally to the asset is an acceptable model for providing providence to assets. The manifest should be stored in a location that is easily locatable by a manifest consumer working with the asset, such as <a href="#_by_reference/uri">by reference or URI</a>. As the C2PA Manifest Store is a JUMBF box, it shall be served with a JUMBF Media Type.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2585,13 +2586,13 @@ Parenthetical notes in the lists below are explainers provided only as an aid to
 <div class="ulist">
 <ul>
 <li>
-<p><code>ES256</code> (ECDSA with SHA-256)</p>
+<p><code>ES256</code> (ECDSA using P-256 and SHA-256)</p>
 </li>
 <li>
-<p><code>ES384</code> (ECDSA with SHA-384)</p>
+<p><code>ES384</code> (ECDSA using P-384 and SHA-384)</p>
 </li>
 <li>
-<p><code>ES512</code> (ECDSA with SHA-512)</p>
+<p><code>ES512</code> (ECDSA using P-521 and SHA-512)</p>
 </li>
 <li>
 <p><code>PS256</code> (RSASSA-PSS using SHA-256 and MGF1 with SHA-256)</p>
@@ -2700,9 +2701,6 @@ COSE defines <code>nil</code> to be major type 7, value 22 in <a href="https://d
 </ul>
 </div>
 <div class="paragraph">
-<p>When producing a signature, if the claim generator can also act as a validator, the claim generator should validate that the signing credential is acceptable according to <a href="#_trust_model">Chapter 13, <em>Trust Model</em></a> for the credential&#8217;s type, and produce a warning if it is not. The claim generator should still allow signing with that credential if so desired. This may be desirable if it is known the local claim generator&#8217;s validator has a different configuration than validators used by the expected audience of the asset.</p>
-</div>
-<div class="paragraph">
 <p>When verifying a signature, the <code>body_protected</code> field of <code>Sig_structure</code> is populated from the contents of the <code>protected</code> header bucket of the <code>COSE_Sign1_Tagged</code> structure, but because of the use detached content mode, the <code>payload</code> field of the <code>COSE_Sign1_Tagged</code> structure will be <code>nil</code>. The contents of the <code>payload</code> field of <code>Sig_structure</code> must be populated from the same external source that was used in the generation of the signature. These are defined in the places where the digital signature is used in this specification.</p>
 </div>
 </div>
@@ -2759,18 +2757,27 @@ COSE defines <code>nil</code> to be major type 7, value 22 in <a href="https://d
 <p>As part of the validation of an asset, the signer&#8217;s credential is validated as being trusted to sign manifests. Credential types are defined in <a href="#_credential_types">Section 13.4, &#8220;Credential Types&#8221;</a>.</p>
 </div>
 <div class="paragraph">
-<p>A validator shall maintain the following lists:</p>
+<p>A validator shall maintain the following trust anchor stores:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>A list of X.509 certificate trust anchors for C2PA signers,</p>
+<p>One trust anchor store per credential type for C2PA signers, and</p>
 </li>
 <li>
-<p>A list of accepted Extended Key Usage (EKU) values for C2PA signers, and</p>
-</li>
-<li>
-<p>A list of X.509 certificate trust anchors for Time Stamp Authorities.</p>
+<p>A single store of X.509 certificate trust anchors for Time Stamp Authorities.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only RFC 3161-compliant Time Stamp Authorities are supported, and RFC 3161 only supports X.509 certificates for validating time-stamps.
+</td>
+</tr>
+</table>
+</div>
 </li>
 </ul>
 </div>
@@ -2822,52 +2829,47 @@ This header parameter allows for a single X.509 certificate or a chain of X.509 
 <div class="sect4">
 <h5 id="_certificate_profile"><a class="anchor" href="#_certificate_profile"></a>13.4.1.1. Certificate Profile</h5>
 <div class="paragraph">
-<p>This section defines the requirements to validate that an X.509 certificate is acceptable as a signing credential as described in <a href="#_validate_the_signature">Section 14.3, &#8220;Validate the Signature&#8221;</a>.</p>
+<p>Except for certificates accepted through the private credential store for X.509 certificates, all certificates must comply with this Certificate Profile.</p>
 </div>
 <div class="paragraph">
-<p>All certificates must fulfil the following requirements.</p>
+<p>Certificates must be signed with an algorithm supported by the C2PA certificate signature algorithm list in this section, and rejected if not. These identifiers are taken from the relevant standards including, but not limited to, <a href="https://datatracker.ietf.org/doc/html/rfc3279">RFC 3279</a>, <a href="https://datatracker.ietf.org/doc/html/rfc5758">RFC 5758</a>, <a href="https://datatracker.ietf.org/doc/html/rfc8017">RFC 8017</a> and <a href="https://datatracker.ietf.org/doc/html/rfc8410">RFC 8410</a> which define their mappings to object identifiers (OIDs). This section defines a list of allowed values for the <code>algorithm</code> field of the <code>signatureAlgorithm</code> field of certificates signing C2PA manifests (the "allowed list").</p>
+</div>
+<div class="paragraph">
+<p>The allowed list is:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>algorithm</code> field of the <code>signatureAlgorithm</code> field shall be one of the following values:</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>ecdsa-with-SHA256</code></dt>
-<dd>
-<p><a href="https://datatracker.ietf.org/doc/html/rfc5758#section-3.2">RFC 5758 section 3.2</a></p>
-</dd>
-<dt class="hdlist1"><code>ecdsa-with-SHA384</code></dt>
-<dd>
-<p><a href="https://datatracker.ietf.org/doc/html/rfc5758#section-3.2">RFC 5758 section 3.2</a></p>
-</dd>
-<dt class="hdlist1"><code>ecdsa-with-SHA512</code></dt>
-<dd>
-<p><a href="https://datatracker.ietf.org/doc/html/rfc5758#section-3.2">RFC 5758 section 3.2</a></p>
-</dd>
-<dt class="hdlist1"><code>sha256WithRSAEncryption</code></dt>
-<dd>
-<p><a href="https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.4">RFC 8017 appendix A.2.4</a></p>
-</dd>
-<dt class="hdlist1"><code>sha384WithRSAEncryption</code></dt>
-<dd>
-<p><a href="https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.4">RFC 8017 appendix A.2.4</a></p>
-</dd>
-<dt class="hdlist1"><code>sha512WithRSAEncryption</code></dt>
-<dd>
-<p><a href="https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.4">RFC 8017 appendix A.2.4</a></p>
-</dd>
-<dt class="hdlist1"><code>id-RSASSA-PSS</code></dt>
-<dd>
-<p><a href="https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.3">RFC 8017 appendix A.2.3</a></p>
-</dd>
-<dt class="hdlist1"><code>id-Ed25519</code></dt>
-<dd>
-<p><a href="https://datatracker.ietf.org/doc/html/rfc8410#section-3">RFC 8410 section 3</a></p>
-</dd>
-</dl>
-</div>
+<p><code>ecdsa-with-SHA256</code></p>
 </li>
+<li>
+<p><code>ecdsa-with-SHA384</code></p>
+</li>
+<li>
+<p><code>ecdsa-with-SHA512</code></p>
+</li>
+<li>
+<p><code>sha256WithRSAEncryption</code></p>
+</li>
+<li>
+<p><code>sha384WithRSAEncryption</code></p>
+</li>
+<li>
+<p><code>sha512WithRSAEncryption</code></p>
+</li>
+<li>
+<p><code>id-RSASSA-PSS</code></p>
+</li>
+<li>
+<p><code>id-Ed25519</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Certificates must also fulfill the following requirements:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>If the <code>algorithm</code> field of the <code>signatureAlgorithm</code> field is <code>id-RSASSA-PSS</code>, the <code>parameters</code> field is of type <code>RSASSA-PSS-params</code>. Its fields shall have the following requirements: <a href="https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.3">RFC 8017 section A.2.3</a></p>
 <div class="ulist">
@@ -2876,7 +2878,7 @@ This header parameter allows for a single X.509 certificate or a chain of X.509 
 <p>The <code>hashAlgorithm</code> field shall be present.</p>
 </li>
 <li>
-<p>The <code>algorithm</code> field of the <code>hashAlgorithm</code> field shall be one of the following values: <a href="https://datatracker.ietf.org/doc/html/rfc8017#appendix-B.1">RFC 8017 appendix B.1</a></p>
+<p>The <code>algorithm</code> field of the <code>hashAlgorithm</code> field shall be one of the following values:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2919,13 +2921,6 @@ This header parameter allows for a single X.509 certificate or a chain of X.509 
 <li>
 <p>If the <code>algorithm</code> field of the <code>algorithm</code> field of the certificate&#8217;s <code>subjectPublicKeyInfo</code> is <code>rsaEncryption</code> or <code>rsaPSS</code>, the <code>modulus</code> field of the <code>parameters</code> field shall have a length of at least 2048 bits.</p>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p>All certificates except those in the private credential store for X.509 certificates must fulfill the following additional requirements to be acceptable.</p>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p>Version must be v3. <a href="https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.1">RFC 5280 section 4.1.2.1</a></p>
 </li>
@@ -2952,17 +2947,7 @@ This header parameter allows for a single X.509 certificate or a chain of X.509 
 <p>The <code>anyExtendedKeyUsage</code> EKU (2.5.29.37.0) must not be present.</p>
 </li>
 <li>
-<p>If the configuration store contains a list of EKUs, a certificate that signs C2PA manifests must be valid for at least one of the listed purposes.</p>
-</li>
-<li>
-<p>If the configuration store does not contain a list of EKUs, a certificate that signs C2PA manifests must be valid for the <code>id-kp-emailProtection</code> (1.3.6.1.5.5.7.3.4) purpose.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>id-kp-emailProtection</code> purpose is not implicitly included by default if a list of EKUs has been configured. If desired, it must explicitly be added to the list in the configuration store.</p>
-</li>
-</ul>
-</div>
+<p>A certificate that signs C2PA manifests must be valid for the <code>id-kp-emailProtection</code> (1.3.6.1.5.5.7.3.4) purpose.</p>
 </li>
 <li>
 <p>A certificate that signs time-stamping countersignatures must be valid for the <code>id-kp-timeStamping</code> (1.3.6.1.5.5.7.3.8) purpose.</p>
@@ -2971,10 +2956,10 @@ This header parameter allows for a single X.509 certificate or a chain of X.509 
 <p>A certificate that signs OCSP responses for certificates must be valid for the <code>id-kp-OCSPSigning</code> (1.3.6.1.5.5.7.3.9) purpose.</p>
 </li>
 <li>
-<p>If a certificate is valid for either <code>id-kp-timeStamping</code> or <code>id-kp-OCSPSigning</code>, it must be valid for exactly one of those two purposes, and not valid for any other purpose.</p>
+<p>A certificate must not be valid for more than one of the three purposes listed above.</p>
 </li>
 <li>
-<p>A certificate should not be valid for any other purposes outside of the purposes listed above, but the presence of any EKUs not mentioned in this profile and not in the list of EKUs in the configuration store shall not cause the certificate to be rejected.</p>
+<p>A certificate should not be valid for any other purposes outside of the purposes listed above, but the presence of any other EKUs shall not cause the certificate to be rejected.</p>
 </li>
 </ul>
 </div>
@@ -3085,7 +3070,7 @@ The <code>removeFromCRL</code> is unique amongst the values of <code>revocationR
 </table>
 </div>
 <div class="paragraph">
-<p>Validators must check the <code>revocationReason</code> of any <code>revoked</code> response to disambiguate the <code>removedFromCRL</code> case from an actual revocation.</p>
+<p>Validators must check the <code>revocationReason</code> of any <code>revoked</code> response to disambiguiate the <code>removedFromCRL</code> case from an actual revocation.</p>
 </div>
 <div class="paragraph">
 <p>If the <code>rVals</code> header is not present or does not contain an accepted OCSP response, or if the manifest does not have a time-stamp, but the certificate has an AIA extension, the validator may choose to query the OCSP responder, as described in <a href="#_validate_the_credential_revocation_information">Section 14.5, &#8220;Validate the Credential Revocation Information&#8221;</a>. If it does, and the response is accepted per the requirements of RFC 6960, it shall establish the signer&#8217;s certificate was not revoked at the time of signing if either of the following requirements is fulfilled:</p>
@@ -3280,7 +3265,7 @@ A manifest consumer is not restricted to only the above locations, it can choose
 <p>Retrieve the URI reference for the signature from the value of the claim&#8217;s <code>signature</code> field and resolve the URI reference to obtain the COSE signature. The signature must be embedded in the same manifest as described in <a href="#_c2pa_box_details">Section 10.1.1, &#8220;C2PA Box details&#8221;</a>. If the signature URI does not refer to a location within the same manifest box (a <code>self#jumbf</code> location), the claim must be rejected. If no such field is present or the URI cannot be resolved, then the claim must be rejected.</p>
 </div>
 <div class="paragraph">
-<p>Validate that the credential used in the signature is acceptable according to <a href="#_trust_model">Chapter 13, <em>Trust Model</em></a> for the credential&#8217;s type. If it is not, then the claim must be rejected. After confirming it is acceptable, validation should proceed according to the specified procedure in <a href="#_digital_signatures">Section 12.2, &#8220;Digital Signatures&#8221;</a>. If validation of the signature fails, then the claim must be rejected.</p>
+<p>Validate that the credential used in the signature is acceptable according to <a href="#_trust_model">Chapter 13, <em>Trust Model</em></a>. If it is not, then the claim must be rejected. After confirming it is acceptable, validation should proceed according to the specified procedure in <a href="#_digital_signatures">Section 12.2, &#8220;Digital Signatures&#8221;</a>. If validation of the signature fails, then the claim must be rejected.</p>
 </div>
 <div class="paragraph">
 <p>For the remainder of this chapter, headers refer to the union of the set of protected and unprotected header parameters in the COSE signature. Unless otherwise specified in <a href="#_digital_signatures">Section 12.2, &#8220;Digital Signatures&#8221;</a> or <a href="#_credential_types">Section 13.4, &#8220;Credential Types&#8221;</a>, a header may appear in either bucket. <a href="https://datatracker.ietf.org/doc/html/rfc8152#section-3">RFC8152 section 3</a> describes COSE headers.</p>
@@ -3569,7 +3554,7 @@ The <code>alg</code> field is mandatory in <code>hashed_ext_uri</code>, so no re
 <p>Compare the computed hash value with the value in the <code>hash</code> field. If they do not match, the validator must return an error to the application and not provide the retrieved data.</p>
 </li>
 <li>
-<p>Otherwise, the retrieved data is successfully provided to the application.</p>
+<p>Otherwise, the retrieved data is successfully provided to the aplication.</p>
 </li>
 </ol>
 </div>
@@ -3786,7 +3771,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <p>Level 2: A summary of C2PA data available for a given asset. Should provide enough information for the particular content, user, and context to allow the consumer to understand to a sufficient degree how the asset came to its current state.</p>
 </li>
 <li>
-<p>Level 3: A detailed display of all relevant provenance data. Note that the relevance of certain items over others is contextual and determined by the UX implementer.</p>
+<p>Level 3: A detailed display of all relevant provenance data. Note that the relevance of certain items over others is contextual and determined by the UX implementor.</p>
 </li>
 <li>
 <p>Level 4: For sophisticated, forensic investigatory usage, a standalone tool capable of revealing all the granular detail of signatures and trust signals is recommended.</p>
@@ -3833,23 +3818,23 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 </div>
 </div>
 <div class="sect3">
-<h4 id="_threat_modelling_process_overview"><a class="anchor" href="#_threat_modelling_process_overview"></a>16.1.2. Threat modelling process overview</h4>
+<h4 id="_threat_modeling_process_overview"><a class="anchor" href="#_threat_modeling_process_overview"></a>16.1.2. Threat modeling process overview</h4>
 <div class="paragraph">
-<p>The C2PA builds security into our designs as they are being developed, but also expects that security design and threat modelling will continue as the system, ecosystem, and threat landscape evolve.</p>
+<p>The C2PA builds security into our designs as they are being developed, but also expects that security design and threat modeling will continue as the system, ecosystem, and threat landscape evolve.</p>
 </div>
 <div class="paragraph">
-<p>To this end, the C2PA uses a focused threat modelling process to support development of a strong security and privacy design. Outcomes of the effort directly support development of explicit threats and security considerations documentation, but also facilitate security thinking throughout the design process.</p>
+<p>To this end, the C2PA uses a focused threat modeling process to support development of a strong security and privacy design. Outcomes of the effort directly support development of explicit threats and security considerations documentation, but also facilitate security thinking throughout the design process.</p>
 </div>
 <div class="paragraph">
-<p>The threat modelling process combines synchronous (live) threat modelling sessions with focused groups of SMEs with asynchronous development of content. The number of attendees in each synchronous session is kept small to promote efficient discussions, but all members of the C2PA have the opportunity to participate via either modality.</p>
+<p>The threat modeling process combines synchronous (live) threat modeling sessions with focused groups of SMEs with asynchronous development of content. The number of attendees in each synchronous session is kept small to promote efficient discussions, but all members of the C2PA have the opportunity to participate via either modality.</p>
 </div>
 <div class="paragraph">
-<p>Like other security activities, we expect our threat modelling process to evolve with the C2PA ecosystem. Process documentation is considered a guide rather than a strict directive on how threat modelling works within the C2PA.</p>
+<p>Like other security activities, we expect our threat modeling process to evolve with the C2PA ecosystem. Process documentation is considered a guide rather than a strict directive on how threat modeling works within the C2PA.</p>
 </div>
 <div class="sect4">
 <h5 id="_references"><a class="anchor" href="#_references"></a>16.1.2.1. References</h5>
 <div class="paragraph">
-<p>A variety of references and experiences are used to inform threat modelling and related security activities for the C2PA. This section provides a subset of public documents for reference.</p>
+<p>A variety of references and experiences are used to inform threat modeling and related security activities for the C2PA. This section provides a subset of public documents for reference.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3866,13 +3851,13 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <p><a href="https://datatracker.ietf.org/doc/html/rfc6819">OAuth2 threat model (example)</a></p>
 </li>
 <li>
-<p><a href="https://shostack.org/books/threat-modelling-book">Threat modelling: Designing for Security</a></p>
+<p><a href="https://shostack.org/books/threat-modeling-book">Threat Modeling: Designing for Security</a></p>
 </li>
 <li>
-<p><a href="https://owasp.org/www-community/Threat_modelling">OWASP Threat modelling</a></p>
+<p><a href="https://owasp.org/www-community/Threat_Modeling">OWASP Threat Modeling</a></p>
 </li>
 <li>
-<p><a href="https://www.microsoft.com/en-us/securityengineering/sdl/threatmodelling">Microsoft Threat modelling</a></p>
+<p><a href="https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling">Microsoft Threat Modeling</a></p>
 </li>
 </ul>
 </div>
@@ -3909,7 +3894,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="sect3">
 <h4 id="_considerations"><a class="anchor" href="#_considerations"></a>16.2.2. Considerations</h4>
 <div class="paragraph">
-<p>The harms, misuse, and abuse assessment is an ongoing process. The information presented below should not be considered the end result of a comprehensive evaluation, but a basis for broader, ongoing, and more profound discussions, that are centred on impacted communities, that could lead towards the mitigation of potential abuse and misuse and the protection of human rights.</p>
+<p>The harms, misuse, and abuse assessment is an ongoing process. The information presented below should not be considered the end result of a comprehensive evaluation, but a basis for broader, ongoing, and more profound discussions, centering on impacted communities, that could lead towards the mitigation of potential abuse and misuse and the protection of human rights.</p>
 </div>
 <div class="paragraph">
 <p>There are two critical aspects of the approach:</p>
@@ -3930,7 +3915,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="sect3">
 <h4 id="_assessment"><a class="anchor" href="#_assessment"></a>16.2.3. Assessment</h4>
 <div class="paragraph">
-<p>Harms modelling focuses on analysing how a socio-technical system might negatively impact users and other stakeholders. The process of harms modelling systematically requires combining knowledge about a system architecture and its user affordances, with historical and contextual evidence about the impact of similar existing systems on different social groups. This combined information frames the ability to comprehensively anticipate harm.</p>
+<p>Harms modelling focuses on analyzing how a socio-technical system might negatively impact users and other stakeholders. The process of harms modelling systematically requires combining knowledge about a system architecture and its user affordances, with historical and contextual evidence about the impact of similar existing systems on different social groups. This combined information frames the ability to comprehensively anticipate harm.</p>
 </div>
 <div class="paragraph">
 <p>The details of the process used by C2PA to model harms, misuse and abuse can be found in our <a href="https://c2pa.org/public-draft">Harms Modelling documentation</a>.</p>
@@ -4604,7 +4589,7 @@ EXCLUSION_RANGE-map = {
 </div>
 </div>
 <div class="paragraph">
-<p>An example in CBOR Diagnostic Format (<code>.cbordiag</code>) is shown below:</p>
+<p>An example in CBOR-Diag is shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4695,7 +4680,7 @@ All the APP11 segments containing the C2PA Manifest JUMBF are contiguous so that
 <p>If version is specified in the exclusion entry, the box is a FullBox and the box&#8217;s version exactly matches the exclusion entry&#8217;s version field.</p>
 </li>
 <li>
-<p>If flags (byte array of exactly 3 bytes) is specified in the exclusion entry and the box is a FullBox.  If exact is set to true or not specified, the box&#8217;s flags (bit(24), i.e., 3 bytes) also exactly matches the exclusion entry&#8217;s flags field.  If exact is set to false, the bitwise-and of the box&#8217;s flags (bit(24), i.e., 3 bytes) with the exclusion entry exactly matches the exclusion entry (i.e. the box has at least those bits set but may also have additional bits set).</p>
+<p>If flags (byte array of exactly 3 bytes) is specified in the exclusion entry and the box is a FullBox.  If exact is set to true or not specified, the box&#8217;s flags (bit(24), i.e., 3 bytes) also exactly matches the exclusion entry&#8217;s flags field.  If exact is set to false, the bitwise-and of the box&#8217;s flags (bit(24), i.e., 3 bytes) with the exclusion entry exactly mathes the exclusion entry (i.e. the box has at least those bits set but may also have additional bits set).</p>
 </li>
 <li>
 <p>If data (array of objects) is specified in the exclusion entry, then for each item in the array, the box&#8217;s binary data at that item&#8217;s offset field exactly matches that item&#8217;s bytes field.</p>
@@ -4804,7 +4789,7 @@ merkle-map = {
 </div>
 </div>
 <div class="paragraph">
-<p>An example in CBOR Diagnostic Format (<code>.cbordiag</code>) for a monolithic mp4 file asset where the <code>mdat</code> box is validated as a unit is shown below:</p>
+<p>An example in CBOR-Diag for a monolithic mp4 file asset where the <code>mdat</code> box is validated as a unit is shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4829,7 +4814,7 @@ merkle-map = {
 </div>
 </div>
 <div class="paragraph">
-<p>An example in CBOR Diagnostic Format (<code>.cbordiag</code>) for an asset composed of fragmented mp4 files is shown below:</p>
+<p>An example in CBOR-Diag for an asset composed of fragmented mp4 files is shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5020,7 +5005,7 @@ soft-binding-timespan-map = {
 </div>
 </div>
 <div class="paragraph">
-<p>An example in CBOR Diagnostic Format (<code>.cbordiag</code>) is shown below:</p>
+<p>An example in CBOR-Diag is shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5090,7 +5075,7 @@ size-type = int .ge 1</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>An example in CBOR Diagnostic Format (<code>.cbordiag</code>) is shown below:</p>
+<p>An example in CBOR-Diag is shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5159,7 +5144,7 @@ In keeping with common practice, it is recommended that the <code>https</code> s
 <p>An Actions assertion shall have a label of <code>c2pa.actions</code>.</p>
 </div>
 <div class="paragraph">
-<p>Actions are modelled after <a href="https://github.com/adobe/xmp-docs/blob/master/XMPNamespaces/XMPDataTypes/ResourceEvent.md">XMP ResourceEvents</a>.</p>
+<p>Actions are modeled after <a href="https://github.com/adobe/xmp-docs/blob/master/XMPNamespaces/XMPDataTypes/ResourceEvent.md">XMP ResourceEvents</a>.</p>
 </div>
 <div class="paragraph">
 <p>For each action present in the array, the value of the <code>action</code> field shall be either a well-known common action name (<code>c2pa.resized</code>, <code>c2pa.edited</code>, etc.) or entity-specific action name (<code>adobe.ps.gaussian_blur</code>, etc.). The value of the <code>when</code> field should be the ISO 8601-compliant string of when the action was performed.</p>
@@ -5341,7 +5326,7 @@ action-items-map = {
 </div>
 </div>
 <div class="paragraph">
-<p>An example in CBOR Diagnostic Format (<code>.cbordiag</code>) is shown below:</p>
+<p>An example in CBOR-Diag is shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5457,7 +5442,7 @@ Since there will most likely be more than one ingredient assertion, the use of t
 ingredient-map = {
   "dc:title": tstr, ; name of the ingredient
   "dc:format": format-string, ; Media Type of the ingredient
-  ? "documentID": tstr, ; value of the ingredient's `xmpMM:DocumentID`
+  "documentID": tstr, ; value of the ingredient's `xmpMM:DocumentID`
   "instanceID": tstr, ; unique identifier, such as the value of the ingredient's `xmpMM:InstanceID`
   "relationship": $relation-choice, ; The relationship of this ingredient to the asset it is an ingredient of.
                                         ; For example, if an ingredient with a 'parentOf' relationship is added to
@@ -5508,7 +5493,7 @@ status-map = {
 </div>
 </div>
 <div class="paragraph">
-<p>An example in CBOR Diagnostic Format (<code>.cbordiag</code>) is shown below:</p>
+<p>An example in CBOR-Diag is shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5793,7 +5778,7 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>An example in CBOR Diagnostic Format (<code>.cbordiag</code>) is shown below:</p>
+<p>An example in CBOR-Diag is shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6507,13 +6492,7 @@ Most references to a W3C Verifiable Credentials are via a <code>credentials</cod
 <h2 id="_patent_policy"><a class="anchor" href="#_patent_policy"></a>19. Patent Policy</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The C2PA has adopted an open standard patent policy via W3C&#8217;s Patent Mode (2004):</p>
-</div>
-<div class="paragraph">
-<p><strong>Licensing Commitment</strong>. For materials other than source code or datasets developed by the Working Group, each Working Group Participant agrees to make available any of its Essential Claims, as defined in the W3C Patent Policy (available at <a href="http://www.w3.org/Consortium/Patent-Policy-20040205" class="bare">http://www.w3.org/Consortium/Patent-Policy-20040205</a>), under the W3C RF licensing requirements Section 5 (<a href="http://www.w3.org/Consortium/Patent-Policy-20040205" class="bare">http://www.w3.org/Consortium/Patent-Policy-20040205</a>), in Approved Deliverables adopted by that Working Group as if that Approved Deliverable was a W3C Recommendation. Source code developed by the Working Group is subject to the license set forth in the Working Group charter.</p>
-</div>
-<div class="paragraph">
-<p><strong>For Exclusion</strong>. Prior to the adoption of a Draft Deliverable as an Approved Deliverable, a Working Group Participant may exclude Essential Claims from its licensing commitments under this agreement by providing written notice of that intent to the Working Group chair (“Exclusion Notice”). The Exclusion Notice for issued patents and published applications must include the patent number(s) or title and application number(s), as the case may be, for each of the issued patent(s) or pending patent application(s) that the Working Group Participant wishes to exclude from the licensing commitment set forth in Section 1 of this patent policy. If an issued patent or pending patent application that may contain Essential Claims is not set forth in the Exclusion Notice, those Essential Claims shall continue to be subject to the licensing commitments under this agreement. The Exclusion Notice for unpublished patent applications must provide either: (i) the text of the filed application; or (ii) identification of the specific part(s) of the Draft Deliverable whose implementation makes the excluded claim an Essential Claim. If (ii) is chosen, the effect of the exclusion will be limited to the identified part(s) of the Draft Deliverable. The Working Group Chair will publish Exclusion Notices</p>
+<p>A statement about the C2PA&#8217;s patent policy will appear here in the final 1.0 document.</p>
 </div>
 </div>
 </div>
