@@ -181,9 +181,8 @@
 <li><a href="#_offering_publishers_opportunities_to_improve_their_brand_value">4.3. Offering publishers opportunities to improve their brand value</a></li>
 <li><a href="#_providing_quality_data_for_indexer_platform_content_decisions">4.4. Providing quality data for indexer / platform content decisions</a></li>
 <li><a href="#_assisting_intelligence_investigators_to_confirm_provenance_and_integrity_of_media">4.5. Assisting 'Intelligence' investigators to confirm provenance and integrity of media</a></li>
-<li><a href="#_finding_media_from_an_event">4.6. Finding media from an event</a></li>
-<li><a href="#_enhance_the_evidentiary_value_of_critical_footage">4.7. Enhance the evidentiary value of critical footage</a></li>
-<li><a href="#_enforcing_disclaimer_laws_on_retouchededited_images">4.8. Enforcing disclaimer laws on retouched/edited images</a></li>
+<li><a href="#_enhance_the_evidentiary_value_of_critical_footage">4.6. Enhance the evidentiary value of critical footage</a></li>
+<li><a href="#_enforcing_disclaimer_laws_on_retouchededited_images">4.7. Enforcing disclaimer laws on retouched/edited images</a></li>
 </ul>
 </li>
 <li><a href="#_stakeholder_feedback">5. Stakeholder Feedback</a></li>
@@ -245,6 +244,18 @@
 <h3 id="_how_is_trust_in_digital_assets_established"><a class="anchor" href="#_how_is_trust_in_digital_assets_established"></a>3.2. How is trust in digital assets established?</h3>
 <div class="paragraph">
 <p>In the C2PA Specifications, trust decisions are made by the consumer of the asset based on the identity of the actor(s) who signed the provenance data along with the information in the assertions contained in the provenance. This signing takes place at each significant moment in an asset&#8217;s life (e.g., creation, editing, etc.) through the use of the actor&#8217;s unique credentials and ensures that the provenance data remains cryptographically bound to the newly created or updated asset.</p>
+</div>
+<div class="paragraph">
+<p>To enable consumers to make informed decisions about the provenance of an asset, and prevent unknown attackers from impersonating others, it is critical that each application and ecosystem reliably identify the actor to whom a signing credential is issued. This is accomplished through the use of a <em>certification authority</em> (CA). CAs perform real-world due diligence to ensure credentials are only issued to actors who are whom they claim to be. In the world wide web, CAs verify that someone requesting a certificate to operate a secure web site owns and/or controls the site&#8217;s domain name before issuing such a credential. For example, before issuing a certificate for <a href="https://c2pa.org/" class="bare">https://c2pa.org/</a>, the CA verified the requestor did in fact control C2PA&#8217;s domain name before issuing a certificate for that site name.</p>
+</div>
+<div class="paragraph">
+<p>Unlike the world wide web, C2PA will be used in multiple different application settings, and each setting will have its own requirements. Each application will therefore provide users with one or more <em>trust lists</em>, which are lists of certification authorities that issue credentials for that application. For example, in a news and media aggregation application or web site, each newspaper, television network, or other media organization has a globally-recognized identity, and there is only one such organization that operates with that name. In this situation, because brand marks and other visual indicators can and have been reproduced for the purposes of impersonation, consumers want to be certain the media they are consuming actually comes from the source it claims to be. This application would provide at least one trust list maintained by a professional or non-profit organization for journalists and media, which endorses certification authorities that ensure such credentials are only issued to the genuine organization through real-world due diligence.</p>
+</div>
+<div class="paragraph">
+<p>In another example, an insurance company may employ provenance tracking for images, videos, and other media as part of underwriting policies and servicing loss claims to be used by its own employees. In this case, only one trust list is applicable: the insurance company&#8217;s own certification authority operated by its Human Resources department, which may already exist to employee credentials for other purposes. Here, it is not important that every participant have a unique name, as several employees may share the same name, but it is important to be assured all participants are employees of the insurance company, which the Human Resources department is certainly able to confirm and attest.</p>
+</div>
+<div class="paragraph">
+<p>Once the credential is issued by a certification authority, the identity it has confirmed and placed in the credential cannot be altered by anyone else, including and especially the credential&#8217;s owner. This allows the consumer or user to rely upon the identity presented in a signed asset.</p>
 </div>
 </div>
 <div class="sect2">
@@ -344,32 +355,13 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_finding_media_from_an_event"><a class="anchor" href="#_finding_media_from_an_event"></a>4.6. Finding media from an event</h3>
-<div class="paragraph">
-<p>An important news event happens and there is a lot of media coverage that reporters want to go through. Reporters connect to a C2PA-enabled media portal and are able to use aspects of the media and its provenance to run queries such as</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Find all assets from any identified source, or a particular set of sources;</p>
-</li>
-<li>
-<p>Find all assets from the square kilometre with these central coordinates;</p>
-</li>
-<li>
-<p>Find all assets created between time 'x' and 'y'</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_enhance_the_evidentiary_value_of_critical_footage"><a class="anchor" href="#_enhance_the_evidentiary_value_of_critical_footage"></a>4.7. Enhance the evidentiary value of critical footage</h3>
+<h3 id="_enhance_the_evidentiary_value_of_critical_footage"><a class="anchor" href="#_enhance_the_evidentiary_value_of_critical_footage"></a>4.6. Enhance the evidentiary value of critical footage</h3>
 <div class="paragraph">
 <p>A human rights defender manages to capture footage containing C2PA-enabled provenance of police violence during a protest. The human rights defender sends the footage to a human rights organization that verifies that the asset meets video-as-evidence criteria. The human rights organization redacts information about the defender using a C2PA-enabled editing application in order to protect their identity. The C2PA-verified asset is then used to improve the chances of that footage being admissible in court proceedings.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_enforcing_disclaimer_laws_on_retouchededited_images"><a class="anchor" href="#_enforcing_disclaimer_laws_on_retouchededited_images"></a>4.8. Enforcing disclaimer laws on retouched/edited images</h3>
+<h3 id="_enforcing_disclaimer_laws_on_retouchededited_images"><a class="anchor" href="#_enforcing_disclaimer_laws_on_retouchededited_images"></a>4.7. Enforcing disclaimer laws on retouched/edited images</h3>
 <div class="paragraph">
 <p>To prevent dangerous stereotypes of ideal bodies, a government enacts a law that requires advertisers and social media influencers to specify that their image has been edited if any aspect of a body&#8217;s size, shape or skin has been altered. By having their C2PA-enabled editing application add information about each action performed, they can easily comply and the government can easily confirm.</p>
 </div>
