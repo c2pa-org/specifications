@@ -323,11 +323,14 @@
 <div class="paragraph">
 <p>When using a cloud service to manage the manifest repository, and serving the manifest stores via http Link headers (as described in the C2PA specification), having the manifest store available at the same origin as the asset is recommended as it would reduce requirements on <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing (CORS)</a>. However, it is worth noting that doing so does not provide any additional privacy or security protection of either the manifest store or the asset.</p>
 </div>
+<div class="paragraph">
+<p>To mitigate risks to user privacy, we recommend external manifest store service providers to allow content creators to retain the ability to redact or remove content from the datastore, or to determine which manifest may be publicly queried. For example, a content creator may want to include an information-rich manifest for internal cataloguing purposes, and an updated manifest with redacted information for public distribution.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_can_an_application_remove_an_existing_manifest_store"><a class="anchor" href="#_can_an_application_remove_an_existing_manifest_store"></a>3.3.5. Can an application remove an existing manifest store?</h4>
 <div class="paragraph">
-<p>Completely removing an embedded manifest store from an asset is not recommend, unless the manifest store is being "externalized" - meaning that an embedded manifest store is replaced by a URI to an external location. This would be useful in scenarios where the size of assets is important but continues to support access to the asset&#8217;s provenance.</p>
+<p>Completely removing an embedded manifest store from an asset is not recommended, unless the manifest store is being "externalized" - meaning that an embedded manifest store is replaced by a URI to an external location. This would be useful in scenarios where the size of assets is important but continues to support access to the asset&#8217;s provenance.</p>
 </div>
 <div class="admonitionblock note">
 <table>
