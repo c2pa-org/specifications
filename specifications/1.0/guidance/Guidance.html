@@ -388,10 +388,10 @@
 <div class="sect2">
 <h3 id="_use_of_w3c_verifiable_credentials"><a class="anchor" href="#_use_of_w3c_verifiable_credentials"></a>3.5. Use of W3C Verifiable Credentials</h3>
 <div class="paragraph">
-<p>The C2PA specification supports the inclusion of <a href="https://www.w3.org/TR/vc-data-model/">W3C Verifiable Credentials</a>(VC) into a C2PA Manifest to represent a human or organization that directly associated with an asset in some way, such as the author or publisher. These VC&#8217;s are stored as part of the "VC Store", and linked to from various assertions such as the <code>stds.schema-org.CreativeWork</code>.</p>
+<p>The C2PA specification supports the inclusion of <a href="https://www.w3.org/TR/vc-data-model/">W3C Verifiable Credentials</a>(VC) into a C2PA Manifest to represent a human or organisation that may be directly associated with an asset in some way, such as the author or publisher. VCs on their own do not infer an association; this is done via <code>credentials</code> links in the various places they are used, such as the <code>stds.schema-org.CreativeWork</code> assertion, or in Assertion Metadata. The actual VC&#8217;s are stored as part of the "VC Store".</p>
 </div>
 <div class="paragraph">
-<p>The core "identity" information is present in the VC&#8217;s <code>credentialSubject</code> property, which is required but may contain any other property that the issuer of the VC wishes to include.  All of these properties are then signed and the signing information included as the <code>proof</code> of the VC. However, as mentioned, in the VC data model specification (4.7), "there are multiple viable proof mechanisms, and this specification does not standardize nor recommend any single proof mechanism for use with verifiable credentials."  Since there is no standardized approach to validation of proofs, the C2PA specification does not require that VC&#8217;s be validated as part of the C2PA Manifest validation process.</p>
+<p>The core "identity" information is present in the VC&#8217;s <code>credentialSubject</code> property, which is required but the VC may also contain any other property that the issuer of the VC wishes to include.  All of these properties are then signed and the signing information included as the <code>proof</code> of the VC. However, as mentioned, in the VC data model specification (4.7), "there are multiple viable proof mechanisms, and this specification does not standardize nor recommend any single proof mechanism for use with verifiable credentials."  Since there is no standardized approach to validation of proofs, the C2PA specification does not require that VC&#8217;s be validated as part of the C2PA Manifest validation process.</p>
 </div>
 </div>
 </div>
@@ -596,6 +596,12 @@ Attaching a time-stamp and freshness information to the signature allows validat
 </div>
 <div class="paragraph">
 <p>If it is so configured and validation fails, the claim generator should warn its user with an explanation of the problem, but should allow the user to choose to proceed with signing. Users may choose to sign in situations where they know their audience has a different trust anchor or EKU list configuration.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_trust_and_privacy_considerations_2"><a class="anchor" href="#_trust_and_privacy_considerations_2"></a>5.2.4. Trust and Privacy Considerations</h4>
+<div class="paragraph">
+<p>C2PA claim generation and signing systems should consider industry best practices for addressing common privacy concerns of its users.</p>
 </div>
 </div>
 </div>
