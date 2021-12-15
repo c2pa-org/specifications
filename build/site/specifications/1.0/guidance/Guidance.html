@@ -387,27 +387,11 @@
 </div>
 <div class="sect2">
 <h3 id="_use_of_w3c_verifiable_credentials"><a class="anchor" href="#_use_of_w3c_verifiable_credentials"></a>3.5. Use of W3C Verifiable Credentials</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Items for future guidance</div>
-<div class="ulist">
-<ul>
-<li>
-<p>When to use them, for humans, organizations and assets</p>
-</li>
-<li>
-<p>How to validate them</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>The C2PA specification supports the inclusion of <a href="https://www.w3.org/TR/vc-data-model/">W3C Verifiable Credentials</a>(VC) into a C2PA Manifest to represent a human or organization that directly associated with an asset in some way, such as the author or publisher. These VC&#8217;s are stored as part of the "VC Store", and linked to from various assertions such as the <code>stds.schema-org.CreativeWork</code>.</p>
 </div>
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>The core "identity" information is present in the VC&#8217;s <code>credentialSubject</code> property, which is required but may contain any other property that the issuer of the VC wishes to include.  All of these properties are then signed and the signing information included as the <code>proof</code> of the VC. However, as mentioned, in the VC data model specification (4.7), "there are multiple viable proof mechanisms, and this specification does not standardize nor recommend any single proof mechanism for use with verifiable credentials."  Since there is no standardized approach to validation of proofs, the C2PA specification does not require that VC&#8217;s be validated as part of the C2PA Manifest validation process.</p>
 </div>
 </div>
 </div>
