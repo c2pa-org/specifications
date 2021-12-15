@@ -168,7 +168,7 @@
 <li><a href="#_scope">1.2. Scope</a></li>
 <li><a href="#_technical_overview">1.3. Technical Overview</a></li>
 <li><a href="#_establishing_trust">1.4. Establishing Trust</a></li>
-<li><a href="#_example">1.5. Example</a></li>
+<li><a href="#_an_example">1.5. An Example</a></li>
 <li><a href="#_design_goals">1.6. Design Goals</a></li>
 </ul>
 </li>
@@ -423,7 +423,7 @@ C2PA specifications SHOULD NOT provide value judgments about whether a given set
 </div>
 </div>
 <div class="sect2">
-<h3 id="_example"><a class="anchor" href="#_example"></a>1.5. Example</h3>
+<h3 id="_an_example"><a class="anchor" href="#_an_example"></a>1.5. An Example</h3>
 <div class="paragraph">
 <p>A very common scenario will be a user (called an actor in the C2PA ecosystem) taking a photograph with their C2PA-enabled camera (or phone). In that instance, the camera would create a manifest containing some such assertions including information about the camera itself, a thumbnail of the image and some cryptographic hashes that bind the photograph to the manifest. These assertions would then be listed in the Claim, which would be digitally signed and then the entire manifest would be embedded into the output JPEG. This manifest would remain valid indefinitely.</p>
 </div>
@@ -1139,7 +1139,7 @@ Cloud data assertions use a different schema for URIs which is described in <a h
 </table>
 </div>
 <div class="paragraph">
-<p><strong>Examples</strong></p>
+<p><strong>EXAMPLES:</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1181,7 +1181,7 @@ Cloud data assertions use a different schema for URIs which is described in <a h
 <p>In some use cases, the actors in the system may wish to provide their own <a href="https://www.w3.org/TR/vc-data-model/">W3C Verifiable Credential</a>, as they exist at that moment in time, to the claim generator to have them associated with one or more assertions. These actors may be individuals, groups or organizations.</p>
 </div>
 <div class="paragraph">
-<p>W3C Verifiable Credentials are used in this specification to <em>decorate</em> the actors identified in assertions with more information, potentially providing additional trust signals. Although these W3C Verifiable Credentials can include proofs of their own authenticity, they are <strong>not</strong> a mechanism for verifying that a particular actor authorised a claim, assertion or piece of metadata. Any validation or usage of the W3C Verifiable Credential is out of scope of this specification and has no bearing on the <a href="#_trust_model">C2PA Trust Model</a>.</p>
+<p>W3C Verifiable Credentials are used in this specification to decorate the actors identified in assertions with more information, potentially providing additional trust signals. Although these W3C Verifiable Credentials can include proofs of their own authenticity, they are <strong>not</strong> a mechanism for verifying that a particular actor authorised a claim, assertion or piece of metadata. Any validation or usage of the W3C Verifiable Credential is out of scope of this specification and has no bearing on the <a href="#_trust_model">C2PA Trust Model</a>.</p>
 </div>
 <div class="paragraph">
 <p>For example, conveying a W3C Verifiable Credential for the actor identified as the <code>author</code> in an assertion might link that author&#8217;s ID with an email address, social media ID, or real name, or it might identify that actor as a member of a particular professional body, or provide other qualifications relevant to the actor&#8217;s involvement in the asset.</p>
@@ -1377,7 +1377,7 @@ We recommend that existing Exif, IPTC-IIM and/or XMP asset metadata be left unto
 <p>Soft bindings are described using <a href="#_soft_binding">soft binding assertions</a> such as via a perceptual hash computed from the digital content or a watermark embedded within the digital content. These soft bindings enable digital content to be matched even if the underlying bits differ, for example due to an asset rendition in a different resolution or encoding format. Additionally, should a C2PA manifest be removed from an asset, but a copy of that manifest remains in a provenance store elsewhere, the manifest and asset may be matched using available soft bindings.</p>
 </div>
 <div class="paragraph">
-<p>Because they serve a different purpose, a soft binding shall not be used as a <em>hard binding</em>.</p>
+<p>Because they serve a different purpose, a soft binding shall not be used as a hard binding.</p>
 </div>
 <div class="paragraph">
 <p>All soft bindings shall be generated using one of the algorithms listed as supported by this specification. This section is intended to provide:</p>
@@ -1686,7 +1686,7 @@ The above definition is a CBOR adaptation of a subset of the schema from <a href
 </div>
 </div>
 <div class="sect3">
-<h4 id="_examples"><a class="anchor" href="#_examples"></a>9.3.3. Examples</h4>
+<h4 id="_examples_of_claims"><a class="anchor" href="#_examples_of_claims"></a>9.3.3. Examples of Claims</h4>
 <div class="sect4">
 <h5 id="_single_claim"><a class="anchor" href="#_single_claim"></a>9.3.3.1. Single Claim</h5>
 <div class="paragraph">
@@ -2152,10 +2152,10 @@ Although PNG supports it, it&#8217;s considered bad-form to have a data block af
 <div class="sect4">
 <h5 id="_embedding_manifests_into_pdfs"><a class="anchor" href="#_embedding_manifests_into_pdfs"></a>10.3.1.4. Embedding manifests into PDFs</h5>
 <div class="paragraph">
-<p>The C2PA Manifest Store shall be embedded using an embedded file specification (ISO 32000, 7.11.3). The file specification dictionary shall have an <strong>AFRelationship</strong> key whose value is <em>C2PA_Manifest</em>. If the C2PA Manifest Store is embedded into an encrypted PDF, the embedded file stream shall use an <code>Identity</code> crypt filter.</p>
+<p>The C2PA Manifest Store shall be embedded using an embedded file specification (ISO 32000, 7.11.3). The file specification dictionary shall have an <code>AFRelationship</code> key whose value is <code>C2PA_Manifest</code>. If the C2PA Manifest Store is embedded into an encrypted PDF, the embedded file stream shall use an <code>Identity</code> crypt filter.</p>
 </div>
 <div class="paragraph">
-<p>The embedded file specification shall be the value (via indirect object) of the <strong>AF</strong> key in the document catalog dictionary. It shall also be referenced (via indirect object) either from the <em>EmbeddedFiles</em> NameTree (<code>/Catalog/Names/EmbeddedFiles</code>) or from a <em>FileAttachment</em> annotation. The annotation approach shall be used when adding a C2PA Manifest Store to a PDF that already has an existing PDF signature in order to avoid invalidating its <code>DocMDP</code> restrictions.</p>
+<p>The embedded file specification shall be the value (via indirect object) of the <code>AF</code> key in the document catalog dictionary. It shall also be referenced (via indirect object) either from the <code>EmbeddedFiles</code> NameTree (<code>/Catalog/Names/EmbeddedFiles</code>) or from a <code>FileAttachment</code> annotation. The annotation approach shall be used when adding a C2PA Manifest Store to a PDF that already has an existing PDF signature in order to avoid invalidating its <code>DocMDP</code> restrictions.</p>
 </div>
 <div class="paragraph">
 <p>It is possible to add a PDF signature (certifying or approval) to a PDF following the inclusion of a C2PA Manifest Store, but only if the addition is known at the time of the creation of the active manifest. Since the PDF signature will change the contents of the PDF after the C2PA Manifest is signed, the size and location of value of its <code>Contents</code> key must be determined before C2PA signing and added to the list of exclusions in the <code>data.hash</code> assertion, so that the C2PA signature is not invalidated by the addition of the PDF signature.</p>
