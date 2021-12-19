@@ -899,7 +899,7 @@ A <em>C2PA Manifest</em> can reference other _C2PA Manifest_s.
 <div class="sect2">
 <h3 id="_general"><a class="anchor" href="#_general"></a>5.1. General</h3>
 <div class="paragraph">
-<p>It is expected that each of the actors in the system that creates or processes an asset will produce one or more <strong>assertions</strong> about when, where, and how the asset was originated or transformed. An assertion is labelled data, typically (though not required to be) in a CBOR-based structure which represents a declaration made by an actor about an asset. Some of these actors will be human and add human-generated information (e.g., copyright) while other actors are machines (software/hardware) providing the information they generated (e.g., camera type).</p>
+<p>It is expected that each of the actors in the system that creates or processes an asset will produce one or more assertions about when, where, and how the asset was originated or transformed. An assertion is labelled data, typically (though not required to be) in a CBOR-based structure which represents a declaration made by an actor about an asset. Some of these actors will be human and add human-generated information (e.g., copyright) while other actors are machines (software/hardware) providing the information they generated (e.g., camera type).</p>
 </div>
 <div class="paragraph">
 <p>Some examples of assertions are:</p>
@@ -927,7 +927,7 @@ A <em>C2PA Manifest</em> can reference other _C2PA Manifest_s.
 <div class="sect2">
 <h3 id="_labels"><a class="anchor" href="#_labels"></a>5.2. Labels</h3>
 <div class="paragraph">
-<p>Each assertion has a <strong>label</strong> defined either by the C2PA specifications or an external entity.</p>
+<p>Each assertion has a label defined either by the C2PA specifications or an external entity.</p>
 </div>
 <div class="paragraph">
 <p>Labels are string values organized into namespaces using a period (<code>.</code>) as a separator.  The namespace component of the label can be an entity, or a reference to a well-established standard (see ABNF below). The most common labels will be defined by the C2PA and will begin with <code>c2pa.</code>. Entity-specific labels shall begin with the Internet domain name for the entity similar to how Java packages are defined (e.g., <code>com.litware</code>, <code>net.fineartschool</code>). Well-established standards can use the "stds." prefix when describing their namespace.  They are also versioned with a simple incrementing integer scheme (e.g., <code>c2pa.actions.v2</code>). If no version is provided, it is considered as <code>v1</code>. The list of publicly known labels can be found in <a href="#_c2pa_standard_assertions">Chapter 17, <em>C2PA Standard Assertions</em></a>.</p>
@@ -1158,9 +1158,6 @@ Cloud data assertions use a different schema for URIs which is described in <a h
 </div>
 <div class="paragraph">
 <p>As described in the forthcoming JUMBF AMD-2, a new <code>Private</code> field (in the form of a JUMBF box) can be present as part of any JUMBF Description box. This C2PA specification defines the C2PA salt as a <code>Private</code> field consisting of a standard JUMBF box with a TBox value of <code>c2sh</code> (for C2PA salt hash) and its payload data being randomly-generated binary data of at least 16 bytes in length.</p>
-</div>
-<div class="paragraph">
-<p>For example, if the assertion type is <code>c2pa.actions</code>, the hash is calculated over the value of the <code>PRIVATE</code> box in the assertion&#8217;s JUMBF Description Box followed by the canonical serialization of <code>actions-map</code> which is the payload data of the JUMBF Content Box of the assertion.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
