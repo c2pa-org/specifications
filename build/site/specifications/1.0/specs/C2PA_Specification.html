@@ -407,7 +407,7 @@ C2PA specifications SHOULD NOT provide value judgments about whether a given set
 <p>The <a href="https://www.w3.org/TR/vc-data-model">W3C Verifiable Credentials</a> of individual actors that are involved in the creation of the assertions can be added to the C2PA information to provide additional trust signals to the process of assessing trustworthiness of the asset.</p>
 </div>
 <div class="paragraph">
-<p>These assertions, claims, credentials and signatures are all bound together into a verifiable unit called a <a href="#_manifest">Manifest</a> by a hardware or software component called a Claim Generator. The set of C2PA Manifests, as stored in the asset&#8217;s C2PA Manifest Store, represent its provenance data.</p>
+<p>These assertions, claims, credentials and signatures are all bound together into a verifiable unit called a <a href="#_c2pa_manifest">C2PA Manifest</a> by a hardware or software component called a Claim Generator. The set of C2PA Manifests, as stored in the asset&#8217;s C2PA Manifest Store, represent its provenance data.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -1958,7 +1958,7 @@ Allowing other superboxes enables custom extensions to C2PA as well as enabling 
 <div class="sect4">
 <h5 id="_ingredient_storage"><a class="anchor" href="#_ingredient_storage"></a>10.1.1.2. Ingredient Storage</h5>
 <div class="paragraph">
-<p>When a C2PA Manifest includes <a href="#_ingredients">ingredient assertions</a>, and an ingredient contains a C2PA Manifest, that manifest shall be brought into this asset to ensure that the provenance data is kept intact. Such ingredient manifests are added to the C2PA Manifest Store as a peer of the C2PA Manifest for the asset itself.</p>
+<p>When a C2PA Manifest includes <a href="#_ingredient">ingredient assertions</a>, and an ingredient contains a C2PA Manifest, that manifest shall be brought into this asset to ensure that the provenance data is kept intact. Such ingredient manifests are added to the C2PA Manifest Store as a peer of the C2PA Manifest for the asset itself.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -4085,7 +4085,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="sect3">
 <h4 id="_context"><a class="anchor" href="#_context"></a>16.1.1. Context</h4>
 <div class="paragraph">
-<p>Information security is a principal concern of C2PA. C2PA maintains a threat model and security considerations for the C2PA specification. This effort complements other security-related work within C2PA. Associated documentation is currently in development and can be found at <a href="#security/Security_Considerations.adoc" class="page unresolved">Security Considerations</a>.</p>
+<p>Information security is a principal concern of C2PA. C2PA maintains a threat model and security considerations for the C2PA specification. This effort complements other security-related work within C2PA. Associated documentation is currently in development and can be found at <a href="../security/Security_Considerations.html" class="page">Security Considerations</a>.</p>
 </div>
 <div class="paragraph">
 <p>The C2PA is developing security considerations documentation that includes:</p>
