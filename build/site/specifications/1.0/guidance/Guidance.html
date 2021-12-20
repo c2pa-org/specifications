@@ -28,12 +28,12 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="./specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
-            <a class="navbar-item" href="./explainer/_attachments/Explainer.pdf">Explainer</a> 
-            <a class="navbar-item" href="./guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
-            <a class="navbar-item" href="./ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
-            <a class="navbar-item" href="./security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
-            <a class="navbar-item" href="./security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
+            <a class="navbar-item" href="../specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
+            <a class="navbar-item" href="../security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
           </div>
         </div>
           <div class="navbar-item">
@@ -401,11 +401,51 @@
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_guidance_on_hard_bindings"><a class="anchor" href="#_guidance_on_hard_bindings"></a>4.1. Guidance on Hard Bindings</h3>
+<div class="sect3">
+<h4 id="_general_2"><a class="anchor" href="#_general_2"></a>4.1.1. General</h4>
 <div class="paragraph">
 <p>Every C2PA manifest is required to have a hard binding to its associated digital asset. Use of hard bindings prevents collision-based attacks associated with soft bindings described below.</p>
 </div>
 <div class="paragraph">
 <p>Selection of the specific hashing algorithm to use for a hard binding should be made based on the requirements of the workflow. In the absence of some compelling reason to do otherwise, it is recommended to use SHA-256.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_byte_range_bindings"><a class="anchor" href="#_byte_range_bindings"></a>4.1.2. Byte Range Bindings</h4>
+<div class="paragraph">
+<p>The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in <a href="../specs/C2PA_Specification.html#_hashing" class="page">the core specification</a>. Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset.  However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_iso_bmff_bindings"><a class="anchor" href="#_iso_bmff_bindings"></a>4.1.3. ISO BMFF Bindings</h4>
+<div class="paragraph">
+<p>ISO BMFF-based assets utilize a well defined box structure. Accordingly, the provenance content binding for these assets needs to be expressed in terms of that box structure.</p>
+</div>
+<div class="paragraph">
+<p>There are two approaches which were considered for integrating provenance into the ISO BMFF boxes - either by defining which boxes and/or box components should be included in the hash, or conversely, which should be excluded.</p>
+</div>
+<div class="paragraph">
+<p>A number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an ISO BMFF asset that altered the audio/video presentation without altering the hard binding. This is why C2PA ISO BMFF hard bindings are integrated with the box structure using Exclusion Lists.</p>
+</div>
+<div class="sect4">
+<h5 id="_iso_bmff_binding_exclusion_lists"><a class="anchor" href="#_iso_bmff_binding_exclusion_lists"></a>4.1.3.1. ISO BMFF Binding Exclusion Lists</h5>
+<div class="paragraph">
+<p>Typically ISO BMFF content need only include the mandatory exclusions required by the C2PA specification. These should be sufficient for the most common brands registered with the <a href="http://mp4ra.org">MP4 Registry Authority</a>. However, careful consideration should be given to determine if addition boxes should be included for your ISO BMFF brand of asset.</p>
+</div>
+<div class="paragraph">
+<p>Do not add a box to the exclusion list if:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the modification of the box can alter the audio-video presentation in any way.</p>
+</li>
+<li>
+<p>the box declares content external to the asset which you wish to be tamper evident.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">

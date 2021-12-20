@@ -28,12 +28,12 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="./specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
-            <a class="navbar-item" href="./explainer/_attachments/Explainer.pdf">Explainer</a> 
-            <a class="navbar-item" href="./guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
-            <a class="navbar-item" href="./ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
-            <a class="navbar-item" href="./security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
-            <a class="navbar-item" href="./security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
+            <a class="navbar-item" href="../specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
+            <a class="navbar-item" href="../security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
           </div>
         </div>
           <div class="navbar-item">
@@ -195,11 +195,11 @@
 <div class="content">
 <div class="imageblock text-center">
 <div class="content">
-<a class="image" href="https://creativecommons.org/licenses/by/4.0/"><img src="_images/CCby4.png" alt="Creative Commons License"></a>
+<a class="image" href="http://creativecommons.org/licenses/by/4.0/"><img src="_images/CCby4.png" alt="Creative Commons License"></a>
 </div>
 </div>
 <div class="paragraph text-center">
-<p>This work is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 </div>
@@ -210,7 +210,10 @@
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The development of this Explainer is ongoing. This Explainer accompanies Version 1.0 of the Technical Specifications with the intent of providing further background and clarification on the development of the standard, its goals, mechanisms and guidelines.</p>
+<p>The development of this Explainer is ongoing. This Explainer accompanies Version 0.8 of the Technical Specifications.</p>
+</div>
+<div class="paragraph">
+<p>This Explainer accompanies the C2PA Specifications with the intent of providing further background and clarification on the development of the standard, its goals, mechanisms and guidelines.</p>
 </div>
 <div class="paragraph">
 <p>This Explainer is not a technical document and is directed towards the general public.</p>
@@ -243,7 +246,7 @@
 <p>In the C2PA Specifications, trust decisions are made by the consumer of the asset based on the identity of the actor(s) who signed the provenance data along with the information in the assertions contained in the provenance. This signing takes place at each significant moment in an asset&#8217;s life (e.g., creation, editing, etc.) through the use of the actor&#8217;s unique credentials and ensures that the provenance data remains cryptographically bound to the newly created or updated asset.</p>
 </div>
 <div class="paragraph">
-<p>To enable consumers to make informed decisions about the provenance of an asset, and prevent unknown attackers from impersonating others, it is critical that each application and ecosystem reliably identify the actor to whom a signing credential is issued. This is accomplished through the use of a <em>certification authority</em> (CA). CAs perform real-world due diligence to ensure credentials are only issued to actors who are whom they claim to be. In the world wide web, CAs verify that someone requesting a certificate to operate a secure web site owns and/or controls the site&#8217;s domain name before issuing such a credential. For example, before issuing a certificate for <a href="https://c2pa.org/" class="bare">https://c2pa.org/</a>, the CA verified the requester did in fact control C2PA&#8217;s domain name before issuing a certificate for that site name.</p>
+<p>To enable consumers to make informed decisions about the provenance of an asset, and prevent unknown attackers from impersonating others, it is critical that each application and ecosystem reliably identify the actor to whom a signing credential is issued. This is accomplished through the use of a <em>certification authority</em> (CA). CAs perform real-world due diligence to ensure credentials are only issued to actors who are whom they claim to be. In the world wide web, CAs verify that someone requesting a certificate to operate a secure web site owns and/or controls the site&#8217;s domain name before issuing such a credential. For example, before issuing a certificate for <a href="https://c2pa.org/" class="bare">https://c2pa.org/</a>, the CA verified the requestor did in fact control C2PA&#8217;s domain name before issuing a certificate for that site name.</p>
 </div>
 <div class="paragraph">
 <p>Unlike the world wide web, C2PA will be used in multiple different application settings, and each setting will have its own requirements. Each application will therefore provide users with one or more <em>trust lists</em>, which are lists of certification authorities that issue credentials for that application. For example, in a news and media aggregation application or web site, each newspaper, television network, or other media organization has a globally-recognized identity, and there is only one such organization that operates with that name. In this situation, because brand marks and other visual indicators can and have been reproduced for the purposes of impersonation, consumers want to be certain the media they are consuming actually comes from the source it claims to be. This application would provide at least one trust list maintained by a professional or non-profit organization for journalists and media, which endorses certification authorities that ensure such credentials are only issued to the genuine organization through real-world due diligence.</p>
@@ -264,7 +267,7 @@
 <p>In other words, any alteration to either the asset or the provenance, however insignificant, would alter the mathematical algorithm - the shape of the piece of the puzzle – in such a way that they would no longer match.</p>
 </div>
 <div class="paragraph">
-<p>For more technical information on this see "Hard binding" in the <a href="../specs/C2PA_Specification.html#_glossary" class="page">glossary</a> and the <a href="../guidance/Guidance.html" class="page">non-normative guidance</a>.</p>
+<p>For more technical information on this see "Hard binding" in the <a href="#specs:Glossary.adoc" class="page unresolved">glossary</a> and the <a href="../guidance/Guidance.html" class="page">non-normative guidance</a>.</p>
 </div>
 </div>
 <div class="sect2">
