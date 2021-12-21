@@ -184,44 +184,41 @@
 <li><a href="#_appearance">4.1. Appearance</a></li>
 <li><a href="#_placement_and_interaction">4.2. Placement and interaction</a></li>
 <li><a href="#_validation_states">4.3. Validation States</a></li>
+<li><a href="#_l1_interface_language">4.4. L1 interface language</a></li>
 </ul>
 </li>
 <li><a href="#_l2_progressive_disclosures">5. L2 – progressive disclosures</a>
 <ul class="sectlevel2">
 <li><a href="#_minimum_viable_provenance">5.1. Minimum viable provenance</a></li>
-<li><a href="#_manifest_summaries">5.2. Manifest Summaries</a></li>
-<li><a href="#_summary_displays">5.3. Summary displays</a></li>
-<li><a href="#_validation_states_2">5.4. Validation states</a></li>
+<li><a href="#_manifest_summaries">5.2. Manifest summaries</a></li>
+<li><a href="#_provenance_summaries">5.3. Provenance summaries</a></li>
+<li><a href="#_provenance_depth_versus_breadth">5.4. Provenance depth versus breadth</a></li>
+<li><a href="#_validation_states_2">5.5. Validation states</a></li>
+<li><a href="#_l2_interface_language">5.6. L2 interface language</a></li>
 </ul>
 </li>
-<li><a href="#_applications_and_use_cases">6. Applications and Use cases</a>
+<li><a href="#_video">6. Video</a>
 <ul class="sectlevel2">
-<li><a href="#_arts_and_entertainment">6.1. Arts and entertainment</a></li>
-<li><a href="#_news">6.2. News</a></li>
-<li><a href="#_e_commerce_and_retail">6.3. E-commerce and retail</a></li>
-<li><a href="#_travel">6.4. Travel</a></li>
+<li><a href="#_l1_in_player">6.1. L1 in player</a></li>
+<li><a href="#_l2_displays">6.2. L2 displays</a></li>
 </ul>
 </li>
-<li><a href="#_video">7. Video</a>
+<li><a href="#_creator_experience">7. Creator Experience</a>
 <ul class="sectlevel2">
-<li><a href="#_l1_in_player">7.1. L1 in player</a></li>
-<li><a href="#_l2_displays">7.2. L2 displays</a></li>
+<li><a href="#_opting_in_user_privacy_and_data_collection">7.1. Opting in, user privacy and data collection</a></li>
+<li><a href="#_user_settings_and_claim_preview">7.2. User settings and claim preview</a></li>
+<li><a href="#_identity">7.3. Identity</a></li>
+<li><a href="#_actions">7.4. Actions</a></li>
+<li><a href="#_ingredients_and_their_validation_state">7.5. Ingredients and their validation state</a></li>
+<li><a href="#_error_handling">7.6. Error handling</a></li>
+<li><a href="#_exporting">7.7. Exporting</a></li>
 </ul>
 </li>
-<li><a href="#_creator_experience">8. Creator Experience</a>
-<ul class="sectlevel2">
-<li><a href="#_opting_in_user_privacy_and_data_collection">8.1. Opting in, user privacy and data collection</a></li>
-<li><a href="#_user_settings_and_claim_preview">8.2. User settings and claim preview</a></li>
-<li><a href="#_identity">8.3. Identity</a></li>
-<li><a href="#_actions">8.4. Actions</a></li>
-<li><a href="#_ingredients_and_their_validation_state">8.5. Ingredients and their validation state</a></li>
-<li><a href="#_error_handling">8.6. Error handling</a></li>
-<li><a href="#_exporting">8.7. Exporting</a></li>
-</ul>
-</li>
+<li><a href="#_communication_and_education">8. Communication and education</a></li>
 <li><a href="#_open_issues">9. Open issues</a>
 <ul class="sectlevel2">
 <li><a href="#_user_research">9.1. User research</a></li>
+<li><a href="#_applications_and_use_cases">9.2. Applications and use cases</a></li>
 </ul>
 </li>
 <li><a href="#_public_review_feedback_and_evolution">10. Public Review, Feedback and Evolution</a></li>
@@ -319,7 +316,7 @@
 </div>
 <div id="figure-0" class="imageblock">
 <div class="content">
-<img src="_images/disclosure_summary@2x.png" alt="Figure 1">
+<img src="_images/disclosure_summary@2x.png" alt="2x">
 </div>
 <div class="title">Figure 1. Disclosure levels</div>
 </div>
@@ -352,7 +349,7 @@ In addition to these standard levels, there will be common tools available for t
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<img src="_images/L1-display-options@2x.png" alt="Figure 2">
+<img src="_images/L1-display-options@2x.png" alt="2x">
 </div>
 <div class="title">Figure 2. The L1 indicator</div>
 </div>
@@ -383,6 +380,59 @@ In addition to these standard levels, there will be common tools available for t
 <p>In the event that the active manifest is incomplete or invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See Chapter 14. Validation in the C2PA Technical Specifications [insert link] for further information.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_l1_interface_language"><a class="anchor" href="#_l1_interface_language"></a>4.4. L1 interface language</h3>
+<div class="paragraph">
+<p>It is important to align any interface language with the recommended terminology and phrases. This lets terminology retain the same meaning and weight across experiences, which is best for user comprehension. It also ensures the value and adoption of content provenance, thus making C2PA data is easier to understand and promote across a large ecosystem.</p>
+</div>
+<div class="paragraph">
+<p>For customization of UI elements, use the recommended terms or customize with user comprehension in mind.</p>
+</div>
+<div class="paragraph">
+<p>In the following table, we recommending the following terminology for consumer-facing L1 UI:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. L1 recommended content terms and descriptions</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Term/phrase</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Usage notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content credentials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content provenance and attribution data</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Use title case when refering to the system name and sentence case when refering to the data itself</p>
+</li>
+<li>
+<p>As a reminder, this is a working title and is under discussion</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Incomplete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Someone has changed this content without updating the content credentials, so there may be unexplained changes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Consider pairing with a visual indicator that suggests users proceed with caution when viewing C2PA data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Someone has changed or tampered with the content credentials, so the available data should be disregarded</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Consider pairing with a visual indicator that conveys clear negativity and avoidance so users can understand the C2PA data should not be used to assess the content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -392,7 +442,7 @@ In addition to these standard levels, there will be common tools available for t
 <h3 id="_minimum_viable_provenance"><a class="anchor" href="#_minimum_viable_provenance"></a>5.1. Minimum viable provenance</h3>
 <div class="imageblock">
 <div class="content">
-<img src="_images/discrete-1@2x.png" alt="Figure 3">
+<img src="_images/discrete-1@2x.png" alt="2x">
 </div>
 <div class="title">Figure 4. Minimum viable provenance display</div>
 </div>
@@ -404,161 +454,247 @@ In addition to these standard levels, there will be common tools available for t
 </div>
 </div>
 <div class="sect2">
-<h3 id="_manifest_summaries"><a class="anchor" href="#_manifest_summaries"></a>5.2. Manifest Summaries</h3>
-<div class="imageblock">
+<h3 id="_manifest_summaries"><a class="anchor" href="#_manifest_summaries"></a>5.2. Manifest summaries</h3>
+<div id="manifest-summary" class="imageblock">
 <div class="content">
-<img src="_images/discrete-2@2x.png" alt="Figure 4">
+<img src="_images/L2_depth@2x.png" alt="2x">
 </div>
-<div class="title">Figure 5. Single manifest displays</div>
+<div class="title">Figure 5. A single manifest summary</div>
 </div>
 <div class="paragraph">
-<p>A discrete manifest display only represents a single manifest. It could be the active manifest, as this is the most recent version tied to the C2PA-enabled content, or another manifest determined by the implementer. The determination for displaying a discrete manifest should be if there is substantive assertion data in a given manifest the implementer believes is most relevant to its audience. A shortcoming of discrete displays it that the highlighted manifest may not represent the complete history of the C2PA-enabled content, and may require consumers to navigate away from the implementer’s context to L3 to learn more.</p>
+<p>A manifest summary only represents a single manifest. It could be the active manifest, as this is the most recent version tied to the C2PA-enabled content, or an ingredient manifest as determined by the implementer. The determination for displaying an ingredient manifest should be if there is substantive assertion data the implementer believes is more relevant to its audience than that of the active manifest. A shortcoming of displaying a single manifest summary is that it may not represent the complete history of the C2PA-enabled content, and may require consumers to navigate away from the implementer’s context to L3 to learn more.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_summary_displays"><a class="anchor" href="#_summary_displays"></a>5.3. Summary displays</h3>
+<h3 id="_provenance_summaries"><a class="anchor" href="#_provenance_summaries"></a>5.3. Provenance summaries</h3>
 <div class="imageblock">
 <div class="content">
-<img src="_images/summary-1@2x.png" alt="Figure 5">
+<img src="_images/summary-1@2x.png" alt="2x">
 </div>
-<div class="title">Figure 6. Summary display, example 1</div>
+<div class="title">Figure 6. Provenance summary, two manifests</div>
 </div>
 <div class="paragraph">
-<p>A provenance summary display represents the collection of manifests related to the C2PA-enabled content. Manifests should be presented in reverse chronological order, starting with the active manifest at the top and the origin ingredients below. Origin ingredients represent the beginning of their respective history branches.</p>
+<p>A provenance summary represents the collection of manifests related to the C2PA-enabled content. Manifests should be presented in the order that they are referenced via ingredient assertions, starting with the active manifest at the top and ending with the origin ingredients below. Origin ingredients represent the beginning of their respective history branches.</p>
 </div>
-<div class="imageblock">
+<div id="provenance-summary" class="imageblock">
 <div class="content">
-<img src="_images/summary-2@2x.png" alt="Figure 6">
+<img src="_images/summary-2@2x.png" alt="2x">
 </div>
-<div class="title">Figure 7. Summary display, example 2</div>
+<div class="title">Figure 7. Provenance summary, three manifests</div>
 </div>
 <div class="paragraph">
 <p>Summary displays should show at minimum the origin ingredients and active manifests, or if screen real estate allows, with at least one manifest in between.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/summary-3@2x.png" alt="Figure 7">
+<img src="_images/summary-3@2x.png" alt="2x">
 </div>
-<div class="title">Figure 8. Summary display, example 3</div>
+<div class="title">Figure 8. Provenance summary, four manifests</div>
 </div>
 <div class="paragraph">
 <p>In order to provide users with a succinct summary and to allow for limited screen real estate, the manifests in between origin and active can be collapsed and represented as a numerical count. C2PA recommends a baseline rule for collapsing manifests if the total number exceeds four or more. However, this threshold can be altered according to context. In keeping with the core recommendations, a link to the full set of data in L3 should always follow the summary list of manifests.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/summary-4@2x.png" alt="Figure 8">
+<img src="_images/summary-4@2x.png" alt="2x">
 </div>
-<div class="title">Figure 9. Summary display, two origins</div>
+<div class="title">Figure 9. Provenance summary, two origins</div>
 </div>
 <div class="paragraph">
 <p>When multiple origins are present, either as multiple ingredients in a single manifest or across multiple manifests, they can be summarized in the origin section of the UI. The L1 indicator can be used as a badge on ingredient thumbnails to distinguish C2PA-enabled assets.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/summary-5@2x.png" alt="Figure 9">
+<img src="_images/summary-5@2x.png" alt="2x">
 </div>
-<div class="title">Figure 10. Summary display, multiple origins</div>
+<div class="title">Figure 10. Provenance summary, multiple origins and manifests</div>
 </div>
 <div class="paragraph">
 <p>L2 UI is flexible enough to allow for various combinations of manifest counts and origin assets.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_validation_states_2"><a class="anchor" href="#_validation_states_2"></a>5.4. Validation states</h3>
+<h3 id="_provenance_depth_versus_breadth"><a class="anchor" href="#_provenance_depth_versus_breadth"></a>5.4. Provenance depth versus breadth</h3>
+<div class="paragraph">
+<p>In order to summarize the data in a context-specific manner, it is recommended that consideration is given to what balance of <strong>depth</strong> and <strong>breadth</strong> of data will be most relevant to users. For example, if a given piece of content has only one manifest, consider displaying more of its assertion data, as in <a href="#manifest-summary">Figure 5. A single manifest summary</a>. If there are multiple manifests, then depicting the entire provenance summary may give users a more complete understanding of the content&#8217;s history, such as in <a href="#provenance-summary">Figure 7. Provenance summary, three manifests</a>. However, in all likelihood there will be many cases that fall in between.</p>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/error-1@2x.png" alt="Figure 13">
+<img src="_images/L2_depth_breadth_examples_alltogether_incl_range@2x.png" alt="2x">
 </div>
-<div class="title">Figure 11. Incomplete data, example 1</div>
+<div class="title">Figure 11. Provenance summaries depth versus breadth</div>
 </div>
+<div class="paragraph">
+<p>In the figure above, L2 UI options are displayed along a spectrum from depth of information to breadth of provenance representation. The left side represents a single manifest summary and the right side represents the complete provenance summary. However, the middle example shows a customized summary of multiple manifests wherein certain manifest assertions are highlighted. This flexibility allows implementers to show more depth for a given subset of manifests.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/L2_middle@2x.png" alt="2x">
+</div>
+<div class="title">Figure 12. Customized summary combinations</div>
+</div>
+<div class="paragraph">
+<p>Implementers should consider what summary combinations might be most relevant to their audiences in order to concisely display the most complete representation of content provenance.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_validation_states_2"><a class="anchor" href="#_validation_states_2"></a>5.5. Validation states</h3>
+<div class="sect3">
+<h4 id="_incomplete_states"><a class="anchor" href="#_incomplete_states"></a>5.5.1. Incomplete states</h4>
 <div class="paragraph">
 <p>There will be instances when C2PA-enabled content is incomplete data. Most commonly, this will happen if the content is edited without capturing C2PA data. In this event, the L2 and L3 UI should reflect when data is incomplete, as well as the manifest data that came before or after. A dotted line can be drawn between manifests to suggest the connection is not the same as between valid, intact manifests. Incomplete data should not automatically signal that one should discount the content as untrustworthy. For this reason, C2PA discourages the use of an indicator designed to trigger alarm, which should be reserved for more apparent tamper-evident use cases, in favour of a more descriptive and neutral indicator.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/error-2@2x.png" alt="Figure 14">
+<img src="_images/error-1@2x.png" alt="2x">
 </div>
-<div class="title">Figure 12. Incomplete data, example 2</div>
-</div>
-<div class="paragraph">
-<p>Following the established pattern of collapsing additional manifest, incomplete data can be called out via the text string (Figure 13) to bring awareness to the questionable validity of ingredients.</p>
+<div class="title">Figure 13. Incomplete data in the active manifest position</div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/error-3@2x.png" alt="Figure 15">
+<img src="_images/error-4@2x.png" alt="2x">
 </div>
-<div class="title">Figure 13. Invalid display</div>
+<div class="title">Figure 14. Incomplete data in an ingredient position</div>
 </div>
 <div class="paragraph">
-<p>There may be instances when C2PA-enabled content has been maliciously edited to tamper with C2PA data, or is signed by an untrustworthy entity. In this case, no additional prior data can be displayed.</p>
+<p>Following the established pattern of collapsing additional manifests, incomplete data can be called out via the text string to bring awareness to the questionable validity of ingredients.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/error-2@2x.png" alt="2x">
+</div>
+<div class="title">Figure 15. Incomplete data collapsed</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_invalid_states"><a class="anchor" href="#_invalid_states"></a>5.5.2. Invalid states</h4>
+<div class="paragraph">
+<p>There may be instances when C2PA-enabled content has been maliciously edited to tamper with C2PA data, or is signed by a not trusted entity. In this case, no additional prior data can be displayed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/error-5@2x.png" alt="2x">
+</div>
+<div class="title">Figure 16. Invalid data in the active manifest position</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/error-3@2x.png" alt="2x">
+</div>
+<div class="title">Figure 17. Invalid data in an ingredient position</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_l2_interface_language"><a class="anchor" href="#_l2_interface_language"></a>5.6. L2 interface language</h3>
+<div class="paragraph">
+<p>Please refer to 4.2 Interface language [link to section] for a reminder of the importance of adhering to recommended interface language. The following table represents content terminology for UI elements such as commonly used categories and validation states:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. L2 recommended content terms and descriptions</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Term/phrase</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Usage notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content credentials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content provenance and attribution data</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Consider using as a UI header to contextualize C2PA data displays</p>
+</li>
+<li>
+<p>As a reminder, this is a working title and is under discussion</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Signed by / Signer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The signer is responsible for the trustworthiness of the content and its C2PA data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Must be displayed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date and timestamp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The time and time zone at which the signer signed the claim</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Recommended inclusion to accompany signer</p>
+</li>
+<li>
+<p>Appearance of formatting should be localized to consumer&#8217;s region</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edits and activity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Actions taken on the asset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Upcoming UX recommendations will attempt to standardize categorizations of actions for user comprehension</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assets used / Assets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ingredients used in a given manifest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recommended display for discrete manifest summaries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Produced by / Producer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name and role of the person identified by the active manifest as its producer</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Consider a customization or UI pattern to clarify how identity is being validated</p>
+</li>
+<li>
+<p>This term is intended to represent a diverse range of roles, but can be customized based on the CreativeWork assertion</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content credentials are incomplete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Someone has changed this content without updating the content credentials, so there may be unexplained changes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should follow L1 validation state</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content credentials are invalid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Someone has changed or tampered with the content credentials, so the available data should be disregarded</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should follow L1 validation state</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Additional manifests</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There are # additional manifests in this provenance line</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use to represent manifest count when there are four or more manifests in the provenance summary</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Additional manifests and incomplete content credentials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There are # additional manifests in this provenance line, and some have incomplete data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use to represent manifest count when there are four or more manifests in the provenance summary and one or more are incomplete</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_applications_and_use_cases"><a class="anchor" href="#_applications_and_use_cases"></a>6. Applications and Use cases</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>As above, L2 assumes some level of contextual customization will be beneficial to make C2PA data helpful to users. Rather than recommend customizations based on a fixed set of applications, instead C2PA has categorized the ways that assets are used to communicate aspects of reality to users, and provide a recommended customization based on that. The following examples represent a range of potentially common applications:</p>
-</div>
-<div class="sect2">
-<h3 id="_arts_and_entertainment"><a class="anchor" href="#_arts_and_entertainment"></a>6.1. Arts and entertainment</h3>
-<div class="paragraph">
-<p>Depicted is a discrete manifest showing an identity assertion, indicating the uploader is the same as the content producer.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/arts@2x.png" alt="Figure 16">
-</div>
-<div class="title">Figure 14. Entertainment example</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_news"><a class="anchor" href="#_news"></a>6.2. News</h3>
-<div class="paragraph">
-<p>An example of photojournalism, wherein steps between the origin and published manifests are displayed.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/news@2x.png" alt="Figure 17">
-</div>
-<div class="title">Figure 15. News example</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_e_commerce_and_retail"><a class="anchor" href="#_e_commerce_and_retail"></a>6.3. E-commerce and retail</h3>
-<div class="paragraph">
-<p>Depicted is a more complex summary, indicating the shared content on the retail platform is an edited composite of two images. Buyer beware!</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/retail@2x.png" alt="Figure 19">
-</div>
-<div class="title">Figure 16. E-commerce example</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_travel"><a class="anchor" href="#_travel"></a>6.4. Travel</h3>
-<div class="paragraph">
-<p>A travel company publishing a photo captured by a C2PA-enabled camera app.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/travel@2x.png" alt="Figure 20">
-</div>
-<div class="title">Figure 17. Travel example</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_video"><a class="anchor" href="#_video"></a>7. Video</h2>
+<h2 id="_video"><a class="anchor" href="#_video"></a>6. Video</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>As a temporal medium, video content represents a significant challenge to distill provenance data into simple, consumer-friendly displays. This is due to the potential for high volumes of composited ingredients of varying media formats, applied complex edit actions, spanning multiple software and people. Our UX recommendations are focused on an initial starting point for video provenance and aim to expand in complexity over time.</p>
 </div>
 <div class="sect2">
-<h3 id="_l1_in_player"><a class="anchor" href="#_l1_in_player"></a>7.1. L1 in player</h3>
+<h3 id="_l1_in_player"><a class="anchor" href="#_l1_in_player"></a>6.1. L1 in player</h3>
 <div class="paragraph">
 <p>A notable difference with video content is the necessity for a player for viewing. This limits the ways in which an L1 indicator of C2PA data can be placed on the content and interacted with, and may likely require an integration into the player itself. However, the L1 indicator may still be placed next to the video outside of the content.</p>
 </div>
@@ -570,7 +706,7 @@ In addition to these standard levels, there will be common tools available for t
 </div>
 </div>
 <div class="sect2">
-<h3 id="_l2_displays"><a class="anchor" href="#_l2_displays"></a>7.2. L2 displays</h3>
+<h3 id="_l2_displays"><a class="anchor" href="#_l2_displays"></a>6.2. L2 displays</h3>
 <div class="paragraph">
 <p>Video L2 displays should largely follow the same patterns as described in <a href="#_l2_progressive_disclosures">L2 – progressive disclosures</a>. However, for now we stop short of recommending the inclusion of ingredients or non-C2PA origin content due to the potential complexity of volume. Instead, we suggest showing a minimal claim summary or provenance summary.</p>
 </div>
@@ -596,10 +732,10 @@ In addition to these standard levels, there will be common tools available for t
 </div>
 </div>
 <div class="sect1">
-<h2 id="_creator_experience"><a class="anchor" href="#_creator_experience"></a>8. Creator Experience</h2>
+<h2 id="_creator_experience"><a class="anchor" href="#_creator_experience"></a>7. Creator Experience</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_opting_in_user_privacy_and_data_collection"><a class="anchor" href="#_opting_in_user_privacy_and_data_collection"></a>8.1. Opting in, user privacy and data collection</h3>
+<h3 id="_opting_in_user_privacy_and_data_collection"><a class="anchor" href="#_opting_in_user_privacy_and_data_collection"></a>7.1. Opting in, user privacy and data collection</h3>
 <div class="paragraph">
 <p>As per the <a href="https://c2pa.org/principles/">C2PA Guiding Principles</a>, C2PA implementations should provide a mechanism for creators of a given content to assert, in a verifiable manner, any information they wish to disclose about the creation of that content and any actions taken since the asset’s creation. As such, the creator experience requires the following:</p>
 </div>
@@ -611,7 +747,7 @@ C2PA recommends an opt-in flow that concisely represents these requirements and 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_user_settings_and_claim_preview"><a class="anchor" href="#_user_settings_and_claim_preview"></a>8.2. User settings and claim preview</h3>
+<h3 id="_user_settings_and_claim_preview"><a class="anchor" href="#_user_settings_and_claim_preview"></a>7.2. User settings and claim preview</h3>
 <div class="paragraph">
 <p>(Wireframe of settings and preview UI)</p>
 </div>
@@ -642,7 +778,7 @@ C2PA recommends an opt-in flow that concisely represents these requirements and 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_identity"><a class="anchor" href="#_identity"></a>8.3. Identity</h3>
+<h3 id="_identity"><a class="anchor" href="#_identity"></a>7.3. Identity</h3>
 <div class="paragraph">
 <p>The identity of the creator, or lack thereof, is an important assertion for the completion of a content’s provenance as it helps consumers understand the person(s) responsible for what happened. It is important to restate that C2PA specifications do not require the identities of persons or organizations making any assertion or claim about an asset to be documented. However, the challenge of validating identity when provided is beyond the scope of the C2PA specification at present. As such, C2PA recommends several tactics to help consumers understand the role of identity in C2PA provenance data.</p>
 </div>
@@ -654,7 +790,7 @@ C2PA recommends an opt-in flow that concisely represents these requirements and 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_actions"><a class="anchor" href="#_actions"></a>8.4. Actions</h3>
+<h3 id="_actions"><a class="anchor" href="#_actions"></a>7.4. Actions</h3>
 <div class="paragraph">
 <p>Similar to the treatment of identity, some users may want to reserve the right to not disclose the actions they’ve taken on a given content. While some use cases, like photojournalism, should always show transparently what actions took place, this is less important for more creative and artistic applications. In some cases, users may want to protect their particular process of creation and should therefore be allowed to opt out of including actions in their claims.</p>
 </div>
@@ -663,7 +799,7 @@ C2PA recommends an opt-in flow that concisely represents these requirements and 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_ingredients_and_their_validation_state"><a class="anchor" href="#_ingredients_and_their_validation_state"></a>8.5. Ingredients and their validation state</h3>
+<h3 id="_ingredients_and_their_validation_state"><a class="anchor" href="#_ingredients_and_their_validation_state"></a>7.5. Ingredients and their validation state</h3>
 <div class="paragraph">
 <p>(Wireframe of preview UI with ingredient validation states)</p>
 </div>
@@ -675,16 +811,27 @@ C2PA recommends an opt-in flow that concisely represents these requirements and 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_error_handling"><a class="anchor" href="#_error_handling"></a>8.6. Error handling</h3>
+<h3 id="_error_handling"><a class="anchor" href="#_error_handling"></a>7.6. Error handling</h3>
 <div class="paragraph">
 <p>Work in progress.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exporting"><a class="anchor" href="#_exporting"></a>8.7. Exporting</h3>
+<h3 id="_exporting"><a class="anchor" href="#_exporting"></a>7.7. Exporting</h3>
 <div class="paragraph">
 <p>The <a href="../guidance/Guidance.html" class="page">C2PA Implementation Guidance</a> recommends that a manifest be created for an asset when a significant event in the lifecycle of the asset takes place, such as its initial creation or an "export" operation from an editing tool. This is in part due to the underlying technical process of digitally signing the claim, but also aligns with natural creation workflows. When a user is ready to export their work, they should be able to decide whether or not to attach the accumulated claim data to their content. Not every piece of exported content is in need of provenance data, so C2PA recommends enabling the option of attachment on a per document basis. It will also help serve as a reminder to users that they have opted into the C2PA implementation, which will allow them to protect their privacy as needed.</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_communication_and_education"><a class="anchor" href="#_communication_and_education"></a>8. Communication and education</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To ensure user comprehension, it is crucial that implementers consider how their audiences are introduced to C2PA provenance data and the value to be gained from engaging with it. We recommend providing creator and consumer educational experiences and strongly encourage the use of language consistent to what is provided in these guidelines. Keeping communication and education aligned is a key part of promoting comprehension, value, and adoption of C2PA data by implementers, creators, and consumers.</p>
+</div>
+<div class="paragraph">
+<p>Depending on the implementer’s platform and audience, there are different ways to effectively incorporate education around C2PA data. We suggest utilizing standard UI elements like links, tooltips, and modals to provide users with opportunities to seek out more information regarding the implementation or a component piece within. Certain L2 UI elements, like assertion categories, may warrant additional explanations to ensure user comprehension. For larger and more detailed explanations, implementers should consider linking out to FAQs or dedicated information pages so audiences can learn more about C2PA from a native product voice. However, when making content customizations, make sure things like brand voice are not prioritized in sacrifice of clarity and user comprehension.</p>
 </div>
 </div>
 </div>
@@ -695,6 +842,12 @@ C2PA recommends an opt-in flow that concisely represents these requirements and 
 <h3 id="_user_research"><a class="anchor" href="#_user_research"></a>9.1. User research</h3>
 <div class="paragraph">
 <p>Correctly identifying and displaying trust signals are a paramount concern for our overall user experience. C2PA strives to understand the value consumers will apply to content attribution through ongoing user research studies and usability testing.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_applications_and_use_cases"><a class="anchor" href="#_applications_and_use_cases"></a>9.2. Applications and use cases</h3>
+<div class="paragraph">
+<p>Pending user research, C2PA will provide implementors with UX recommended L2 customizations based on combinations of content, audiences, and platforms. Examples may include news publishers, social sites, e-commerce and retail, travel, and entertainment platforms.</p>
 </div>
 </div>
 </div>
