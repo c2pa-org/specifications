@@ -194,6 +194,8 @@
 <li><a href="#_validation">6. Validation</a>
 <ul class="sectlevel2">
 <li><a href="#_validation_security_practices">6.1. Validation security practices</a></li>
+<li><a href="#_validation_of_ingredient_manifests">6.2. Validation of Ingredient manifests</a></li>
+<li><a href="#_data_validation">6.3. Data validation</a></li>
 </ul>
 </li>
 <li><a href="#_additional_guidance">7. Additional Guidance</a>
@@ -263,6 +265,23 @@
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_assertions"><a class="anchor" href="#_assertions"></a>3.1. Assertions</h3>
+<div class="sect3">
+<h4 id="_description"><a class="anchor" href="#_description"></a>3.1.1. Description</h4>
+<div class="paragraph">
+<p>Each of the actors in the system that creates or processes an asset will produce one or more assertions about when, where, and how the asset was originated or transformed. An assertion is labelled data which represents a declaration made by an actor about an asset. The assertion&#8217;s label is defined either by the C2PA specification or an external entity.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_encryption_of_assertions"><a class="anchor" href="#_encryption_of_assertions"></a>3.1.2. Encryption of Assertions</h4>
+<div class="paragraph">
+<p>The <a href="../specs/C2PA_Specification.html#_c2pa_standard_assertions" class="page">set of assertions</a>, their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.</p>
+</div>
+<div class="paragraph">
+<p>A use case for creating variants of existing assertions would be to encrypt them to prevent access to those not possessing the necessary decryption key. This might be for privacy protection or the establishment of a more secure end-to-end workflow.</p>
+</div>
+<div class="paragraph">
+<p>For example, if an implementation from <code>Litware.com</code> wished to encrypt the <code>std.exif</code> assertion to hide the information about the capture device, they could create the new assertion label as <code>com.litware.exif</code> or perhaps even <code>com.litware.encrypted-1</code> if they wanted to even hide what was encrypted.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -277,6 +296,7 @@
 </td>
 </tr>
 </table>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -324,7 +344,7 @@
 <p>When using a cloud service to manage the manifest repository, and serving the manifest stores via http Link headers (as described in the C2PA specification), having the manifest store available at the same origin as the asset is recommended as it would reduce requirements on <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing (CORS)</a>. However, it is worth noting that doing so does not provide any additional privacy or security protection of either the manifest store or the asset.</p>
 </div>
 <div class="paragraph">
-<p>To mitigate risks to user privacy, we recommend external manifest store service providers to allow content creators to retain the ability to redact or remove content from the datastore, or to determine which manifest may be publicly queried. For example, a content creator may want to include an information-rich manifest for internal cataloguing purposes, and an updated manifest with redacted information for public distribution.</p>
+<p>To mitigate risks to user privacy, we recommend manifest repository service providers to allow content creators to retain the ability to redact or remove content from the repository, or to determine which manifest may be publicly queried. For example, a content creator may want to include an information-rich manifest for internal cataloguing purposes, and an updated manifest with redacted information for public distribution.</p>
 </div>
 </div>
 <div class="sect3">
@@ -340,7 +360,7 @@
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Clarification of C2PA&#8217;s position needs to be evaluated in the context of the current industry practices in view that stripping of metadata.  Currently such an action is encouraged by both MPEG <a href="https://ccpaworld.slack.com/archives/C01LA2UTX32/p1627075105074700" class="bare">https://ccpaworld.slack.com/archives/C01LA2UTX32/p1627075105074700</a> and JPEG WGs. In addition many publishers including the NYT are stripping image metadata <a href="https://blog.imatag.com/state-of-image-metadata-in-news-sites-2019-update" class="bare">https://blog.imatag.com/state-of-image-metadata-in-news-sites-2019-update</a>.</p>
+<p>Implementation of the C2PA specification is to be evaluated in the context of the current industry practices around stripping of metadata.  Such action is encouraged by both MPEG and JPEG WGs. In addition many publishers including the NYT are stripping image metadata <a href="https://blog.imatag.com/state-of-image-metadata-in-news-sites-2019-update" class="bare">https://blog.imatag.com/state-of-image-metadata-in-news-sites-2019-update</a>.</p>
 </div>
 </td>
 </tr>
@@ -356,7 +376,7 @@
 <div class="sect3">
 <h4 id="_manifests_for_existing_media"><a class="anchor" href="#_manifests_for_existing_media"></a>3.3.7. Manifests for existing media</h4>
 <div class="paragraph">
-<p>It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described <a href="#_external_manifests">here</a>, all assets can have provenance, no matter their age.</p>
+<p>It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described <a href="../specs/C2PA_Specification.html#_external_manifests" class="page">here</a>, all assets can have provenance, no matter their age.</p>
 </div>
 </div>
 </div>
@@ -404,7 +424,7 @@
 <div class="sect3">
 <h4 id="_general_2"><a class="anchor" href="#_general_2"></a>4.1.1. General</h4>
 <div class="paragraph">
-<p>Every C2PA manifest is required to have a hard binding to its associated digital asset. Use of hard bindings prevents collision-based attacks associated with soft bindings described below.</p>
+<p>Every C2PA Manifest is required to have a hard binding to its associated digital asset. Use of hard bindings prevents collision-based attacks associated with soft bindings described below.</p>
 </div>
 <div class="paragraph">
 <p>Selection of the specific hashing algorithm to use for a hard binding should be made based on the requirements of the workflow. In the absence of some compelling reason to do otherwise, it is recommended to use SHA-256.</p>
@@ -447,11 +467,17 @@
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_hashing_assertions"><a class="anchor" href="#_hashing_assertions"></a>4.1.4. Hashing Assertions</h4>
+
+</div>
 </div>
 <div class="sect2">
 <h3 id="_guidance_on_use_of_soft_bindings"><a class="anchor" href="#_guidance_on_use_of_soft_bindings"></a>4.2. Guidance on use of Soft Bindings</h3>
+<div class="sect3">
+<h4 id="_general_3"><a class="anchor" href="#_general_3"></a>4.2.1. General</h4>
 <div class="paragraph">
-<p>Asset metadata (including any manifest present) may be routinely removed or corrupted by legacy or non-C2PA capable platforms during distribution.  This is common, for example, on social media platforms that display asset renditions (e.g. altering the resolution, form factor or quality of the digital content) that do not have the appropriate C2PA manifests declaring those modifications.  Whilst these renditions may not create user perceptible change, they nevertheless change the underlying binary representation of the digital content.</p>
+<p>Asset metadata (including any manifest present) may be routinely removed or corrupted by legacy or non-C2PA capable platforms during distribution.  This is common, for example, on social media platforms that display asset renditions (e.g. altering the resolution, form factor or quality of the digital content) that do not have the appropriate C2PA Manifests declaring those modifications.  Whilst these renditions may not create user perceptible change, they nevertheless change the underlying binary representation of the digital content.</p>
 </div>
 <div class="paragraph">
 <p>Soft bindings provide a means for identifying manifests that have become 'decoupled' from their associated assets in these circumstances.</p>
@@ -459,26 +485,30 @@
 <div class="paragraph">
 <p>Examples of soft bindings are content fingerprints (such as perceptual hashes) computed from the digital content, or watermarks embedded within the digital content.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_manifest_repositories_2"><a class="anchor" href="#_manifest_repositories_2"></a>4.2.2. Manifest Repositories</h4>
 <div class="paragraph">
-<p>Consider a repository (provenance datastore) into which manifests may be stored.  A content creator may, at the time of publishing an asset, opt in to the additional storage of that asset’s manifest into the provenance datastore.  For this workflow, the manifest contains at least one soft binding - for example, a perceptual hash of the digital content.</p>
+<p>Consider a data store or repository into which manifests may be stored.  A content creator may, at the time of publishing an asset, opt in to the additional storage of that asset’s manifest into the manifest repository.  For this workflow, the manifest contains at least one soft binding - for example, a perceptual hash of the digital content.</p>
 </div>
 <div class="paragraph">
-<p>Soft bindings may be used to identify manifests that have become decoupled from their associated assets.  When a consumer encounters an asset with no manifest, but would like information on the asset&#8217;s provenance, they may compute a soft binding and use it to query the provenance datastore.  The provenance datastore would return any manifests that match that soft binding, for subsequent validation.</p>
+<p>Soft bindings may be used to identify manifests that have become decoupled from their associated assets.  When a consumer encounters an asset with no manifest, but would like information on the asset&#8217;s provenance, they may compute a soft binding and use it to query the manifest repository.  The manifest repository would return any manifests that match that soft binding, for subsequent validation.</p>
 </div>
 <div class="paragraph">
 <p>An alternative application of soft bindings is to mitigate the threat whereby an attacker substitutes the manifest within an asset with another valid manifest in an attempt to explain that asset with false provenance.  In circumstances where a consumer wishes for further information on the asset&#8217;s provenance, a similar query may be made using the soft binding to return alternative manifests within the repository for the consumer’s consideration.  Information within the returned manifests (such as timestamps or digital signatures) may inform subsequent trust decisions made by the consumer on that asset.</p>
 </div>
+</div>
 <div class="sect3">
-<h4 id="_illustrative_scenarios_for_the_use_of_soft_bindings"><a class="anchor" href="#_illustrative_scenarios_for_the_use_of_soft_bindings"></a>4.2.1. Illustrative Scenarios for the use of Soft Bindings</h4>
+<h4 id="_illustrative_scenarios_for_the_use_of_soft_bindings"><a class="anchor" href="#_illustrative_scenarios_for_the_use_of_soft_bindings"></a>4.2.3. Illustrative Scenarios for the use of Soft Bindings</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
 <p>Recovery from stripping of metadata</p>
 <div class="paragraph">
-<p>Alice is a photojournalist, and captures a photo of an important event, editing it to enhance visibility of some of the content. Alice’s camera device is C2PA capable, as is her image editing tool, and so a C2PA manifest is added to document the capture and editing of her photo. The C2PA manifest is signed by Alice’s own key. Bob works for Acme Corp, a news publisher, who wishes to license Alice’s photo for their publication. Bob decides to trust the content from Alice due to the presence of a C2PA manifest documenting its provenance. Bob incorporates the photo into a composed image for his publication, using a C2PA capable editing tool. The C2PA manifest is signed by Acme Corp. A soft binding assertion is computed by Acme Corp and added to the manifest prior to signing. A copy of the manifest is stored within a provenance datastore maintained by a consortium of news providers. Bob publishes the photo and it is soon redistributed around social media.</p>
+<p>Alice is a photojournalist, and captures a photo of an important event, editing it to enhance visibility of some of the content. Alice’s camera device is C2PA capable, as is her image editing tool, and so a C2PA Manifest is added to document the capture and editing of her photo. The C2PA Manifest, added by the editing tool, is signed by Alice’s personal key. Bob works for Acme Corp, a news publisher, who wishes to license Alice’s photo for their publication. Bob decides to trust the content from Alice due to the presence of a C2PA Manifest documenting its provenance. Bob incorporates the photo into a composed image for his publication, using a C2PA capable editing tool. The C2PA Manifest is signed by Acme Corp. A soft binding assertion is computed by Acme Corp and added to the manifest prior to signing. A copy of the manifest is stored within a manifest repository maintained by a consortium of news providers. Bob publishes the photo and it is soon redistributed around social media.</p>
 </div>
 <div class="paragraph">
-<p>Charlie is a news consumer and member of the general public. Charlie views a rendition of the photo on social media. The social media platform is not C2PA capable and no C2PA manifest is contained within the rendition. Furthermore, the rendition of the photo has different resolution / form factor and changed by the social media platform.</p>
+<p>Charlie is a news consumer and member of the general public. Charlie views a rendition of the photo on social media. The social media platform is not C2PA capable and no C2PA Manifest is contained within the rendition. Furthermore, the rendition of the photo has different resolution / form factor and changed by the social media platform.</p>
 </div>
 <div class="paragraph">
 <p>Charlie wants to know about the provenance of the photo, since it documents an important event. Charlie right-clicks and submits the photo via a browser plug-in to a look-up service operated by a federation of news organisations, of which Acme Corp is a member. Charlie’s browser software computes the soft binding of the photo and send it to that service. Charlie is directed to a web page generated by the service showing matching assets. Charlie visually verifies that the retrieved asset matches the photo he is interested in, and views the manifest. Charlie uses the information in the manifest to help make an informed trust decision based on the provenance of the photo.</p>
@@ -487,10 +517,10 @@
 <li>
 <p>Recovery from adversarial substitution of manifest</p>
 <div class="paragraph">
-<p>Alice is a citizen journalist, and captures a video of major civil unrest using a C2PA capable device, and edits it using C2PA capable editing software. After signing the manifest in her video, a copy of the manifest is stored within a provenance datastore maintained by a consortium of news providers. The manifest contains both a hard and a soft binding. Several years pass.</p>
+<p>Alice is a citizen journalist, and captures a video of major civil unrest using a C2PA capable device, and edits it using C2PA capable editing software. After signing the manifest in her video, a copy of the manifest is stored within a manifest repository maintained by a consortium of news providers. The manifest contains both a hard and a soft binding. Several years pass.</p>
 </div>
 <div class="paragraph">
-<p>Mallory wishes to use Alice’s video to substantiate his story about a recent civil unrest. Mallory strips the C2PA manifest  from Alice’s video and substitutes his own manifest. The manifest is signed and the video asset is distributed online.</p>
+<p>Mallory wishes to use Alice’s video to substantiate his story about a recent civil unrest. Mallory strips the C2PA Manifest  from Alice’s video and substitutes his own manifest. The manifest is signed and the video asset is distributed online.</p>
 </div>
 <div class="paragraph">
 <p>Bob is a news producer who receives Mallory’s video. Bob suspects the video is fake news. Bob computes a soft binding of the video and submits it to a provenance service of which his organization is a member. The service retrieves the manifest associated with Alice’s video. Bob visually verifies the retrieved manifest matches the video (it includes a thumbnail) and validates the manifest. Bob notices that Alice’s manifest contains signed assertions with a timestamp earlier than those of Mallory’s video. Bob uses knowledge of this previous existing manifest to help make a more informed trust decision on whether to trust the provenance of Mallory’s video.  Bob concludes not to trust Mallory&#8217;s video, since an earlier manifest explains the video with an alternative provenance trail.</p>
@@ -499,14 +529,14 @@
 <li>
 <p>Preserving provenance through non-C2PA capable toolchains</p>
 <div class="paragraph">
-<p>Acme Corp maintains a content production pipeline where some stages are non-C2PA capable. Bob receives a photograph from freelance photographer Alice, containing a valid C2PA manifest. Bob&#8217;s software inserts into the digital content of the image a watermark containing a unique identifier, and records the unique identifier as a soft binding assertion in the manifest. The manifest is placed within a provenance datastore maintained internally by Acme Corp. The content passes through legacy content production processes that strip the C2PA manifest. The final stages of production are C2PA compliant. The watermark is read from the image and submitted as a query to the provenance datastore run internally by Acme Corp. After passing through the non-C2PA tools, the manifest is automatically matched using the embedded watermark, and is included as an ingredient in a new manifest, which documents that actions have been performed on the content prior to entering the C2PA capable final stage of the pipeline.  The manifest is embedded into the asset in the usual way. The content is published and provenance of the image may be traced back to Alice by end consumers of the content.</p>
+<p>Acme Corp maintains a content production pipeline where some stages are non-C2PA capable. Bob receives a photograph from freelance photographer Alice, containing a valid C2PA Manifest. Bob&#8217;s software inserts into the digital content of the image a watermark containing a unique identifier, and records the unique identifier as a soft binding assertion in the manifest. The manifest is placed within a manifest repository maintained internally by Acme Corp. The content passes through legacy content production processes that strip the C2PA Manifest. The final stages of production are C2PA compliant. The watermark is read from the image and submitted as a query to the manifest repository run internally by Acme Corp. After passing through the non-C2PA tools, the manifest is automatically matched using the embedded watermark, and is included as an ingredient in a new manifest, which documents that actions have been performed on the content prior to entering the C2PA capable final stage of the pipeline.  The manifest is embedded into the asset in the usual way. The content is published and provenance of the image may be traced back to Alice by end consumers of the content.</p>
 </div>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_guidance_on_soft_binding_implementation"><a class="anchor" href="#_guidance_on_soft_binding_implementation"></a>4.2.2. Guidance on Soft Binding Implementation</h4>
+<h4 id="_implementation_guidance"><a class="anchor" href="#_implementation_guidance"></a>4.2.4. Implementation guidance</h4>
 <div class="paragraph">
 <p>Soft bindings are not guaranteed to be exact, and so care should be taken in their use.  Consider perceptual hashing; a common form of soft binding algorithm.  By design, multiple renditions of the same digital content may generate the same soft binding.  However different digital content, or renditions thereof, may generate the same soft binding either in error or due to attacks on the hashing function (for example, adversarial attacks on machine learning models). Therefore we make the following design recommendation on the implementation of soft bindings in C2PA.</p>
 </div>
@@ -519,7 +549,7 @@
 <p>The matches made using a soft binding must be interactively verified via human-in-the-loop checking. For example, a thumbnail of an image stored within the manifest might be displayed to aid visual verification of the match made using a soft binding.</p>
 </li>
 <li>
-<p>Hard bindings (cryptographic hashes) may be used as an alternative to soft bindings, to query manifests within a provenance datastore. However this method will fail if the digital content has been modified (for example, is an asset rendition).</p>
+<p>Hard bindings (cryptographic hashes) may be used as an alternative to soft bindings, to query manifests within a manifest repository. However this method will fail if the digital content has been modified (for example, is an asset rendition).</p>
 </li>
 <li>
 <p>We recommend that services provided for the lookup of manifests using hard or soft bindings advertise the types of binding that may be used as query, using the unique identifier of that binding (per the hard or soft binding registry).</p>
@@ -531,24 +561,24 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="_trust_and_privacy_considerations"><a class="anchor" href="#_trust_and_privacy_considerations"></a>4.2.3. Trust and Privacy Considerations</h4>
+<h4 id="_trust_and_privacy_considerations"><a class="anchor" href="#_trust_and_privacy_considerations"></a>4.2.5. Trust and Privacy Considerations</h4>
 <div class="paragraph">
-<p>To mitigate risks to user privacy, we recommend that the consumer should be informed explicitly (for example, via opt in) to the querying of the provenance datastore. For example, a consumer may interactively initiate a query for an asset containing no manifest in order to recover provenance information about that asset.</p>
+<p>To mitigate risks to user privacy, we recommend that the consumer should be informed explicitly (for example, via opt in) to the querying of the manifest repository. For example, a consumer may interactively initiate a query for an asset containing no manifest in order to recover provenance information about that asset.</p>
 </div>
 <div class="paragraph">
-<p>We also recommend that content creators be informed of the trade offs involved in using provenance datastores that allow for asset link-up with soft bindings; that is, on the one hand, identifying manifests that have become 'decoupled' from their associated assets, while on the other hand, privacy risks that may result from a soft binding link-up to an earlier manifest with, for example, redacted information.</p>
+<p>We also recommend that content creators be informed of the trade offs involved in using manifest repositories that allow for asset link-up with soft bindings; that is, on the one hand, identifying manifests that have become 'decoupled' from their associated assets, while on the other hand, privacy risks that may result from a soft binding link-up to an earlier manifest with, for example, redacted information.</p>
 </div>
 <div class="paragraph">
-<p>To mitigate risks to user privacy and to preserve bandwidth, we recommend that the soft binding used to query the provenance datastore is computed on the client side to avoid transmission of query asset to the lookup service.</p>
+<p>To mitigate risks to user privacy and to preserve bandwidth, we recommend that the soft binding used to query the manifest repository is computed on the client side to avoid transmission of query asset to the lookup service.</p>
 </div>
 <div class="paragraph">
-<p>It is unlikely that a single centralized provenance datastore will emerge for all content. Rather it is anticipated that decentralized model will evolve in which multiple federated provenance datastores might emerge for different industry verticals, for example a coalition of news broadcasters might maintain a federated service for soft binding lookup based upon their own provenance datastores.</p>
+<p>It is unlikely that a single centralized manifest repository will emerge for all content. Rather it is anticipated that decentralized model will evolve in which multiple federated manifest repositories might emerge for different industry verticals, for example a coalition of news broadcasters might maintain a federated service for soft binding lookup based upon their own manifest repositories.</p>
 </div>
 <div class="paragraph">
-<p>To promote the interoperability of independent services that query provenance datastores, we recommend that a standard communication protocol be established for clients to send queries to the soft binding lookup services and for returning manifests to clients.</p>
+<p>To promote the interoperability of independent services that query manifest repositories, we recommend that a standard communication protocol be established for clients to send queries to the soft binding lookup services and for returning manifests to clients.</p>
 </div>
 <div class="paragraph">
-<p>Trust in the lookup process is derived from trust in the integrity of the provenance datastore. It may be desirable to use a decentralized, immutable data technology, such as a distributed ledger or blockchain, to underwrite the integrity of the provenance datastore.</p>
+<p>Trust in the lookup process is derived from trust in the integrity of the manifest repository. It may be desirable to use a decentralized, immutable data technology, such as a distributed ledger or blockchain, to underwrite the integrity of the manifest repository.</p>
 </div>
 </div>
 </div>
@@ -692,6 +722,30 @@ Attaching a time-stamp and freshness information to the signature allows validat
 <p>A manifest consumer that is performing validation (e.g., a web browser) may detect and mitigate attempted compromise of C2PA manifests or even the complete removal of C2PA manifests. It is recommended that manifest consumers consider forthcoming C2PA User Experience guidance, retrieval of decoupled manifests via <a href="#_guidance_on_use_of_soft_bindings">soft bindings</a> when appropriate, and other forthcoming C2PA recommendations to mitigate the impact of these types of attacks.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_validation_of_ingredient_manifests"><a class="anchor" href="#_validation_of_ingredient_manifests"></a>6.2. Validation of Ingredient manifests</h3>
+<div class="paragraph">
+<p>As described in the <a href="#specs:C2PA_Specification.adoc:#recursively_validating_integrity_of_ingredients" class="page unresolved">Validation section of the specification</a>, "The validator may optionally recursively validate the ingredient&#8217;s ingredients". To do so, the implementation resolves each ingredient&#8217;s <code>url</code> field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_data_validation"><a class="anchor" href="#_data_validation"></a>6.3. Data validation</h3>
+<div class="paragraph">
+<p>The C2PA Manifest consists of data that has been serialized into either CBOR or JSON-LD. The schemas (in CDDL and JSON Schema, respectively) have been published as part of the C2PA specification website.  However, those schemas exist to help implementers create valid data to improve interoperability - they should not be used as part of the standard C2PA validation process.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A C2PA Validator can choose to offer schema validation as an "extra", but the results of that validation would not effect the validity of the C2PA Manifest.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -718,7 +772,7 @@ Attaching a time-stamp and freshness information to the signature allows validat
 <p>For this reason we make a general recommendation that C2PA manifests should not be stored on DLTs, since the data immutability guarantees of DLTs prevent redaction of manifests stored within them.</p>
 </div>
 <div class="paragraph">
-<p>DLTs may, however, be used to underwrite the integrity of a datastore containing C2PA manifests (for example a cloud database).  For example, a hash of a manifest, or other cryptographic proof, may be stored immutably within a DLT.  This may be used to prove that the manifest has not been altered, or deleted (non-repudiation).</p>
+<p>DLTs may, however, be used to underwrite the integrity of a manifest repository containing C2PA manifests (for example a cloud database).  For example, a hash of a manifest, or other cryptographic proof, may be stored immutably within a DLT.  This may be used to prove that the manifest has not been altered, or deleted (non-repudiation).</p>
 </div>
 <div class="paragraph">
 <p>We outline several possible ways that DLT may be used to implement or instantiate aspects of the C2PA specification:</p>
@@ -728,13 +782,13 @@ Attaching a time-stamp and freshness information to the signature allows validat
 <li>
 <p>Underwriting the integrity of manifest stores</p>
 <div class="paragraph">
-<p>Consider the case of an external manifest store, where manifests might stored decoupled from the digital content they describe. Such an external provenance datastore may be used to store manifests and query those manifests via a lookup service using either a hard or a soft binding, for example to recover provenance for assets where manifests have been removed or corrupted.</p>
+<p>Consider the case of an external manifest store, where manifests might stored decoupled from the digital content they describe. Such a manifest repository may be used to store manifests and query those manifests via a lookup service using either a hard or a soft binding, for example to recover provenance for assets where manifests have been removed or corrupted.</p>
 </div>
 <div class="paragraph">
-<p>The user of such a datastore trusts the governance of that datastore operator not to manipulate or remove manifests stored within.  In other words, trust is centralized within the provider of the datastore.  A DLT may be used to store hashes of manifests as they are committed to the provenance datastore to assure consumers of the integrity of that datastore without the need to trust the datastore provider.</p>
+<p>The user of such a manifest repository trusts the governance of that manifest repository operator not to manipulate or remove manifests stored within.  In other words, trust is centralized within the provider of the manifest repository.  A DLT may be used to store hashes of manifests as they are committed to the manifest repository to assure consumers of the integrity of that manifest repository without the need to trust the manifest repository provider.</p>
 </div>
 <div class="paragraph">
-<p>A related application of DLT related to soft binding is in the creation of a federated lookup service for soft bindings.  It is unlikely that a single provenance datastore will exist for all manifests resolvable via soft bindings; multiple such datastores are likely to emerge for any given vertical (e.g. news journalism).  A distributed key-value store on DLT may resolve a soft binding to a provider running a provenance datastore, which may in turn run the query and return the relevant stored manifest.</p>
+<p>A related application of DLT related to soft binding is in the creation of a federated lookup service for soft bindings.  It is unlikely that a single manifest repository will exist for all manifests resolvable via soft bindings; multiple such manifest repositories are likely to emerge for any given vertical (e.g. news journalism).  A distributed key-value store on DLT may resolve a soft binding to a provider running a manifest repository, which may in turn run the query and return the relevant stored manifest.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -803,7 +857,7 @@ Given the high throughput and low latency requirements for storing manifests, it
 <p>Additional checks can be made that the C2PA manifest signed to include that wallet address is known to come from a public key maintained by the content creator.  This and other checks, for example on the wallet originating the minting transaction, may be used to additionally prevent spoofing or (‘sleep minting’) of NFTs.</p>
 </div>
 <div class="paragraph">
-<p>NFTs may still be misappropriated by stripping metadata including C2PA manifest from the asset, prior to minting it.  This may be remediated through use of soft-bindings to recover a manifest from a provenance datastore, as with general metadata stripping attacks.</p>
+<p>NFTs may still be misappropriated by stripping metadata including C2PA manifest from the asset, prior to minting it.  This may be remediated through use of soft-bindings to recover a manifest from a manifest repository, as with general metadata stripping attacks.</p>
 </div>
 </div>
 <div class="sect2">
@@ -817,8 +871,7 @@ Given the high throughput and low latency requirements for storing manifests, it
 <td class="content">
 <div class="title">Items for future guidance</div>
 <div class="paragraph">
-<p>A useful thing to add would be the steps a client audio/video player should perform to verify an actual content file for MP4/fMP4.
-	<a href="https://github.com/c2pa-org/specs-core/issues/518" class="bare">https://github.com/c2pa-org/specs-core/issues/518</a></p>
+<p>A useful thing to add would be the steps a client audio/video player should perform to verify an actual content file for MP4/fMP4. This is currently being tracked as issue #518 the C2PA Specification github repo.</p>
 </div>
 </td>
 </tr>
@@ -887,7 +940,7 @@ Given the high throughput and low latency requirements for storing manifests, it
 <td class="content">
 <div class="title">Items for future guidance</div>
 <div class="paragraph">
-<p>Another topic needs to be around GDPR and other related legal aspects as discussed in <a href="https://github.com/c2pa-org/specs-core/issues/114">c2pa-org/specs-core#114</a></p>
+<p>Another topic needs to be around GDPR and other related legal aspects. This is currently being tracked as issue #114 the C2PA Specification github repo.</p>
 </div>
 </td>
 </tr>
