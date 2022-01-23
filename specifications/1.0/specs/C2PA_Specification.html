@@ -641,7 +641,7 @@ For the purposes of this definition, we will extend the typical definition of "f
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-A <em>C2PA Manifest</em> can reference other _C2PA Manifest_s.
+A <em>C2PA Manifest</em> can reference other <em>C2PA Manifest</em>s.
 </td>
 </tr>
 </table>
@@ -686,7 +686,7 @@ Details on how one determines which <em>C2PA Manifest</em> is the <em>origin</em
 <div class="sect3">
 <h4 id="_provenance_data"><a class="anchor" href="#_provenance_data"></a>2.3.9. Provenance data</h4>
 <div class="paragraph">
-<p>The set of <em>C2PA Manifest_s for an _asset</em> and, in the case of a <em>composed asset</em>, its <em>ingredients</em>.</p>
+<p>The set of <em>C2PA Manifest</em>s for an <em>asset</em> and, in the case of a <em>composed asset</em>, its <em>ingredients</em>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -695,7 +695,7 @@ Details on how one determines which <em>C2PA Manifest</em> is the <em>origin</em
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-A <em>C2PA Manifest</em> can reference other _C2PA Manifest_s.
+A <em>C2PA Manifest</em> can reference other <em>C2PA Manifest</em>s.
 </td>
 </tr>
 </table>
@@ -979,7 +979,7 @@ label = 1*("." 1(ALPHA / "_" ) *( DIGIT / ALPHA / "_" ) )</code></pre>
 <div class="sect2">
 <h3 id="_embedded_vs_externally_stored_data"><a class="anchor" href="#_embedded_vs_externally_stored_data"></a>5.6. Embedded vs Externally-Stored Data</h3>
 <div class="paragraph">
-<p>Some assertion data, due to its size or an infrequent need for it, may be externally hosted. Such data are not embedded in the assertion store, but instead are referenced by URI. Unlike embedded assertions, external assertions are not retrieved nor validated as part of manifest validation, and are only retrieved and validated when specifically needed by an application. This is accomplished through a cloud data assertion (see <a href="#_cloud_data">Section 17.8, &#8220;Cloud Data&#8221;</a>), and the different validation rules are described in <a href="#_validate_the_assertions">Section 14.6, &#8220;Validate the Assertions&#8221;</a>.</p>
+<p>Some assertion data, due to its size or an infrequent need for it, may be externally hosted. Such data are not embedded in the assertion store, but instead are referenced by URI. This is accomplished through a cloud data assertion (see <a href="#_cloud_data">Section 17.8, &#8220;Cloud Data&#8221;</a>). Unlike embedded assertion data, cloud data is not retrieved nor validated as part of manifest validation, and are only retrieved and validated when specifically needed by an application according to a different set of validation rules as described in <a href="#_validate_the_assertions">Section 14.6, &#8220;Validate the Assertions&#8221;</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1063,7 +1063,12 @@ Other methods may be defined here as they are developed.
 <div class="sect2">
 <h3 id="_uri_references"><a class="anchor" href="#_uri_references"></a>6.3. URI References</h3>
 <div class="paragraph">
-<p>Assertions and claims, whether they are stored internally to the asset (i.e., embedded) or stored externally to the asset (e.g., in the cloud), shall be referenced via JUMBF URI references as defined in <a href="https://www.iso.org/standard/73604.html">ISO 19566-5, C.2</a>. This URI shall be used as part of a <code>hashed_uri</code> data structure:</p>
+<p>All references to information in the manifest, whether stored internally to the asset (i.e., embedded) or stored externally to the asset (e.g., in the cloud), shall be referenced via JUMBF URI references as defined in <a href="https://www.iso.org/standard/73604.html">ISO 19566-5, C.2</a>. These URIs shall be used either as part of a <code>hashed_uri</code> or <code>hashed_ext_uri</code> data structure.</p>
+</div>
+<div class="sect3">
+<h4 id="_hashed_uris"><a class="anchor" href="#_hashed_uris"></a>6.3.1. Hashed URIs</h4>
+<div class="paragraph">
+<p>A <code>hashed_uri</code> is used when the URI is for something embedded in the same manifest store.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1127,17 +1132,8 @@ url-regexp-type  /= tstr .regexp "self#jumbf=[\\w\\d][\\w\\d\\.\/:-]+[\\w\\d]"</
 <div class="paragraph">
 <p>Because assertion stores shall be located in the same C2PA Manifest box as the claim that refers to them, only <code>self#jumbf</code> URIs are permitted. These <code>self#jumbf</code> URIs may be relative to the entire C2PA Manifest Store, in which case they shall start with a <code>/</code> (U+002F, Slash), or relative to the current C2PA Manifest. URIs shall not contain the sequence <code>..</code> (a pair of U+002E, Full Stop).</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Cloud data assertions use a different schema for URIs which is described in <a href="#_cloud_data">Section 17.8, &#8220;Cloud Data&#8221;</a>.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>When referring to a resource that exists externally to the manifest store, a <code>hashed-ext-uri-map</code> data structure is used.  This is described in <a href="#_cloud_data">Section 17.8, &#8220;Cloud Data&#8221;</a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>EXAMPLES:</strong></p>
@@ -1152,8 +1148,9 @@ Cloud data assertions use a different schema for URIs which is described in <a h
 </li>
 </ul>
 </div>
+</div>
 <div class="sect3">
-<h4 id="_hashing_assertions"><a class="anchor" href="#_hashing_assertions"></a>6.3.1. Hashing Assertions</h4>
+<h4 id="_hashing_assertions"><a class="anchor" href="#_hashing_assertions"></a>6.3.2. Hashing Assertions</h4>
 <div class="paragraph">
 <p>When creating a URI reference to an assertion (i.e., as part of constructing a <a href="#_claims">Claim</a>), the hash shall be performed over the contents of the assertion&#8217;s JUMBF superbox, which includes both the JUMBF Description Box and all content boxes therein (but does not include the assertion&#8217;s JUMBF superbox header).</p>
 </div>
@@ -1258,7 +1255,7 @@ Cloud data assertions use a different schema for URIs which is described in <a h
 <div class="sect2">
 <h3 id="_vcstore"><a class="anchor" href="#_vcstore"></a>7.2. VCStore</h3>
 <div class="paragraph">
-<p>The set of credentials in a manifest are collected together into a logical construct that is referred to as the <strong>credential store</strong> or <strong>VCStore</strong> (for short) and it shall be stored as described in <a href="#_use_of_jumbf">Section 10.1, &#8220;Use of JUMBF&#8221;</a>.  Unlike the assertion store, the VCStore shall always be included in the JUMBF - it shall not be stored separately.</p>
+<p>The set of credentials in a manifest are collected together into a logical construct that is referred to as the <strong>credential store</strong> or <strong>VCStore</strong> (for short) and it shall be stored as described in <a href="#_use_of_jumbf">Section 10.1, &#8220;Use of JUMBF&#8221;</a>.  Just as with the assertion store, the VCStore shall always be included/embedded in the JUMBF - it is not stored separately.</p>
 </div>
 <div class="paragraph">
 <p>For each manifest, there is a VCStore associated with it. However, as an asset may have multiple manifests associated with it, there may be multiple VCStores associated with an asset.</p>
@@ -2233,7 +2230,7 @@ Quantity: Zero or more</p>
 <h6 id="_syntax_2"><a class="anchor" href="#_syntax_2"></a>10.3.2.1.2. Syntax</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>aligned(8) class ContentProvenanceBox extends FullBox(`'uuid'`, extended_type = 0xD8 0xFE 0xC3 0xD6 0x1B 0x0E 0x48 0x3C 0x92 0x97 0xE8 0x28 0x87 0x7E 0xC4 0x81, version = 0, 0) {
+<pre class="highlightjs highlight"><code>aligned(8) class ContentProvenanceBox extends FullBox(`'uuid'`, extended_type = 0xD8 0xFE 0xC3 0xD6 0x1B 0x0E 0x48 0x3C 0x92 0x97 0x58 0x28 0x87 0x7E 0xC4 0x81, version = 0, 0) {
     string box_purpose;
     bit(8) data[];
 }</code></pre>
@@ -5871,7 +5868,7 @@ status-map = {
 <div class="sect3">
 <h4 id="_thumbnails"><a class="anchor" href="#_thumbnails"></a>17.11.5. Thumbnails</h4>
 <div class="paragraph">
-<p>When adding an ingredient, it may be useful to also include a thumbnail of the ingredient to help establish the state of the ingredient at the time of import. For that purpose, an ingredient import thumbnail should be added as described in <a href="#_thumbnails">Section 17.11.5, &#8220;Thumbnails&#8221;</a> and referenced herein via a URI reference.</p>
+<p>When adding an ingredient, it may be useful to also include a thumbnail of the ingredient to help establish the state of the ingredient at the time of import. For that purpose, an ingredient import thumbnail should be added as described in <a href="#_thumbnail">Section 17.9, &#8220;Thumbnail&#8221;</a> and referenced herein via a URI reference.</p>
 </div>
 </div>
 <div class="sect3">
@@ -6926,7 +6923,7 @@ Most references to a W3C Verifiable Credentials are via a <code>credentials</cod
     </p>
   </div>
   <div class="footer-legal">
-    <p>Copyright © 2021 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>Copyright © 2022 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
     <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
   </div>
   <div class="footer-thanks">
