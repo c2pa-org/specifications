@@ -946,7 +946,7 @@ A <em>C2PA Manifest</em> can reference other <em>C2PA Manifest</em>s.
 <h2 id="_version_history"><a class="anchor" href="#_version_history"></a>5. Version History</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>1.1 - XXXX 2022</p>
+<p>1.1 - September 2022</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1061,13 +1061,13 @@ label = 1*("." 1(ALPHA / "_" ) *( DIGIT / ALPHA / "_" ) )</code></pre>
 <div class="sect2">
 <h3 id="_versioning"><a class="anchor" href="#_versioning"></a>6.3. Versioning</h3>
 <div class="paragraph">
-<p>When an assertion’s schema is changed, it should be done in a backwards-compatible manner. This means that new fields may be added and existing ones may be marked as deprecated (i.e., can be read, but never written). Existing fields shall not be removed. The label would then consist of an incremented version number, for example moving from <code>c2pa.ingredient</code> to <code>c2pa.ingredient.v2</code>.</p>
+<p>When an assertion&#8217;s schema is changed, it should be done in a backwards-compatible manner. This means that new fields may be added and existing ones may be marked as deprecated (i.e., can be read, but never written). Existing fields shall not be removed. The label would then consist of an incremented version number, for example moving from <code>c2pa.hash.bmff</code> (deprecated) to <code>c2pa.hash.bmff.v2</code>.</p>
 </div>
 <div class="paragraph">
 <p>Deprecated fields for C2PA standard assertions shall be indicated in <a href="#_c2pa_standard_assertions">Chapter 18, <em>C2PA Standard Assertions</em></a>. Tools which enable actors to create assertions shall prevent the actor from inserting data into deprecated assertion fields.</p>
 </div>
 <div class="paragraph">
-<p>In addition, there are situations where a non-backwards compatible change is required. In that case, instead of increasing the label’s version number, the assertion shall be given a new label. For example, <code>c2pa.ingredient</code> could be changed to the fictional <code>c2pa.component</code>.</p>
+<p>In addition, there are situations where a non-backwards compatible change is required. In that case, instead of increasing the label&#8217;s version number, the assertion shall be given a new label. For example, <code>c2pa.ingredient</code> could be changed to the fictional <code>c2pa.component</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1110,7 +1110,7 @@ label = 1*("." 1(ALPHA / "_" ) *( DIGIT / ALPHA / "_" ) )</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Because each assertion’s <a href="#_uri_references">URI reference</a> includes the assertion label, it is also known what type of information (e.g., thumbnail, IPTC metadata, etc.) was removed. This enables both humans and machines to apply rules to determine if the removal was acceptable.</p>
+<p>Because each assertion&#8217;s <a href="#_uri_references">URI reference</a> includes the assertion label, it is also known what type of information (e.g., thumbnail, IPTC metadata, etc.) was removed. This enables both humans and machines to apply rules to determine if the removal was acceptable.</p>
 </div>
 </td>
 </tr>
@@ -1447,6 +1447,9 @@ More details on hashing can be found at <a href="#_hashing">Section 13.1, &#8220
 <h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>9.1. Overview</h3>
 <div class="paragraph">
 <p>A key aspect to the <a href="#_standard_manifests">standard C2PA manifest</a> is the presence of one or more data structures, called content bindings, that can uniquely identify portions of the asset. There are two types of bindings that are supported by C2PA - hard bindings and soft bindings. A hard binding (also known as a cryptographic binding) enables the validator to ensure that (a) this manifest belongs with this asset and (b) that the asset has not been modified, by determining values that can match only this asset and no other, not even other assets derived from it or renditions produced from it.  A soft binding is computed from the digital content of an asset, rather than its raw bits.  A soft binding is useful for identifying derived assets and asset renditions.</p>
+</div>
+<div class="paragraph">
+<p>A single manifest shall not contain more than one assertion defining a hard binding.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2191,7 +2194,7 @@ Allowing other superboxes enables custom extensions to C2PA as well as enabling 
 <div class="sect3">
 <h4 id="_standard_manifests"><a class="anchor" href="#_standard_manifests"></a>11.2.2. Standard Manifests</h4>
 <div class="paragraph">
-<p>A standard C2PA Manifest (UUID: <code>0x63326D61-0011-0010-8000-00AA00389B71</code> (<code>c2ma</code>)) shall contain at least one <a href="#_binding_to_content">hard binding to content</a> assertion - either a <code>c2pa.hash.data</code> or a <code>c2pa.hash.bmff</code> based on the type of asset for which the manifest is destined. Because of this requirement, they are the predominant type of manifest that will be present in C2PA provenance data.</p>
+<p>A standard C2PA Manifest (UUID: <code>0x63326D61-0011-0010-8000-00AA00389B71</code> (<code>c2ma</code>)) shall contain exactly one <a href="#_binding_to_content">hard binding to content</a> assertion - either a <code>c2pa.hash.data</code>, <code>c2pa.hash.bmff</code> (deprecated), or <code>c2pa.hash.bmff.v2</code> based on the type of asset and version for which the manifest is destined. Because of this requirement, they are the predominant type of manifest that will be present in C2PA provenance data.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2200,7 +2203,7 @@ Allowing other superboxes enables custom extensions to C2PA as well as enabling 
 <p>There are, however, provenance workflows where additional assertions need to be added but the digital content is not changed. In these workflows, an Update Manifest (UUID: <code>0x6332756D-0011-0010-8000-00AA00389B71</code> (<code>c2um</code>)) can be used.</p>
 </div>
 <div class="paragraph">
-<p>An Update Manifest shall not contain assertions of types <code>c2pa.hash.data</code> or <code>c2pa.hash.bmff</code> because the content has not changed and therefore the bindings need not be updated.  If the hashes cover other types of potentially updatable information, such as XMP or IPTC metadata areas in the format, they too cannot be modified.  In the case of a file offset hash (<code>c2pa.hash.data</code>), the C2PA Manifest Store has to continue to start at the same file offset after updating - only its length can change.</p>
+<p>An Update Manifest shall not contain assertions of types <code>c2pa.hash.data</code>, <code>c2pa.hash.bmff</code>, or <code>c2pa.hash.bmff.v2</code> because the content has not changed and therefore the bindings need not be updated.  If the hashes cover other types of potentially updatable information, such as XMP or IPTC metadata areas in the format, they too cannot be modified.  In the case of a file offset hash (<code>c2pa.hash.data</code>), the C2PA Manifest Store has to continue to start at the same file offset after updating - only its length can change.</p>
 </div>
 <div class="paragraph">
 <p>The Update Manifest shall not contain an assertion of type <code>c2pa.actions</code> because that assertion is defined to describe "changes to the digital content". It shall not contain a <a href="#:_thumbnails">Thumbnail assertion</a> as that would imply changes to the content as well.</p>
@@ -2524,7 +2527,7 @@ Quantity: Zero or more</code></pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">When box_purpose is <code>manifest</code>, the first 8 bytes inside <code>'data'</code> shall be the absolute file offset to the first auxiliary <code>'uuid'</code> C2PA box with box_purpose equal to <code>merkle</code>.  If this file contains no such boxes, those 8 bytes shall be zero.  Those 8 bytes shall be followed by the raw C2PA Manifest Store bytes followed by zero or more unused padding bytes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When box_purpose is <code>manifest</code>, the first 8 bytes inside <code>'data'</code> shall be the absolute file byte offset to the first auxiliary <code>'uuid'</code> C2PA box with box_purpose equal to <code>merkle</code>.  If this file contains no such boxes, those 8 bytes shall be zero.  Those 8 bytes shall be followed by the raw C2PA Manifest Store bytes followed by zero or more unused padding bytes.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2536,7 +2539,7 @@ Quantity: Zero or more</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The <code>'data'</code> field inside the <code>'uuid'</code> box of type <code>manifest</code> includes the offset, manifest, and padding bytes.  Padding bytes are NOT permitted OUTSIDE the <code>'uuid'</code> box unless they are contained in their own mp4 box such as a <code>'free'</code> box.</p>
+<p>The <code>'data'</code> field inside the <code>'uuid'</code> box of type <code>manifest</code> includes the absolute file byte offset, manifest, and padding bytes.  Padding bytes are NOT permitted OUTSIDE the <code>'uuid'</code> box unless they are contained in their own mp4 box such as a <code>'free'</code> box.</p>
 </div>
 </td>
 </tr>
@@ -2709,7 +2712,7 @@ Quantity: Zero or more</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When there are more than one of these boxes in a single file, i.e., the case where there are large <code>'mdat'</code>(s) being validated piecemeal, a fixed size is required in order to enable a progressively downloading client to only download the boxes it needs to begin validation rather than the entire Merkle tree.  Such a client can download enough of the first of these boxes based on the file offset in the <code>active manifest</code> to determine if its uniqueId and localId match the 'mdat' it is trying to validate.  If they do, it can determine the file offset to the box it needs to validate by multiplying the subset number by that size then download just that box.  Otherwise, it can determine the file offset to the beginning of the next Merkle tree by multiplying that fixed size by the current Merkle tree&#8217;s total number of leaf nodes, and it can repeat this process until it locates the box it needs.  The total download size for this subset of boxes is very small relative to the size of a single subset.</p>
+<p>When there are more than one of these boxes in a single file, i.e., the case where there are large <code>'mdat'</code>(s) being validated piecemeal, a fixed size is required in order to enable a progressively downloading client to only download the boxes it needs to begin validation rather than the entire Merkle tree.  Such a client can download enough of the first of these boxes based on the absolute file byte offset in the <code>active manifest</code> to determine if its uniqueId and localId match the 'mdat' it is trying to validate.  If they do, it can determine the absolute file byte offset to the box it needs to validate by multiplying the subset number by that size then download just that box.  Otherwise, it can determine the absolute file byte offset to the beginning of the next Merkle tree by multiplying that fixed size by the current Merkle tree&#8217;s total number of leaf nodes, and it can repeat this process until it locates the box it needs.  The total download size for this subset of boxes is very small relative to the size of a single subset.</p>
 </div>
 </td>
 </tr>
@@ -2782,7 +2785,7 @@ What box value(s) should be used for localId instead?</p>
 <div class="sect4">
 <h5 id="_exclusion_list_requirements"><a class="anchor" href="#_exclusion_list_requirements"></a>11.3.2.5. Exclusion List Requirements</h5>
 <div class="paragraph">
-<p>For all <code>c2pa.hash.bmff</code> assertions, the following entries shall always appear on the exclusion list.</p>
+<p>For all <code>c2pa.hash.bmff</code> (deprecated) and <code>c2pa.hash.bmff.v2</code> assertions, the following entries shall always appear on the exclusion list.  Other entries are allowed but not required.</p>
 </div>
 <div class="paragraph">
 <p>The entire <code>'uuid'</code> C2PA box shall be excluded.  (The <code>'data'</code> field is ensuring that other <code>'uuid'</code> boxes are not excluded.)</p>
@@ -2815,6 +2818,43 @@ data = [ { offset = 8, data = "2P7D1hsOSDySl1goh37EgQ==" } ]</code></pre>
 <td class="content">
 <div class="paragraph">
 <p>Previous versions of this specification included additional mandatory exclusions, but it was discovered that excluding them is insecure.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For all <code>c2pa.hash.bmff.v2</code> assertions where the bmff-hash-map includes both the <code>hash</code> field and <code>merkle</code> fields, the following entry shall appear on the exclusion list.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>xpath = "/mdat"
+subset = { { 16, 0 } }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As indicated in the CDDL Definition above, the <code>c2pa.hash.bmff</code> assertion excludes the entire "/mdat" box in this case, but it was discovered that excluding it is insecure.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As indicated in the CDDL Definition above, a relative byte offset or relative byte offset plus length that exceeds the length of the box is allowed; bytes beyond the end of the box are never hashed.  For example, if the <code>mdat</code> box is only 12 bytes long, all of it is hashed and the aforementioned mandatory exclusion entry has no effect although it is still required.</p>
 </div>
 </td>
 </tr>
@@ -3010,6 +3050,8 @@ Parenthetical notes in the lists below are explainers provided only as an aid to
 </tr>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_signature_algorithms"><a class="anchor" href="#_signature_algorithms"></a>13.2.1. Signature Algorithms</h4>
 <div class="paragraph">
 <p>The allowed list is:</p>
 </div>
@@ -3074,6 +3116,9 @@ Parenthetical notes in the lists below are explainers provided only as an aid to
 <div class="paragraph">
 <p>Implementations must refuse to generate or verify signatures with keys that are not correct for the algorithm choice. Implementations may refuse RSA keys with modulus length greater than 16384 bits.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_use_of_cose"><a class="anchor" href="#_use_of_cose"></a>13.2.2. Use of COSE</h4>
 <div class="paragraph">
 <p>The signature for the CBOR-encoded claim is produced by CBOR Object Signing and Encryption (COSE) as described in <a href="https://datatracker.ietf.org/doc/html/rfc8152#section-4.2">RFC 8152</a> sections <a href="https://datatracker.ietf.org/doc/html/rfc8152#section-4.2">4.2</a> and <a href="https://datatracker.ietf.org/doc/html/rfc8152#section-4.4">4.4</a>.</p>
 </div>
@@ -3085,8 +3130,22 @@ Parenthetical notes in the lists below are explainers provided only as an aid to
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Payloads can either be present inside a COSE signature, or transported separately ("detached content" as described in <a href="https://datatracker.ietf.org/doc/html/rfc8152#section-4.1">RFC 8152 section 4.1</a>). In "detached content" mode, the signed data is stored externally to the <code>COSE_Sign1_Tagged</code> structure, and the <code>payload</code> field of the <code>COSE_Sign1_Tagged</code> structure is always <code>nil</code>. Regardless of whether the payload will be present in or detached from the <code>COSE_Sign1_Tagged</code> signature; the contents of the <code>payload</code> field of <code>Sig_structure</code> in memory, when constructed to compute or verify a digital signature, must be populated with that external data as described by the particular use of digital signature in this specification. The <code>payload</code> field of <code>Sig_structure</code> can never be <code>nil</code>.</p>
+<p>Payloads can either be present inside a COSE signature, or transported separately ("detached content" as described in <a href="https://datatracker.ietf.org/doc/html/rfc8152#section-4.1">RFC 8152 section 4.1</a>). In "detached content" mode, the signed data is stored externally to the <code>COSE_Sign1_Tagged</code> structure, and the <code>payload</code> field of the <code>COSE_Sign1_Tagged</code> structure is always <code>nil</code>.</p>
 </div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Regardless of whether the payload will be present in or detached from the <code>COSE_Sign1_Tagged</code> signature; the contents of the <code>payload</code> field of <code>Sig_structure</code> in memory, when constructed to compute or verify a digital signature, must be populated with that external data as described by the particular use of digital signature in this specification. The <code>payload</code> field of <code>Sig_structure</code> shall never be <code>nil</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>For example, when computing or verifying a claim signature, the <code>payload</code> field of the <code>Sig_structure</code> will contain the contents of the Claim JUMBF box, as described in <a href="#_signing_a_claim">Section 10.3.2.4, &#8220;Signing a Claim&#8221;</a> and <a href="#_use_of_jumbf">Section 11.1, &#8220;Use of JUMBF&#8221;</a>.</p>
 </div>
@@ -3094,6 +3153,9 @@ Parenthetical notes in the lists below are explainers provided only as an aid to
 </tr>
 </table>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_computing_the_signature"><a class="anchor" href="#_computing_the_signature"></a>13.2.3. Computing the Signature</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3119,7 +3181,7 @@ Parenthetical notes in the lists below are explainers provided only as an aid to
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The <code>alg</code> header is a standard COSE header, and therefore is always included in the protected header map with the integer 1 as its label, as established in the <a href="https://www.iana.org/assignments/cose/cose.xhtml#header-parameters">IANA COSE Header Parameters Registry</a>. The literal string <code>alg</code> is never used as the label. The <code>sign_protected</code> element is always omitted when using <code>COSE_Sign1</code>.</p>
+<p>The <code>alg</code> header is a standard COSE header, and therefore is always included in the protected header map with the integer <code>1</code> as its label, as established in the <a href="https://www.iana.org/assignments/cose/cose.xhtml#header-parameters">IANA COSE Header Parameters Registry</a>. The literal string <code>alg</code> is never used as the label. The <code>sign_protected</code> element is always omitted when using <code>COSE_Sign1</code>.</p>
 </div>
 </td>
 </tr>
@@ -3158,11 +3220,33 @@ Parenthetical notes in the lists below are explainers provided only as an aid to
 </li>
 </ul>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_signature_validation"><a class="anchor" href="#_signature_validation"></a>13.2.4. Signature Validation</h4>
 <div class="paragraph">
 <p>When producing a signature, if the claim generator can also act as a validator, the claim generator should validate that the signing credential is acceptable according to <a href="#_trust_model">Chapter 14, <em>Trust Model</em></a> for the credential&#8217;s type, and produce a warning if it is not. The claim generator should still allow signing with that credential if so desired. This may be desirable if it is known the local claim generator&#8217;s validator has a different configuration than validators used by the expected audience of the asset.</p>
 </div>
 <div class="paragraph">
 <p>When verifying a signature, an in-memory <code>Sig_structure</code> is generated. Its <code>body_protected</code> field is populated with the contents of the <code>protected</code> header bucket from the <code>COSE_Sign1_Tagged</code> structure (see <a href="https://datatracker.ietf.org/doc/html/rfc8152#section-4.4" class="bare">https://datatracker.ietf.org/doc/html/rfc8152#section-4.4</a>). For the <code>payload</code> field, if the payload was specified as present in the signature, it is populated from the <code>payload</code> field of the <code>COSE_Sign1_Tagged</code> structure. If the payload was specified as detached, the <code>payload</code> field of the <code>COSE_Sign1_Tagged</code> structure will be <code>nil</code>. In this case, the contents of the <code>payload</code> field of <code>Sig_structure</code> shall be populated from the same external source that was used in the generation of the signature. These are defined in the places where the digital signature is used in this specification.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_inclusion_of_signer_icons"><a class="anchor" href="#_inclusion_of_signer_icons"></a>13.2.5. Inclusion of Signer Icons</h4>
+<div class="paragraph">
+<p>A C2PA Manifest Consumer may wish to display an icon or logo for the signer. To locate such a graphic, it shall look inside the embedded certificate for a logotype as defined in <a href="https://www.rfc-editor.org/rfc/rfc6170.html">RFC 6170</a>. If no logotype is present, the Manifest Consumer may use icons or logos from other sources in an implementation-dependent manner.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The IETF is working on an update for RFC 6170 referred to as <a href="https://www.ietf.org/archive/id/draft-ietf-lamps-rfc3709bis-04.txt">RFC 3709-bis-04</a>.  It is recommended that when this update is approved, that it be used instead.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -3982,6 +4066,11 @@ $credential-type /= 1 ; credentials with this type are a DER-encoded ASN.1 Subje
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA Claim Box</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>assertion.multipleHardBindings</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The manifest has more than one hard binding assertion.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA Assertion Store Box</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>assertion.undeclared</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An assertion was found in the ingredient&#8217;s manifest that was not explicitly declared in the ingredient&#8217;s claim.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA Claim Box or C2PA Assertion</p></td>
@@ -4033,7 +4122,7 @@ $credential-type /= 1 ; credentials with this type are a DER-encoded ASN.1 Subje
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>assertion.bmffHash.mismatch</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The hash of a box-based asset does not match the hash declared in the BMFF hash assertion.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The hash of a box-based asset does not match the hash declared in a BMFF hash assertion.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA Assertion</p></td>
 </tr>
 <tr>
@@ -4133,7 +4222,7 @@ $credential-type /= 1 ; credentials with this type are a DER-encoded ASN.1 Subje
 <p>A manifest consumer may wish to validate that the located C2PA Manifest Store is indeed the one associated with asset.</p>
 </div>
 <div class="paragraph">
-<p>If the C2PA Manifest Store was located then the hard binding assertions present in its active manifest shall be used to validate that it is the matching manifest and whether the asset has been modified without manifest updates. If the hard bindings do not match, it is unknown if that is because of (a) modification of the asset or (b) the wrong C2PA Manifest Store was located. Accordingly, the manifest consumer shall treat this as non-matching hard bindings and reject the manifest with a failure code of <code>assertion.dataHash.mismatch</code> if the data hash assertion is used, or <code>assertion.bmffHash.mismatch</code> if the BMFF hash assertion is used.</p>
+<p>If the C2PA Manifest Store was located then the hard binding assertion present in its active manifest shall be used to validate that it is the matching manifest and whether the asset has been modified without manifest updates. If the hard binding does not match, it is unknown if that is because of (a) modification of the asset or (b) the wrong C2PA Manifest Store was located. Accordingly, the manifest consumer shall treat this as a non-matching hard binding and reject the manifest with a failure code of <code>assertion.dataHash.mismatch</code> if a data hash assertion is used or <code>assertion.bmffHash.mismatch</code> if a BMFF hash assertion is used.</p>
 </div>
 </div>
 </div>
@@ -4275,7 +4364,7 @@ When a signer&#8217;s credential is revoked, this does not invalidate manifests 
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Validate that there is at least one <a href="#_binding_to_content">hard binding to content</a> assertion - either a <code>c2pa.hash.data</code> or a <code>c2pa.hash.bmff</code> based on the type of asset for which the manifest is destined.  If not, the manifest must be rejected with a failure code of <code>claim.hardBindings.missing</code>.</p>
+<p>Validate that there is at exactly one <a href="#_binding_to_content">hard binding to content</a> assertion - either a <code>c2pa.hash.data</code>, a <code>c2pa.hash.bmff</code> (deprecated), or a <code>c2pa.hash.bmff.v2</code> based on the type of asset for which the manifest is destined.  If no such assertion is present, the manifest must be rejected with a failure code of <code>claim.hardBindings.missing</code>.  If there is more than one such assertion, the manifest must be rejected with a failure code of <code>assertion.multipleHardBindings</code></p>
 </li>
 <li>
 <p>Validate that there are zero or one <code>c2pa.ingredient</code> assertions whose <code>relationship</code> is <code>parentOf</code>.  If there is more than one, the manifest must be rejected with a failure code of <code>manifest.multipleParents</code>.</p>
@@ -4288,7 +4377,7 @@ When a signer&#8217;s credential is revoked, this does not invalidate manifests 
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Validate that there are not any <code>c2pa.hash.data</code>, <code>c2pa.hash.bmff</code>, <code>c2pa.actions</code> or <a href="#_thumbnails">Thumbnail</a> assertions.  If there are, the manifest must be rejected with a failure code of <code>manifest.update.invalid</code>.</p>
+<p>Validate that there are not any <code>c2pa.hash.data</code>, <code>c2pa.hash.bmff</code>, <code>c2pa.hash.bmff.v2</code>, <code>c2pa.actions</code> or <a href="#_thumbnails">Thumbnail</a> assertions.  If there are, the manifest must be rejected with a failure code of <code>manifest.update.invalid</code>.</p>
 </li>
 <li>
 <p>Validate that there is exactly one <code>c2pa.ingredient</code> assertion and whose <code>relationship</code> is <code>parentOf</code>.  If there is not (i.e., either it is missing, there are more than one, or the value of <code>relationship</code> is not <code>parentOf</code>), the manifest must be rejected with a failure code of <code>manifest.update.wrongParents</code>.</p>
@@ -4350,7 +4439,7 @@ A claim can refer to an assertion in a different C2PA Manifest box than the one 
 <div class="olist upperalpha">
 <ol class="upperalpha" type="A">
 <li>
-<p>If the <code>label</code> field of the external assertion is <code>c2pa.hash.data</code> or <code>c2pa.hash.bmff</code>, the claim must be rejected with a failure code of <code>assertion.cloud-data.hardBinding</code>.</p>
+<p>If the <code>label</code> field of the external assertion is <code>c2pa.hash.data</code>, <code>c2pa.hash.bmff</code>, or <code>c2pa.hash.bmff.v2</code>, the claim must be rejected with a failure code of <code>assertion.cloud-data.hardBinding</code>.</p>
 </li>
 <li>
 <p>If the manifest is an update manifest and the <code>label</code> field of the external assertion is <code>c2pa.actions</code>, the claim must be rejected with a failure code of <code>assertion.cloud-data.actions</code>.</p>
@@ -4740,7 +4829,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="sect3">
 <h4 id="_validating_a_bmff_hash"><a class="anchor" href="#_validating_a_bmff_hash"></a>15.11.2. Validating a BMFF-hash</h4>
 <div class="paragraph">
-<p>For any portions of an asset rendered for presentation to a user, including but not limited to audio, video, or text, the corresponding hard bindings corresponding to the rendered content must be validated in accordance with <a href="#_hard_bindings">Section 9.2, &#8220;Hard Bindings&#8221;</a>. If at any time content fails to be validated, the validator must clearly signal to the user that some of the content does not match the claim, and if possible, should indicate what part of the content did not validate. If any content is absent for which content bindings exist, discovery of this absence is also a validation failure. The validator must continue to report validation has failed, even if later portions of the content validate correctly.</p>
+<p>For any portions of an asset rendered for presentation to a user, including but not limited to audio, video, or text, the corresponding hard binding corresponding to the rendered content must be validated in accordance with <a href="#_hard_bindings">Section 9.2, &#8220;Hard Bindings&#8221;</a>. If at any time content fails to be validated, the validator must clearly signal to the user that some of the content does not match the claim, and if possible, should indicate what part of the content did not validate. If any content is absent for which content bindings exist, discovery of this absence is also a validation failure. The validator must continue to report validation has failed, even if later portions of the content validate correctly.</p>
 </div>
 <div class="paragraph">
 <p>For content that is not wholly available before rendering begins, such as during adaptive bitrate streaming (ABR) and progressive download, absence of not-yet-available portions of content is not considered a validation failure. As the content becomes available, the validator must validate each portion of the content before it is rendered as previously described. In addition, the validator must validate that the sequence of said content is the same as when the manifest was produced. Unless the player has explicitly signalled the validator that a discontinuity is expected (e.g., when the consumer performs a manual seek operation via the UI), the validator must clearly signal to the user that an unexpected discontinuity has occurred whenever the sequence does not match.</p>
@@ -5683,8 +5772,14 @@ language-string /= tstr .size (1..max-tstr-length)</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BMFF-based Hash</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BMFF-based Hash v1 (deprecated)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.bmff</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BMFF-based Hash v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.bmff.v2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
 </tr>
@@ -5879,16 +5974,27 @@ All the APP11 segments containing the C2PA Manifest JUMBF are contiguous so that
 <p>Portion(s) of a BMFF-based asset that a claim generator wishes to uniquely identify with a hard binding (i.e., cryptographic hash) shall be described using BMFF-based Hash assertions.</p>
 </div>
 <div class="paragraph">
-<p>A BMFF-based Hash assertion shall have a label of <code>c2pa.hash.bmff</code>.</p>
+<p>A BMFF-based Hash assertion shall have a label of <code>c2pa.hash.bmff</code> for v1 (deprecated) and <code>c2pa.hash.bmff.v2</code> for v2.</p>
 </div>
 <div class="paragraph">
 <p>A BMFF-based Hash assertion must not appear in a <a href="#_cloud_data">Cloud Data assertion</a>.</p>
 </div>
 <div class="paragraph">
-<p>To create the hash specified in the value field of a BMFF hash, all bytes of the file are added to the hash excluding those BMFF boxes or subset[s] thereof which match any exclusion entry in the exclusions array.</p>
+<p>To compute the hash specified in the value field of a BMFF hash, all bytes of the file are added to the hash excluding those BMFF boxes or subset[s] thereof which match any exclusion entry in the exclusions array.</p>
 </div>
 <div class="paragraph">
-<p>Boxes that are included in their entirety also include their box headers in the hash.  Similarly, boxes that are excluded in their entirety also exclude their box headers from the hash.  When a box is partially excluded from the hash through the use of a <code>subset</code> field in the exclusion specification, the portion(s) of the box to be excluded defined by the offsets in the <code>subset</code> field are offsets from the start of the box including the box headers, not offsets from the start of the box&#8217;s content.</p>
+<p>Boxes that are included in their entirety also include their box headers in the input data contributed to the hash.  Similarly, boxes that are excluded in their entirety also exclude their box headers from the input data contributed to the hash.  When a box is partially excluded from the input data contributed to the hash through the use of a <code>subset</code> field in the exclusion specification, the portion(s) of the box to be excluded defined by the relative byte offsets in the <code>subset</code> field are offsets from the start of the box including the box headers, not offsets from the start of the box&#8217;s content.</p>
+</div>
+<div class="paragraph">
+<p>In BMFF-based hash v1, for any root box not excluded in its entirety, the input data contributed to the hash for that box is comprised of <code>data</code>, where <code>data</code> is defined as the box&#8217;s contents, including headers, minus any exclusions.</p>
+</div>
+<div class="paragraph">
+<p>In BMFF-based hash v2, for any root box not excluded in its entirety, the input data contributed to the hash for that box is comprised of the concatenation of the binary strings <code>offset || data</code>, where <code>offset</code> is defined as the absolute file offset of the box as an 8-byte integer in big-endian format, and <code>data</code> is defined as the box&#8217;s contents, including headers, minus any exclusions. In this definition, "||" represents the binary concatenation of the two.</p>
+</div>
+<div class="paragraph">
+<p>There are two differences between BMFF-based hash v1 and v2.
+- The absolute file byte offset is included at the start of the input data contributed to the hash for any root box.  This ensures that a root box included in the hash cannot change positions in the file.
+- The <code>mdat</code> box is no longer excluded in its entirety when the bmff-hash-map includes both the <code>hash</code> and <code>merkle</code> fields.  Instead, a mandatory entry on the exclusion list excludes most of the box.  Along with the first difference, this ensures that the <code>mdat</code> cannot change positions in the file.</p>
 </div>
 <div class="paragraph">
 <p>A box matches an exclusion entry in the exclusions array if and only if all of the following conditions are met.</p>
@@ -5908,7 +6014,7 @@ All the APP11 segments containing the C2PA Manifest JUMBF are contiguous so that
 <p>If flags (byte array of exactly 3 bytes) is specified in the exclusion entry and the box is a FullBox.  If exact is set to true or not specified, the box&#8217;s flags (bit(24), i.e., 3 bytes) also exactly matches the exclusion entry&#8217;s flags field.  If exact is set to false, the bitwise-and of the box&#8217;s flags (bit(24), i.e., 3 bytes) with the exclusion entry exactly matches the exclusion entry (i.e. the box has at least those bits set but may also have additional bits set).</p>
 </li>
 <li>
-<p>If data (array of objects) is specified in the exclusion entry, then for each item in the array, the box&#8217;s binary data at that item&#8217;s offset field exactly matches that item&#8217;s bytes field.</p>
+<p>If data (array of objects) is specified in the exclusion entry, then for each item in the array, the box&#8217;s binary data at that item&#8217;s relative byte offset field exactly matches that item&#8217;s bytes field.</p>
 </li>
 </ul>
 </div>
@@ -5956,10 +6062,10 @@ Where:
 <p>If the C2PA Manifest is embedded into the file, the box containing it shall be one of the entries in the exclusions array.  Refer to <a href="#_embedding_manifests_into_bmff_based_assets">Section 11.3.2, &#8220;Embedding manifests into BMFF-based assets&#8221;</a> for more information.</p>
 </div>
 <div class="paragraph">
-<p>If a non-root excluded box is removed after the C2PA Manifest is created, it shall be replaced with a <code>'free'</code> box of the same size to ensure that hashes of other boxes are not invalidated.  If it is expected that a non-root excluded box may be added after the C2PA Manifest is created, then, at manifest creation time, a <code>'free'</code> box shall be inserted with sufficient space for the excluded box and that <code>'free'</code> box shall also be excluded by an exclusion entry using its full xpath.  When the excluded box is added, the <code>'free'</code> box shall be shrunk (or removed) to make space for the added box.</p>
+<p>If a non-root excluded box is removed after the C2PA Manifest is created, it shall be replaced with a <code>'free'</code> box of the same size to ensure that the input data contributed to the hash for other boxes are not invalidated.  If it is expected that a non-root excluded box may be added after the C2PA Manifest is created, then, at manifest creation time, a <code>'free'</code> box shall be inserted with sufficient space for the excluded box and that <code>'free'</code> box shall also be excluded by an exclusion entry using its full xpath.  When the excluded box is added, the <code>'free'</code> box shall be shrunk (or removed) to make space for the added box.</p>
 </div>
 <div class="paragraph">
-<p>Embedding C2PA data into a BMFF-based asset via MP4 boxes changes file offsets in other MP4 boxes.  Those boxes must be hashed with their post-embed values, not their pre-embed values, or the BMFF-based Hash assertion will not validate.</p>
+<p>Embedding C2PA data into a BMFF-based asset via MP4 boxes changes file offsets in other MP4 boxes and, in v2, the absolute file byte offsets being included in the input data contributed to the hash for any root box.  Those boxes and offsets must be included in the input data contributed to the hash with their post-embed values, not their pre-embed values, or the BMFF-based Hash assertion will not validate.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5969,10 +6075,10 @@ Where:
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Here are two possible ways an implementation can ensure that post-embed values for file offsets are hashed.
+<p>Here are two possible ways an implementation can ensure that post-embed values for all file byte offsets are hashed.
 1. Use <code>'free'</code> boxes.
    a. Determine reasonable maximum size(s) for the C2PA box(es) which will be embedded.
-   b. Insert <code>'free'</code> box(es) of said size(s) into the asset file(s) and update offsets appropriately.
+   b. Insert <code>'free'</code> box(es) of said size(s) into the asset file(s) and update all offsets appropriately.
    c. Perform hashing of the asset with "/free" on the exclusion list.
    d. Create and sign the manifest.  Create the C2PA box(es).
    e. Overwrite the <code>'free'</code> box(es) with the C2PA box(es).
@@ -5980,7 +6086,7 @@ All MP4 boxes for C2PA support unused padding bytes at the end, so it is fine to
 2. Use a two-pass approach.
    a. Compute the exact sizes of the BMFF-based Hash assertion and the <code>merkle</code> box(es) if any.  The latter will require parsing the asset file(s) to determine the size of the Merkle tree.
    b. Compute the exact size of the final manifest.
-   c. Perform hashing of the asset file(s).  Update any box that includes any file offsets to correct values before hashing that box.
+   c. Perform hashing of the asset file(s).  Update any box that includes any file offsets to correct values before including that box in the input data contributed to the hash.  In v2, compute the input data contributed to the hash using <code>(offset || data)</code> using the updated absolute file offset as described above.
    d. Create and sign the manifest.  Create the C2PA box(es).
    e. Insert the C2PA box(es).
 While the latter method is significantly more complex, it does enable correct hashing without any foreknowledge of the maximum manifest size.  It also minimizes the final asset&#8217;s size.
@@ -6000,7 +6106,7 @@ Common boxes (<strong>not</strong> exhaustive) with file offsets include <code>'
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">bmff-hash-map = {
   "exclusions": [1* exclusions-map],
   ? "alg": tstr .size (1..max-tstr-length), ; A string identifying the cryptographic hash algorithm used to compute this hash, taken from the C2PA hash algorithm identifier list. If this field is absent, the hash algorithm is taken from an enclosing structure as defined by that structure. If both are present, the field in this structure is used. If no value is present in any of these places, this structure is invalid; there is no default.
-  ? "hash": bstr, ; For non-fragmented MP4, this shall be the hash of the entire BMFF file excluding boxes listed in the exclusions array; if the Merkle field is present, this hash also excludes all 'mdat' boxes.  For fragmented MP4, this field is required to be absent.
+  ? "hash": bstr, ; For non-fragmented MP4, this shall be the hash of the entire BMFF file excluding boxes listed in the exclusions array.  For `c2pa.hash.bmff` (deprecated) assertions, if the merkle field is present, this hash also excludes all 'mdat' boxes.  For fragmented MP4, this field is required to be absent.
   ? "merkle": [1* merkle-map], ; A set of Merkle tree rows and the associated data required to enable verification of a single 'mdat' box, multiple 'mdat' boxes, and/or individual fragment files within the asset.
   ? "name": tstr .size (1..max-tstr-length), ; optional) a human-readable description of what this hash covers.
   ? "url": uri, ; (optional) a file or http(s) URL to where the bytes that are being hashed lived.  This is useful for cases where the data lives in a different file chunk or side-car than the claim.
@@ -6014,8 +6120,8 @@ flag-t = flag-type .eq 3
 exclusions-map = {
   "xpath": tstr, ; Location of box(es) to exclude from the hash starting from the root node as an xpath formatted string of version https://www.w3.org/TR/xpath-10/ with highly constrained syntax.
   ? "length": int, ; (optional) Length that a leafmost box must have to exclude from the hash.
-  ? "data": [1* data-map], ; (optional) The data in the leafmost box at the specified offset must be identical to the specified data for the box to be excluded from the hash.
-  ? "subset":[1* subset-map], ; (optional) Only this portion of the excluded box shall be excluded from the hash.  Each entry in the array must have a monotonically increasing offset.  No subset within the array may overlap.  The last entry may have a length of zero; this indicates that the remainder of the box from that offset onward is excluded.
+  ? "data": [1* data-map], ; (optional) The data in the leafmost box at the specified relative byte offset must be identical to the specified data for the box to be excluded from the hash.
+  ? "subset":[1* subset-map], ; (optional) Only this portion of the excluded box shall be excluded from the hash.  Each entry in the array must have a monotonically increasing relative byte offset.  No subset within the array may overlap.  The last entry may have a length of zero; this indicates that the remainder of the box from that relative byte offset onward is excluded.  A relative byte offset or relative byte offset plus length that exceeds the length of the box is allowed; bytes beyond the end of the box are never hashed.
   ? "version": int, ; (optional) Version that must be set in a leafmost box for the box to be excluded from the hash.  Shall only be specified for a box that inherits from FullBox.
   ? "flags": flag-t,  ; (optional) byte string of exactly 3 bytes.  The 24-bit flags that must be set in a leafmost box for the box to be excluded from the hash.  Shall only be specified for a box that inherits from FullBox.
   ? "exact": bool, ; (optional) indicates that flags must be an exact match.  If not specified, defaults to true.  Shall only be specified for a box that inherits from FullBox and when flags is also specified.
@@ -6337,7 +6443,7 @@ soft-binding-timespan-map = {
 <p>A Cloud Data assertion shall have a label of <code>c2pa.cloud-data</code>.</p>
 </div>
 <div class="paragraph">
-<p>A Cloud Data assertion must not refer to an assertion with the label <code>c2pa.hash.data</code> or <code>c2pa.hash.bmff</code>.</p>
+<p>A Cloud Data assertion must not refer to an assertion with the label <code>c2pa.hash.data</code>, <code>c2pa.hash.bmff</code> (deprecated), or <code>c2pa.hash.bmff.v2</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="_schema_and_example_5"><a class="anchor" href="#_schema_and_example_5"></a>18.8.1. Schema and Example</h4>
@@ -6810,6 +6916,7 @@ $status-code /= "timeStamp.untrusted"
 $status-code /= "timeStamp.outsideValidity"
 $status-code /= "assertion.hashedURI.mismatch"
 $status-code /= "assertion.missing"
+$status-code /= "assertion.multipleHardBindings"
 $status-code /= "assertion.undeclared"
 $status-code /= "assertion.inaccessible"
 $status-code /= "assertion.notRedacted"
