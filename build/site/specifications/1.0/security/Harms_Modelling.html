@@ -125,6 +125,14 @@
 </li>
 <li><a href="#_public_review_and_feedback">4. Public Review and Feedback</a></li>
 <li><a href="#_due_diligence_actions">5. Due Diligence Actions</a></li>
+<li><a href="#_harms_considerations_for_c2pa_stakeholders">6. Harms considerations for C2PA stakeholders</a>
+<ul class="sectlevel2">
+<li><a href="#_general_considerations_for_content_creators">6.1. General considerations for content creators</a></li>
+<li><a href="#_general_considerations_for_content_consumers_manifest_consumers">6.2. General considerations for content consumers (manifest consumers)</a></li>
+<li><a href="#_general_considerations_for_civic_community_and_independent_media">6.3. General considerations for civic, community, and independent media</a></li>
+<li><a href="#_general_considerations_for_human_rights_defenders">6.4. General considerations for human rights defenders</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div id="preamble">
@@ -422,6 +430,201 @@
 <div class="paragraph">
 <div class="title">Actions</div>
 <p>A PDF containing the due diligence actions can be found <a href="_attachments/Due_Diligence_Actions.pdf">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_harms_considerations_for_c2pa_stakeholders"><a class="anchor" href="#_harms_considerations_for_c2pa_stakeholders"></a>6. Harms considerations for C2PA stakeholders</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As part of due diligence, we offer the following considerations for key stakeholders of the C2PA specifications.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The harms considerations below do not include risks from security threats (e.g. attackers aiming to compromise the security of the system). For more information on the threat modeling process see the <a href="Security_Considerations.html" class="page">Security Considerations</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_general_considerations_for_content_creators"><a class="anchor" href="#_general_considerations_for_content_creators"></a>6.1. General considerations for content creators</h3>
+<div class="paragraph">
+<p>C2PA manifests may be used by content creators to provide cryptographically verifiable provenance information for various reasons, including, but not limited to, safeguarding authorship or providing additional signals of trust.
+The harms, misuse, and abuse assessment laid out in this document have identified a list of potential harms, some of which may impact content creators. In order to avert and mitigate these potential harms, this assessment has informed and will continue to inform the development of the specifications. It is important to note, however, given the vast diversity of usages, stakeholders, and industries that the C2PA specifications could enable, that all identified potential harms may not be addressed at this level, but will need to be taken up by implementers in consideration of their specific circumstances, users and stakeholders.</p>
+</div>
+<div class="paragraph">
+<p>As of the current version of the specifications, the C2PA issues the following harms considerations for content creators.</p>
+</div>
+<div class="paragraph">
+<p><strong>Technical Accessibility Considerations</strong></p>
+</div>
+<div class="paragraph">
+<p><em>Implementing the C2PA specifications (creating C2PA-enabled tools)</em></p>
+</div>
+<div class="paragraph">
+<p>The specifications are open, global, and opt-in, and they use open standards for which there are existing libraries in various programming languages across a range of devices and operating systems/environments in order to facilitate the development of tools that can meet the needs of a diverse group of users. In other words, the Technical Working Group of the C2PA understands that, as of version 1.1 of the specifications, there are no technical barriers to the creation of C2PA-enabled tools and services that meet the needs of a diverse group of users, including those that may be using older devices and operating systems, or others that may have a poor internet connection.</p>
+</div>
+<div class="paragraph">
+<p>The C2PA has also published a guide for implementers that will be continuously updated in order to facilitate a C2PA ecosystem that reflects a broad spectrum of needs and circumstances.</p>
+</div>
+<div class="paragraph">
+<p><em>Using C2PA enabled tools and software</em></p>
+</div>
+<div class="paragraph">
+<p>The decisions of implementors of the specifications may still hinder the use of C2PA-enabled technologies where they are needed the most. For example, there is the possibility that C2PA claim generators will not operate in pirated software. Additionally, some specification-compliant implementations may prefer to add restrictions to their use. For example, a tool may restrict its use to only newer devices or operating systems, despite the recommendations listed in the <a href="../guidance/Guidance.html" class="page">Guidance for implementers</a>.</p>
+</div>
+<div class="paragraph">
+<p>To address accessibility concerns related to the use of C2PA enabled tools and software, it is necessary to promote a diverse C2PA ecosystem that caters to all user groups throughout the world. To this end, the C2PA seeks to cooperate with implementers to work towards effective global accessibility for content creators and consumers.</p>
+</div>
+<div class="paragraph">
+<p><strong>Privacy and security considerations</strong></p>
+</div>
+<div class="paragraph">
+<p>The following potential harms may still occur in specific implementations of the C2PA specifications:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Inadvertent disclosure of information: C2PA claim generators may automatically add, or require to add, information to manifests that may be sensitive. Specification-compliant implementations may intentionally or unintentionally hide this feature. <a href="https://c2pa.org/specifications/specifications/1.0/ux/UX_Recommendations.html">User experience guidance</a> has been published alongside the specs to offer a clear acknowledgement of creator consent before a C2PA implementation can begin accumulating data.</p>
+</li>
+<li>
+<p>Redacted (deleted) information from C2PA manifests may still be accessible: If a soft binding lookup is enabled or required by manifest stores, then previous versions of a manifest with sensitive information may be located.</p>
+</li>
+<li>
+<p>The use of C2PA-enabled tools and services in adverse legal or political situations may result in human rights violations: The C2PA specifications include features to protect the privacy of users, but this does not preclude the possibility of malicious actors, including potentially state actors, misusing or abusing the system.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_general_considerations_for_content_consumers_manifest_consumers"><a class="anchor" href="#_general_considerations_for_content_consumers_manifest_consumers"></a>6.2. General considerations for content consumers (manifest consumers)</h3>
+<div class="paragraph">
+<p>The C2PA specifications do not provide value judgments about the truth or falsehood of digital assets. In other words, the presence of valid manifests does not mean that anything is ‘true’; validated manifests only establish whether the provenance information can be verified as associated with the underlying asset, correctly formed, and free from tampering.</p>
+</div>
+<div class="paragraph">
+<p>As of version 1.1 of the specifications, the C2PA issues the following comments and considerations for content consumers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Digital assets, such as images and videos, can have valid C2PA manifests and still be deemed to be mis or disinformation.</p>
+</li>
+<li>
+<p>Content consumers should note that the verification of an active manifest includes validating the signature. An invalid manifest cannot be associated with the signer.</p>
+</li>
+<li>
+<p>The fact that any digital asset does not have C2PA manifests does not mean that its contents are not to be trusted. This may be especially relevant to note in a scenario where these specifications are widely adopted. In other words, it is important to know that there may be content creators who will have legitimate reasons to not use C2PA enabled tools and services, and their content should not be dismissed or undermined for not being connected to a C2PA manifest.</p>
+</li>
+<li>
+<p>An invalid C2PA manifest could mean that either the digital content or the manifest has been tampered with, though this may not always be the case.</p>
+</li>
+<li>
+<p>The <a href="../ux/UX_Recommendations.html" class="page">User Experience Guidance</a> is being designed to define best practices for presenting C2PA provenance to consumers. The recommendations strive to describe standard, readily recognizable experiences that provide asset consumers information and history about the content they are consuming, thereby empowering them to understand where it came from and decide how much to trust it.</p>
+</li>
+<li>
+<p>If a content consumer trusts a particular signer, then they may be inclined to believe that the information provided in the manifest is authentic. In other words, a preexisting relationship of trust between a signer and a content consumer is the basis of the C2PA trust model. C2PA specifications are designed to provide signals for content consumers to know that the signer is in fact who they say they are and that the manifest is in fact connected to a particular asset.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_general_considerations_for_civic_community_and_independent_media"><a class="anchor" href="#_general_considerations_for_civic_community_and_independent_media"></a>6.3. General considerations for civic, community, and independent media</h3>
+<div class="paragraph">
+<p>The harms, misuse and abuse assessment laid out in this document identifies a list of potential harms, some of which may impact civic, community and independent media. In order to avert and mitigate these potential harms, this assessment has informed and will continue to inform the development of the specifications. It is important to note, however, given the vast diversity of usages, stakeholders, and industries that the C2PA specifications could enable, that all identified potential harms may not be addressed at this level, but will need to be taken up by implementers in consideration of their specific circumstances, users and stakeholders.</p>
+</div>
+<div class="paragraph">
+<p><strong>Technical Accessibility considerations</strong></p>
+</div>
+<div class="paragraph">
+<p>As of version 1.1 of the specifications, the C2PA issues the following harms considerations for civic, community, and independent media that may be interested in 1. creating their own C2PA-enabled tool, 2. in becoming a signer, or 3. in simply using C2PA-enabled tools.</p>
+</div>
+<div class="paragraph">
+<p><em>Implementing the C2PA specifications (creating C2PA-enabled tools)</em></p>
+</div>
+<div class="paragraph">
+<p>In order to guarantee accessibility, privacy, and security criteria, civic, community, and independent media may be interested in creating their own C2PA-enabled tools. In this case, although there are technical and financial requirements to be considered, it is worth noting that the specifications have been designed to facilitate implementations to the extent possible: The specifications are open, global, and opt-in, and they use open standards for which there are existing libraries in various programming languages across a range of devices and operating systems/environments in order to facilitate the development of tools that can meet the needs of a diverse group of users.</p>
+</div>
+<div class="paragraph">
+<p>That said, the C2PA seeks to cooperate with implementers, partners and other stakeholders in order to promote a diverse ecosystem that caters to all user groups throughout the world, including those that actively strive to guarantee accessibility, privacy and security criteria.</p>
+</div>
+<div class="paragraph">
+<p>The C2PA has also published a <a href="../guidance/Guidance.html" class="page">guide for implementers</a> that will be continuously updated in order to facilitate a C2PA ecosystem that reflects a broad spectrum of needs and circumstances.</p>
+</div>
+<div class="paragraph">
+<p><em>Becoming a signer</em></p>
+</div>
+<div class="paragraph">
+<p>Civic, community, and independent media may be interested in becoming signers in order to have their brand vouching for manifests tied to the digital assets they create and share. By becoming signers, civic, community, and independent media would also be able to determine what information (assertions) are included in the manifests generated.</p>
+</div>
+<div class="paragraph">
+<p>There are two ways of becoming a signer: either by using credentials issued by a CA or by self-signing manifests. C2PA manifests currently makes use of X.509 certificates which allow for independent verification of your identity, thereby adding a layer of trust to the signed manifests. However, the X.509 certificates come at a cost that may not be accessible to all. For those that self-sign a provenance claim, they should note that these may be deemed to be less credible since the certificate is not independently verified.</p>
+</div>
+<div class="paragraph">
+<p>In some countries, governments may issue digital certificates to all of its citizens. These certificates could be potentially used to sign C2PA manifests. If government control and surveillance is not regulated, or if there are laws meant to attach journalistic identity to media posted online, these certificates may be used to enforce suppression of speech or to persecute journalists if required by claim generators that do not guarantee privacy and confidentiality.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, certain C2PA claim generators may allow content creators, including civic, community and indepente media, to sign manifests with their personal certificates associated with their IDs. Although guidance to allow for anonymity and pseudonymity has been issued, specification-compliant tools may sell information to third-parties, or not follow user experience guidance meant to empower users to retain control of their information.</p>
+</div>
+<div class="paragraph">
+<p><em>Using C2PA enabled tools and software</em></p>
+</div>
+<div class="paragraph">
+<p>C2PA manifests may be used by the civic, community, and independent media to provide cryptographically verifiable provenance information for various reasons, including, but not limited to, safeguarding authorship or providing additional signals of trust.</p>
+</div>
+<div class="paragraph">
+<p>Technical restraints at the specifications level may still hinder the use of C2PA-enabled technologies where they are needed the most. For example, it is expected that C2PA claim generators will not operate in pirated software. Additionally, some specification-compliant implementations may prefer to add restrictions to their use. For example, a tool may restrict its use to only newer devices or operating systems, despite the recommendations listed in the Guidance for Implementers.</p>
+</div>
+<div class="paragraph">
+<p>To address accessibility concerns related to the use of C2PA enabled tools and software, it is necessary to promote a diverse C2PA ecosystem that caters to all user groups throughout the world. To this end, the C2PA seeks to cooperate with implementers to work towards effective global accessibility for content creators.</p>
+</div>
+<div class="paragraph">
+<p><strong>Privacy and security considerations for civic, community and independent media</strong></p>
+</div>
+<div class="paragraph">
+<p>The following potential harms may still occur in specific implementations of the C2PA specifications:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Inadvertent disclosure of information: C2PA claim generators may automatically add, or require to add, information to manifests that may be sensitive. Specification-compliant implementations may intentionally or unintentionally hide this feature.</p>
+</li>
+<li>
+<p>Redacted (deleted) information from C2PA manifests may still be accessible: If soft binding lookup is enabled or required by manifest stores, then previous versions of a manifest with sensitive information may be located.</p>
+</li>
+<li>
+<p>The use of C2PA-enabled tools and services in adverse legal or political situations may result in human rights violations: The C2PA specifications include features to protect the privacy of users, but this does not preclude the possibility of malicious actors, including potentially state actors, to misuse or abuse the system.</p>
+</li>
+<li>
+<p>Other considerations for civic, community, and independent media*</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Media and news outlets may face additional pressure to authenticate media, both in terms of ensuring media they are sourcing from stringers, ingesting into their archives, and producing and publishing in-house is resilient to falsifications, and in terms of assessing user-generated content, they include in their reporting. The additional resources required to authenticate media may preclude participation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_general_considerations_for_human_rights_defenders"><a class="anchor" href="#_general_considerations_for_human_rights_defenders"></a>6.4. General considerations for human rights defenders</h3>
+<div class="paragraph">
+<p>Video captured by eyewitnesses and on-the-ground human rights activists can be instrumental in drawing attention to human rights violations, supporting calls for policy change, and pushing for accountability.</p>
+</div>
+<div class="paragraph">
+<p>The C2PA, its implementations, and the broader provenance and authenticity ecosystem could have both positive and negative effects on the way that visual or audiovisual evidence of human rights violations are captured and used.</p>
+</div>
+<div class="paragraph">
+<p>On the one hand, digital assets embedded with manifests could help add a layer of trust so that evidence of human rights violations are not as easily dismissed or undermined. This could be more relevant now and in the future as technologies to create synthetic media are improved, further blurring the divide between what is real and fake. To name an example, C2PA manifests could be used to prevent the <a href="https://gvu.gatech.edu/research/projects/liars-dividend-impact-deepfakes-and-fake-news-politician-support-and-trust-media">Liar’s Dividend</a>, or the dismissal of real footage by suggesting that it is a deepfake or in other ways manipulated in order to avoid accountability.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, the mere existence of a provenance and authenticity ecosystem, bolstered by the C2PA specifications, could result in higher expectations of forensic proof of visual or audiovisual evidence of human rights violations. If this is the case, questions about accessibility and privacy arise, as well as about the requirements to determine authenticity in legal and social scenarios. To put it differently: Who will take the stand? If jurors and judges come to expect higher levels of admissibility of multimedia content, then witnesses could be asked to verify, corroborate, or authenticate multimedia evidence more frequently. Who will determine what is authentic in this case?</p>
+</div>
+<div class="paragraph">
+<p>There are also questions around the legal use of C2PA manifests. Although the C2PA has not been designed to be used in legal procedures, it may still become an element of consideration in certain scenarios, both to add a layer of trust or to dismiss otherwise authentic content.</p>
+</div>
 </div>
 </div>
 </div>
