@@ -345,6 +345,10 @@
 <div class="paragraph text-center">
 <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
 </div>
+<hr>
+<div class="paragraph">
+<p>THESE MATERIALS ARE PROVIDED “AS IS.” The parties expressly disclaim any warranties (express, implied, or otherwise), including implied warranties of merchantability, non-infringement, fitness for a particular purpose, or title, related to the materials. The entire risk as to implementing or otherwise using the materials is assumed by the implementer and user. IN NO EVENT WILL THE PARTIES BE LIABLE TO ANY OTHER PARTY FOR LOST PROFITS OR ANY FORM OF INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF ANY CHARACTER FROM ANY CAUSES OF ACTION OF ANY KIND WITH RESPECT TO THIS DELIVERABLE OR ITS GOVERNING AGREEMENT, WHETHER BASED ON BREACH OF CONTRACT, TORT (INCLUDING NEGLIGENCE), OR OTHERWISE, AND WHETHER OR NOT THE OTHER MEMBER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+</div>
 </div>
 </div>
 <!-- toc disabled -->
@@ -2062,7 +2066,7 @@ While it is possible to add the XMP data to the list of exclusions in a data has
 </ul>
 </div>
 <div class="paragraph">
-<p>In addition to supporting all of the requirements above, our chosen container format - <a href="https://www.iso.org/standard/73604.html">JUMBF, ISO 19566-5</a> - is also natively supported by the JPEG family of formats and is compatible with the box-based model (i.e. <a href="https://www.iso.org/standard/68960.html">ISOBMFF, ISO 14496-12</a>) used by many common image and video file formats. Using JUMBF enables all the same benefits (and a few extras, such as <a href="#_uri_references">URI References</a>) while being able to work with classic image formats, such as JPEG/JFIF and PNG as well as 3D and document (e.g., PDF) formats. This serialized format shall be used also in formats that do not natively support JUMBF, or when C2PA Manifest Stores are stored separately from the asset, such as in a separate file or URI location.</p>
+<p>In addition to supporting all of the requirements above, our chosen container format - <a href="https://www.iso.org/standard/73604.html">JUMBF, ISO 19566-5</a> - is also natively supported by the JPEG family of formats and is compatible with the box-based model (i.e., <a href="https://www.iso.org/standard/68960.html">ISOBMFF, ISO 14496-12</a>) used by many common image and video file formats. Using JUMBF enables all the same benefits (and a few extras, such as <a href="#_uri_references">URI References</a>) while being able to work with classic image formats, such as JPEG/JFIF and PNG as well as 3D and document (e.g., PDF) formats. This serialized format shall be used also in formats that do not natively support JUMBF, or when C2PA Manifest Stores are stored separately from the asset, such as in a separate file or URI location.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2679,7 +2683,7 @@ Quantity: Zero or more</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Taking a c2pa-compliant fMP4 asset which is split across multiple files (i.e. has <code>'c2pa'</code> boxes of types <code>'manifest'</code> and <code>'merkle'</code>) and appending the individual files together will not produce a single file which is <code>'c2pa'</code> compliant (nor vice-versa).  This is because which boxes are included in each <code>'merkle'</code> hash will be different in the two cases.  If both forms are desirable, the second form shall consider the first form as an ingredient and the new manifest shall include both an 'Ingredient' assertion with relationship 'parentOf' and an 'Actions' assertion that includes an action of type 'c2pa.repackaged'.</p>
+<p>Taking a c2pa-compliant fMP4 asset which is split across multiple files (i.e., has <code>'c2pa'</code> boxes of types <code>'manifest'</code> and <code>'merkle'</code>) and appending the individual files together will not produce a single file which is <code>'c2pa'</code> compliant (nor vice-versa).  This is because which boxes are included in each <code>'merkle'</code> hash will be different in the two cases.  If both forms are desirable, the second form shall consider the first form as an ingredient and the new manifest shall include both an 'Ingredient' assertion with relationship 'parentOf' and an 'Actions' assertion that includes an action of type 'c2pa.repackaged'.</p>
 </div>
 </td>
 </tr>
@@ -2840,7 +2844,7 @@ subset = { { 16, 0 } }</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>As indicated in the CDDL Definition above, the <code>c2pa.hash.bmff</code> assertion excludes the entire "/mdat" box in this case, but it was discovered that excluding it is insecure.</p>
+<p>As indicated in the CDDL Definition above, the <code>c2pa.hash.bmff</code> assertion excludes the entire <code>'mdat'</code> box in this case, but it was discovered that excluding it is insecure.</p>
 </div>
 </td>
 </tr>
@@ -4364,7 +4368,7 @@ When a signer&#8217;s credential is revoked, this does not invalidate manifests 
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Validate that there is at exactly one <a href="#_binding_to_content">hard binding to content</a> assertion - either a <code>c2pa.hash.data</code>, a <code>c2pa.hash.bmff</code> (deprecated), or a <code>c2pa.hash.bmff.v2</code> based on the type of asset for which the manifest is destined.  If no such assertion is present, the manifest must be rejected with a failure code of <code>claim.hardBindings.missing</code>.  If there is more than one such assertion, the manifest must be rejected with a failure code of <code>assertion.multipleHardBindings</code></p>
+<p>Validate that there is at exactly one <a href="#_binding_to_content">hard binding to content</a> assertion - either a <code>c2pa.hash.data</code>, a <code>c2pa.hash.bmff</code> (deprecated), or a <code>c2pa.hash.bmff.v2</code> based on the type of asset for which the manifest is destined.  If no such assertion is present, the manifest must be rejected with a failure code of <code>claim.hardBindings.missing</code>.  If there is more than one such assertion, the manifest must be rejected with a failure code of <code>assertion.multipleHardBindings</code>.</p>
 </li>
 <li>
 <p>Validate that there are zero or one <code>c2pa.ingredient</code> assertions whose <code>relationship</code> is <code>parentOf</code>.  If there is more than one, the manifest must be rejected with a failure code of <code>manifest.multipleParents</code>.</p>
@@ -5992,9 +5996,17 @@ All the APP11 segments containing the C2PA Manifest JUMBF are contiguous so that
 <p>In BMFF-based hash v2, for any root box not excluded in its entirety, the input data contributed to the hash for that box is comprised of the concatenation of the binary strings <code>offset || data</code>, where <code>offset</code> is defined as the absolute file offset of the box as an 8-byte integer in big-endian format, and <code>data</code> is defined as the box&#8217;s contents, including headers, minus any exclusions. In this definition, "||" represents the binary concatenation of the two.</p>
 </div>
 <div class="paragraph">
-<p>There are two differences between BMFF-based hash v1 and v2.
-- The absolute file byte offset is included at the start of the input data contributed to the hash for any root box.  This ensures that a root box included in the hash cannot change positions in the file.
-- The <code>mdat</code> box is no longer excluded in its entirety when the bmff-hash-map includes both the <code>hash</code> and <code>merkle</code> fields.  Instead, a mandatory entry on the exclusion list excludes most of the box.  Along with the first difference, this ensures that the <code>mdat</code> cannot change positions in the file.</p>
+<p>There are two differences between BMFF-based hash v1 and v2.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The absolute file byte offset is included at the start of the input data contributed to the hash for any root box.  This ensures that a root box included in the hash cannot change positions in the file.</p>
+</li>
+<li>
+<p>The <code>mdat</code> box is no longer excluded in its entirety when the bmff-hash-map includes both the <code>hash</code> and <code>merkle</code> fields.  Instead, a mandatory entry on the exclusion list excludes most of the box.  Along with the first difference, this ensures that the <code>mdat</code> cannot change positions in the file.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>A box matches an exclusion entry in the exclusions array if and only if all of the following conditions are met.</p>
@@ -6002,24 +6014,24 @@ All the APP11 segments containing the C2PA Manifest JUMBF are contiguous so that
 <div class="ulist">
 <ul>
 <li>
-<p>The box&#8217;s location in the file exactly matches the exclusion entry&#8217;s xpath field.</p>
+<p>The box&#8217;s location in the file exactly matches the <code>exclusions-map</code> entry&#8217;s <code>xpath</code> field.</p>
 </li>
 <li>
-<p>If length is specified in the exclusion entry, the box&#8217;s length exactly matches the exclusion entry&#8217;s length field.  Note: The length includes the box headers.</p>
+<p>If <code>length</code> is specified in the <code>exclusions-map</code> entry, the box&#8217;s length exactly matches the <code>exclusions-map</code> entry&#8217;s <code>length</code> field.  Note: The length includes the box headers.</p>
 </li>
 <li>
-<p>If version is specified in the exclusion entry, the box is a FullBox and the box&#8217;s version exactly matches the exclusion entry&#8217;s version field.</p>
+<p>If <code>version</code> is specified in the <code>exclusions-map</code> entry, the box is a FullBox and the box&#8217;s version exactly matches the <code>exclusions-map</code> entry&#8217;s <code>version</code> field.</p>
 </li>
 <li>
-<p>If flags (byte array of exactly 3 bytes) is specified in the exclusion entry and the box is a FullBox.  If exact is set to true or not specified, the box&#8217;s flags (bit(24), i.e., 3 bytes) also exactly matches the exclusion entry&#8217;s flags field.  If exact is set to false, the bitwise-and of the box&#8217;s flags (bit(24), i.e., 3 bytes) with the exclusion entry exactly matches the exclusion entry (i.e. the box has at least those bits set but may also have additional bits set).</p>
+<p>If <code>flags</code> (byte array of exactly 3 bytes) is specified in the <code>exclusions-map</code> entry and the box is a FullBox.  If <code>exact</code> is set to true or not specified, the box&#8217;s flags (bit(24), i.e., 3 bytes) also exactly matches the <code>exclusions-map</code> entry&#8217;s <code>flags</code> field.  If <code>exact</code> is set to false, the bitwise-and of the box&#8217;s flags (bit(24), i.e., 3 bytes) with the <code>exclusions-map</code> entry&#8217;s <code>flags</code> field exactly matches the <code>exclusions-map</code> entry&#8217;s <code>flags</code> field (i.e., the box has at least those bits set but may also have additional bits set).</p>
 </li>
 <li>
-<p>If data (array of objects) is specified in the exclusion entry, then for each item in the array, the box&#8217;s binary data at that item&#8217;s relative byte offset field exactly matches that item&#8217;s bytes field.</p>
+<p>If <code>data</code> (array of objects) is specified in the <code>exclusions-map</code> entry, then for each item in the array, the box&#8217;s binary data at that item&#8217;s relative byte <code>offset</code> field exactly matches that item&#8217;s <code>bytes</code> field.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The xpath syntax shall be limited to the following strict subset.</p>
+<p>The <code>xpath</code> field&#8217;s string syntax shall be limited to the following strict subset.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -6056,7 +6068,7 @@ Where:
 </div>
 </div>
 <div class="paragraph">
-<p>A non-leaf xpath node shall only point to a container box that has no fields of its own (i.e., contains no data, only child boxes) and that does not inherit from FullBox.  This ensures that a C2PA validator does not need to be aware of the syntax and semantics of unusual boxes that contain other boxes.  If a child box of such an unusual box needs to be excluded in full or in part, the exclusion&#8217;s xpath shall point to the unusual box itself and the subset member shall exclude the byte ranges containing the excluded child box data.  For example, the <code>'sgpd'</code> box contains other boxes but is unusual in that it inherits from FullBox; as such, if excluding child box(es) from <code>'sgpd'</code> is required, the assertion shall use an xpath pointing to the <code>'sgpd'</code> itself (e.g., <code>/moof/traf/sgpd</code>) and shall use the subset member to exclude the desired bytes.</p>
+<p>A non-leaf xpath node shall only point to a container box that has no fields of its own (i.e., contains no data, only child boxes) and that does not inherit from FullBox.  This ensures that a C2PA validator does not need to be aware of the syntax and semantics of unusual boxes that contain other boxes.  If a child box of such an unusual box needs to be excluded in full or in part, the <code>exclusions-map</code> entry&#8217;s <code>xpath</code> field shall point to the unusual box itself and the <code>subset-map</code> field shall exclude the byte rang(es) containing the excluded child box data.  For example, the <code>'sgpd'</code> box contains other boxes but is unusual in that it inherits from FullBox; as such, if excluding child box(es), in whole or in part, from <code>'sgpd'</code> is required, the assertion shall use an <code>xpath</code> field pointing to the <code>'sgpd'</code> itself (e.g., <code>/moof/traf/sgpd</code>) and shall use the <code>subset-map</code> field to exclude the desired bytes.</p>
 </div>
 <div class="paragraph">
 <p>If the C2PA Manifest is embedded into the file, the box containing it shall be one of the entries in the exclusions array.  Refer to <a href="#_embedding_manifests_into_bmff_based_assets">Section 11.3.2, &#8220;Embedding manifests into BMFF-based assets&#8221;</a> for more information.</p>
@@ -6075,21 +6087,58 @@ Where:
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Here are two possible ways an implementation can ensure that post-embed values for all file byte offsets are hashed.
-1. Use <code>'free'</code> boxes.
-   a. Determine reasonable maximum size(s) for the C2PA box(es) which will be embedded.
-   b. Insert <code>'free'</code> box(es) of said size(s) into the asset file(s) and update all offsets appropriately.
-   c. Perform hashing of the asset with "/free" on the exclusion list.
-   d. Create and sign the manifest.  Create the C2PA box(es).
-   e. Overwrite the <code>'free'</code> box(es) with the C2PA box(es).
-All MP4 boxes for C2PA support unused padding bytes at the end, so it is fine to overestimate the size for the <code>'free'</code> boxes because any extra bytes will be ignored.
-2. Use a two-pass approach.
-   a. Compute the exact sizes of the BMFF-based Hash assertion and the <code>merkle</code> box(es) if any.  The latter will require parsing the asset file(s) to determine the size of the Merkle tree.
-   b. Compute the exact size of the final manifest.
-   c. Perform hashing of the asset file(s).  Update any box that includes any file offsets to correct values before including that box in the input data contributed to the hash.  In v2, compute the input data contributed to the hash using <code>(offset || data)</code> using the updated absolute file offset as described above.
-   d. Create and sign the manifest.  Create the C2PA box(es).
-   e. Insert the C2PA box(es).
-While the latter method is significantly more complex, it does enable correct hashing without any foreknowledge of the maximum manifest size.  It also minimizes the final asset&#8217;s size.
+<p>Here are two possible ways an implementation can ensure that post-embed values for all file byte offsets are hashed.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use <code>'free'</code> boxes.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Determine reasonable maximum size(s) for the C2PA box(es) which will be embedded.  All MP4 boxes for C2PA support unused padding bytes at the end, so it is fine to overestimate the size for the <code>'free'</code> boxes because any extra bytes will be ignored.</p>
+</li>
+<li>
+<p>Insert <code>'free'</code> box(es) of said size(s) into the asset file(s) and update all offsets appropriately.</p>
+</li>
+<li>
+<p>Perform hashing of the asset with "/free" on the exclusion list.</p>
+</li>
+<li>
+<p>Create and sign the manifest.  Create the C2PA box(es).</p>
+</li>
+<li>
+<p>Overwrite the <code>'free'</code> box(es) with the C2PA box(es).</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Use a two-pass approach.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Compute the exact sizes of the BMFF-based Hash assertion and the <code>merkle</code> box(es) if any.  The latter will require parsing the asset file(s) to determine the size of the Merkle tree.</p>
+</li>
+<li>
+<p>Compute the exact size of the final manifest.</p>
+</li>
+<li>
+<p>Perform hashing of the asset file(s).  Update any box that includes any file offsets to correct values before including that box in the input data contributed to the hash.  In v2, compute the input data contributed to the hash using <code>(offset || data)</code> using the updated absolute file offset as described above.</p>
+</li>
+<li>
+<p>Create and sign the manifest.  Create the C2PA box(es).</p>
+</li>
+<li>
+<p>Insert the C2PA box(es).</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>While the latter method is significantly more complex, it does enable correct hashing without any foreknowledge of the maximum manifest size.  It also minimizes the final asset&#8217;s size.
 Common boxes (<strong>not</strong> exhaustive) with file offsets include <code>'iloc'</code>, <code>'stco'</code>, <code>'co64'</code>, <code>'tfhd'</code>, <code>'sidx'</code>, and <code>'saio'</code>.</p>
 </div>
 </td>
@@ -7203,7 +7252,7 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
   "tiff:Model": "Shooter S1",
   "exifEX:LensMake": "CameraCompany",
   "exifEX:LensModel": "17.0-35.0 mm",
-  "exifEX:LensSpecification": { "@set": [ 1.55, 4.2, 1.6, 2.4 ] }
+  "exifEX:LensSpecification": { "@list": [ 1.55, 4.2, 1.6, 2.4 ] }
 }</code></pre>
 </div>
 </div>
