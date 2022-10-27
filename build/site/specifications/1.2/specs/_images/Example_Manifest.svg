@@ -1,0 +1,528 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="2658px" preserveAspectRatio="none" style="width:1648px;height:2658px;background:#FFFFFF;" version="1.1" viewBox="0 0 1648 2658" width="1648px" zoomAndPan="magnify"><defs><filter height="300%" id="f1b1b6wnv07mtx" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[15b6a956ef6d445048d603fe19fe6bfe]
+cluster cacb--><rect fill="#FFFFFF" filter="url(#f1b1b6wnv07mtx)" height="2639" style="stroke:#000000;stroke-width:1.5;" width="1564" x="72.64" y="7"/><path d="M264.64,7 L264.64,16.2969 L254.64,26.2969 L72.64,26.2969 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="182" x="75.64" y="20.9951">Manifest Block (`cacb`)</text><!--MD5=[e313dc9263651fe6c0082cf95dce4f82]
+cluster cast--><rect fill="#FFFFFF" filter="url(#f1b1b6wnv07mtx)" height="2483" style="stroke:#000000;stroke-width:1.5;" width="1500" x="104.64" y="58"/><path d="M245.64,58 L245.64,67.2969 L235.64,77.2969 L104.64,77.2969 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="131" x="107.64" y="71.9951">Manifest (`cast`)</text><!--MD5=[667db99744f9379befaff6f1e84be702]
+cluster caas--><rect fill="#FFFFFF" filter="url(#f1b1b6wnv07mtx)" height="1163" style="stroke:#000000;stroke-width:1.5;" width="964" x="372.64" y="117"/><path d="M620.64,117 L620.64,126.2969 L610.64,136.2969 L372.64,136.2969 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="238" x="375.64" y="130.9951">Assertion Store Block (`caas`)</text><!--MD5=[64011eaae5a4340ad4d902e75e259c8f]
+cluster stds.schema-org.CreativeWork--><rect fill="#FFFFFF" filter="url(#f1b1b6wnv07mtx)" height="416" style="stroke:#000000;stroke-width:1.5;" width="900" x="404.64" y="168"/><path d="M659.64,168 L659.64,177.2969 L649.64,187.2969 L404.64,187.2969 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="245" x="407.64" y="181.9951">stds.schema-org.CreativeWork</text><!--MD5=[78705682d54497f775fff34fe8b945c2]
+cluster c2pa.thumbnail.claim_0.png--><rect fill="#FFFFFF" filter="url(#f1b1b6wnv07mtx)" height="224" style="stroke:#000000;stroke-width:1.5;" width="386" x="661.64" y="608"/><path d="M888.64,608 L888.64,617.2969 L878.64,627.2969 L661.64,627.2969 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="217" x="664.64" y="621.9951">c2pa.thumbnail.claim_0.png</text><!--MD5=[12c9b5509900e739417c71976350c31a]
+cluster c2pa.hash.data--><rect fill="#FFFFFF" filter="url(#f1b1b6wnv07mtx)" height="384" style="stroke:#000000;stroke-width:1.5;" width="596" x="556.64" y="856"/><path d="M686.64,856 L686.64,865.2969 L676.64,875.2969 L556.64,875.2969 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="120" x="559.64" y="869.9951">c2pa.hash.data</text><!--MD5=[94b89a1077ecbd9b7faf88e95e42960e]
+cluster cacl--><rect fill="#FFFFFF" filter="url(#f1b1b6wnv07mtx)" height="516" style="stroke:#000000;stroke-width:1.5;" width="924" x="392.64" y="1320"/><path d="M506.64,1320 L506.64,1329.2969 L496.64,1339.2969 L392.64,1339.2969 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="104" x="395.64" y="1333.9951">Claim (`cacl`)</text><!--MD5=[6879b83b5c7886878417656fbe91e3c4]
+cluster casg--><rect fill="#FFFFFF" filter="url(#f1b1b6wnv07mtx)" height="533" style="stroke:#000000;stroke-width:1.5;" width="1420" x="144.64" y="1876"/><path d="M345.64,1876 L345.64,1885.2969 L335.64,1895.2969 L144.64,1895.2969 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="191" x="147.64" y="1889.9951">Claim Signature (`casg`)</text><!--MD5=[327084a64de1385045c605fa56a66ef1]
+entity JMB--><rect fill="#FEFECE" filter="url(#f1b1b6wnv07mtx)" height="61" style="stroke:#000000;stroke-width:1.5;" width="132" x="788.64" y="2568.5"/><svg x="798.64" y="2578.5"><defs/><g><rect fill="#FFFFFF" style="width:113px;height:42px;background:#FFFFFF;" /> <rect fill="#FFFFFF" height="20.2969" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.5;" width="91" x="10" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="37" x="15" y="24.9951">label</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="34" x="62" y="24.9951">c2pa</text><line style="stroke:#000000;stroke-width:1.0;" x1="57" x2="57" y1="10" y2="30.2969"/><rect fill="none" height="20.2969" rx="5" ry="5" style="stroke:#000000;stroke-width:1.5;" width="91" x="10" y="10"/><!--MD5=[0ea08e38679330b97fe91dc3718ebd07]
+@startjson
+    {
+    "label" : "c2pa"
+    }
+@endjson
+
+PlantUML version 1.2021.15(Tue Nov 30 16:45:34 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg><!--MD5=[80f2e8d8d3c6dcdba1f8f8f0db7834bb]
+entity JM--><rect fill="#FEFECE" filter="url(#f1b1b6wnv07mtx)" height="61" style="stroke:#000000;stroke-width:1.5;" width="250" x="729.64" y="2436.5"/><svg x="739.64" y="2446.5"><defs/><g><rect fill="#FFFFFF" style="width:231px;height:42px;background:#FFFFFF;" /> <rect fill="#FFFFFF" height="20.2969" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.5;" width="209" x="10" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="37" x="15" y="24.9951">label</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="62" y="24.9951">joe-ed:urn:uuid:ABCD</text><line style="stroke:#000000;stroke-width:1.0;" x1="57" x2="57" y1="10" y2="30.2969"/><rect fill="none" height="20.2969" rx="5" ry="5" style="stroke:#000000;stroke-width:1.5;" width="209" x="10" y="10"/><!--MD5=[2a4bd3ceb6d789814aefe03518c88309]
+@startjson
+    {
+    "label" : "joe-ed:urn:uuid:ABCD"
+    }
+@endjson
+
+PlantUML version 1.2021.15(Tue Nov 30 16:45:34 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg><!--MD5=[4f8ec718dd252ade2f61cdcad393e909]
+entity JA1--><rect fill="#FEFECE" filter="url(#f1b1b6wnv07mtx)" height="81" style="stroke:#000000;stroke-width:1.5;" width="374" x="667.64" y="486.5"/><svg x="677.64" y="496.5"><defs/><g><rect fill="#FFFFFF" style="width:355px;height:62px;background:#FFFFFF;" /> <rect fill="#FFFFFF" height="40.5938" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.5;" width="333" x="10" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="37" x="15" y="24.9951">label</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="212" x="126" y="24.9951">stds.schema-org.CreativeWork</text><line style="stroke:#000000;stroke-width:1.0;" x1="121" x2="121" y1="10" y2="30.2969"/><line style="stroke:#000000;stroke-width:1.0;" x1="10" x2="343" y1="30.2969" y2="30.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="101" x="15" y="45.292">content type</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="126" y="45.292">CBOR</text><line style="stroke:#000000;stroke-width:1.0;" x1="121" x2="121" y1="30.2969" y2="50.5938"/><rect fill="none" height="40.5938" rx="5" ry="5" style="stroke:#000000;stroke-width:1.5;" width="333" x="10" y="10"/><!--MD5=[f8e2a76cf862702299948cfa3b10f9cd]
+@startjson
+    {
+    "label" : "stds.schema-org.CreativeWork",
+    "content type" : "CBOR"
+    }
+@endjson
+
+PlantUML version 1.2021.15(Tue Nov 30 16:45:34 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg><!--MD5=[23bc7945312e1f0a2e37cebfe503a03b]
+entity A1--><rect fill="#FEFECE" filter="url(#f1b1b6wnv07mtx)" height="248.1563" style="stroke:#000000;stroke-width:1.5;" width="868" x="420.64" y="203"/><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="430.64" y="225.9951">{</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="264" x="462.64" y="242.292">"@context": "http://schema.org/",</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="192" x="462.64" y="258.5889">"@type": "CreativeWork",</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="360" x="462.64" y="274.8857">"datePublished": "2021-05-20T23:02:36+00:00",</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="112" x="462.64" y="291.1826">"publisher": {</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="152" x="494.64" y="307.4795">"name": "BBC News",</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="536" x="494.64" y="323.7764">"publishingPrinciples": "https://www.bbc.co.uk/news/help-41670342",</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="784" x="494.64" y="340.0732">"logo": "https://m.files.bbci.co.uk/modules/bbc-morph-news-waf-page-meta/5.1.0/bbc_news_logo.png",</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="184" x="494.64" y="356.3701">"parentOrganization": {</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="112" x="526.64" y="372.667">"name": "BBC",</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="376" x="526.64" y="388.9639">"legalName": "British Broadcasting Corporation"</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="494.64" y="405.2607">}</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="462.64" y="421.5576">}</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="430.64" y="437.8545">}</text><!--MD5=[08f67d1dfb7a0804b9c316ae064b234a]
+entity JA2--><rect fill="#FEFECE" filter="url(#f1b1b6wnv07mtx)" height="101" style="stroke:#000000;stroke-width:1.5;" width="354" x="677.64" y="714.5"/><svg x="687.64" y="724.5"><defs/><g><rect fill="#FFFFFF" style="width:335px;height:82px;background:#FFFFFF;" /> <rect fill="#FFFFFF" height="60.8906" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.5;" width="313" x="10" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="37" x="15" y="24.9951">label</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="126" y="24.9951">c2pa.thumbnail.claim_0.png</text><line style="stroke:#000000;stroke-width:1.0;" x1="121" x2="121" y1="10" y2="30.2969"/><line style="stroke:#000000;stroke-width:1.0;" x1="10" x2="323" y1="30.2969" y2="30.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="101" x="15" y="45.292">content type</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99" x="126" y="45.292">embedded file</text><line style="stroke:#000000;stroke-width:1.0;" x1="121" x2="121" y1="30.2969" y2="50.5938"/><line style="stroke:#000000;stroke-width:1.0;" x1="10" x2="323" y1="50.5938" y2="50.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="87" x="15" y="65.5889">media type</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="126" y="65.5889">image/png</text><line style="stroke:#000000;stroke-width:1.0;" x1="121" x2="121" y1="50.5938" y2="70.8906"/><rect fill="none" height="60.8906" rx="5" ry="5" style="stroke:#000000;stroke-width:1.5;" width="313" x="10" y="10"/><!--MD5=[83f82e7a53f92768efb645be6193bd3e]
+@startjson
+    {
+    "label" : "c2pa.thumbnail.claim_0.png",
+    "content type" : "embedded file",
+    "media type" : "image/png"
+    }
+@endjson
+
+PlantUML version 1.2021.15(Tue Nov 30 16:45:34 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg><!--MD5=[406a5e0ae180932da9bcb21c819a1904]
+entity A2--><rect fill="#FEFECE" filter="url(#f1b1b6wnv07mtx)" height="36.2969" style="stroke:#000000;stroke-width:1.5;" width="159.3333" x="775.14" y="643"/><path d="M786.14,656.4635 L786.14,665.7969 L795.4733,665.7969 L795.4733,656.4635 L786.14,656.4635 M787.3067,657.6302 L794.3067,657.6302 L794.3067,661.1302 L793.14,659.9635 L791.9733,661.1302 L794.3067,663.4635 L794.3067,664.6302 L793.14,664.6302 L788.4733,659.9635 L787.3067,661.1302 L787.3067,657.6302 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="124" x="800.4733" y="665.9951">Binary Image Data</text><!--MD5=[f00d931625285ecb89ed1c074005af2e]
+entity JA3--><rect fill="#FEFECE" filter="url(#f1b1b6wnv07mtx)" height="81" style="stroke:#000000;stroke-width:1.5;" width="268" x="720.64" y="1142.5"/><svg x="730.64" y="1152.5"><defs/><g><rect fill="#FFFFFF" style="width:249px;height:62px;background:#FFFFFF;" /> <rect fill="#FFFFFF" height="40.5938" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.5;" width="227" x="10" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="37" x="15" y="24.9951">label</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="106" x="126" y="24.9951">c2pa.hash.data</text><line style="stroke:#000000;stroke-width:1.0;" x1="121" x2="121" y1="10" y2="30.2969"/><line style="stroke:#000000;stroke-width:1.0;" x1="10" x2="237" y1="30.2969" y2="30.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="101" x="15" y="45.292">content type</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="126" y="45.292">CBOR</text><line style="stroke:#000000;stroke-width:1.0;" x1="121" x2="121" y1="30.2969" y2="50.5938"/><rect fill="none" height="40.5938" rx="5" ry="5" style="stroke:#000000;stroke-width:1.5;" width="227" x="10" y="10"/><!--MD5=[7189e5469eeb2703a951395b7521e925]
+@startjson
+    {
+    "label" : "c2pa.hash.data",
+    "content type" : "CBOR"
+    }
+@endjson
+
+PlantUML version 1.2021.15(Tue Nov 30 16:45:34 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg><!--MD5=[305b0bf20d1e87c4314d270a9e4e4ae4]
+entity A3--><rect fill="#FEFECE" filter="url(#f1b1b6wnv07mtx)" height="215.5625" style="stroke:#000000;stroke-width:1.5;" width="564" x="572.64" y="891"/><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="614.64" y="913.9951">{</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="120" x="646.64" y="930.292">"exclusions": [</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="646.64" y="946.5889">{</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="112" x="678.64" y="962.8857">"start": 9960,</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="112" x="678.64" y="979.1826">"length": 4213</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="646.64" y="995.4795">}</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="16" x="646.64" y="1011.7764">],</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="192" x="646.64" y="1028.0732">"name": "Image content",</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="136" x="646.64" y="1044.3701">"alg" : "sha256",</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="480" x="646.64" y="1060.667">"hash": b64'Auxjtmax46cC2N3Y9aFmBO9Jfay8LEwJWzBUtZ0sUM8gA=',</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="136" x="646.64" y="1076.9639">"pad" : "       "</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="614.64" y="1093.2607">}</text><!--MD5=[5bc06e05af2aa4d7eb7c8a9928f747d1]
+entity JC--><rect fill="#FEFECE" filter="url(#f1b1b6wnv07mtx)" height="81" style="stroke:#000000;stroke-width:1.5;" width="235" x="737.14" y="1711.5"/><svg x="747.14" y="1721.5"><defs/><g><rect fill="#FFFFFF" style="width:216px;height:62px;background:#FFFFFF;" /> <rect fill="#FFFFFF" height="40.5938" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.5;" width="194" x="10" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="37" x="15" y="24.9951">label</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="126" y="24.9951">c2pa.claim</text><line style="stroke:#000000;stroke-width:1.0;" x1="121" x2="121" y1="10" y2="30.2969"/><line style="stroke:#000000;stroke-width:1.0;" x1="10" x2="204" y1="30.2969" y2="30.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="101" x="15" y="45.292">content type</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="126" y="45.292">CBOR</text><line style="stroke:#000000;stroke-width:1.0;" x1="121" x2="121" y1="30.2969" y2="50.5938"/><rect fill="none" height="40.5938" rx="5" ry="5" style="stroke:#000000;stroke-width:1.5;" width="194" x="10" y="10"/><!--MD5=[e0942798ec48353b311ab9548c074dde]
+@startjson
+    {
+    "label" : "c2pa.claim",
+    "content type" : "CBOR"
+    }
+@endjson
+
+PlantUML version 1.2021.15(Tue Nov 30 16:45:34 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg><!--MD5=[16fab723be418f7eaf2ea4bd895a8e51]
+entity C--><rect fill="#FEFECE" filter="url(#f1b1b6wnv07mtx)" height="313.3438" style="stroke:#000000;stroke-width:1.5;" width="876" x="416.64" y="1363.5"/><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="458.64" y="1386.4951">{</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="456" x="490.64" y="1402.792">"claim_generator": "Joe's Photo Editor/2.0 (Windows 10)",</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="576" x="490.64" y="1419.0889">"signature" : 32("self#jumbf=c2pa/joe-ed:urn:uuid:ABCD/c2pa.signature"),</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="128" x="490.64" y="1435.3857">"assertions" : [</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="522.64" y="1451.6826">{</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="648" x="522.64" y="1467.9795">"url": 32("self#jumbf=c2pa/joe-ed:urn:uuid:ABCD/c2pa.assertions/c2pa.hash.data"),</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="464" x="522.64" y="1484.2764">"hash": b64'Auxjtmax46cC2N3Y9aFmBO9Jfay8LEwJWzBUtZ0sUM8gA'</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="16" x="522.64" y="1500.5732">},</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="522.64" y="1516.8701">{</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="736" x="522.64" y="1533.167">"url": 32("self#jumbf=c2pa/joe-ed:urn:uuid:ABCD/c2pa.assertions/c2pa.thumbnail.claim.jpeg"),</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="472" x="522.64" y="1549.4639">"hash": b64'DjZifCgG2iKxcYeChKTOcWlJ9I/UC9/c5XFiJREqJFpwA='</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="16" x="522.64" y="1565.7607">},</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="522.64" y="1582.0576">{</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="760" x="522.64" y="1598.3545">"url": 32("self#jumbf=c2pa/joe-ed:urn:uuid:ABCD/c2pa.assertions/stds.schema-org.CreativeWork"),</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="472" x="522.64" y="1614.6514">"hash": b64'm7ZifCgG2iKxcYeChKTOcWlJ9I/UC9/c5XFiJREqJFpwA='</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="522.64" y="1630.9482">}</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="16" x="490.64" y="1647.2451">],</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="458.64" y="1663.542">}</text><!--MD5=[f2d6c653675a5af303174c7d8f78d293]
+entity JCS--><rect fill="#FEFECE" filter="url(#f1b1b6wnv07mtx)" height="81" style="stroke:#000000;stroke-width:1.5;" width="265" x="722.14" y="2284.5"/><svg x="732.14" y="2294.5"><defs/><g><rect fill="#FFFFFF" style="width:246px;height:62px;background:#FFFFFF;" /> <rect fill="#FFFFFF" height="40.5938" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.5;" width="224" x="10" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="37" x="15" y="24.9951">label</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="126" y="24.9951">c2pa.signature</text><line style="stroke:#000000;stroke-width:1.0;" x1="121" x2="121" y1="10" y2="30.2969"/><line style="stroke:#000000;stroke-width:1.0;" x1="10" x2="234" y1="30.2969" y2="30.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="101" x="15" y="45.292">content type</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="126" y="45.292">CBOR</text><line style="stroke:#000000;stroke-width:1.0;" x1="121" x2="121" y1="30.2969" y2="50.5938"/><rect fill="none" height="40.5938" rx="5" ry="5" style="stroke:#000000;stroke-width:1.5;" width="224" x="10" y="10"/><!--MD5=[349b4b0651ae8b9c05474edde5d0346a]
+@startjson
+    {
+    "label" : "c2pa.signature",
+    "content type" : "CBOR"
+    }
+@endjson
+
+PlantUML version 1.2021.15(Tue Nov 30 16:45:34 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg><!--MD5=[c3d963de545692ce062b829afe2e18c4]
+entity CS--><rect fill="#FEFECE" filter="url(#f1b1b6wnv07mtx)" height="329.6406" style="stroke:#000000;stroke-width:1.5;" width="1372" x="168.64" y="1919"/><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="24" x="210.64" y="1941.9951">98(</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="242.64" y="1958.292">[</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="274.64" y="1974.5889">{</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="144" x="306.64" y="1990.8857">/ protected / h'',</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="152" x="306.64" y="2007.1826">/ unprotected / {},</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="136" x="306.64" y="2023.4795">/ payload / null,</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="128" x="306.64" y="2039.7764">/ signatures / [</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="338.64" y="2056.0732">[</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="192" x="370.64" y="2072.3701">/ protected / «{1:-39}»,</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="112" x="370.64" y="2088.667">/ alg / PS512,</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="136" x="370.64" y="2104.9639">/ unprotected / {</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="112" x="402.64" y="2121.2607">/ kid / 4:'11'</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="16" x="370.64" y="2137.5576">},</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="1160" x="370.64" y="2153.8545">/ signature / h'e2aeafd40d69d19dfe6e52077c5d7ff4e408282cbefb5d06cbf414af2e19d982ac45ac98b8544c908b4507de1e90b717c3d34816fe926a2b98f53afd2fa0f30a'</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="16" x="338.64" y="2170.1514">],</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="16" x="306.64" y="2186.4482">],</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="274.64" y="2202.7451">}</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="16" x="242.64" y="2219.042">],</text><text fill="#000000" font-family="monospace" font-size="14" lengthAdjust="spacing" textLength="8" x="210.64" y="2235.3389">)</text><!--MD5=[0d08f51da8d30a25964f8c1d67fa19c4]
+link JA1 to A1--><!--MD5=[a84750f090cf9221f9be3a2cc10ab831]
+link JA2 to A2--><!--MD5=[3680c17ac2d7705cacaa807af069c047]
+link JA3 to A3--><!--MD5=[7b8578a1d47d62dec103ed4cda3c7bbb]
+link JC to C--><!--MD5=[fae260d6bd18ad29db123a1acc29420c]
+link JCS to CS--><!--MD5=[dc06c4e244adb89d5395bc0c548163b8]
+link JM to caas--><!--MD5=[ed2e8833724ab4c901c8f98b315a3bee]
+link caas to cacl--><!--MD5=[2174c7fb8b970d1a50d32e3b6e4d00b6]
+link cacl to casg--><!--MD5=[7319e5b3ee5894a9ed0c4c06bfcd8ed3]
+link JMB to cast--><!--MD5=[432a8a0d2637df3ca88e56e3ea0ac7d0]
+@startuml Example_Manifest
+
+    ' allows mixing various objects in a single diagram
+    allow_mixing
+
+    ' hide the spot
+    ' hide any empty things...
+    hide circle
+    hide empty members
+
+    ' styling
+    skinparam componentStyle rectangle
+    left to right direction
+
+    frame cacb as "Manifest Block (`cacb`)" {
+        rectangle JMB [
+            {{json
+                {
+                "label" : "c2pa"
+                }
+            }}
+        ]
+
+        frame cast as "Manifest (`cast`)" {
+            rectangle JM [
+                {{json
+                    {
+                    "label" : "joe-ed:urn:uuid:ABCD"
+                    }
+                }}
+            ]
+
+            frame caas as "Assertion Store Block (`caas`)" {
+                frame "stds.schema-org.CreativeWork" {
+                    rectangle JA1 [
+                        {{json
+                            {
+                            "label" : "stds.schema-org.CreativeWork",
+                            "content type" : "CBOR"
+                            }
+                        }}
+                    ]
+                    rectangle A1 [
+                        <code>
+                        {
+                            "@context": "http://schema.org/",
+                            "@type": "CreativeWork",
+                            "datePublished": "2021-05-20T23:02:36+00:00",
+                            "publisher": {
+                                "name": "BBC News",
+                                "publishingPrinciples": "https://www.bbc.co.uk/news/help-41670342",
+                                "logo": "https://m.files.bbci.co.uk/modules/bbc-morph-news-waf-page-meta/5.1.0/bbc_news_logo.png",
+                                "parentOrganization": {
+                                    "name": "BBC",
+                                    "legalName": "British Broadcasting Corporation"
+                                }
+                            }
+                        }
+                        </code>
+                    ]
+        
+                    JA1 -[hidden]right-> A1
+                }
+
+                frame "c2pa.thumbnail.claim_0.png" {
+                    rectangle JA2 [
+                        {{json
+                            {
+                            "label" : "c2pa.thumbnail.claim_0.png",
+                            "content type" : "embedded file",
+                            "media type" : "image/png"
+                            }
+                        }}
+                    ]
+                    rectangle A2 [
+                        <&image> Binary Image Data
+                    ]
+
+                    JA2 -[hidden]right-> A2
+                }
+
+                frame "c2pa.hash.data" {
+                    rectangle JA3 [
+                        {{json
+                            {
+                            "label" : "c2pa.hash.data",
+                            "content type" : "CBOR"
+                            }
+                        }}
+                    ]
+                    rectangle A3 [
+                        <code>
+                            {
+                                "exclusions": [ 
+                                {
+                                    "start": 9960,
+                                    "length": 4213
+                                } 
+                                ],
+                                "name": "Image content",
+                                "alg" : "sha256",
+                                "hash": b64'Auxjtmax46cC2N3Y9aFmBO9Jfay8LEwJWzBUtZ0sUM8gA=',
+                                "pad" : "       "
+                            }
+                        </code>
+                    ]
+
+                    JA3 -[hidden]right-> A3
+                }
+
+                ' "stds.schema-org.CreativeWork" -down[hidden]-> "c2pa.thumbnail.claim_0.png"
+                ' "c2pa.thumbnail.claim_0.png" -down[hidden]-> "c2pa.hash.data"
+            }
+
+            frame cacl as "Claim (`cacl`)" {
+                rectangle JC [
+                    {{json
+                        {
+                        "label" : "c2pa.claim",
+                        "content type" : "CBOR"
+                        }
+                    }}
+                ]
+                rectangle C [
+                    <code>
+                        {
+                            "claim_generator": "Joe's Photo Editor/2.0 (Windows 10)",
+                            "signature" : 32("self#jumbf=c2pa/joe-ed:urn:uuid:ABCD/c2pa.signature"),
+                            "assertions" : [
+                                {
+                                "url": 32("self#jumbf=c2pa/joe-ed:urn:uuid:ABCD/c2pa.assertions/c2pa.hash.data"),
+                                "hash": b64'Auxjtmax46cC2N3Y9aFmBO9Jfay8LEwJWzBUtZ0sUM8gA'
+                                },
+                                {
+                                "url": 32("self#jumbf=c2pa/joe-ed:urn:uuid:ABCD/c2pa.assertions/c2pa.thumbnail.claim.jpeg"),
+                                "hash": b64'DjZifCgG2iKxcYeChKTOcWlJ9I/UC9/c5XFiJREqJFpwA='
+                                },
+                                {
+                                "url": 32("self#jumbf=c2pa/joe-ed:urn:uuid:ABCD/c2pa.assertions/stds.schema-org.CreativeWork"),
+                                "hash": b64'm7ZifCgG2iKxcYeChKTOcWlJ9I/UC9/c5XFiJREqJFpwA='
+                                }
+                            ],
+                        }
+                    </code>
+                ]
+
+                JC -[hidden]right-> C
+            }
+
+            frame casg as "Claim Signature (`casg`)" {
+                rectangle JCS [
+                    {{json
+                        {
+                        "label" : "c2pa.signature",
+                        "content type" : "CBOR"
+                        }
+                    }}
+                ]
+                rectangle CS [
+                    <code>
+                        98(
+                            [
+                                {
+                                    / protected / h'', 
+                                    / unprotected / {}, 
+                                    / payload / null, 
+                                    / signatures / [
+                                        [
+                                            / protected / <<{1:-39}>>, 
+                                            / alg / PS512,
+                                            / unprotected / {
+                                                / kid / 4:'11'
+                                            }, 
+                                            / signature / h'e2aeafd40d69d19dfe6e52077c5d7ff4e408282cbefb5d06cbf414af2e19d982ac45ac98b8544c908b4507de1e90b717c3d34816fe926a2b98f53afd2fa0f30a'
+                                        ],
+                                    ],
+                                }
+                            ],
+                        )
+                    </code>
+                ]
+
+                JCS -[hidden]right-> CS
+            }
+
+
+            JM -[hidden]right-> caas
+            caas -[hidden]right-> cacl
+            cacl -[hidden]right-> casg
+        }
+
+        JMB -[hidden]right-> cast
+    }
+
+@enduml
+
+@startuml Example_Manifest
+
+    allow_mixing
+
+    hide circle
+    hide empty members
+
+    skinparam componentStyle rectangle
+    left to right direction
+
+    frame cacb as "Manifest Block (`cacb`)" {
+        rectangle JMB [
+            {{json
+                {
+                "label" : "c2pa"
+                }
+            }}
+        ]
+
+        frame cast as "Manifest (`cast`)" {
+            rectangle JM [
+                {{json
+                    {
+                    "label" : "joe-ed:urn:uuid:ABCD"
+                    }
+                }}
+            ]
+
+            frame caas as "Assertion Store Block (`caas`)" {
+                frame "stds.schema-org.CreativeWork" {
+                    rectangle JA1 [
+                        {{json
+                            {
+                            "label" : "stds.schema-org.CreativeWork",
+                            "content type" : "CBOR"
+                            }
+                        }}
+                    ]
+                    rectangle A1 [
+                        <code>
+                        {
+                            "@context": "http://schema.org/",
+                            "@type": "CreativeWork",
+                            "datePublished": "2021-05-20T23:02:36+00:00",
+                            "publisher": {
+                                "name": "BBC News",
+                                "publishingPrinciples": "https://www.bbc.co.uk/news/help-41670342",
+                                "logo": "https://m.files.bbci.co.uk/modules/bbc-morph-news-waf-page-meta/5.1.0/bbc_news_logo.png",
+                                "parentOrganization": {
+                                    "name": "BBC",
+                                    "legalName": "British Broadcasting Corporation"
+                                }
+                            }
+                        }
+                        </code>
+                    ]
+        
+                    JA1 -[hidden]right-> A1
+                }
+
+                frame "c2pa.thumbnail.claim_0.png" {
+                    rectangle JA2 [
+                        {{json
+                            {
+                            "label" : "c2pa.thumbnail.claim_0.png",
+                            "content type" : "embedded file",
+                            "media type" : "image/png"
+                            }
+                        }}
+                    ]
+                    rectangle A2 [
+                        <&image> Binary Image Data
+                    ]
+
+                    JA2 -[hidden]right-> A2
+                }
+
+                frame "c2pa.hash.data" {
+                    rectangle JA3 [
+                        {{json
+                            {
+                            "label" : "c2pa.hash.data",
+                            "content type" : "CBOR"
+                            }
+                        }}
+                    ]
+                    rectangle A3 [
+                        <code>
+                            {
+                                "exclusions": [ 
+                                {
+                                    "start": 9960,
+                                    "length": 4213
+                                } 
+                                ],
+                                "name": "Image content",
+                                "alg" : "sha256",
+                                "hash": b64'Auxjtmax46cC2N3Y9aFmBO9Jfay8LEwJWzBUtZ0sUM8gA=',
+                                "pad" : "       "
+                            }
+                        </code>
+                    ]
+
+                    JA3 -[hidden]right-> A3
+                }
+
+            }
+
+            frame cacl as "Claim (`cacl`)" {
+                rectangle JC [
+                    {{json
+                        {
+                        "label" : "c2pa.claim",
+                        "content type" : "CBOR"
+                        }
+                    }}
+                ]
+                rectangle C [
+                    <code>
+                        {
+                            "claim_generator": "Joe's Photo Editor/2.0 (Windows 10)",
+                            "signature" : 32("self#jumbf=c2pa/joe-ed:urn:uuid:ABCD/c2pa.signature"),
+                            "assertions" : [
+                                {
+                                "url": 32("self#jumbf=c2pa/joe-ed:urn:uuid:ABCD/c2pa.assertions/c2pa.hash.data"),
+                                "hash": b64'Auxjtmax46cC2N3Y9aFmBO9Jfay8LEwJWzBUtZ0sUM8gA'
+                                },
+                                {
+                                "url": 32("self#jumbf=c2pa/joe-ed:urn:uuid:ABCD/c2pa.assertions/c2pa.thumbnail.claim.jpeg"),
+                                "hash": b64'DjZifCgG2iKxcYeChKTOcWlJ9I/UC9/c5XFiJREqJFpwA='
+                                },
+                                {
+                                "url": 32("self#jumbf=c2pa/joe-ed:urn:uuid:ABCD/c2pa.assertions/stds.schema-org.CreativeWork"),
+                                "hash": b64'm7ZifCgG2iKxcYeChKTOcWlJ9I/UC9/c5XFiJREqJFpwA='
+                                }
+                            ],
+                        }
+                    </code>
+                ]
+
+                JC -[hidden]right-> C
+            }
+
+            frame casg as "Claim Signature (`casg`)" {
+                rectangle JCS [
+                    {{json
+                        {
+                        "label" : "c2pa.signature",
+                        "content type" : "CBOR"
+                        }
+                    }}
+                ]
+                rectangle CS [
+                    <code>
+                        98(
+                            [
+                                {
+                                    / protected / h'', 
+                                    / unprotected / {}, 
+                                    / payload / null, 
+                                    / signatures / [
+                                        [
+                                            / protected / <<{1:-39}>>, 
+                                            / alg / PS512,
+                                            / unprotected / {
+                                                / kid / 4:'11'
+                                            }, 
+                                            / signature / h'e2aeafd40d69d19dfe6e52077c5d7ff4e408282cbefb5d06cbf414af2e19d982ac45ac98b8544c908b4507de1e90b717c3d34816fe926a2b98f53afd2fa0f30a'
+                                        ],
+                                    ],
+                                }
+                            ],
+                        )
+                    </code>
+                ]
+
+                JCS -[hidden]right-> CS
+            }
+
+
+            JM -[hidden]right-> caas
+            caas -[hidden]right-> cacl
+            cacl -[hidden]right-> casg
+        }
+
+        JMB -[hidden]right-> cast
+    }
+
+@enduml
+
+PlantUML version 1.2021.15(Tue Nov 30 16:45:34 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

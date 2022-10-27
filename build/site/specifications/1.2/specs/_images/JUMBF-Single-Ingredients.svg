@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="402px" height="873px" viewBox="0 0 402 873" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>JUMBF-Single-Ingredients</title>
+    <g id="JUMBF-Single-Ingredients" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Stacked-Group-3" transform="translate(14.000000, 10.000000)">
+            <g id="Group:-C2PA-Claim-Block">
+                <path d="M379,34 L379,849 C379,849.828427 378.664214,850.578427 378.12132,851.12132 C377.578427,851.664214 376.828427,852 376,852 L376,852 L4,852 C3.17157288,852 2.42157288,851.664214 1.87867966,851.12132 C1.33578644,850.578427 1,849.828427 1,849 L1,849 L1,34 L379,34 Z" id="Rectangle" stroke="#6500FF" stroke-width="2" fill="#FFFFFF"></path>
+                <path d="M4,0 L376,0 C378.209139,-4.05812251e-16 380,1.790861 380,4 L380,33 L380,33 L0,33 L0,4 C-2.705415e-16,1.790861 1.790861,4.05812251e-16 4,0 Z" id="Background" fill="#6500FF"></path>
+                <text id="Manifest-Block-(JUMB" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="8" y="20">Manifest Block (JUMBF)</tspan>
+                </text>
+            </g>
+            <g id="Group:-C2PA-Store" transform="translate(10.000000, 39.000000)">
+                <path d="M359,28 L359,569 C359,569.828427 358.664214,570.578427 358.12132,571.12132 C357.578427,571.664214 356.828427,572 356,572 L356,572 L4,572 C3.17157288,572 2.42157288,571.664214 1.87867966,571.12132 C1.33578644,570.578427 1,569.828427 1,569 L1,569 L1,28 L359,28 Z" id="Rectangle" stroke="#00C700" stroke-width="2" fill="#FFFFFF"></path>
+                <path d="M4,0 L356,0 C358.209139,-4.05812251e-16 360,1.790861 360,4 L360,27 L360,27 L0,27 L0,4 C-2.705415e-16,1.790861 1.790861,4.05812251e-16 4,0 Z" id="Background" fill="#00C700"></path>
+                <text id="C2PA-Manifest-(urn:u" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="8" y="17">C2PA Manifest (urn:uuid:ABCD)</tspan>
+                </text>
+            </g>
+            <g id="Group:-C2PA-Claim" transform="translate(18.000000, 276.000000)">
+                <rect id="Rectangle" fill="#FF3A01" x="0" y="0" width="342" height="209" rx="3"></rect>
+                <text id="C2PA-Claim" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" letter-spacing="0.176" fill="#FFFFFF">
+                    <tspan x="5" y="17">Claim (c2pa.claim)</tspan>
+                </text>
+                <rect id="Rectangle" fill="#FFFFFF" x="5" y="34" width="331" height="167"></rect>
+                <text id="{-&quot;claim_generator&quot;" font-family="SourceCodePro-Regular, Source Code Pro" font-size="11" font-weight="normal" fill="#000000">
+                    <tspan x="8" y="43">{</tspan>
+                    <tspan x="8" y="57">    "claim_generator" : “PhotoEditor”,</tspan>
+                    <tspan x="8" y="71">    "signature" : "self#jumbf=c2pa/urn:uuid”,</tspan>
+                    <tspan x="8" y="85">    "assertions" : [ {“self#jumbf=c2pa/urn:uuid/</tspan>
+                    <tspan x="8" y="99">c2pa.thumbnail.claim.jpeg”, “76142BD62363F”},</tspan>
+                    <tspan x="8" y="113">		{“self#jumbf=c2pa/urn:uuid/stds.schema-</tspan>
+                    <tspan x="8" y="127">org.CreativeWork”, “45919681DCCAF6ABAD”},</tspan>
+                    <tspan x="8" y="141">		{ “self#jumbf=c2pa/urn:uuid/</tspan>
+                    <tspan x="8" y="155">c2pa.hash.data”, “1234567890”},</tspan>
+                    <tspan x="8" y="169">		{ “self#jumbf=c2pa/urn:uuid/</tspan>
+                    <tspan x="8" y="183">c2pa.actions”, “ABCDEFEDCBA”} ]</tspan>
+                    <tspan x="8" y="197">}</tspan>
+                </text>
+            </g>
+            <g id="Group:-C2PA-Assertion-Store" transform="translate(18.000000, 76.000000)">
+                <rect id="Rectangle" stroke="#0030FD" fill="#0030FD" x="0.5" y="0.5" width="341" height="189"></rect>
+                <g id="Assertions" transform="translate(7.000000, 24.000000)">
+                    <g id="Padding-Group-6" transform="translate(0.000000, 41.000000)">
+                        <rect id="Background" fill="#0DBAAC" x="0" y="0" width="328" height="31" rx="3"></rect>
+                        <text id="stds.schema-org.Crea" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" letter-spacing="-0.342742857" fill="#FFFFFF">
+                            <tspan x="60.1744" y="20">stds.schema-org.CreativeWork</tspan>
+                        </text>
+                    </g>
+                    <g id="Padding-Group-6" transform="translate(0.000000, 82.000000)">
+                        <rect id="Background" fill="#0DBAAC" x="0" y="0" width="328" height="31" rx="3"></rect>
+                        <text id="c2pa.hash.data" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" letter-spacing="-0.342742857" fill="#FFFFFF">
+                            <tspan x="112.3352" y="20">c2pa.hash.data</tspan>
+                        </text>
+                    </g>
+                    <g id="Padding-Group-6" transform="translate(0.000000, 123.000000)">
+                        <rect id="Background" fill="#0DBAAC" x="0" y="0" width="328" height="31" rx="3"></rect>
+                        <text id="c2pa.actions" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" letter-spacing="-0.342742857" fill="#FFFFFF">
+                            <tspan x="121.280457" y="20">c2pa.actions</tspan>
+                        </text>
+                    </g>
+                    <g id="Padding-Group-6">
+                        <rect id="Background" fill="#0DBAAC" x="0" y="0" width="328" height="31" rx="3"></rect>
+                        <text id="c2pa.thumbnail.claim" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" letter-spacing="-0.342742857" fill="#FFFFFF">
+                            <tspan x="77.2489143" y="20">c2pa.thumbnail.claim.jpg</tspan>
+                        </text>
+                    </g>
+                </g>
+                <text id="C2PA-Assertion-Store" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" letter-spacing="-0.342742857" fill="#FFFFFF">
+                    <tspan x="28.6081143" y="17">C2PA Assertion Store (c2pa.assertions)</tspan>
+                </text>
+            </g>
+            <g id="Group:-Claim-Signature" transform="translate(18.000000, 490.000000)">
+                <path d="M340,32 L340,107 C340,107.828427 339.664214,108.578427 339.12132,109.12132 C338.578427,109.664214 337.828427,110 337,110 L337,110 L4,110 C3.17157288,110 2.42157288,109.664214 1.87867966,109.12132 C1.33578644,108.578427 1,107.828427 1,107 L1,107 L1,32 L340,32 Z" id="Rectangle" stroke="#FF9600" stroke-width="2"></path>
+                <text id="Signed-by:-EditSuite" font-family="SourceCodePro-Regular, Source Code Pro" font-size="14" font-weight="normal" letter-spacing="0.000116666667">
+                    <tspan x="16" y="60" fill="#000000">Signed by: EditSuite </tspan>
+                    <tspan x="16" y="78" fill="#000000">Time: 2020-06-05T10:37:00-07:00 </tspan>
+                    <tspan x="16" y="96" fill="#000000">Hash: </tspan>
+                    <tspan x="66.4007" y="96" fill="#FF3A01">fa31...</tspan>
+                </text>
+                <path d="M4,0 L337,0 C339.209139,-4.05812251e-16 341,1.790861 341,4 L341,31 L341,31 L0,31 L0,4 C-2.705415e-16,1.790861 1.790861,4.05812251e-16 4,0 Z" id="Background" fill="#FF9600"></path>
+                <text id="Claim-Signature-(c2p" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="5" y="20">Claim Signature (c2pa.signature)</tspan>
+                </text>
+            </g>
+        </g>
+        <g id="Group:-C2PA-Store" transform="translate(25.000000, 634.000000)">
+            <g>
+                <path d="M4,0 L354,0 C356.209139,-4.05812251e-16 358,1.790861 358,4 L358,28 L358,28 L0,28 L0,4 C-2.705415e-16,1.790861 1.790861,4.05812251e-16 4,0 Z" id="Background" fill="#00C700"></path>
+                <text id="C2PA-Store" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="11.0153846" y="19">C2PA Manifest (urn:uuid:WXYZ)</tspan>
+                </text>
+                <path d="M357,29 L357,212 C357,212.828427 356.664214,213.578427 356.12132,214.12132 C355.578427,214.664214 354.828427,215 354,215 L354,215 L4,215 C3.17157288,215 2.42157288,214.664214 1.87867966,214.12132 C1.33578644,213.578427 1,212.828427 1,212 L1,212 L1,29 L357,29 Z" id="Rectangle" stroke="#00C700" stroke-width="2" fill="#FFFFFF"></path>
+            </g>
+            <g id="Group:-C2PA-Claim" transform="translate(11.000000, 128.000000)">
+                <rect id="Rectangle" fill="#FF3A01" x="0" y="0" width="336" height="33" rx="3"></rect>
+                <text id="C2PA-Claim" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" letter-spacing="0.176" fill="#FFFFFF">
+                    <tspan x="11.0163934" y="18">Claim</tspan>
+                </text>
+            </g>
+            <g id="Group:-C2PA-Signature" transform="translate(11.000000, 169.000000)">
+                <rect id="Rectangle" fill="#FF9600" x="0" y="0" width="336" height="36" rx="3"></rect>
+                <text id="Claim-Signature" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="45.442623" y="21">Claim Signature</tspan>
+                </text>
+                <g id="lock" transform="translate(11.016393, 8.000000)" fill="#FFFFFF">
+                    <path d="M11.704918,0 C15.4964844,0 18.5877199,2.14023127 18.7232358,4.81670129 L18.7278689,5 L18.7278689,6.66666667 L21.0688525,6.66666667 C22.3610754,6.66666667 23.4098361,7.41166667 23.4098361,8.33333333 L23.4098361,18.3333333 C23.4098361,19.2533333 22.3610754,20 21.0688525,20 L2.34098361,20 C1.04641967,20 -1.59714864e-12,19.2533333 -1.59714864e-12,18.3333333 L-1.59714864e-12,8.33333333 C-1.59714864e-12,7.41166667 1.04641967,6.66666667 2.34098361,6.66666667 L4.68196721,6.66666667 L4.68196721,5 C4.68196721,2.42322742 7.42656547,0.284746321 11.0179453,0.0249329945 L11.2822129,0.00929593037 L11.704918,0 Z M11.704918,11.6666667 L11.5299996,11.6712311 C10.3173871,11.734759 9.36393443,12.4535606 9.36393443,13.3333333 C9.36393443,14.2533333 10.4103541,15 11.704918,15 C12.997141,15 14.0459016,14.2533333 14.0459016,13.3333333 C14.0459016,12.4116667 12.997141,11.6666667 11.704918,11.6666667 L11.704918,11.6666667 Z M11.7201344,1.66616667 L11.3958234,1.67377891 C9.02231838,1.78341243 7.14739194,3.14796058 7.02889877,4.8307001 L7.02295082,5 L7.02295082,6.66666667 L16.3868852,6.66666667 L16.3868852,5 C16.3868852,3.15919768 14.2899116,1.66666667 11.7201344,1.66616667 Z" id="Combined-Shape"></path>
+                </g>
+            </g>
+            <g id="Group:-C2PA-Assertion-Store" transform="translate(11.000000, 38.000000)">
+                <rect id="Rectangle" stroke="#0030FD" fill="#0030FD" x="0.5" y="0.5" width="335" height="81"></rect>
+                <text id="C2PA-Assertion-Store" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="16" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="8.26229508" y="19">C2PA Assertion Store</tspan>
+                </text>
+                <rect id="Background" fill="#0DBAAC" x="6" y="28" width="322" height="16" rx="3"></rect>
+                <rect id="Background" fill="#0DBAAC" x="6" y="56" width="322" height="16" rx="3"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
