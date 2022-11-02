@@ -8,7 +8,7 @@ content:
     branches: main
     start_path: docs
   - url: https://github.com/c2pa-org/specs-core
-    branches: [1.0, main]
+    branches: [1.1, 1.0, main]
     start_path: docs
   - url: https://github.com/c2pa-org/threats-harms
     branches: main
