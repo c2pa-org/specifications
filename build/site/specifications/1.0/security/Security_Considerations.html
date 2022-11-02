@@ -75,6 +75,9 @@
         <li class="version is-latest">
           <a href="../../1.2/index.html">1.2</a>
         </li>
+        <li class="version">
+          <a href="../../1.1/index.html">1.1</a>
+        </li>
         <li class="version is-current">
           <a href="../index.html">1.0</a>
         </li>
@@ -95,6 +98,7 @@
   <button class="version-menu-toggle" title="Show other versions of page">1.0</button>
   <div class="version-menu">
     <a class="version is-missing" href="../../1.2/index.html">1.2</a>
+    <a class="version is-missing" href="../../1.1/index.html">1.1</a>
     <a class="version is-current" href="Security_Considerations.html">1.0</a>
   </div>
 </div>
@@ -153,7 +157,7 @@
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This document provides information security considerations for technology described in the <a href="#1.1@specs:C2PA_Specification.adoc" class="page unresolved">C2PA core specification</a>. It complements security-related content in other C2PA documents. This document includes:</p>
+<p>This document provides information security considerations for technology described in the <a href="../../1.1/specs/C2PA_Specification.html" class="page">C2PA core specification</a>. It complements security-related content in other C2PA documents. This document includes:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -266,7 +270,7 @@ In this document <em>asset</em> refers to C2PA assets and not <a href="https://c
 <h2 id="_security_features"><a class="anchor" href="#_security_features"></a>2. Security features</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section summarizes C2PA features that support the <a href="#_security_model">security model</a> specified later in this document. The <a href="#1.1@specs:C2PA_Specification.adoc" class="page unresolved">C2PA core specification</a> should be considered the canonical reference for C2PA features. It supersedes summaries provided here.</p>
+<p>This section summarizes C2PA features that support the <a href="#_security_model">security model</a> specified later in this document. The <a href="../../1.1/specs/C2PA_Specification.html" class="page">C2PA core specification</a> should be considered the canonical reference for C2PA features. It supersedes summaries provided here.</p>
 </div>
 <div class="sect2">
 <h3 id="_provenance_model"><a class="anchor" href="#_provenance_model"></a>2.1. Provenance model</h3>
@@ -367,10 +371,10 @@ Details on how one determines which <em>C2PA Manifest</em> is the <em>origin</em
 <div class="sect2">
 <h3 id="_trust_model"><a class="anchor" href="#_trust_model"></a>2.2. Trust model</h3>
 <div class="paragraph">
-<p>The basis of making trust decisions in C2PA, its <a href="#1.1@specs:C2PA_Specification#_trust_model" class="page unresolved">Trust Model</a>, is the identity of the actor associated with the cryptographic signing key used to sign the claim in the active manifest. The identity of a signatory is not necessarily a human actor, and the identity presented may be a pseudonym, completely anonymous, or pertain to a service or trusted hardware device with its own identity, including an application running inside such a service or trusted hardware. C2PA Manifests can be validated indefinitely regardless of whether the cryptographic credentials used to sign its contents are later expired or revoked.</p>
+<p>The basis of making trust decisions in C2PA, its <a href="../../1.1/specs/C2PA_Specification.html#_trust_model" class="page">Trust Model</a>, is the identity of the actor associated with the cryptographic signing key used to sign the claim in the active manifest. The identity of a signatory is not necessarily a human actor, and the identity presented may be a pseudonym, completely anonymous, or pertain to a service or trusted hardware device with its own identity, including an application running inside such a service or trusted hardware. C2PA Manifests can be validated indefinitely regardless of whether the cryptographic credentials used to sign its contents are later expired or revoked.</p>
 </div>
 <div class="paragraph">
-<p>In addition to identity, C2PA leverages trusted time-stamps to ensure the correctness of signing and revocation processes. A benefit of this approach is that revocation status can be optionally obtained when claims are generated (rather than when consumed), and revocation can be applied to subsets of signatures by time-stamp. See the <a href="#1.1@specs:C2PA_Specification#_trust_model" class="page unresolved">Trust Model section of the specification</a> for more details.</p>
+<p>In addition to identity, C2PA leverages trusted time-stamps to ensure the correctness of signing and revocation processes. A benefit of this approach is that revocation status can be optionally obtained when claims are generated (rather than when consumed), and revocation can be applied to subsets of signatures by time-stamp. See the <a href="../../1.1/specs/C2PA_Specification.html#_trust_model" class="page">Trust Model section of the specification</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
@@ -379,10 +383,10 @@ Details on how one determines which <em>C2PA Manifest</em> is the <em>origin</em
 <p>C2PA uses a combination of cryptographic hashes and signatures to ensure that any tampering of the asset provenance can be detected. C2PA does not offer any protection against the <a href="#_threat_stripping_c2pa_manifests">complete removal of C2PA manifests from assets</a>, but the design does aim to prevent any unauthorized tampering of either the digital asset content or the C2PA manifests themselves. The <a href="#guidance:Guidance.adoc" class="page unresolved">C2PA Guidance document</a> for implementers offers direction about how soft bindings and manifest repositories could be used to address the removal situation.</p>
 </div>
 <div class="paragraph">
-<p>Details on supported cryptographic hashing and signature schemes, as well as format details, are covered in the specification&#8217;s <a href="#1.1@specs:C2PA_Specification#_cryptography" class="page unresolved">Cryptography section</a>. As noted there, the C2PA maintains lists of supported algorithms and certificate types that aim to adhere to cryptographic and compatibility best practices.</p>
+<p>Details on supported cryptographic hashing and signature schemes, as well as format details, are covered in the specification&#8217;s <a href="../../1.1/specs/C2PA_Specification.html#_cryptography" class="page">Cryptography section</a>. As noted there, the C2PA maintains lists of supported algorithms and certificate types that aim to adhere to cryptographic and compatibility best practices.</p>
 </div>
 <div class="paragraph">
-<p>Detail on how signing credentials relate to identity are included in the <a href="#1.1@specs:C2PA_Specification#_trust_model" class="page unresolved">Trust Model section</a> of the specification. The <a href="#1.1@specs:C2PA_Specification#_validation" class="page unresolved">Validation section</a> provides details on validating claims, which includes validating signatures.</p>
+<p>Detail on how signing credentials relate to identity are included in the <a href="../../1.1/specs/C2PA_Specification.html#_trust_model" class="page">Trust Model section</a> of the specification. The <a href="../../1.1/specs/C2PA_Specification.html#_validation" class="page">Validation section</a> provides details on validating claims, which includes validating signatures.</p>
 </div>
 </div>
 <div class="sect2">
@@ -391,7 +395,7 @@ Details on how one determines which <em>C2PA Manifest</em> is the <em>origin</em
 <p>Content bindings associate provenance data in C2PA Manifests with assets.</p>
 </div>
 <div class="paragraph">
-<p>In the context of a C2PA Manifest, hard bindings provide a strict cryptographic binding between provenance and an asset; they aim to provide some useful guarantees against tampering. Soft bindings provide less strict binding between the provenance and an asset. They may associate C2PA provenance with multiple assets, and vice versa. The <a href="#1.1@specs:C2PA_Specification#_soft_bindings" class="page unresolved">soft binding section</a> goes into details about how soft bindings can be used with C2PA Manifests.</p>
+<p>In the context of a C2PA Manifest, hard bindings provide a strict cryptographic binding between provenance and an asset; they aim to provide some useful guarantees against tampering. Soft bindings provide less strict binding between the provenance and an asset. They may associate C2PA provenance with multiple assets, and vice versa. The <a href="../../1.1/specs/C2PA_Specification.html#_soft_bindings" class="page">soft binding section</a> goes into details about how soft bindings can be used with C2PA Manifests.</p>
 </div>
 <div class="paragraph">
 <p>C2PA Manifest Stores are usually embedded into assets but they may exist externally, such as when served as part of the same  or linked HTTP connection.  In addition, C2PA Manifest Stores may also be decoupled from assets, enabling the C2PA Manifest to be retrieved and processed separately from the asset.</p>
@@ -400,7 +404,7 @@ Details on how one determines which <em>C2PA Manifest</em> is the <em>origin</em
 <div class="sect2">
 <h3 id="_validation"><a class="anchor" href="#_validation"></a>2.5. Validation</h3>
 <div class="paragraph">
-<p>Validation checks provenance claim signatures and performs supporting operations. The validation algorithm is described in detail in the <a href="#1.1@specs:C2PA_Specification#_validation" class="page unresolved">validation section of the C2PA specification</a>.</p>
+<p>Validation checks provenance claim signatures and performs supporting operations. The validation algorithm is described in detail in the <a href="../../1.1/specs/C2PA_Specification.html#_validation" class="page">validation section of the C2PA specification</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -414,13 +418,13 @@ Details on how one determines which <em>C2PA Manifest</em> is the <em>origin</em
 <p>Anonymous or pseudo-anonymous identities may be used for signing claims.</p>
 </li>
 <li>
-<p>Assertions that may contain sensitive information can be removed via <a href="#1.1@specs:C2PA_Specification#_redaction_of_assertions" class="page unresolved">redaction</a>.</p>
+<p>Assertions that may contain sensitive information can be removed via <a href="../../1.1/specs/C2PA_Specification.html#_redaction_of_assertions" class="page">redaction</a>.</p>
 </li>
 <li>
 <p>Assertions can be customized for specific workflows, such as where specific information is required to remain encrypted end-to-end.</p>
 </li>
 <li>
-<p>Manifests may include <a href="#1.1@specs:C2PA_Specification#_w3c_verifiable_credentials" class="page unresolved">W3C Verifiable Credentials</a>.</p>
+<p>Manifests may include <a href="../../1.1/specs/C2PA_Specification.html#_w3c_verifiable_credentials" class="page">W3C Verifiable Credentials</a>.</p>
 </li>
 </ul>
 </div>
@@ -498,7 +502,7 @@ Details on how one determines which <em>C2PA Manifest</em> is the <em>origin</em
 <li>
 <p>Confidentiality of personal information and other privacy-related concerns are addressed in the <a href="Harms_Modelling.html" class="page">Harms Considerations document</a>.</p>
 <div class="paragraph">
-<p>In general, these assertions are achieved through application of the <a href="#1.1@specs:C2PA_Specification#_trust_model" class="page unresolved">C2PA Trust Model</a> to the claim generation process, and corresponding checks in the validation process.</p>
+<p>In general, these assertions are achieved through application of the <a href="../../1.1/specs/C2PA_Specification.html#_trust_model" class="page">C2PA Trust Model</a> to the claim generation process, and corresponding checks in the validation process.</p>
 </div>
 </li>
 </ul>
@@ -657,7 +661,7 @@ This document refers to threat sources, agents, actors and other malicious entit
 <div class="sect5">
 <h6 id="_impact_analysis_2"><a class="anchor" href="#_impact_analysis_2"></a>4.2.1.2.3. Impact analysis</h6>
 <div class="paragraph">
-<p>It is possible for an attacker to remove metadata as described. However, <a href="#1.1@specs:C2PA_Specification#_validation" class="page unresolved">validation checks</a> as implemented by C2PA validator will detect any complete or partial removal of metadata stored within C2PA Manifests due to the use of cryptographic hashes. Removal of an entire C2PA Manifest is possible, and described as a <a href="#_threat_stripping_c2pa_manifests">distinct threat scenario</a>.</p>
+<p>It is possible for an attacker to remove metadata as described. However, <a href="../../1.1/specs/C2PA_Specification.html#_validation" class="page">validation checks</a> as implemented by C2PA validator will detect any complete or partial removal of metadata stored within C2PA Manifests due to the use of cryptographic hashes. Removal of an entire C2PA Manifest is possible, and described as a <a href="#_threat_stripping_c2pa_manifests">distinct threat scenario</a>.</p>
 </div>
 <div class="paragraph">
 <p>This is similar to the case of stripping all C2PA metadata. However, in this scenario there is an added benefit that user agents can explicitly detect the attempt to remove metadata as part of the validation process.</p>
@@ -699,7 +703,7 @@ This document refers to threat sources, agents, actors and other malicious entit
 <div class="sect5">
 <h6 id="_impact_analysis_3"><a class="anchor" href="#_impact_analysis_3"></a>4.2.2.1.3. Impact analysis</h6>
 <div class="paragraph">
-<p>An attacker is able to perform the copying as described. However, C2PA hard bindings provide a cryptographic binding between assets and C2PA Manifests via claim signatures. Thus, <a href="#1.1@specs:C2PA_Specification#_validation" class="page unresolved">validation checks</a> (e.g., as implemented by a user agent) will detect the replaced C2PA Manifests.</p>
+<p>An attacker is able to perform the copying as described. However, C2PA hard bindings provide a cryptographic binding between assets and C2PA Manifests via claim signatures. Thus, <a href="../../1.1/specs/C2PA_Specification.html#_validation" class="page">validation checks</a> (e.g., as implemented by a user agent) will detect the replaced C2PA Manifests.</p>
 </div>
 <div class="paragraph">
 <p>This is similar to the case of stripping all C2PA metadata. However, in this scenario there is an added benefit that user agents can explicitly detect the attempt to remove metadata as part of the validation process.</p>
@@ -837,7 +841,7 @@ This document refers to threat sources, agents, actors and other malicious entit
 <div class="sect5">
 <h6 id="_impact_analysis_7"><a class="anchor" href="#_impact_analysis_7"></a>4.2.2.5.3. Impact analysis</h6>
 <div class="paragraph">
-<p>Validation of ingredients is optional, however, validation of the hash of the ingredient&#8217;s manifest at the time it was added to the active manifest as an ingredient is not. See the <a href="#1.1@specs:C2PA_Specification#_validation" class="page unresolved">Validation section of the C2PA specification</a> for details.</p>
+<p>Validation of ingredients is optional, however, validation of the hash of the ingredient&#8217;s manifest at the time it was added to the active manifest as an ingredient is not. See the <a href="../../1.1/specs/C2PA_Specification.html#_validation" class="page">Validation section of the C2PA specification</a> for details.</p>
 </div>
 <div class="paragraph">
 <p>While a C2PA validator is not expected to have access to the original, non-public, signing credential nor to the original ingredient asset, it can differentiate between the original and compromised provenance by checking the <code>hashed_uri</code> present in the ingredient assertion. Since the malicious manifest will not match the original, the validator is able to detect the attack.</p>
@@ -846,7 +850,7 @@ This document refers to threat sources, agents, actors and other malicious entit
 <div class="sect5">
 <h6 id="_security_guidance_7"><a class="anchor" href="#_security_guidance_7"></a>4.2.2.5.4. Security guidance</h6>
 <div class="paragraph">
-<p>Claim generators should add <a href="#1.1@specs:C2PA_Specification#_review_ratings" class="page unresolved">review ratings</a> to their assertion metadata to propagate their assessment of ingredients to downstream consumers. When this validation is performed on both media assets described in this scenario, downstream consumers will be able to differentiate between them.</p>
+<p>Claim generators should add <a href="../../1.1/specs/C2PA_Specification.html#_review_ratings" class="page">review ratings</a> to their assertion metadata to propagate their assessment of ingredients to downstream consumers. When this validation is performed on both media assets described in this scenario, downstream consumers will be able to differentiate between them.</p>
 </div>
 </div>
 </div>
@@ -873,7 +877,7 @@ This document refers to threat sources, agents, actors and other malicious entit
 <div class="sect5">
 <h6 id="_security_guidance_8"><a class="anchor" href="#_security_guidance_8"></a>4.2.2.6.4. Security guidance</h6>
 <div class="paragraph">
-<p>C2PA provides guidance on applying soft bindings, which may include algorithms for mitigating this type of attack. See the <a href="#1.1@specs:C2PA_Specification#_binding_to_content" class="page unresolved">content binding documentation</a> for details.</p>
+<p>C2PA provides guidance on applying soft bindings, which may include algorithms for mitigating this type of attack. See the <a href="../../1.1/specs/C2PA_Specification.html#_binding_to_content" class="page">content binding documentation</a> for details.</p>
 </div>
 </div>
 </div>
@@ -940,7 +944,7 @@ This document refers to threat sources, agents, actors and other malicious entit
 <div class="sect5">
 <h6 id="_security_guidance_10"><a class="anchor" href="#_security_guidance_10"></a>4.2.2.8.4. Security guidance</h6>
 <div class="paragraph">
-<p>C2PA provides guidance on applying soft bindings, which may include algorithms for mitigating this type of attack. See the <a href="#1.1@specs:C2PA_Specification#_binding_to_content" class="page unresolved">content binding documentation</a> for details.</p>
+<p>C2PA provides guidance on applying soft bindings, which may include algorithms for mitigating this type of attack. See the <a href="../../1.1/specs/C2PA_Specification.html#_binding_to_content" class="page">content binding documentation</a> for details.</p>
 </div>
 </div>
 </div>
