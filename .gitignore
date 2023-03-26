@@ -1,3 +1,4 @@
 .cache/*
 output/.asciidoctor/*
 node_modules/*
+package-lock.json
