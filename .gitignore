@@ -2,3 +2,5 @@
 output/.asciidoctor/*
 node_modules/*
 package-lock.json
+alex-out.txt
+links-out.txt

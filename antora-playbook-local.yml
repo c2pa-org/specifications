@@ -17,7 +17,7 @@ content:
     branches: HEAD
     start_path: docs
   - url: ./../documentation
-    branches: HEAD
+    branches: [HEAD]
     start_path: docs
 ui:
   bundle:

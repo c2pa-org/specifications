@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1034px" preserveAspectRatio="none" style="width:455px;height:1034px;background:#FFFFFF;" version="1.1" viewBox="0 0 455 1034" width="455px" zoomAndPan="magnify"><defs/><g><!--MD5=[c280f77a5f6db6e252f8c12aedbb84e9]
+cluster c2pa--><g id="cluster_c2pa"><rect fill="#E6E6FA" height="1021" rx="2.5" ry="2.5" style="stroke:#800080;stroke-width:1.0;" width="441" x="7" y="7"/><line style="stroke:#800080;stroke-width:1.0;" x1="7" x2="448" y1="27.4883" y2="27.4883"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="236" x="109.5" y="22.5352">Manifest Store - JUMBF (`c2pa`)</text></g><!--MD5=[3b347f6dd8c057f98c92a5cf15085a16]
+cluster c2ma--><g id="cluster_c2ma"><rect fill="#90EE90" height="954" rx="2.5" ry="2.5" style="stroke:#008000;stroke-width:1.0;" width="393" x="31" y="50"/><line style="stroke:#008000;stroke-width:1.0;" x1="31" x2="424" y1="70.4883" y2="70.4883"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="224" x="115.5" y="65.5352">Manifest (`c2ma` : `urn:uuid`)</text></g><!--MD5=[3e49f57d6a96ac62d1222a0286a1e0c4]
+cluster c2cs--><g id="cluster_c2cs"><rect fill="#FFE4B5" height="87" rx="2.5" ry="2.5" style="stroke:#FF4500;stroke-width:1.0;" width="330" x="62.5" y="93"/><line style="stroke:#FF4500;stroke-width:1.0;" x1="62.5" x2="392.5" y1="113.4883" y2="113.4883"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="314" x="70.5" y="108.5352">Claim Signature (`c2cs` : `c2pa.signature`)</text></g><!--MD5=[2a0893eea9f2cd7010a518f9a4c7c49c]
+cluster c2cl--><g id="cluster_c2cl"><rect fill="#FFB6C1" height="87" rx="2.5" ry="2.5" style="stroke:#FF0000;stroke-width:1.0;" width="345" x="55" y="204"/><line style="stroke:#FF0000;stroke-width:1.0;" x1="55" x2="400" y1="224.4883" y2="224.4883"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="209" x="63" y="219.5352">Claim (`c2cl` : `c2pa.claim`)</text></g><!--MD5=[5496e38eb3ab2c934e61ff45ec539389]
+cluster c2as--><g id="cluster_c2as"><rect fill="#ADD8E6" height="487" rx="2.5" ry="2.5" style="stroke:#0000FF;stroke-width:1.0;" width="334" x="61" y="315"/><line style="stroke:#0000FF;stroke-width:1.0;" x1="61" x2="395" y1="335.4883" y2="335.4883"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="318" x="69" y="330.5352">Assertion Store (`c2as` : `c2pa.assertions`)</text></g><!--MD5=[f7d24e1e59c9a17863751969b78bc9f1]
+cluster stds.schema-org.CreativeWork --><g id="cluster_stds.schema-org.CreativeWork "><rect fill="#E0FFFF" height="87" rx="2.5" ry="2.5" style="stroke:#0000FF;stroke-width:1.0;" width="241" x="107" y="358"/><line style="stroke:#0000FF;stroke-width:1.0;" x1="107" x2="348" y1="378.4883" y2="378.4883"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="220" x="115" y="373.5352">stds.schema-org.CreativeWork</text></g><!--MD5=[70f87615663b30dd39dd6b12c90674fe]
+cluster c2pa.thumbnail.claim.png        --><g id="cluster_c2pa.thumbnail.claim.png        "><rect fill="#E0FFFF" height="87" rx="2.5" ry="2.5" style="stroke:#0000FF;stroke-width:1.0;" width="238" x="108.5" y="469"/><line style="stroke:#0000FF;stroke-width:1.0;" x1="108.5" x2="346.5" y1="489.4883" y2="489.4883"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="182" x="116.5" y="484.5352">c2pa.thumbnail.claim.png</text></g><!--MD5=[309505ef1831be67ebd9701ced8f7caf]
+cluster c2pa.actions                           --><g id="cluster_c2pa.actions                           "><rect fill="#E0FFFF" height="87" rx="2.5" ry="2.5" style="stroke:#0000FF;stroke-width:1.0;" width="239" x="108" y="580"/><line style="stroke:#0000FF;stroke-width:1.0;" x1="108" x2="347" y1="600.4883" y2="600.4883"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="88" x="116" y="595.5352">c2pa.actions</text></g><!--MD5=[772112dcdcfcf722e8f867fbfc73b43d]
+cluster c2pa.hash.data                        --><g id="cluster_c2pa.hash.data                        "><rect fill="#E0FFFF" height="87" rx="2.5" ry="2.5" style="stroke:#0000FF;stroke-width:1.0;" width="240" x="108" y="691"/><line style="stroke:#0000FF;stroke-width:1.0;" x1="108" x2="348" y1="711.4883" y2="711.4883"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="104" x="116" y="706.5352">c2pa.hash.data</text></g><!--MD5=[dc147e254394fe482b87ec5cc3f7426b]
+cluster c2db--><g id="cluster_c2db"><rect fill="none" height="154" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:1.0;" width="329" x="63" y="826"/><line style="stroke:#181818;stroke-width:1.0;" x1="63" x2="392" y1="846.4883" y2="846.4883"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="313" x="71" y="841.5352">Data Box Store (`c2db` : `c2pa.databoxes`)</text></g><!--MD5=[e06ed2d8fb6504eada071804bece504e]
+cluster c2pa.data_1--><g id="cluster_c2pa.data_1"><rect fill="#FFF0F5" height="87" rx="2.5" ry="2.5" style="stroke:#9400D3;stroke-width:1.0;" width="105" x="175" y="869"/><line style="stroke:#9400D3;stroke-width:1.0;" x1="175" x2="280" y1="889.4883" y2="889.4883"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="83" x="186" y="884.5352">c2pa.data_1</text></g><!--MD5=[c3d963de545692ce062b829afe2e18c4]
+entity CS--><g id="elem_CS"><rect fill="#F1F1F1" height="36.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="190.3333" x="132.5" y="128"/><path d="M149.9167,141.6549 C148.3067,141.6549 147,142.9616 147,144.5716 C147,144.7583 147,144.9449 147.035,145.1199 L143.5,148.6549 L143.5,150.9883 L147,150.9883 L147,148.6549 L149.3333,148.6549 L149.3333,147.4883 L149.3683,147.4533 C149.5433,147.4883 149.73,147.4883 149.9167,147.4883 C151.5267,147.4883 152.8333,146.1816 152.8333,144.5716 C152.8333,142.9616 151.5267,141.6549 149.9167,141.6549 M150.5,142.8216 C151.1417,142.8216 151.6667,143.3466 151.6667,143.9883 C151.6667,144.6299 151.1417,145.1549 150.5,145.1549 C149.8583,145.1549 149.3333,144.6299 149.3333,143.9883 C149.3333,143.3466 149.8583,142.8216 150.5,142.8216 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="155" x="157.8333" y="151.5352">COSE Digital Signature</text></g><!--MD5=[16fab723be418f7eaf2ea4bd895a8e51]
+entity C--><g id="elem_C"><rect fill="#F1F1F1" height="36.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="73.3333" x="191" y="239"/><path d="M207.8333,252.6549 L204.3333,259.6549 L205.5,259.6549 L209,252.6549 L207.8333,252.6549 M203.1667,253.8216 L202,256.1549 L203.1667,258.4883 L204.3333,258.4883 L203.1667,256.1549 L204.3333,253.8216 L203.1667,253.8216 M209,253.8216 L210.1667,256.1549 L209,258.4883 L210.1667,258.4883 L211.3333,256.1549 L210.1667,253.8216 L209,253.8216 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="38" x="216.3333" y="262.5352">CBOR</text></g><!--MD5=[23bc7945312e1f0a2e37cebfe503a03b]
+entity A1--><g id="elem_A1"><rect fill="#F1F1F1" height="36.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="93.3333" x="181" y="393"/><path d="M197.8333,406.6549 L194.3333,413.6549 L195.5,413.6549 L199,406.6549 L197.8333,406.6549 M193.1667,407.8216 L192,410.1549 L193.1667,412.4883 L194.3333,412.4883 L193.1667,410.1549 L194.3333,407.8216 L193.1667,407.8216 M199,407.8216 L200.1667,410.1549 L199,412.4883 L200.1667,412.4883 L201.3333,410.1549 L200.1667,407.8216 L199,407.8216 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="58" x="206.3333" y="416.5352">JSON-LD</text></g><!--MD5=[406a5e0ae180932da9bcb21c819a1904]
+entity A2--><g id="elem_A2"><rect fill="#F1F1F1" height="36.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="136.3333" x="159.5" y="504"/><path d="M170.5,517.6549 L170.5,526.9883 L179.8333,526.9883 L179.8333,517.6549 L170.5,517.6549 M171.6667,518.8216 L178.6667,518.8216 L178.6667,522.3216 L177.5,521.1549 L176.3333,522.3216 L178.6667,524.6549 L178.6667,525.8216 L177.5,525.8216 L172.8333,521.1549 L171.6667,522.3216 L171.6667,518.8216 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="101" x="184.8333" y="527.5352">Embedded File</text></g><!--MD5=[305b0bf20d1e87c4314d270a9e4e4ae4]
+entity A3--><g id="elem_A3"><rect fill="#F1F1F1" height="36.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="73.3333" x="191" y="615"/><path d="M207.8333,628.6549 L204.3333,635.6549 L205.5,635.6549 L209,628.6549 L207.8333,628.6549 M203.1667,629.8216 L202,632.1549 L203.1667,634.4883 L204.3333,634.4883 L203.1667,632.1549 L204.3333,629.8216 L203.1667,629.8216 M209,629.8216 L210.1667,632.1549 L209,634.4883 L210.1667,634.4883 L211.3333,632.1549 L210.1667,629.8216 L209,629.8216 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="38" x="216.3333" y="638.5352">CBOR</text></g><!--MD5=[b4296d86aafbbd2074f03a740cb37cff]
+entity A4--><g id="elem_A4"><rect fill="#F1F1F1" height="36.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="73.3333" x="191" y="726"/><path d="M207.8333,739.6549 L204.3333,746.6549 L205.5,746.6549 L209,739.6549 L207.8333,739.6549 M203.1667,740.8216 L202,743.1549 L203.1667,745.4883 L204.3333,745.4883 L203.1667,743.1549 L204.3333,740.8216 L203.1667,740.8216 M209,740.8216 L210.1667,743.1549 L209,745.4883 L210.1667,745.4883 L211.3333,743.1549 L210.1667,740.8216 L209,740.8216 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="38" x="216.3333" y="749.5352">CBOR</text></g><!--MD5=[8c914f543dbf50ea3edeb9e03921c30c]
+entity VC--><g id="elem_VC"><rect fill="#F1F1F1" height="36.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="73.3333" x="191" y="904"/><path d="M207.8333,917.6549 L204.3333,924.6549 L205.5,924.6549 L209,917.6549 L207.8333,917.6549 M203.1667,918.8216 L202,921.1549 L203.1667,923.4883 L204.3333,923.4883 L203.1667,921.1549 L204.3333,918.8216 L203.1667,918.8216 M209,918.8216 L210.1667,921.1549 L209,923.4883 L210.1667,923.4883 L211.3333,921.1549 L210.1667,918.8216 L209,918.8216 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="38" x="216.3333" y="927.5352">CBOR</text></g><!--MD5=[22fffcda0eb35abb4b8ff32470e47227]
+@startuml ManifestStore_DataBoxes
+
+    ' allows mixing various objects in a single diagram
+    allow_mixing
+
+    !include manifest_styling.iuml
+
+	' Diagram!
+    card c2pa as "Manifest Store - JUMBF (`c2pa`)" <<c2pa>> {
+        card c2ma as "Manifest (`c2ma` : `urn:uuid`)" <<c2ma>> {
+			!includesub manifest.iuml!CLAIMSIGNATURE
+
+			!includesub manifest.iuml!CLAIM
+
+			!includesub manifest.iuml!ASSERTIONSTORE
+
+            card c2db as "Data Box Store (`c2db` : `c2pa.databoxes`)" <<c2db>> {
+                card "c2pa.data_1" <<vc>> {
+                    rectangle VC [
+						<&code> CBOR
+                    ]
+                }
+			}
+        }
+    }
+
+@enduml
+
+@startuml ManifestStore_DataBoxes
+
+    allow_mixing
+
+    hide circle
+    hide empty members
+	hide stereotype
+
+    skinparam defaultFontName Source Sans Pro
+	skinparam componentStyle rectangle
+    left to right direction
+
+
+	skinparam card<<c2pa>> {
+    	borderColor Purple
+		backgroundColor Lavender
+	}
+
+	skinparam card<<c2ma>> {
+    	borderColor Green
+		backgroundColor LightGreen
+	}
+
+	skinparam card<<c2vc>> {
+    	borderColor Gold
+		backgroundColor LemonChiffon
+	}
+
+	skinparam card<<vc>> {
+    	borderColor DarkViolet
+		backgroundColor LavenderBlush
+	}
+
+	skinparam card<<c2as>> {
+    	borderColor Blue
+		backgroundColor LightBlue
+	}
+
+	skinparam card<<as>> {
+    	borderColor Blue
+		backgroundColor LightCyan
+	}
+
+	skinparam card<<c2cl>> {
+    	borderColor Red
+		backgroundColor LightPink
+	}
+
+	skinparam card<<c2cs>> {
+    	borderColor OrangeRed
+		backgroundColor Moccasin
+	}
+
+
+    card c2pa as "Manifest Store - JUMBF (`c2pa`)" <<c2pa>> {
+        card c2ma as "Manifest (`c2ma` : `urn:uuid`)" <<c2ma>> {
+	card c2cs as "Claim Signature (`c2cs` : `c2pa.signature`)" <<c2cs>> {
+		rectangle CS [
+			<&key> COSE Digital Signature
+		]
+	}
+
+	card c2cl as "Claim (`c2cl` : `c2pa.claim`)                        " <<c2cl>> {
+		rectangle C [
+			<&code> CBOR
+		]
+	}
+
+	card c2as as "Assertion Store (`c2as` : `c2pa.assertions`)" <<c2as>> {
+		card "stds.schema-org.CreativeWork " <<as>> {
+			rectangle A1 [
+				<&code> JSON-LD
+			]
+		}
+
+		card "c2pa.thumbnail.claim.png        " <<as>> {
+			rectangle A2 [
+				<&image> Embedded File
+			]
+		}
+
+		card "c2pa.actions                           " <<as>> {
+			rectangle A3 [
+				<&code> CBOR
+			]
+		}
+
+		card "c2pa.hash.data                        " <<as>> {
+			rectangle A4 [
+				<&code> CBOR
+			]
+		}
+	}
+
+            card c2db as "Data Box Store (`c2db` : `c2pa.databoxes`)" <<c2db>> {
+                card "c2pa.data_1" <<vc>> {
+                    rectangle VC [
+						<&code> CBOR
+                    ]
+                }
+			}
+        }
+    }
+
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 13:01:30 EDT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
