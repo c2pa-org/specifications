@@ -79,6 +79,9 @@
           <a href="../index.html">1.2</a>
         </li>
         <li class="version">
+          <a href="../../1.1/index.html">1.1</a>
+        </li>
+        <li class="version">
           <a href="../../1.0/index.html">1.0</a>
         </li>
       </ul>
@@ -99,6 +102,7 @@
   <div class="version-menu">
     <a class="version is-missing" href="../../1.3/index.html">1.3</a>
     <a class="version is-current" href="Guidance.html">1.2</a>
+    <a class="version is-missing" href="../../1.1/index.html">1.1</a>
     <a class="version is-missing" href="../../1.0/index.html">1.0</a>
   </div>
 </div>
@@ -638,9 +642,258 @@ Attaching a time-stamp and freshness information to the signature allows validat
 </div>
 </div>
 <div class="sect3">
-<h4 id="_use_of_the_private_credential_store_also_known_as_the_address_book"><a class="anchor" href="#_use_of_the_private_credential_store_also_known_as_the_address_book"></a>5.3.2. Use of the Private Credential Store (also known as the "address book")</h4>
+<h4 id="_initial_design_of_identities_and_trust_anchors_for_an_application_and_its_ecosystem"><a class="anchor" href="#_initial_design_of_identities_and_trust_anchors_for_an_application_and_its_ecosystem"></a>5.3.2. Initial Design of Identities and Trust Anchors for an Application and its Ecosystem</h4>
 <div class="paragraph">
-<p>The identity of signers will typically be established by identity providers through the use of trust lists, as there is no expectation that signers and validators will be directly known to one another. There are exceptions, however, where two users who do know one another will want to be able to validate assets signed by the other. For example, a journalist working for a well-known media organization may have a signing credential for their organization, but still wish to receive C2PA-protected assets from sources who are otherwise anonymous. The source&#8217;s validator may already trust the journalist&#8217;s credential based on its issuance from a trusted identity provider, but the source almost certainly will not have such a credential. In this case, the source can generate their own signing credential. Such a credential would not be trusted in general, as it is not issued by a recognized identity provider, but in this special case it can be communicated to the journalist, who can elect to add it to their private credential store.</p>
+<p>C2PA does not mandate or even suggest particular trust lists or public key infrastructure (PKI), and instead takes them and other related configuration as inputs. This is because each application built using the C2PA standard that operates within its own ecosystem will have unique requirements and relationships amongst the participants of that ecosystem. Application implementors may be tempted to take existing trust lists used in other applications, such as those used for validating secure web sites or signed documents, and adopt such lists without due consideration. However, we strongly recommend performing the analysis described in this section to determine if the PKI associated with one of those applications is appropriate for the new application of C2PA. In particular, the participants and trust relationships among the entities in the web site and document signing PKIs will likely not match those for other applications and ecosystems, and so their use as trust anchors will be likewise incorrect for those applications. Trust lists are not "one-size-fits-all."</p>
+</div>
+<div class="paragraph">
+<p>Signed provenance information transits trust between a creator and a consumer, based on a trust relationship between those two that exists outside the scope of C2PA. Trust anchors operate by providing digital identities within a particular ecosystem that link to real-world identities, and perform an ecosystem-specific validation to ensure those identities are sufficiently trustworthy, and that consumers can be confident when an asset is verified as being signed by a known creator, they can rely upon their existing trust relationship with that known creator.</p>
+</div>
+<div class="paragraph">
+<p>Mistakes and accidents do happen, and credentials sometimes need to be revoked before their natural expiration date. This is often due to the private key being mishandled or exposed. Although everything that key signed <em>before</em> its exposure can still be trusted, it should be revoked so nothing <em>after</em> that point is trusted. This requires the trust anchor that issued the certificate to operate a "revocation service." In C2PA, this service is primarily used at signing time to get a signed statement from the trust anchor stating the credential was still valid at signing time, which is then included in the manifest, so validators can be assured the credential was valid at that time, whether or not it has since expired or been revoked.</p>
+</div>
+<div class="paragraph">
+<p>When initially creating an application, its trust anchors, and determining how identities will be issued by those trust anchors, developers should answer the following questions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Who are the creators of the content? These will typically be your signers, the recipients of credentials issued by the trust anchors, and the persons or entities who must be identified.</p>
+</li>
+<li>
+<p>Who is the audience of the content, and how and where will they consume it? These are your consumers who themselves will not receive credentials, but will rely upon the identities presented in the credentials of others.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In some ecosystems, persons or entities will act as both creators and consumers, and so these two groups may overlap. However, persons or entities operating as creators is separate from when they operate as consumers, and so it is clearer to consider these groups separately for the purposes of this analysis.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>How does the audience already know and identify the creators? This will inform how the identity should be presented in the credential, and how it is presented to the consumers. C2PA publishes <a href="../../1.1/ux/UX_Recommendations.html" class="xref page">User Experience Guidance</a> to help application developers determine how to present this information to the consumer.</p>
+</li>
+<li>
+<p>What is the risk to the ecosystem if a credential is issued in error or is compromised, where a malicious actor obtains a credential belonging to someone else and is able to sign with it, such as the result of a key compromise? This will inform the required real-world validation to achieve the needed level of assurance, and the importance of implementing, operating, and querying a revocation service.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To illustrate this exercise, we now present example applications, and for each one, the answers to the questions above and the resulting trust model configuration.</p>
+</div>
+<div class="sect4">
+<h5 id="_news_and_media_consumption"><a class="anchor" href="#_news_and_media_consumption"></a>5.3.2.1. News and Media Consumption</h5>
+<div class="paragraph">
+<p>This is the application in which people consume news and other media from outlets which we might expect them to be familiar with, recognize, and potentially trust.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Creators of content are news and media organizations that are <em>uniquely identifiable</em>&#8201;&#8212;&#8201;even if the scope of the creator is intentionally focused on a particular population segment or geographic region.</p>
+</li>
+<li>
+<p>Regardless of the creator&#8217;s intended scope, particularly in today&#8217;s connected world, the audience is the entire global population. Even if a consumer is not personally aware of an organization&#8217;s name or brand, if they went in search of it, they would locate the same singular organization as everyone else.</p>
+</li>
+<li>
+<p>The organization has developed a brand, an audience, and a reputation with their audience that leads to the audience identifying the organization. This does not exclude independent or unconventional creators, but does require they have built up enough of an audience and a reputation with their audience that leads to their being identifiable in this way, in the same way conventional newspapers, television stations, networks, and other organizations have done in the past.</p>
+</li>
+<li>
+<p>Brand impersonation and incorrect attribution to the brand of content made by malicious impersonators can result in damage to the brand and the organization&#8217;s reputation and trustworthiness amongst its audience. Moreso, as such a failure of the provenance ecosystem becomes public knowledge, this can undermine the provenance and authenticity ecosystem and open the door to further mis/disinformation, not only because an inauthentic asset has been signed by a trusted credential, but now consumers may come to believe they cannot trust those credentials. This is critical early on, when the ecosystem is building and working to establish that trust with consumers.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Here we define <em>uniquely identifiable</em>. A <em>uniquely idenfitiable</em> organization has a unique name such that any two consumers with no relationship with one another, when presented with this name as the signer of an asset due to its placement in the signing credential, would resolve that name to the same real-world entity. Even though a consumer might not be aware of a content creator when presented with one of its assets, given this unique name, by "resolve" we mean they could track down the real-world organization through some out-of-band means. This would be the same organization any other consumer would find, as well, presented with that same unique name.</p>
+</div>
+<div class="paragraph">
+<p>For example, although "CNN" could refer to multiple different entities, such as "CNN USA" or "CNN International," it is these latter names that would be the globally unique name placed in the signing credential and presented to the consumer with the provenace information. Similarly, although multiple newspapers refer to themselves as "The Times," a globally unique name, typically with a geographic identifier, is used for a global audience. For example, "The Times of London" is different from "The New York Times" or "The Los Angeles Times," and each of these is uniquely identifiable.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In this case, the trust anchors will be a new set, which do not yet exist, operated by Certification Authorities (CAs) that employ a specific due diligence process in order to validate that an applicant for credentials identifying as one of these uniquely identifiable organizations is an employee or otherwise duly authorized representative of that organization.</p>
+</div>
+<div class="paragraph">
+<p>The audience will consume the content either through a news or media consumption application or web site, or through social media. These applications or web sites can then be configured with the above trust list. Social media sites could be configured with multiple trust lists, and in the cases where an asset is signed by a signer in the news and media ecosystem, show that the digital content is provided by such an organization, as opposed to an authenticated user of the social media platform.</p>
+</div>
+<div class="paragraph">
+<p>For entities and organizations whose identity is rooted in the identity of an online platform, such as a social media or video sharing site, an identity issued by that platform may be more appropriate. See the <a href="#sharing-sites">Social Media and Video Sharing example below</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="news"><a class="anchor" href="#news"></a>5.3.2.2. News and Media Creation</h5>
+<div class="paragraph">
+<p>In contrast to news and media consumption, this is the application where a news or media organization internally creates and assembles a finished publication that is consumed in the previous example.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Creators of content are the subset of the employees of a news or media organization that are involved with publication activities. This includes anyone whose input appears in or otherwise impacts the final output of the organization: reporters, writers, editors, artists, designers, and so on.</p>
+</li>
+<li>
+<p>The audience is the subset of the employees of a news or media organization that receive assets which will appear or otherwise impact the final output of the organization. This will typically be everyone who also counts as a creator, but also any personnel who only review or otherwise consume the content without making any changes to it, such as fact-checkers or supervisors who approve assets for public release.</p>
+</li>
+<li>
+<p>The audience has the same employer as the creators, and rely upon the employer to provide a means to recognize and authenticate other employees.</p>
+</li>
+<li>
+<p>Potential introduction of malicious material into the publication process. The precise risk will depend upon the access granted to someone with those credentials, but this becomes a particular case of the general problem of the credentials of any member of an enterprise being compromised.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In this case, the trust anchors will be the enterprise&#8217;s own internal PKI, and existing processes for issuing digital credentials to employees can be used to issue these credentials as well. Such an enterprise is presumed to already have a process for connecting the real-world identity of an employee with their business records, and any credentials issued for use in that employment. As assets created in this scenario are generally intermediate outputs that will later be combined into a final output, their useful lifetime is expected to be relatively short. Existing procedures for invalidating and revoking compromised credentials, and issuing new ones, should be sufficient to cover C2PA credentials.</p>
+</div>
+<div class="paragraph">
+<p>The audience will consume the content through production tools and processes common within, and likely provided by, the organization. It can then be configured with the above trust list for ingesting assets received from others before using them in their work.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_insurance_underwriting_and_claims_servicing"><a class="anchor" href="#_insurance_underwriting_and_claims_servicing"></a>5.3.2.3. Insurance Underwriting and Claims Servicing</h5>
+<div class="paragraph">
+<p>This application concerns the internal business processes of an enterprise; in this case, an insurance company and its business of underwriting policies and servicing claims. There are similarities with the News and Media Creation example in that this is also entirely internal to an existing enterprise.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Creators of content are the subset of the employees of an insurance company that generate photographs, video, or documents used in an insurance company&#8217;s business practices, including but not limited to underwriting policies and servicing claims.</p>
+</li>
+<li>
+<p>Consumers are the subset of the employees of an insurance company that use photographs, video, and documents generated by the creators in the insurance company&#8217;s business practices, including but not limited to underwriting policies and servicing claims.</p>
+</li>
+<li>
+<p>The audience has the same employer as the creators, and rely upon the employer to provide a means to recognize and authenticate other employees.</p>
+</li>
+<li>
+<p>Potential introduction of malicious (and perhaps fraudulent) material into the insurance company&#8217;s business processes, such as edited or fabricated evidence of a supposed claim for an insured hazard that did not actually take place, in order to commit insurance fraud.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>As another enterprise case, the trust anchors here as well will be the enterprise&#8217;s own internal PKI, for the same reasons as the case above. Similarly, the audience will consume the content through tools and processes common within, and likely provided by, the organization, which can be configured with the above trust list for ingesting assets received from others before using them in their work.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="sharing-sites"><a class="anchor" href="#sharing-sites"></a>5.3.2.4. Social Media and Video Sharing</h5>
+<div class="paragraph">
+<p>This application concerns the sharing of content across social media, even across multiple networks. This assumes the social media network used by the creator is globally known, but is not necessarily where the consumer consumes the content.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Creators of content are the owners of accounts in social media networks. This makes the assumption that each social media network is globally-known and unique.</p>
+</li>
+<li>
+<p>Consumers are users of those social media networks, whether or not they have accounts, which covers the entire global population.</p>
+</li>
+<li>
+<p>There are a few possibilities:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The owner of the account has built up a brand and reputation, in much the same way a news or media organization would, producing content from that account directly.</p>
+</li>
+<li>
+<p>The social media platform asserts that, through some process or due diligence they have performed, that the owner of the account is a person or organization with an existing global identity that consumers would recognize.</p>
+</li>
+<li>
+<p>The owner of the account is a person or organization with an existing global identity that consumers would recognize, and through their own established authenticated channels to their audience assert that they own a particular social media account.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Potential attribution of malicious content to the owner of a social media account. The precise risk will depend upon whether the account has any existing audience and trust relationship with their audience.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In this case, as the identifiability of the creator is rooted in the existing identity infrastructure of the platform, the platform makes the  choice to issue C2PA-compliant credentials to the owner of the account, through whatever existing authentication infrastructure they already have for owners to access their accounts. Care must be taken to revoke credentials in case of account name changes, and timestamping is highly recommended so that names that are changed cannot have others later claim the same name and impersonate the former owner.</p>
+</div>
+<div class="paragraph">
+<p>The audience will consume the content through the social media&#8217;s web site or apps, which can be configured by the social media to use the above trust list. Media produced by users of the social media site can then be strongly attributed to the owner of that account. Further, social media sites could choose to incorporate each other&#8217;s trust lists in a federated manner, so strongly attribute media to the owner of an account on one platform, even if the content is reposted on another platform. A social media site might also incorporate further trust lists to treat particular content specially, as described <a href="#news">in the News and Media Consumption example above</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_ad_hoc_creative_collaboration"><a class="anchor" href="#_ad_hoc_creative_collaboration"></a>5.3.2.5. Ad-Hoc Creative Collaboration</h5>
+<div class="paragraph">
+<p>This application concerns the ad-hoc sharing of assets between creatives collaborating on a project, or communication between journalists and sources, using e-mail addresses as their primary means of identifying one another, whether or not e-mail is the principal means by which sharing occurs.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The creators are anyone with an e-mail address. So, anyone in the global population.</p>
+</li>
+<li>
+<p>The consumers are anyone who knows a creator by their e-mail address. This is anyone in the global population generally, but for a particular creator this will be a small group who has a direct two-way personal connection to the creator.</p>
+</li>
+<li>
+<p>The audience knows and recognizes the creators based on some pre-existing relationship by which e-mail is considered a reliable identifier and means of communicating with the person, based on an existing history of collaboration or a trustworthy introduction from another known person.</p>
+</li>
+<li>
+<p>There is an impersonation attack here but the risk is low, as the audience for a particular creator is small. It&#8217;s also unclear what benefit an attacker might have by impersonating a collaborative partner and sharing signed content that is in some way malicious. Malicious in this context does not mean technologically malicious in a way that could cause compromise of the recipient&#8217;s device due to a software bug in consuming software, as that threat exists with or without a C2PA manifest attached, but malicious in that the attacker is attempting to convince the recipient that the asset came from the compromised creator.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In this case, the existing secure e-mail PKI can be used, with existing e-mail verification processes implemented by the CAs for issuing these credentials. As the risk of compromise of an e-mail account is significant, it would be unwise to rely on these credentials for long-lived assets or for applications where impersonation brings significant risk due in a scenario with particular sensitivity.</p>
+</div>
+<div class="paragraph">
+<p>The audience will consume the content through whatever ad-hoc tools they use for their collaborations. In this case, the users may have to be educated enough to opt in to the particular trust list that contains the CAs which issue the credentials for their contacts.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_time_stamp_authorities"><a class="anchor" href="#_time_stamp_authorities"></a>5.3.3. Time-Stamp Authorities</h4>
+<div class="paragraph">
+<p>C2PA encourages creators to retrieve a time-stamp for their assets in order to prove that it was published within the validity period of the signing credential, so that it can continue to be considered valid even after the signing credential has expired. Time-stamp authorities (TSAs) receive a special kind of trust where time-stamps they issue remain valid even after the TSA&#8217;s certificate expires, so long as the attested time falls within the TSA&#8217;s certificate&#8217;s validity period. This combination allows an asset to be considered time-valid indefinitely. Without such a trusted time-stamp, consumers cannot trust an asset signed with a now-expired credential was not signed after the credential expired. Each application developer therefore needs to consider the list of trust anchors for TSAs, in addition to the C2PA signer trust list determined through the exercise described in the previous section. In this case, this trust anchor list does not define identity providers for signers of assets, but identity providers for TSAs that provide the time-stamps for assets which allow them to still be considered valid even after the signing credential has expired or been revoked. We recommend considering the following questions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Are time-stamps needed? If the useful lifetime of assets will not exceed the lifetime of the signing credential, using time-stamps may not be required at all. Assets will become invalid when the signing credential expires, but in some applications this may be acceptable, or even desired. Drawing from our above examples, in the "News and Media Consumption" and "Social Media and Video Sharing" examples, these assets may be consumed years after their publication, which will require time-stamps. Other examples, like "News and Media Creation" and "Insurance Underwriting and Claims Servicing," may not have such a requirement. In these cases, the list of trust anchors for TSAs can be empty, and those applications can skip retrieving time-stamps.</p>
+</li>
+<li>
+<p>Who will provide them? Many operators of Certification Authorities in the PKI used for secure web sites also operate time-stamp authorities, possibly free of charge. Signed time-stamps are considered valid forever, when the attested time is within the validity period of the TSA&#8217;s signing credential, and so operating TSAs involves heightened security requirements that may be impractical for some entities, and so may choose to use one of the public ones and so the secure web PKI trust anchor list. Others who operate their own IT infrastructures or even datacenters may choose to operate their own, and use their own trust anchors.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ongoing_maintenance_of_an_identity_ecosystem"><a class="anchor" href="#_ongoing_maintenance_of_an_identity_ecosystem"></a>5.3.4. Ongoing Maintenance of an Identity Ecosystem</h4>
+<div class="paragraph">
+<p>The previous sections of this guidance have addressed the creation of a new application, and the initial creation of identity credentials and trust, before it is up and running, so that it will establish itself as reliable with its users. That is, however, only the beginning. Operating and maintaining the trust and security of such an application, its trust model, and identity ecosystem is an ongoing process throughout the entirety of the application&#8217;s life. Not only do credentials require regular renewing, it is expected that there will be failures and breaches.</p>
+</div>
+<div class="paragraph">
+<p>Credentials are time-limited both to encourage regular rolling of cryptographic keys, and to encourage regular re-confirmation that the holder of a credential continues to be authorized to hold it, for whatever the definition of "authorized" is in the context of a particular application. For example, in enterprises, this generally takes the form of using the expiring but still valid credential to authenticate a renewal request, combined with verifying the requestor is still an employee and in a proper role for that credential. For public-facing credentials, a repetition of some or all of the due diligence described earlier may be warranted.</p>
+</div>
+<div class="paragraph">
+<p>When a credential is known to be compromised, the only available mechanism for remediation is for the issuing CA to revoke the credential. C2PA strongly recommends but does not require creators to retrieve credential revocation information. This information is a signed statement from the CA that the credential was not revoked at the time, which combined with the time-stamp allows a consumer to conclude the credential was valid at signing time, whatever the status at consumption time. Because this information is not required, it may not be present, and for privacy reasons, it is optional for a consumer to make a live query to the issuing CA to inquire about the credential&#8217;s revocation status. By its very nature, credential revocation is a "best-effort" process and consumers cannot be guaranteed to immediately ascertain that a credential has become revoked. In considering risk in the exercise above, the initial and renewal issuance processes must be tailored to minimize the risk of mis-issuance to an acceptable level, and holders of credentials must exercise care in the control of their credentials to avoid their exposure or theft. However failures must be expected, and so when one is detected, applications and their identity ecosystems must have developed processes for revoking credentials.</p>
+</div>
+<div class="paragraph">
+<p>Although C2PA does not make such requirements, an application may choose to impose stronger requirements if warranted by the risk of credential compromise. For example, an application may require attached credential revocation information and either require rejecting manifests that lack them immediately, or require the online query to the CA at consumption time.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_use_of_the_private_credential_store_also_known_as_the_address_book"><a class="anchor" href="#_use_of_the_private_credential_store_also_known_as_the_address_book"></a>5.3.5. Use of the Private Credential Store (also known as the "address book")</h4>
+<div class="paragraph">
+<p>The identity of signers will typically be established by identity providers through the use of trust lists, as there is no expectation that signers and validators will be directly known to one another. There are exceptions, however, where two users who do know one another will want to be able to validate assets signed by the other. For example, a journalist working for a well-known media organization may have a signing credential for their organization, but still wish to receive C2PA-protected assets from sources who are otherwise anonymous. The source&#8217;s validator may already trust the journalist&#8217;s credential based on its issuance from a trusted identity provider, but the source almost certainly will not have such a credential. In this case, the source can generate their own signing credential. Such a credential would not be trusted in general, as it is not issued by an identity provider in the application&#8217;s trust anchor list, but in this special case it can be communicated to the journalist, who can elect to add it to their private credential store.</p>
 </div>
 <div class="paragraph">
 <p>The private credential store is only usable for the purpose of directly trusting assets signed by a credential that would not otherwise be accepted. Credentials in the private credential store cannot act as identity providers and issue credentials for others.</p>
