@@ -8032,6 +8032,7 @@ $action-choice /= "c2pa.saved"
 $action-choice /= "c2pa.transcoded"
 $action-choice /= "c2pa.unknown"
 $action-choice /= "c2pa.version_updated"
+$action-choice /= tstr .regexp "([\\da-zA-Z_-]+\\.)+[\\da-zA-Z_-]+"
 
 actor-map = {
   ? "credentials": [1* $hashed-uri-map / $hashed-ext-uri-map],
@@ -8062,6 +8063,7 @@ $action-reason /= "c2pa.PII.present"
 $action-reason /= "c2pa.invalid.data"
 $action-reason /= "c2pa.tradesecret.present"
 $action-reason /= "c2pa.government.confidential"
+$action-reason /= tstr .regexp "([\\da-zA-Z_-]+\\.)+[\\da-zA-Z_-]+"
 
 actions-map-v2 = {
   "actions" : [1* action-items-map-v2],     ; list of actions
@@ -8338,6 +8340,9 @@ $status-code /= "assertion.cloud-data.hardBinding"
 $status-code /= "assertion.cloud-data.actions"
 $status-code /= "algorithm.unsupported"
 $status-code /= "general.error" ; when nothing else applies
+
+; custom status codes
+$status-code /= tstr .regexp "([\\da-zA-Z_-]+\\.)+[\\da-zA-Z_-]+"
 
 status-map = {
   "code": $status-code, ; A label-formatted string that describes the status
@@ -9450,7 +9455,7 @@ ara-reference-uri-map = {
 <p>The asset type assertion shall have a label of <code>c2pa.asset-type</code>. There shall be at most one asset type assertion in a C2PA Manifest.</p>
 </div>
 <div class="paragraph">
-<p>The asset type assertion has a single required field; the <code>types</code> field, whose value is an array of one or more asset types.  These types can either come from the following table or be an entity-specific type (e.g., com.litware.types.abc). If relevant, the version of the asset (e.g., the version of a dataset or model) can be documented in the <code>version</code> field.</p>
+<p>The asset type assertion has a single required field; the <code>types</code> field, whose value is an array of one or more asset types.  These types can either come from the following table or be an entity-specific type (e.g., com.litware.types.abc), provided that they conform to the same syntax as <a href="#_labels">custom labels</a>. If relevant, the version of the asset (e.g., the version of a dataset or model) can be documented in the <code>version</code> field.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -9615,6 +9620,7 @@ $type-choice /= "c2pa.types.model.tensorflow"
 $type-choice /= "c2pa.types.regressor"
 $type-choice /= "c2pa.types.tensorflow.hubmodule"
 $type-choice /= "c2pa.types.tensorflow.savedmodel"
+$type-choice /= tstr .regexp "([\\da-zA-Z_-]+\\.)+[\\da-zA-Z_-]+"
 
 asset-type-map = {
   "type": $type-choice, ; one of the listed choices or a custom value
