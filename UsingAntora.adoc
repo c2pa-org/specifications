@@ -11,11 +11,6 @@ NOTE: I will probably fix the URL...
 [.columns]
 == Outstanding issues
 
-* Review all document links
-** Broken Links
-** Cross-document links
-* Add "Download PDF" options to main page
-
 
 == Repo Organization
 
@@ -54,7 +49,7 @@ NOTE: I will probably fix the URL...
 ** auto-downloads `main` branches of "child" repos
 * output in `build/site/index.html`
 * create PR, push changes, merge PR
-** site will be auto-published to https://c2pa.org/specifications/specifications/1.0/index.html[gh-pages]
+** site will be auto-published to https://c2pa.org/specifications/specifications/1.x/index.html[gh-pages]
 --
 
 == Building Local Site
