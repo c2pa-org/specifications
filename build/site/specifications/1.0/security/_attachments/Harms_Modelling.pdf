@@ -4,8 +4,8 @@
 << /Title (C2PA Harms Modelling)
 /Creator (Asciidoctor PDF 2.3.4, based on Prawn 2.4.0)
 /Producer (Asciidoctor PDF 2.3.4, based on Prawn 2.4.0)
-/ModDate (D:20230329132435+00'00')
-/CreationDate (D:20230329132438+00'00')
+/ModDate (D:20230329230311+00'00')
+/CreationDate (D:20230329230314+00'00')
 >>
 endobj
 2 0 obj
@@ -7719,7 +7719,7 @@ endobj
 << /Border [0 0 0]
 /A << /Type /Action
 /S /URI
-/URI (1.0@ux:UX_Recommendations.pdf)
+/URI (1.1@ux:UX_Recommendations.pdf)
 >>
 /Subtype /Link
 /Rect [217.7861 560.682 333.4959 575.634]
@@ -8421,7 +8421,7 @@ endobj
 << /Border [0 0 0]
 /A << /Type /Action
 /S /URI
-/URI (1.0@ux:UX_Recommendations.pdf)
+/URI (1.1@ux:UX_Recommendations.pdf)
 >>
 /Subtype /Link
 /Rect [86.7555 740.298 204.7725 755.25]
