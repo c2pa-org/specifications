@@ -28,13 +28,13 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
-            <a class="navbar-item" href="../../1.0/explainer/_attachments/Explainer.pdf">Explainer</a> 
-            <a class="navbar-item" href="../../1.0/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
-            <a class="navbar-item" href="../../1.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../../1.3/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../../1.3/explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../../1.3/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../../1.1/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
             <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
             <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
-            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
+            <a class="navbar-item" href="../../1.3/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
           </div>
         </div>
           <div class="navbar-item">
@@ -2493,7 +2493,7 @@ Allowing other boxes and superboxes enables custom extensions to C2PA as well as
 <div class="sect4">
 <h5 id="_data_storage"><a class="anchor" href="#_data_storage"></a>12.1.1.7. Data Storage</h5>
 <div class="paragraph">
-<p>A C2PA Data Box Store is a JUMBF superbox that shall contain only one or more CBOR Content Type boxes (<code>cbor</code>). It shall not contain any other type of JUMBF box or superbox. It shall have a label of <code>c2pa.databoxes</code> and a UUID of <code>0x63327663-0011-0010-8000-00AA00389B71</code> (<code>c2db</code>).</p>
+<p>A C2PA Data Box Store is a JUMBF superbox that shall contain only one or more CBOR Content Type boxes (<code>cbor</code>). It shall not contain any other type of JUMBF box or superbox. It shall have a label of <code>c2pa.databoxes</code> and a UUID of <code>0x63326462-0011-0010-8000-00AA00389B71</code> (<code>c2db</code>).</p>
 </div>
 <div class="paragraph">
 <p>The CBOR Content Type boxes shall have a label of <code>c2pa.data</code> (for <a href="#_embedded_data">embedded data</a>).</p>
