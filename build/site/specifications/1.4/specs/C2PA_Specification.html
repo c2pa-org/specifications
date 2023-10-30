@@ -2322,13 +2322,28 @@ While it is possible to add the XMP data to the list of exclusions in a data has
 <p>Create the data hash assertion and add it to the assertion store taking into account the following considerations.</p>
 </div>
 <div class="paragraph">
-<p>In many cases, such as with JPEG-1, it is not possible to hash the asset in its entirety because the manifest will be embedded in the middle of the file, so the size or location manifest data will not be known at the time the asset hash is calculated.  This circular dependency is avoided by allowing exclusion ranges to be specified during hashing.  When exclusion ranges are specified, a single hash is performed, but only over the asset ranges that are not in any of the exclusions.</p>
+<p>In many cases, such as with JPEG-1, it is not possible to hash the asset in its entirety because the manifest will be embedded in the middle of the file, so the size or location manifest data will not be known at the time the asset hash is calculated.  This circular dependency is avoided by allowing exclusion ranges to be specified during hashing.  When exclusion ranges are specified, a single hash is performed, but only over the asset ranges that are not in any of the exclusions. The data present in an exclusion range shall only contain a C2PA Manifest and any padding.</p>
 </div>
 <div class="paragraph">
 <p>If a manifest is embedded in the center of a JPEG-1 file in an APP11 segment, then the claim creator may exclude the APP11 segment(s) from the hash calculation.</p>
 </div>
 <div class="paragraph">
-<p>In order to prevent insertion attacks, it is desirable to have only a single exclusion range when possible. When the size or location (or both) of the manifest in the asset is not known, then the <code>start</code> and <code>length</code> values in the data hash assertion shall both be zero and the size of the <code>pad</code> value should be large enough to accommodate writing in the values in the second pass.  At least 16 bytes is recommended. The value of the <code>pad</code> key shall consist of all 0x00&#8217;s.</p>
+<p>In order to prevent insertion attacks, it is desirable to have only a single exclusion range when possible. When the size or location (or both) of the manifest in the asset is not known, then the <code>start</code> and <code>length</code> values in the data hash assertion shall both be zero and the size of the <code>pad</code> value should be large enough to accommodate writing in the values during the second pass.  At least 16 bytes is recommended. The value of the <code>pad</code> key shall consist of all 0x00&#8217;s.</p>
+</div>
+<div class="paragraph">
+<p>If padding is employed then the pad data could be changed without resulting in a validation failure. It is the responsibility of claim generators to ensure that changes to pad data (or any other excluded asset data) cannot change how the asset is interpreted.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In the case of JPEG-1 files, this can be achieved either by eliminating padding or by ensuring that the JFIF APP11/C2PA segments cannot be shortened of changed to a different segment type. This is accomplished by including all the C2PA manifest segment headers (APP11) and 2-byte length fields in the data-hash-map for all manifest-containing segments. This ensures that any data changed in the exclusion region will not be misinterpreted by JPEG processors.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -5858,7 +5873,13 @@ The presence of a <code>validationStatus</code> with a failure code or with a <c
 <p>The hash algorithm (<code>alg</code>) specified in that <code>c2pa.hash.data</code> shall be computed over the bytes of the asset, minus those specified in the exclusion range(s).</p>
 </div>
 <div class="paragraph">
-<p>If the hash algorithm specified in the <code>alg</code> field does not appear in the allowed or deprecated list in <a href="#_hashing">Section 12.3.4.2, &#8220;Hashing&#8221;</a>, then the manifest shall be rejected with a failure code of <code>algorithm.unsupported</code>. If the resultant hash does not match the value of the <code>hash</code> field in the <code>c2pa.hash.data</code>, then the manifest shall be rejected with a failure code of <code>assertion.dataHash.mismatch</code>. Otherwise, the validator shall add the success code <code>assertion.dataHash.match</code> to the list it eventually returns.</p>
+<p>If the hash algorithm specified in the <code>alg</code> field does not appear in the allowed or deprecated list in <a href="#_hashing">Section 12.3.4.2, &#8220;Hashing&#8221;</a>, then the manifest shall be rejected with a failure code of <code>algorithm.unsupported</code>. If the resultant hash does not match the value of the <code>hash</code> field in the <code>c2pa.hash.data</code>, then the manifest shall be rejected with a failure code of <code>assertion.dataHash.mismatch</code>.</p>
+</div>
+<div class="paragraph">
+<p>The combination of exclusion ranges and padding values, especially padding needed to support multi-pass processing workflows, can enable an attacker to replace parts of that padding with arbitrary data that could impact the consumption of the asset without invalidating the hash.  For this reason a validator shall ensure that the data contained within the exclusion range consists only of a C2PA Manifest Store and appropriate padding (e.g., zero&#8217;d data) in clearly marked <code>pad</code> fields or <code>free</code>/<code>skip</code> boxes. If a validator encounters any data that is not part of the C2PA Manifest Store or padding, then the manifest shall be rejected with a failure code of <code>assertion.dataHash.mismatch</code>.</p>
+</div>
+<div class="paragraph">
+<p>If no error conditions were encountered, the validator shall add the success code <code>assertion.dataHash.match</code> to the list it eventually returns.</p>
 </div>
 <div class="sect4">
 <h5 id="_hashing_of_jpeg_1_files"><a class="anchor" href="#_hashing_of_jpeg_1_files"></a>16.11.1.1. Hashing of JPEG-1 files</h5>
@@ -5872,7 +5893,7 @@ The presence of a <code>validationStatus</code> with a failure code or with a <c
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2PA (e.g., JPEG 360 or JPSec) and those are not included in these calculations.
+A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2PA (e.g., JPEG 360 or JPEG Privacy &amp; Security) and those are not included in these calculations.
 </td>
 </tr>
 </table>
@@ -7967,6 +7988,18 @@ While (offset &lt; length of file)
 </div>
 <div class="paragraph">
 <p>The creation of the hashes is described in <a href="#_hashing">Section 12.3.4.2, &#8220;Hashing&#8221;</a>, and the value shall be present in the <code>hash</code> field. The hash value for a range of boxes shall be computed from the start of the first box (in the range) until the end of the last box (in the range).  This would include any arbitrary bytes that may be present between boxes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When using a range of boxes, all data between the start of the first box and the end of the last box is included in the hash. However, when listing each box separately, additional data is not included, only data within the listed box.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The box containing the C2PA Manifest (e.g. <code>APP11</code> for JPEG, <code>caBX</code> for PNG, or <code>21FF</code> for GIF) shall also be listed, but in order to clearly identify it as the C2PA Manifest box, it shall have the name <code>C2PA</code> and the value of <code>hash</code> shall be the binary string <code>0</code> (a single byte with a value of 0).</p>
