@@ -496,13 +496,13 @@ Trust Broker service.</p>
 <p>RATS, or Remote Attestation Procedures, is an IETF specification for a Trust Broker that seeks to improve interoperability between differing attestation systems (<a href="https://datatracker.ietf.org/doc/html/rfc9334" class="bare">https://datatracker.ietf.org/doc/html/rfc9334</a>).  In RATS, the trusted service is called The <em>Verifier</em>, and acts as a trusted intermediary between The <em>Attester</em> (the device or service that creates a C2PA asset) and the <em>Relying Party</em> that seeks to make a trust assessment about a program or environment.</p>
 </div>
 <div class="paragraph">
-<p>C2PA specifications use the terms <em>Validator</em> and <em>Verifier</em> for relying parties.  To avoid confusion, in this specification we will use the term <em>Trust Broker</em> to indicate a RATS Verifier or similar service such as Google&#8217;s PlayIntegrity.</p>
+<p>C2PA specifications use the terms <em>Validator</em> and <em>Verifier</em> for relying parties.  To avoid confusion, this specification uses the term <em>Trust Broker</em> to indicate a RATS Verifier or similar service such as Google&#8217;s PlayIntegrity.</p>
 </div>
 <div class="paragraph">
 <p>Trust Brokers are an important building block for enabling an open ecosystem of attestation-enabled asset creators and attestation-aware relying parties.  Trust Brokers must be aware of a diverse set of platform types, applications, operating systems, and security policies.  But if their policy requirement are met, then they can translate the raw-attestations into much simpler claims for C2PA validators (e.g., "Trusted Camera App running on Android 11.")</p>
 </div>
 <div class="paragraph">
-<p>We expect that RATS-style Trust Brokers will simplify adoption of attestation technologies by open ecosystems.  However, at the time of writing, the RATS ecosystem is still in its infancy.  Because of this, this specification supports both raw attestation evidence (e.g., "quotes") as well as RATS-style "verdicts."</p>
+<p>The expectation is that RATS-style Trust Brokers will simplify adoption of attestation technologies by open ecosystems.  However, at the time of writing, the RATS ecosystem is still in its infancy.  Because of this, current specification supports both raw attestation evidence (e.g., "quotes") as well as RATS-style "verdicts."</p>
 </div>
 </div>
 </div>
@@ -511,7 +511,7 @@ Trust Broker service.</p>
 <h2 id="_scenarios"><a class="anchor" href="#_scenarios"></a>5. Scenarios</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This specification allows for a wide variety of attestation technologies to be used on a wide variety of platforms for a wide variety of scenarios.  However, we present two use-cases that informed the architecture and design of this specification.</p>
+<p>This specification allows for a wide variety of attestation technologies to be used on a range of platforms for a wide variety of scenarios. However, the specification present two use-cases that informed the architecture and design of this specification.</p>
 </div>
 <div class="sect2">
 <h3 id="_trusted_camera_application_on_an_android_phone"><a class="anchor" href="#_trusted_camera_application_on_an_android_phone"></a>5.1. Trusted Camera Application on an Android Phone</h3>
@@ -677,7 +677,7 @@ trained or run in a secure environment.</p>
 <h2 id="_explicit_attestation_2"><a class="anchor" href="#_explicit_attestation_2"></a>7. Explicit Attestation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section we describe how an attestation can created and embedded as an assertion.  This contrast with the architecture described in the Implicit Attestation section where the (implicit) attestation is conveyed as a Claim Signature.  Implementation considerations for choosing Implicit vs. Explicit Attestation is discussed in section <a href="#_what_is_attested">Section 7.1</a>.</p>
+<p>This section describes how an attestation can be created and embedded as an assertion.  This contrast with the architecture described in the Implicit Attestation section where the (implicit) attestation is conveyed as a Claim Signature.  Implementation considerations for choosing Implicit vs. Explicit Attestation is discussed in section <a href="#_what_is_attested">Section 7.1</a>.</p>
 </div>
 <div class="paragraph">
 <p>The current C2PA trust model is built using two signatures:</p>
@@ -696,7 +696,7 @@ trained or run in a secure environment.</p>
 <p>Attestations, in the context of this document, are also digital signatures.  This section describes options for how the additional attestation signature(s) can be added to the two that are already defined.  Note that the discussion in this section is simplified: later sections present the complete design and normative requirements.</p>
 </div>
 <div class="paragraph">
-<p>In the following, when we say <em>"attestation over data X"</em> we mean that the attestation is a signature over the hash of the serialization of X, and also attestation-engine-supplied measurements or claims about the platform and/or application that requested the attestation.</p>
+<p>In the following, when a statement say <em>"attestation over data X"</em> it implies that the attestation is a signature over the hash of the serialization of X, and also attestation-engine-supplied measurements or claims about the platform and/or application that requested the attestation.</p>
 </div>
 <div class="paragraph">
 <p>The simplest option for adding an attestation would be to include it as a second countersignature over the C2PA Claim (as data X above).  However, with this design, the Claim Signature or the attestation can be independently removed and replaced. Whether these attacks are troublesome will depend on scenario (and the sophistication of the C2PA Relying Party), which makes a thorough security analysis difficult. However, the following proposal prevents the attestation and claim signatures being independently replaced with only modest complexity.</p>
@@ -715,16 +715,31 @@ trained or run in a secure environment.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>To summarize: The Claim Signer signs the attestation, which prevents tampering of the attestation. The attestation contains the public key of the Claim Signer, so the Claim Signature cannot be replaced with a signature using a different key.  Note that there are no cryptographic protections against both the attestation and Claim Signature being stripped or replaced together.</p>
+<p>To summarize: The Claim Signer signs the attestation, which prevents tampering of the attestation. The attestation contains the public key of the Claim Signer, so the Claim Signature cannot be replaced with a signature using a different key.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There are no cryptographic protections against both the attestation and Claim Signature being stripped or replaced together.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>The binding is illustrated in <a href="#dep1">Figure 1</a>.</p>
+<p>The binding is illustrated <a href="#_dep1">below</a>.</p>
 </div>
 <div id="dep1" class="imageblock kroki">
 <div class="content">
-<img src="https://kroki.io/mermaid/svg/eNpLL0osyFDwCbLmUgCCzBRDDcfi4tQSTQVdXTsg10jDOScxM1dTAco31nAsKUktLkksyczPgykygShSCM5Mz0ssKS1K1YSZZgo2rQikuFgTJgYzWgGmykRBVw9iOkzECGayNQA5BisY?id=dep1" alt="Cryptographic dependencies for an Asset, Claim, Attestation and Claim, Signature.  An arrow pointing from A to B means that B cryptographically depends on A, so A is effectively integrity protected. (In subsequent sections we will introduce Partial Claims, which changes the diagram but not the dependencies.">
+<img src="https://kroki.io/mermaid/svg/eNpLL0osyFDwCbLmUgCCzBRDDcfi4tQSTQVdXTsg10jDOScxM1dTAco31nAsKUktLkksyczPgykygShSCM5Mz0ssKS1K1YSZZgo2rQikuFgTJgYzWgGmykRBVw9iOkzECGayNQA5BisY?id=dep1" alt="Cryptographic dependencies">
 </div>
-<div class="title">Figure 1. Cryptographic dependencies for an Asset, Claim, Attestation and Claim, Signature.  An arrow pointing from A to B means that B cryptographically depends on A, so A is effectively integrity protected. (In subsequent sections we will introduce Partial Claims, which changes the diagram but not the dependencies.</div>
+<div class="title">Figure 1. Cryptographic dependencies</div>
+</div>
+<div class="paragraph">
+<p>The above figure shows cryptographic dependencies for an Asset, Claim, Attestation and Claim Signature.  An arrow pointing from <code>A</code> to <code>B</code> means that <code>B</code> cryptographically depends on <code>A</code>, so <code>A</code> is effectively integrity protected. (In subsequent sections Partial Claims will be introduced, which changes the diagram but not the dependencies.)</p>
 </div>
 <div class="sect2">
 <h3 id="_what_is_attested"><a class="anchor" href="#_what_is_attested"></a>7.1. What is Attested?</h3>
@@ -732,28 +747,28 @@ trained or run in a secure environment.</p>
 <p>Claim Signatures are calculated over the serialization of a Claim, and the Claim itself is cryptographically linked to its embedded Assertions.  Two types of Assertion are important here: Assertions that contain metadata, and Assertions that bind a Claim to an Asset with a hash or hashes of an Asset or Asset fragment (a "hard binding").  By signing the Claim, the Claim Creator vouches for both the asset (via the binding Assertion) and the metadata.</p>
 </div>
 <div class="paragraph">
-<p>We desire similar bindings for the explicit attestation signature: i.e., the attestation vouches for the Asset and the metadata. Note that most or all scenarios benefit from binding to the Asset (e.g., for the Trusted Camera Application, <em>“this image was captured by this program running on this device.”</em>)  Some scenarios will benefit from binding to metadata assertions (e.g., for a Trusted Camera Application <em>“the GPS coordinates obtained from the radio when this image was captured”</em> or for the ML scenario, <em>“the following objects were recognized in the image.”</em>)  However, note that attestation will <em>not</em> improve trust for all types of assertion data: for example, user-input is hearsay as far as the attesting application is concerned.</p>
+<p>Similar bindings exists for the explicit attestation signature: i.e., the attestation vouches for the Asset and the metadata. Note that most or all scenarios benefit from binding to the Asset (e.g., for the Trusted Camera Application, <em>“this image was captured by this program running on this device.”</em>)  Some scenarios will benefit from binding to metadata assertions (e.g., for a Trusted Camera Application <em>“the GPS coordinates obtained from the radio when this image was captured”</em> or for the ML scenario, <em>“the following objects were recognized in the image.”</em>)  However, note that attestation will <em>not</em> improve trust for all types of assertion data: for example, user-input is hearsay as far as the attesting application is concerned.</p>
 </div>
 <div class="paragraph">
-<p>The approach we have taken is that the attestation is over the serialization of the entire Claim – i.e., the same data structure that the Claim Generator signs (with one exception, which we describe below.)  As noted above, not all Assertions/metadata gain security benefit from the attestation, but signing all assertions provides the most flexibility for future scenarios. For future advanced use cases, we define a field that an attestation generator can use to indicate which assertions are meaningfully “attested.” However, the use and interpretation of this field is beyond the current scope of C2PA.</p>
+<p>The approach in this specification is that the attestation is over the serialization of the entire Claim – i.e., the same data structure that the Claim Generator signs (with one exception, which is described below).  As noted above, not all Assertions/metadata gain security benefit from the attestation, but signing all assertions provides the most flexibility for future scenarios. For future advanced use cases, the specification defines a field that an attestation generator can use to indicate which assertions are meaningfully “attested.” However, the use and interpretation of this field is beyond the current scope of C2PA.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_embedding_an_explicit_attestation_in_a_manifest"><a class="anchor" href="#_embedding_an_explicit_attestation_in_a_manifest"></a>7.2. Embedding an Explicit Attestation in a Manifest</h3>
 <div class="paragraph">
-<p>Explicit attestations are similar to Claim Signatures and could be encoded in a manifest similarly.  However, we also have the additional security requirement noted earlier: i.e., that the Claim Signer should also sign the attestation result.</p>
+<p>Explicit attestations are similar to Claim Signatures and could be encoded in a manifest similarly.  However, there is also an additional security requirement noted earlier: i.e., that the Claim Signer should also sign the attestation result.</p>
 </div>
 <div class="paragraph">
-<p>A natural way of encoding the attestation so that it is signed by the Claim Signer is to embed it as an assertion in the Claim.  If we do this, then the attestation will naturally be signed in the same way as any other sort of Assertion.  However, naïve attempts at implementing this will fail because we are introducing a circular dependency: the Claim cannot be finalized before the attestation is created, but the attestation requires a finalized Claim in order to calculate the Claim hash.</p>
+<p>A natural way of encoding the attestation so that it is signed by the Claim Signer is to embed it as an assertion in the Claim.  However with this method, then the attestation will naturally be signed in the same way as any other Assertion.  However, naïve attempts at implementing this method will fail, as it introduces a circular dependency: the Claim cannot be finalized before the attestation is created, but the attestation requires a finalized Claim in order to calculate the Claim hash.</p>
 </div>
 <div class="paragraph">
-<p>We choose to break this dependency by specifying that the attestation is created over the hash of the serialized claim but <strong>omitting the attestation assertion</strong> (which has not been created yet.)  Once the attestation has been created, it is embedded in the Manifest and Claim identically to any other assertion and will subsequently be signed by the Claim Creator.  The Claim with one or more attestation assertions elided is called a <em>Partial Claim</em>.</p>
+<p>The specification break this dependency by specifying that the attestation is created over the hash of the serialized claim but <strong>omitting the attestation assertion</strong> (which has not been created yet.)  Once the attestation has been created, it is embedded in the Manifest and Claim identically to any other assertion and will subsequently be signed by the Claim Creator.  The Claim with one or more attestation assertions elided is called a <em>Partial Claim</em>.</p>
 </div>
 <div class="paragraph">
 <p>This architecture is attractive because normal Claim creation and Claim Validation are unaffected.  It is also attractive because an attestation-enhanced claim can be processed by an attestation-unaware validator without changes (the attestation assertion can be treated like any other third-party or unrecognized assertion.)</p>
 </div>
 <div class="paragraph">
-<p>The (simplified) logical work flow for creating a manifest with and without an attestation is illustrated in <a href="#simple-steps">Figure 2</a>.</p>
+<p>The (simplified) logical work flow for creating a manifest with and without an attestation is illustrated <a href="#_simple-steps">below</a>.</p>
 </div>
 <div class="imageblock kroki">
 <div class="content">
@@ -762,12 +777,18 @@ trained or run in a secure environment.</p>
 </div>
 <div id="simple-steps" class="imageblock kroki">
 <div class="content">
-<img src="https://kroki.io/mermaid/svg/eNq1kj1vwjAQhnf_ihMsVCIqiTMFmiqlZUKiKgND1cGpTbAwSWSbQiV-fP1BAqIfEkM9WXfPvfeefYUk9QqmL0Ok9KdgMJlMZwtYciGS7tKdPigtqzVLuhjjvr8HO071KonrPVLbvHAarvK1M8rTiah2sON6BbOSQaY1U5poXpWj2zztvKHMkujBYoiVFJ00slbjrArGkvkLKSk8bXJGKS-Lo5i3nV1rm9MYgiCFwzvZKqbgAJyGgws7zqKzA6bbfdvNxa_pBuYY_Z4dTCmmrfebYzRqotLNONeVZDY_qoEIXpR3gi11ShogCJO82gcbUv8GRIl_sA-2qOS6aYNtm2diECJgLAjf-CanQtWgce_iAx6JJueWQ-f5b5EQtwzMjUuit36uFhj87-C_UTghp9Ha17HLcAAteVEwCWeE24x42Jo2oCUFI1SBrvziREPUAPA9Hf0Qw6itiPwigjJm_c94UYOYdfwCvNssHw==?id=simple-steps" alt="Simplified steps for creating a C2PA Manifest and a Manifest containing an Attestation Assertion. In the no-attestation case, Assertions are created and boxed in the Assertion Store.  Next, a Claim is then prepared, with the `assertions` array set to the location and hash of the referenced assertions. The Claim is then serialized, hashed, and signed by the Claim Creator.  The Assertion Store, Claim, and Claim Signature are then packaged as a manifest (not shown.) pass:q[&lt;br&gt;]To support explicit attestations, the additional steps in the shaded box are required. As before, an Assertion Store is populated with the desired assertions, but we call it a Partial Claim because one additional Assertion will be added before the Claim is finalized.  The Partial Claim is then serialized and Partial-Claim hash is then attested using the appropriate platform attestation service. Next, the Attestation is packaged as an Assertion and added to the Partial Assertion Store to create the Finalized Assertion Store.  Finally, the serialized-Claim (with the embedded Attestation Assertion) is signed by the Claim Creator.">
+<img src="https://kroki.io/mermaid/svg/eNq1kj1vwjAQhnf_ihMsVCIqiTMFmiqlZUKiKgND1cGpTbAwSWSbQiV-fP1BAqIfEkM9WXfPvfeefYUk9QqmL0Ok9KdgMJlMZwtYciGS7tKdPigtqzVLuhjjvr8HO071KonrPVLbvHAarvK1M8rTiah2sON6BbOSQaY1U5poXpWj2zztvKHMkujBYoiVFJ00slbjrArGkvkLKSk8bXJGKS-Lo5i3nV1rm9MYgiCFwzvZKqbgAJyGgws7zqKzA6bbfdvNxa_pBuYY_Z4dTCmmrfebYzRqotLNONeVZDY_qoEIXpR3gi11ShogCJO82gcbUv8GRIl_sA-2qOS6aYNtm2diECJgLAjf-CanQtWgce_iAx6JJueWQ-f5b5EQtwzMjUuit36uFhj87-C_UTghp9Ha17HLcAAteVEwCWeE24x42Jo2oCUFI1SBrvziREPUAPA9Hf0Qw6itiPwigjJm_c94UYOYdfwCvNssHw==?id=simple-steps" alt="Simplified Steps">
 </div>
-<div class="title">Figure 2. Simplified steps for creating a C2PA Manifest and a Manifest containing an Attestation Assertion. In the no-attestation case, Assertions are created and boxed in the Assertion Store.  Next, a Claim is then prepared, with the <code>assertions</code> array set to the location and hash of the referenced assertions. The Claim is then serialized, hashed, and signed by the Claim Creator.  The Assertion Store, Claim, and Claim Signature are then packaged as a manifest (not shown.) <br>To support explicit attestations, the additional steps in the shaded box are required. As before, an Assertion Store is populated with the desired assertions, but we call it a Partial Claim because one additional Assertion will be added before the Claim is finalized.  The Partial Claim is then serialized and Partial-Claim hash is then attested using the appropriate platform attestation service. Next, the Attestation is packaged as an Assertion and added to the Partial Assertion Store to create the Finalized Assertion Store.  Finally, the serialized-Claim (with the embedded Attestation Assertion) is signed by the Claim Creator.</div>
+<div class="title">Figure 2. Simplified Steps</div>
 </div>
 <div class="paragraph">
-<p>Note that this architecture <em>does</em> demand that attestation-aware Validators perform additional steps: Specifically, Validators must edit the Claim to remove any attestation assertions, and then re-serialize the resulting Partial Claim to validate the binding in the attestation assertion.  We consider this tradeoff to be acceptable: the rewriting cost is borne by the creators and consumers of attestations, but the creation and validation workflow for non-attestation-aware entities is unchanged.</p>
+<p>The above figure shows simplified steps for creating a C2PA Manifest containing an Attestation Assertion. In the no-attestation case, Assertions are created and stored in the Assertion Store.  Next, a Claim is then prepared, with the <code>assertions</code> array set to the location and hash of the referenced assertions. The Claim is then serialized, hashed, and signed by the Claim Generator, yielding the Claim Signature.  The Assertion Store, Claim, and Claim Signature are then packaged as a C2PA manifest (not shown.)</p>
+</div>
+<div class="paragraph">
+<p>To support explicit attestations, the additional steps in the shaded box are required. As before, an Assertion Store is populated with the desired assertions, but it is referred to as a Partial Claim because one additional Assertion will be added before the Claim is finalized.  The Partial Claim is then serialized and the Partial-Claim&#8217;s hash (which is generated using the same methodology as a standard Claim) is then attested using the appropriate platform attestation service. Next, the Attestation is packaged as an Attestation Assertion and added to the Assertion Store to create a finalized Assertion Store.  Finally, the complete Claim (with the embedded Attestation Assertion) is signed by the Claim Generator.</p>
+</div>
+<div class="paragraph">
+<p>This architecture requires that attestation-aware validators perform additional steps: Specifically, validators must internally modify the Claim to remove any attestation assertions to produce a Partial Claim that can then be used to validate the bindings in the attestation assertion.  This tradeoff is considered to be acceptable: the rewriting cost is borne by the creators and consumers of attestations, but the creation and validation workflow for non-attestation-aware entities is unchanged.</p>
 </div>
 <div class="paragraph">
 <p>Additional details are included in the normative parts of the specification below.</p>
@@ -776,13 +797,16 @@ trained or run in a secure environment.</p>
 <div class="sect2">
 <h3 id="_cryptographic_dependencies_for_the_asset_partial_claim_and_claim_signature"><a class="anchor" href="#_cryptographic_dependencies_for_the_asset_partial_claim_and_claim_signature"></a>7.3. Cryptographic Dependencies for the Asset, Partial Claim, and Claim Signature</h3>
 <div class="paragraph">
-<p>The <a href="#dep2">Figure 3</a> is a more detailed version of <a href="#dep1">Figure 1</a> using Partial Claims</p>
+<p>The <a href="#_dep2">diagram</a> below is a more detailed version of <a href="#_dep1">dependencies</a> using Partial Claims</p>
 </div>
 <div id="dep2" class="imageblock kroki">
 <div class="content">
-<img src="https://kroki.io/mermaid/svg/eNpLL0osyFDwCbLmUgCCzBQLDSXf1JLElMSSRAWbpCI7IGHnWFycWlSSmZ9XDOQoaSro6toBVRpBdRhqgORL4MIaAYlAxYk5Cs45iZm5MGFjDceSktTikkSQOTBBEw23zDx0laYaYK5CcGZ6XmJJaVGqJsxtJgq6ehDDrAFMszUq?id=dep2" alt="Cryptographic dependencies for the asset, Partial Claim, and Claim.">
+<img src="https://kroki.io/mermaid/svg/eNpLL0osyFDwCbLmUgCCzBQLDSXf1JLElMSSRAWbpCI7IGHnWFycWlSSmZ9XDOQoaSro6toBVRpBdRhqgORL4MIaAYlAxYk5Cs45iZm5MGFjDceSktTikkSQOTBBEw23zDx0laYaYK5CcGZ6XmJJaVGqJsxtJgq6ehDDrAFMszUq?id=dep2" alt="Cryptographic dependencies">
 </div>
-<div class="title">Figure 3. Cryptographic dependencies for the asset, Partial Claim, and Claim.</div>
+<div class="title">Figure 3. Cryptographic dependencies</div>
+</div>
+<div class="paragraph">
+<p>The above figure shows cryptographic dependencies for the asset, Partial Claim, and Claim.</p>
 </div>
 <div class="paragraph">
 <p>As before, an arrow from <code>A</code> to <code>B</code> indicates that <code>A</code> cannot be changed without invalidating <code>B</code> and hence the manifest.  Practically, this means that the attestation and Claim Signature can both be stripped and replaced, but neither can be changed independently.</p>
@@ -798,13 +822,16 @@ trained or run in a secure environment.</p>
 the first attestation to be added will be over the Partial Claim with no attestation assertions.  The first attestation assertion is then added to the Claim, and the resulting data structure becomes the user data input (partial Claim) for the second attestation.  Of course, the second attestation assertion is then added, and the resulting finalized Claim is signed by the Claim Creator.</p>
 </div>
 <div class="paragraph">
-<p>The cryptographic dependencies are illustrated in <a href="#dep3">Figure 4</a>.  The manifest is built from the top to the bottom. An arrow from A to B indicates that B has a cryptographic dependence on A.</p>
+<p>The cryptographic dependencies are illustrated <a href="#_dep3">below</a>.  The manifest is built from the top to the bottom. An arrow from <code>A</code> to <code>B</code> indicates that <code>B</code> has a cryptographic dependence on <code>A</code>.</p>
 </div>
 <div id="dep3" class="imageblock kroki">
 <div class="content">
-<img src="https://kroki.io/mermaid/svg/eNptj8EKwjAMhu97ihzbQwWdTkEQNsGbIMyTt2DLVpittBFf346WMbU55JD_40vSOXz2cG32BYTScsfOilAiIdTeK0faGs9BiEMIVwlasjGjacwuGEAc4DigfsBbUw835SzURMoTjpKMrmQn7TzNKR6Tdc74DyfPhrXqbo3MZVXYYb49jQ1thk73bFmkWt0ZpJdTPP1bgVjETb-DsvgA0cBlGg==?id=dep3" alt="Cryptographic dependencies for a manifest with two explicit attestations.">
+<img src="https://kroki.io/mermaid/svg/eNptj8EKwjAMhu97ihzbQwWdTkEQNsGbIMyTt2DLVpittBFf346WMbU55JD_40vSOXz2cG32BYTScsfOilAiIdTeK0faGs9BiEMIVwlasjGjacwuGEAc4DigfsBbUw835SzURMoTjpKMrmQn7TzNKR6Tdc74DyfPhrXqbo3MZVXYYb49jQ1thk73bFmkWt0ZpJdTPP1bgVjETb-DsvgA0cBlGg==?id=dep3" alt="Cryptographic dependencies.">
 </div>
-<div class="title">Figure 4. Cryptographic dependencies for a manifest with two explicit attestations.</div>
+<div class="title">Figure 4. Cryptographic dependencies.</div>
+</div>
+<div class="paragraph">
+<p>The above figure shows cryptographic dependencies for a manifest with two explicit attestations.</p>
 </div>
 <div class="paragraph">
 <p>Attesters that wish to include multiple attestations are free to decide the order that they are created and embedded, but since later attestations include earlier attestations, the validation order must be the same as the creation order. To ensure that that this occurs, this specification requires that attestations are embedded in the assertions array in the order that they are created.</p>
@@ -832,7 +859,7 @@ the first attestation to be added will be over the Partial Claim with no attesta
 <div class="sect4">
 <h5 id="_partial_claim_definition"><a class="anchor" href="#_partial_claim_definition"></a>7.6.1.1. Partial Claim Definition</h5>
 <div class="paragraph">
-<p>A Partial Claim is a C2PA <code>claim-map</code> but omitting any Attestation Assertions. (Note: for simplicity we say that an assertion is “included” or “omitted”, but what is actually added or omitted from the Claim is actually a <code>hashed-uri-map</code> link in the <code>assertions</code> array.)  Partial Claims use the same <code>claim-map</code> data structure as a standard Claim: a Partial Claim only differs in that one or more Attestation Assertions are removed from the <code>assertions</code> array.</p>
+<p>A Partial Claim is a C2PA <code>claim-map</code> but omitting any Attestation Assertions. (Note: for simplicity it is stated that an assertion is “included” or “omitted”, but what is actually added or omitted from the Claim is actually a <code>hashed-uri-map</code> link in the <code>assertions</code> array).  Partial Claims use the same <code>claim-map</code> data structure as a standard Claim: a Partial Claim only differs in that one or more Attestation Assertions are removed from the <code>assertions</code> array.</p>
 </div>
 <div class="paragraph">
 <p>Attestation Assertions can be included at any location in the assertion array, although placing them last in the assertions array simplifies processing and is therefore preferred.</p>
@@ -1169,7 +1196,7 @@ This section is preliminary: it will be refined based on prototyping and feedbac
 <p>Attestations also (indirectly or directly) convey measurements of the Claim Creator and the hosting platform, so Validators must be aware of the measurements associated with trustworthy attesting applications and platforms.</p>
 </div>
 <div class="paragraph">
-<p>Conceptually, sets of acceptable measurements are associated with specific Trust Roots, and we anticipate that the Trust Roots and measurements of trusted application will be maintained and distributed similarly</p>
+<p>Conceptually, sets of acceptable measurements are associated with specific Trust Roots, and it is anticipated that the Trust Roots and measurements of trusted application will be maintained and distributed similarly.</p>
 </div>
 </div>
 </div>
@@ -1504,7 +1531,7 @@ This section is preliminary: it will be refined based on prototyping and feedbac
 <div class="sect2">
 <h3 id="_intel_sgx"><a class="anchor" href="#_intel_sgx"></a>A.2. Intel SGX</h3>
 <div class="paragraph">
-<p>Intel SGX Attestation provides evidence that you are running on an Intel SGX enabled platform, inside of a properly instantiated enclave, on a system with a known security configuration.</p>
+<p>Intel SGX Attestation provides evidence that the application is running on an Intel SGX enabled platform, inside of a properly instantiated enclave, on a system with a known security configuration.</p>
 </div>
 <div class="paragraph">
 <p>The high-level flow of an Intel SGX ECDSA attestation is:</p>
@@ -1562,7 +1589,7 @@ QuoteGenerationSample$ ls -l quote.dat
 <div class="sect4">
 <h5 id="_transfer_the_quote_to_the_relying_party"><a class="anchor" href="#_transfer_the_quote_to_the_relying_party"></a>A.2.1.2. Transfer the quote to the relying party</h5>
 <div class="paragraph">
-<p>You need to copy this file to the system that is your relying party. We’ll use scp to do that, but any secure file transfer option will do.</p>
+<p>Copy this file to the system that acts as a relying party. One can use <code>scp</code> tool, but any secure file transfer option will yield similar result.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1605,18 +1632,18 @@ Untrusted quote verification:
 <div class="sect4">
 <h5 id="_inspect_the_quote"><a class="anchor" href="#_inspect_the_quote"></a>A.2.1.4. Inspect the quote</h5>
 <div class="paragraph">
-<p>With the quote verified, we can now inspect the quote and examine its contents. Remember that quote verifcation merely tells you whether the quote is valid, and whether there are issues with the remote enclave’s TCB. Trusting the quote is not the same as trusting the enclave: to make a trust decision about the enclave, you must examine its metadata and, at minimum, answer the following questions:</p>
+<p>With the quote verified, inspect the quote and examine its contents. Remember that quote verification merely tells whether the quote is valid, and whether there are issues with the remote enclave’s TCB. Trusting the quote is not the same as trusting the enclave: to make a trust decision about the enclave, its metadata must be examined and, at minimum, answer the following questions:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Is this enclave one that you recognize? Specifically, do you recognize MRSIGNER, MRENCLAVE, and the vendor-specific identifiers?</p>
+<p>Is this enclave one that can be recognized? Specifically, can verification recognize MRSIGNER, MRENCLAVE, and the vendor-specific identifiers?</p>
 </li>
 <li>
 <p>Is the debug attribute set?</p>
 </li>
 <li>
-<p>Is the quoting enclave one that you recognize? And is it up to date?</p>
+<p>Is the quoting enclave one that can be identified? And is it up to date?</p>
 </li>
 <li>
 <p>Is the enclave’s software version up to date?  Note that this check assumes the software that generates the SGX image maintains a proper SVN process.</p>
@@ -1627,7 +1654,7 @@ Untrusted quote verification:
 <p>A production service may have even more stringent requirements. Ultimately, these are all policy matters; it is up to the service provider to decide which enclaves their service will trust and how that service should arrive at its decisions.</p>
 </div>
 <div class="paragraph">
-<p>We won’t do an exhaustive examination of the quote, but we’ll look at some key fields that can answer a subset of the questions above. The quote structure is defined in the header file sgx_quote_3.h, and we can use the xxd tool in Linux to extract a few of its fields.</p>
+<p>Here it is not intended to do exhaustive examination of <code>quote</code>, but some key fields have been examined that can answer a subset of the questions above. The quote structure is defined in the header file sgx_quote_3.h, and the xxd Linux tool can be used to extract required fields.</p>
 </div>
 <div class="paragraph">
 <p>Here’s the MRENCLAVE value:</p>
@@ -1648,7 +1675,7 @@ Untrusted quote verification:
 </div>
 </div>
 <div class="paragraph">
-<p>These two values tell you who signed the enclave, and which enclave it is. As a rule, a relying party should never trust an enclave or a signer that it doesn’t recognize!</p>
+<p>These two values indicate (a) the enclave identity (which enclave it is) and (b) the enclave signer (i.e the entity that signed the enclave). As a rule, a relying party should never trust an enclave or a signer that it doesn’t recognize!</p>
 </div>
 <div class="paragraph">
 <p>Additional information on the quote structure can be obtained at <a href="https://www.intel.com/content/dam/develop/external/us/en/documents/overview-of-intel-sgx-instructions-and-datastructures.pdf">Overview of Intel® Software Guard Extensions Instructions and Data Structures</a> and <a href="https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master">Github: SGX data Center Attestation</a>.</p>
@@ -1923,7 +1950,7 @@ trusted executable platform</p>
 <a href="#_footnoteref_1">1</a>. Implicit Attestations can also be encoded in assertions, as described in <a href="#_implicit_attestation_assertions">Section 7.5</a>
 </div>
 <div class="footnote" id="_footnotedef_2">
-<a href="#_footnoteref_2">2</a>. We do not demand that attestation assertions appear last in the attestation array, because doing so would limit the future evolution of the C2PA standard.
+<a href="#_footnoteref_2">2</a>. This specification  does not demand that attestation assertions appear last in the attestation array, because doing so would limit the future evolution of the C2PA standard.
 </div>
 <div class="footnote" id="_footnotedef_3">
 <a href="#_footnoteref_3">3</a>. Note that when an Attestation Assertion is removed, the Claim is serialized using normal CBOR rules.  For example, if a claim included two standard assertions and one Attestation Assertion, then the Partial Claim will contain an <code>assertions</code> array containing two elements. If a Partial Claim contains two standard assertions and two Attestation Assertions, then two Partial Claims are defined: one omitting just the last Attestation Assertion in the <code>attestations</code> array, and one omitting both Attestation Assertions.  Of course, the order of the Attestation Assertions must be preserved as the Partial Claim is created and validated.

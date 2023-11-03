@@ -336,7 +336,7 @@
 <li><a href="#_c2pa_standard_assertions">19. C2PA Standard Assertions</a>
 <ul class="sectlevel2">
 <li><a href="#_introduction_3">19.1. Introduction</a></li>
-<li><a href="#_actors">19.2. Actors</a></li>
+<li><a href="#common_data_model_actor">19.2. Actors</a></li>
 <li><a href="#_regions_of_interest">19.3. Regions of Interest</a></li>
 <li><a href="#_metadata_about_assertions">19.4. Metadata About Assertions</a></li>
 <li><a href="#_standard_c2pa_assertion_summary">19.5. Standard C2PA Assertion Summary</a></li>
@@ -586,7 +586,7 @@ C2PA specifications SHOULD NOT provide value judgments about whether a given set
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-An organization or group of <a href="#_actor">Actors</a> may also be considered an <a href="#_actor">Section 2.1.1, &#8220;Actor&#8221;</a> in the C2PA ecosystem.
+An organization or group of <a href="#_actor">Actors</a> may also be considered an <a href="#_actor">actor</a> in the C2PA ecosystem.
 </td>
 </tr>
 </table>
@@ -595,31 +595,31 @@ An organization or group of <a href="#_actor">Actors</a> may also be considered 
 <div class="sect3">
 <h4 id="_signer"><a class="anchor" href="#_signer"></a>2.1.2. Signer</h4>
 <div class="paragraph">
-<p>An <a href="#_actor">Section 2.1.1, &#8220;Actor&#8221;</a> (human or non-human) whose credential&#8217;s private key is used to sign the <a href="#_claim">Section 2.3.2, &#8220;Claim&#8221;</a>.  The <a href="#_signer">Section 2.1.2, &#8220;Signer&#8221;</a> is identified by the subject of the credential.</p>
+<p>An <a href="#_actor">actor</a> (human or non-human) whose credential&#8217;s private key is used to sign the <a href="#_claim">claim</a>.  The <a href="#_signer">signer</a> is identified by the subject of the credential.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_claim_generator"><a class="anchor" href="#_claim_generator"></a>2.1.3. Claim generator</h4>
 <div class="paragraph">
-<p>The non-human (hardware or software) <a href="#_actor">Section 2.1.1, &#8220;Actor&#8221;</a> that generates the <a href="#_claim">Section 2.3.2, &#8220;Claim&#8221;</a> about an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> as well as the <a href="#_claim_signature">Section 2.3.3, &#8220;Claim signature&#8221;</a>, thus leading to the <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a>'s associated <a href="#_c2pa_manifest">Manifest</a>.</p>
+<p>The non-human (hardware or software) <a href="#_actor">actor</a> that generates the <a href="#_claim">claim</a> about an <a href="#_asset">asset</a> as well as the <a href="#_claim_signature">claim signature</a>, thus leading to the <a href="#_asset">asset</a>'s associated <a href="#_c2pa_manifest">C2PA Manifest</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_manifest_consumer"><a class="anchor" href="#_manifest_consumer"></a>2.1.4. Manifest consumer</h4>
 <div class="paragraph">
-<p>An <a href="#_actor">Section 2.1.1, &#8220;Actor&#8221;</a> who consumes an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> with an associated <a href="#_c2pa_manifest">Manifest</a> for the purpose of obtaining the <a href="#_provenance_data">Section 2.3.9, &#8220;Provenance data&#8221;</a> from the <a href="#_c2pa_manifest">Manifest</a>.</p>
+<p>An <a href="#_actor">actor</a> who consumes an <a href="#_asset">asset</a> with an associated <a href="#_c2pa_manifest">C2PA Manifest</a> for the purpose of obtaining the <a href="#_provenance_data">provenance data</a> from the <a href="#_c2pa_manifest">C2PA Manifest</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_validator"><a class="anchor" href="#_validator"></a>2.1.5. Validator</h4>
 <div class="paragraph">
-<p>A <a href="#_manifest_consumer">Section 2.1.4, &#8220;Manifest consumer&#8221;</a> whose role is to perform the actions described in <a href="#_validation">Chapter 16, <em>Validation</em></a>.</p>
+<p>A <a href="#_manifest_consumer">manifest consumer</a> whose role is to perform the actions described in <a href="#_validation">validation</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_action"><a class="anchor" href="#_action"></a>2.1.6. Action</h4>
 <div class="paragraph">
-<p>An operation performed by an <a href="#_actor">Section 2.1.1, &#8220;Actor&#8221;</a> on an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a>. For example, "create", "embed", or "apply filter".</p>
+<p>An operation performed by an <a href="#_actor">actor</a> on an <a href="#_asset">asset</a>. For example, "create", "embed", or "apply filter".</p>
 </div>
 </div>
 </div>
@@ -628,19 +628,19 @@ An organization or group of <a href="#_actor">Actors</a> may also be considered 
 <div class="sect3">
 <h4 id="_digital_content"><a class="anchor" href="#_digital_content"></a>2.2.1. Digital content</h4>
 <div class="paragraph">
-<p>The portion of an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> that represents the actual content, such as the pixels of an image, along with any additional technical metadata required to understand the content (e.g., a colour profile or encoding parameters).</p>
+<p>The portion of an <a href="#_asset">asset</a> that represents the actual content, such as the pixels of an image, along with any additional technical metadata required to understand the content (e.g., a colour profile or encoding parameters).</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_asset_metadata"><a class="anchor" href="#_asset_metadata"></a>2.2.2. Asset metadata</h4>
 <div class="paragraph">
-<p>The portion of an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> that represents non-technical information about the <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> and its <a href="#_digital_content">Section 2.2.1, &#8220;Digital content&#8221;</a>, as may be stored via standards such as Exif, IPTC or XMP.</p>
+<p>The portion of an <a href="#_asset">asset</a> that represents non-technical information about the <a href="#_asset">asset</a> and its <a href="#_digital_content">digital content</a>, as may be stored via standards such as Exif, IPTC or XMP.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_asset"><a class="anchor" href="#_asset"></a>2.2.3. Asset</h4>
 <div class="paragraph">
-<p>A file or stream of data containing <a href="#_digital_content">Section 2.2.1, &#8220;Digital content&#8221;</a>, <a href="#_asset_metadata">Section 2.2.2, &#8220;Asset metadata&#8221;</a> and optionally, a <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a>.</p>
+<p>A file or stream of data containing <a href="#_digital_content">digital content</a>, <a href="#_asset_metadata">asset metadata</a> and optionally, a <a href="#_c2pa_manifest">C2PA Manifest</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -658,7 +658,7 @@ For the purposes of this definition, we will extend the typical definition of "f
 <div class="sect3">
 <h4 id="_derived_asset"><a class="anchor" href="#_derived_asset"></a>2.2.4. Derived asset</h4>
 <div class="paragraph">
-<p>A <a href="#_derived_asset">Section 2.2.4, &#8220;Derived asset&#8221;</a> is an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> that is created by starting from an existing <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> and performing <a href="#_action">Actions</a> to it that modify its <a href="#_digital_content">Section 2.2.1, &#8220;Digital content&#8221;</a> and <a href="#_asset_metadata">Section 2.2.2, &#8220;Asset metadata&#8221;</a>.</p>
+<p>A <a href="#_derived_asset">derived asset</a> is an <a href="#_asset">asset</a> that is created by starting from an existing <a href="#_asset">asset</a> and performing <a href="#_action">Actions</a> to it that modify its <a href="#_digital_content">digital content</a> and <a href="#_asset_metadata">asset metadata</a>.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -669,7 +669,7 @@ For the purposes of this definition, we will extend the typical definition of "f
 <div class="sect3">
 <h4 id="_asset_rendition"><a class="anchor" href="#_asset_rendition"></a>2.2.5. Asset rendition</h4>
 <div class="paragraph">
-<p>A representation of an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> (either as a part of an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> or a completely new <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a>) where the <a href="#_digital_content">Section 2.2.1, &#8220;Digital content&#8221;</a> has had a 'non-editorial transformation' <a href="#_action">Section 2.1.6, &#8220;Action&#8221;</a> (e.g., re-encoding or scaling) applied but where the <a href="#_asset_metadata">Section 2.2.2, &#8220;Asset metadata&#8221;</a> has not been modified.</p>
+<p>A representation of an <a href="#_asset">asset</a> (either as a part of an <a href="#_asset">asset</a> or a completely new <a href="#_asset">asset</a>) where the <a href="#_digital_content">digital content</a> has had a 'non-editorial transformation' <a href="#_action">action</a> (e.g., re-encoding or scaling) applied but where the <a href="#_asset_metadata">asset metadata</a> has not been modified.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -680,7 +680,7 @@ For the purposes of this definition, we will extend the typical definition of "f
 <div class="sect3">
 <h4 id="_composed_asset"><a class="anchor" href="#_composed_asset"></a>2.2.6. Composed asset</h4>
 <div class="paragraph">
-<p>A composed asset is an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> that is created by building up a collection of multiple parts or fragments of <a href="#_digital_content">Section 2.2.1, &#8220;Digital content&#8221;</a> (referred to as <a href="#_ingredient">Ingredients</a>) from one or more other <a href="#_asset">Assets</a>. When starting from an existing <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a>, it is a special case of a <a href="#_derived_asset">Section 2.2.4, &#8220;Derived asset&#8221;</a> - however a <a href="#_composed_asset">Section 2.2.6, &#8220;Composed asset&#8221;</a> can also be one that starts from a "blank slate".</p>
+<p>A composed asset is an <a href="#_asset">asset</a> that is created by building up a collection of multiple parts or fragments of <a href="#_digital_content">digital content</a> (referred to as <a href="#_ingredient">Ingredients</a>) from one or more other <a href="#_asset">Assets</a>. When starting from an existing <a href="#_asset">asset</a>, it is a special case of a <a href="#_derived_asset">derived asset</a> - however a <a href="#_derived_asset">composed asset</a> can also be one that starts from a "blank slate".</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -706,25 +706,25 @@ For the purposes of this definition, we will extend the typical definition of "f
 <div class="sect3">
 <h4 id="_assertion"><a class="anchor" href="#_assertion"></a>2.3.1. Assertion</h4>
 <div class="paragraph">
-<p>A data structure which represents a statement asserted by an <a href="#_actor">Section 2.1.1, &#8220;Actor&#8221;</a> concerning the <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a>. This data is a part of the <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a>.</p>
+<p>A data structure which represents a statement asserted by an <a href="#_actor">actor</a> concerning the <a href="#_asset">asset</a>. This data is a part of the <a href="#_c2pa_manifest">C2PA Manifest</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_claim"><a class="anchor" href="#_claim"></a>2.3.2. Claim</h4>
 <div class="paragraph">
-<p>A digitally signed and tamper-evident data structure that references a set of <a href="#_assertion">Assertions</a> by one or more <em>actors</em>, concerning an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a>, and the information necessary to represent the <a href="#_content_binding">Section 2.3.11, &#8220;Content binding&#8221;</a>. If any <a href="#_assertion">Assertions</a> were redacted, then a declaration to that effect is included. This data is a part of the <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a>.</p>
+<p>A digitally signed and tamper-evident data structure that references a set of <a href="#_assertion">Assertions</a> by one or more <em>actors</em>, concerning an <a href="#_asset">asset</a>, and the information necessary to represent the <a href="#_content_binding">content binding</a>. If any <a href="#_assertion">Assertions</a> were redacted, then a declaration to that effect is included. This data is a part of the <a href="#_c2pa_manifest">C2PA Manifest</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_claim_signature"><a class="anchor" href="#_claim_signature"></a>2.3.3. Claim signature</h4>
 <div class="paragraph">
-<p>The digital signature on the <a href="#_claim">Section 2.3.2, &#8220;Claim&#8221;</a> using the private key of an <a href="#_actor">Section 2.1.1, &#8220;Actor&#8221;</a>. The <a href="#_claim_signature">Section 2.3.3, &#8220;Claim signature&#8221;</a> is a part of the <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a>.</p>
+<p>The digital signature on the <a href="#_claim">claim</a> using the private key of an <a href="#_actor">actor</a>. The <a href="#_claim_signature">claim signature</a> is a part of the <a href="#_c2pa_manifest">C2PA Manifest</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_c2pa_manifest"><a class="anchor" href="#_c2pa_manifest"></a>2.3.4. C2PA Manifest</h4>
 <div class="paragraph">
-<p>The set of information about the <em>provenance</em> of an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> based on the combination of one or more <a href="#_assertion">Assertions</a> (including <a href="#_binding_to_content">content bindings</a>), a single <a href="#_claim">Section 2.3.2, &#8220;Claim&#8221;</a>, and a <a href="#_claim_signature">Section 2.3.3, &#8220;Claim signature&#8221;</a>. A <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a> is part of a <a href="#_c2pa_manifest_store">Section 2.3.5, &#8220;C2PA Manifest Store&#8221;</a>.</p>
+<p>The set of information about the <em>provenance</em> of an <a href="#_asset">asset</a> based on the combination of one or more <a href="#_assertion">Assertions</a> (including <a href="#_binding_to_content">content bindings</a>), a single <a href="#_claim">claim</a>, and a <a href="#_claim_signature">claim signature</a>. A <a href="#_c2pa_manifest">C2PA Manifest</a> is part of a <a href="#_c2pa_manifest_store">C2PA Manifest Store</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -733,7 +733,7 @@ For the purposes of this definition, we will extend the typical definition of "f
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-A <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a> can reference other <a href="#_c2pa_manifest">C2PA Manifests</a>.
+A <a href="#_c2pa_manifest">C2PA Manifest</a> can reference other <a href="#_c2pa_manifest">C2PA Manifests</a>.
 </td>
 </tr>
 </table>
@@ -742,34 +742,34 @@ A <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a> can r
 <div class="sect3">
 <h4 id="_c2pa_manifest_store"><a class="anchor" href="#_c2pa_manifest_store"></a>2.3.5. C2PA Manifest Store</h4>
 <div class="paragraph">
-<p>A collection of <a href="#_c2pa_manifest">C2PA Manifests</a> that can either be embedded into an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> or be external to its <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a>.</p>
+<p>A collection of <a href="#_c2pa_manifest">C2PA Manifests</a> that can either be embedded into an <a href="#_asset">asset</a> or be external to its <a href="#_asset">asset</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_content_credential"><a class="anchor" href="#_content_credential"></a>2.3.6. Content Credential</h4>
 <div class="paragraph">
-<p>This is the preferred, non-technical, term for a <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a>.  The <a href="#_c2pa_manifest_store">Section 2.3.5, &#8220;C2PA Manifest Store&#8221;</a> therefore represents the Content Credentials of an asset.</p>
+<p>This is the preferred, non-technical, term for a <a href="#_c2pa_manifest">C2PA Manifest</a>.  The <a href="#_c2pa_manifest_store">C2PA Manifest Store</a> therefore represents the Content Credentials of an asset.</p>
 </div>
 <div class="paragraph">
-<p>Content Credentials also refers to the overall C2PA technology, and is therefore essentially treated as a plural noun. If a <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a> is a Content Credential, then multiple <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a> or the broader, universal concept is Content Credentials.</p>
+<p>Content Credentials also refers to the overall C2PA technology, and is therefore essentially treated as a plural noun. If a <a href="#_c2pa_manifest">C2PA Manifest</a> is a Content Credential, then multiple <a href="#_c2pa_manifest">C2PA Manifest</a> or the broader, universal concept is Content Credentials.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_active_manifest"><a class="anchor" href="#_active_manifest"></a>2.3.7. Active Manifest</h4>
 <div class="paragraph">
-<p>The last manifest in the list of <a href="#_c2pa_manifest">C2PA Manifests</a> inside of a <a href="#_c2pa_manifest_store">Section 2.3.5, &#8220;C2PA Manifest Store&#8221;</a> which is the one with the set of <a href="#_content_bindings">[_content_bindings]</a> that are able to be validated.</p>
+<p>The last manifest in the list of <a href="#_c2pa_manifest">C2PA Manifests</a> inside of a <a href="#_c2pa_manifest_store">C2PA Manifest Store</a> which is the one with the set of <a href="#_content_bindings">content bindings</a> that are able to be validated.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_provenance"><a class="anchor" href="#_provenance"></a>2.3.8. Provenance</h4>
 <div class="paragraph">
-<p>The logical concept of understanding the history of an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> and its interaction with <a href="#_actor">Actors</a> and other <a href="#_asset">Assets</a>, as represented by the <a href="#_provenance_data">Section 2.3.9, &#8220;Provenance data&#8221;</a>.</p>
+<p>The logical concept of understanding the history of an <a href="#_asset">asset</a> and its interaction with <a href="#_actor">Actors</a> and other <a href="#_asset">Assets</a>, as represented by the <a href="#_provenance_data">provenance data</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_provenance_data"><a class="anchor" href="#_provenance_data"></a>2.3.9. Provenance data</h4>
 <div class="paragraph">
-<p>The set of <a href="#_c2pa_manifest">C2PA Manifests</a> for an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> and, in the case of a <a href="#_composed_asset">Section 2.2.6, &#8220;Composed asset&#8221;</a>, its <a href="#_ingredient">Ingredients</a>.</p>
+<p>The set of <a href="#_c2pa_manifest">C2PA Manifests</a> for an <a href="#_asset">asset</a> and, in the case of a <a href="#_composed_asset">composed asset</a>, its <a href="#_ingredient">Ingredients</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -778,7 +778,7 @@ A <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a> can r
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-A <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a> can reference other <a href="#_c2pa_manifest">C2PA Manifests</a>.
+A <a href="#_c2pa_manifest">C2PA Manifest</a> can reference other <a href="#_c2pa_manifest">C2PA Manifests</a>.
 </td>
 </tr>
 </table>
@@ -787,31 +787,31 @@ A <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a> can r
 <div class="sect3">
 <h4 id="_authenticity"><a class="anchor" href="#_authenticity"></a>2.3.10. Authenticity</h4>
 <div class="paragraph">
-<p>A property of <a href="#_digital_content">Section 2.2.1, &#8220;Digital content&#8221;</a> comprising a set of facts (such as the <a href="#_provenance_data">Provenance Data</a> and <a href="#_hard_binding">Hard Bindings</a>) that can be cryptographically verified as not having been tampered with.</p>
+<p>A property of <a href="#_digital_content">digital content</a> comprising a set of facts (such as the <a href="#_provenance_data">provenance data</a> and <a href="#_hard_binding">hard bindings</a>) that can be cryptographically verified as not having been tampered with.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_content_binding"><a class="anchor" href="#_content_binding"></a>2.3.11. Content binding</h4>
 <div class="paragraph">
-<p>Information that associates <a href="#_digital_content">Section 2.2.1, &#8220;Digital content&#8221;</a> to a specific <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a> associated with a specific <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a>, either as a <a href="#_hard_binding">Section 2.3.12, &#8220;Hard binding&#8221;</a> or a <a href="#_soft_binding">Section 2.3.13, &#8220;Soft binding&#8221;</a>.</p>
+<p>Information that associates <a href="#_digital_content">digital content</a> to a specific <a href="#_c2pa_manifest">C2PA Manifest</a> associated with a specific <a href="#_asset">asset</a>, either as a <a href="#_hard_binding">hard binding</a> or a <a href="#_soft_binding">soft binding</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_hard_binding"><a class="anchor" href="#_hard_binding"></a>2.3.12. Hard binding</h4>
 <div class="paragraph">
-<p>One or more cryptographic hashes that uniquely identifies either the entire <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> or a portion thereof.</p>
+<p>One or more cryptographic hashes that uniquely identifies either the entire <a href="#_asset">asset</a> or a portion thereof.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_soft_binding"><a class="anchor" href="#_soft_binding"></a>2.3.13. Soft binding</h4>
 <div class="paragraph">
-<p>A content identifier that is either (a) not statistically unique, such as a <a href="#_fingerprint">Section 2.4.1, &#8220;Fingerprint&#8221;</a>, or (b) embedded as a <a href="#_watermark">Section 2.4.2, &#8220;Watermark&#8221;</a> in the identified <a href="#_digital_content">Section 2.2.1, &#8220;Digital content&#8221;</a>.</p>
+<p>A content identifier that is either (a) not statistically unique, such as a <a href="#_fingerprint">fingerprint</a>, or (b) embedded as a <a href="#_watermark">watermark</a> in the identified <a href="#_digital_content">digital content</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_trust_signals"><a class="anchor" href="#_trust_signals"></a>2.3.14. Trust signals</h4>
 <div class="paragraph">
-<p>The collection of information that can inform an <a href="#_actor">Actor&#8217;s</a> judgment of the trustworthiness of an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a>. These are in addition to the <a href="#_signer">Section 2.1.2, &#8220;Signer&#8221;</a> of a <a href="#_claim">Section 2.3.2, &#8220;Claim&#8221;</a>, upon which the fundamental trust model relies.</p>
+<p>The collection of information that can inform an <a href="#_actor">Actor&#8217;s</a> judgment of the trustworthiness of an <a href="#_asset">asset</a>. These are in addition to the <a href="#_signer">signer</a> of a <a href="#_claim">claim</a>, upon which the fundamental trust model relies.</p>
 </div>
 </div>
 </div>
@@ -820,24 +820,24 @@ A <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a> can r
 <div class="sect3">
 <h4 id="_fingerprint"><a class="anchor" href="#_fingerprint"></a>2.4.1. Fingerprint</h4>
 <div class="paragraph">
-<p>A set of inherent properties computable from <a href="#_digital_content">Section 2.2.1, &#8220;Digital content&#8221;</a> that identifies the content or near duplicates of it.</p>
+<p>A set of inherent properties computable from <a href="#_digital_content">digital content</a> that identifies the content or near duplicates of it.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
-<strong>EXAMPLE:</strong> An <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> can become separated from its <a href="#_c2pa_manifest">Manifest</a> due to removal or corruption of <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> metadata. A <a href="#_fingerprint">Section 2.4.1, &#8220;Fingerprint&#8221;</a> of the <a href="#_digital_content">Section 2.2.1, &#8220;Digital content&#8221;</a> of the <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> could be used to search a database to recover the <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> with an intact <a href="#_c2pa_manifest">Manifest</a>.
+<strong>EXAMPLE:</strong> An <a href="#_asset">asset</a> can become separated from its <a href="#_c2pa_manifest">C2PA Manifest</a> due to removal or corruption of <a href="#_asset">asset</a> metadata. A <a href="#_fingerprint">fingerprint</a> of the <a href="#_digital_content">digital content</a> of the <a href="#_asset">asset</a> could be used to search a database to recover the <a href="#_asset">asset</a> with an intact <a href="#_c2pa_manifest">C2PA Manifest</a>.
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_watermark"><a class="anchor" href="#_watermark"></a>2.4.2. Watermark</h4>
 <div class="paragraph">
-<p>Information incorporated into the <a href="#_digital_content">Section 2.2.1, &#8220;Digital content&#8221;</a> (perceptibly or imperceptibly) of an <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> which can be used, for example, to uniquely identify the <a href="#_asset">Section 2.2.3, &#8220;Asset&#8221;</a> or to store a reference to a <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a>.</p>
+<p>Information incorporated into the <a href="#_digital_content">digital content</a> (perceptibly or imperceptibly) of an <a href="#_asset">asset</a> which can be used, for example, to uniquely identify the <a href="#_asset">asset</a> or to store a reference to a <a href="#_c2pa_manifest">C2PA Manifest</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_manifest_repository"><a class="anchor" href="#_manifest_repository"></a>2.4.3. Manifest Repository</h4>
 <div class="paragraph">
-<p>A repository into which <a href="#_c2pa_manifest">C2PA Manifests</a> and <a href="#_c2pa_manifest_stores">C2PA Manifest Stores</a> can be placed, and which can be searched using a <a href="#_content_binding">Section 2.3.11, &#8220;Content binding&#8221;</a>.</p>
+<p>A repository into which <a href="#_c2pa_manifest">C2PA Manifests</a> and <a href="#_c2pa_manifest_stores">C2PA Manifest Stores</a> can be placed, and which can be searched using a <a href="#_content_binding">content binding</a>.</p>
 </div>
 </div>
 </div>
@@ -1057,7 +1057,7 @@ A <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a> can r
 <h2 id="_version_history"><a class="anchor" href="#_version_history"></a>5. Version History</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>1.4 - October(?) 2023</p>
+<p>1.4 - November 2023</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1092,7 +1092,7 @@ A <a href="#_c2pa_manifest">Section 2.3.4, &#8220;C2PA Manifest&#8221;</a> can r
 <p>Clarified issues with box hashing</p>
 </li>
 <li>
-<p>Clarified issues on signing incl. time stamping, PKIStatus &amp; document signing EKU</p>
+<p>Clarified issues on signing including time stamping, PKIStatus &amp; document signing EKU</p>
 </li>
 <li>
 <p>Align with Exif 3.0</p>
@@ -1751,7 +1751,7 @@ More details on hashing can be found at <a href="#_hashing">Section 12.3.4.2, &#
 <div class="sect2">
 <h3 id="_using_credentials"><a class="anchor" href="#_using_credentials"></a>9.3. Using Credentials</h3>
 <div class="paragraph">
-<p>Some assertions, such as <a href="#_creative_work">Creative Work</a> and <a href="#_actions">Actions</a>, may contain references to Persons or Organisations which are responsible for various roles and responsibilities. These references to Actors are defined in <a href="#_common_data_model_actor">[_common_data_model_actor]</a>.</p>
+<p>Some assertions, such as <a href="#_creative_work">Creative Work</a> and <a href="#_actions">Actions</a>, may contain references to Persons or Organisations which are responsible for various roles and responsibilities. These references to Actors are defined in <a href="#common_data_model_actor">Section 19.2, &#8220;Actors&#8221;</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1852,7 +1852,7 @@ More details on hashing can be found at <a href="#_hashing">Section 12.3.4.2, &#
 <p>This means that by default all asset metadata (including Exif metadata and IPTC metadata in either IPTC-IIM or XMP format) will be included in the <a href="#_data_hash">data hash assertions</a>, but with no provenance information such as who made the claims.</p>
 </div>
 <div class="paragraph">
-<p>To explicitly assert the same claims in a C2PA assertion with verifiable provenance, the Exif or IPTC fields should be copied to a <code>stds.exif</code> or <code>stds.iptc.photo-metadata</code> assertion, as appropriate (see <a href="#_exif_information">Section 19.18, &#8220;Exif Information&#8221;</a> and <a href="#_iptc_photo_metadata">[_iptc_photo_metadata]</a>).</p>
+<p>To explicitly assert the same claims in a C2PA assertion with verifiable provenance, the Exif or IPTC fields should be copied to a <code>stds.exif</code> or <code>stds.iptc.photo-metadata</code> assertion, as appropriate (see <a href="#_exif_information">Section 19.18, &#8220;Exif Information&#8221;</a> and <a href="#_iptc_photo_and_video_metadata">Section 19.19, &#8220;IPTC Photo and Video Metadata&#8221;</a>).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1975,7 +1975,7 @@ generator-info-map = {
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
   "alg" : "sha256",
-  "claim_generator": "Joe's Photo Editor/2.0 (Windows 10)",
+  "claim_generator": "Joe's_Photo_Editor/2.0 (Windows_10)",
 	"claim_generator_info" : [
 		{
 			"name": "Joe's Photo Editor",
@@ -2086,7 +2086,7 @@ Some field names, such as <code>dc:format</code>, have namespace prefixes as the
 <div class="title">Example using claim generator info</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-	"claim_generator": "Joe's_Photo_Editor/2.0 (Windows 10)",
+	"claim_generator": "Joe's_Photo_Editor/2.0 (Windows_10)",
 	"claim_generator_info" : [
 		{
 			"name": "Joe's Photo Editor",
@@ -2377,7 +2377,7 @@ In the case of JPEG-1 files, this can be achieved either by eliminating padding 
 <div class="sect3">
 <h4 id="_complete_the_c2pa_manifest"><a class="anchor" href="#_complete_the_c2pa_manifest"></a>11.4.4. Complete the C2PA Manifest</h4>
 <div class="paragraph">
-<p>At this point all of the boxes that comprise the entire C2PA Manifest for the asset are completed and can be (if not already) constructed into its final form. The asset&#8217;s C2PA Manifest, along with the manifests of any ingredients, are combined together to form the complete C2PA Manifest Store. The active manifest must be the last C2PA Manifest superbox in the C2PA Manifest Store superbox. The C2PA Manifest Store can then be embedded into the asset as discussed in <a href="#_embedding_manifests_into_assets">[_embedding_manifests_into_assets]</a>.</p>
+<p>At this point all of the boxes that comprise the entire C2PA Manifest for the asset are completed and can be (if not already) constructed into its final form. The asset&#8217;s C2PA Manifest, along with the manifests of any ingredients, are combined together to form the complete C2PA Manifest Store. The active manifest must be the last C2PA Manifest superbox in the C2PA Manifest Store superbox. The C2PA Manifest Store can then be embedded into the asset as discussed in <a href="#_embedding_manifests_into_various_file_formats">Section 12.3, &#8220;Embedding manifests into various file formats&#8221;</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2498,6 +2498,18 @@ This means that the C2PA Manifest Consumer can process private boxes that it kno
 </div>
 <div class="paragraph">
 <p>Hashing a compressed box is done in the same way as any other box, as described in <a href="#_hashing_jumbf_boxes">Section 8.3.1.3, &#8220;Hashing JUMBF Boxes&#8221;</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This implies that given a <code>hashed_uri</code> reference from an ingredient assertion to a C2PA Manifest via the <code>c2pa_manifest</code> field, the hash is calculated over the compressed payload of the c2ma/c2um.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -2876,7 +2888,7 @@ Although PNG supports it, it&#8217;s considered bad-form to have a data block af
 <div class="sect4">
 <h5 id="_embedding_manifests_into_id3"><a class="anchor" href="#_embedding_manifests_into_id3"></a>12.3.1.4. Embedding manifests into ID3</h5>
 <div class="paragraph">
-<p>The C2PA Manifest Store shall be embedded into a ID3v2-compatible, compressed audio file (e.g., MP3 or FLAC) file as the Encapsulated object data of a General Encapsulated Object (GEOB) as defined in <a href="https://id3.org/id3v2.3.0#General_encapsulated_object" class="bare">https://id3.org/id3v2.3.0#General_encapsulated_object</a>. The GEOB&#8217;s <code>MIME type</code> field shall be present and shall use the value for the media type for JUMBF as described in <a href="#_external_manifests">Section 12.4, &#8220;External Manifests&#8221;</a>.</p>
+<p>The C2PA Manifest Store shall be embedded into a ID3v2-compatible, compressed audio file (e.g., MP3 or FLAC) file as the Encapsulated object data of a General Encapsulated Object (GEOB) as defined in <a href="https://id3.org/id3v2.3.0#General_encapsulated_object">https://id3.org/id3v2.3.0</a>. The GEOB&#8217;s <code>MIME type</code> field shall be present and shall use the value for the media type for JUMBF as described in <a href="#_external_manifests">Section 12.4, &#8220;External Manifests&#8221;</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -4250,7 +4262,7 @@ The IETF is working on an update for RFC 6170 referred to as <a href="https://ww
 <p>Each credential type defined in this section may be used to sign C2PA manifests.</p>
 </div>
 <div class="sect3">
-<h4 id="_x_509_certificates"><a class="anchor" href="#_x_509_certificates"></a>15.4.1. X.509 Certificates</h4>
+<h4 id="x509_certificates"><a class="anchor" href="#x509_certificates"></a>15.4.1. X.509 Certificates</h4>
 <div class="paragraph">
 <p>X.509 Certificates are stored as defined by <a href="https://datatracker.ietf.org/doc/html/rfc9360">RFC 9360: CBOR Object Signing and Encryption (COSE): Header Parameters for Carrying and Referencing X.509 Certificates</a>. For convenience, the definition of <code>x5chain</code> is copied below.</p>
 </div>
@@ -4770,7 +4782,7 @@ rVals = {
 <td class="tableblock halign-left valign-top"><p class="tableblock">X.509 SubjectPublicKeyInfo</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A <a href="https://datatracker.ietf.org/doc/html/rfc5280#section-4.1">DER-encoded ASN.1 SubjectPublicKeyInfo</a> structure (as a CBOR <code>bstr</code>), from the <em>endorsee&#8217;s</em> X.509 certificate that will be used for signing the claims of assets that this endorsement is expected to be used with.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The value of the credential shall be compared (bitwise identical) to the SubjectPublicKeyInfo structure of the certificate located in the <code>x5chain</code> or <code>33</code> (integer) COSE header of the active manifest Claim Signature (see <a href="#x_509_certificates">[x_509_certificates]</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The value of the credential shall be compared (bitwise identical) to the SubjectPublicKeyInfo structure of the certificate located in the <code>x5chain</code> or <code>33</code> (integer) COSE header of the active manifest Claim Signature (see <a href="#x509_certificates">Section 15.4.1, &#8220;X.509 Certificates&#8221;</a>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -4818,7 +4830,7 @@ $credential-type /= 1 ; credentials with this type are a DER-encoded ASN.1 Subje
 <div class="sect3">
 <h4 id="_endorsement_storage"><a class="anchor" href="#_endorsement_storage"></a>15.7.2. Endorsement Storage</h4>
 <div class="paragraph">
-<p>If the active manifest signer possesses an endorsement that it wishes to use to endorse an action performed by an actor, it can choose to embed the endorsement in the manifest it is generating. The procedure for the validation of such endorsements is covered in <a href="#_validate_the_endorsements">Section 16.9, &#8220;Validate the Endorsements&#8221;</a>. An endorsement is added as an <a href="#_endorsement_assertion">[_endorsement_assertion]</a> in the active manifest&#8217;s assertion store.</p>
+<p>If the active manifest signer possesses an endorsement that it wishes to use to endorse an action performed by an actor, it can choose to embed the endorsement in the manifest it is generating. The procedure for the validation of such endorsements is covered in <a href="#_validate_the_endorsements">Section 16.9, &#8220;Validate the Endorsements&#8221;</a>. An endorsement is added as an <a href="#_endorsement">Section 15.7, &#8220;Endorsement&#8221;</a> in the active manifest&#8217;s assertion store.</p>
 </div>
 </div>
 </div>
@@ -5138,7 +5150,7 @@ $credential-type /= 1 ; credentials with this type are a DER-encoded ASN.1 Subje
 <div class="sect3">
 <h4 id="_embedded_2"><a class="anchor" href="#_embedded_2"></a>16.2.1. Embedded</h4>
 <div class="paragraph">
-<p>The C2PA Manifest Store shall be located by the manifest consumer embedded inside the asset at the <a href="#_embedding_manifests_into_assets">standard locations for embedding manifests</a>.  However, if an asset was retrieved via an HTTP connection, a manifest consumer may look for a <code>Link</code> header, as described in the <a href="#_by_link_header">Link Header</a> clause below, to determine if a C2PA Manifest Store is present.</p>
+<p>The C2PA Manifest Store shall be located by the manifest consumer embedded inside the asset at the <a href="#_embedding_manifests_into_various_file_formats">standard locations for embedding manifests</a>.  However, if an asset was retrieved via an HTTP connection, a manifest consumer may look for a <code>Link</code> header, as described in the <a href="#_by_link_header">Link Header</a> clause below, to determine if a C2PA Manifest Store is present.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5179,7 +5191,7 @@ Checking the <code>Link</code> header, if present, allows a manifest consumer to
 <p>If the asset has XMP and the XMP contains a <code>dcterms:provenance</code> key, the provided URI should be used to locate the active manifest.</p>
 </li>
 <li>
-<p>If the asset is a font with a <code>C2PA</code> table and its <code>activeManifestUriLength</code> is nonzero, then the indicated URI should be used to locate the active manifest.</p>
+<p>If the asset is a font with a <code>C2PA</code> table and its <code>activeManifestUriLength</code> is non-zero, then the indicated URI should be used to locate the active manifest.</p>
 </li>
 <li>
 <p>If no C2PA Manifest Store has been located, the manifest consumer should look for files at the same path or URI, but with a filename extension of <code>.c2pa</code>. If the C2PA Manifest Store is not found, a manifest consumer may look in whatever additional places it deems most appropriate to locate it.  For example, a child folder of a file system.</p>
@@ -5209,7 +5221,7 @@ Checking the <code>Link</code> header, if present, allows a manifest consumer to
 <div class="sect4">
 <h5 id="_by_link_header"><a class="anchor" href="#_by_link_header"></a>16.2.2.1. By <code>Link</code> header</h5>
 <div class="paragraph">
-<p>If the asset was retrieved via an HTTP connection, the manifest consumer should look in the header of the HTTP response for a <code>Link</code> header, as defined in <a href="https://datatracker.ietf.org/doc/html/rfc8288">RFC 8288</a>, containing a parameter of <code>rel=c2pa-manifest</code>. If present, a C2PA Manifest Store can be retrieved from that URI reference. The URI will be a standard <code>http</code> or <code>https</code> URI, but may include the <a href="#_uri_references">JUMBF URI</a> fragment.  If the URI includes the <a href="#_uri_references">JUMBF URI</a> fragment, such as <code><a href="https://c2pa.org/image.jpg#jumbf=c2pa/urn:uuid:F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4" class="bare">https://c2pa.org/image.jpg#jumbf=c2pa/urn:uuid:F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4</a></code> it shall be to the active manifest within the C2PA Manifest Store that is embedded in that asset.</p>
+<p>If the asset was retrieved via an HTTP connection, the manifest consumer should look in the header of the HTTP response for a <code>Link</code> header, as defined in <a href="https://datatracker.ietf.org/doc/html/rfc8288">RFC 8288</a>, containing a parameter of <code>rel=c2pa-manifest</code>. If present, a C2PA Manifest Store can be retrieved from that URI reference. The URI will be a standard <code>http</code> or <code>https</code> URI, but may include the <a href="#_uri_references">JUMBF URI</a> fragment.  If the URI includes the <a href="#_uri_references">JUMBF URI</a> fragment, such as https://c2pa.org/image.jpg#jumbf=c2pa/urn:uuid:F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4 it shall be to the active manifest within the C2PA Manifest Store that is embedded in that asset.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5794,7 +5806,7 @@ The presence of a <code>validationStatus</code> with a failure code or with a <c
 </ul>
 </div>
 <div class="paragraph">
-<p>Retrieve the endorsement assertion in the active manifest, as described in <a href="#_endorsement_assertion">[_endorsement_assertion]</a>. In order to provide resilience in the case of a claim generator unexpectedly adding multiple endorsement assertions to an assertion store, a validator may iterate through the validation process below with each endorsement, stopping the iteration immediately if an endorsement validates successfully.</p>
+<p>Retrieve the endorsement assertion in the active manifest, as described in <a href="#_endorsement">Section 15.7, &#8220;Endorsement&#8221;</a>. In order to provide resilience in the case of a claim generator unexpectedly adding multiple endorsement assertions to an assertion store, a validator may iterate through the validation process below with each endorsement, stopping the iteration immediately if an endorsement validates successfully.</p>
 </div>
 <div class="paragraph">
 <p>For each <code>action</code> object in the <a href="#_actions">actions</a> assertion:</p>
@@ -6199,7 +6211,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <p><a href="../../1.0/security/Security_Considerations.html" class="xref page">Security Considerations</a></p>
 </li>
 <li>
-<p>Explainer</p>
+<p><a href="../../1.3/explainer/Explainer.html" class="xref page">Explainer</a></p>
 </li>
 </ul>
 </div>
@@ -6241,7 +6253,7 @@ CBOR is not currently defined in 19566-5, but an upcoming update will define the
 </div>
 </div>
 <div class="sect2">
-<h3 id="_actors"><a class="anchor" href="#_actors"></a>19.2. Actors</h3>
+<h3 id="common_data_model_actor"><a class="anchor" href="#common_data_model_actor"></a>19.2. Actors</h3>
 <div class="paragraph">
 <p>An <a href="#_actor">actor</a> object references a particular person or organisation. A valid actor object shall have either:</p>
 </div>
@@ -7097,7 +7109,7 @@ language-string /= tstr .size (1..max-tstr-length)</code></pre>
 <p>The <code>details</code> field is a human-readable string that provides additional information about the dataSource, e.g., the name of the API used to provide the assertion contents, or the URL of the server from which the contents were provided. For example, a broad location assertion source may have a <code>type</code> value of <code>remoteProvider.3rdParty</code>, with the <code>details</code> value set to <code>www.googleapis.com/geolocation/v1/geolocate</code>.</p>
 </div>
 <div class="paragraph">
-<p>If the value of the <code>type</code> field is <code>humanEntry.identified</code>, then an <code>actors</code> field shall contain an array of one or more actor objects as defined in <a href="#_common_data_model_actor">[_common_data_model_actor]</a>.</p>
+<p>If the value of the <code>type</code> field is <code>humanEntry.identified</code>, then an <code>actors</code> field shall contain an array of one or more actor objects as defined in <a href="#common_data_model_actor">Section 19.2, &#8220;Actors&#8221;</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -8838,6 +8850,10 @@ size-type = int .ge 1</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Areas of the asset&#8217;s "editorial" content were cropped out.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.deleted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Areas of the asset&#8217;s "editorial" content were deleted.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.drawing</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Changes using drawing tools including brushes or eraser.</p></td>
 </tr>
@@ -9007,7 +9023,7 @@ This field is useful for when the <code>softwareAgent</code> is not the same pro
 </table>
 </div>
 <div class="paragraph">
-<p>An action may include an <code>actors</code> key which can point to the identity of one or more human actor who performed the action as described in <a href="#_common_data_model_actor">[_common_data_model_actor]</a>. It may also include a <code>digitalSourceType</code> key, whose value shall be one of the terms <a href="https://cv.iptc.org/newscodes/digitalsourcetype/">defined by the IPTC</a> or a C2PA specific value from the list below:</p>
+<p>An action may include an <code>actors</code> key which can point to the identity of one or more human actor who performed the action as described in <a href="#common_data_model_actor">Section 19.2, &#8220;Actors&#8221;</a>. It may also include a <code>digitalSourceType</code> key, whose value shall be one of the terms <a href="https://cv.iptc.org/newscodes/digitalsourcetype/">defined by the IPTC</a> or a C2PA specific value from the list below:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -10215,7 +10231,7 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Versions 1.0 and 1.1 of the C2PA Specification defined an assertion <code>stds.iptc.photo-metedata</code> which only implemented the IPTC Photo Metadata Standard. As of version 1.2 we now support both photo and video metadata so we have changed the name of the assertion to <code>stds.iptc</code>. The <code>stds.iptc.photo-metadata</code> usage is deprecated: it is not recommended, but can still be used.</p>
+<p>Versions 1.0 and 1.1 of the C2PA Specification defined an assertion <code>stds.iptc.photo-metadata</code> which only implemented the IPTC Photo Metadata Standard. As of version 1.2 we now support both photo and video metadata so we have changed the name of the assertion to <code>stds.iptc</code>. The <code>stds.iptc.photo-metadata</code> usage is deprecated: it is not recommended, but can still be used.</p>
 </div>
 </td>
 </tr>
@@ -10440,7 +10456,7 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p><a href="https://schema.org/">Schema.org</a> is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet. As such, they provide numerous JSON-based grammars that one may wish to include as an assertion. When using a schema.org type as a C2PA assertion, we require a full JSON-LD serialisation. Thus, the top-level <code>@context</code> field must have a value of <code><a href="http://schema.org" class="bare">http://schema.org</a></code>.</p>
+<p><a href="https://schema.org/">Schema.org</a> is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet. As such, they provide numerous JSON-based grammars that one may wish to include as an assertion. When using a schema.org type as a C2PA assertion, we require a full JSON-LD serialisation. Thus, the top-level <code>@context</code> field must have a value of <code>http://schema.org</code>.</p>
 </div>
 <div class="paragraph">
 <p>All Schema.org assertions shall have a label that starts with <code>schema.org</code> and be followed by the name of the schema that is being used. For example, <code>schema.org.ImageObject</code> can be used to include something extra about an image. Since schemas on <a href="https://schema.org/">Schema.org</a> are not versioned as described <a href="https://schema.org/docs/howwework.html">here</a>, no version indicator is used in their labels.</p>
@@ -10474,19 +10490,6 @@ As an example: an image infographic has been assembled that fact-checks some oth
 <div class="paragraph">
 <p>The reviewRating property inside the ClaimReview assertion is of type <a href="https://schema.org/Rating">Rating</a>. Depending on how an organisation does fact-checking reviews, it may have a numerical rating, a true or false, or some other textual description of how the asset has reviewed a claim.</p>
 </div>
-<div class="paragraph">
-<p>The itemReviewed property inside the ClaimReview assertion may be used in one of two ways:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Directly reference an ingredient, by adding the appropriate ingredient JUMBF URI to the <code>url</code> property inside <code>itemReviewed</code></p>
-</li>
-<li>
-<p>Describe another item of content that is not part of the C2PA manifest, using <a href="https://schema.org/Thing">Thing</a> and <a href="https://schema.org/CreativeWork">CreativeWork</a> properties (<a href="https://www.claimreviewproject.com/user-guide" class="bare">https://www.claimreviewproject.com/user-guide</a> provides a good guide on how to use the ClaimReview vocabulary)</p>
-</li>
-</ol>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -10498,6 +10501,31 @@ The <code>reviewRating</code> property in a ClaimReview is not the same as the <
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>The itemReviewed property inside the ClaimReview assertion may be used in one of two ways:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Directly reference an ingredient, by adding the appropriate ingredient JUMBF URI to the <code>url</code> property inside <code>itemReviewed</code></p>
+</li>
+<li>
+<p>Describe another item of content that is not part of the C2PA manifest, using <a href="https://schema.org/Thing">Thing</a> and <a href="https://schema.org/CreativeWork">CreativeWork</a> properties</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="https://www.claimreviewproject.com/user-guide" class="bare">https://www.claimreviewproject.com/user-guide</a> provides a good guide on how to use the ClaimReview vocabulary
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>A partial <a href="https://json-schema.org/">JSON Schema</a> for this type is:</p>
@@ -10824,7 +10852,7 @@ This schema does not validate all aspects of the schema.org types, a valid Creat
 </div>
 </div>
 <div class="paragraph">
-<p>It is possible to associate identifying information about an actor with their specific role in the Creative Work as described <a href="#_common_data_model_actor">below</a>.</p>
+<p>It is possible to associate identifying information about an actor with their specific role in the Creative Work as described in <a href="#common_data_model_actor">Section 19.2, &#8220;Actors&#8221;</a>.</p>
 </div>
 </div>
 </div>
@@ -11553,7 +11581,7 @@ font-designer-map = {
 <div class="ulist">
 <ul>
 <li>
-<p>Add support for the binding of live video streams, 3D formats and audio formats.</p>
+<p>Add support for the binding of live video streams and 3D formats.</p>
 </li>
 <li>
 <p>Addressing the case where servers make real-time modifications to content streamed to a client, potentially altering the cryptographic hash used to bind ISO BMFF content to a manifest.</p>
