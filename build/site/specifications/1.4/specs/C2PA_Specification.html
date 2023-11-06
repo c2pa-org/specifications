@@ -2506,7 +2506,7 @@ This means that the C2PA Manifest Consumer can process private boxes that it kno
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This implies that given a <code>hashed_uri</code> reference from an ingredient assertion to a C2PA Manifest via the <code>c2pa_manifest</code> field, the hash is calculated over the compressed payload of the c2ma/c2um.
+This implies that given a <code>hashed_uri</code> reference from an ingredient assertion to a C2PA Manifest via the <code>c2pa_manifest</code> field, the hash is calculated using the same process as any other JUMBF superbox: over the JUMBF Description Box and the <code>brob</code> box with its compressed payload, but excluding the superbox&#8217;s header. The contents of the <code>brob</code> box are not decompressed first to calculate the hash.
 </td>
 </tr>
 </table>
