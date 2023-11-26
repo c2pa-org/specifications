@@ -28,13 +28,13 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="../../1.3/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
-            <a class="navbar-item" href="../../1.3/explainer/_attachments/Explainer.pdf">Explainer</a> 
-            <a class="navbar-item" href="../../1.3/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
-            <a class="navbar-item" href="../../1.1/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../../1.0/explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../../1.0/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../../1.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
             <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
             <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
-            <a class="navbar-item" href="../../1.3/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
           </div>
         </div>
           <div class="navbar-item">
@@ -74,22 +74,19 @@
     <a class="nav-link" href="C2PA_Specification.html">Technical Specifications</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../explainer/Explainer.html">Explainer</a>
+    <a class="nav-link" href="../../1.2/explainer/Explainer.html">Explainer</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../guidance/Guidance.html">Guidance for Implementers</a>
+    <a class="nav-link" href="../../1.2/guidance/Guidance.html">Guidance for Implementers</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../1.1/ux/UX_Recommendations.html">User Experience Guidance</a>
+    <a class="nav-link" href="../../1.0/ux/UX_Recommendations.html">User Experience Guidance</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../../1.0/security/Security_Considerations.html">C2PA Security Considerations</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../../1.0/security/Harms_Modelling.html">C2PA Harms Modelling</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../ai-ml/ai_ml.html">Guidance for Artificial Intelligence and Machine Learning</a>
   </li>
 </ul>
   </li>
@@ -140,7 +137,7 @@
           <a href="../index.html">1.3</a>
         </li>
         <li class="version">
-          <a href="../../1.1/index.html">1.1</a>
+          <a href="../../1.2/index.html">1.2</a>
         </li>
         <li class="version">
           <a href="../../1.0/index.html">1.0</a>
@@ -166,7 +163,7 @@
   <button class="version-menu-toggle" title="Show other versions of page">1.3</button>
   <div class="version-menu">
     <a class="version is-current" href="C2PA_Specification.html">1.3</a>
-    <a class="version is-missing" href="../../1.1/index.html">1.1</a>
+    <a class="version is-missing" href="../../1.2/index.html">1.2</a>
     <a class="version is-missing" href="../../1.0/index.html">1.0</a>
   </div>
 </div>
@@ -2493,7 +2490,7 @@ Allowing other boxes and superboxes enables custom extensions to C2PA as well as
 <div class="sect4">
 <h5 id="_data_storage"><a class="anchor" href="#_data_storage"></a>12.1.1.7. Data Storage</h5>
 <div class="paragraph">
-<p>A C2PA Data Box Store is a JUMBF superbox that shall contain only one or more CBOR Content Type boxes (<code>cbor</code>). It shall not contain any other type of JUMBF box or superbox. It shall have a label of <code>c2pa.databoxes</code> and a UUID of <code>0x63326462-0011-0010-8000-00AA00389B71</code> (<code>c2db</code>).</p>
+<p>A C2PA Data Box Store is a JUMBF superbox that shall contain only one or more CBOR Content Type boxes (<code>cbor</code>). It shall not contain any other type of JUMBF box or superbox. It shall have a label of <code>c2pa.databoxes</code> and a UUID of <code>0x63327663-0011-0010-8000-00AA00389B71</code> (<code>c2db</code>).</p>
 </div>
 <div class="paragraph">
 <p>The CBOR Content Type boxes shall have a label of <code>c2pa.data</code> (for <a href="#_embedded_data">embedded data</a>).</p>
@@ -5425,7 +5422,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="sect2">
 <h3 id="_approach"><a class="anchor" href="#_approach"></a>17.1. Approach</h3>
 <div class="paragraph">
-<p>The C2PA intends to provide clear recommendations and guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders, with the results balancing uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. These recommendations can be found in the <a href="../../1.1/ux/UX_Recommendations.html" class="xref page">User experience guidance document</a>.</p>
+<p>The C2PA intends to provide clear recommendations and guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders, with the results balancing uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. These recommendations can be found in the <a href="../../1.0/ux/UX_Recommendations.html" class="xref page">User experience guidance document</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -5619,10 +5616,10 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../guidance/Guidance.html" class="xref page">Guidance for implementers</a></p>
+<p><a href="../../1.2/guidance/Guidance.html" class="xref page">Guidance for implementers</a></p>
 </li>
 <li>
-<p><a href="../../1.1/ux/UX_Recommendations.html" class="xref page">User experience guidance</a></p>
+<p><a href="../../1.0/ux/UX_Recommendations.html" class="xref page">User experience guidance</a></p>
 </li>
 <li>
 <p><a href="../../1.0/security/Security_Considerations.html" class="xref page">Security Considerations</a></p>

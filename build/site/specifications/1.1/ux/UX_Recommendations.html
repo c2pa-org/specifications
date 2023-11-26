@@ -16,7 +16,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
-      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/1.3/index.html">C2PA Specifications</a>
+      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/1.4/index.html">C2PA Specifications</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -28,13 +28,13 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="../../1.3/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
-            <a class="navbar-item" href="../../1.3/explainer/_attachments/Explainer.pdf">Explainer</a> 
-            <a class="navbar-item" href="../../1.3/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
-            <a class="navbar-item" href="../../1.1/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../../1.0/explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../../1.0/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../../1.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
             <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
             <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
-            <a class="navbar-item" href="../../1.3/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
           </div>
         </div>
           <div class="navbar-item">
@@ -70,9 +70,12 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../../1.3/index.html">C2PA Specifications</a>
+      <a class="title" href="../../1.4/index.html">C2PA Specifications</a>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../1.4/index.html">1.4</a>
+        </li>
+        <li class="version">
           <a href="../../1.3/index.html">1.3</a>
         </li>
         <li class="version is-current">
@@ -91,12 +94,13 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../1.3/index.html" class="home-link" title="Home"></a>
+  <a href="../../1.4/index.html" class="home-link" title="Home"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">1.1</button>
   <div class="version-menu">
+    <a class="version is-missing" href="../../1.4/index.html">1.4</a>
     <a class="version is-missing" href="../../1.3/index.html">1.3</a>
     <a class="version is-current" href="UX_Recommendations.html">1.1</a>
     <a class="version is-missing" href="../../1.0/index.html">1.0</a>
@@ -207,7 +211,7 @@
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders. The results will balance uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback. Please reference the Glossary in the <a href="../../1.3/specs/C2PA_Specification.html#_glossary" class="xref page">C2PA Specifications</a> for clarifications on terminology used within this document. For general guidance on other areas of the specification, please see <a href="../../1.3/guidance/Guidance.html" class="xref page">Guidance for Implementors</a>.</p>
+<p>The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders. The results will balance uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback. Please reference the Glossary in the <a href="../../1.4/specs/C2PA_Specification.html#_glossary" class="xref page">C2PA Specifications</a> for clarifications on terminology used within this document. For general guidance on other areas of the specification, please see <a href="../../1.3/guidance/Guidance.html" class="xref page">Guidance for Implementors</a>.</p>
 </div>
 </div>
 </div>
@@ -339,7 +343,7 @@ In addition to these standard levels, there will be common tools available for t
 <div class="title">Figure 3. L1 validation states</div>
 </div>
 <div class="paragraph">
-<p>In the event that the active manifest is invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See Chapter 14, Validation in the <a href="../../1.3/specs/C2PA_Specification.html#_validation" class="xref page">C2PA Technical Specifications</a> for further information.</p>
+<p>In the event that the active manifest is invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See Chapter 14, Validation in the <a href="../../1.4/specs/C2PA_Specification.html#_validation" class="xref page">C2PA Technical Specifications</a> for further information.</p>
 </div>
 </div>
 </div>
@@ -599,7 +603,7 @@ In addition to these standard levels, there will be common tools available for t
 <div class="title">Figure 22. No thumbnail in update manifest</div>
 </div>
 <div class="paragraph">
-<p>It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the <a href="../../1.3/specs/C2PA_Specification.html#_actions" class="xref page">actions section of the technical specification</a>. Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.</p>
+<p>It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the <a href="../../1.4/specs/C2PA_Specification.html#_actions" class="xref page">actions section of the technical specification</a>. Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1105,7 +1109,7 @@ In addition to these standard levels, there will be common tools available for t
 <div class="sect2">
 <h3 id="_user_facing_edit_and_activity_labels_and_descriptions"><a class="anchor" href="#_user_facing_edit_and_activity_labels_and_descriptions"></a>9.3. User-facing edit and activity labels and descriptions</h3>
 <div class="paragraph">
-<p>The <a href="../../1.3/specs/C2PA_Specification.html#_actions" class="xref page">names and descriptions of C2PA actions</a> have generally been written with implementers in mind. Users who are less familiar with the C2PA will benefit from clear labeling and descriptions of actions that capture as much of the related actions that may apply as possible.</p>
+<p>The <a href="../../1.4/specs/C2PA_Specification.html#_actions" class="xref page">names and descriptions of C2PA actions</a> have generally been written with implementers in mind. Users who are less familiar with the C2PA will benefit from clear labeling and descriptions of actions that capture as much of the related actions that may apply as possible.</p>
 </div>
 <div class="paragraph">
 <p>Here we provide a matrix of current C2PA actions with recommended labels and optional descriptions for them in the "Edits and activity" section of consumer manifest UIs.</p>
