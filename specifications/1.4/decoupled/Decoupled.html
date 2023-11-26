@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>C2PA Decoupled API :: C2PA Specifications</title>
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.4/decoupled/Decoupled.html">
+    <meta name="page-spec" content="specifications:decoupled:Decoupled.adoc">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/1.4/index.html">C2PA Specifications</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Download</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../../1.0/explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../../1.0/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../../1.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
+            <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
+          </div>
+        </div>
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-item" href="https://asciidoctor.zulipchat.com" target="_blank" rel="noopener" data-title="Communication">
+            <span class="icon"><img src="../../../_/img/octicons-24.svg#view-comment-discussion"></span>
+          </a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item has-icon" href="https://github.com/c2pa-org" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-mark-github"></span>
+              <span>Repository</span>
+            </a>
+            <a class="navbar-item has-icon" href="https://twitter.com/c2pa" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-hash"></span>
+              <span>Tweets</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active is-loading" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">C2PA Specifications</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Technical Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../specs/C2PA_Specification.html">Content Credentials</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../attestations/attestation.html">Attestations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Informative Documents</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../1.3/explainer/Explainer.html">Explainer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../1.3/guidance/Guidance.html">Guidance for Implementers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../1.1/ux/UX_Recommendations.html">User Experience Guidance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../1.0/security/Security_Considerations.html">C2PA Security Considerations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../1.0/security/Harms_Modelling.html">C2PA Harms Modelling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../1.3/ai-ml/ai_ml.html">Guidance for Artificial Intelligence and Machine Learning</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+  <script>
+;(function () {
+  var panel = document.querySelector('.nav-panel-menu')
+  var page
+  var hash = window.location.hash
+  if (hash) {
+    if (~hash.indexOf('%')) hash = decodeURIComponent(hash)
+    if (~hash.indexOf('"')) hash = hash.replace(/(?=")/g, '\\')
+    var link = panel.querySelector('.nav-link[href="' + hash + '"]')
+    if (link) page = link.parentNode
+    else if ((page = panel.querySelector('.is-current-url'))) page.classList.add('is-provisional')
+  } else {
+    page = panel.querySelector('.is-current-url')
+  }
+  if (page) {
+    var ancestor = page
+    while ((ancestor = ancestor.parentNode) && ancestor !== panel) {
+      if (ancestor.className === 'nav-item') ancestor.classList.add('is-current-path', 'is-active')
+    }
+    page.classList.add('is-current-page', 'is-active')
+    if (panel.scrollHeight > panel.clientHeight) {
+      var panelRect = panel.getBoundingClientRect()
+      var linkRect = page.querySelector('.nav-link').getBoundingClientRect()
+      panel.scrollTop += Math.round(linkRect.top - panelRect.top - (panelRect.height - linkRect.height) * 0.5)
+    }
+  } else {
+    panel.scrollTop = 0
+  }
+  panel.classList.remove('is-loading')
+})()
+  </script>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">C2PA Specifications</span>
+    <span class="version">1.4</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">C2PA Specifications</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1.4</a>
+        </li>
+        <li class="version">
+          <a href="../../1.3/index.html">1.3</a>
+        </li>
+        <li class="version">
+          <a href="../../1.1/index.html">1.1</a>
+        </li>
+        <li class="version">
+          <a href="../../1.0/index.html">1.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link" title="Home"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">C2PA Specifications</a></li>
+    <li><a href="Decoupled.html" class="discrete">C2PA Decoupled API</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">1.4</button>
+  <div class="version-menu">
+    <a class="version is-current" href="Decoupled.html">1.4</a>
+    <a class="version is-missing" href="../../1.3/index.html">1.3</a>
+    <a class="version is-missing" href="../../1.1/index.html">1.1</a>
+    <a class="version is-missing" href="../../1.0/index.html">1.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">C2PA Decoupled API</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="http://creativecommons.org/licenses/by/4.0/"><img src="_images/CCby4.png" alt="Creative Commons License"></a>
+</div>
+</div>
+<div class="paragraph text-center">
+<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<!-- toc disabled -->
+<div class="paragraph">
+<p>This document describes a proposed API for communicating with manifest repositories.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "swagger": "2.0",
+  "info": {
+    "description": "A lookup service using soft bindings to identify matching C2PA manifests within a hosted manifest store.",
+    "version": "1.0.0",
+    "title": "C2PA Decoupled Lookup"
+  },
+  "host": "example.c2pa.org",
+  "basePath": "/v1",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/publish": {
+      "post": {
+        "tags": [
+          "publish"
+        ],
+        "summary": "Add a new manifest to the manifest store.",
+        "description": "",
+        "operationId": "publishManifest",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "manifest",
+            "type": "file",
+            "description": "Manifest to add to the manifest store",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Service failure"
+          }
+        },
+        "security": [
+          {
+            "decoupled_auth": [
+              "publish:manifests"
+            ]
+          }
+        ]
+      }
+    },
+    "/search/queryByBinding": {
+      "get": {
+        "tags": [
+          "query"
+        ],
+        "summary": "Given an array of one or more soft bindings, find zero or more manifests within the manifest store matching each soft binding.",
+        "description": "Multiple bindings may be submitted to issue multiple queries within one service call.  Multiple manifests may be returned for each soft binding.",
+        "operationId": "queryByBinding",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "maxResultsPerQuery",
+            "in": "query",
+            "description": "The maximum number of manifests to return for each query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "queryBindings",
+            "in": "query",
+            "description": "The content bindings being used as query",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "queryBindingTypes",
+            "in": "query",
+            "description": "The kind of content bindings being used as query (see soft binding registry)",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/c2pa.manifestID"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query value"
+          },
+          "500": {
+            "description": "Service failure"
+          }
+        },
+        "security": [
+          {
+            "decoupled_auth": [
+              "fetch:manifests"
+            ]
+          }
+        ]
+      }
+    },
+    "/search/queryByContent": {
+      "post": {
+        "tags": [
+          "query"
+        ],
+        "summary": "Find zero or more manifests within the manifest store using an uploaded file containing a sample of digital content.",
+        "description": "",
+        "operationId": "uploadFile",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "The maximum number of manifests to return for the query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "manifest",
+            "in": "formData",
+            "type": "file",
+            "description": "Manifest to add to the manifest store",
+            "required": true
+          },
+          {
+            "name": "queryBindingType",
+            "in": "query",
+            "description": "The kind of content binding being used as a query (see soft binding registry)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/c2pa.manifestID"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid asset type"
+          },
+          "500": {
+            "description": "Service failure"
+          }
+        },
+        "security": [
+          {
+            "decoupled_auth": [
+              "fetch:manifests"
+            ]
+          }
+        ]
+      }
+    },
+    "/manifest/{manifestId}": {
+      "get": {
+        "tags": [
+          "fetch"
+        ],
+        "summary": "Retrieve a single manifest by manifest ID",
+        "description": "Returns a single manifest",
+        "operationId": "getManifestById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "manifestId",
+            "in": "path",
+            "description": "ID of the manifest to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/c2pa.manifest"
+            }
+          },
+          "400": {
+            "description": "Invalid Manifest ID supplied"
+          },
+          "404": {
+            "description": "Manifest ID not found"
+          },
+          "500": {
+            "description": "Service failure"
+          }
+        },
+        "security": [
+          {
+            "decoupled_auth": [
+              "fetch:manifests"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "delete"
+        ],
+        "summary": "Delete a single manifest from the manifest store",
+        "description": "Given a manifest ID, remove the matching manifest from the manifest store.",
+        "operationId": "deleteManifest",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "manifestId",
+            "in": "path",
+            "description": "Unique ID of the manifest to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid Manifest ID supplied"
+          },
+          "404": {
+            "description": "Manifest not found"
+          },
+          "500": {
+            "description": "Service failure"
+          }
+        },
+        "security": [
+          {
+            "decoupled_auth": [
+              "delete:manifests"
+            ]
+          }
+        ]
+      }
+    },
+    "/service/getSupportedBindings": {
+      "get": {
+        "tags": [
+          "service"
+        ],
+        "summary": "Enumerate content bindings supported as queries by lookup service (as defined in the soft binding registry)",
+        "description": "Returns a list of the soft bindings supported by the lookup service",
+        "operationId": "getSupportedBindings",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/c2pa.bindingList"
+              }
+            }
+          },
+          "500": {
+            "description": "Service failure"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "decoupled_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://example.c2pa.org/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "publish:manifests": "publish new manifests to the manifest store",
+        "delete:manifests": "remove manifests from the manifest store",
+        "fetch:manifests": "search and read manifests within the manifest store"
+      }
+    }
+  },
+  "definitions": {
+    "c2pa.manifestID": {
+      "type": "string",
+      "pattern": "^https://[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b[-a-zA-Z0-9@:%_\\+.~#?&amp;//=]*$",
+      "description": "identifier of a C2PA manifest"
+    },
+    "c2pa.manifest": {
+      "type": "string",
+      "description": "a C2PA manifest (CBOR binary blob)"
+    },
+    "c2pa.bindingList": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "list of content bindings (algs) supported"
+    }
+  },
+  "externalDocs": {
+    "description": "C2PA Specification",
+    "url": "https://c2pa.org/specifications"
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <div class="footer-main">
+    <figure class="footer-brand">
+      <a class="logo" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <figcaption class="footer-brand-name"><a href="https://c2pa.org">C2PA</a></figcaption>
+    </figure>
+    <ul class="footer-brand-links">
+      <li><a href="https://c2pa.org" target="_blank" rel="noopener">Home</a></li>
+      <li><a href="https://c2pa.org/specifications">Docs</a></li>
+      <li><a href="https://github.com/c2pa-org" target="_blank" rel="noopener">Project</a></li>
+    </ul>
+    <p class="footer-brand-follow">
+      <a href="https://twitter.com/c2pa_org" title="Follow us on Twitter" target="_blank" rel="noopener"><img src="../../../_/img/twitter-logo.svg" alt="Twitter logo" class="logo" width="28"><span class="handle">@C2PA_org</span></a>
+    </p>
+  </div>
+  <div class="footer-legal">
+    <p>Copyright © 2023 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
+  </div>
+  <div class="footer-thanks">
+    <p>Thanks to our <a href="https://c2pa.org/membership/" target="_blank" rel="noopener">membership</a> for helping to make this project possible.</p>
+    <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
+  </div>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/specifications/1.4/decoupled/Decoupled.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+
+  </body>
+</html>

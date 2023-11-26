@@ -126,9 +126,9 @@
 <li><a href="#_levels_of_information_disclosure">3. Levels of information disclosure</a></li>
 <li><a href="#_l1_indicator_of_c2pa_data">4. L1 – indicator of C2PA data</a>
 <ul class="sectlevel2">
-<li><a href="#_appearance">4.1. Appearance</a></li>
-<li><a href="#_placement_and_interaction">4.2. Placement and interaction</a></li>
-<li><a href="#_validation_states">4.3. Validation states</a></li>
+<li><a href="#_appearance_e">4.1. Appearance (E)</a></li>
+<li><a href="#_placement_and_interaction_e">4.2. Placement and interaction (E)</a></li>
+<li><a href="#_validation_states_e">4.3. Validation states (E)</a></li>
 </ul>
 </li>
 <li><a href="#l2-section">5. L2 – provenance summaries</a>
@@ -138,7 +138,7 @@
 <li><a href="#_manifest_summaries_depth">5.3. Manifest summaries (depth)</a></li>
 <li><a href="#_provenance_summaries_breadth">5.4. Provenance summaries (breadth)</a></li>
 <li><a href="#_combinatory_summaries">5.5. Combinatory summaries</a></li>
-<li><a href="#_validation_states_2">5.6. Validation states</a></li>
+<li><a href="#_validation_states">5.6. Validation states</a></li>
 </ul>
 </li>
 <li><a href="#_l3">6. L3</a>
@@ -147,7 +147,8 @@
 <li><a href="#_navigation">6.2. Navigation</a></li>
 <li><a href="#_comparing_manifests">6.3. Comparing manifests</a></li>
 <li><a href="#_manifest_recovery">6.4. Manifest recovery</a></li>
-<li><a href="#_redactions_and_updates">6.5. Redactions and updates</a></li>
+<li><a href="#_embedding_and_remote_storage">6.5. Embedding and remote storage</a></li>
+<li><a href="#_redactions_and_updates">6.6. Redactions and updates</a></li>
 </ul>
 </li>
 <li><a href="#_creator_experience">7. Creator experience</a>
@@ -157,17 +158,17 @@
 <li><a href="#identity">7.3. Identity</a></li>
 <li><a href="#_actions">7.4. Actions</a></li>
 <li><a href="#_ingredients_and_their_validation_state">7.5. Ingredients and their validation state</a></li>
-<li><a href="#manifest-storage-options">7.6. Manifest storage options</a></li>
+<li><a href="#_manifest_storage_options">7.6. Manifest storage options</a></li>
 <li><a href="#_exporting">7.7. Exporting</a></li>
 </ul>
 </li>
 <li><a href="#_media_formats">8. Media formats</a>
 <ul class="sectlevel2">
 <li><a href="#_video">8.1. Video</a></li>
-<li><a href="#thumbnails">8.2. Thumbnails</a></li>
+<li><a href="#_thumbnails">8.2. Thumbnails</a></li>
 </ul>
 </li>
-<li><a href="#interface-language">9. Interface language</a>
+<li><a href="#_interface_language">9. Interface language</a>
 <ul class="sectlevel2">
 <li><a href="#l1-language">9.1. L1 interface language</a></li>
 <li><a href="#_l2_interface_language">9.2. L2 interface language</a></li>
@@ -207,7 +208,25 @@
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders. The results will balance uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback. Please reference the Glossary in the <a href="../../1.3/specs/C2PA_Specification.html#_glossary" class="xref page">C2PA Specifications</a> for clarifications on terminology used within this document. For general guidance on other areas of the specification, please see <a href="../../1.2/guidance/Guidance.html" class="xref page">Guidance for Implementors</a>.</p>
+<p>The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders. The results will balance uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback. Please reference the Glossary in the <a href="../../1.3/specs/C2PA_Specification.html#_glossary" class="xref page">C2PA Specifications</a> for clarifications on terminology used within this document. For general guidance on other areas of the specification, please see <a href="../../1.2/guidance/Guidance.html" class="xref page">Guidance for Implementors</a>. {update this link}</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Document key</strong></dt>
+<dd>
+<p>{text explains key}</p>
+<div class="ulist">
+<ul>
+<li>
+<p>V = Validated</p>
+</li>
+<li>
+<p>E = Experimental</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -313,16 +332,13 @@ In addition to these standard levels, there will be common tools available for t
 <div class="title">Figure 2. The L1 indicator</div>
 </div>
 <div class="sect2">
-<h3 id="_appearance"><a class="anchor" href="#_appearance"></a>4.1. Appearance</h3>
+<h3 id="_appearance_e"><a class="anchor" href="#_appearance_e"></a>4.1. Appearance (E)</h3>
 <div class="paragraph">
 <p>Following the consistency principle, it is important in developing trust that users can learn to easily recognize the presence of the system and that their expectations are met regardless of context. As such, the L1 indicator should be consistent in its appearance across all contexts and devices to the degree that it clearly represents the presence of C2PA data. L1 can be applied using only the icon, the title, or both. If using the icon alone, ensure its appearance meets accessibility criteria so that consumers can easily identify its presence on or near the C2PA-enabled content. We recommend using the placeholder “information seal” icon and working title “Content Credentials” for recognition and learned understanding of C2PA-enabled content. We may make updates to the icon and product name in upcoming versions of this document as we gather findings from on-going user research.</p>
 </div>
-<div class="paragraph">
-<p>For content recommendations see the <a href="#interface-language">section on interface language</a>.</p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="_placement_and_interaction"><a class="anchor" href="#_placement_and_interaction"></a>4.2. Placement and interaction</h3>
+<h3 id="_placement_and_interaction_e"><a class="anchor" href="#_placement_and_interaction_e"></a>4.2. Placement and interaction (E)</h3>
 <div class="paragraph">
 <p>For flexibility across implementations, there are several recommended placements for L1 indicators when C2PA-enabled content is present: on top of the content or somewhere close enough that its relationship to the content is clear. If L1 is positioned on top of the content, a hover state may be applied so as not to permanently obstruct the content below. Applications may differ depending on device, such as revealing L1 via long-press on mobile. Partially overlapping the L1 indicator over content is the most robust option to avoid potential misuse in the scenario that it has been purposefully added to content in a way meant to deceive. A new user experience guidance is recommended for initial implementation rollout to make clear how to identify L1 indicators.</p>
 </div>
@@ -331,12 +347,12 @@ In addition to these standard levels, there will be common tools available for t
 </div>
 </div>
 <div class="sect2">
-<h3 id="_validation_states"><a class="anchor" href="#_validation_states"></a>4.3. Validation states</h3>
+<h3 id="_validation_states_e"><a class="anchor" href="#_validation_states_e"></a>4.3. Validation states (E)</h3>
 <div class="imageblock">
 <div class="content">
 <img src="_images/L1-states_2x.png" alt="L1 states 2x">
 </div>
-<div class="title">Figure 3. L1 validation states</div>
+<div class="title">Figure 3. L1 validation states {need to update this image}</div>
 </div>
 <div class="paragraph">
 <p>In the event that the active manifest is invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See Chapter 14, Validation in the <a href="../../1.3/specs/C2PA_Specification.html#_validation" class="xref page">C2PA Technical Specifications</a> for further information.</p>
@@ -360,9 +376,6 @@ In addition to these standard levels, there will be common tools available for t
 </div>
 <div class="paragraph">
 <p>L2 styles, fonts, etc. can be customized to fit the given context. Iconography and terminology used to describe assertions should be consistent wherever possible. C2PA anticipates the need for L2 generally to be space-efficient as it appears within the implementer’s context. Therefore it is suggested the data displayed be streamlined to provide enough information for the particular content, user, and context, allowing the consumer to understand to a sufficient degree how the asset came to its current state.</p>
-</div>
-<div class="paragraph">
-<p>For content recommendations see the <a href="#interface-language">section on  interface language</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -453,9 +466,12 @@ In addition to these standard levels, there will be common tools available for t
 </div>
 </div>
 <div class="sect2">
-<h3 id="_validation_states_2"><a class="anchor" href="#_validation_states_2"></a>5.6. Validation states</h3>
+<h3 id="_validation_states"><a class="anchor" href="#_validation_states"></a>5.6. Validation states</h3>
 <div class="sect3">
 <h4 id="_incomplete_states"><a class="anchor" href="#_incomplete_states"></a>5.6.1. Incomplete states</h4>
+<div class="paragraph">
+<p>{update the images in this section having reconsidered icon}</p>
+</div>
 <div class="paragraph">
 <p>There will be instances when C2PA-enabled content is incomplete data. Most commonly, this will happen if the content is edited without capturing C2PA data. In this event, the L2 and L3 UI should reflect when data is incomplete, as well as the manifest data that came before or after. A dotted line can be drawn between manifests to suggest the connection is not the same as between valid, intact manifests. Incomplete data should not automatically signal that one should discount the content as untrustworthy. For this reason, C2PA discourages the use of an indicator designed to trigger alarm, which should be reserved for more apparent tamper-evident use cases, in favour of a more descriptive and neutral indicator.</p>
 </div>
@@ -542,7 +558,7 @@ In addition to these standard levels, there will be common tools available for t
 <div class="title">Figure 18. L3 tree view</div>
 </div>
 <div class="paragraph">
-<p>In the above image, we propose a tree structure that shows each manifest or non-C2PA enabled ingredient. Each item is selectable, and shows its manifest assertions to the right. Each asset&#8217;s entire provenance chain should be viewable, and each individual manifest or ingredient inspected.</p>
+<p>The L3 user experience should allow for any asset to be selected by the user locally or remotely, such as in the case where an asset is linked from an L2 display. Once selected, a manifest recovery search option can be available, which would allow users to select which "version" of the asset they want to see provenance information about.</p>
 </div>
 </div>
 <div class="sect2">
@@ -566,11 +582,18 @@ In addition to these standard levels, there will be common tools available for t
 <div class="title">Figure 20. Manifest recovery</div>
 </div>
 <div class="paragraph">
-<p>The L3 user experience should allow for any asset to be selected by the user locally or remotely, such as in the case where an asset is linked from an L2 display. Once selected, a manifest recovery search option can be available, which would allow users to select which "version" of the asset they want to see provenance information about. <a href="#manifest-storage-options">Read more about embedding remote manifests.</a></p>
+<p>Each asset&#8217;s entire provenance chain should be viewable, and each individual manifest or ingredient inspected.</p>
+</div>
+<div class="paragraph">
+<p>In the above image, we propose a tree structure that shows each manifest or non-C2PA enabled ingredient. Each item is selectable, and shows its manifest assertions to the right.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_redactions_and_updates"><a class="anchor" href="#_redactions_and_updates"></a>6.5. Redactions and updates</h3>
+<h3 id="_embedding_and_remote_storage"><a class="anchor" href="#_embedding_and_remote_storage"></a>6.5. Embedding and remote storage</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_redactions_and_updates"><a class="anchor" href="#_redactions_and_updates"></a>6.6. Redactions and updates</h3>
 <div class="paragraph">
 <p>There are workflows where provenance data (assertions) need to be removed from previous manifests but the digital content (the media itself) is not changed. A potential scenario might be that an image capture manifest contains sensitive personal data (creator name, location) that needs to be removed before publishing an image as making that information public risks harm to the photographer. This would involve a redaction.</p>
 </div>
@@ -599,7 +622,7 @@ In addition to these standard levels, there will be common tools available for t
 <div class="title">Figure 22. No thumbnail in update manifest</div>
 </div>
 <div class="paragraph">
-<p>It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the <a href="../../1.3/specs/C2PA_Specification.html#_actions" class="xref page">actions section of the technical specification</a>. Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.</p>
+<p>It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and an explanation for the additions can be given. Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -700,9 +723,9 @@ In addition to these standard levels, there will be common tools available for t
 </div>
 </div>
 <div class="sect2">
-<h3 id="manifest-storage-options"><a class="anchor" href="#manifest-storage-options"></a>7.6. Manifest storage options</h3>
+<h3 id="_manifest_storage_options"><a class="anchor" href="#_manifest_storage_options"></a>7.6. Manifest storage options</h3>
 <div class="paragraph">
-<p>It is important to provide clear guidance about the different manifest storage options available to creators. Creators want or need to know where their manifest data is being stored, either locally or remotely, when they export their content. The following options may be presented to creators regarding the location of their manifest data:</p>
+<p>It is important to provide clear guidance in about the different manifest storage options available to creators. Creators want or need to know where their manifest data is being stored, either locally or remotely, when they export their content. The following options may be presented to creators regarding the location of their manifest data:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -736,7 +759,7 @@ In addition to these standard levels, there will be common tools available for t
 <div class="sect2">
 <h3 id="_exporting"><a class="anchor" href="#_exporting"></a>7.7. Exporting</h3>
 <div class="paragraph">
-<p>The <a href="../../1.2/guidance/Guidance.html" class="xref page">C2PA Implementation Guidance</a> recommends that a manifest be created for an asset when a significant event in the lifecycle of the asset takes place, such as its initial creation or an "export" operation from an editing tool. This is in part due to the underlying technical process of digitally signing the manifest, but also aligns with natural creation workflows. When a creator is ready to export their work, they should be able to decide whether or not to attach the accumulated assertion data to their content.</p>
+<p>The <a href="../../1.2/guidance/Guidance.html" class="xref page">C2PA Implementation Guidance</a> recommends that a manifest be created for an asset when a significant event in the lifecycle of the asset takes place, such as its initial creation or an "export" operation from an editing tool. This is in part due to the underlying technical process of digitally signing the manifest, but also aligns with natural creation workflows. When a creator is ready to export their work, they should be able to decide whether or not to attach the accumulated assertion data to their content. Not every piece of exported content is in need of provenance data, so C2PA recommends enabling the option of attachment on a per document basis. It will also help serve as a reminder to creators that they have opted into the C2PA implementation, which will allow them to protect their privacy as needed.</p>
 </div>
 </div>
 </div>
@@ -779,7 +802,10 @@ In addition to these standard levels, there will be common tools available for t
 <div class="title">Figure 27. Video L2 provenance summary</div>
 </div>
 <div class="paragraph">
-<p>An important detail for video UX is the L2 thumbnail displays. <a href="#thumbnails">Read more on thumbnails here.</a> Specifically in the case of video, to help distinguish these assets from images, a filmstrip icon is added to the thumbnail to depict its media type. If the video asset containing the active manifest is playable, the media type icon should depict a play icon. However, even if the initial asset is a playable video, its ingredients may be static representations.</p>
+<p>An important detail for video UX is the L2 thumbnail displays. For details on thumbnails please see section 8.2.</p>
+</div>
+<div class="paragraph">
+<p>To help distinguish video assets from images, a filmstrip icon is added to the thumbnail to depict its media type. If the video asset containing the active manifest is playable, the media type icon should depict a play icon. However, even if the initial asset is a playable video, its ingredients may be static representations.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -808,7 +834,7 @@ In addition to these standard levels, there will be common tools available for t
 </div>
 </div>
 <div class="sect2">
-<h3 id="thumbnails"><a class="anchor" href="#thumbnails"></a>8.2. Thumbnails</h3>
+<h3 id="_thumbnails"><a class="anchor" href="#_thumbnails"></a>8.2. Thumbnails</h3>
 <div class="paragraph">
 <p>Since provenance data can be added to any media type, ‘thumbnails’ here should be thought of in the broadest, multi-media sense. They should not necessarily be limited to static pixel based representations of all media types. A ‘snippet’ of audio for example could be considered all or part of a 'thumbnail’ for an audio file. Taking a multi-media, dynamic approach where possible should make thumbnails more helpful to users as they will be media appropriate. Implemented well, it will also help to aid accessibility.</p>
 </div>
@@ -836,7 +862,7 @@ In addition to these standard levels, there will be common tools available for t
 <p>Where relevant, an L1 indication of provenance</p>
 </li>
 <li>
-<p>Some representation of the media (see below for different approaches)</p>
+<p>Some representation of the media* (see below for different approaches)</p>
 </li>
 <li>
 <p>Data (i.e. media duration for temporal media)</p>
@@ -847,7 +873,7 @@ In addition to these standard levels, there will be common tools available for t
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Media representations</strong></p>
+<p><strong>*Media representations (used alone or in combination)</strong></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -947,7 +973,7 @@ In addition to these standard levels, there will be common tools available for t
 </div>
 </div>
 <div class="sect1">
-<h2 id="interface-language"><a class="anchor" href="#interface-language"></a>9. Interface language</h2>
+<h2 id="_interface_language"><a class="anchor" href="#_interface_language"></a>9. Interface language</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="l1-language"><a class="anchor" href="#l1-language"></a>9.1. L1 interface language</h3>
@@ -1105,7 +1131,7 @@ In addition to these standard levels, there will be common tools available for t
 <div class="sect2">
 <h3 id="_user_facing_edit_and_activity_labels_and_descriptions"><a class="anchor" href="#_user_facing_edit_and_activity_labels_and_descriptions"></a>9.3. User-facing edit and activity labels and descriptions</h3>
 <div class="paragraph">
-<p>The <a href="../../1.3/specs/C2PA_Specification.html#_actions" class="xref page">names and descriptions of C2PA actions</a> have generally been written with implementers in mind. Users who are less familiar with the C2PA will benefit from clear labeling and descriptions of actions that capture as much of the related actions that may apply as possible.</p>
+<p>The <a href="https://c2pa.org/specifications/specifications/1.2/specs/C2PA_Specification.html#_actions">names and descriptions of C2PA actions</a> have generally been written with implementers in mind. Users who are less familiar with the C2PA will benefit from clear labeling and descriptions of actions that capture as much of the related actions that may apply as possible.</p>
 </div>
 <div class="paragraph">
 <p>Here we provide a matrix of current C2PA actions with recommended labels and optional descriptions for them in the "Edits and activity" section of consumer manifest UIs.</p>
