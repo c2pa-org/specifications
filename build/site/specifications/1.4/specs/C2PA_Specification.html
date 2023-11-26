@@ -1074,7 +1074,7 @@ A <a href="#_c2pa_manifest">C2PA Manifest</a> can reference other <a href="#_c2p
 <p>Added new regions of interest for text-based formats (e.g., PDF, Office, EPUB, etc.)</p>
 </li>
 <li>
-<p>Added new <code>stds.metadata</code> assertion to support Exif, IPTC, Schema.org and XMP</p>
+<p>Added new <code>c2pa.metadata</code> assertion to support Exif, IPTC, Schema.org and XMP</p>
 </li>
 <li>
 <p>Major revision to TIFF embedding support</p>
@@ -7399,6 +7399,12 @@ language-string /= tstr .size (1..max-tstr-length)</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Common Metadata</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.metadata</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON-LD</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Exif information</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">stds.exif</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
@@ -10006,10 +10012,10 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
 <div class="sect2">
 <h3 id="_common_metadata"><a class="anchor" href="#_common_metadata"></a>19.17. Common Metadata</h3>
 <div class="paragraph">
-<p>In earlier versions of this specification, there were individual assertions for each metadata standard (e.g., IPTC, EXIF).  There is now a single <code>stds.metadata</code> assertion to simplify the specification and to allow for the addition of new metadata standards in the future, without the need to create more assertions. This simplification also makes it clearer that such metadata has been called out by the Claim Generator as significant - having been explicitly included in the Manifest to enable the cryptographic validation of the data. The relationship of these statements to the signer is specified in <a href="#_statements">Section 15.6, &#8220;Statements&#8221;</a>.</p>
+<p>In earlier versions of this specification, there were individual assertions for each metadata standard (e.g., IPTC, EXIF).  There is now a single <code>c2pa.metadata</code> assertion to simplify the specification and to allow for the addition of new metadata standards in the future, without the need to create more assertions. This simplification also makes it clearer that such metadata has been called out by the Claim Generator as significant - having been explicitly included in the Manifest to enable the cryptographic validation of the data. The relationship of these statements to the signer is specified in <a href="#_statements">Section 15.6, &#8220;Statements&#8221;</a>.</p>
 </div>
 <div class="paragraph">
-<p>An common metadata assertion shall have a label of <code>stds.metadata</code>, and contain a single JSON content type box containing the <a href="https://www.w3.org/TR/json-ld11/">JSON-LD</a> serialization of one or more metadata values from other metadata standards including (but not limited to): IPTC, EXIF, XMP, and Schema.org. The <code>@context</code> property within the JSON-LD object shall be included, and used to provide context / namespaces for the metadata standards being specified.  The JSON-LD object may then contain other properties, as defined by those metadata standards, that specify the actual metadata.  These values may be unique to the assertion or they may be copied from the standard "metadata blocks" of the asset format.  When copying, it is recommended that for those formats that can be expressed in XMP, that the data shall be serialized according to the rules of the <a href="https://www.iso.org/standard/79384.html">JSON-LD serialization of XMP</a>.</p>
+<p>An common metadata assertion shall have a label of <code>c2pa.metadata</code>, and contain a single JSON content type box containing the <a href="https://www.w3.org/TR/json-ld11/">JSON-LD</a> serialization of one or more metadata values from other metadata standards including (but not limited to): IPTC, EXIF, XMP, and Schema.org. The <code>@context</code> property within the JSON-LD object shall be included, and used to provide context / namespaces for the metadata standards being specified.  The JSON-LD object may then contain other properties, as defined by those metadata standards, that specify the actual metadata.  These values may be unique to the assertion or they may be copied from the standard "metadata blocks" of the asset format.  When copying, it is recommended that for those formats that can be expressed in XMP, that the data shall be serialized according to the rules of the <a href="https://www.iso.org/standard/79384.html">JSON-LD serialization of XMP</a>.</p>
 </div>
 <div class="paragraph">
 <p>An example of an common metadata assertion for an image:</p>
@@ -10095,7 +10101,7 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
 <p>Although the redaction process works in such a way that only an entire assertion can be redacted (see <a href="#_redaction_of_assertions">Section 6.7, &#8220;Redaction of Assertions&#8221;</a>), the use of an <a href="#_update_manifests">update manifest</a> enables partial redaction by removing the original and then placing the new, reduced, versions in the update manifest. This new assertion would be presented in a <a href="#_user_experience">user experience</a> in association with the signer of the update manifest and not with the signer of the C2PA Manifest that has been redacted.</p>
 </div>
 <div class="paragraph">
-<p>For example, an assertion containing both location data and camera information which may need to have the location data redacted which could be done through an update manifest with a new <code>stds.metadata</code> assertion with only the camera information.</p>
+<p>For example, an assertion containing both location data and camera information which may need to have the location data redacted which could be done through an update manifest with a new <code>c2pa.metadata</code> assertion with only the camera information.</p>
 </div>
 </td>
 </tr>
