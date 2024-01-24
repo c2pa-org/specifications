@@ -16,7 +16,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
-      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/1.4/index.html">C2PA Specifications</a>
+      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/2.0/index.html">C2PA Specifications</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -70,9 +70,12 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../../1.4/index.html">C2PA Specifications</a>
+      <a class="title" href="../../2.0/index.html">C2PA Specifications</a>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../2.0/index.html">2.0</a>
+        </li>
+        <li class="version">
           <a href="../../1.4/index.html">1.4</a>
         </li>
         <li class="version is-current">
@@ -91,12 +94,13 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../1.4/index.html" class="home-link" title="Home"></a>
+  <a href="../../2.0/index.html" class="home-link" title="Home"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">1.3</button>
   <div class="version-menu">
+    <a class="version is-missing" href="../../2.0/index.html">2.0</a>
     <a class="version is-missing" href="../../1.4/index.html">1.4</a>
     <a class="version is-current" href="ai_ml.html">1.3</a>
     <a class="version is-missing" href="../../1.0/index.html">1.0</a>
@@ -149,7 +153,7 @@
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="../../1.4/specs/C2PA_Specification.html" class="xref page">C2PA specification</a> can be used to add cryptographic information to detect the tampering of media files and streams. Similarly, the C2PA framework can also be used in artificial intelligence (AI) and machine learning (ML) systems to indicate the tampering of datasets, software, and models which are utilized during training and inference. This document provides guidance about how C2PA&#8217;s Content Credentials can be employed by AI and ML systems.</p>
+<p>The <a href="#1.4@specs:C2PA_Specification.adoc" class="xref unresolved">C2PA specification</a> can be used to add cryptographic information to detect the tampering of media files and streams. Similarly, the C2PA framework can also be used in artificial intelligence (AI) and machine learning (ML) systems to indicate the tampering of datasets, software, and models which are utilized during training and inference. This document provides guidance about how C2PA&#8217;s Content Credentials can be employed by AI and ML systems.</p>
 </div>
 <div class="paragraph">
 <p>Recent research has demonstrated that ML systems are susceptible to different forms of poisoning attacks. For these types of attacks, the goal of the adversary is to cause the model to make incorrect predictions which can either be targeted or non-targeted attacks. In targeted attacks, a classifier can be maliciously trained to provide a backdoor that can be exploited by the attacker to produce a specific incorrect prediction class. One example of a targeted attack is to modify a face recognition system to allow the adversary to successfully log onto a computer as someone else. A model that has been poisoned using an untargeted attack may generate any result that is incorrect. At a minimum, the ML system must protect against three types of poisoning attacks including data poisoning, software poisoning, and model poisoning attacks <a href="#Stokes21">[Stokes21]</a>.  Content Credentials can be used to help prevent these types of attacks by protecting the data, software, and models.</p>
@@ -169,7 +173,7 @@
 <p>In other settings, the training and inference data may be split across multiple files, including media files such as images which are used to train an object detection model. In addition, the training or inference data may be streamed. In these scenarios, the data may be protected by a top-level Content Credential which includes each of the files as ingredients. In the case where the ingredients are media files, they may contain their own Content Credentials.</p>
 </div>
 <div class="paragraph">
-<p>In images and videos, a C2PA Manifest can be <a href="../../1.4/specs/C2PA_Specification.html#_embedding_manifests_into_assets" class="xref page">embedded</a> in the media file. However, existing machine learning datasets are either text or binary files which prevents the embedding of a C2PA Manifest in the file. In these cases, the C2PA Manifest can be stored in a separate, sidecar file. The C2PA Manifest can then use the Asset Reference Assertion to provide a URI to the dataset file or streamed data chunk.</p>
+<p>In images and videos, a C2PA Manifest can be <a href="#1.4@specs:C2PA_Specification.adoc#_embedding_manifests_into_assets" class="xref unresolved">embedded</a> in the media file. However, existing machine learning datasets are either text or binary files which prevents the embedding of a C2PA Manifest in the file. In these cases, the C2PA Manifest can be stored in a separate, sidecar file. The C2PA Manifest can then use the Asset Reference Assertion to provide a URI to the dataset file or streamed data chunk.</p>
 </div>
 </div>
 </div>
@@ -224,7 +228,7 @@
 <p>AI-ML output results have a wide range of concerns and risks depending on how the models were prepared and how the consumer uses the output.  Accordingly, the AI-ML provenance information is explored in levels of depth, reflecting the consumers need to reduce risk by establishing deeper trust in the results.  Briefly these levels describe the model itself, the training data used to create the model, and finally additional information about the training of the model, the training environment, and various extensions that relate explainability, transparency, and indicators of trust for the model.</p>
 </div>
 <div class="paragraph">
-<p>If the model provider does not want the model and its output to be used to train other models in an attempt to extract the model&#8217;s functionality, the model C2PA Manifest can contain a data mining assertion that asserts rights as allowed, constrained, or not allowed for generative or non-generative AI-ML models or both.  See <a href="../../1.4/specs/C2PA_Specification.html#<em>training_and_data_mining</em>" class="xref page">data mining</a> for more detail.</p>
+<p>If the model provider does not want the model and its output to be used to train other models in an attempt to extract the model&#8217;s functionality, the model C2PA Manifest can contain a data mining assertion that asserts rights as allowed, constrained, or not allowed for generative or non-generative AI-ML models or both.  See <a href="#1.4@specs:C2PA_Specification.adoc#<em>training_and_data_mining</em>" class="xref unresolved">data mining</a> for more detail.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -235,7 +239,7 @@
 <p>The most basic provenance information allows the consumer to understand what type of model is being used, authenticate the claim signature, and to verify that the model had not been tampered with.</p>
 </div>
 <div class="paragraph">
-<p>An <a href="../../1.4/specs/C2PA_Specification.html#_asset_type" class="xref page">asset type assertion</a> provides the basic model information that a validator would use to further validate the model.  By including the model&#8217;s name, machine learning framework, and the type, the consumer is better able to understand what the model does and how it does it.</p>
+<p>An <a href="#1.4@specs:C2PA_Specification.adoc#_asset_type" class="xref unresolved">asset type assertion</a> provides the basic model information that a validator would use to further validate the model.  By including the model&#8217;s name, machine learning framework, and the type, the consumer is better able to understand what the model does and how it does it.</p>
 </div>
 <div class="paragraph">
 <p>An example of an asset type assertion for an OpenVINO model, in CBOR Diagnostic Format (<code>.cbordiag</code>) would be:</p>
@@ -254,7 +258,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>The <a href="../../1.4/specs/C2PA_Specification.html#_asset_reference" class="xref page">asset reference assertion</a> provides a URI to the data of the asset, such as a AI-ML model.  This assertion is accompanied by a data hash that provides a hard binding to the asset (e.g., a model file) enabling the validator to confirm its integrity.</p>
+<p>The <a href="#1.4@specs:C2PA_Specification.adoc#_asset_reference" class="xref unresolved">asset reference assertion</a> provides a URI to the data of the asset, such as a AI-ML model.  This assertion is accompanied by a data hash that provides a hard binding to the asset (e.g., a model file) enabling the validator to confirm its integrity.</p>
 </div>
 <div class="paragraph">
 <p>OpenVINO represents the model in two files, included as ingredients.  An XML file contains the topology:</p>
@@ -359,7 +363,7 @@
 <div class="sect2">
 <h3 id="_attestation_for_ai_ml_models"><a class="anchor" href="#_attestation_for_ai_ml_models"></a>8.1. Attestation for AI-ML Models</h3>
 <div class="paragraph">
-<p>Model providers can enhance the trust signals so relying parties can determine the software and characteristics of the devices used to create the model asset.  This is done by including an <a href="../../1.4/specs/C2PA_Specification.html#_attestation" class="xref page">attestation assertion</a> in the model Content Credential.  Please refer to the <a href="&lt;attestation.adoc&gt;">attestation technical specification</a> for the description of the process for creating claims with attestations.</p>
+<p>Model providers can enhance the trust signals so relying parties can determine the software and characteristics of the devices used to create the model asset.  This is done by including an <a href="#1.4@specs:C2PA_Specification.adoc#_attestation" class="xref unresolved">attestation assertion</a> in the model Content Credential.  Please refer to the <a href="&lt;attestation.adoc&gt;">attestation technical specification</a> for the description of the process for creating claims with attestations.</p>
 </div>
 </div>
 </div>
@@ -413,7 +417,7 @@
     </p>
   </div>
   <div class="footer-legal">
-    <p>Copyright © 2023 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>Copyright © 2024 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
     <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
   </div>
   <div class="footer-thanks">
