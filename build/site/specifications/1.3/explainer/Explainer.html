@@ -16,7 +16,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
-      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/1.4/index.html">C2PA Specifications</a>
+      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/2.0/index.html">C2PA Specifications</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -70,9 +70,12 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../../1.4/index.html">C2PA Specifications</a>
+      <a class="title" href="../../2.0/index.html">C2PA Specifications</a>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../2.0/index.html">2.0</a>
+        </li>
+        <li class="version">
           <a href="../../1.4/index.html">1.4</a>
         </li>
         <li class="version is-current">
@@ -91,12 +94,13 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../1.4/index.html" class="home-link" title="Home"></a>
+  <a href="../../2.0/index.html" class="home-link" title="Home"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">1.3</button>
   <div class="version-menu">
+    <a class="version is-missing" href="../../2.0/index.html">2.0</a>
     <a class="version is-missing" href="../../1.4/index.html">1.4</a>
     <a class="version is-current" href="Explainer.html">1.3</a>
     <a class="version is-missing" href="../../1.0/index.html">1.0</a>
@@ -192,13 +196,13 @@
 <p>The provenance data and the asset are the two parts of the same puzzle - a unique puzzle. The possibility of any other pieces ever matching, either by coincidence or by a purposeful attempt to generate a match, is so low that it would be practically impossible. In other words, any alteration to either the asset or the provenance, however insignificant, would alter the mathematical algorithm - the shape of the piece of the puzzle - in such a way that they would no longer match.</p>
 </div>
 <div class="paragraph">
-<p>We refer to this as a hard binding. For more technical information on this see "hard binding" in the <a href="../../1.4/specs/C2PA_Specification.html#_glossary" class="xref page">glossary</a> and the <a href="../guidance/Guidance.html" class="xref page">non-normative guidance</a>.</p>
+<p>We refer to this as a hard binding. For more technical information on this see "hard binding" in the <a href="#1.4@specs:C2PA_Specification.adoc#_glossary" class="xref unresolved">glossary</a> and the <a href="../guidance/Guidance.html" class="xref page">non-normative guidance</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_can_content_credentials_help_with_assets_created_from_multiple_sources"><a class="anchor" href="#_can_content_credentials_help_with_assets_created_from_multiple_sources"></a>3.1.3. Can Content Credentials help with assets created from multiple sources?</h4>
 <div class="paragraph">
-<p>When one asset is created from a series of other assets, those sources are referred to as the <a href="../../1.4/specs/C2PA_Specification.html#_ingredient" class="xref page">ingredients</a>. Each ingredient that is used in the (composed) asset is recorded in that asset&#8217;s provenance, including the addition of the provenance of each individual ingredient. This process creates a chain of provenance that can stretch all the way back to each ingredient&#8217;s creation.</p>
+<p>When one asset is created from a series of other assets, those sources are referred to as the <a href="#1.4@specs:C2PA_Specification.adoc#_ingredient" class="xref unresolved">ingredients</a>. Each ingredient that is used in the (composed) asset is recorded in that asset&#8217;s provenance, including the addition of the provenance of each individual ingredient. This process creates a chain of provenance that can stretch all the way back to each ingredient&#8217;s creation.</p>
 </div>
 </div>
 <div class="sect3">
@@ -213,7 +217,7 @@
 <div class="sect3">
 <h4 id="_is_provenance_always_complete"><a class="anchor" href="#_is_provenance_always_complete"></a>3.1.5. Is provenance always complete?</h4>
 <div class="paragraph">
-<p>No. Provenance is not always complete. It may happen that an asset is modified in a way that the provenance data is not updated. For example, if an asset is cropped using a non-Content Credentials aware tool, the provenance data may not be updated to reflect that action.  However, if the asset is then brought back into a Content Credentials-aware tool for additional modification or preparation for publication, the actor responsible for signing the new Content Credentials also implicitly attests to the crop action. So even though there is missing provenance information, the asset can still be trusted based on the signer of the <a href="../../1.4/specs/C2PA_Specification.html#_active_manifest" class="xref page">active Content Credential</a>.</p>
+<p>No. Provenance is not always complete. It may happen that an asset is modified in a way that the provenance data is not updated. For example, if an asset is cropped using a non-Content Credentials aware tool, the provenance data may not be updated to reflect that action.  However, if the asset is then brought back into a Content Credentials-aware tool for additional modification or preparation for publication, the actor responsible for signing the new Content Credentials also implicitly attests to the crop action. So even though there is missing provenance information, the asset can still be trusted based on the signer of the <a href="#1.4@specs:C2PA_Specification.adoc#_active_manifest" class="xref unresolved">active Content Credential</a>.</p>
 </div>
 </div>
 </div>
@@ -262,7 +266,7 @@
 <div class="sect3">
 <h4 id="_do_the_ingredients_of_an_asset_have_verifiable_provenance"><a class="anchor" href="#_do_the_ingredients_of_an_asset_have_verifiable_provenance"></a>3.2.3. Do the ingredients of an asset have verifiable provenance?</h4>
 <div class="paragraph">
-<p>Each <a href="../../1.4/specs/C2PA_Specification.html#_ingredient" class="xref page">ingredient</a> that is included in a Content Credential can include its own provenance data, specifically its Content Credential is also included in the asset&#8217;s full set of Content Credentials. However, while the provenance data of each ingredient may be present, the ingredient&#8217;s provenance cannot be verified in the same way as the provenance data of the asset in which it is contained. This is because the actual data of the ingredient is not usually included in the asset&#8217;s Content Credential. Without the actual data, the ingredient&#8217;s hard bindings cannot be verified.</p>
+<p>Each <a href="#1.4@specs:C2PA_Specification.adoc#_ingredient" class="xref unresolved">ingredient</a> that is included in a Content Credential can include its own provenance data, specifically its Content Credential is also included in the asset&#8217;s full set of Content Credentials. However, while the provenance data of each ingredient may be present, the ingredient&#8217;s provenance cannot be verified in the same way as the provenance data of the asset in which it is contained. This is because the actual data of the ingredient is not usually included in the asset&#8217;s Content Credential. Without the actual data, the ingredient&#8217;s hard bindings cannot be verified.</p>
 </div>
 </div>
 </div>
@@ -286,7 +290,7 @@ rely upon their existing trust relationship with that known creator.&#8201;&#821
 </blockquote>
 </div>
 <div class="paragraph">
-<p>For additional information, see the <a href="../../1.4/specs/C2PA_Specification.html#_trust_model" class="xref page">Trust Model</a> section of the <a href="../../1.4/specs/C2PA_Specification.html" class="xref page">Technical Specifications</a>.</p>
+<p>For additional information, see the <a href="#1.4@specs:C2PA_Specification.adoc#_trust_model" class="xref unresolved">Trust Model</a> section of the <a href="#1.4@specs:C2PA_Specification.adoc" class="xref unresolved">Technical Specifications</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -299,7 +303,7 @@ rely upon their existing trust relationship with that known creator.&#8201;&#821
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>An example of <code>c2pa.created</code> action that might appear in an asset that was produced by a Generative AI system appears in the specification&#8217;s <a href="../../1.4/specs/C2PA_Specification.html#_parameters" class="xref page">parameters clause of Actions</a>.</p>
+<p>An example of <code>c2pa.created</code> action that might appear in an asset that was produced by a Generative AI system appears in the specification&#8217;s <a href="#1.4@specs:C2PA_Specification.adoc#_parameters" class="xref unresolved">parameters clause of Actions</a>.</p>
 </div>
 </div>
 </div>
@@ -307,7 +311,7 @@ rely upon their existing trust relationship with that known creator.&#8201;&#821
 <div class="sect3">
 <h4 id="_can_c2pa_be_used_to_label_assets_that_should_not_be_used_for_training_or_data_mining"><a class="anchor" href="#_can_c2pa_be_used_to_label_assets_that_should_not_be_used_for_training_or_data_mining"></a>3.4.2. Can C2PA be used to label assets that should not be used for training or data mining?</h4>
 <div class="paragraph">
-<p>Yes. A Content Credential can include a <a href="../../1.4/specs/C2PA_Specification.html#_training_and_data_mining" class="xref page">Training and Data Mining</a> assertion that can be used to indicate that the asset should not be used for either training or data mining purposes. The assertion is flexible and allows the author of the asset to specify whether each type of process - data mining, general AI training, or training specific to generative AI - is permitted, or not.</p>
+<p>Yes. A Content Credential can include a <a href="#1.4@specs:C2PA_Specification.adoc#_training_and_data_mining" class="xref unresolved">Training and Data Mining</a> assertion that can be used to indicate that the asset should not be used for either training or data mining purposes. The assertion is flexible and allows the author of the asset to specify whether each type of process - data mining, general AI training, or training specific to generative AI - is permitted, or not.</p>
 </div>
 </div>
 </div>
@@ -411,7 +415,7 @@ rely upon their existing trust relationship with that known creator.&#8201;&#821
     </p>
   </div>
   <div class="footer-legal">
-    <p>Copyright © 2023 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>Copyright © 2024 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
     <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
   </div>
   <div class="footer-thanks">
