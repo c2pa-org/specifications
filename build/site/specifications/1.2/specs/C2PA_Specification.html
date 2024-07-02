@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>C2PA Technical Specification :: C2PA Specifications</title>
-    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.2/specs/C2PA_Specification.html">
-    <meta name="page-spec" content="specifications:specs:C2PA_Specification.adoc">
-    <meta name="generator" content="Antora 2.3.4">
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/2.0/specs/C2PA_Specification.html">
+    <meta name="page-spec" content="1.2@specifications:specs:C2PA_Specification.adoc">
+    <meta name="generator" content="Antora 3.1.7">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <link rel="stylesheet" href="../../../_/css/search.css">
     <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
@@ -16,7 +16,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
-      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/1.2/index.html">C2PA Specifications</a>
+      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/2.0/index.html">C2PA Specifications</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -28,13 +28,13 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="../../1.3/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
-            <a class="navbar-item" href="../../1.3/explainer/_attachments/Explainer.pdf">Explainer</a> 
-            <a class="navbar-item" href="../../1.3/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
-            <a class="navbar-item" href="../../1.1/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../../1.0/explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../../1.0/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../../1.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
             <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
             <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
-            <a class="navbar-item" href="../../1.3/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
           </div>
         </div>
           <div class="navbar-item">
@@ -63,78 +63,29 @@
 <div class="nav-container">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-menu is-active is-loading" data-panel="menu">
-  <nav class="nav-menu">
-    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
-    <h3 class="title"><a href="../index.html">C2PA Specifications</a></h3>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item is-current-url" data-depth="1">
-    <a class="nav-link" href="C2PA_Specification.html">Technical Specifications</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../explainer/Explainer.html">Explainer</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../guidance/Guidance.html">Guidance for Implementors</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../1.0/ux/UX_Recommendations.html">User Experience Guidance</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../1.0/security/Security_Considerations.html">C2PA Security Considerations</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../1.0/security/Harms_Modelling.html">C2PA Harms Modelling</a>
-  </li>
-</ul>
-  </li>
-</ul>
-  </nav>
-  <script>
-;(function () {
-  var panel = document.querySelector('.nav-panel-menu')
-  var page
-  var hash = window.location.hash
-  if (hash) {
-    if (~hash.indexOf('%')) hash = decodeURIComponent(hash)
-    if (~hash.indexOf('"')) hash = hash.replace(/(?=")/g, '\\')
-    var link = panel.querySelector('.nav-link[href="' + hash + '"]')
-    if (link) page = link.parentNode
-    else if ((page = panel.querySelector('.is-current-url'))) page.classList.add('is-provisional')
-  } else {
-    page = panel.querySelector('.is-current-url')
-  }
-  if (page) {
-    var ancestor = page
-    while ((ancestor = ancestor.parentNode) && ancestor !== panel) {
-      if (ancestor.className === 'nav-item') ancestor.classList.add('is-current-path', 'is-active')
-    }
-    page.classList.add('is-current-page', 'is-active')
-    if (panel.scrollHeight > panel.clientHeight) {
-      var panelRect = panel.getBoundingClientRect()
-      var linkRect = page.querySelector('.nav-link').getBoundingClientRect()
-      panel.scrollTop += Math.round(linkRect.top - panelRect.top - (panelRect.height - linkRect.height) * 0.5)
-    }
-  } else {
-    panel.scrollTop = 0
-  }
-  panel.classList.remove('is-loading')
-})()
-  </script>
-</div>
-<div class="nav-panel-explore" data-panel="explore">
+<div class="nav-panel-explore is-active" data-panel="explore">
   <div class="context">
     <span class="title">C2PA Specifications</span>
     <span class="version">1.2</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../index.html">C2PA Specifications</a>
+      <a class="title" href="../../2.0/index.html">C2PA Specifications</a>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-latest">
+          <a href="../../2.0/index.html">2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../1.4/index.html">1.4</a>
+        </li>
+        <li class="version">
+          <a href="../../1.3/index.html">1.3</a>
+        </li>
+        <li class="version is-current">
           <a href="../index.html">1.2</a>
+        </li>
+        <li class="version">
+          <a href="../../1.1/index.html">1.1</a>
         </li>
         <li class="version">
           <a href="../../1.0/index.html">1.0</a>
@@ -149,17 +100,17 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link" title="Home"></a>
+  <a href="../../2.0/index.html" class="home-link" title="Home"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="../index.html">C2PA Specifications</a></li>
-    <li><a href="C2PA_Specification.html">Technical Specifications</a></li>
-  </ul>
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">1.2</button>
   <div class="version-menu">
+    <a class="version" href="../../2.0/specs/C2PA_Specification.html">2.0</a>
+    <a class="version" href="../../1.4/specs/C2PA_Specification.html">1.4</a>
+    <a class="version" href="../../1.3/specs/C2PA_Specification.html">1.3</a>
     <a class="version is-current" href="C2PA_Specification.html">1.2</a>
+    <a class="version" href="../../1.1/specs/C2PA_Specification.html">1.1</a>
     <a class="version is-missing" href="../../1.0/index.html">1.0</a>
   </div>
 </div>
@@ -1574,7 +1525,7 @@ We recommend that existing Exif, IPTC-IIM and/or XMP asset metadata be left unto
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_none_defined_in_1_0"><a class="anchor" href="#_none_defined_in_1_0"></a>9.3.1. None Defined in 1.0</h4>
+<h4 id="_pre_defined"><a class="anchor" href="#_pre_defined"></a>9.3.1. Pre-defined</h4>
 <div class="paragraph">
 <p>There are no soft binding algorithms defined in the approved list nor in the deprecated list in this version of the specification.</p>
 </div>
@@ -1646,7 +1597,7 @@ jumbf-uri-type = tstr .regexp "self#jumbf=[\\w\\d][\\w\\d\\.\/:-]+[\\w\\d]"
 
 generator-info-map = {
   "name": tstr .size (1..max-tstr-length), ; A human readable string naming the claim_generator	  ? "Sec-CH-UA": [1* tstr], ; A human readable string naming the claim_generator
-  ? "version": tstr, ; A human readable string of the product's version
+  ? "version": tstr, ; A human readable string of the product's version	
   ? "icon": hashed-uri-map / $hashed-ext-uri-map, ; hashed URI to the icon (either embedded or remote)
   * tstr =&gt; any	  * tstr =&gt; any
 }</code></pre>
@@ -2498,7 +2449,7 @@ Adding the PDF signature in addition to the C2PA&#8217;s claim signature improve
 <h6 id="_definition"><a class="anchor" href="#_definition"></a>11.3.2.1.1. Definition</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>Box Type: `'uuid'`
+<pre class="highlightjs highlight"><code class="language-none hljs">Box Type: `'uuid'`
 Extended Box Type: 0xD8, 0xFE, 0xC3, 0xD6, 0x1B, 0x0E, 0x48, 0x3C, 0x92, 0x97, 0x58, 0x28, 0x87, 0x7E, 0xC4, 0x81
 Container: File
 Mandatory: No
@@ -2513,7 +2464,7 @@ Quantity: Zero or more</code></pre>
 <h6 id="_syntax_2"><a class="anchor" href="#_syntax_2"></a>11.3.2.1.2. Syntax</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>aligned(8) class ContentProvenanceBox extends FullBox(`'uuid'`, extended_type = 0xD8 0xFE 0xC3 0xD6 0x1B 0x0E 0x48 0x3C 0x92 0x97 0x58 0x28 0x87 0x7E 0xC4 0x81, version = 0, 0) {
+<pre class="highlightjs highlight"><code class="language-none hljs">aligned(8) class ContentProvenanceBox extends FullBox(`'uuid'`, extended_type = 0xD8 0xFE 0xC3 0xD6 0x1B 0x0E 0x48 0x3C 0x92 0x97 0x58 0x28 0x87 0x7E 0xC4 0x81, version = 0, 0) {
     string box_purpose;
     bit(8) data[];
 }</code></pre>
@@ -2794,7 +2745,7 @@ Quantity: Zero or more</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The data structure used to store sufficient information to validate a single 'mdat' box or
+<pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The data structure used to store sufficient information to validate a single 'mdat' box or 
 ; a portion of an 'mdat' box when a Merkle tree is used",
 bmff-merkle-map = {
   "uniqueId": int, ; A unique integer used to differentiate local ids
@@ -2861,7 +2812,7 @@ What box value(s) should be used for localId instead?</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>xpath = "/uuid"
+<pre class="highlightjs highlight"><code class="language-none hljs">xpath = "/uuid"
 data = [ { offset = 8, data = b64'2P7D1hsOSDySl1goh37EgQ==' } ]</code></pre>
 </div>
 </div>
@@ -2870,12 +2821,12 @@ data = [ { offset = 8, data = b64'2P7D1hsOSDySl1goh37EgQ==' } ]</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>xpath = "/ftyp"</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">xpath = "/ftyp"</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>xpath = "/mfra"</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">xpath = "/mfra"</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -2897,7 +2848,7 @@ data = [ { offset = 8, data = b64'2P7D1hsOSDySl1goh37EgQ==' } ]</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>xpath = "/mdat"
+<pre class="highlightjs highlight"><code class="language-none hljs">xpath = "/mdat"
 subset = { { 16, 0 } }</code></pre>
 </div>
 </div>
@@ -3012,7 +2963,7 @@ NOTE: a good example of this is creating a manifest for a pre-existing asset.</p
 </div>
 <div class="imageblock text-center kroki">
 <div class="content">
-<img src="https://kroki.io/plantuml/svg/eNqVVE1v2zAMPdu_gugOAwY4vntDgDbYgB62Aktuww6KxThaZcmQlGVBsf8-Sv6QnLTpepNJvsenR8p5JrFBxfMs-wC3UoJByZzQyu5FZ4EZBCtUc5DMwEFJtBa026M5CkuZDmuxE9ijvyMHKRRa4ugMWlQOsN0i58jLWivHhLKh8k4e8KKUvh-JweAODaoa-9IN_nEgFJSlcEyK2pYltMgUyei8TCYBJbZEQPV0j-E2efYe9oIjkFaSqd0UYOpEqjp3ohRdzC4WizwLmVqYWuLw0Ze0Xr-xgc66E0ls_PHbw-ZzBdRTUI0glxSQNmZhpw3UklnSYh-F6phhLTxsf2HtvpABa6JA2GrJ0_zKA87Svgv7rQWHzugtXdDCUbg9dWokmVQbfaRuiP5ekclb6k4dgjZur3NvSJB4ay06eCJDV9SGgnTy186-omOcOTZ9MyV2aCn_dwY23upAUJYjpizTqpVB7o80j6c0ficUJ9fmwXvVULnwU_ec94p8a8PWjUKozSDlrI1kog2gSZaNGNpAVoeYR_XRgFiLRjF3MOi55mRTqpfCL-4T6TfmYB25vxEtrh1ru7m2UfFc3tpp33bkiLwhcabzZdGX1qXtYn6yoA_nWT_7T0Xxg_aaWv8sIE45JKtqoiqKgi-T_Dg9ii9hKB5WCN5t6RV_dPQ-K3-CavZ0n0OOm3Mdmk9bWFVzF8Fz3bT0gm-Srawg_lv-BzkqeysuWdoKWnYa4Sn6bLopPH0hL-PDegfPhn04y8VtjUVxT_IsipxNdfnc3lxOwauaJkFsgT7xxPZdL0ZwfRUGlvg4U1vivr4mZ-R53Yfrev4BhitHvw==" alt="C2PA Entity Diagram" width="612">
+<img src="https://kroki.io/plantuml/svg/eNqVVE1v2zAMPdu_gugOAwY4vntDgDbYgB62Aktuww6KxThaZcmQlGVBsf8-Sv6QnLTpepNJvsenR8p5JrFBxfMs-wC3UoJByZzQyu5FZ4EZBCtUc5DMwEFJtBa026M5CkuZDmuxE9ijvyMHKRRa4ugMWlQOsN0i58jLWivHhLKh8k4e8KKUvh-JweAODaoa-9IN_nEgFJSlcEyK2pYltMgUyei8TCYBJbZEQPV0j-E2efYe9oIjkFaSqd0UYOpEqjp3ohRdzC4WizwLmVqYWuLw0Ze0Xr-xgc66E0ls_PHbw-ZzBdRTUI0glxSQNmZhpw3UklnSYh-F6phhLTxsf2HtvpABa6JA2GrJ0_zKA87Svgv7rQWHzugtXdDCUbg9dWokmVQbfaRuiP5ekclb6k4dgjZur3NvSJB4ay06eCJDV9SGgnTy186-omOcOTZ9MyV2aCn_dwY23upAUJYjpizTqpVB7o80j6c0ficUJ9fmwXvVULnwU_ec94p8a8PWjUKozSDlrI1kog2gSZaNGNpAVoeYR_XRgFiLRjF3MOi55mRTqpfCL-4T6TfmYB25vxEtrh1ru7m2UfFc3tpp33bkiLwhcabzZdGX1qXtYn6yoA_nWT_7T0Xxg_aaWv8sIE45JKtqoiqKgi-T_Dg9ii9hKB5WCN5t6RV_dPQ-K3-CavZ0n0OOm3Mdmk9bWFVzF8Fz3bT0gm-Srawg_lv-BzkqeysuWdoKWnYa4Sn6bLopPH0hL-PDegfPhn04y8VtjUVxT_IsipxNdfnc3lxOwauaJkFsgT7xxPZdL0ZwbZ4w0cTXmfoSF_Y1PSPP60ZcX7B_rrVH3w==" alt="C2PA Entity Diagram" width="612">
 </div>
 <div class="title">Figure 12. C2PA Entity Diagram</div>
 </div>
@@ -3695,7 +3646,7 @@ The IETF is working on an update for RFC 6170 referred to as <a href="https://ww
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; CBOR version of rVals and related structures based on JSON schema in https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.01.01_60/ts_11918201v010101p.pdf section 5.3.5.2
 rVals = {
-  "ocspVals": [1* bstr]
+  "ocspVals": [1* bstr] 
 }</code></pre>
 </div>
 </div>
@@ -4919,7 +4870,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="sect2">
 <h3 id="_approach"><a class="anchor" href="#_approach"></a>16.1. Approach</h3>
 <div class="paragraph">
-<p>The C2PA intends to provide clear recommendations and guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders, with the results balancing uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. These recommendations can be found in the <a href="#ux:UX_Recommendations.html" class="page unresolved">User experience guidance document</a>.</p>
+<p>The C2PA intends to provide clear recommendations and guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders, with the results balancing uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. These recommendations can be found in the <a href="#ux:UX_Recommendations.adoc" class="xref unresolved">User experience guidance document</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4982,7 +4933,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="sect3">
 <h4 id="_context"><a class="anchor" href="#_context"></a>17.1.1. Context</h4>
 <div class="paragraph">
-<p>Information security is a principal concern of C2PA. C2PA maintains a threat model and security considerations for the C2PA specification. This effort complements other security-related work within C2PA. Associated documentation is currently in development and can be found at <a href="#security:Security_Considerations.html" class="page unresolved">Security Considerations</a>.</p>
+<p>Information security is a principal concern of C2PA. C2PA maintains a threat model and security considerations for the C2PA specification. This effort complements other security-related work within C2PA. Associated documentation is currently in development and can be found at <a href="#security:Security_Considerations.adoc" class="xref unresolved">Security Considerations</a>.</p>
 </div>
 <div class="paragraph">
 <p>The C2PA is developing security considerations documentation that includes:</p>
@@ -5078,7 +5029,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="sect3">
 <h4 id="_considerations"><a class="anchor" href="#_considerations"></a>17.2.2. Considerations</h4>
 <div class="paragraph">
-<p>The harms, misuse, and abuse assessment is an ongoing process. The information presented in the <a href="#security:Harms_Modelling.html" class="page unresolved">Harms Modelling documentation</a> should not be considered the end result of a comprehensive evaluation, but as a basis for ongoing discussions centered on impacted communities, and aimed at mitigating potential abuse and misuse and protecting human rights.</p>
+<p>The harms, misuse, and abuse assessment is an ongoing process. The information presented in the <a href="#security:Harms_Modelling.adoc" class="xref unresolved">Harms Modelling documentation</a> should not be considered the end result of a comprehensive evaluation, but as a basis for ongoing discussions centered on impacted communities, and aimed at mitigating potential abuse and misuse and protecting human rights.</p>
 </div>
 <div class="paragraph">
 <p>There are two critical aspects of the approach:</p>
@@ -5102,7 +5053,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <p>Harms modelling focuses on analysing how a socio-technical system might negatively impact users, other stakeholders or broader society, or otherwise create or reenforce structures  of injustice, threats to human rights, or disproportionate risks to vulnerable groups globally. The process of harms modelling systematically requires combining knowledge about a system architecture and its user affordances with historical and contextual evidence about the impact of similar existing systems on different social groups and participatory consultation with a range of communities who may be implicated by the system. This combined information frames the ability to anticipate harm and proactively identify responses.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="#security:Harms_Modelling.html" class="page unresolved">Harms Modelling documentation</a> describes the framework and the process carried out to date, followed by the methodology, an overview of the assessment, an outline for public review and feedback, and due diligence actions being developed to accompany version 1.0 of these specifications, its implementations and evolution.</p>
+<p>The <a href="#security:Harms_Modelling.adoc" class="xref unresolved">Harms Modelling documentation</a> describes the framework and the process carried out to date, followed by the methodology, an overview of the assessment, an outline for public review and feedback, and due diligence actions being developed to accompany version 1.0 of these specifications, its implementations and evolution.</p>
 </div>
 </div>
 <div class="sect3">
@@ -5113,13 +5064,13 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../guidance/Guidance.html" class="page">Guidance for implementers</a></p>
+<p><a href="#guidance:Guidance.adoc" class="xref unresolved">Guidance for implementers</a></p>
 </li>
 <li>
-<p><a href="#ux:UX_Recommendations.html" class="page unresolved">User experience guidance</a></p>
+<p><a href="#ux:UX_Recommendations.adoc" class="xref unresolved">User experience guidance</a></p>
 </li>
 <li>
-<p><a href="#security:Security_Considerations.html" class="page unresolved">Security Considerations</a></p>
+<p><a href="#security:Security_Considerations.adoc" class="xref unresolved">Security Considerations</a></p>
 </li>
 <li>
 <p>Explainer</p>
@@ -5955,7 +5906,7 @@ The <code>url</code> value provides flexibility for hashing assets that may be r
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Also check optionality within the hash-map
-; The data structure used to store the cryptographic hash of some or all of the asset's data
+; The data structure used to store the cryptographic hash of some or all of the asset's data 
 ; and additional information required to compute the hash.
 data-hash-map = {
   ? "exclusions": [1* EXCLUSION_RANGE-map],
@@ -5964,7 +5915,7 @@ data-hash-map = {
   "pad": bstr, ; zero-filled byte string used for filling up space
   ? "pad2": bstr, ; optional zero-filled byte string used for filling up space
   ? "name": tstr .size (1..max-tstr-length), ; (optional) a human-readable description of what this hash cover
-  ? "url": uri, ; (optional) a file or http(s) URL to where the bytes that are being hashed can be found.
+  ? "url": uri, ; (optional) a file or http(s) URL to where the bytes that are being hashed can be found. 
               ; This is useful for cases where the data lives in a different file chunk or side-car than the claim.
 }
 
@@ -5984,11 +5935,11 @@ EXCLUSION_RANGE-map = {
   "pad" : 'abc',
   "hash": 'Auxjtmax46cC2N3Y9aFmBO9Jfay8LEwJWzBUtZ0sUM8gA=',
   "name": "JUMBF manifest"
-  "exclusions": [
+  "exclusions": [ 
     {
       "start": 9960,
       "length": 4213
-    }
+    } 
   ],
 }</code></pre>
 </div>
@@ -6122,7 +6073,7 @@ All the APP11 segments containing the C2PA Manifest JUMBF are contiguous so that
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>  xpath = '/' nodes
+<pre class="highlightjs highlight"><code class="language-none hljs">  xpath = '/' nodes
   nodes = node
         | node '/' nodes
   node = box4cc
@@ -6413,7 +6364,7 @@ merkle-map = {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>offset = 0
+<pre class="highlightjs highlight"><code class="language-none hljs">offset = 0
 While (offset &lt; length of file)
 	Starting at offset, locate the first byte of the first box that matches any entry in the exclusions array, call this first_excluded_byte
 		If no such box is found, set first_excluded_byte = length of file
@@ -6487,29 +6438,29 @@ The <code>url</code> value provides flexibility for hashing assets that may be r
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">;The data structure used to store one or more soft bindings across some or all of the asset's content
 soft-binding-map = {
-  "alg": tstr, ; A string identifying the soft binding algorithm and version of that algorithm used
-              ; to compute the value, taken from the C2PA soft binding algorithm identifier list. If this field is absent, the algorithm is taken from the `softbinding-alg` value of the enclosing structure. If both are present, the field in this structure is used.
+  "alg": tstr, ; A string identifying the soft binding algorithm and version of that algorithm used 
+              ; to compute the value, taken from the C2PA soft binding algorithm identifier list. If this field is absent, the algorithm is taken from the `softbinding-alg` value of the enclosing structure. If both are present, the field in this structure is used. 
               ; If no value is present in any of these places, this structure is invalid; there is no default.
   "blocks": [1* soft-binding-block-map],
   "pad": bytes, ; zero-filled byte string used for filling up space
   ? "pad2": bytes, ; optional zero-filled byte string used for filling up space
   ? "name": tstr .size (1..max-tstr-length), ; (optional) a human-readable description of what this hash covers
-  ? "alg-params": bstr, ; (optional) CBOR byte string describing parameters of the soft binding algorithm.
-                        ; If this field is absent, the algorithm is taken from the `softbinding-alg-params`
+  ? "alg-params": bstr, ; (optional) CBOR byte string describing parameters of the soft binding algorithm. 
+                        ; If this field is absent, the algorithm is taken from the `softbinding-alg-params` 
                         ; value of the enclosing structure, if present."
-  ? "url": uri, ; (optional) a file or http(s) URL to where the bytes that are being hashed lived.
-                ; This is useful for cases where the data lives in a different file chunk or side-car
+  ? "url": uri, ; (optional) a file or http(s) URL to where the bytes that are being hashed lived. 
+                ; This is useful for cases where the data lives in a different file chunk or side-car 
                 ; than the claim.
 }
 
 soft-binding-block-map = {
   "scope": soft-binding-scope-map,
-  "value": bstr, ; CBOR byte string describing, in algorithm specific format,
+  "value": bstr, ; CBOR byte string describing, in algorithm specific format, 
                 ; the value of the soft binding computed over this block of digital content"
 }
 
 soft-binding-scope-map = {
-  ? "extent": bstr, ;CBOR byte string describing, in algorithm specific format,
+  ? "extent": bstr, ;CBOR byte string describing, in algorithm specific format, 
                     ; the part of the digital content over which the soft binding value has been computed"
   ? "timespan":soft-binding-timespan-map,
 }
@@ -6544,7 +6495,7 @@ soft-binding-timespan-map = {
       "scope": {
         "extent": b64'YzJOdmNHVXlDZz09==',
         "timespan": {
-          "end": 245009
+          "end": 245009  
           "start": 133017,
         }
       },
@@ -6880,7 +6831,7 @@ actor-map = {
 
 action-items-map = {
   "action": $action-choice,
-  ? "when": tdate, ; Timestamp of when the action occurred.
+  ? "when": tdate, ; Timestamp of when the action occurred. 
   ? "softwareAgent": tstr .size (1..max-tstr-length), ;The software agent that performed the action.
   ? "changed": tstr .size (1..max-tstr-length), ; A semicolon-delimited list of the parts of the resource that were changed since the previous event history. If not present, presumed to be undefined. When tracking changes and the scope of the changed components is unknown, it should be assumed that anything might have changed.
   ? "instanceID": buuid, ; The value of the xmpMM:InstanceID property for the modified (output) resource
@@ -7204,7 +7155,7 @@ depthmap-gdepth-map = {
 
 base64-string-type = tstr
 
-$mime-choice /= "image/jpeg"
+$mime-choice /= "image/jpeg" 
 $mime-choice /= "image/png"
 
 mime-type = $mime-choice .default "image/jpeg"
@@ -8117,7 +8068,7 @@ Most references to a W3C Verifiable Credentials are via a <code>credentials</cod
     </p>
   </div>
   <div class="footer-legal">
-    <p>Copyright © 2022 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>Copyright © 2024 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
     <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
   </div>
   <div class="footer-thanks">

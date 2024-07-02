@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>C2PA Technical Specification :: C2PA Specifications</title>
-    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.1/specs/C2PA_Specification.html">
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/2.0/specs/C2PA_Specification.html">
     <meta name="page-spec" content="1.1@specifications:specs:C2PA_Specification.adoc">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.1.7">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <link rel="stylesheet" href="../../../_/css/search.css">
     <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
@@ -16,7 +16,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
-      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/1.2/index.html">C2PA Specifications</a>
+      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/2.0/index.html">C2PA Specifications</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -28,13 +28,13 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="../../1.3/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
-            <a class="navbar-item" href="../../1.3/explainer/_attachments/Explainer.pdf">Explainer</a> 
-            <a class="navbar-item" href="../../1.3/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
-            <a class="navbar-item" href="../../1.1/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../../1.0/explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../../1.0/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../../1.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
             <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
             <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
-            <a class="navbar-item" href="../../1.3/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
           </div>
         </div>
           <div class="navbar-item">
@@ -70,9 +70,18 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../../1.2/index.html">C2PA Specifications</a>
+      <a class="title" href="../../2.0/index.html">C2PA Specifications</a>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../2.0/index.html">2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../1.4/index.html">1.4</a>
+        </li>
+        <li class="version">
+          <a href="../../1.3/index.html">1.3</a>
+        </li>
+        <li class="version">
           <a href="../../1.2/index.html">1.2</a>
         </li>
         <li class="version is-current">
@@ -91,13 +100,16 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../1.2/index.html" class="home-link" title="Home"></a>
+  <a href="../../2.0/index.html" class="home-link" title="Home"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">1.1</button>
   <div class="version-menu">
-    <a class="version is-missing" href="../../1.2/index.html">1.2</a>
+    <a class="version" href="../../2.0/specs/C2PA_Specification.html">2.0</a>
+    <a class="version" href="../../1.4/specs/C2PA_Specification.html">1.4</a>
+    <a class="version" href="../../1.3/specs/C2PA_Specification.html">1.3</a>
+    <a class="version" href="../../1.2/specs/C2PA_Specification.html">1.2</a>
     <a class="version is-current" href="C2PA_Specification.html">1.1</a>
     <a class="version is-missing" href="../../1.0/index.html">1.0</a>
   </div>
@@ -255,7 +267,7 @@
 <li><a href="#_depthmap">18.12. Depthmap</a></li>
 <li><a href="#_endorsement_assertion">18.13. Endorsement Assertion</a></li>
 <li><a href="#_exif_information">18.14. Exif Information</a></li>
-<li><a href="#_iptc_photo_and_video_metadata">18.15. IPTC Photo and Video Metadata</a></li>
+<li><a href="#_iptc_photo_metadata">18.15. IPTC Photo Metadata</a></li>
 <li><a href="#_use_of_schema_org">18.16. Use of Schema.org</a></li>
 <li><a href="#_common_data_model_actor">18.17. Common Data Model: Actor</a></li>
 </ul>
@@ -889,25 +901,6 @@ A <em>C2PA Manifest</em> can reference other <em>C2PA Manifest</em>s.
 <h2 id="_version_history"><a class="anchor" href="#_version_history"></a>5. Version History</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>1.2 - October 2022</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Added details about how to embed a C2PA Manifest in DNG or TIFF</p>
-</li>
-<li>
-<p>Added new <code>digitalSourceType</code> field to Actions</p>
-</li>
-<li>
-<p>Changed <code>stds.iptc.photometadata</code> &#8594; <code>stds.iptc</code> to support IPTC video metadata</p>
-</li>
-<li>
-<p>Clarified versioning of assertions when adding optional fields</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
 <p>1.1 - September 2022</p>
 </div>
 <div class="ulist">
@@ -1024,23 +1017,6 @@ label = 1*("." 1(ALPHA / "_" ) *( DIGIT / ALPHA / "_" ) )</code></pre>
 <h3 id="_versioning"><a class="anchor" href="#_versioning"></a>6.3. Versioning</h3>
 <div class="paragraph">
 <p>When an assertion&#8217;s schema is changed, it should be done in a backwards-compatible manner. This means that new fields may be added and existing ones may be marked as deprecated (i.e., can be read, but never written). Existing fields shall not be removed. The label would then consist of an incremented version number, for example moving from <code>c2pa.hash.bmff</code> (deprecated) to <code>c2pa.hash.bmff.v2</code>.</p>
-</div>
-<div class="paragraph">
-<p>Since the addition of optional fields can be done while maintaining backwards compatibility, such fields may be added to an existing assertion&#8217;s schema without a change to the version number.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The schemas provided in this document, as well as the machine readable ones that can be downloaded from our website, should only be used for aids in understanding the syntax to be read or written. It is not necessary, nor it is recommended, for a Manifest Consumer to perform any form of schema validation when reading in assertions.</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>Deprecated fields for C2PA standard assertions shall be indicated in <a href="#_c2pa_standard_assertions">Chapter 18, <em>C2PA Standard Assertions</em></a>. Tools which enable actors to create assertions shall prevent the actor from inserting data into deprecated assertion fields.</p>
@@ -1475,7 +1451,7 @@ More details on hashing can be found at <a href="#_hashing">Section 13.1, &#8220
 <p>This means that by default all asset metadata (including Exif metadata and IPTC metadata in either IPTC-IIM or XMP format) will be included in the <a href="#_data_hash">data hash assertions</a>, but with no provenance information such as who made the claims.</p>
 </div>
 <div class="paragraph">
-<p>To explicitly assert the same claims in a C2PA assertion with verifiable provenance, the Exif or IPTC fields should be copied to a <code>stds.exif</code> or <code>stds.iptc.photo-metadata</code> assertion, as appropriate (see <a href="#_exif_information">Section 18.14, &#8220;Exif Information&#8221;</a> and <a href="#_iptc_photo_metadata">[_iptc_photo_metadata]</a>).</p>
+<p>To explicitly assert the same claims in a C2PA assertion with verifiable provenance, the Exif or IPTC fields should be copied to a <code>stds.exif</code> or <code>stds.iptc.photo-metadata</code> assertion, as appropriate (see <a href="#_exif_information">Section 18.14, &#8220;Exif Information&#8221;</a> and <a href="#_iptc_photo_metadata">Section 18.15, &#8220;IPTC Photo Metadata&#8221;</a>).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1513,7 +1489,7 @@ We recommend that existing Exif, IPTC-IIM and/or XMP asset metadata be left unto
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_pre_defined"><a class="anchor" href="#_pre_defined"></a>9.3.1. Pre-defined</h4>
+<h4 id="_none_defined_in_1_0"><a class="anchor" href="#_none_defined_in_1_0"></a>9.3.1. None Defined in 1.0</h4>
 <div class="paragraph">
 <p>There are no soft binding algorithms defined in the approved list nor in the deprecated list in this version of the specification.</p>
 </div>
@@ -1585,7 +1561,7 @@ jumbf-uri-type = tstr .regexp "self#jumbf=[\\w\\d][\\w\\d\\.\/:-]+[\\w\\d]"
 
 generator-info-map = {
   "name": tstr .size (1..max-tstr-length), ; A human readable string naming the claim_generator	  ? "Sec-CH-UA": [1* tstr], ; A human readable string naming the claim_generator
-  ? "version": tstr, ; A human readable string of the product's version
+  ? "version": tstr, ; A human readable string of the product's version	
   ? "icon": hashed-uri-map / $hashed-ext-uri-map, ; hashed URI to the icon (either embedded or remote)
   * tstr =&gt; any	  * tstr =&gt; any
 }</code></pre>
@@ -2235,10 +2211,6 @@ The ingredient&#8217;s C2PA Manifest (referenced via the <code>c2pa_manifest</co
 <dt class="hdlist1">FLAC</dt>
 <dd>
 <p>Refer to <a href="#_embedding_manifests_into_id3">Section 11.3.1.5, &#8220;Embedding manifests into ID3&#8221;</a> for more information.</p>
-</dd>
-<dt class="hdlist1">DNG/TIFF</dt>
-<dd>
-<p>Refer to <a href="#_embedding_manifests_into_dng">Section 11.3.1.6, &#8220;Embedding manifests into DNG&#8221;</a> for more information.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2382,18 +2354,6 @@ Adding the PDF signature in addition to the C2PA&#8217;s claim signature improve
 <p>The C2PA Manifest Store shall be embedded into a ID3v2-compatible, compressed audio file (e.g., MP3 or FLAC) file as the Encapsulated object data of a General Encapsulated Object (GEOB) as defined in <a href="https://id3.org/id3v2.3.0#General_encapsulated_object" class="bare">https://id3.org/id3v2.3.0#General_encapsulated_object</a>. The GEOB&#8217;s <code>MIME type</code> field shall be present and shall use the value for the media type for JUMBF as described in <a href="#_external_manifests">Section 11.4, &#8220;External Manifests&#8221;</a>.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_embedding_manifests_into_dng"><a class="anchor" href="#_embedding_manifests_into_dng"></a>11.3.1.6. Embedding manifests into DNG</h5>
-<div class="paragraph">
-<p>The <a href="https://helpx.adobe.com/content/dam/help/en/photoshop/pdf/dng_spec_1_6_0_0.pdf">Digital Negative or DNG</a> format provides camera manufacturers to provide their camera raw formats in a standardized manner. DNG is based on which is based on <a href="https://www.iso.org/standard/29377.html">TIFF/EP</a> (which is, itself, based on <a href="https://www.itu.int/itudoc/itu-t/com16/tiff-fx/docs/tiff6.pdf">TIFF</a>).</p>
-</div>
-<div class="paragraph">
-<p>The C2PA Manifest Store shall be embedded into a TIFF-compatible file, such as TIFF/EP or DNG as the data of a tag with ID 52545 (decimal) or 0xCD41 (hexadecimal), with a tag type of 7.</p>
-</div>
-<div class="paragraph">
-<p>Although TIFF supports the concept of multiple pages or layers (via multiple IFD&#8217;s), there shall only be one C2PA Manifest Store for the entire asset - not one per IFD.  As such, the C2PA Manifest Store shall be part of IFD 0.</p>
-</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_embedding_manifests_into_bmff_based_assets"><a class="anchor" href="#_embedding_manifests_into_bmff_based_assets"></a>11.3.2. Embedding manifests into BMFF-based assets</h4>
@@ -2437,7 +2397,7 @@ Adding the PDF signature in addition to the C2PA&#8217;s claim signature improve
 <h6 id="_definition"><a class="anchor" href="#_definition"></a>11.3.2.1.1. Definition</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>Box Type: `'uuid'`
+<pre class="highlightjs highlight"><code class="language-none hljs">Box Type: `'uuid'`
 Extended Box Type: 0xD8, 0xFE, 0xC3, 0xD6, 0x1B, 0x0E, 0x48, 0x3C, 0x92, 0x97, 0x58, 0x28, 0x87, 0x7E, 0xC4, 0x81
 Container: File
 Mandatory: No
@@ -2452,7 +2412,7 @@ Quantity: Zero or more</code></pre>
 <h6 id="_syntax_2"><a class="anchor" href="#_syntax_2"></a>11.3.2.1.2. Syntax</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>aligned(8) class ContentProvenanceBox extends FullBox(`'uuid'`, extended_type = 0xD8 0xFE 0xC3 0xD6 0x1B 0x0E 0x48 0x3C 0x92 0x97 0x58 0x28 0x87 0x7E 0xC4 0x81, version = 0, 0) {
+<pre class="highlightjs highlight"><code class="language-none hljs">aligned(8) class ContentProvenanceBox extends FullBox(`'uuid'`, extended_type = 0xD8 0xFE 0xC3 0xD6 0x1B 0x0E 0x48 0x3C 0x92 0x97 0x58 0x28 0x87 0x7E 0xC4 0x81, version = 0, 0) {
     string box_purpose;
     bit(8) data[];
 }</code></pre>
@@ -2609,20 +2569,7 @@ Quantity: Zero or more</code></pre>
 <p>For untimed-media where an <code>'iloc'</code> box is present (such as HEIF or AVIF), the hash used for a given leaf node in the Merkle tree shall be computed over an individual item as defined by that box.</p>
 </div>
 <div class="paragraph">
-<p>Regardless of the subset-defining mechanism, all such auxiliary <code>'uuid'</code> C2PA boxes shall meet the following requirements.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>They shall be in the same sequence as the subsets they hash as specified by the <code>'stco'</code>, <code>'co64'</code>, or <code>'iloc'</code> box regardless of their location in the <code>'mdat'</code>.</p>
-</li>
-<li>
-<p>They shall be grouped such that a single Merkle tree&#8217;s auxiliary <code>'uuid'</code> C2PA boxes are sequential with no intervening boxes.</p>
-</li>
-<li>
-<p>The <code>location</code> value in the first box shall be set to 0, in the second box shall be set to 1, and shall increase sequentially thereafter.</p>
-</li>
-</ul>
+<p>Regardless of the subset-defining mechanism, all such auxiliary <code>'uuid'</code> C2PA boxes shall occur in the same sequence as the subsets they hash as specified by the <code>'stco'</code>, <code>'co64'</code>, or <code>'iloc'</code> box regardless of their location in the <code>'mdat'</code>. They shall also be grouped such that a single Merkle tree&#8217;s auxiliary <code>'uuid'</code> C2PA boxes are sequential with no intervening boxes.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2733,7 +2680,7 @@ Quantity: Zero or more</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The data structure used to store sufficient information to validate a single 'mdat' box or
+<pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The data structure used to store sufficient information to validate a single 'mdat' box or 
 ; a portion of an 'mdat' box when a Merkle tree is used",
 bmff-merkle-map = {
   "uniqueId": int, ; A unique integer used to differentiate local ids
@@ -2800,8 +2747,8 @@ What box value(s) should be used for localId instead?</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>xpath = "/uuid"
-data = [ { offset = 8, data = b64'2P7D1hsOSDySl1goh37EgQ==' } ]</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">xpath = "/uuid"
+data = [ { offset = 8, data = "2P7D1hsOSDySl1goh37EgQ==" } ]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2809,12 +2756,12 @@ data = [ { offset = 8, data = b64'2P7D1hsOSDySl1goh37EgQ==' } ]</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>xpath = "/ftyp"</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">xpath = "/ftyp"</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>xpath = "/mfra"</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">xpath = "/mfra"</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -2836,7 +2783,7 @@ data = [ { offset = 8, data = b64'2P7D1hsOSDySl1goh37EgQ==' } ]</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>xpath = "/mdat"
+<pre class="highlightjs highlight"><code class="language-none hljs">xpath = "/mdat"
 subset = { { 16, 0 } }</code></pre>
 </div>
 </div>
@@ -2951,7 +2898,7 @@ NOTE: a good example of this is creating a manifest for a pre-existing asset.</p
 </div>
 <div class="imageblock text-center kroki">
 <div class="content">
-<img src="https://kroki.io/plantuml/svg/eNqVVE1v2zAMPdu_gugOAwY4vntDgDbYgB62Aktuww6KxThaZcmQlGVBsf8-Sv6QnLTpepNJvsenR8p5JrFBxfMs-wC3UoJByZzQyu5FZ4EZBCtUc5DMwEFJtBa026M5CkuZDmuxE9ijvyMHKRRa4ugMWlQOsN0i58jLWivHhLKh8k4e8KKUvh-JweAODaoa-9IN_nEgFJSlcEyK2pYltMgUyei8TCYBJbZEQPV0j-E2efYe9oIjkFaSqd0UYOpEqjp3ohRdzC4WizwLmVqYWuLw0Ze0Xr-xgc66E0ls_PHbw-ZzBdRTUI0glxSQNmZhpw3UklnSYh-F6phhLTxsf2HtvpABa6JA2GrJ0_zKA87Svgv7rQWHzugtXdDCUbg9dWokmVQbfaRuiP5ekclb6k4dgjZur3NvSJB4ay06eCJDV9SGgnTy186-omOcOTZ9MyV2aCn_dwY23upAUJYjpizTqpVB7o80j6c0ficUJ9fmwXvVULnwU_ec94p8a8PWjUKozSDlrI1kog2gSZaNGNpAVoeYR_XRgFiLRjF3MOi55mRTqpfCL-4T6TfmYB25vxEtrh1ru7m2UfFc3tpp33bkiLwhcabzZdGX1qXtYn6yoA_nWT_7T0Xxg_aaWv8sIE45JKtqoiqKgi-T_Dg9ii9hKB5WCN5t6RV_dPQ-K3-CavZ0n0OOm3Mdmk9bWFVzF8Fz3bT0gm-Srawg_lv-BzkqeysuWdoKWnYa4Sn6bLopPH0hL-PDegfPhn04y8VtjUVxT_IsipxNdfnc3lxOwauaJkFsgT7xxPZdL0ZwfRUGlvg4U1vivr4mZ-R53Yfrev4BhitHvw==" alt="C2PA Entity Diagram" width="612">
+<img src="https://kroki.io/plantuml/svg/eNqVVE1v2zAMPdu_gugOAwY4vntDgDbYgB62Aktuww6KxThaZcmQlGVBsf8-Sv6QnLTpepNJvsenR8p5JrFBxfMs-wC3UoJByZzQyu5FZ4EZBCtUc5DMwEFJtBa026M5CkuZDmuxE9ijvyMHKRRa4ugMWlQOsN0i58jLWivHhLKh8k4e8KKUvh-JweAODaoa-9IN_nEgFJSlcEyK2pYltMgUyei8TCYBJbZEQPV0j-E2efYe9oIjkFaSqd0UYOpEqjp3ohRdzC4WizwLmVqYWuLw0Ze0Xr-xgc66E0ls_PHbw-ZzBdRTUI0glxSQNmZhpw3UklnSYh-F6phhLTxsf2HtvpABa6JA2GrJ0_zKA87Svgv7rQWHzugtXdDCUbg9dWokmVQbfaRuiP5ekclb6k4dgjZur3NvSJB4ay06eCJDV9SGgnTy186-omOcOTZ9MyV2aCn_dwY23upAUJYjpizTqpVB7o80j6c0ficUJ9fmwXvVULnwU_ec94p8a8PWjUKozSDlrI1kog2gSZaNGNpAVoeYR_XRgFiLRjF3MOi55mRTqpfCL-4T6TfmYB25vxEtrh1ru7m2UfFc3tpp33bkiLwhcabzZdGX1qXtYn6yoA_nWT_7T0Xxg_aaWv8sIE45JKtqoiqKgi-T_Dg9ii9hKB5WCN5t6RV_dPQ-K3-CavZ0n0OOm3Mdmk9bWFVzF8Fz3bT0gm-Srawg_lv-BzkqeysuWdoKWnYa4Sn6bLopPH0hL-PDegfPhn04y8VtjUVxT_IsipxNdfnc3lxOwauaJkFsgT7xxPZdL0ZwbZ4w0cTXmfoSF_Y1PSPP60ZcX7B_rrVH3w==" alt="C2PA Entity Diagram" width="612">
 </div>
 <div class="title">Figure 12. C2PA Entity Diagram</div>
 </div>
@@ -3634,7 +3581,7 @@ The IETF is working on an update for RFC 6170 referred to as <a href="https://ww
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; CBOR version of rVals and related structures based on JSON schema in https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.01.01_60/ts_11918201v010101p.pdf section 5.3.5.2
 rVals = {
-  "ocspVals": [1* bstr]
+  "ocspVals": [1* bstr] 
 }</code></pre>
 </div>
 </div>
@@ -4840,7 +4787,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <p>For any portions of an asset rendered for presentation to a user, including but not limited to audio, video, or text, the corresponding hard binding corresponding to the rendered content must be validated in accordance with <a href="#_hard_bindings">Section 9.2, &#8220;Hard Bindings&#8221;</a>. If at any time content fails to be validated, the validator must clearly signal to the user that some of the content does not match the claim, and if possible, should indicate what part of the content did not validate. If any content is absent for which content bindings exist, discovery of this absence is also a validation failure. The validator must continue to report validation has failed, even if later portions of the content validate correctly.</p>
 </div>
 <div class="paragraph">
-<p>For content that is not wholly available before rendering begins, such as during adaptive bitrate streaming (ABR) and progressive download, absence of not-yet-available portions of content is not considered a validation failure. As the content becomes available, the validator must validate each portion of the content before it is rendered as previously described. In addition, the validator must validate that the sequence of said content is the same as when the manifest was produced. Unless the player has explicitly signalled the validator that a discontinuity is expected (e.g., when the consumer performs a manual seek operation via the UI), the validator must clearly signal to the user that an unexpected discontinuity has occurred whenever the sequence does not match. This includes validating that the <code>location</code> values for a given Merkle tree start at zero and increments by one for each following chunk; equivalently, the <code>location</code> value always indicates which chunk is being rendered.</p>
+<p>For content that is not wholly available before rendering begins, such as during adaptive bitrate streaming (ABR) and progressive download, absence of not-yet-available portions of content is not considered a validation failure. As the content becomes available, the validator must validate each portion of the content before it is rendered as previously described. In addition, the validator must validate that the sequence of said content is the same as when the manifest was produced. Unless the player has explicitly signalled the validator that a discontinuity is expected (e.g., when the consumer performs a manual seek operation via the UI), the validator must clearly signal to the user that an unexpected discontinuity has occurred whenever the sequence does not match.</p>
 </div>
 <div class="paragraph">
 <p>For content that is intentionally not being rendered as the claim generator originally intended, such as during fast-forward, rewind, or playback at a different speed, the validator may not be able to validate the content. In this case, the validator must clearly signal to the user that the content cannot be validated during the corresponding operation.</p>
@@ -4858,7 +4805,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="sect2">
 <h3 id="_approach"><a class="anchor" href="#_approach"></a>16.1. Approach</h3>
 <div class="paragraph">
-<p>The C2PA intends to provide clear recommendations and guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders, with the results balancing uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. These recommendations can be found in the <a href="#ux:UX_Recommendations.adoc" class="page unresolved">User experience guidance document</a>.</p>
+<p>The C2PA intends to provide clear recommendations and guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders, with the results balancing uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. These recommendations can be found in the <a href="#ux:UX_Recommendations.adoc" class="xref unresolved">User experience guidance document</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4921,7 +4868,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="sect3">
 <h4 id="_context"><a class="anchor" href="#_context"></a>17.1.1. Context</h4>
 <div class="paragraph">
-<p>Information security is a principal concern of C2PA. C2PA maintains a threat model and security considerations for the C2PA specification. This effort complements other security-related work within C2PA. Associated documentation is currently in development and can be found at <a href="#security:Security_Considerations.adoc" class="page unresolved">Security Considerations</a>.</p>
+<p>Information security is a principal concern of C2PA. C2PA maintains a threat model and security considerations for the C2PA specification. This effort complements other security-related work within C2PA. Associated documentation is currently in development and can be found at <a href="#security:Security_Considerations.adoc" class="xref unresolved">Security Considerations</a>.</p>
 </div>
 <div class="paragraph">
 <p>The C2PA is developing security considerations documentation that includes:</p>
@@ -5017,7 +4964,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="sect3">
 <h4 id="_considerations"><a class="anchor" href="#_considerations"></a>17.2.2. Considerations</h4>
 <div class="paragraph">
-<p>The harms, misuse, and abuse assessment is an ongoing process. The information presented in the <a href="#security:Harms_Modelling.adoc" class="page unresolved">Harms Modelling documentation</a> should not be considered the end result of a comprehensive evaluation, but as a basis for ongoing discussions centered on impacted communities, and aimed at mitigating potential abuse and misuse and protecting human rights.</p>
+<p>The harms, misuse, and abuse assessment is an ongoing process. The information presented in the <a href="#security:Harms_Modelling.adoc" class="xref unresolved">Harms Modelling documentation</a> should not be considered the end result of a comprehensive evaluation, but as a basis for ongoing discussions centered on impacted communities, and aimed at mitigating potential abuse and misuse and protecting human rights.</p>
 </div>
 <div class="paragraph">
 <p>There are two critical aspects of the approach:</p>
@@ -5041,7 +4988,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <p>Harms modelling focuses on analysing how a socio-technical system might negatively impact users, other stakeholders or broader society, or otherwise create or reenforce structures  of injustice, threats to human rights, or disproportionate risks to vulnerable groups globally. The process of harms modelling systematically requires combining knowledge about a system architecture and its user affordances with historical and contextual evidence about the impact of similar existing systems on different social groups and participatory consultation with a range of communities who may be implicated by the system. This combined information frames the ability to anticipate harm and proactively identify responses.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="#security:Harms_Modelling.adoc" class="page unresolved">Harms Modelling documentation</a> describes the framework and the process carried out to date, followed by the methodology, an overview of the assessment, an outline for public review and feedback, and due diligence actions being developed to accompany version 1.0 of these specifications, its implementations and evolution.</p>
+<p>The <a href="#security:Harms_Modelling.adoc" class="xref unresolved">Harms Modelling documentation</a> describes the framework and the process carried out to date, followed by the methodology, an overview of the assessment, an outline for public review and feedback, and due diligence actions being developed to accompany version 1.0 of these specifications, its implementations and evolution.</p>
 </div>
 </div>
 <div class="sect3">
@@ -5052,13 +4999,13 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#guidance:Guidance.adoc" class="page unresolved">Guidance for implementers</a></p>
+<p><a href="#guidance:Guidance.adoc" class="xref unresolved">Guidance for implementers</a></p>
 </li>
 <li>
-<p><a href="#ux:UX_Recommendations.adoc" class="page unresolved">User experience guidance</a></p>
+<p><a href="#ux:UX_Recommendations.adoc" class="xref unresolved">User experience guidance</a></p>
 </li>
 <li>
-<p><a href="#security:Security_Considerations.adoc" class="page unresolved">Security Considerations</a></p>
+<p><a href="#security:Security_Considerations.adoc" class="xref unresolved">Security Considerations</a></p>
 </li>
 <li>
 <p>Explainer</p>
@@ -5840,8 +5787,8 @@ language-string /= tstr .size (1..max-tstr-length)</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-LD</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IPTC Photo and Video Metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">stds.iptc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IPTC Photo Metadata</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stds.iptc.photo-metadata</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-LD</p></td>
 </tr>
@@ -5894,7 +5841,7 @@ The <code>url</code> value provides flexibility for hashing assets that may be r
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Also check optionality within the hash-map
-; The data structure used to store the cryptographic hash of some or all of the asset's data
+; The data structure used to store the cryptographic hash of some or all of the asset's data 
 ; and additional information required to compute the hash.
 data-hash-map = {
   ? "exclusions": [1* EXCLUSION_RANGE-map],
@@ -5903,7 +5850,7 @@ data-hash-map = {
   "pad": bstr, ; zero-filled byte string used for filling up space
   ? "pad2": bstr, ; optional zero-filled byte string used for filling up space
   ? "name": tstr .size (1..max-tstr-length), ; (optional) a human-readable description of what this hash cover
-  ? "url": uri, ; (optional) a file or http(s) URL to where the bytes that are being hashed can be found.
+  ? "url": uri, ; (optional) a file or http(s) URL to where the bytes that are being hashed can be found. 
               ; This is useful for cases where the data lives in a different file chunk or side-car than the claim.
 }
 
@@ -5923,11 +5870,11 @@ EXCLUSION_RANGE-map = {
   "pad" : 'abc',
   "hash": 'Auxjtmax46cC2N3Y9aFmBO9Jfay8LEwJWzBUtZ0sUM8gA=',
   "name": "JUMBF manifest"
-  "exclusions": [
+  "exclusions": [ 
     {
       "start": 9960,
       "length": 4213
-    }
+    } 
   ],
 }</code></pre>
 </div>
@@ -5997,7 +5944,7 @@ All the APP11 segments containing the C2PA Manifest JUMBF are contiguous so that
 <p>In BMFF-based hash v1, for any root box not excluded in its entirety, the input data contributed to the hash for that box is comprised of <code>data</code>, where <code>data</code> is defined as the box&#8217;s contents, including headers, minus any exclusions.</p>
 </div>
 <div class="paragraph">
-<p>In BMFF-based hash v2, for any root box not excluded in its entirety, the input data contributed to the hash for that box is comprised of the concatenation of the binary strings <code>offset || data</code>, where <code>offset</code> is defined as the absolute file offset of the box as an 8-byte integer in big-endian format, and <code>data</code> is defined as the box&#8217;s contents, including headers, minus any exclusions. In this definition, "||" represents the binary concatenation of the two.  The offset shall not be included for Merkle tree hashes when the bmff-hash-map includes both the <code>hash</code> and <code>merkle</code> fields.</p>
+<p>In BMFF-based hash v2, for any root box not excluded in its entirety, the input data contributed to the hash for that box is comprised of the concatenation of the binary strings <code>offset || data</code>, where <code>offset</code> is defined as the absolute file offset of the box as an 8-byte integer in big-endian format, and <code>data</code> is defined as the box&#8217;s contents, including headers, minus any exclusions. In this definition, "||" represents the binary concatenation of the two.</p>
 </div>
 <div class="paragraph">
 <p>There are two differences between BMFF-based hash v1 and v2.</p>
@@ -6008,7 +5955,7 @@ All the APP11 segments containing the C2PA Manifest JUMBF are contiguous so that
 <p>The absolute file byte offset is included at the start of the input data contributed to the hash for any root box.  This ensures that a root box included in the hash cannot change positions in the file.</p>
 </li>
 <li>
-<p>The <code>mdat</code> box is no longer excluded in its entirety when the bmff-hash-map includes both the <code>hash</code> and <code>merkle</code> fields.  Instead, a mandatory entry on the exclusion list excludes most of the box.  Along with the first difference, this ensures that the <code>mdat</code> cannot change positions in the file and also eliminates the need for the first difference to include the offset for each individual Merkle tree hash when the bmff-hash-map includes both the <code>hash</code> and <code>merkle</code> fields.</p>
+<p>The <code>mdat</code> box is no longer excluded in its entirety when the bmff-hash-map includes both the <code>hash</code> and <code>merkle</code> fields.  Instead, a mandatory entry on the exclusion list excludes most of the box.  Along with the first difference, this ensures that the <code>mdat</code> cannot change positions in the file.</p>
 </li>
 </ul>
 </div>
@@ -6061,7 +6008,7 @@ All the APP11 segments containing the C2PA Manifest JUMBF are contiguous so that
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>  xpath = '/' nodes
+<pre class="highlightjs highlight"><code class="language-none hljs">  xpath = '/' nodes
   nodes = node
         | node '/' nodes
   node = box4cc
@@ -6070,20 +6017,6 @@ Where:
   box4cc is any 4cc allowed by ISO/IEC 14496-12 for a BMFF box.
   integer is any non-zero positive integer with no leading zeros.</code></pre>
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Any given exclusion entry may match zero or more boxes. It is not required that an exclusion entry match exactly one box.</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>A non-leaf xpath node shall only point to a container box that has no fields of its own (i.e., contains no data, only child boxes) and that does not inherit from FullBox.  This ensures that a C2PA validator does not need to be aware of the syntax and semantics of unusual boxes that contain other boxes.  If a child box of such an unusual box needs to be excluded in full or in part, the <code>exclusions-map</code> entry&#8217;s <code>xpath</code> field shall point to the unusual box itself and the <code>subset-map</code> field shall exclude the byte rang(es) containing the excluded child box data.  For example, the <code>'sgpd'</code> box contains other boxes but is unusual in that it inherits from FullBox; as such, if excluding child box(es), in whole or in part, from <code>'sgpd'</code> is required, the assertion shall use an <code>xpath</code> field pointing to the <code>'sgpd'</code> itself (e.g., <code>/moof/traf/sgpd</code>) and shall use the <code>subset-map</code> field to exclude the desired bytes.</p>
@@ -6142,7 +6075,7 @@ Where:
 <p>Compute the exact size of the final manifest.</p>
 </li>
 <li>
-<p>Perform hashing of the asset file(s).  Update any box that includes any file offsets to correct values before including that box in the input data contributed to the hash.  In v2, compute the input data contributed to the hash using <code>(offset || data)</code> using the updated absolute file offset as described above.  As indicated above, the offset is not included in the data contributed for Merkle tree hashes when the bmff-hash-map includes both the <code>hash</code> and <code>merkle</code> fields.</p>
+<p>Perform hashing of the asset file(s).  Update any box that includes any file offsets to correct values before including that box in the input data contributed to the hash.  In v2, compute the input data contributed to the hash using <code>(offset || data)</code> using the updated absolute file offset as described above.</p>
 </li>
 <li>
 <p>Create and sign the manifest.  Create the C2PA box(es).</p>
@@ -6352,7 +6285,7 @@ merkle-map = {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>offset = 0
+<pre class="highlightjs highlight"><code class="language-none hljs">offset = 0
 While (offset &lt; length of file)
 	Starting at offset, locate the first byte of the first box that matches any entry in the exclusions array, call this first_excluded_byte
 		If no such box is found, set first_excluded_byte = length of file
@@ -6426,29 +6359,29 @@ The <code>url</code> value provides flexibility for hashing assets that may be r
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">;The data structure used to store one or more soft bindings across some or all of the asset's content
 soft-binding-map = {
-  "alg": tstr, ; A string identifying the soft binding algorithm and version of that algorithm used
-              ; to compute the value, taken from the C2PA soft binding algorithm identifier list. If this field is absent, the algorithm is taken from the `softbinding-alg` value of the enclosing structure. If both are present, the field in this structure is used.
+  "alg": tstr, ; A string identifying the soft binding algorithm and version of that algorithm used 
+              ; to compute the value, taken from the C2PA soft binding algorithm identifier list. If this field is absent, the algorithm is taken from the `softbinding-alg` value of the enclosing structure. If both are present, the field in this structure is used. 
               ; If no value is present in any of these places, this structure is invalid; there is no default.
   "blocks": [1* soft-binding-block-map],
   "pad": bytes, ; zero-filled byte string used for filling up space
   ? "pad2": bytes, ; optional zero-filled byte string used for filling up space
   ? "name": tstr .size (1..max-tstr-length), ; (optional) a human-readable description of what this hash covers
-  ? "alg-params": bstr, ; (optional) CBOR byte string describing parameters of the soft binding algorithm.
-                        ; If this field is absent, the algorithm is taken from the `softbinding-alg-params`
+  ? "alg-params": bstr, ; (optional) CBOR byte string describing parameters of the soft binding algorithm. 
+                        ; If this field is absent, the algorithm is taken from the `softbinding-alg-params` 
                         ; value of the enclosing structure, if present."
-  ? "url": uri, ; (optional) a file or http(s) URL to where the bytes that are being hashed lived.
-                ; This is useful for cases where the data lives in a different file chunk or side-car
+  ? "url": uri, ; (optional) a file or http(s) URL to where the bytes that are being hashed lived. 
+                ; This is useful for cases where the data lives in a different file chunk or side-car 
                 ; than the claim.
 }
 
 soft-binding-block-map = {
   "scope": soft-binding-scope-map,
-  "value": bstr, ; CBOR byte string describing, in algorithm specific format,
+  "value": bstr, ; CBOR byte string describing, in algorithm specific format, 
                 ; the value of the soft binding computed over this block of digital content"
 }
 
 soft-binding-scope-map = {
-  ? "extent": bstr, ;CBOR byte string describing, in algorithm specific format,
+  ? "extent": bstr, ;CBOR byte string describing, in algorithm specific format, 
                     ; the part of the digital content over which the soft binding value has been computed"
   ? "timespan":soft-binding-timespan-map,
 }
@@ -6483,7 +6416,7 @@ soft-binding-timespan-map = {
       "scope": {
         "extent": b64'YzJOdmNHVXlDZz09==',
         "timespan": {
-          "end": 245009
+          "end": 245009  
           "start": 133017,
         }
       },
@@ -6699,21 +6632,7 @@ In keeping with common practice, it is recommended that the <code>https</code> s
 </tbody>
 </table>
 <div class="paragraph">
-<p>An action may include an <code>actors</code> key which can point to the identity of one or more human actor who performed the action as described in <a href="#_common_data_model_actor">Section 18.17, &#8220;Common Data Model: Actor&#8221;</a>. It may also include a <code>digitalSourceType</code> key, whose value shall be one of the terms <a href="https://cv.iptc.org/newscodes/digitalsourcetype/">defined by the IPTC</a>.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>One common use case for the <code>digitalSourceType</code> key is in conjunction with the <code>c2pa.created</code> action to provide a way to specify how the media item was created - such as "digital capture", "digitised from negative" or "trained algorithmic media".</p>
-</div>
-</td>
-</tr>
-</table>
+<p>An action may include an <code>actors</code> key which can point to the identity of one or more human actor who performed the action as described in <a href="#_common_data_model_actor">Section 18.17, &#8220;Common Data Model: Actor&#8221;</a>.</p>
 </div>
 <div class="paragraph">
 <p>When using a <code>c2pa.transcoded</code>, <code>c2pa.repackaged</code>, <code>c2pa.opened</code>, or a <code>c2pa.placed</code> action, the <code>ingredient</code> field in the <code>parameters</code> object shall contain the hashed JUMBF URI to the related ingredient assertion.  A <code>c2pa.removed</code> action may have the hashed JUMBF URI to an ingredient, if that ingredient is from a different manifest than the active one.</p>
@@ -6819,13 +6738,12 @@ actor-map = {
 
 action-items-map = {
   "action": $action-choice,
-  ? "when": tdate, ; Timestamp of when the action occurred.
+  ? "when": tdate, ; Timestamp of when the action occurred. 
   ? "softwareAgent": tstr .size (1..max-tstr-length), ;The software agent that performed the action.
   ? "changed": tstr .size (1..max-tstr-length), ; A semicolon-delimited list of the parts of the resource that were changed since the previous event history. If not present, presumed to be undefined. When tracking changes and the scope of the changed components is unknown, it should be assumed that anything might have changed.
   ? "instanceID": buuid, ; The value of the xmpMM:InstanceID property for the modified (output) resource
   ? "parameters": parameters-map, ; Additional parameters of the action. These will often vary by the type of action
   ? "actors": [1* actor-map], ; An array of the creators that undertook this action
-  ? "digitalSourceType": tstr .size (1..max-tstr-length), ; One of the defined source types at https://cv.iptc.org/newscodes/digitalsourcetype/
 }
 
 parameters-map = {
@@ -7143,7 +7061,7 @@ depthmap-gdepth-map = {
 
 base64-string-type = tstr
 
-$mime-choice /= "image/jpeg"
+$mime-choice /= "image/jpeg" 
 $mime-choice /= "image/png"
 
 mime-type = $mime-choice .default "image/jpeg"
@@ -7248,7 +7166,7 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
 <p>Any property from the <a href="https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E">latest version of the Exif specification (currently 2.32)</a> can be added to the stds.exif assertion, with the exception of the MakerNote (37500, 0x927c) field, the contents of which are vendor-specific.</p>
 </div>
 <div class="paragraph">
-<p>This assertion should be used to assert the precise location associated with the content using the Exif GPS properties (those starting <code>exif:GPS</code>). For broad information about the location, see <a href="#_iptc_photo_and_video_metadata">Section 18.15, &#8220;IPTC Photo and Video Metadata&#8221;</a>.</p>
+<p>This assertion should be used to assert the precise location associated with the content using the Exif GPS properties (those starting <code>exif:GPS</code>). For broad information about the location, see <a href="#_iptc_photo_metadata">Section 18.15, &#8220;IPTC Photo Metadata&#8221;</a>.</p>
 </div>
 <div class="paragraph">
 <p>An example of an Exif Information assertion:</p>
@@ -7308,124 +7226,27 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_iptc_photo_and_video_metadata"><a class="anchor" href="#_iptc_photo_and_video_metadata"></a>18.15. IPTC Photo and Video Metadata</h3>
+<h3 id="_iptc_photo_metadata"><a class="anchor" href="#_iptc_photo_metadata"></a>18.15. IPTC Photo Metadata</h3>
 <div class="paragraph">
 <p>The <a href="https://iptc.org/">International Press Telecommunications Council</a> defines a standard set of descriptive, administrative and rights metadata typically used by photographers, distributors, news organizations, archivists, and developers. Early versions of the standard used IPTC&#8217;s binary <a href="https://www.iptc.org/standards/iim/">Information Interchange Model (IPTC-IIM)</a> format and later versions introduced XMP support for all IIM fields, plus a new set of fields which can only be expressed in XMP. Together, these are called the <a href="http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata">IPTC Photo Metadata Standard</a>.</p>
 </div>
 <div class="paragraph">
-<p>More recently, the IPTC has introduced an equivalent standard for video, the <a href="https://www.iptc.org/standards/video-metadata-hub/">IPTC Video Metadata Hub</a>. This re-uses many of the administrative and rights properties from the Photo Metadata Standard and introduces new properties specific to video, such as duration, episode information and frame rate.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Versions 1.0 and 1.1 of the C2PA Specification defined an assertion <code>stds.iptc.photo-metedata</code> which only implemented the IPTC Photo Metadata Standard. As of version 1.2 we now support both photo and video metadata so we have changed the name of the assertion to <code>stds.iptc</code>. The <code>stds.iptc.photo-metadata</code> usage is deprecated: it is not recommended, but can still be used.</p>
-</div>
-</td>
-</tr>
-</table>
+<p>The IPTC Photo Metadata assertion can be used to ensure that IPTC Photo Metadata, for example describing ownership, rights and descriptive metadata about an image, is added to the asset in a way that can be validated cryptographically.</p>
 </div>
 <div class="paragraph">
-<p>The <code>stds.iptc</code> assertion can be used to ensure that properties from the IPTC Photo Metadata Standard and Video Metadata Hub, for example describing ownership, rights and descriptive metadata about a media object, are added to the asset in a way that can be validated cryptographically.</p>
+<p>It is preferable to copy this information from the IPTC-IIM or XMP block. Information should be copied to JSON-LD using the XMP field names specified in the <a href="https://www.cipa.jp/std/documents/download_e.html?DC-010-2020_E">Exif 2.32 metadata for XMP</a> specification. When copying the information from XMP, the data shall be re-serialized according to the rules of the <a href="https://www.iso.org/standard/79384.html">JSON-LD serialization of XMP</a>.</p>
 </div>
 <div class="paragraph">
-<p>IPTC properties shall be stored in JSON-LD format using the XMP field names and structures specified in the <a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#metadata-properties-2">IPTC Photo Metadata Standard Specification</a> and the <a href="https://www.iptc.org/std/videometadatahub/userguide/#property-reference-table">IPTC Video Metadata Hub specification</a>. The data shall be re-serialized according to the rules of the <a href="https://www.iso.org/standard/79384.html">JSON-LD serialization of XMP</a>.</p>
+<p>IPTC Photo Metadata properties can be copied to the C2PA assertion store as an assertion with the label <code>stds.iptc.photo-metadata</code>. The data should be in JSON-LD format using the XMP field names and structures specified in the <a href="http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#metadata-properties-2">IPTC Photo Metadata Specification</a>.</p>
 </div>
 <div class="paragraph">
-<p>Any property from the <a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata">IPTC Photo Metadata Standard</a> or the <a href="https://www.iptc.org/standards/video-metadata-hub/recommendation/">IPTC Video Metadata Hub</a> can be added to the <code>stds.iptc</code> assertion.</p>
+<p>Any property from the <a href="http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata">IPTC Photo Metadata Standard</a> can be added to the <code>stds.iptc.photo-metadata</code> assertion.</p>
 </div>
-<div class="paragraph">
-<p>A useful subset of IPTC Photo and Video Metadata properties is listed below:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 26.6666%;">
-<col style="width: 13.3333%;">
-<col style="width: 13.3333%;">
-<col style="width: 20%;">
-<col style="width: 26.6668%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property name</th>
-<th class="tableblock halign-left valign-top">IPTC Photo Metadata property?</th>
-<th class="tableblock halign-left valign-top">IPTC Video Metadata Hub property?</th>
-<th class="tableblock halign-left valign-top">XMP tag</th>
-<th class="tableblock halign-left valign-top">Value notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date Created</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#date-created-2">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/videometadatahub/userguide/#Date-Created">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>photoshop:DateCreated</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ISO8601 date (<a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#date-value-type">see note</a>)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Location created / Location shot</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#location-created">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/videometadatahub/userguide/#Location-Shot">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iptc4xmpExt:LocationCreated</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#location-structure">Location structure</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Copyright Notice</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#copyright-notice">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/videometadatahub/userguide/#Copyright-Notice">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dc:rights</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Digital Source Type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#digital-source-type">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/videometadatahub/userguide/#Digital-Source-Type">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iptc4xmpExt:DigitalSourceType</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Value from the <a href="https://cv.iptc.org/newscodes/digitalsourcetype/">IPTC DigitalSourceType NewsCodes vocabulary</a></p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alt Text (Accessibility)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#alt-text-accessibility">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/videometadatahub/userguide/#Alt-Text-Accessibility">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iptc4xmpCore:AltTextAccessibility</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">File Duration</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/videometadatahub/userguide/#File-Duration">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xmpDM:duration</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://developer.adobe.com/xmp/docs/XMPNamespaces/XMPDataTypes/Time/">XMP-DM Time structure</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Content Warning</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/videometadatahub/userguide/#Content-Warning">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iptc4xmpExt:ContentWarning</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Value from the <a href="https://cv.iptc.org/newscodes/digitalsourcetype/">IPTC DigitalSourceType NewsCodes vocabulary</a></p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Timed Text Link</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/videometadatahub/userguide/#Timed-Text-Link">yes</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iptc4xmpExt:TimedTextLink</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iptc.org/std/videometadatahub/userguide/#_qualified_link_with_language_structure">Qualified Link with Language structure</a></p></td>
-</tr>
-</tbody>
-</table>
 <div class="paragraph">
 <p>In particular, the Location Created property can be used to assert the broad location associated with an asset. To assert the precise GPS location associated with an asset, the <a href="#_exif_information">Exif information</a> assertion should be used.</p>
 </div>
 <div class="paragraph">
-<p>An example of an IPTC Photo and Video Metadata assertion including location information:</p>
+<p>An example of an IPTC Photo Metadata assertion including location information:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7437,31 +7258,28 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
     "photoshop" : "http://ns.adobe.com/photoshop/1.0/",
     "plus" : "http://ns.useplus.org/ldf/xmp/1.0/",
     "xmp" : "http://ns.adobe.com/xap/1.0/",
-    "xmpDM" : "http://ns.adobe.com/xmp/1.0/DynamicMedia/",
     "xmpRights" : "http://ns.adobe.com/xap/1.0/rights/"
   },
   "photoshop:DateCreated": "Aug 31, 2022", <i class="conum" data-value="1"></i><b>(1)</b>
   "dc:creator": [ "Julie Smith" ], <i class="conum" data-value="2"></i><b>(2)</b>
-  "Iptc4xmpExt:DigitalSourceType": "https://cv.iptc.org/newscodes/digitalsourcetype/digitalCapture", <i class="conum" data-value="3"></i><b>(3)</b>
-  "dc:rights": "Copyright (C) 2022 Example Photo Agency. All Rights Reserved.", <i class="conum" data-value="4"></i><b>(4)</b>
-  "photoshop:Credit": [ "Julie Smith/Example Photo Agency via Example Distributor" ], <i class="conum" data-value="5"></i><b>(5)</b>
-  "plus:licensor": [ <i class="conum" data-value="6"></i><b>(6)</b>
+  "dc:rights": "Copyright (C) 2022 Example Photo Agency. All Rights Reserved.", <i class="conum" data-value="3"></i><b>(3)</b>
+  "photoshop:Credit": [ "Julie Smith/Example Photo Agency via Example Distributor" ], <i class="conum" data-value="4"></i><b>(4)</b>
+  "plus:licensor": [ <i class="conum" data-value="5"></i><b>(5)</b>
     {
       "plus:LicensorName": "Example Photo Agency",
       "plus:LicensorURL": "http://examplephotoagency.com/images/"
     }
   ],
-  "xmpRights:WebStatement": "http://examplephotoagency.com/terms.html", <i class="conum" data-value="7"></i><b>(7)</b>
+  "xmpRights:WebStatement": "http://examplephotoagency.com/terms.html", <i class="conum" data-value="6"></i><b>(6)</b>
   "xmpRights:UsageTerms": [
-    "Not for online publication. Germany OUT" <i class="conum" data-value="8"></i><b>(8)</b>
+    "Not for online publication. Germany OUT" <i class="conum" data-value="7"></i><b>(7)</b>
   ],
-  "Iptc4xmpExt:LocationCreated": { <i class="conum" data-value="9"></i><b>(9)</b>
+  "Iptc4xmpExt:LocationCreated": { <i class="conum" data-value="8"></i><b>(8)</b>
     "Iptc4xmpExt:City": "San Francisco"
   },
-  "Iptc4xmpExt:PersonInImage": [ <i class="conum" data-value="10"></i><b>(10)</b>
+  "Iptc4xmpExt:PersonInImage": [ <i class="conum" data-value="9"></i><b>(9)</b>
     "Erika Fictional"
-  ],
-  "Iptc4xmpCore:AltTextAccessibility": "Photo of Erika Fictional standing in front of the Golden Gate Bridge at sunset." <i class="conum" data-value="11"></i><b>(11)</b>
+  ]
 }</code></pre>
 </div>
 </div>
@@ -7477,39 +7295,31 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#digital-source-type">Digital Source Type</a></td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#copyright-notice">Copyright Notice</a></td>
 </tr>
 <tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#credit-line">Credit Line</a></td>
 </tr>
 <tr>
-<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
 <td><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#licensor">Licensor</a></td>
 </tr>
 <tr>
-<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
 <td><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#web-statement-of-rights">Web Statement of Rights</a></td>
 </tr>
 <tr>
-<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
 <td><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#rights-usage-terms">Rights Usage Terms</a></td>
 </tr>
 <tr>
-<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
 <td><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#location-created">Location Created</a></td>
 </tr>
 <tr>
-<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
 <td><a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#person-shown-in-the-image">Person Shown in the Image</a></td>
-</tr>
-<tr>
-<td><i class="conum" data-value="11"></i><b>11</b></td>
-<td><a href="https://www.iptc.org/std-dev/photometadata/specification/IPTC-PhotoMetadata-2022.1.html#alt-text-accessibility" class="bare">https://www.iptc.org/std-dev/photometadata/specification/IPTC-PhotoMetadata-2022.1.html#alt-text-accessibility</a>[Alt Text (Accessibility)</td>
 </tr>
 </table>
 </div>
@@ -7524,7 +7334,7 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
 <p>Although the redaction process works in such a way that only an entire assertion can be redacted (see <a href="#_redaction_of_assertions">Section 6.7, &#8220;Redaction of Assertions&#8221;</a>), the use of an <a href="#_update_manifests">update manifest</a> enables partial redaction by removing the original and then placing the new, reduced, versions in the update manifest.  <a href="#_user_experience">User Experiences</a> would present this new assertion with the signer of the update manifest and not with the signer of the C2PA Manifest that has been redacted.</p>
 </div>
 <div class="paragraph">
-<p>For example, an assertion containing location properties, creator name and other information may need to have the creator name redacted. This could be achieved through using an update manifest containing a new <code>stds.iptc</code> assertion with the creator name removed but the other information still present.</p>
+<p>For example, an assertion containing location properties, creator name and other information  may need to have the creator name redacted which could be done through an update manifest with a new <code>stds.iptc.photo-metadata</code> assertion with the other information still present.</p>
 </div>
 </td>
 </tr>
@@ -8056,7 +7866,7 @@ Most references to a W3C Verifiable Credentials are via a <code>credentials</cod
     </p>
   </div>
   <div class="footer-legal">
-    <p>Copyright © 2022 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>Copyright © 2024 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
     <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
   </div>
   <div class="footer-thanks">
