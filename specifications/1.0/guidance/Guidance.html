@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>C2PA Implementation Guidance :: C2PA Specifications</title>
-    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.0/guidance/Guidance.html">
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.4/guidance/Guidance.html">
     <meta name="page-spec" content="1.0@specifications:guidance:Guidance.adoc">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.1.7">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <link rel="stylesheet" href="../../../_/css/search.css">
     <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
@@ -16,7 +16,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
-      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/1.1/index.html">C2PA Specifications</a>
+      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/2.0/index.html">C2PA Specifications</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -70,9 +70,21 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../../1.1/index.html">C2PA Specifications</a>
+      <a class="title" href="../../2.0/index.html">C2PA Specifications</a>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../2.0/index.html">2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../1.4/index.html">1.4</a>
+        </li>
+        <li class="version">
+          <a href="../../1.3/index.html">1.3</a>
+        </li>
+        <li class="version">
+          <a href="../../1.2/index.html">1.2</a>
+        </li>
+        <li class="version">
           <a href="../../1.1/index.html">1.1</a>
         </li>
         <li class="version is-current">
@@ -88,12 +100,16 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../1.1/index.html" class="home-link" title="Home"></a>
+  <a href="../../2.0/index.html" class="home-link" title="Home"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">1.0</button>
   <div class="version-menu">
+    <a class="version is-missing" href="../../2.0/index.html">2.0</a>
+    <a class="version" href="../../1.4/guidance/Guidance.html">1.4</a>
+    <a class="version" href="../../1.3/guidance/Guidance.html">1.3</a>
+    <a class="version is-missing" href="../../1.2/index.html">1.2</a>
     <a class="version is-missing" href="../../1.1/index.html">1.1</a>
     <a class="version is-current" href="Guidance.html">1.0</a>
   </div>
@@ -148,11 +164,10 @@
 <ul class="sectlevel2">
 <li><a href="#_distributed_ledger_technology_dlt_and_c2pa">7.1. Distributed Ledger Technology (DLT) and C2PA</a></li>
 <li><a href="#_digital_non_fungible_tokens_nfts">7.2. Digital Non-Fungible Tokens (NFTs)</a></li>
-<li><a href="#_attribution_rights_and_licensing">7.3. Attribution, Rights and Licensing</a></li>
-<li><a href="#_identification_of_synthetically_created_or_altered_assets">7.4. Identification of synthetically created or altered assets</a></li>
-<li><a href="#_playback_verification_for_audiovideo_content">7.5. Playback verification for audio/video content</a></li>
-<li><a href="#_gdpr">7.6. GDPR</a></li>
-<li><a href="#_social_media_platforms">7.7. Social Media Platforms</a></li>
+<li><a href="#_playback_verification_for_audiovideo_content">7.3. Playback verification for audio/video content</a></li>
+<li><a href="#_attribution_rights_and_licensing">7.4. Attribution, Rights and Licensing</a></li>
+<li><a href="#_gdpr">7.5. GDPR</a></li>
+<li><a href="#_social_media_platforms">7.6. Social Media Platforms</a></li>
 </ul>
 </li>
 </ul>
@@ -180,7 +195,7 @@
 <div class="sect2">
 <h3 id="_overview"><a class="anchor" href="#_overview"></a>1.1. Overview</h3>
 <div class="paragraph">
-<p>The Coalition for Content Provenance and Authenticity (C2PA) has developed their <a href="../../1.1/specs/C2PA_Specification.html" class="page">technical specification</a> for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.</p>
+<p>The Coalition for Content Provenance and Authenticity (C2PA) has developed their <a href="#specs:C2PA_Specification.adoc" class="xref unresolved">technical specification</a> for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.</p>
 </div>
 <div class="paragraph">
 <p>The specification has been, and continues to be, informed by scenarios, workflows and requirements gathered from industry experts and partner organizations. However many of these requirements are not normative in nature or may differ between organizations or workflows - in those cases it is important to provide non-normative guidance to implementers - which is the goal of this document.</p>
@@ -222,7 +237,7 @@
 <div class="sect3">
 <h4 id="_encryption_of_assertions"><a class="anchor" href="#_encryption_of_assertions"></a>3.1.2. Encryption of Assertions</h4>
 <div class="paragraph">
-<p>The <a href="../../1.1/specs/C2PA_Specification.html#_c2pa_standard_assertions" class="page">set of assertions</a>, their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.</p>
+<p>The <a href="#specs:C2PA_Specification.adoc#_c2pa_standard_assertions" class="xref unresolved">set of assertions</a>, their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.</p>
 </div>
 <div class="paragraph">
 <p>A use case for creating variants of existing assertions would be to encrypt them to prevent access to those not possessing the necessary decryption key. This might be for privacy protection or the establishment of a more secure end-to-end workflow.</p>
@@ -324,7 +339,7 @@
 <div class="sect3">
 <h4 id="_manifests_for_existing_media"><a class="anchor" href="#_manifests_for_existing_media"></a>3.3.7. Manifests for existing media</h4>
 <div class="paragraph">
-<p>It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described <a href="../../1.1/specs/C2PA_Specification.html#_external_manifests" class="page">here</a>, all assets can have provenance, no matter their age.</p>
+<p>It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described <a href="#specs:C2PA_Specification.adoc#_external_manifests" class="xref unresolved">here</a>, all assets can have provenance, no matter their age.</p>
 </div>
 </div>
 </div>
@@ -381,7 +396,7 @@
 <div class="sect3">
 <h4 id="_byte_range_bindings"><a class="anchor" href="#_byte_range_bindings"></a>4.1.2. Byte Range Bindings</h4>
 <div class="paragraph">
-<p>The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in <a href="../../1.1/specs/C2PA_Specification.html#_hashing" class="page">the core specification</a>. Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset.  However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.</p>
+<p>The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in <a href="#specs:C2PA_Specification.adoc#_hashing" class="xref unresolved">the core specification</a>. Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset.  However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.</p>
 </div>
 </div>
 <div class="sect3">
@@ -673,7 +688,7 @@ Attaching a time-stamp and freshness information to the signature allows validat
 <div class="sect2">
 <h3 id="_validation_of_ingredient_manifests"><a class="anchor" href="#_validation_of_ingredient_manifests"></a>6.2. Validation of Ingredient manifests</h3>
 <div class="paragraph">
-<p>As described in the <a href="../../1.1/specs/C2PA_Specification.html#_validation" class="page">Validation section of the specification</a>, "The validator may optionally recursively validate the ingredient&#8217;s ingredients". To do so, the implementation resolves each ingredient&#8217;s <code>url</code> field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.</p>
+<p>As described in the <a href="#specs:C2PA_Specification.adoc:#recursively_validating_integrity_of_ingredients" class="xref unresolved">Validation section of the specification</a>, "The validator may optionally recursively validate the ingredient&#8217;s ingredients". To do so, the implementation resolves each ingredient&#8217;s <code>url</code> field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.</p>
 </div>
 </div>
 <div class="sect2">
@@ -809,7 +824,25 @@ Given the high throughput and low latency requirements for storing manifests, it
 </div>
 </div>
 <div class="sect2">
-<h3 id="_attribution_rights_and_licensing"><a class="anchor" href="#_attribution_rights_and_licensing"></a>7.3. Attribution, Rights and Licensing</h3>
+<h3 id="_playback_verification_for_audiovideo_content"><a class="anchor" href="#_playback_verification_for_audiovideo_content"></a>7.3. Playback verification for audio/video content</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Items for future guidance</div>
+<div class="paragraph">
+<p>A useful thing to add would be the steps a client audio/video player should perform to verify an actual content file for MP4/fMP4. This is currently being tracked as issue #518 the C2PA Specification github repo.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_attribution_rights_and_licensing"><a class="anchor" href="#_attribution_rights_and_licensing"></a>7.4. Attribution, Rights and Licensing</h3>
 <div class="paragraph">
 <p>The standard assertions defined for use in a C2PA Manifest include opportunities to add information about the attribution, rights and licenses of the associated asset.</p>
 </div>
@@ -860,31 +893,7 @@ Given the high throughput and low latency requirements for storing manifests, it
 </div>
 </div>
 <div class="sect2">
-<h3 id="_identification_of_synthetically_created_or_altered_assets"><a class="anchor" href="#_identification_of_synthetically_created_or_altered_assets"></a>7.4. Identification of synthetically created or altered assets</h3>
-<div class="paragraph">
-<p>It has become more common to</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_playback_verification_for_audiovideo_content"><a class="anchor" href="#_playback_verification_for_audiovideo_content"></a>7.5. Playback verification for audio/video content</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Items for future guidance</div>
-<div class="paragraph">
-<p>A useful thing to add would be the steps a client audio/video player should perform to verify an actual content file for MP4/fMP4. This is currently being tracked as issue #518 the C2PA Specification github repo.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_gdpr"><a class="anchor" href="#_gdpr"></a>7.6. GDPR</h3>
+<h3 id="_gdpr"><a class="anchor" href="#_gdpr"></a>7.5. GDPR</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -902,7 +911,7 @@ Given the high throughput and low latency requirements for storing manifests, it
 </div>
 </div>
 <div class="sect2">
-<h3 id="_social_media_platforms"><a class="anchor" href="#_social_media_platforms"></a>7.7. Social Media Platforms</h3>
+<h3 id="_social_media_platforms"><a class="anchor" href="#_social_media_platforms"></a>7.6. Social Media Platforms</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -941,7 +950,7 @@ Given the high throughput and low latency requirements for storing manifests, it
     </p>
   </div>
   <div class="footer-legal">
-    <p>Copyright © 2022 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>Copyright © 2024 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
     <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
   </div>
   <div class="footer-thanks">

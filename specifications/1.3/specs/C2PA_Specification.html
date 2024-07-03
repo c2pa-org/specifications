@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>C2PA Technical Specification :: C2PA Specifications</title>
-    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.3/specs/C2PA_Specification.html">
-    <meta name="page-spec" content="specifications:specs:C2PA_Specification.adoc">
-    <meta name="generator" content="Antora 3.1.2">
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/2.0/specs/C2PA_Specification.html">
+    <meta name="page-spec" content="1.3@specifications:specs:C2PA_Specification.adoc">
+    <meta name="generator" content="Antora 3.1.7">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <link rel="stylesheet" href="../../../_/css/search.css">
     <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
@@ -16,7 +16,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
-      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/1.3/index.html">C2PA Specifications</a>
+      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/2.0/index.html">C2PA Specifications</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -63,81 +63,29 @@
 <div class="nav-container">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-menu is-active is-loading" data-panel="menu">
-  <nav class="nav-menu">
-    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
-    <h3 class="title"><a href="../index.html">C2PA Specifications</a></h3>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item is-current-url" data-depth="1">
-    <a class="nav-link" href="C2PA_Specification.html">Technical Specifications</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../1.2/explainer/Explainer.html">Explainer</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../1.2/guidance/Guidance.html">Guidance for Implementers</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../1.0/ux/UX_Recommendations.html">User Experience Guidance</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../1.0/security/Security_Considerations.html">C2PA Security Considerations</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../1.0/security/Harms_Modelling.html">C2PA Harms Modelling</a>
-  </li>
-</ul>
-  </li>
-</ul>
-  </nav>
-  <script>
-;(function () {
-  var panel = document.querySelector('.nav-panel-menu')
-  var page
-  var hash = window.location.hash
-  if (hash) {
-    if (~hash.indexOf('%')) hash = decodeURIComponent(hash)
-    if (~hash.indexOf('"')) hash = hash.replace(/(?=")/g, '\\')
-    var link = panel.querySelector('.nav-link[href="' + hash + '"]')
-    if (link) page = link.parentNode
-    else if ((page = panel.querySelector('.is-current-url'))) page.classList.add('is-provisional')
-  } else {
-    page = panel.querySelector('.is-current-url')
-  }
-  if (page) {
-    var ancestor = page
-    while ((ancestor = ancestor.parentNode) && ancestor !== panel) {
-      if (ancestor.className === 'nav-item') ancestor.classList.add('is-current-path', 'is-active')
-    }
-    page.classList.add('is-current-page', 'is-active')
-    if (panel.scrollHeight > panel.clientHeight) {
-      var panelRect = panel.getBoundingClientRect()
-      var linkRect = page.querySelector('.nav-link').getBoundingClientRect()
-      panel.scrollTop += Math.round(linkRect.top - panelRect.top - (panelRect.height - linkRect.height) * 0.5)
-    }
-  } else {
-    panel.scrollTop = 0
-  }
-  panel.classList.remove('is-loading')
-})()
-  </script>
-</div>
-<div class="nav-panel-explore" data-panel="explore">
+<div class="nav-panel-explore is-active" data-panel="explore">
   <div class="context">
     <span class="title">C2PA Specifications</span>
     <span class="version">1.3</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../index.html">C2PA Specifications</a>
+      <a class="title" href="../../2.0/index.html">C2PA Specifications</a>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-latest">
+          <a href="../../2.0/index.html">2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../1.4/index.html">1.4</a>
+        </li>
+        <li class="version is-current">
           <a href="../index.html">1.3</a>
         </li>
         <li class="version">
           <a href="../../1.2/index.html">1.2</a>
+        </li>
+        <li class="version">
+          <a href="../../1.1/index.html">1.1</a>
         </li>
         <li class="version">
           <a href="../../1.0/index.html">1.0</a>
@@ -152,18 +100,17 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link" title="Home"></a>
+  <a href="../../2.0/index.html" class="home-link" title="Home"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="../index.html">C2PA Specifications</a></li>
-    <li><a href="C2PA_Specification.html">Technical Specifications</a></li>
-  </ul>
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">1.3</button>
   <div class="version-menu">
+    <a class="version" href="../../2.0/specs/C2PA_Specification.html">2.0</a>
+    <a class="version" href="../../1.4/specs/C2PA_Specification.html">1.4</a>
     <a class="version is-current" href="C2PA_Specification.html">1.3</a>
-    <a class="version is-missing" href="../../1.2/index.html">1.2</a>
+    <a class="version" href="../../1.2/specs/C2PA_Specification.html">1.2</a>
+    <a class="version" href="../../1.1/specs/C2PA_Specification.html">1.1</a>
     <a class="version is-missing" href="../../1.0/index.html">1.0</a>
   </div>
 </div>
@@ -5422,7 +5369,7 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="sect2">
 <h3 id="_approach"><a class="anchor" href="#_approach"></a>17.1. Approach</h3>
 <div class="paragraph">
-<p>The C2PA intends to provide clear recommendations and guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders, with the results balancing uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. These recommendations can be found in the <a href="../../1.0/ux/UX_Recommendations.html" class="xref page">User experience guidance document</a>.</p>
+<p>The C2PA intends to provide clear recommendations and guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders, with the results balancing uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. These recommendations can be found in the <a href="#1.1@ux:UX_Recommendations.adoc" class="xref unresolved">User experience guidance document</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -5616,10 +5563,10 @@ A JPEG-1 file can contain <code>APP11</code> segments for reasons other than C2P
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../1.2/guidance/Guidance.html" class="xref page">Guidance for implementers</a></p>
+<p><a href="#1.2@guidance:Guidance.adoc" class="xref unresolved">Guidance for implementers</a></p>
 </li>
 <li>
-<p><a href="../../1.0/ux/UX_Recommendations.html" class="xref page">User experience guidance</a></p>
+<p><a href="#1.1@ux:UX_Recommendations.adoc" class="xref unresolved">User experience guidance</a></p>
 </li>
 <li>
 <p><a href="../../1.0/security/Security_Considerations.html" class="xref page">Security Considerations</a></p>
@@ -9978,7 +9925,7 @@ training-mining-map = {
     </p>
   </div>
   <div class="footer-legal">
-    <p>Copyright © 2023 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>Copyright © 2024 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
     <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
   </div>
   <div class="footer-thanks">
