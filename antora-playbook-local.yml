@@ -8,19 +8,22 @@ content:
     branches: HEAD
     start_path: docs
   - url: ./../specs-core
-    branches: [2.0, 1.4, 1.3, 1.2, 1.1, 1.0, HEAD]
+    # branches: [antora-*]
+    branches: HEAD
+    tags: [2.0, 1.4, 1.3, 1.2, 1.1, 1.0]
     start_path: docs
   - url: ./../attestations
     branches: HEAD
+    # tags: [1.4]
     start_path: docs
   - url: ./../threats-harms
-    branches: HEAD
+    branches: [antora-*]
     start_path: docs
   - url: ./../ux
-    branches: HEAD
+    branches: [antora-*]
     start_path: docs
   - url: ./../documentation
-    branches: [HEAD]
+    branches: [antora-*]
     start_path: docs
 ui:
   bundle:
