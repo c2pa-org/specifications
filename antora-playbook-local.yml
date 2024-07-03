@@ -8,7 +8,8 @@ content:
     branches: HEAD
     start_path: docs
   - url: ./../specs-core
-    # branches: HEAD
+    # branches: [antora-*]
+    branches: HEAD
     tags: [2.0, 1.4, 1.3, 1.2, 1.1, 1.0]
     start_path: docs
   - url: ./../attestations
@@ -19,8 +20,7 @@ content:
     branches: [antora-*]
     start_path: docs
   - url: ./../ux
-    # branches: HEAD
-    tags: [2.0, 1.4, v1.0]
+    branches: [antora-*]
     start_path: docs
   - url: ./../documentation
     branches: [antora-*]
