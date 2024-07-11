@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>C2PA Explainer :: C2PA Specifications</title>
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.4/explainer/Explainer.html">
+    <meta name="page-spec" content="1.2@specifications:explainer:Explainer.adoc">
+    <meta name="generator" content="Antora 3.1.7">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <a class="navbar-item title" href="../../..">C2PA Specifications</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Download</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../../1.0/explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../../1.0/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../../1.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
+            <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
+          </div>
+        </div>
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-item" href="https://asciidoctor.zulipchat.com" target="_blank" rel="noopener" data-title="Communication">
+            <span class="icon"><img src="../../../_/img/octicons-24.svg#view-comment-discussion"></span>
+          </a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item has-icon" href="https://github.com/c2pa-org" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-mark-github"></span>
+              <span>Repository</span>
+            </a>
+            <a class="navbar-item has-icon" href="https://twitter.com/c2pa" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-hash"></span>
+              <span>Tweets</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active is-loading" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">C2PA Specifications</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../specs/C2PA_Specification.html">Technical Specifications</a>
+  </li>
+  <li class="nav-item is-current-url" data-depth="1">
+    <a class="nav-link" href="Explainer.html">Explainer</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../guidance/Guidance.html">Guidance for Implementors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../1.0/ux/UX_Recommendations.html">User Experience Guidance</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../1.0/security/Security_Considerations.html">C2PA Security Considerations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../1.0/security/Harms_Modelling.html">C2PA Harms Modelling</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+  <script>
+;(function () {
+  var panel = document.querySelector('.nav-panel-menu')
+  var page
+  var hash = window.location.hash
+  if (hash) {
+    if (~hash.indexOf('%')) hash = decodeURIComponent(hash)
+    if (~hash.indexOf('"')) hash = hash.replace(/(?=")/g, '\\')
+    var link = panel.querySelector('.nav-link[href="' + hash + '"]')
+    if (link) page = link.parentNode
+    else if ((page = panel.querySelector('.is-current-url'))) page.classList.add('is-provisional')
+  } else {
+    page = panel.querySelector('.is-current-url')
+  }
+  if (page) {
+    var ancestor = page
+    while ((ancestor = ancestor.parentNode) && ancestor !== panel) {
+      if (ancestor.className === 'nav-item') ancestor.classList.add('is-current-path', 'is-active')
+    }
+    page.classList.add('is-current-page', 'is-active')
+    if (panel.scrollHeight > panel.clientHeight) {
+      var panelRect = panel.getBoundingClientRect()
+      var linkRect = page.querySelector('.nav-link').getBoundingClientRect()
+      panel.scrollTop += Math.round(linkRect.top - panelRect.top - (panelRect.height - linkRect.height) * 0.5)
+    }
+  } else {
+    panel.scrollTop = 0
+  }
+  panel.classList.remove('is-loading')
+})()
+  </script>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">C2PA Specifications</span>
+    <span class="version">1.2</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../2.0/index.html">C2PA Specifications</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../2.0/index.html">2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../1.4/index.html">1.4</a>
+        </li>
+        <li class="version">
+          <a href="../../1.3/index.html">1.3</a>
+        </li>
+        <li class="version is-current">
+          <a href="../index.html">1.2</a>
+        </li>
+        <li class="version">
+          <a href="../../1.1/index.html">1.1</a>
+        </li>
+        <li class="version">
+          <a href="../../1.0/index.html">1.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">C2PA Specifications</a></li>
+    <li><a href="Explainer.html">Explainer</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">1.2</button>
+  <div class="version-menu">
+    <a class="version is-missing" href="../../2.0/index.html">2.0</a>
+    <a class="version" href="../../1.4/explainer/Explainer.html">1.4</a>
+    <a class="version" href="../../1.3/explainer/Explainer.html">1.3</a>
+    <a class="version is-current" href="Explainer.html">1.2</a>
+    <a class="version is-missing" href="../../1.1/index.html">1.1</a>
+    <a class="version" href="../../1.0/explainer/Explainer.html">1.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">C2PA Explainer</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_goals_and_non_goals">2. Goals and Non-goals</a></li>
+<li><a href="#_fundamentals_faqs">3. Fundamentals (FAQs)</a>
+<ul class="sectlevel2">
+<li><a href="#_what_does_provenance_mean_in_the_c2pa_specifications">3.1. What does "Provenance" mean in the C2PA Specifications?</a></li>
+<li><a href="#_how_is_trust_in_digital_assets_established">3.2. How is trust in digital assets established?</a></li>
+<li><a href="#_what_does_it_mean_that_provenance_data_is_cryptographically_bound_to_the_asset">3.3. What does it mean that provenance data is cryptographically bound to the asset?</a></li>
+<li><a href="#_can_c2pa_help_with_assets_created_from_multiple_sources">3.4. Can C2PA help with assets created from multiple sources?</a></li>
+<li><a href="#_what_is_redaction_and_how_does_it_work">3.5. What is redaction and how does it work?</a></li>
+<li><a href="#_todo">3.6. TODO</a></li>
+</ul>
+</li>
+<li><a href="#_use_case_examples">4. Use-case Examples</a>
+<ul class="sectlevel2">
+<li><a href="#_helping_consumers_check_the_provenance_of_the_media_they_are_consuming">4.1. Helping consumers check the provenance of the media they are consuming</a></li>
+<li><a href="#_enhancing_clarity_around_provenance_and_edits_for_journalistic_work">4.2. Enhancing clarity around provenance and edits for journalistic work</a></li>
+<li><a href="#_offering_publishers_opportunities_to_improve_their_brand_value">4.3. Offering publishers opportunities to improve their brand value</a></li>
+<li><a href="#_providing_quality_data_for_indexer_platform_content_decisions">4.4. Providing quality data for indexer / platform content decisions</a></li>
+<li><a href="#_assisting_intelligence_investigators_to_confirm_provenance_and_integrity_of_media">4.5. Assisting 'Intelligence' investigators to confirm provenance and integrity of media</a></li>
+<li><a href="#_enhance_the_evidentiary_value_of_critical_footage">4.6. Enhance the evidentiary value of critical footage</a></li>
+<li><a href="#_enforcing_disclaimer_laws_on_retouchededited_images">4.7. Enforcing disclaimer laws on retouched/edited images</a></li>
+</ul>
+</li>
+<li><a href="#_stakeholder_feedback">5. Stakeholder Feedback</a></li>
+<li><a href="#_references">6. References</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="http://creativecommons.org/licenses/by/4.0/"><img src="_images/CCby4.png" alt="Creative Commons License"></a>
+</div>
+</div>
+<div class="paragraph text-center">
+<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<!-- toc disabled -->
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The development of this Explainer is ongoing. This Explainer accompanies Version 1.0 of the Technical Specifications.</p>
+</div>
+<div class="paragraph">
+<p>This Explainer accompanies the C2PA Specifications with the intent of providing further background and clarification on the development of the standard, its goals, mechanisms and guidelines.</p>
+</div>
+<div class="paragraph">
+<p>This Explainer is not a technical document and is directed towards the general public.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goals_and_non_goals"><a class="anchor" href="#_goals_and_non_goals"></a>2. Goals and Non-goals</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The goal of the C2PA specifications is to tackle the extraordinary challenge of trusting media in a context of rapidly evolving technology and the democratization of powerful creation and editing techniques. To this end, the specifications are designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security and privacy requirements, as well as human rights considerations.</p>
+</div>
+<div class="paragraph">
+<p>It is important to highlight that C2PA specifications do not provide value judgments about whether a given set of provenance data is 'true', but instead merely whether the provenance information can be verified as associated with the underlying asset, correctly formed, and free from tampering.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fundamentals_faqs"><a class="anchor" href="#_fundamentals_faqs"></a>3. Fundamentals (FAQs)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_does_provenance_mean_in_the_c2pa_specifications"><a class="anchor" href="#_what_does_provenance_mean_in_the_c2pa_specifications"></a>3.1. What does "Provenance" mean in the C2PA Specifications?</h3>
+<div class="paragraph">
+<p>Provenance generally refers to the facts about the history of a piece of digital content assets (image, video, audio recording, document). C2PA enables the authors of provenance data to securely bind statements of provenance data to instances of content using their unique credentials. These provenance statements are called assertions by the C2PA. They may include assertions about who created the content and how, when, and where it was created. They may also include assertions about when and how it was edited throughout its life. The content author, and publisher (if authoring provenance data) always has control over whether to include provenance data as well as what assertions are included, such as whether to include identifying information (in order to allow for anonymous or pseudonymous assets). Included assertions can be removed in later edits without invalidating or removing all of the included provenance data in a process called <a href="#_what_is_redaction_and_how_does_it_work">redaction</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_is_trust_in_digital_assets_established"><a class="anchor" href="#_how_is_trust_in_digital_assets_established"></a>3.2. How is trust in digital assets established?</h3>
+<div class="paragraph">
+<p>In the C2PA Specifications, trust decisions are made by the consumer of the asset based on the identity of the actor(s) who signed the provenance data along with the information in the assertions contained in the provenance. This signing takes place at each significant moment in an asset&#8217;s life (e.g., creation, editing, etc.) through the use of the actor&#8217;s unique credentials and ensures that the provenance data remains cryptographically bound to the newly created or updated asset.</p>
+</div>
+<div class="paragraph">
+<p>To enable consumers to make informed decisions about the provenance of an asset, and prevent unknown attackers from impersonating others, it is critical that each application and ecosystem reliably identify the actor to whom a signing credential is issued. This is accomplished through the use of a <em>certification authority</em> (CA). CAs perform real-world due diligence to ensure credentials are only issued to actors who are whom they claim to be. In the world wide web, CAs verify that someone requesting a certificate to operate a secure web site owns and/or controls the site&#8217;s domain name before issuing such a credential. For example, before issuing a certificate for <a href="https://c2pa.org/" class="bare">https://c2pa.org/</a>, the CA verified the requestor did in fact control C2PA&#8217;s domain name before issuing a certificate for that site name.</p>
+</div>
+<div class="paragraph">
+<p>Unlike the world wide web, C2PA will be used in multiple different application settings, and each setting will have its own requirements. Each application will therefore provide users with one or more <em>trust lists</em>, which are lists of certification authorities that issue credentials for that application. For example, in a news and media aggregation application or web site, each newspaper, television network, or other media organization has a globally-recognized identity, and there is only one such organization that operates with that name. In this situation, because brand marks and other visual indicators can and have been reproduced for the purposes of impersonation, consumers want to be certain the media they are consuming actually comes from the source it claims to be. This application would provide at least one trust list maintained by a professional or non-profit organization for journalists and media, which endorses certification authorities that ensure such credentials are only issued to the genuine organization through real-world due diligence.</p>
+</div>
+<div class="paragraph">
+<p>In another example, an insurance company may employ provenance tracking for images, videos, and other media as part of underwriting policies and servicing loss claims to be used by its own employees. In this case, only one trust list is applicable: the insurance company&#8217;s own certification authority operated by its Human Resources department, which may already exist to employee credentials for other purposes. Here, it is not important that every participant have a unique name, as several employees may share the same name, but it is important to be assured all participants are employees of the insurance company, which the Human Resources department is certainly able to confirm and attest.</p>
+</div>
+<div class="paragraph">
+<p>Once the credential is issued by a certification authority, the identity it has confirmed and placed in the credential cannot be altered by anyone else, including and especially the credential&#8217;s owner. This allows the consumer or user to rely upon the identity presented in a signed asset.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_does_it_mean_that_provenance_data_is_cryptographically_bound_to_the_asset"><a class="anchor" href="#_what_does_it_mean_that_provenance_data_is_cryptographically_bound_to_the_asset"></a>3.3. What does it mean that provenance data is cryptographically bound to the asset?</h3>
+<div class="paragraph">
+<p>The provenance data and the asset are the two parts of the same puzzle - a unique puzzle. The possibility of any other pieces ever matching, either by coincidence or by purposeful creation, is so low that it would be practically impossible. This is known as a hard binding.</p>
+</div>
+<div class="paragraph">
+<p>In other words, any alteration to either the asset or the provenance, however insignificant, would alter the mathematical algorithm - the shape of the piece of the puzzle – in such a way that they would no longer match.</p>
+</div>
+<div class="paragraph">
+<p>For more technical information on this see "Hard binding" in the <a href="#1.1@specs:C2PA_Specification#_glossary" class="xref unresolved">glossary</a> and the <a href="../guidance/Guidance.html" class="xref page">non-normative guidance</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_can_c2pa_help_with_assets_created_from_multiple_sources"><a class="anchor" href="#_can_c2pa_help_with_assets_created_from_multiple_sources"></a>3.4. Can C2PA help with assets created from multiple sources?</h3>
+<div class="paragraph">
+<p>When one asset is created from a series of other assets, those sources are referred to as the ingredients. Each ingredient that is used in the final (composed) asset can be identified as part of the final provenance, including the addition of the provenance of each individual ingredient.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_redaction_and_how_does_it_work"><a class="anchor" href="#_what_is_redaction_and_how_does_it_work"></a>3.5. What is redaction and how does it work?</h3>
+<div class="paragraph">
+<p>Redaction is the process of permanently removing information - in the world of C2PA it specifically refers to removing assertions.</p>
+</div>
+<div class="paragraph">
+<p>For example, if a human rights organization wishes to remove from an image assertions about the photographer, it can do so via the redaction process. In addition, they could, at the same time, add more information about the time and location of where the image was taken. The act of redaction (and possibly adding addition information) becomes part of the provenance of the asset.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_todo"><a class="anchor" href="#_todo"></a>3.6. TODO</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Some of the additional areas that information will be provide about include:
+- Synthetic content
+- Privacy
+- Guarantees C2PA is providing the consumer
+- Who can be / Process of becoming a signer (signing entities)
+- Discussion of how provenance does not have to include everything from the origin to current due to the Trust Model.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_case_examples"><a class="anchor" href="#_use_case_examples"></a>4. Use-case Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following is a non-exhaustive list of potential and general use-cases of the C2PA Specifications. Some of these are taken from, or built upon, the use-cases developed within the <a href="https://www.originproject.info/">Project Origin Alliance</a> and the <a href="https://contentauthenticity.org/">Content Authenticity Initiative (CAI)</a> frameworks.  Each use-case wil l be described using some generic personas to help make the flow clear.</p>
+</div>
+<div class="paragraph">
+<p>For technical use-case examples, see [Non-normative guidelines].</p>
+</div>
+<div class="sect2">
+<h3 id="_helping_consumers_check_the_provenance_of_the_media_they_are_consuming"><a class="anchor" href="#_helping_consumers_check_the_provenance_of_the_media_they_are_consuming"></a>4.1. Helping consumers check the provenance of the media they are consuming</h3>
+<div class="paragraph">
+<p>Alice sends a video to a friend, Bob. The video includes text with alarming and controversial allegations. Bob immediately seeks confirmation of its validity, starting with its provenance.</p>
+</div>
+<div class="paragraph">
+<p>The video that Alice sent contains C2PA provenance. With a C2PA-enabled application, Bob is able to establish that this video has been validated as being published by an organisation he can trust and is held in public high regard.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enhancing_clarity_around_provenance_and_edits_for_journalistic_work"><a class="anchor" href="#_enhancing_clarity_around_provenance_and_edits_for_journalistic_work"></a>4.2. Enhancing clarity around provenance and edits for journalistic work</h3>
+<div class="paragraph">
+<p>A photojournalist uses a C2PA-enabled capture device during a newsworthy event they are covering. The assets are then brought into a C2PA-enabled editing application, and after editing it, they are sent to a photo editor. The editor makes additional edits also using a C2PA-enabled application. The finalized asset is moved into the content management system of a news organization, which is also C2PA-enabled, before posting the asset to social media.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_offering_publishers_opportunities_to_improve_their_brand_value"><a class="anchor" href="#_offering_publishers_opportunities_to_improve_their_brand_value"></a>4.3. Offering publishers opportunities to improve their brand value</h3>
+<div class="paragraph">
+<p>A news publisher is concerned about standards of public comprehension and brand value of its publications which it makes available online through a number of social media platforms. To improve audience confidence about their content, it wishes to provide a means for the audience to verify the content that originated through its output.</p>
+</div>
+<div class="paragraph">
+<p>For content that is consumed without any C2PA provenance, the publisher hopes that the consumer will take extra steps to verify the provenance and authenticity of the asset, instead of immediately attributing it to the site on which it is published.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_providing_quality_data_for_indexer_platform_content_decisions"><a class="anchor" href="#_providing_quality_data_for_indexer_platform_content_decisions"></a>4.4. Providing quality data for indexer / platform content decisions</h3>
+<div class="paragraph">
+<p>A news video is posted to a social media platform. By utilizing the C2PA-enabled provenance in the video, the social media platform is able to verify that it came from the same source that posted it.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_assisting_intelligence_investigators_to_confirm_provenance_and_integrity_of_media"><a class="anchor" href="#_assisting_intelligence_investigators_to_confirm_provenance_and_integrity_of_media"></a>4.5. Assisting 'Intelligence' investigators to confirm provenance and integrity of media</h3>
+<div class="paragraph">
+<p>An individual in a news/other context using open-source intelligence techniques (OSINT) can use the presence of C2PA provenance in assets to better confirm the history and integrity of media. Additionally, an individual may use a [decoupled binding database] to re-correlate relevant media to its C2PA provenance.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enhance_the_evidentiary_value_of_critical_footage"><a class="anchor" href="#_enhance_the_evidentiary_value_of_critical_footage"></a>4.6. Enhance the evidentiary value of critical footage</h3>
+<div class="paragraph">
+<p>A human rights defender manages to capture footage containing C2PA-enabled provenance of police violence during a protest. The human rights defender sends the footage to a human rights organization that verifies that the asset meets video-as-evidence criteria. The human rights organization redacts information about the defender using a C2PA-enabled editing application in order to protect their identity. The C2PA-verified asset is then used to improve the chances of that footage being admissible in court proceedings.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enforcing_disclaimer_laws_on_retouchededited_images"><a class="anchor" href="#_enforcing_disclaimer_laws_on_retouchededited_images"></a>4.7. Enforcing disclaimer laws on retouched/edited images</h3>
+<div class="paragraph">
+<p>To prevent dangerous stereotypes of ideal bodies, a government enacts a law that requires advertisers and social media influencers to specify that their image has been edited if any aspect of a body&#8217;s size, shape or skin has been altered. By having their C2PA-enabled editing application add information about each action performed, they can easily comply and the government can easily confirm.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stakeholder_feedback"><a class="anchor" href="#_stakeholder_feedback"></a>5. Stakeholder Feedback</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Implementers and other stakeholders may already have publicly stated positions on this work. They will be listed here with links to evidence as appropriate.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>6. References</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Any additional documents, articles, books, etc. that would be useful to read to get a better understanding of the work of the C2PA will go here.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <div class="footer-main">
+    <figure class="footer-brand">
+      <a class="logo" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <figcaption class="footer-brand-name"><a href="https://c2pa.org">C2PA</a></figcaption>
+    </figure>
+    <ul class="footer-brand-links">
+      <li><a href="https://c2pa.org" target="_blank" rel="noopener">Home</a></li>
+      <li><a href="https://c2pa.org/specifications">Docs</a></li>
+      <li><a href="https://github.com/c2pa-org" target="_blank" rel="noopener">Project</a></li>
+    </ul>
+    <p class="footer-brand-follow">
+      <a href="https://twitter.com/c2pa_org" title="Follow us on Twitter" target="_blank" rel="noopener"><img src="../../../_/img/twitter-logo.svg" alt="Twitter logo" class="logo" width="28"><span class="handle">@C2PA_org</span></a>
+    </p>
+  </div>
+  <div class="footer-legal">
+    <p>Copyright © 2024 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
+  </div>
+  <div class="footer-thanks">
+    <p>Thanks to our <a href="https://c2pa.org/membership/" target="_blank" rel="noopener">membership</a> for helping to make this project possible.</p>
+    <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
+  </div>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/specifications/1.2/explainer/Explainer.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+
+  </body>
+</html>
