@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Guidance for Artificial Intelligence and Machine Learning :: C2PA Specifications</title>
-    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.3/ai-ml/ai_ml.html">
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.4/ai-ml/ai_ml.html">
     <meta name="page-spec" content="1.3@specifications:ai-ml:ai_ml.adoc">
-    <meta name="generator" content="Antora 3.1.2">
+    <meta name="generator" content="Antora 3.1.7">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <link rel="stylesheet" href="../../../_/css/search.css">
     <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
@@ -16,7 +16,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
-      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/2.0/index.html">C2PA Specifications</a>
+      <a class="navbar-item title" href="../../..">C2PA Specifications</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -63,7 +63,68 @@
 <div class="nav-container">
   <aside class="nav">
     <div class="panels">
-<div class="nav-panel-explore is-active" data-panel="explore">
+<div class="nav-panel-menu is-active is-loading" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">C2PA Specifications</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../specs/C2PA_Specification.html">Technical Specifications</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#1.2@explainer:Explainer.adoc">Explainer</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#1.2@guidance:Guidance.adoc">Guidance for Implementers</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#1.1@ux:UX_Recommendations.adoc">User Experience Guidance</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../1.0/security/Security_Considerations.html">C2PA Security Considerations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../1.0/security/Harms_Modelling.html">C2PA Harms Modelling</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+  <script>
+;(function () {
+  var panel = document.querySelector('.nav-panel-menu')
+  var page
+  var hash = window.location.hash
+  if (hash) {
+    if (~hash.indexOf('%')) hash = decodeURIComponent(hash)
+    if (~hash.indexOf('"')) hash = hash.replace(/(?=")/g, '\\')
+    var link = panel.querySelector('.nav-link[href="' + hash + '"]')
+    if (link) page = link.parentNode
+    else if ((page = panel.querySelector('.is-current-url'))) page.classList.add('is-provisional')
+  } else {
+    page = panel.querySelector('.is-current-url')
+  }
+  if (page) {
+    var ancestor = page
+    while ((ancestor = ancestor.parentNode) && ancestor !== panel) {
+      if (ancestor.className === 'nav-item') ancestor.classList.add('is-current-path', 'is-active')
+    }
+    page.classList.add('is-current-page', 'is-active')
+    if (panel.scrollHeight > panel.clientHeight) {
+      var panelRect = panel.getBoundingClientRect()
+      var linkRect = page.querySelector('.nav-link').getBoundingClientRect()
+      panel.scrollTop += Math.round(linkRect.top - panelRect.top - (panelRect.height - linkRect.height) * 0.5)
+    }
+  } else {
+    panel.scrollTop = 0
+  }
+  panel.classList.remove('is-loading')
+})()
+  </script>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">C2PA Specifications</span>
     <span class="version">1.3</span>
@@ -82,6 +143,12 @@
           <a href="../index.html">1.3</a>
         </li>
         <li class="version">
+          <a href="../../1.2/index.html">1.2</a>
+        </li>
+        <li class="version">
+          <a href="../../1.1/index.html">1.1</a>
+        </li>
+        <li class="version">
           <a href="../../1.0/index.html">1.0</a>
         </li>
       </ul>
@@ -94,15 +161,20 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../2.0/index.html" class="home-link" title="Home"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">C2PA Specifications</a></li>
+    <li><a href="ai_ml.html" class="discrete">Guidance for Artificial Intelligence and Machine Learning</a></li>
+  </ul>
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">1.3</button>
   <div class="version-menu">
     <a class="version is-missing" href="../../2.0/index.html">2.0</a>
-    <a class="version is-missing" href="../../1.4/index.html">1.4</a>
+    <a class="version" href="../../1.4/ai-ml/ai_ml.html">1.4</a>
     <a class="version is-current" href="ai_ml.html">1.3</a>
+    <a class="version is-missing" href="../../1.2/index.html">1.2</a>
+    <a class="version is-missing" href="../../1.1/index.html">1.1</a>
     <a class="version is-missing" href="../../1.0/index.html">1.0</a>
   </div>
 </div>
@@ -122,13 +194,12 @@
 <li><a href="#_model_poisoning_attacks">4. Model Poisoning Attacks</a></li>
 <li><a href="#_other_model_attacks">5. Other Model Attacks</a></li>
 <li><a href="#_compressed_files">6. Compressed Files</a></li>
-<li><a href="#_ai_ml_model_content_credential">7. AI-ML Model Content Credential</a></li>
-<li><a href="#_ai_ml_training_data_set_content_credential">8. AI-ML Training Data Set Content Credential</a>
+<li><a href="#_ai_ml_model_content_credential">7. AI-ML Model Content Credential</a>
 <ul class="sectlevel2">
-<li><a href="#_attestation_for_ai_ml_models">8.1. Attestation for AI-ML Models</a></li>
+<li><a href="#_attestation_for_ai_ml_models">7.1. Attestation for AI-ML Models</a></li>
 </ul>
 </li>
-<li><a href="#_ai_ml_output_content_credential">9. AI-ML Output Content Credential</a></li>
+<li><a href="#_ai_ml_output_content_credential">8. AI-ML Output Content Credential</a></li>
 <li><a href="#_references">References</a></li>
 </ul>
 </div>
@@ -153,10 +224,10 @@
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="#1.4@specs:C2PA_Specification.adoc" class="xref unresolved">C2PA specification</a> can be used to add cryptographic information to detect the tampering of media files and streams. Similarly, the C2PA framework can also be used in artificial intelligence (AI) and machine learning (ML) systems to indicate the tampering of datasets, software, and models which are utilized during training and inference. This document provides guidance about how C2PA&#8217;s Content Credentials can be employed by AI and ML systems.</p>
+<p>The <a href="../specs/C2PA_Specification.html" class="xref page">C2PA specification</a> can be used to add cryptographic information to detect the tampering of media files and streams. Similarly, the C2PA framework can also be used in artificial intelligence (AI) and machine learning (ML) systems to indicate the tampering of datasets, software, and models which are utilized during training and inference. This document provides guidance about how C2PA can be employed by AI and ML systems.</p>
 </div>
 <div class="paragraph">
-<p>Recent research has demonstrated that ML systems are susceptible to different forms of poisoning attacks. For these types of attacks, the goal of the adversary is to cause the model to make incorrect predictions which can either be targeted or non-targeted attacks. In targeted attacks, a classifier can be maliciously trained to provide a backdoor that can be exploited by the attacker to produce a specific incorrect prediction class. One example of a targeted attack is to modify a face recognition system to allow the adversary to successfully log onto a computer as someone else. A model that has been poisoned using an untargeted attack may generate any result that is incorrect. At a minimum, the ML system must protect against three types of poisoning attacks including data poisoning, software poisoning, and model poisoning attacks <a href="#Stokes21">[Stokes21]</a>.  Content Credentials can be used to help prevent these types of attacks by protecting the data, software, and models.</p>
+<p>Recent research has demonstrated that ML systems are susceptible to different forms of poisoning attacks. For these types of attacks, the goal of the adversary is to cause the model to make incorrect predictions which can either be targeted or non-targeted attacks. In targeted attacks, a classifier can be maliciously trained to provide a backdoor that can be exploited by the attacker to produce a specific incorrect prediction class. One example of a targeted attack is to modify a face recognition system to allow the adversary to successfully log onto a computer as someone else. A model that has been poisoned using an untargeted attack may generate any result that is incorrect. At a minimum, the ML system must protect against three types of poisoning attacks including data poisoning, software poisoning, and model poisoning attacks <a href="#Stokes21">[Stokes21]</a>.  C2PA can be used to help prevent these types of attacks by protecting the data, software, and models.</p>
 </div>
 </div>
 </div>
@@ -167,13 +238,13 @@
 <p>Data poisoning attacks are designed to corrupt the data used to train machine learning models. This can be done by adding malicious data to the training set or by modifying existing training data. During inference, the data that is input to the model for prediction can also be poisoned leading to an incorrect prediction.</p>
 </div>
 <div class="paragraph">
-<p>Many of the existing training sets are stored in a single file, and these files can be protected by a single Content Credential. The dataset&#8217;s hash, which is stored in the Content Credential, can be used to verify that it has not been modified by a data poisoning attack.</p>
+<p>Many of the existing training sets are stored in a single file, and these files can be protected by a single C2PA Content Credential. The dataset&#8217;s hash, which is stored in the Content Credential, can be used to verify that it has not been modified by a data poisoning attack.</p>
 </div>
 <div class="paragraph">
-<p>In other settings, the training and inference data may be split across multiple files, including media files such as images which are used to train an object detection model. In addition, the training or inference data may be streamed. In these scenarios, the data may be protected by a top-level Content Credential which includes each of the files as ingredients. In the case where the ingredients are media files, they may contain their own Content Credentials.</p>
+<p>In other settings, the training and inference data may be split across multiple files, including media files such as images which are used to train an object detection model. In addition, the training or inference data may be streamed. In these scenarios, the data may be protected by a top-level C2PA Content Credential which includes each of the files as ingredients. In the case where the ingredients are media files, they may contain their own Content Credentials.</p>
 </div>
 <div class="paragraph">
-<p>In images and videos, a C2PA Manifest can be <a href="#1.4@specs:C2PA_Specification.adoc#_embedding_manifests_into_assets" class="xref unresolved">embedded</a> in the media file. However, existing machine learning datasets are either text or binary files which prevents the embedding of a C2PA Manifest in the file. In these cases, the C2PA Manifest can be stored in a separate, sidecar file. The C2PA Manifest can then use the Asset Reference Assertion to provide a URI to the dataset file or streamed data chunk.</p>
+<p>In images and videos, a C2PA Content Credential can be <a href="../specs/C2PA_Specification.html#_embedding_manifests_into_assets" class="xref page">embedded</a> in the media file. However, existing machine learning datasets are either text or binary files which prevents the embedding of a Credential in the file. In these cases, the Content Credential can be stored in a separate, sidecar file. The Content Credential can then use the Asset Reference Assertion to provide a URI to the dataset file or streamed data chunk.</p>
 </div>
 </div>
 </div>
@@ -184,7 +255,7 @@
 <p>Software poisoning attacks are designed to maliciously modify the software used to train a machine learning model or use a model to make a prediction. This can be done by modifying the training and inference software or any additional packages or libraries that are used during training and inference.</p>
 </div>
 <div class="paragraph">
-<p>Many countries are concerned with software poisoning attacks and have taken steps to help mitigate such attacks. The European Union Cybersecurity Act 2019/881 specified a framework for certificates in <a href="#EU19">[EU19]</a>. To help prevent software supply chain attacks, the US Cybersecurity Executive Order <a href="#Biden21">[Biden21]</a> requires that all software or services purchased by the US federal government be governed by a software bill of materials (SBOM). <a href="https://spdx.dev/specifications/">SPDX</a> is one popular standard which is used by some software vendors to provide an SBOM. C2PA utilizes and builds upon the existing SBOM metadata standards for software.  One or more SPDX text files provide metadata about the software used to build an application, library or service. Each software file and its corresponding SPDX file can then be protected by a Content Credential.</p>
+<p>Many countries are concerned with software poisoning attacks and have taken steps to help mitigate such attacks. The European Union Cybersecurity Act 2019/881 specified a framework for certificates in <a href="#EU19">[EU19]</a>. To help prevent software supply chain attacks, the US Cybersecurity Executive Order <a href="#Biden21">[Biden21]</a> requires that all software or services purchased by the US federal government be governed by a software bill of materials (SBOM). <a href="https://spdx.dev/specifications/">SPDX</a> is one popular standard which is used by some software vendors to provide an SBOM. C2PA utilizes and builds upon the existing SBOM metadata standards for software.  One or more SPDX text files provide metadata about the software used to build an application, library or service. Each software file and its corresponding SPDX file can then be protected by a C2PA Content Credential.</p>
 </div>
 <div class="paragraph">
 <p>In some cases, C2PA can improve existing SBOM standards. In one example, SPDX files in the current standard (v2.3) are not signed and its contents, including the FileChecksum, can be modified by an attacker. C2PA can be used to sign the SPDX file to prevent tampering.</p>
@@ -195,7 +266,7 @@
 <h2 id="_model_poisoning_attacks"><a class="anchor" href="#_model_poisoning_attacks"></a>4. Model Poisoning Attacks</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Once a model has been trained with C2PA-protected data and software, it can then be used to make secure predictions during inference. However, the model can still be poisoned by modifying its architecture or parameters. To help prevent model poisoning attacks, Content Credentials can be used to protect the model by providing a signature which can be verified by the user.</p>
+<p>Once a model has been trained with C2PA-protected data and software, it can then be used to make secure predictions during inference. However, the model can still be poisoned by modifying its architecture or parameters. To help prevent model poisoning attacks, a C2PA Content Credential can be used to protect the model by providing a signature which can be verified by the user.</p>
 </div>
 </div>
 </div>
@@ -214,7 +285,7 @@
 <h2 id="_compressed_files"><a class="anchor" href="#_compressed_files"></a>6. Compressed Files</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In many cases, large datasets are compressed to reduce storage costs. For example, the original MNIST data is compressed using gzip. The C2PA Manifest of the final, uncompressed file can include the compressed dataset file as an ingredient. In the case of lossless compression algorithms, this will allow the user to ensure that the uncompressed file was derived from a trusted compressed asset.</p>
+<p>In many cases, large datasets are compressed to reduce storage costs. For example, the original MNIST data is compressed using gzip. The Manifest of the final, uncompressed file can include the compressed dataset file as an ingredient. In the case of lossless compression algorithms, this will allow the user to ensure that the uncompressed file was derived from a trusted compressed asset.</p>
 </div>
 </div>
 </div>
@@ -222,13 +293,13 @@
 <h2 id="_ai_ml_model_content_credential"><a class="anchor" href="#_ai_ml_model_content_credential"></a>7. AI-ML Model Content Credential</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Content Credential for an AI-ML model provides the consumer, e.g. a system operator designing an AI-ML system, with provenance and authenticity of the model.  When the model is included as an ingredient in the Content Credential of the output of an AI-ML system, the consumer of the output can check the validation state of the model and explore the model provenance to provide additional assurance that the output is trustworthy. See more about this in the <a href="#_ai-ml_output_content_credential">AI-ML Output Content Credential</a> section.</p>
+<p>The C2PA Content Credential for an AI-ML model provides the consumer, e.g. a system operator designing an AI-ML system, with provenance and authenticity of the model.  When the model is included as an ingredient in the Content Credential of the output of an AI-ML system, the consumer of the output can check the validation state of the model and explore the model provenance to provide additional assurance that the output is trustworthy. See more about this in the <a href="#_ai-ml_output_content_credential">AI-ML Output Content Credential</a> section.</p>
 </div>
 <div class="paragraph">
 <p>AI-ML output results have a wide range of concerns and risks depending on how the models were prepared and how the consumer uses the output.  Accordingly, the AI-ML provenance information is explored in levels of depth, reflecting the consumers need to reduce risk by establishing deeper trust in the results.  Briefly these levels describe the model itself, the training data used to create the model, and finally additional information about the training of the model, the training environment, and various extensions that relate explainability, transparency, and indicators of trust for the model.</p>
 </div>
 <div class="paragraph">
-<p>If the model provider does not want the model and its output to be used to train other models in an attempt to extract the model&#8217;s functionality, the model C2PA Manifest can contain a data mining assertion that asserts rights as allowed, constrained, or not allowed for generative or non-generative AI-ML models or both.  See <a href="#1.4@specs:C2PA_Specification.adoc#<em>training_and_data_mining</em>" class="xref unresolved">data mining</a> for more detail.</p>
+<p>If the model provider does not want the model and its output to be used to train other models in an attempt to extract the model&#8217;s functionality, the model Content Credential can contain a data mining assertion that asserts rights as allowed, constrained, or not allowed for generative or non-generative AI-ML models or both.  See <a href="../specs/C2PA_Specification.html#<em>training_and_data_mining</em>" class="xref page">data mining</a> for more detail.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -239,7 +310,7 @@
 <p>The most basic provenance information allows the consumer to understand what type of model is being used, authenticate the claim signature, and to verify that the model had not been tampered with.</p>
 </div>
 <div class="paragraph">
-<p>An <a href="#1.4@specs:C2PA_Specification.adoc#_asset_type" class="xref unresolved">asset type assertion</a> provides the basic model information that a validator would use to further validate the model.  By including the model&#8217;s name, machine learning framework, and the type, the consumer is better able to understand what the model does and how it does it.</p>
+<p>An <a href="../specs/C2PA_Specification.html#_asset_type" class="xref page">asset type assertion</a> provides the basic model information that a validator would use to further validate the model.  By including the model&#8217;s name, machine learning framework, and the type, the consumer is better able to understand what the model does and how it does it.</p>
 </div>
 <div class="paragraph">
 <p>An example of an asset type assertion for an OpenVINO model, in CBOR Diagnostic Format (<code>.cbordiag</code>) would be:</p>
@@ -258,7 +329,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>The <a href="#1.4@specs:C2PA_Specification.adoc#_asset_reference" class="xref unresolved">asset reference assertion</a> provides a URI to the data of the asset, such as a AI-ML model.  This assertion is accompanied by a data hash that provides a hard binding to the asset (e.g., a model file) enabling the validator to confirm its integrity.</p>
+<p>The <a href="../specs/C2PA_Specification.html#_asset_reference" class="xref page">asset reference assertion</a> provides a URI to the data of the asset, such as a AI-ML model.  This assertion is accompanied by a data hash that provides a hard binding to the asset (e.g., a model file) enabling the validator to confirm its integrity.</p>
 </div>
 <div class="paragraph">
 <p>OpenVINO represents the model in two files, included as ingredients.  An XML file contains the topology:</p>
@@ -305,7 +376,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>It is also possible for a Content Credential to include information about the data used to train an AI-ML model, by including ingredient assertions which can include the URI and a hard binding, which can be used to check its integrity and authenticity.  Here is an example of a training data ingredient in a model&#8217;s C2PA Manifest:</p>
+<p>It is also possible for a C2PA Content Credential to include information about the data used to train an AI-ML model, by including ingredient assertions which can include the URI and a hard binding, which can be used to check its integrity and authenticity.  Here is an example of a training data ingredient in a model Content Credential:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -341,35 +412,16 @@
 </tr>
 </table>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_ai_ml_training_data_set_content_credential"><a class="anchor" href="#_ai_ml_training_data_set_content_credential"></a>8. AI-ML Training Data Set Content Credential</h2>
-<div class="sectionbody">
-<div class="imageblock text-center">
-<div class="content">
-<img src="_images/Training-Data-Credentials.svg" alt="Visual diagram of the elements contained in a Training Data Set Credential">
-</div>
-</div>
-<div class="paragraph">
-<p>The figure represents a possible credential for an AIML training data set that not only establishes the credentials of the overall training data set, but also it provides transparency for how the data set was used in the training process.</p>
-</div>
-<div class="paragraph">
-<p>Training data sets can be quite large, sometimes millions of assets, even trillions for an LLM.  A data might be used to train many different models, and each model may only need a fraction of the data set.  After that initial partitioning, the data set may be further partitioned into training, test, and evaluation data sets, each serving a unique purpose in the model development and validation process.  In order to speed up training, the training may use the training data set in mini-batches (which are not mutually exclusive).  All of these mini-batches are arrays of assets which may have their own credentials as well.</p>
-</div>
-<div class="paragraph">
-<p>An AI-ML model can be poisoned by tampering with the training data assets, annotations, as well as by tampering with the partitioning and even the order that the data is presented to train the model.  Providing these credentials for each partitioning of the training data gives the AI-ML application consumer the ability to gain more trust in how the model was trained.  For example the training, test and evaluation partitions can be statistically analyzed to prove that those data sets were not cherry picked, are mutually representative of each other, and are representative of the real world.  The advantage of using the collections data hash assertion in the credentials is the structure is a simple and efficient array of URIs and their corresponding hashes of the assets in the collection.</p>
-</div>
 <div class="sect2">
-<h3 id="_attestation_for_ai_ml_models"><a class="anchor" href="#_attestation_for_ai_ml_models"></a>8.1. Attestation for AI-ML Models</h3>
+<h3 id="_attestation_for_ai_ml_models"><a class="anchor" href="#_attestation_for_ai_ml_models"></a>7.1. Attestation for AI-ML Models</h3>
 <div class="paragraph">
-<p>Model providers can enhance the trust signals so relying parties can determine the software and characteristics of the devices used to create the model asset.  This is done by including an <a href="#1.4@specs:C2PA_Specification.adoc#_attestation" class="xref unresolved">attestation assertion</a> in the model Content Credential.  Please refer to the <a href="&lt;attestation.adoc&gt;">attestation technical specification</a> for the description of the process for creating claims with attestations.</p>
+<p>Model providers can enhance the trust signals so relying parties can determine the software and characteristics of the devices used to create the model asset.  This is done by including an xrefL1.4@specs:C2PA_Specification.adoc#_attestation[attestation assertion] in the model Content Credential.  Please refer to the <a href="&lt;attestation.adoc&gt;">attestation technical specification</a> for the description of the process for creating claims with attestations.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_ai_ml_output_content_credential"><a class="anchor" href="#_ai_ml_output_content_credential"></a>9. AI-ML Output Content Credential</h2>
+<h2 id="_ai_ml_output_content_credential"><a class="anchor" href="#_ai_ml_output_content_credential"></a>8. AI-ML Output Content Credential</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>For a consumer to validate the output data produced by an AI-ML model, again, different amounts of information are needed for different risk sensitivities.  The basic signed claim enables the consumer to validate the source and integrity of the results.  It is important to identify the output as coming from a trained AI-ML model by using the appropriate digital source type.  For a generative model this will be <code>trainedAlgorithmicMedia</code> and for output that is not media the <code>c2pa.trainedAlgorithmicData</code> designation would be appropriate.  Given the growing consumer risk sensitivity from AI-ML output data, providing information in the output Content Credential beyond the basic claim and data hash is recommended.   Additional Material in the assertion store such as links to the AI-ML model Content Credential, provenance of the inputs to the model, the components and security of the environment the model ran in, timestamps, and even explainability metadata that tell the consumer why the model provided the result it provided all can enable more trust in the results.</p>

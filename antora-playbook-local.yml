@@ -1,26 +1,26 @@
 site:
   title: C2PA Specifications
   url: https://c2pa.org/specifications
-  start_page: specifications::index.adoc
+  # start_page: specifications::index.adoc
 content:
   sources:
   - url: ./
-    branches: HEAD
+    branches: [antora-*]
     start_path: docs
   - url: ./../specs-core
-    branches: [2.0, 1.4, 1.3, 1.2, 1.1, 1.0, HEAD]
+    branches: [antora-*]
     start_path: docs
   - url: ./../attestations
-    branches: HEAD
+    branches: [antora-*]
     start_path: docs
   - url: ./../threats-harms
-    branches: HEAD
+    branches: [antora-*]
     start_path: docs
   - url: ./../ux
-    branches: HEAD
+    branches: [antora-*]
     start_path: docs
   - url: ./../documentation
-    branches: [HEAD]
+    branches: [antora-*]
     start_path: docs
 ui:
   bundle:

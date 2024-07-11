@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Content Credentials : C2PA Technical Specification :: C2PA Specifications</title>
-    <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.4/specs/C2PA_Specification.html">
-    <meta name="page-spec" content="specifications:specs:C2PA_Specification.adoc">
-    <meta name="generator" content="Antora 3.1.2">
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/2.0/specs/C2PA_Specification.html">
+    <meta name="page-spec" content="1.4@specifications:specs:C2PA_Specification.adoc">
+    <meta name="generator" content="Antora 3.1.7">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <link rel="stylesheet" href="../../../_/css/search.css">
     <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
@@ -16,7 +16,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
-      <a class="navbar-item title" href="https://c2pa.org/specifications/specifications/1.4/index.html">C2PA Specifications</a>
+      <a class="navbar-item title" href="../../..">C2PA Specifications</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -93,7 +93,7 @@
     <a class="nav-link" href="../../1.3/guidance/Guidance.html">Guidance for Implementers</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../ux/UX_Recommendations.html">User Experience Guidance</a>
+    <a class="nav-link" href="#1.1@ux:UX_Recommendations.adoc">User Experience Guidance</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../1.0/security/Security_Considerations.html">C2PA Security Considerations</a>
@@ -149,13 +149,22 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <a class="title" href="../index.html">C2PA Specifications</a>
+      <a class="title" href="../../2.0/index.html">C2PA Specifications</a>
       <ul class="versions">
-        <li class="version is-current is-latest">
+        <li class="version is-latest">
+          <a href="../../2.0/index.html">2.0</a>
+        </li>
+        <li class="version is-current">
           <a href="../index.html">1.4</a>
         </li>
         <li class="version">
           <a href="../../1.3/index.html">1.3</a>
+        </li>
+        <li class="version">
+          <a href="../../1.2/index.html">1.2</a>
+        </li>
+        <li class="version">
+          <a href="../../1.1/index.html">1.1</a>
         </li>
         <li class="version">
           <a href="../../1.0/index.html">1.0</a>
@@ -170,7 +179,6 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link" title="Home"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">C2PA Specifications</a></li>
@@ -181,9 +189,12 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">1.4</button>
   <div class="version-menu">
+    <a class="version" href="../../2.0/specs/C2PA_Specification.html">2.0</a>
     <a class="version is-current" href="C2PA_Specification.html">1.4</a>
-    <a class="version is-missing" href="../../1.3/index.html">1.3</a>
-    <a class="version is-missing" href="../../1.0/index.html">1.0</a>
+    <a class="version" href="../../1.3/specs/C2PA_Specification.html">1.3</a>
+    <a class="version" href="../../1.2/specs/C2PA_Specification.html">1.2</a>
+    <a class="version" href="../../1.1/specs/C2PA_Specification.html">1.1</a>
+    <a class="version" href="../../1.0/specs/C2PA_Specification.html">1.0</a>
   </div>
 </div>
 </div>
@@ -1070,7 +1081,7 @@ A <a href="#_c2pa_manifest">C2PA Manifest</a> can reference other <a href="#_c2p
 <p>Added new regions of interest for text-based formats (e.g., PDF, Office, EPUB, etc.)</p>
 </li>
 <li>
-<p>Added new <code>c2pa.metadata</code> assertion to support Exif, IPTC, Schema.org and XMP</p>
+<p>Added new <code>stds.metadata</code> assertion to support Exif, IPTC, Schema.org and XMP</p>
 </li>
 <li>
 <p>Major revision to TIFF embedding support</p>
@@ -7395,12 +7406,6 @@ language-string /= tstr .size (1..max-tstr-length)</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Common Metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JSON-LD</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Exif information</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">stds.exif</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
@@ -10008,10 +10013,10 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
 <div class="sect2">
 <h3 id="_common_metadata"><a class="anchor" href="#_common_metadata"></a>19.17. Common Metadata</h3>
 <div class="paragraph">
-<p>In earlier versions of this specification, there were individual assertions for each metadata standard (e.g., IPTC, EXIF).  There is now a single <code>c2pa.metadata</code> assertion to simplify the specification and to allow for the addition of new metadata standards in the future, without the need to create more assertions. This simplification also makes it clearer that such metadata has been called out by the Claim Generator as significant - having been explicitly included in the Manifest to enable the cryptographic validation of the data. The relationship of these statements to the signer is specified in <a href="#_statements">Section 15.6, &#8220;Statements&#8221;</a>.</p>
+<p>In earlier versions of this specification, there were individual assertions for each metadata standard (e.g., IPTC, EXIF).  There is now a single <code>stds.metadata</code> assertion to simplify the specification and to allow for the addition of new metadata standards in the future, without the need to create more assertions. This simplification also makes it clearer that such metadata has been called out by the Claim Generator as significant - having been explicitly included in the Manifest to enable the cryptographic validation of the data. The relationship of these statements to the signer is specified in <a href="#_statements">Section 15.6, &#8220;Statements&#8221;</a>.</p>
 </div>
 <div class="paragraph">
-<p>An common metadata assertion shall have a label of <code>c2pa.metadata</code>, and contain a single JSON content type box containing the <a href="https://www.w3.org/TR/json-ld11/">JSON-LD</a> serialization of one or more metadata values from other metadata standards including (but not limited to): IPTC, EXIF, XMP, and Schema.org. The <code>@context</code> property within the JSON-LD object shall be included, and used to provide context / namespaces for the metadata standards being specified.  The JSON-LD object may then contain other properties, as defined by those metadata standards, that specify the actual metadata.  These values may be unique to the assertion or they may be copied from the standard "metadata blocks" of the asset format.  When copying, it is recommended that for those formats that can be expressed in XMP, that the data shall be serialized according to the rules of the <a href="https://www.iso.org/standard/79384.html">JSON-LD serialization of XMP</a>.</p>
+<p>An common metadata assertion shall have a label of <code>stds.metadata</code>, and contain a single JSON content type box containing the <a href="https://www.w3.org/TR/json-ld11/">JSON-LD</a> serialization of one or more metadata values from other metadata standards including (but not limited to): IPTC, EXIF, XMP, and Schema.org. The <code>@context</code> property within the JSON-LD object shall be included, and used to provide context / namespaces for the metadata standards being specified.  The JSON-LD object may then contain other properties, as defined by those metadata standards, that specify the actual metadata.  These values may be unique to the assertion or they may be copied from the standard "metadata blocks" of the asset format.  When copying, it is recommended that for those formats that can be expressed in XMP, that the data shall be serialized according to the rules of the <a href="https://www.iso.org/standard/79384.html">JSON-LD serialization of XMP</a>.</p>
 </div>
 <div class="paragraph">
 <p>An example of an common metadata assertion for an image:</p>
@@ -10097,7 +10102,7 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
 <p>Although the redaction process works in such a way that only an entire assertion can be redacted (see <a href="#_redaction_of_assertions">Section 6.7, &#8220;Redaction of Assertions&#8221;</a>), the use of an <a href="#_update_manifests">update manifest</a> enables partial redaction by removing the original and then placing the new, reduced, versions in the update manifest. This new assertion would be presented in a <a href="#_user_experience">user experience</a> in association with the signer of the update manifest and not with the signer of the C2PA Manifest that has been redacted.</p>
 </div>
 <div class="paragraph">
-<p>For example, an assertion containing both location data and camera information which may need to have the location data redacted which could be done through an update manifest with a new <code>c2pa.metadata</code> assertion with only the camera information.</p>
+<p>For example, an assertion containing both location data and camera information which may need to have the location data redacted which could be done through an update manifest with a new <code>stds.metadata</code> assertion with only the camera information.</p>
 </div>
 </td>
 </tr>
@@ -11660,7 +11665,7 @@ font-designer-map = {
     </p>
   </div>
   <div class="footer-legal">
-    <p>Copyright © 2023 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>Copyright © 2024 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
     <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
   </div>
   <div class="footer-thanks">
