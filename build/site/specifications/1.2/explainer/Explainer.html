@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>C2PA Explainer :: C2PA Specifications</title>
     <link rel="canonical" href="https://c2pa.org/specifications/specifications/1.4/explainer/Explainer.html">
-    <meta name="page-spec" content="1.0@specifications:explainer:Explainer.adoc">
+    <meta name="page-spec" content="1.2@specifications:explainer:Explainer.adoc">
     <meta name="generator" content="Antora 3.1.7">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <link rel="stylesheet" href="../../../_/css/search.css">
@@ -28,13 +28,13 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="../specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
-            <a class="navbar-item" href="_attachments/Explainer.pdf">Explainer</a> 
-            <a class="navbar-item" href="../guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
-            <a class="navbar-item" href="../ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
-            <a class="navbar-item" href="../security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
-            <a class="navbar-item" href="../security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
-            <a class="navbar-item" href="../specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../../1.0/explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../../1.0/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../../1.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
+            <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
           </div>
         </div>
           <div class="navbar-item">
@@ -80,13 +80,13 @@
     <a class="nav-link" href="../guidance/Guidance.html">Guidance for Implementors</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../ux/UX_Recommendations.html">User Experience Guidance</a>
+    <a class="nav-link" href="../../1.0/ux/UX_Recommendations.html">User Experience Guidance</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../security/Security_Considerations.html">C2PA Security Considerations</a>
+    <a class="nav-link" href="../../1.0/security/Security_Considerations.html">C2PA Security Considerations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../security/Harms_Modelling.html">C2PA Harms Modelling</a>
+    <a class="nav-link" href="../../1.0/security/Harms_Modelling.html">C2PA Harms Modelling</a>
   </li>
 </ul>
   </li>
@@ -127,7 +127,7 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">C2PA Specifications</span>
-    <span class="version">1.0</span>
+    <span class="version">1.2</span>
   </div>
   <ul class="components">
     <li class="component is-current">
@@ -142,14 +142,14 @@
         <li class="version">
           <a href="../../1.3/index.html">1.3</a>
         </li>
-        <li class="version">
-          <a href="../../1.2/index.html">1.2</a>
+        <li class="version is-current">
+          <a href="../index.html">1.2</a>
         </li>
         <li class="version">
           <a href="../../1.1/index.html">1.1</a>
         </li>
-        <li class="version is-current">
-          <a href="../index.html">1.0</a>
+        <li class="version">
+          <a href="../../1.0/index.html">1.0</a>
         </li>
       </ul>
     </li>
@@ -168,14 +168,14 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">1.0</button>
+  <button class="version-menu-toggle" title="Show other versions of page">1.2</button>
   <div class="version-menu">
     <a class="version is-missing" href="../../2.0/index.html">2.0</a>
     <a class="version" href="../../1.4/explainer/Explainer.html">1.4</a>
     <a class="version" href="../../1.3/explainer/Explainer.html">1.3</a>
-    <a class="version" href="../../1.2/explainer/Explainer.html">1.2</a>
+    <a class="version is-current" href="Explainer.html">1.2</a>
     <a class="version is-missing" href="../../1.1/index.html">1.1</a>
-    <a class="version is-current" href="Explainer.html">1.0</a>
+    <a class="version" href="../../1.0/explainer/Explainer.html">1.0</a>
   </div>
 </div>
 </div>
@@ -236,7 +236,7 @@
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The development of this Explainer is ongoing. This Explainer accompanies Version 0.8 of the Technical Specifications.</p>
+<p>The development of this Explainer is ongoing. This Explainer accompanies Version 1.0 of the Technical Specifications.</p>
 </div>
 <div class="paragraph">
 <p>This Explainer accompanies the C2PA Specifications with the intent of providing further background and clarification on the development of the standard, its goals, mechanisms and guidelines.</p>
@@ -293,7 +293,7 @@
 <p>In other words, any alteration to either the asset or the provenance, however insignificant, would alter the mathematical algorithm - the shape of the piece of the puzzle – in such a way that they would no longer match.</p>
 </div>
 <div class="paragraph">
-<p>For more technical information on this see "Hard binding" in the <a href="#specs:Glossary.adoc" class="xref unresolved">glossary</a> and the <a href="../guidance/Guidance.html" class="xref page">non-normative guidance</a>.</p>
+<p>For more technical information on this see "Hard binding" in the <a href="#1.1@specs:C2PA_Specification#_glossary" class="xref unresolved">glossary</a> and the <a href="../guidance/Guidance.html" class="xref page">non-normative guidance</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -463,7 +463,7 @@
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
 <script src="../../../_/js/vendor/lunr.js"></script>
-<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/specifications/1.0/explainer/Explainer.html"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/specifications/1.2/explainer/Explainer.html"></script>
 <script async src="../../../_/../search-index.js"></script>
 
   </body>
