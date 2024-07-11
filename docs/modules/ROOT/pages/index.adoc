@@ -1,6 +1,6 @@
 = C2PA Specifications
 
-The Coalition for Content Provenance and Authenticity (C2PA) addresses the prevalence of misleading information online through the development of technical standards for certifying the source and history (or provenance) of media content. C2PA is a Joint Development Foundation project, formed through an alliance between Adobe, Arm, Intel, Microsoft and Truepic.
+The Coalition for Content Provenance and Authenticity (C2PA) addresses the prevalence of misleading information online through the development of technical standards for certifying the source and history (or provenance) of media content. C2PA is a Joint Development Foundation project.
 
 This site contains the various specifications and documents produced by the C2PA.
 
@@ -9,12 +9,12 @@ This site contains the various specifications and documents produced by the C2PA
 * xref:1.4@attestations:attestation.adoc[Attestations]
 
 == Guidance & Informative Documents
-* xref:1.3@explainer:Explainer.adoc[Explainer] 
-* xref:1.3@guidance:Guidance.adoc[Guidance for Implementers] 
-* xref:1.4@ux:UX_Recommendations.adoc[User Experience Guidance] 
-* xref:1.0@security:Security_Considerations.adoc[Security Considerations] 
-* xref:1.0@security:Harms_Modelling.adoc[Harms Modelling] 
-* xref:1.3@ai-ml:ai_ml.adoc[Guidance for Artificial Intelligence and Machine Learning]
+* xref:1.4@explainer:Explainer.adoc[Explainer] 
+* xref:1.4@guidance:Guidance.adoc[Guidance for Implementers] 
+* xref:2.0@ux:UX_Recommendations.adoc[User Experience Guidance] 
+* xref:1.4@security:Security_Considerations.adoc[Security Considerations] 
+* xref:1.4@security:Harms_Modelling.adoc[Harms Modelling] 
+* xref:1.4@ai-ml:ai_ml.adoc[Guidance for Artificial Intelligence and Machine Learning]
 
 
 PDF Versions of these documents are also available via the Download button in the page header.
