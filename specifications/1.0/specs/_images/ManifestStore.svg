@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="862px" preserveAspectRatio="none" style="width:479px;height:862px;background:#FFFFFF;" version="1.1" viewBox="0 0 479 862" width="479px" zoomAndPan="magnify"><defs><filter height="300%" id="f16m3azet5n7rr" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[c280f77a5f6db6e252f8c12aedbb84e9]
+cluster c2pa--><rect fill="#E6E6FA" filter="url(#f16m3azet5n7rr)" height="843" style="stroke:#800080;stroke-width:1.5;" width="460" x="7" y="7"/><line style="stroke:#800080;stroke-width:1.5;" x1="7" x2="467" y1="27.2969" y2="27.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="247" x="113.5" y="21.9951">Manifest Store - JUMBF (`c2pa`)</text><!--MD5=[3b347f6dd8c057f98c92a5cf15085a16]
+cluster c2ma--><rect fill="#90EE90" filter="url(#f16m3azet5n7rr)" height="776" style="stroke:#008000;stroke-width:1.5;" width="412" x="31" y="50"/><line style="stroke:#008000;stroke-width:1.5;" x1="31" x2="443" y1="70.2969" y2="70.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="237" x="118.5" y="64.9951">Manifest (`c2ma` : `urn:uuid`)</text><!--MD5=[3e49f57d6a96ac62d1222a0286a1e0c4]
+cluster c2cs--><rect fill="#FFE4B5" filter="url(#f16m3azet5n7rr)" height="87" style="stroke:#FF4500;stroke-width:1.5;" width="355" x="59.5" y="93"/><line style="stroke:#FF4500;stroke-width:1.5;" x1="59.5" x2="414.5" y1="113.2969" y2="113.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="339" x="67.5" y="107.9951">Claim Signature (`c2cs` : `c2pa.signature`)</text><!--MD5=[2a0893eea9f2cd7010a518f9a4c7c49c]
+cluster c2cl--><rect fill="#FFB6C1" filter="url(#f16m3azet5n7rr)" height="87" style="stroke:#FF0000;stroke-width:1.5;" width="354" x="59.5" y="204"/><line style="stroke:#FF0000;stroke-width:1.5;" x1="59.5" x2="413.5" y1="224.2969" y2="224.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="218" x="67.5" y="218.9951">Claim (`c2cl` : `c2pa.claim`)</text><!--MD5=[5496e38eb3ab2c934e61ff45ec539389]
+cluster c2as--><rect fill="#ADD8E6" filter="url(#f16m3azet5n7rr)" height="487" style="stroke:#0000FF;stroke-width:1.5;" width="364" x="55" y="315"/><line style="stroke:#0000FF;stroke-width:1.5;" x1="55" x2="419" y1="335.2969" y2="335.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="348" x="63" y="329.9951">Assertion Store (`c2as` : `c2pa.assertions`)</text><!--MD5=[f7d24e1e59c9a17863751969b78bc9f1]
+cluster stds.schema-org.CreativeWork --><rect fill="#E0FFFF" filter="url(#f16m3azet5n7rr)" height="87" style="stroke:#0000FF;stroke-width:1.5;" width="266" x="104" y="358"/><line style="stroke:#0000FF;stroke-width:1.5;" x1="104" x2="370" y1="378.2969" y2="378.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="245" x="112" y="372.9951">stds.schema-org.CreativeWork</text><!--MD5=[70f87615663b30dd39dd6b12c90674fe]
+cluster c2pa.thumbnail.claim.png        --><rect fill="#E0FFFF" filter="url(#f16m3azet5n7rr)" height="87" style="stroke:#0000FF;stroke-width:1.5;" width="256" x="108.5" y="469"/><line style="stroke:#0000FF;stroke-width:1.5;" x1="108.5" x2="364.5" y1="489.2969" y2="489.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="200" x="116.5" y="483.9951">c2pa.thumbnail.claim.png</text><!--MD5=[309505ef1831be67ebd9701ced8f7caf]
+cluster c2pa.actions                           --><rect fill="#E0FFFF" filter="url(#f16m3azet5n7rr)" height="87" style="stroke:#0000FF;stroke-width:1.5;" width="251" x="111.5" y="580"/><line style="stroke:#0000FF;stroke-width:1.5;" x1="111.5" x2="362.5" y1="600.2969" y2="600.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="100" x="119.5" y="594.9951">c2pa.actions</text><!--MD5=[772112dcdcfcf722e8f867fbfc73b43d]
+cluster c2pa.hash.data                        --><rect fill="#E0FFFF" filter="url(#f16m3azet5n7rr)" height="87" style="stroke:#0000FF;stroke-width:1.5;" width="256" x="108.5" y="691"/><line style="stroke:#0000FF;stroke-width:1.5;" x1="108.5" x2="364.5" y1="711.2969" y2="711.2969"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="120" x="116.5" y="705.9951">c2pa.hash.data</text><!--MD5=[c3d963de545692ce062b829afe2e18c4]
+entity CS--><rect fill="#FEFECE" filter="url(#f16m3azet5n7rr)" height="36.2969" style="stroke:#000000;stroke-width:1.5;" width="190.3333" x="141.5" y="128"/><path d="M158.9167,141.4635 C157.3067,141.4635 156,142.7702 156,144.3802 C156,144.5669 156,144.7535 156.035,144.9285 L152.5,148.4635 L152.5,150.7969 L156,150.7969 L156,148.4635 L158.3333,148.4635 L158.3333,147.2969 L158.3683,147.2619 C158.5433,147.2969 158.73,147.2969 158.9167,147.2969 C160.5267,147.2969 161.8333,145.9902 161.8333,144.3802 C161.8333,142.7702 160.5267,141.4635 158.9167,141.4635 M159.5,142.6302 C160.1417,142.6302 160.6667,143.1552 160.6667,143.7969 C160.6667,144.4385 160.1417,144.9635 159.5,144.9635 C158.8583,144.9635 158.3333,144.4385 158.3333,143.7969 C158.3333,143.1552 158.8583,142.6302 159.5,142.6302 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="155" x="166.8333" y="150.9951">COSE Digital Signature</text><!--MD5=[16fab723be418f7eaf2ea4bd895a8e51]
+entity C--><rect fill="#FEFECE" filter="url(#f16m3azet5n7rr)" height="36.2969" style="stroke:#000000;stroke-width:1.5;" width="76.3333" x="198.5" y="239"/><path d="M215.3333,252.4635 L211.8333,259.4635 L213,259.4635 L216.5,252.4635 L215.3333,252.4635 M210.6667,253.6302 L209.5,255.9635 L210.6667,258.2969 L211.8333,258.2969 L210.6667,255.9635 L211.8333,253.6302 L210.6667,253.6302 M216.5,253.6302 L217.6667,255.9635 L216.5,258.2969 L217.6667,258.2969 L218.8333,255.9635 L217.6667,253.6302 L216.5,253.6302 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="41" x="223.8333" y="261.9951">CBOR</text><!--MD5=[23bc7945312e1f0a2e37cebfe503a03b]
+entity A1--><rect fill="#FEFECE" filter="url(#f16m3azet5n7rr)" height="36.2969" style="stroke:#000000;stroke-width:1.5;" width="91.3333" x="191" y="393"/><path d="M207.8333,406.4635 L204.3333,413.4635 L205.5,413.4635 L209,406.4635 L207.8333,406.4635 M203.1667,407.6302 L202,409.9635 L203.1667,412.2969 L204.3333,412.2969 L203.1667,409.9635 L204.3333,407.6302 L203.1667,407.6302 M209,407.6302 L210.1667,409.9635 L209,412.2969 L210.1667,412.2969 L211.3333,409.9635 L210.1667,407.6302 L209,407.6302 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="56" x="216.3333" y="415.9951">JSON-LD</text><!--MD5=[406a5e0ae180932da9bcb21c819a1904]
+entity A2--><rect fill="#FEFECE" filter="url(#f16m3azet5n7rr)" height="36.2969" style="stroke:#000000;stroke-width:1.5;" width="138.3333" x="167.5" y="504"/><path d="M178.5,517.4635 L178.5,526.7969 L187.8333,526.7969 L187.8333,517.4635 L178.5,517.4635 M179.6667,518.6302 L186.6667,518.6302 L186.6667,522.1302 L185.5,520.9635 L184.3333,522.1302 L186.6667,524.4635 L186.6667,525.6302 L185.5,525.6302 L180.8333,520.9635 L179.6667,522.1302 L179.6667,518.6302 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="103" x="192.8333" y="526.9951">Embedded File</text><!--MD5=[305b0bf20d1e87c4314d270a9e4e4ae4]
+entity A3--><rect fill="#FEFECE" filter="url(#f16m3azet5n7rr)" height="36.2969" style="stroke:#000000;stroke-width:1.5;" width="76.3333" x="198.5" y="615"/><path d="M215.3333,628.4635 L211.8333,635.4635 L213,635.4635 L216.5,628.4635 L215.3333,628.4635 M210.6667,629.6302 L209.5,631.9635 L210.6667,634.2969 L211.8333,634.2969 L210.6667,631.9635 L211.8333,629.6302 L210.6667,629.6302 M216.5,629.6302 L217.6667,631.9635 L216.5,634.2969 L217.6667,634.2969 L218.8333,631.9635 L217.6667,629.6302 L216.5,629.6302 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="41" x="223.8333" y="637.9951">CBOR</text><!--MD5=[b4296d86aafbbd2074f03a740cb37cff]
+entity A4--><rect fill="#FEFECE" filter="url(#f16m3azet5n7rr)" height="36.2969" style="stroke:#000000;stroke-width:1.5;" width="76.3333" x="198.5" y="726"/><path d="M215.3333,739.4635 L211.8333,746.4635 L213,746.4635 L216.5,739.4635 L215.3333,739.4635 M210.6667,740.6302 L209.5,742.9635 L210.6667,745.2969 L211.8333,745.2969 L210.6667,742.9635 L211.8333,740.6302 L210.6667,740.6302 M216.5,740.6302 L217.6667,742.9635 L216.5,745.2969 L217.6667,745.2969 L218.8333,742.9635 L217.6667,740.6302 L216.5,740.6302 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="Source Sans Pro" font-size="14" lengthAdjust="spacing" textLength="41" x="223.8333" y="748.9951">CBOR</text><!--MD5=[d3a320a6274d7e5ddcfed8aa26b40626]
+@startuml ManifestStore
+
+    ' allows mixing various objects in a single diagram
+    allow_mixing
+
+    !include manifest_styling.iuml
+
+	' Diagram!
+    card c2pa as "Manifest Store - JUMBF (`c2pa`)" <<c2pa>> {
+        !include manifest.iuml
+    }
+
+@enduml
+
+@startuml ManifestStore
+
+    allow_mixing
+
+    hide circle
+    hide empty members
+	hide stereotype
+
+    skinparam defaultFontName Source Sans Pro
+	skinparam componentStyle rectangle
+    left to right direction
+
+
+	skinparam card<<c2pa>> {
+    	borderColor Purple
+		backgroundColor Lavender
+	}
+
+	skinparam card<<c2ma>> {
+    	borderColor Green
+		backgroundColor LightGreen
+	}
+
+	skinparam card<<c2vc>> {
+    	borderColor Gold
+		backgroundColor LemonChiffon
+	}
+
+	skinparam card<<vc>> {
+    	borderColor DarkViolet
+		backgroundColor LavenderBlush
+	}
+
+	skinparam card<<c2as>> {
+    	borderColor Blue
+		backgroundColor LightBlue
+	}
+
+	skinparam card<<as>> {
+    	borderColor Blue
+		backgroundColor LightCyan
+	}
+
+	skinparam card<<c2cl>> {
+    	borderColor Red
+		backgroundColor LightPink
+	}
+
+	skinparam card<<c2cs>> {
+    	borderColor OrangeRed
+		backgroundColor Moccasin
+	}
+
+
+    card c2pa as "Manifest Store - JUMBF (`c2pa`)" <<c2pa>> {
+card c2ma as "Manifest (`c2ma` : `urn:uuid`)" <<c2ma>> {
+	card c2cs as "Claim Signature (`c2cs` : `c2pa.signature`)" <<c2cs>> {
+		rectangle CS [
+			<&key> COSE Digital Signature
+		]
+	}
+
+	card c2cl as "Claim (`c2cl` : `c2pa.claim`)                        " <<c2cl>> {
+		rectangle C [
+			<&code> CBOR
+		]
+	}
+
+	card c2as as "Assertion Store (`c2as` : `c2pa.assertions`)" <<c2as>> {
+		card "stds.schema-org.CreativeWork " <<as>> {
+			rectangle A1 [
+				<&code> JSON-LD
+			]
+		}
+
+		card "c2pa.thumbnail.claim.png        " <<as>> {
+			rectangle A2 [
+				<&image> Embedded File
+			]
+		}
+
+		card "c2pa.actions                           " <<as>> {
+			rectangle A3 [
+				<&code> CBOR
+			]
+		}
+
+		card "c2pa.hash.data                        " <<as>> {
+			rectangle A4 [
+				<&code> CBOR
+			]
+		}
+	}
+
+}
+    }
+
+@enduml
+
+PlantUML version 1.2021.15(Tue Nov 30 16:45:34 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
