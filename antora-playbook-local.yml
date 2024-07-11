@@ -5,17 +5,13 @@ site:
 content:
   sources:
   - url: ./
-    branches: HEAD
-    tags: [2.0, 1.4, 1.3, 1.2, 1.1, 1.0]
+    branches: [antora-*]
     start_path: docs
   - url: ./../specs-core
     branches: [antora-*]
-    # branches: HEAD
-    # tags: [2.0, 1.4, 1.3, 1.2, 1.1, 1.0]
     start_path: docs
   - url: ./../attestations
-    branches: HEAD
-    # tags: [1.4]
+    branches: [antora-*]
     start_path: docs
   - url: ./../threats-harms
     branches: [antora-*]
