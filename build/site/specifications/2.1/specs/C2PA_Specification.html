@@ -240,13 +240,7 @@
 <li><a href="#_versioning">5. Versioning</a>
 <ul class="sectlevel2">
 <li><a href="#_compatibility">5.1. Compatibility</a></li>
-<li><a href="#_2_1_august_2024">5.2. 2.1 - August 2024</a></li>
-<li><a href="#_2_0_january_2024">5.3. 2.0 - January 2024</a></li>
-<li><a href="#_1_4_november_2023">5.4. 1.4 - November 2023</a></li>
-<li><a href="#_1_3_april_2023">5.5. 1.3 - April 2023</a></li>
-<li><a href="#_1_2_october_2022">5.6. 1.2 - October 2022</a></li>
-<li><a href="#_1_1_september_2022">5.7. 1.1 - September 2022</a></li>
-<li><a href="#_1_0_december_2021">5.8. 1.0 - December 2021</a></li>
+<li><a href="#_version_history">5.2. Version History</a></li>
 </ul>
 </li>
 <li><a href="#_assertions">6. Assertions</a>
@@ -381,6 +375,11 @@
 <ul class="sectlevel2">
 <li><a href="#_completely_supported_schemas">B.1. Completely Supported Schemas</a></li>
 <li><a href="#_partially_supported_schemas">B.2. Partially Supported Schemas</a></li>
+</ul>
+</li>
+<li><a href="#versioning_annex">Appendix C: Considerations for Deprecation</a>
+<ul class="sectlevel2">
+<li><a href="#_deprecated_constructs">C.1. Deprecated Constructs</a></li>
 </ul>
 </li>
 </ul>
@@ -1099,7 +1098,7 @@ A <a href="#_c2pa_manifest">C2PA Manifest</a> can reference other <a href="#_c2p
 <p>As the Content Credentials specification has evolved, constructs such as box labels, assertions (and their fields), claims and time-stamps have also evolved. New assertions have been added, and some existing assertions and the claim have newer versions with additional fields. In addition, some constructs have been deprecated. In this specification, when a construct is marked as deprecated, that means that a claim generator shall not write that construct (or value), but that a validator should read it.</p>
 </div>
 <div class="paragraph">
-<p>To facilitate interoperability between claim generators and validators, a claim generator  declares which version of the specification it is using to generate the claim. When a claim generator declares that it is using a version of the specification, it is declaring that the active manifest of the asset is produced in accordance with that version of the specification and thus does not contain any deprecated constructs listed under that version of the specification in <a href="#deprecated_constructs_table">[deprecated_constructs_table]</a> of <a href="#versioning_annex">[versioning_annex]</a>.</p>
+<p>To facilitate interoperability between claim generators and validators, a claim generator  declares which version of the specification it is using to generate the claim. When a claim generator declares that it is using a version of the specification, it is declaring that the active manifest of the asset is produced in accordance with that version of the specification and thus does not contain any deprecated constructs listed under that version of the specification in <a href="#deprecated_constructs_table">Table 19, &#8220;Deprecated Constructs&#8221;</a> of <a href="#versioning_annex">Appendix C, <em>Considerations for Deprecation</em></a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1114,19 +1113,49 @@ This specification does not dictate the specific technical manner for this decla
 </table>
 </div>
 <div class="paragraph">
-<p>A validator shall be compatible with at least one version of the specification, but may be compatible with additional versions. A validator that is compatible with a specific version of the specification shall support all non-deprecated constructs listed for that version. If the validator encounters a manifest that uses constructs from a version of the specification that the validator does not support (either because they are deprecated or unknown), it may ignore the deprecated construct and process the rest of manifest as if that construct were not present. Alternatively, the validator may treat the entire manifest as having unknown provenance, by returning either the <code>ingredient.unknownProvenance</code> or <code>manifest.unknownProvenance</code> status code as appropriate.
-<mark>#</mark> Version History</p>
-</div>
-<div class="paragraph">
-<p>2.1 - July 2024</p>
+<p>A validator shall be compatible with at least one version of the specification, but may be compatible with additional versions. A validator that is compatible with a specific version of the specification shall support all non-deprecated constructs listed for that version. If the validator encounters a manifest that uses constructs from a version of the specification that the validator does not support (either because they are deprecated or unknown), it may ignore the deprecated construct and process the rest of manifest as if that construct were not present. Alternatively, the validator may treat the entire manifest as having unknown provenance, by returning either the <code>ingredient.unknownProvenance</code> or <code>manifest.unknownProvenance</code> status code as appropriate.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_2_1_august_2024"><a class="anchor" href="#_2_1_august_2024"></a>5.2. 2.1 - August 2024</h3>
+<h3 id="_version_history"><a class="anchor" href="#_version_history"></a>5.2. Version History</h3>
+<div class="sect3">
+<h4 id="_2_1_september_2024"><a class="anchor" href="#_2_1_september_2024"></a>5.2.1. 2.1 - September 2024</h4>
+<div class="paragraph">
+<p>This version focuses on both technical and editorial changes to the specification for the purposes of improving the security and reliability of Content Credentials. All publicly disclosed security vulnerabilities have been addressed, and the specification has been updated to reflect the latest best practices in the field.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
+<p>Clear definitions of Manifest &amp; Asset states</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Well-formed Manifests</p>
+</li>
+<li>
+<p>Valid Manifests</p>
+</li>
+<li>
+<p>Trusted Manifests</p>
+</li>
+<li>
+<p>Valid Assets</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Clear definitions and processes for handling deprecation and versioning</p>
+</li>
+<li>
 <p>New <code>c2pa</code> URN namespace for labelling manifests!</p>
+<div class="ulist">
+<ul>
+<li>
+<p>including a fully specified ABNF</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>New <code>ingredients v3</code> assertion</p>
@@ -1143,6 +1172,19 @@ This specification does not dictate the specific technical manner for this decla
 </li>
 <li>
 <p>Added new validation status fields to accompany the new status info</p>
+</li>
+<li>
+<p><code>dc:title</code> and <code>dc:format</code> are now optional</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>New <code>c2pa.hash.bmff.v3</code> assertion</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Supports hashing of fixed &amp; variable block sizes for BMFF-based assets</p>
 </li>
 </ul>
 </div>
@@ -1178,6 +1220,9 @@ This specification does not dictate the specific technical manner for this decla
 <div class="ulist">
 <ul>
 <li>
+<p>Detailed validation instructions for all standard assertions</p>
+</li>
+<li>
 <p>Validation of ingredients is now required when using the <code>ingredients</code> assertion</p>
 </li>
 <li>
@@ -1191,6 +1236,12 @@ This specification does not dictate the specific technical manner for this decla
 </li>
 <li>
 <p>Hashed URIs to data boxes, and any custom boxes, are now validated</p>
+</li>
+<li>
+<p>Defined procedure for handling manifests with matching unique IDs</p>
+</li>
+<li>
+<p>Address "orphaned manifests" in the validation process</p>
 </li>
 <li>
 <p>LOTS of new validation status codes, including a new "informational" code type</p>
@@ -1232,6 +1283,9 @@ This specification does not dictate the specific technical manner for this decla
 <div class="ulist">
 <ul>
 <li>
+<p>Either a <code>c2pa.created</code> or a <code>c2pa.opened</code> is now mandatory in a standard manifest</p>
+</li>
+<li>
 <p>Some new standard action types were added</p>
 </li>
 <li>
@@ -1253,6 +1307,9 @@ This specification does not dictate the specific technical manner for this decla
 <p>Added some missing compatibility support for JPEG Trust</p>
 </li>
 <li>
+<p>Cleaned up all CDDLs, including removing any normative language</p>
+</li>
+<li>
 <p>And various areas of editorial improvements</p>
 <div class="ulist">
 <ul>
@@ -1271,8 +1328,8 @@ This specification does not dictate the specific technical manner for this decla
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_2_0_january_2024"><a class="anchor" href="#_2_0_january_2024"></a>5.3. 2.0 - January 2024</h3>
+<div class="sect3">
+<h4 id="_2_0_january_2024"><a class="anchor" href="#_2_0_january_2024"></a>5.2.2. 2.0 - January 2024</h4>
 <div class="paragraph">
 <p>This version represents a significant departure from previous versions. It reduces the use of the term "actor", which no longer represents humans and organisations. In addition to validator-configured trust lists, it also introduces a new default trust list, the "C2PA Trust List", which is intended to cover certificates issued to hardware and software.  This philosophical change led to the following functional changes in the specification:</p>
 </div>
@@ -1398,8 +1455,8 @@ This specification does not dictate the specific technical manner for this decla
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_1_4_november_2023"><a class="anchor" href="#_1_4_november_2023"></a>5.4. 1.4 - November 2023</h3>
+<div class="sect3">
+<h4 id="_1_4_november_2023"><a class="anchor" href="#_1_4_november_2023"></a>5.2.3. 1.4 - November 2023</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1447,8 +1504,8 @@ This specification does not dictate the specific technical manner for this decla
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_1_3_april_2023"><a class="anchor" href="#_1_3_april_2023"></a>5.5. 1.3 - April 2023</h3>
+<div class="sect3">
+<h4 id="_1_3_april_2023"><a class="anchor" href="#_1_3_april_2023"></a>5.2.4. 1.3 - April 2023</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1508,8 +1565,8 @@ This specification does not dictate the specific technical manner for this decla
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_1_2_october_2022"><a class="anchor" href="#_1_2_october_2022"></a>5.6. 1.2 - October 2022</h3>
+<div class="sect3">
+<h4 id="_1_2_october_2022"><a class="anchor" href="#_1_2_october_2022"></a>5.2.5. 1.2 - October 2022</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1527,8 +1584,8 @@ This specification does not dictate the specific technical manner for this decla
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_1_1_september_2022"><a class="anchor" href="#_1_1_september_2022"></a>5.7. 1.1 - September 2022</h3>
+<div class="sect3">
+<h4 id="_1_1_september_2022"><a class="anchor" href="#_1_1_september_2022"></a>5.2.6. 1.1 - September 2022</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1576,14 +1633,15 @@ This specification does not dictate the specific technical manner for this decla
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_1_0_december_2021"><a class="anchor" href="#_1_0_december_2021"></a>5.8. 1.0 - December 2021</h3>
+<div class="sect3">
+<h4 id="_1_0_december_2021"><a class="anchor" href="#_1_0_december_2021"></a>5.2.7. 1.0 - December 2021</h4>
 <div class="ulist">
 <ul>
 <li>
 <p>Initial Release</p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -1918,14 +1976,22 @@ Previous versions of this specification used <a href="https://tools.ietf.org/htm
 <p>Situations may arise where it is necessary to re-label a C2PA Manifest due to a conflict of identifiers. For example, if a claim generator had already added an ingredient manifest into the asset&#8217;s C2PA Manifest Store, then later added another ingredient which had a manifest with the same label in its manifest store, but this latter version of the manifest was different due, for example, to a manipulation of one of its assertion values. In such a case, the modified version of the ingredient manifest needs to be copied into the asset&#8217;s C2PA Manifest Store, but must be re-labeled.</p>
 </div>
 <div class="paragraph">
-<p>To re-label a manifest:
-- If the current URN does not contain a "Claim Generator identifier string", then the claim generator shall append a <code>:</code>.
-- In all cases, the claim generator shall append a <code>:</code> to the URN followed by a monotonically increasing integer, starting with 1, followed by an underscore (<code>_</code>) and then an integer from the list below representing the reason for the re-labeling.</p>
+<p>To re-label a manifest:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
+<p>If the current URN does not contain a "Claim Generator identifier string", then the claim generator shall append a <code>:</code>.</p>
+</li>
+<li>
+<p>In all cases, the claim generator shall append a <code>:</code> to the URN followed by a monotonically increasing integer, starting with 1, followed by an underscore (<code>_</code>) and then an integer from the list below representing the reason for the re-labeling.</p>
+<div class="ulist">
+<ul>
+<li>
 <p>1: Conflict with another C2PA Manifest</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -3138,7 +3204,7 @@ The ingredient&#8217;s C2PA Manifest can be either a standard manifest or an upd
 <p>In some provenance workflows, a standard or update manifest is created offline, where it is not possible to obtain a trusted time-stamp (as per <a href="http://datatracker.ietf.org/doc/html/rfc3161">RFC 3161</a>) from a TSA at the time of signing. In order to accommodate this, it is possible to use a Time-Stamp Manifest (UUID: <code>6332746D-0011-0010-8000-00AA00389B71</code> (<code>c2tm</code>)) to add the time-stamp in a later operation when a TSA can be contacted.</p>
 </div>
 <div class="paragraph">
-<p>A Time-Stamp Manifest shall contain only a single assertion, which is the <code>c2pa.ingredient.v3</code> assertion that (a) includes a <code>activeManifest</code> field with a value that is the <a href="#_uri_references">URI reference</a> to that <a href="#_c2pa_box_details">C2PA Manifest</a> that is being updated and (b) has the value of <code>parentOf</code> for the <code>relationship</code> field.</p>
+<p>A Time-Stamp Manifest shall contain only a single assertion, which is the <code>c2pa.ingredient.v3</code> assertion that (a) includes an <code>activeManifest</code> field with a value that is the <a href="#_uri_references">URI reference</a> to that <a href="#_c2pa_box_details">C2PA Manifest</a> that is being updated and (b) has the value of <code>parentOf</code> for the <code>relationship</code> field.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3618,9 +3684,14 @@ Older versions of this specification also allowed the credential to appear in th
 </div>
 <div class="sect2">
 <h3 id="_validation_states"><a class="anchor" href="#_validation_states"></a>14.3. Validation states</h3>
+<div class="sect3">
+<h4 id="_general_4"><a class="anchor" href="#_general_4"></a>14.3.1. General</h4>
 <div class="paragraph">
 <p>A validator is a Manifest Consumer that will make some <a href="#validation-clause">validation</a> statements about that asset and its associated active manifest. The process for retrieving these statements is described in the <a href="#validation-clause">validation section</a>. The actor consuming the asset, usually through their user agent and its user interface, then has to interpret those statements to arrive at a set of conclusions of their own about the provenance of the asset they are consuming. These conclusions will be drawn from those statements and the contents of the asset itself.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_manifest_states"><a class="anchor" href="#_manifest_states"></a>14.3.2. Manifest States</h4>
 <div class="paragraph">
 <p>Based on these statements, a C2PA Manifest can be considered one of the following:</p>
 </div>
@@ -3649,11 +3720,15 @@ Any Trusted manifest is also Valid, and any Valid manifest is also Well-Formed.
 </tr>
 </table>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_asset_states"><a class="anchor" href="#_asset_states"></a>14.3.3. Asset States</h4>
 <div class="paragraph">
 <p>If a validator reports that the portions of the asset that are covered by content bindings have not been modified since the active manifest was produced [<a href="#_validate_the_assets_content">Section 15.12, &#8220;Validate the Asset&#8217;s Content&#8221;</a>], and its active manifest is either <a href="#_valid_manifest">Valid</a> or <a href="#_trusted_manifest">Trusted</a>, then the asset itself can be considered to be a Valid asset.</p>
 </div>
+</div>
 <div class="sect3">
-<h4 id="_well_formed_manifest"><a class="anchor" href="#_well_formed_manifest"></a>14.3.1. Well-Formed Manifest</h4>
+<h4 id="_well_formed_manifest"><a class="anchor" href="#_well_formed_manifest"></a>14.3.4. Well-Formed Manifest</h4>
 <div class="paragraph">
 <p>A C2PA Manifest is Well-Formed if validation determines that each of the following is true:</p>
 </div>
@@ -3669,20 +3744,20 @@ Any Trusted manifest is also Valid, and any Valid manifest is also Well-Formed.
 <p>The assertions of the manifest meet all the requirements for assertions [<a href="#_assertion_validation">Section 15.10.3, &#8220;Assertion Validation&#8221;</a>].</p>
 </li>
 <li>
-<p>Any ingredients present in the manifest meet all the requirements for ingredients[<a href="#_validate_the_ingredients">Section 15.11, &#8220;Validate the Ingredients&#8221;</a>].</p>
+<p>Any ingredients present in the manifest meet all the requirements for ingredients [<a href="#_validate_the_ingredients">Section 15.11, &#8220;Validate the Ingredients&#8221;</a>].</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_valid_manifest"><a class="anchor" href="#_valid_manifest"></a>14.3.2. Valid Manifest</h4>
+<h4 id="_valid_manifest"><a class="anchor" href="#_valid_manifest"></a>14.3.5. Valid Manifest</h4>
 <div class="paragraph">
 <p>A C2PA Manifest is Valid if validation determines that each of the following is true:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The manifest is Well-Formed [<a href="#_well_formed_manifest">Section 14.3.1, &#8220;Well-Formed Manifest&#8221;</a>].</p>
+<p>The manifest is Well-Formed [<a href="#_well_formed_manifest">Section 14.3.4, &#8220;Well-Formed Manifest&#8221;</a>].</p>
 </li>
 <li>
 <p>The manifest has not been modified since the manifest was signed [<a href="#_cryptographic_validation">Section 13.2.5, &#8220;Cryptographic validation&#8221;</a>].</p>
@@ -3703,14 +3778,14 @@ Any Trusted manifest is also Valid, and any Valid manifest is also Well-Formed.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_trusted_manifest"><a class="anchor" href="#_trusted_manifest"></a>14.3.3. Trusted Manifest</h4>
+<h4 id="_trusted_manifest"><a class="anchor" href="#_trusted_manifest"></a>14.3.6. Trusted Manifest</h4>
 <div class="paragraph">
 <p>A C2PA Manifest is Trusted if validation determines that each of the following is true:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The manifest is Valid [<a href="#_valid_manifest">Section 14.3.2, &#8220;Valid Manifest&#8221;</a>].</p>
+<p>The manifest is Valid [<a href="#_valid_manifest">Section 14.3.5, &#8220;Valid Manifest&#8221;</a>].</p>
 </li>
 <li>
 <p>The signing credential of the C2PA Manifest receives the success code of <code>signingCredential.trusted</code> [<a href="#_validate_the_signature">Section 15.7, &#8220;Validate the Signature&#8221;</a>].</p>
@@ -4462,7 +4537,7 @@ ingredient-delta-validation-result-map = {
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>timeStamp.untrusted</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time-stamp credential is not listed on the validator&#8217;s <a href="#_time_stamp_authorities">trust lists</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The time-stamp credential is not listed on the validator&#8217;s TSA <a href="#_time_stamp_authorities">trust lists</a>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA Claim Signature Box</p></td>
 </tr>
 <tr>
@@ -4788,7 +4863,7 @@ ingredient-delta-validation-result-map = {
 <div class="sect2">
 <h3 id="_displaying_manifest_information"><a class="anchor" href="#_displaying_manifest_information"></a>15.3. Displaying Manifest Information</h3>
 <div class="paragraph">
-<p>Manifest Consumers should not display data from manifests which are not <a href="#_valid_manifest">Valid</a>. If the Manifest Consumer chooses to display such data, it shall include as part of the display:</p>
+<p>Manifest Consumers should not display data from manifests which are not <a href="#_valid_manifest">Valid</a> nor from assets which are not <a href="#_asset_states">Valid</a>. If the Manifest Consumer chooses to display such data, it shall include as part of the display:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4807,7 +4882,7 @@ ingredient-delta-validation-result-map = {
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-In authoring scenarios, it is desirable to more prominently raise warnings so that a creator making use of such an asset with a flawed provenance history can make an informed decision of how to proceed.
+In authoring scenarios, it is desirable to more prominently raise warnings so that a creator can make an informed decision about how to proceed with an asset that is not Valid or that has a flawed provenance history .
 </td>
 </tr>
 </table>
@@ -4849,7 +4924,7 @@ The <code>alg</code> field is mandatory in <code>hashed_ext_uri</code>, so no re
 <div class="sect2">
 <h3 id="_locating_the_active_manifest"><a class="anchor" href="#_locating_the_active_manifest"></a>15.5. Locating the Active Manifest</h3>
 <div class="sect3">
-<h4 id="_general_4"><a class="anchor" href="#_general_4"></a>15.5.1. General</h4>
+<h4 id="_general_5"><a class="anchor" href="#_general_5"></a>15.5.1. General</h4>
 <div class="paragraph">
 <p>The last C2PA Manifest superbox in the C2PA Manifest Store superbox shall be considered the active manifest, but locating the C2PA Manifest Store may involve looking in a number of possible locations.</p>
 </div>
@@ -4857,7 +4932,7 @@ The <code>alg</code> field is mandatory in <code>hashed_ext_uri</code>, so no re
 <div class="sect3">
 <h4 id="_embedded_2"><a class="anchor" href="#_embedded_2"></a>15.5.2. Embedded</h4>
 <div class="sect4">
-<h5 id="_general_5"><a class="anchor" href="#_general_5"></a>15.5.2.1. General</h5>
+<h5 id="_general_6"><a class="anchor" href="#_general_6"></a>15.5.2.1. General</h5>
 <div class="paragraph">
 <p>The C2PA Manifest Store shall be located by the validator embedded inside the asset at the <a href="#_embedding_manifests_into_various_file_formats">standard locations for embedding manifests</a>.  However, if an asset was retrieved via an HTTP connection, a validator may look for a <code>Link</code> header, as described in the <a href="#_by_link_header">Link Header</a> clause below, to determine if a C2PA Manifest Store is present.</p>
 </div>
@@ -5055,7 +5130,7 @@ Well-formed CBOR is defined in <a href="https://datatracker.ietf.org/doc/html/rf
 <div class="ulist">
 <ul>
 <li>
-<p>Retrieve the <code>val</code> property from the <code>tstToken</code>, which shall be an RFC3161-compliant <code>TimeStampResp</code> (time-stamp response)</p>
+<p>Retrieve the <code>val</code> property from the <code>tstToken</code>, which shall be an RFC3161-compliant <code>TimeStampResp</code> (time-stamp response).</p>
 </li>
 <li>
 <p>Check the value of the <code>status</code> field <code>PKIStatusInfo</code>, which is the value of the <code>status</code> field of <code>TimeStampResp</code>.</p>
@@ -5139,7 +5214,7 @@ This document does not require that the revocation status of a Time Stamp Author
 <div class="sect2">
 <h3 id="_validate_the_credential_revocation_information"><a class="anchor" href="#_validate_the_credential_revocation_information"></a>15.9. Validate the Credential Revocation Information</h3>
 <div class="paragraph">
-<p>A validator will encounter one of two scenarios:</p>
+<p>A validator will encounter one of the following three scenarios:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5295,7 +5370,7 @@ This document does not require that the revocation status of a Time Stamp Author
 <div class="sect3">
 <h4 id="_validate_the_correct_assertions_for_the_type_of_manifest"><a class="anchor" href="#_validate_the_correct_assertions_for_the_type_of_manifest"></a>15.10.1. Validate the correct assertions for the type of manifest</h4>
 <div class="sect4">
-<h5 id="_general_6"><a class="anchor" href="#_general_6"></a>15.10.1.1. General</h5>
+<h5 id="_general_7"><a class="anchor" href="#_general_7"></a>15.10.1.1. General</h5>
 <div class="paragraph">
 <p>Depending on the <a href="#_types_of_manifests">type of manifest</a>, there are assertions that are either required or forbidden. A validator shall check for required and not-permitted assertions.</p>
 </div>
@@ -5308,7 +5383,7 @@ This document does not require that the revocation status of a Time Stamp Author
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Validate that there is exactly one <a href="#_binding_to_content">hard binding to content</a> assertion - either a <code>c2pa.hash.data</code>, a <code>c2pa.hash.boxes</code>, a <code>c2pa.hash.collection.data</code>, <code>c2pa.hash.bmff.v2</code> (deprecated), or a <code>c2pa.hash.bmff.v3</code> based on the type of asset for which the manifest is destined.  If no such assertion is present, the manifest shall be rejected with a failure code of <code>claim.hardBindings.missing</code>.  If there is more than one such assertion, the manifest shall be rejected with a failure code of <code>assertion.multipleHardBindings</code>.</p>
+<p>Validate that there is exactly one <a href="#_binding_to_content">hard binding to content</a> assertion - either a <code>c2pa.hash.data</code>, a <code>c2pa.hash.boxes</code>, a <code>c2pa.hash.collection.data</code>, <code>c2pa.hash.bmff.v2</code> (deprecated), or a <code>c2pa.hash.bmff.v3</code>.  If no such assertion is present, the manifest shall be rejected with a failure code of <code>claim.hardBindings.missing</code>.  If there is more than one such assertion, the manifest shall be rejected with a failure code of <code>assertion.multipleHardBindings</code>.</p>
 </li>
 <li>
 <p>Validate that there are zero or one <code>c2pa.ingredient</code> assertions whose <code>relationship</code> is <code>parentOf</code>.  If there is more than one, the manifest shall be rejected with a failure code of <code>manifest.multipleParents</code>.</p>
@@ -5376,7 +5451,7 @@ Assertions can be redacted from ingredient assets at any point in the final asse
 <div class="sect3">
 <h4 id="_assertion_validation"><a class="anchor" href="#_assertion_validation"></a>15.10.3. Assertion Validation</h4>
 <div class="sect4">
-<h5 id="_general_7"><a class="anchor" href="#_general_7"></a>15.10.3.1. General</h5>
+<h5 id="_general_8"><a class="anchor" href="#_general_8"></a>15.10.3.1. General</h5>
 <div class="paragraph">
 <p>Each assertion in the <code>created_assertions</code> and <code>gathered_assertions</code> fields of the claim is a <code>hashed_uri</code> structure. For each assertion, the validator shall first determine if the URI reference in the <code>url</code> field is in the <a href="#_preparing_the_list_of_redacted_assertions">list of redacted assertions</a>.</p>
 </div>
@@ -5599,7 +5674,7 @@ This validation requirement will necessitate a validator parsing the JSON-LD dat
 <div class="sect3">
 <h4 id="_external_data_validation"><a class="anchor" href="#_external_data_validation"></a>15.10.4. External Data Validation</h4>
 <div class="sect4">
-<h5 id="_general_8"><a class="anchor" href="#_general_8"></a>15.10.4.1. General</h5>
+<h5 id="_general_9"><a class="anchor" href="#_general_9"></a>15.10.4.1. General</h5>
 <div class="paragraph">
 <p>The contents of a <a href="#_cloud_data">cloud data assertion</a> contains the URI references to and hashes of external data, are validated like any other assertion, but those references are not retrieved and validated as part of standard validation. A validator shall first successfully validate a claim before attempting to retrieve the external data referenced. A validator shall not attempt to retrieve external data from a rejected claim. As the retrieval of external data is optional, the inability to retrieve or validate external data shall not cause a claim to become rejected.</p>
 </div>
@@ -5987,12 +6062,12 @@ If there are any discrepancies between the visual representation and the text, t
 <div class="sect2">
 <h3 id="_validate_the_assets_content"><a class="anchor" href="#_validate_the_assets_content"></a>15.12. Validate the Asset&#8217;s Content</h3>
 <div class="paragraph">
-<p>If the current manifest is an update manifest, its <a href="#_hard_bindings">hard bindings</a> shall be inherited from the <code>parentOf</code> ingredient&#8217;s manifest. If that manifest is also an update manifest, the search for a standard manifest shall recurse though the chain of ingredients.  If no standard manifest is found, then the manifest shall be rejected with a failure code of <code>manifest.update.wrongParents</code>.</p>
+<p>The asset&#8217;s content shall be validated using the <a href="#_hard_bindings">hard binding</a> in the active manifest if the active manifest is a standard manifest. If the active manifest is an update or time-stamp manifest, the hard binding shall be found in the <code>parentOf</code> ingredient&#8217;s manifest, or if that manifest is also an update or time-stamp manifest, by following the chain of <code>parentOf</code> ingredients to the first standard manifest. If no standard manifest is found, or the standard manifest has no hard binding, then the malformed manifest shall be rejected in accordance with <a href="#_validate_the_correct_assertions_for_the_type_of_manifest">Section 15.10.1, &#8220;Validate the correct assertions for the type of manifest&#8221;</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_validating_a_data_hash"><a class="anchor" href="#_validating_a_data_hash"></a>15.12.1. Validating a data hash</h4>
 <div class="sect4">
-<h5 id="_general_9"><a class="anchor" href="#_general_9"></a>15.12.1.1. General</h5>
+<h5 id="_general_10"><a class="anchor" href="#_general_10"></a>15.12.1.1. General</h5>
 <div class="paragraph">
 <p>Once a standard manifest (and its bindings) has been located, the exclusion range(s) shall be extracted from the <code>c2pa.hash.data</code> assertion.</p>
 </div>
@@ -6116,7 +6191,7 @@ If the <code>count</code> in the <code>bmff-merkle-map</code> is smaller than th
 <div class="sect3">
 <h4 id="_validating_a_collection_data_hash"><a class="anchor" href="#_validating_a_collection_data_hash"></a>15.12.4. Validating a collection data hash</h4>
 <div class="sect4">
-<h5 id="_general_10"><a class="anchor" href="#_general_10"></a>15.12.4.1. General</h5>
+<h5 id="_general_11"><a class="anchor" href="#_general_11"></a>15.12.4.1. General</h5>
 <div class="paragraph">
 <p>Validation of a collection data hash assertion (<code>c2pa.hash.collection.data</code>) that has been located in a standard manifest shall be performed by iterating over the array of <code>uris</code> in the <code>collection-data-hash-map</code>.  If there is no <code>uris</code> field present, then the manifest shall be rejected with a failure code of <code>assertion.collectionHash.malformed</code>.</p>
 </div>
@@ -7131,7 +7206,7 @@ language-string /= tstr .size (1..max-tstr-length)</code></pre>
 <div class="sect3">
 <h4 id="_localization"><a class="anchor" href="#_localization"></a>18.3.7. Localization</h4>
 <div class="sect4">
-<h5 id="_general_11"><a class="anchor" href="#_general_11"></a>18.3.7.1. General</h5>
+<h5 id="_general_12"><a class="anchor" href="#_general_12"></a>18.3.7.1. General</h5>
 <div class="paragraph">
 <p>It is important that consumers of C2PA manifests be able to understand the information in their native language, when possible. To this end, it is possible to add localization information for an assertion with a dictionary that is included in the assertion&#8217;s metadata.</p>
 </div>
@@ -10337,9 +10412,9 @@ This method is well suited for when working with a collection of assets where al
 </div>
 </div>
 <div class="sect3">
-<h4 id="_informational_url"><a class="anchor" href="#_informational_url"></a>18.13.9. Informational URL</h4>
+<h4 id="_informational_uri"><a class="anchor" href="#_informational_uri"></a>18.13.9. Informational URI</h4>
 <div class="paragraph">
-<p>When it is necessary to provide a URL to a web page with information about the ingredient, such as detailed information about an AI/ML model, it should be placed as the value of the <code>informational_URI</code> field of the ingredient assertion.</p>
+<p>When it is necessary to provide a URL to a web page with information about the ingredient, such as detailed information about an AI/ML model, it should be placed as the value of the <code>informationalURI</code> field of the ingredient assertion.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -10348,9 +10423,19 @@ This method is well suited for when working with a collection of assets where al
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>The <code>informational_URI</code> is not an authenticated link to the content of the ingredient itself, but something more generally of interest to a human user.</p>
+The <code>informationalURI</code> is not an authenticated link to the content of the ingredient itself, but something more generally of interest to a human user.
+</td>
+</tr>
+</table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Older (and deprecated) versions of the ingredient assertion named this field <code>informational_URI</code>.
 </td>
 </tr>
 </table>
@@ -10368,7 +10453,7 @@ This method is well suited for when working with a collection of assets where al
 <div class="sect3">
 <h4 id="_existing_manifests"><a class="anchor" href="#_existing_manifests"></a>18.13.11. Existing manifests</h4>
 <div class="sect4">
-<h5 id="_general_12"><a class="anchor" href="#_general_12"></a>18.13.11.1. General</h5>
+<h5 id="_general_13"><a class="anchor" href="#_general_13"></a>18.13.11.1. General</h5>
 <div class="paragraph">
 <p>If the ingredient has an existing C2PA Manifest Store, then all C2PA Manifests in the ingredient&#8217;s C2PA Manifest Store that have undergone validation, and that do not already exist in the asset&#8217;s C2PA Manifest Store, shall be copied by the claim generator into the asset&#8217;s C2PA Manifest Store, except as outlined in <a href="#_determining_the_need_to_copy_or_copy_and_re_label_existing_manifests">Section 18.13.12, &#8220;Determining the need to copy or copy and re-label existing manifests&#8221;</a> or when directed not to do so (for example via user input or via configuration).</p>
 </div>
@@ -10493,7 +10578,7 @@ Providing both values enables efficient ingredient validation and also supports 
 <div class="sect4">
 <h5 id="_ingredient_validation"><a class="anchor" href="#_ingredient_validation"></a>18.13.12.1. Ingredient validation</h5>
 <div class="sect5">
-<h6 id="_general_13"><a class="anchor" href="#_general_13"></a>18.13.12.1.1. General</h6>
+<h6 id="_general_14"><a class="anchor" href="#_general_14"></a>18.13.12.1.1. General</h6>
 <div class="paragraph">
 <p>In addition, when the ingredient assertion references a C2PA Manifest, the claim generator shall also act as a validator, performing validation of the ingredient as described in <a href="#_process_steps">validation steps</a>. The result of that validation - all <a href="#_success_codes">success codes</a>, <a href="#_informational_codes">informational codes</a>, and <a href="#_failure_codes">failure codes</a> - shall be used in populating the ingredient assertion&#8217;s <code>validationResults</code> or <code>validationStatus</code> field as described below. This field is required to be present so that it can be used in future validations.</p>
 </div>
@@ -10518,7 +10603,7 @@ Providing both values enables efficient ingredient validation and also supports 
 <div class="sect5">
 <h6 id="_v2_ingredient_assertions_deprecated"><a class="anchor" href="#_v2_ingredient_assertions_deprecated"></a>18.13.12.1.2. V2 ingredient assertions (DEPRECATED)</h6>
 <div class="paragraph">
-<p>In a v2 ingredient assertion with no <code>c2pa_manifest</code> field, the <code>validationStatus</code> field shall contain an empty array.</p>
+<p>In a v2 ingredient assertion with no <code>c2pa_manifest</code> field, the <code>validationStatus</code> field is optional, but if present may contain an empty array.</p>
 </div>
 <div class="paragraph">
 <p>In a v2 ingredient assertion with <code>c2pa_manifest</code> field, each object in the <code>validationStatus</code> array consists of a <code>code</code> field whose value describes the validation status of a specific part of the manifest along with an optional <code>success</code> field whose boolean value indicates whether the code reflects success (true) or failure (false). An optional description of the validation status may be present in the <code>explanation</code> field if there is a need for an additional human readable explanation. In addition, each <code>status-map</code> object has a <code>url</code> field which should contain, in the case of failures, a JUMBF URI reference to the specific element in the manifest about which the status refers. Depending on the code, the <code>url</code> will be to a C2PA Claim, a C2PA Claim Signature or a specific C2PA Assertion. Status codes are defined in <a href="#_standard_status_codes">Section 15.2.1, &#8220;Standard Status Codes&#8221;</a>.</p>
@@ -11872,7 +11957,7 @@ the following definition is preliminary:</p>
 <div class="sect2">
 <h3 id="_embedding_manifests_into_pdfs"><a class="anchor" href="#_embedding_manifests_into_pdfs"></a>A.3. Embedding manifests into PDFs</h3>
 <div class="sect3">
-<h4 id="_general_14"><a class="anchor" href="#_general_14"></a>A.3.1. General</h4>
+<h4 id="_general_15"><a class="anchor" href="#_general_15"></a>A.3.1. General</h4>
 <div class="paragraph">
 <p>All C2PA Manifest Stores shall be embedded using embedded file streams (ISO 32000, 7.11.4). The file specification dictionary shall have an <code>AFRelationship</code> key (ISO 32000, 7.11.3) whose value is <code>C2PA_Manifest</code>. If a C2PA Manifest Store is embedded into an encrypted PDF, the embedded file stream shall use an <code>Identity</code> crypt filter.</p>
 </div>
@@ -12091,7 +12176,7 @@ Quantity: Zero or more</code></pre>
 <div class="sect3">
 <h4 id="_auxiliary_c2pa_boxes_for_large_and_fragmented_files"><a class="anchor" href="#_auxiliary_c2pa_boxes_for_large_and_fragmented_files"></a>A.4.4. Auxiliary <code>'c2pa'</code> Boxes for Large and Fragmented Files</h4>
 <div class="sect4">
-<h5 id="_general_15"><a class="anchor" href="#_general_15"></a>A.4.4.1. General</h5>
+<h5 id="_general_16"><a class="anchor" href="#_general_16"></a>A.4.4.1. General</h5>
 <div class="paragraph">
 <p>Some files have one or more very large <code>'mdat'</code> boxes (e.g., large video or image files which may be downloaded and rendered progressively) or large numbers of independent 'mdat' boxes (e.g., fMP4 where each fragment can be downloaded independently).</p>
 </div>
@@ -12416,7 +12501,7 @@ subset = { { 16, 0 } }</code></pre>
 <div class="sect2">
 <h3 id="_embedding_manifests_into_zip_based_formats"><a class="anchor" href="#_embedding_manifests_into_zip_based_formats"></a>A.5. Embedding manifests into ZIP-based formats</h3>
 <div class="sect3">
-<h4 id="_general_16"><a class="anchor" href="#_general_16"></a>A.5.1. General</h4>
+<h4 id="_general_17"><a class="anchor" href="#_general_17"></a>A.5.1. General</h4>
 <div class="paragraph">
 <p>Because of its longevity and being an <a href="https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT">openly published specification</a>, many command file formats are really ZIP archives, but with a specific organization of the content files. This includes formats such as <a href="https://www.w3.org/TR/epub/">EPUB</a>, <a href="https://www.iso.org/standard/61796.html">Office Open XML</a>, <a href="https://www.iso.org/standard/66376.html">Open Document</a> and <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-376/">OpenXPS</a>.</p>
 </div>
@@ -12555,7 +12640,7 @@ relative-url-type  /= tstr .regexp "[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\
 </td>
 <td class="content">
 OpenXPS is based on the same Open Packaging Convention (OPC) standard as OOXML, and as such, the same approach applies.
-:revdate: 2024-09-15
+:revdate: 2024-09-19
 :version-label!:
 :sectnums:
 :sectnumlevels: 5
@@ -13479,9 +13564,278 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </ul>
 </div>
 <div class="paragraph">
-<p>For more information about these, see <a href="http://ns.useplus.org/LDF/ldf-XMPSpecification" class="bare">http://ns.useplus.org/LDF/ldf-XMPSpecification</a>.</p>
+<p>For more information about these, see <a href="http://ns.useplus.org/LDF/ldf-XMPSpecification" class="bare">http://ns.useplus.org/LDF/ldf-XMPSpecification</a>.
+:revdate: 2024-09-19
+:version-label!:
+:sectnums:
+:sectnumlevels: 5
+:chapter-label:
+:source-highlighter: rouge</p>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="versioning_annex"><a class="anchor" href="#versioning_annex"></a>Appendix C: Considerations for Deprecation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_deprecated_constructs"><a class="anchor" href="#_deprecated_constructs"></a>C.1. Deprecated Constructs</h3>
+<table id="deprecated_constructs_table" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 19. Deprecated Constructs</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Construct</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">v1.3</th>
+<th class="tableblock halign-left valign-top">v1.4</th>
+<th class="tableblock halign-left valign-top">v2.0</th>
+<th class="tableblock halign-left valign-top">v2.1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">urn:uuid namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Label</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">urn:c2pa namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sigTst timestamp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time-stamp</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sigTst2 timestamp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time-stamp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.claim</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.claim.v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.assertion.metadata</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.asset-ref</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.asset-type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.action</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.action.v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.cloud-data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.depthmap.GDepth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.bmff</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.bmff.v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.boxes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.collection.data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.ingredient</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.ingredient.v2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.ingredient.v3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.metadata</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.soft-binding</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.thumbnail.claim.*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.thumbnail.ingredient.*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">font.info</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stds.iptc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stds.exif</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">role in region-map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Field</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
