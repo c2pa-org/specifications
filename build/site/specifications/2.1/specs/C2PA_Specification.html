@@ -1095,10 +1095,10 @@ A <a href="#_c2pa_manifest">C2PA Manifest</a> can reference other <a href="#_c2p
 <div class="sect2">
 <h3 id="_compatibility"><a class="anchor" href="#_compatibility"></a>5.1. Compatibility</h3>
 <div class="paragraph">
-<p>As the Content Credentials specification has evolved, constructs such as box labels, assertions (and their fields), claims and time-stamps have also evolved. New assertions have been added, and some existing assertions and the claim have newer versions with additional fields. In addition, some constructs have been deprecated. In this specification, when a construct is marked as deprecated, that means that a claim generator shall not write that construct (or value), but that a validator should read it.</p>
+<p>As the Content Credentials specification has evolved, constructs such as box labels, assertions (and their fields), claims and time-stamps have also evolved. New assertions have been added, and some existing assertions and claims have newer versions with additional fields. In addition, some constructs have been deprecated. In this specification, when a construct is marked as deprecated, that means that a claim generator shall not write that construct (or value), but that a validator should read it.</p>
 </div>
 <div class="paragraph">
-<p>To facilitate interoperability between claim generators and validators, a claim generator  declares which version of the specification it is using to generate the claim. When a claim generator declares that it is using a version of the specification, it is declaring that the active manifest of the asset is produced in accordance with that version of the specification and thus does not contain any deprecated constructs listed under that version of the specification in <a href="#deprecated_constructs_table">Table 19, &#8220;Deprecated Constructs&#8221;</a> of <a href="#versioning_annex">Appendix C, <em>Considerations for Deprecation</em></a>.</p>
+<p>To facilitate interoperability between claim generators and validators, a claim generator declares which version of the specification it is using to generate the claim. When a claim generator declares that it is using a version of the specification, it is declaring that the active manifest of the asset is produced in accordance with that version of the specification and thus does not contain any deprecated constructs listed under that version of the specification in <a href="#deprecated_constructs_table">Table 19, &#8220;Deprecated Constructs&#8221;</a> of <a href="#versioning_annex">Appendix C, <em>Considerations for Deprecation</em></a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1331,7 +1331,7 @@ This specification does not dictate the specific technical manner for this decla
 <div class="sect3">
 <h4 id="_2_0_january_2024"><a class="anchor" href="#_2_0_january_2024"></a>5.2.2. 2.0 - January 2024</h4>
 <div class="paragraph">
-<p>This version represents a significant departure from previous versions. It reduces the use of the term "actor", which no longer represents humans and organisations. In addition to validator-configured trust lists, it also introduces a new default trust list, the "C2PA Trust List", which is intended to cover certificates issued to hardware and software.  This philosophical change led to the following functional changes in the specification:</p>
+<p>This version represents a significant departure from previous versions. It reduces the use of the term "actor", which no longer represents humans and organizations. In addition to validator-configured trust lists, it also introduces a new default trust list, the "C2PA Trust List", which is intended to cover certificates issued to hardware and software.  This philosophical change led to the following functional changes in the specification:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5044,10 +5044,10 @@ Checking the <code>Link</code> header, if present, allows a validator to determi
 <div class="sect3">
 <h4 id="_validating_a_match"><a class="anchor" href="#_validating_a_match"></a>15.5.5. Validating a Match</h4>
 <div class="paragraph">
-<p>A validator may wish to validate that the located C2PA Manifest Store is indeed the one associated with asset.</p>
+<p>A validator may wish to validate that the located C2PA Manifest Store is indeed the one associated with the asset.</p>
 </div>
 <div class="paragraph">
-<p>If the C2PA Manifest Store was located then the hard binding assertion present in its active manifest shall be used to validate that it is the matching manifest and whether the asset has been modified without manifest updates. If the hard binding does not match, it is unknown if that is because of (a) modification of the asset or (b) the wrong C2PA Manifest Store was located. Accordingly, the validator shall treat this as a non-matching hard binding and reject the manifest with a failure code of <code>assertion.dataHash.mismatch</code> if a data hash assertion is used, <code>assertion.boxesHash.mismatch</code> if a general boxes hash assertion is used, <code>assertion.collectionHash.mismatch</code> if a collection data hash assertion is used, or <code>assertion.bmffHash.mismatch</code> if a BMFF hash assertion is used.</p>
+<p>If the C2PA Manifest Store was located, the hard binding assertion present in its active manifest shall be used to validate that the C2PA Manifest Store is the matching manifest. Additionally, the validator will check whether the asset has been modified without manifest updates. If the hard binding does not match, it is unknown if that is because of (a) modification of the asset or (b) the wrong C2PA Manifest Store was located. Accordingly, the validator shall treat this as a non-matching hard binding and reject the manifest with a failure code of <code>assertion.dataHash.mismatch</code> if a data hash assertion is used, <code>assertion.boxesHash.mismatch</code> if a general boxes hash assertion is used, <code>assertion.collectionHash.mismatch</code> if a collection data hash assertion is used, or <code>assertion.bmffHash.mismatch</code> if a BMFF hash assertion is used.</p>
 </div>
 </div>
 </div>
