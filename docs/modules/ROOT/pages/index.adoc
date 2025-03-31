@@ -9,8 +9,8 @@ This site contains the various specifications and documents produced by the C2PA
 * xref:1.4@attestations:attestation.adoc[Attestations]
 
 == Guidance & Informative Documents
-* xref:1.4@explainer:Explainer.adoc[Explainer] 
-* xref:1.4@guidance:Guidance.adoc[Guidance for Implementers] 
+* xref:2.2@explainer:Explainer.adoc[Explainer] 
+* xref:2.2@guidance:Guidance.adoc[Guidance for Implementers] 
 * xref:2.0@ux:UX_Recommendations.adoc[User Experience Guidance] 
 * xref:1.4@security:Security_Considerations.adoc[Security Considerations] 
 * xref:1.4@security:Harms_Modelling.adoc[Harms Modelling] 

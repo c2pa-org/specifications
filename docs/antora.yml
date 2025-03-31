@@ -1,6 +1,6 @@
 name: specifications
 title: C2PA Specifications
-version: '2.1'
+version: '2.2'
 start_page: index.adoc
 nav:
 - modules/nav.adoc  
