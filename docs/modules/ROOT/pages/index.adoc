@@ -7,6 +7,7 @@ This site contains the various specifications and documents produced by the C2PA
 == Technical Specifications
 * xref:specs:C2PA_Specification.adoc[Content Credentials] 
 * xref:1.4@attestations:attestation.adoc[Attestations]
+* xref:2.2@softbinding:Decoupled.adoc[Soft Binding API]
 
 == Guidance & Informative Documents
 * xref:2.2@explainer:Explainer.adoc[Explainer] 
