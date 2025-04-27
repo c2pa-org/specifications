@@ -28,13 +28,13 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
-            <a class="navbar-item" href="../../1.0/explainer/_attachments/Explainer.pdf">Explainer</a> 
-            <a class="navbar-item" href="../../1.0/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
-            <a class="navbar-item" href="../../1.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
-            <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
-            <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
-            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
+            <a class="navbar-item" href="../specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../2.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../2.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
+            <a class="navbar-item" href="../2.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
+            <a class="navbar-item" href="../specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
           </div>
         </div>
           <div class="navbar-item">
@@ -1148,22 +1148,34 @@ This specification does not dictate the specific technical manner for this decla
 <div class="ulist">
 <ul>
 <li>
-<p>Add new fields to the ingredient assertion to enable soft-binding recovery</p>
+<p>Added new supplementary specifications for the Soft Binding Resolution API</p>
 </li>
 <li>
-<p>Add support for multi-part assets, such as Android Motion Photos</p>
+<p>Added new fields to the ingredient assertion to indicate soft-binding manifest recovery</p>
 </li>
 <li>
-<p>Add support for adding time-stamps and revocation information in an update manifest</p>
+<p>Added support for multi-part assets, such as Android Motion Photos</p>
 </li>
 <li>
-<p>Add support for a "claimed signature creation time"</p>
+<p>Added support for adding time-stamps and revocation information in an update manifest, replacing time-stamp manifests</p>
+</li>
+<li>
+<p>Added support for a "claimed signature creation time"</p>
+</li>
+<li>
+<p>Added support for new <code>c2pa-claim-signing</code> EKU</p>
 </li>
 <li>
 <p>Replaced data boxes with embedded data assertions</p>
 </li>
 <li>
+<p>Provided additional guidance on zeroing out redacted assertion</p>
+</li>
+<li>
 <p>Clarified use of <code>created_assertions</code> and <code>gathered_assertions</code> with respect to the Trust Model</p>
+</li>
+<li>
+<p>Clarified terminology around "signer" and "claim generator", with respect to their roles</p>
 </li>
 <li>
 <p>Changes and improvements in various hard binding assertions</p>
@@ -1185,10 +1197,10 @@ This specification does not dictate the specific technical manner for this decla
 <p>Clarified what JUMBF boxes are allowed in the Assertion store</p>
 </li>
 <li>
-<p>Clarify certificate revocation handling</p>
+<p>Clarified certificate revocation handling</p>
 </li>
 <li>
-<p>Clarify time-stamp validation</p>
+<p>Clarified time-stamp validation</p>
 </li>
 <li>
 <p>Improvements and clarifications to action assertions</p>
@@ -1198,6 +1210,9 @@ This specification does not dictate the specific technical manner for this decla
 </li>
 <li>
 <p>Reworked the BMFF hashing diagrams for clarity &amp; correctness</p>
+</li>
+<li>
+<p>Removed requirement that all manifests in a manifest store must be referenced</p>
 </li>
 </ul>
 </div>
@@ -5537,7 +5552,16 @@ This document does not require that the revocation status of a Time Stamp Author
 <div class="sect2">
 <h3 id="_validate_the_credential_revocation_information"><a class="anchor" href="#_validate_the_credential_revocation_information"></a>15.9. Validate the Credential Revocation Information</h3>
 <div class="paragraph">
-<p>A validator shall attempt to discover the revocation status of the claim signing certificate and all relevant intermediate CA certificates, first by looking at information provided in the C2PA Manifest.</p>
+<p>The validator shall attempt to discover the revocation status of the signer&#8217;s certificate and all CA certificates that are part of the trust chain.</p>
+</div>
+<div class="paragraph">
+<p>For CA certificates, the validator should determine revocation status as indicated in the Authority Information Access (AIA) extension as described in <a href="https://datatracker.ietf.org/doc/html/rfc5280">RFC 5280</a>, section 4.2.2.1. The validator should make use of relevant OCSP responses included in the C2PA Manifest if the AIA extension indicates that OCSP is available.</p>
+</div>
+<div class="paragraph">
+<p>If the validator determines that a CA certificate was revoked at the time indicated in a trusted time-stamp, or at the current time if no trusted time-stamp is present, then the claim signature shall be rejected with a failure status of <code>signingCredential.untrusted</code>.</p>
+</div>
+<div class="paragraph">
+<p>For the signer&#8217;s certificate, the validator shall use the following process.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5545,25 +5569,25 @@ This document does not require that the revocation status of a Time Stamp Author
 <p>If a certificate does not support revocation status, or the certificate issuer did not provide a method to query its revocation status, the validator shall treat the credential as not revoked.</p>
 </li>
 <li>
-<p>If the claim generator "stapled" an OCSP response for the certificate in the <code>rVals</code> header of the <code>COSE_Sign1</code> structure, the validator shall decode and validate the stapled OCSP response as described in <a href="#ocsp_revocation">Section 15.9.1, &#8220;Determining revocation through OCSP response in <code>rVals</code> header&#8221;</a>.</p>
+<p>If the claim generator "stapled" OCSP responses in the <code>rVals</code> header of the <code>COSE_Sign1</code> structure, the validator shall decode and validate the stapled OCSP responses as described in <a href="#ocsp_revocation">Section 15.9.1, &#8220;Determining revocation through OCSP responses in the C2PA Manifest Store&#8221;</a>.</p>
 </li>
 <li>
-<p>If a subsequent claim generator added a <a href="#certificate_status_assertion">certificate status assertion</a> to the C2PA Manifest, the validator shall use those OCSP response(s) in the validation process described in <a href="#ocsp_revocation">Section 15.9.1, &#8220;Determining revocation through OCSP response in <code>rVals</code> header&#8221;</a>. If more than one OCSP response for a given certificate is found, the validator shall try each one until one successfully passes validation (and then should ignore the others).</p>
+<p>If subsequent claim generators added <a href="#certificate_status_assertion">certificate status assertions</a> in other C2PA Manifests in the C2PA Manifest Store, the validator shall use those OCSP response(s) in the validation process described in <a href="#ocsp_revocation">Section 15.9.1, &#8220;Determining revocation through OCSP responses in the C2PA Manifest Store&#8221;</a>. If more than one OCSP response for the certificate is found, the validator shall try each one until one successfully passes validation (and then should ignore the others).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>If no revocation information was found in the C2PA Manifest, and the validator is online, and the validator desires to verify the revocation status for the certificate, then the validator shall attempt to determine the revocation status of the certificate by querying the OCSP responder as described in <a href="#ocsp_revocation">Section 15.9.1, &#8220;Determining revocation through OCSP response in <code>rVals</code> header&#8221;</a>.</p>
+<p>If no revocation information was found in the C2PA Manifest Store, and the validator is online, and the validator desires to verify the revocation status for the certificate, then the validator shall attempt to determine the revocation status of the certificate by querying the OCSP responder as described in <a href="#ocsp_revocation">Section 15.9.1, &#8220;Determining revocation through OCSP responses in the C2PA Manifest Store&#8221;</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="ocsp_revocation"><a class="anchor" href="#ocsp_revocation"></a>15.9.1. Determining revocation through OCSP response in <code>rVals</code> header</h4>
+<h4 id="ocsp_revocation"><a class="anchor" href="#ocsp_revocation"></a>15.9.1. Determining revocation through OCSP responses in the C2PA Manifest Store</h4>
 <div class="paragraph">
-<p>A validator shall decode the OCSP response per the requirements of <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, in particular section 3. The validator shall also ensure that the OCSP response meets requirements 1 through 4 of section 3.2. If the OCSP response is accepted and if all of the following requirements are met, then this establishes that the signer&#8217;s certificate was not revoked at the time of signing.</p>
+<p>A validator shall decode OCSP responses per the requirements of <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, in particular requirements 1 through 4 of section 3.2. If an OCSP response is accepted, and if all of the following requirements are met, then this establishes that the relevant certificate was not revoked at the time of signing.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The manifest has an attested time provided by a valid signed time-stamp.</p>
+<p>The claim signature has an attested time provided by a valid signed time-stamp.</p>
 </li>
 <li>
 <p>There exists a <code>SingleResponse</code> in the <code>responses</code> array of the <code>tbsResponseData</code> field of the OCSP response such that all of the following conditions hold:</p>
@@ -5573,7 +5597,7 @@ This document does not require that the revocation status of a Time Stamp Author
 <p>The current time is no earlier than <code>thisUpdate</code>.</p>
 </li>
 <li>
-<p>The attested time from the time-stamp (or current time if there is no trusted time-stamp):</p>
+<p>The attested time from the time-stamp:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -5598,7 +5622,7 @@ This document does not require that the revocation status of a Time Stamp Author
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The <code>removeFromCRL</code> is unique amongst the values of <code>revocationReason</code> because it is equivalent to a <code>good</code> response. Despite being a type of <code>revoked</code> response, this response indicates the certificate had temporarily been put "on hold" (the <code>certificateHold</code> reason) previously due to some concern about its integrity, but that the concern has been resolved and the issuer is stating the certificate remains trustworthy.</p>
+<p>The <code>removeFromCRL</code> is unique amongst the values of <code>revocationReason</code> because it is equivalent to a <code>good</code> response. Despite being a type of <code>revoked</code> response, this response indicates the certificate had temporarily been put "on hold" (the <code>certificateHold</code> reason) previously due to some concern about its integrity, but that the concern has been resolved and the issuer is stating the certificate remains trustworthy (see <a href="https://datatracker.ietf.org/doc/html/rfc5280">RFC 5280</a>).</p>
 </div>
 </td>
 </tr>
@@ -5617,13 +5641,16 @@ This document does not require that the revocation status of a Time Stamp Author
 <p>Validators shall check the <code>revocationReason</code> of any <code>revoked</code> response to disambiguate the <code>removedFromCRL</code> case from an actual revocation.</p>
 </div>
 <div class="paragraph">
-<p>If the above conditions are met, the certificate shall be considered not revoked at the time of signing, the validator shall issue a <code>signingCredential.ocsp.notRevoked</code> success code. Otherwise the claim shall be rejected with a <code>signingCredential.ocsp.revoked</code> failure code.</p>
+<p>If the above conditions are met for any OCSP response in the C2PA Manifest Store, then the certificate shall be considered not revoked at the time of signing, and the validator shall issue a <code>signingCredential.ocsp.notRevoked</code> success code.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, an OCSP response in the C2PA Manifest Store meets all of the above conditions except that the <code>certStatus</code> field is <code>revoked</code>, the certificate shall be considered revoked at the time of signing and the claim shall be rejected with a <code>signingCredential.ocsp.revoked</code> failure code.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_determining_revocation_for_online_ocsp_response"><a class="anchor" href="#_determining_revocation_for_online_ocsp_response"></a>15.9.2. Determining revocation for online OCSP response</h4>
 <div class="paragraph">
-<p>If the <code>rVals</code> header is not present, or if the manifest does not have a time-stamp, the validator may choose to query the OCSP responder, per <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, with the responder <code>accessLocation</code> found via <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, section 3.1.</p>
+<p>If, for a given certificate, no OCSP response in the C2PA Manifest Store satisfies the conditions in <a href="#ocsp_revocation">Section 15.9.1, &#8220;Determining revocation through OCSP responses in the C2PA Manifest Store&#8221;</a>, or if the claim signature does not have a time-stamp, the validator may choose to query the OCSP responder, per <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, with the responder <code>accessLocation</code> found via <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, section 3.1.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5685,12 +5712,20 @@ This document does not require that the revocation status of a Time Stamp Author
 </ul>
 </div>
 <div class="paragraph">
-<p>If the above conditions are met, the certificate shall be considered not revoked at the time of signing, the validator shall issue a <code>signingCredential.ocsp.notRevoked</code> success code.</p>
+<p>If the above conditions are met, the certificate shall be considered not revoked at the time of signing, and the validator shall issue a <code>signingCredential.ocsp.notRevoked</code> success code.</p>
 </div>
 <div class="paragraph">
-<p>Otherwise:
-. If the <code>certStatus</code> field of the response is <code>unknown</code>, the claim shall be rejected with a <code>signingCredential.ocsp.unknown</code> failure code.
-. Else, the certificate shall be considered revoked at the time of signing and the claim shall be rejected with a <code>signingCredential.ocsp.revoked</code> failure code.</p>
+<p>Otherwise:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the <code>certStatus</code> field of the response is <code>unknown</code>, the claim shall be rejected with a <code>signingCredential.ocsp.unknown</code> failure code.</p>
+</li>
+<li>
+<p>Else, the certificate shall be considered revoked at the time of signing and the claim shall be rejected with a <code>signingCredential.ocsp.revoked</code> failure code.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -9937,8 +9972,8 @@ soft-binding-timespan-map = {
 <div class="paragraph">
 <p>The API specification and documentation is available <a href="#softbinding:softbinding-resolution-api.adoc" class="xref unresolved">here</a>.</p>
 </div>
-<div class="sect5">
-<h6 id="_validating_soft_binding_matches"><a class="anchor" href="#_validating_soft_binding_matches"></a>18.10.5.1. Validating Soft Binding Matches</h6>
+<div class="sect4">
+<h5 id="_validating_soft_binding_matches"><a class="anchor" href="#_validating_soft_binding_matches"></a>18.10.5.1. Validating Soft Binding Matches</h5>
 <div class="paragraph">
 <p>A common use for soft bindings is to discover the active manifest, from a manifest repository, for an asset whose C2PA Manifest is absent or invalid.</p>
 </div>
