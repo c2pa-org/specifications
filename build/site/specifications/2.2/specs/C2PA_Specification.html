@@ -28,13 +28,13 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="../specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
-            <a class="navbar-item" href="../explainer/_attachments/Explainer.pdf">Explainer</a> 
-            <a class="navbar-item" href="../guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
-            <a class="navbar-item" href="../2.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
-            <a class="navbar-item" href="../2.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
-            <a class="navbar-item" href="../2.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
-            <a class="navbar-item" href="../specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../../1.0/explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../../1.0/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../../1.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
+            <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
           </div>
         </div>
           <div class="navbar-item">
@@ -271,7 +271,7 @@
 </li>
 <li><a href="#_unique_identifiers">8. Unique Identifiers</a>
 <ul class="sectlevel2">
-<li><a href="#_uniquely_identifying_c2pa_manifests_and_assets">8.1. Uniquely Identifying C2PA Manifests and Assets</a></li>
+<li><a href="#manifest-identifier">8.1. Uniquely Identifying C2PA Manifests and Assets</a></li>
 <li><a href="#_versioning_manifests_due_to_conflicts">8.2. Versioning Manifests Due to Conflicts</a></li>
 <li><a href="#_identifying_non_c2pa_assets">8.3. Identifying Non-C2PA Assets</a></li>
 <li><a href="#_uri_references">8.4. URI References</a></li>
@@ -1141,7 +1141,7 @@ This specification does not dictate the specific technical manner for this decla
 <div class="sect2">
 <h3 id="_version_history"><a class="anchor" href="#_version_history"></a>5.2. Version History</h3>
 <div class="sect3">
-<h4 id="_2_2_april_2025"><a class="anchor" href="#_2_2_april_2025"></a>5.2.1. 2.2 - April 2025</h4>
+<h4 id="_2_2_may_2025"><a class="anchor" href="#_2_2_may_2025"></a>5.2.1. 2.2 - May 2025</h4>
 <div class="paragraph">
 <p>This version focuses on both technical and editorial changes to the specification to clarify some of the new features of 2.1, while addressing requests from implementers. The specification has been updated to reflect the latest best practices in the field.</p>
 </div>
@@ -1164,6 +1164,12 @@ This specification does not dictate the specific technical manner for this decla
 </li>
 <li>
 <p>Added support for new <code>c2pa-claim-signing</code> EKU</p>
+</li>
+<li>
+<p>Restricted use of the C2PA Trust List to certificates with the <code>c2pa-claim-signing</code> EKU</p>
+</li>
+<li>
+<p>Introduced <code>digitalSourceType</code> values <code><a href="http://c2pa.org/digitalsourcetype/trainedAlgorithmicData" class="bare">http://c2pa.org/digitalsourcetype/trainedAlgorithmicData</a></code> (replacing <code>c2pa.trainedAlgorithmicData</code>) and <code><a href="http://c2pa.org/digitalsourcetype/empty" class="bare">http://c2pa.org/digitalsourcetype/empty</a></code></p>
 </li>
 <li>
 <p>Replaced data boxes with embedded data assertions</p>
@@ -2017,7 +2023,7 @@ data-box-map = {
 <h2 id="_unique_identifiers"><a class="anchor" href="#_unique_identifiers"></a>8. Unique Identifiers</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_uniquely_identifying_c2pa_manifests_and_assets"><a class="anchor" href="#_uniquely_identifying_c2pa_manifests_and_assets"></a>8.1. Uniquely Identifying C2PA Manifests and Assets</h3>
+<h3 id="manifest-identifier"><a class="anchor" href="#manifest-identifier"></a>8.1. Uniquely Identifying C2PA Manifests and Assets</h3>
 <div class="paragraph">
 <p>Every C2PA Manifest is uniquely identified and referenced by a Uniform Resource Name <a href="https://tools.ietf.org/html/rfc8141">RFC 8141, URNs</a> from the <code>c2pa</code> URN namespace, and a C2PA asset is uniquely identified by the <code>c2pa</code> URN value of its active manifest. The ABNF for the C2PA URN is described by <a href="#abnf_for_urn">ABNF for C2PA URN</a>.</p>
 </div>
@@ -4034,20 +4040,20 @@ Any Trusted manifest is also Valid, and any Valid manifest is also Well-Formed.
 <div class="sect3">
 <h4 id="_c2pa_signers"><a class="anchor" href="#_c2pa_signers"></a>14.4.1. C2PA Signers</h4>
 <div class="paragraph">
-<p>A validator shall maintain the following lists for C2PA signers:</p>
+<p>A validator shall maintain the following information for evaluating C2PA signers:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The list of X.509 certificate trust anchors provided by the C2PA (i.e., the C2PA Trust List).</p>
-</li>
-<li>
-<p>A list of additional X.509 certificate trust anchors.</p>
-</li>
-<li>
 <p>A list of accepted Extended Key Usage (EKU) values.</p>
 </li>
+<li>
+<p>For each accepted EKU value, a list of X.509 certificate trust anchors.</p>
+</li>
 </ul>
+</div>
+<div class="paragraph">
+<p>For the <code>c2pa-kp-claimSigning</code> (1.3.6.1.4.1.62558.2.1) EKU, the list of trust anchors shall include, but need not be limited to, the signer trust anchors provided by C2PA (i.e., the C2PA Trust List).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4062,13 +4068,25 @@ Some of these lists can be empty.
 </table>
 </div>
 <div class="paragraph">
-<p>In addition to the list of trust anchors provided in the C2PA Trust List, a validator should allow a user to configure additional trust anchor stores, and should provide default options or offer lists maintained by external parties that the user may opt into to populate the validator&#8217;s trust anchor store for C2PA signers.</p>
+<p>In addition to the list of trust anchors for the <code>c2pa-kp-claimSigning</code> EKU provided in the C2PA Trust List, a validator should allow a user to configure additional trust anchors for that EKU and/or for other EKUs (e.g., <code>id-kp-emailProtection</code> (1.3.6.1.5.5.7.3.4) or <code>id-kp-documentSigning</code> (1.3.6.1.5.5.7.3.36)). A validator should provide default options or offer lists maintained by external parties that the user may opt into to populate the validator&#8217;s trust anchor store for C2PA signers.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Previous versions of this specification required the presence of <code>id-kp-emailProtection</code> or <code>id-kp-documentSigning</code> EKUs, so including at least one of those two EKUs in a signer&#8217;s certificate, together with <code>c2pa-kp-claimSigning</code>, can improve compatibility with older validators.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_time_stamp_authorities"><a class="anchor" href="#_time_stamp_authorities"></a>14.4.2. Time Stamp Authorities</h4>
+<h4 id="_time_stamping_authorities"><a class="anchor" href="#_time_stamping_authorities"></a>14.4.2. Time Stamping Authorities</h4>
 <div class="paragraph">
-<p>A validator shall maintain a list of X.509 certificate trust anchors for Time Stamp Authorities, which shall be different than the lists <a href="#_c2pa_signers">for C2PA signers</a> and will be referred to as the C2PA TSA Trust List.</p>
+<p>A validator shall maintain a list of X.509 certificate trust anchors for Time Stamping Authorities (TSAs), which shall be separate from the lists <a href="#_c2pa_signers">for C2PA signers</a>. This list shall include, but need not be limited to, the Time Stamping Authority trust anchors provided by the C2PA (i.e., the C2PA TSA Trust List).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4083,7 +4101,7 @@ This list can be empty.
 </table>
 </div>
 <div class="paragraph">
-<p>In addition to the list of trust anchors provided in the C2PA TSA Trust List, a validator should allow a user to configure additional trust anchor stores, and should provide default options or offer lists maintained by external parties that the user may opt into to populate the validator&#8217;s trust anchor store for Time Stamp Authorities.</p>
+<p>In addition to the list of trust anchors provided in the C2PA TSA Trust List, a validator should allow a user to configure additional TSA trust anchor stores, and should provide default options or offer lists maintained by external parties that the user may opt into to populate the validator&#8217;s trust anchor store for Time Stamping Authorities.</p>
 </div>
 </div>
 <div class="sect3">
@@ -4313,39 +4331,6 @@ In compliance with <a href="#_identity_of_signers">Section 14.2, &#8220;Identity
 <p>The <code>anyExtendedKeyUsage</code> EKU (2.5.29.37.0) shall not be present.</p>
 </li>
 <li>
-<p>If the configuration store contains a list of EKUs, a certificate that signs C2PA manifests shall be valid for at least one of the listed purposes.</p>
-</li>
-<li>
-<p>If the configuration store does not contain a list of EKUs, a certificate that signs C2PA manifests shall be valid for at least one of the following purposes:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>c2pa-kp-claimSigning</code> (1.3.6.1.4.1.62558.2.1)</p>
-</li>
-<li>
-<p><code>id-kp-emailProtection</code> (1.3.6.1.5.5.7.3.4)</p>
-</li>
-<li>
-<p><code>id-kp-documentSigning</code> (1.3.6.1.5.5.7.3.36).</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Previous versions of this specification required the presence of <code>id-kp-emailProtection</code> or <code>id-kp-documentSigning</code>, so including at least one of those two EKUs together with <code>c2pa-kp-claimSigning</code> can improve backward compatibility.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>A certificate that signs time-stamping countersignatures shall be valid for the <code>id-kp-timeStamping</code> (1.3.6.1.5.5.7.3.8) purpose.</p>
 </li>
 <li>
@@ -4372,24 +4357,19 @@ In compliance with <a href="#_identity_of_signers">Section 14.2, &#8220;Identity
 <p>If the certificate is not present in the private credential store, or the validator does not implement one, the trust chain shall be built and validated according to the procedure in <a href="https://datatracker.ietf.org/doc/html/rfc5280">RFC 5280</a>, section 6 for the particular purpose required (signing, time-stamping, or OCSP signing) and for the appropriate trust anchor store for that purpose. Any failure of that validation algorithm shall mean the chain shall be rejected. The private credential store is never included when building certificate chains; certificates in the private credential store cannot act as CAs.</p>
 </div>
 <div class="paragraph">
-<p>Only end entity certificates shall be used to sign C2PA Manifests or time-stamps. A CA certificate shall not be used for these purposes. Any CA certificate (where the <code>cA</code> boolean in the Basic Constraints extension is asserted) being used to validate a signature on a C2PA Manifest, time-stamp, or OCSP response shall be rejected with a failure code of <code>signingCredential.untrusted</code>.</p>
+<p>Only end entity certificates shall be used to sign C2PA Claims or time-stamps. A CA certificate shall not be used for these purposes. Any CA certificate (where the <code>cA</code> boolean in the Basic Constraints extension is asserted) being used to validate a signature on a C2PA Claim, time-stamp, or OCSP response shall be rejected with a failure code of <code>signingCredential.untrusted</code>.</p>
 </div>
 <div class="paragraph">
-<p>A validator shall ensure a signing certificate is authorized for the purpose for which it is being used, and reject certificates used for an unauthorized purpose. A certificate is authorized for a particular purpose if the purpose&#8217;s EKU Object Identifier (OID) is present in the Extended Key Usage extension of the certificate (<a href="https://datatracker.ietf.org/doc/html/rfc5280">RFC 5280</a>, section 4.2.1.12). When validating a certificate chain used to sign a C2PA manifest, the signing certificate shall have at least one of the accepted EKUs for signer credentials if configured, or at least one of <code>c2pa-kp-claimSigning</code> (1.3.6.1.4.1.62558.2.1), <code>id-kp-emailProtection</code> (1.3.6.1.5.5.7.3.4), and <code>id-kp-documentSigning</code> (1.3.6.1.5.5.7.3.36) EKUs if such a list is not configured. When validating a certificate chain used to sign a time-stamp, the signing certificate shall have the <code>id-kp-timeStamping</code> (1.3.6.1.5.5.7.3.8) EKU. When validating a certificate chain used to sign an OCSP response, the signing certificate shall have the <code>id-kp-OCSPSigning</code> (1.3.6.1.5.5.7.3.9) EKU.</p>
+<p>A validator shall ensure a signing certificate is authorized for the purpose for which it is being used, and reject certificates used for an unauthorized purpose. A certificate is authorized for a particular purpose if the purpose&#8217;s EKU Object Identifier (OID) is present in the Extended Key Usage extension of the certificate (<a href="https://datatracker.ietf.org/doc/html/rfc5280">RFC 5280</a>, section 4.2.1.12).</p>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>It is recommended that implementers always configure a list of acceptable EKUs for signer credentials, even when using the defaults.</p>
+<p>When validating a certificate used to sign a C2PA Claim, the signing certificate shall have at least one of the EKUs for which the validator has an associated list of trust anchors (see <a href="#_c2pa_signers">Section 14.4.1, &#8220;C2PA Signers&#8221;</a>), and the validator shall use only the trust anchors it associates with EKUs present in the certificate.</p>
 </div>
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>When validating a certificate chain used to sign a time-stamp, the signing certificate shall have the <code>id-kp-timeStamping</code> (1.3.6.1.5.5.7.3.8) EKU.</p>
+</div>
+<div class="paragraph">
+<p>When validating a certificate chain used to sign an OCSP response, the signing certificate shall have the <code>id-kp-OCSPSigning</code> (1.3.6.1.5.5.7.3.9) EKU.</p>
 </div>
 <div class="paragraph">
 <p>Except for certificates accepted through the private credential store for X.509 certificates, a validator shall verify a certificate&#8217;s compliance with the Certificate Profile, and reject certificates that do not comply. This includes requiring the presence of the Extended Key Usage extension, as well as a certificate being authorized for no more than one of the three purposes listed in this section: C2PA signing, time-stamp signing, or OCSP response signing.</p>
@@ -5154,7 +5134,7 @@ ingredient-delta-validation-result-map = {
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>signingCredential.untrusted</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The signing credential is not listed on any of the validator&#8217;s <a href="#_c2pa_signers">trust lists</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The signing credential is not listed on any of the validator&#8217;s applicable <a href="#_c2pa_signers">trust lists</a>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA Claim Signature Box</p></td>
 </tr>
 </tbody>
@@ -5415,7 +5395,7 @@ Well-formed CBOR is defined in <a href="https://datatracker.ietf.org/doc/html/rf
 <p>If the credential is not acceptable per <a href="#x509_certificates">the requirements of the credential&#8217;s type</a>, then the claim shall be rejected with a failure code of <code>signingCredential.invalid</code>. If the signature algorithm is not on the allowed or deprecated list in <a href="#_digital_signatures">Section 13.2, &#8220;Digital Signatures&#8221;</a>, then the claim shall be rejected with a failure code of <code>algorithm.unsupported</code>.</p>
 </div>
 <div class="paragraph">
-<p>It is then necessary to build a chain of trust from the credential to an entry in a trust anchor list. If this chain of trust cannot be built, the claim shall be rejected with a failure code of <code>signingCredential.untrusted</code>; otherwise, the claim signature shall be assigned a success code of <code>signingCredential.trusted</code>.</p>
+<p>It is then necessary to verify a chain of trust from the credential to an entry in one of the applicable trust anchor lists. If this chain of trust cannot be verified, the claim shall be rejected with a failure code of <code>signingCredential.untrusted</code>; otherwise, the claim signature shall be assigned a success code of <code>signingCredential.trusted</code>.</p>
 </div>
 <div class="paragraph">
 <p>If the claim has not yet been rejected, validation shall proceed according to the specified procedure in <a href="#_digital_signatures">Section 13.2, &#8220;Digital Signatures&#8221;</a>. If validation of the signature fails, then the claim shall be rejected with a failure code of <code>claimSignature.mismatch</code>. Otherwise, the claim signature shall be assigned a success code of <code>claimSignature.validated</code>.</p>
@@ -5569,18 +5549,18 @@ This document does not require that the revocation status of a Time Stamp Author
 <p>If a certificate does not support revocation status, or the certificate issuer did not provide a method to query its revocation status, the validator shall treat the credential as not revoked.</p>
 </li>
 <li>
-<p>If the claim generator "stapled" OCSP responses in the <code>rVals</code> header of the <code>COSE_Sign1</code> structure, the validator shall decode and validate the stapled OCSP responses as described in <a href="#ocsp_revocation">Section 15.9.1, &#8220;Determining revocation through OCSP responses in the C2PA Manifest Store&#8221;</a>.</p>
+<p>If the claim generator "stapled" OCSP responses in the <code>rVals</code> header of the <code>COSE_Sign1</code> structure, the validator shall decode and validate the stapled OCSP responses as described in <a href="#ocsp_stapled">Section 15.9.1, &#8220;Determining revocation through OCSP responses in the C2PA Manifest Store&#8221;</a>.</p>
 </li>
 <li>
-<p>If subsequent claim generators added <a href="#certificate_status_assertion">certificate status assertions</a> in other C2PA Manifests in the C2PA Manifest Store, the validator shall use those OCSP response(s) in the validation process described in <a href="#ocsp_revocation">Section 15.9.1, &#8220;Determining revocation through OCSP responses in the C2PA Manifest Store&#8221;</a>. If more than one OCSP response for the certificate is found, the validator shall try each one until one successfully passes validation (and then should ignore the others).</p>
+<p>If subsequent claim generators added <a href="#certificate_status_assertion">certificate status assertions</a> in other C2PA Manifests in the C2PA Manifest Store, the validator shall use those OCSP response(s) in the validation process described in <a href="#ocsp_stapled">Section 15.9.1, &#8220;Determining revocation through OCSP responses in the C2PA Manifest Store&#8221;</a>. If more than one OCSP response for the certificate is found, the validator shall try each one until one successfully passes validation (and then should ignore the others).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>If no revocation information was found in the C2PA Manifest Store, and the validator is online, and the validator desires to verify the revocation status for the certificate, then the validator shall attempt to determine the revocation status of the certificate by querying the OCSP responder as described in <a href="#ocsp_revocation">Section 15.9.1, &#8220;Determining revocation through OCSP responses in the C2PA Manifest Store&#8221;</a>.</p>
+<p>If no revocation information was found in the C2PA Manifest Store, and the validator is online, and the validator desires to verify the revocation status for the certificate, then the validator shall attempt to determine the revocation status of the certificate by querying the OCSP responder as described in <a href="#ocsp_online">Section 15.9.2, &#8220;Determining revocation from online OCSP response&#8221;</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="ocsp_revocation"><a class="anchor" href="#ocsp_revocation"></a>15.9.1. Determining revocation through OCSP responses in the C2PA Manifest Store</h4>
+<h4 id="ocsp_stapled"><a class="anchor" href="#ocsp_stapled"></a>15.9.1. Determining revocation through OCSP responses in the C2PA Manifest Store</h4>
 <div class="paragraph">
 <p>A validator shall decode OCSP responses per the requirements of <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, in particular requirements 1 through 4 of section 3.2. If an OCSP response is accepted, and if all of the following requirements are met, then this establishes that the relevant certificate was not revoked at the time of signing.</p>
 </div>
@@ -5648,9 +5628,9 @@ This document does not require that the revocation status of a Time Stamp Author
 </div>
 </div>
 <div class="sect3">
-<h4 id="_determining_revocation_for_online_ocsp_response"><a class="anchor" href="#_determining_revocation_for_online_ocsp_response"></a>15.9.2. Determining revocation for online OCSP response</h4>
+<h4 id="ocsp_online"><a class="anchor" href="#ocsp_online"></a>15.9.2. Determining revocation from online OCSP response</h4>
 <div class="paragraph">
-<p>If, for a given certificate, no OCSP response in the C2PA Manifest Store satisfies the conditions in <a href="#ocsp_revocation">Section 15.9.1, &#8220;Determining revocation through OCSP responses in the C2PA Manifest Store&#8221;</a>, or if the claim signature does not have a time-stamp, the validator may choose to query the OCSP responder, per <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, with the responder <code>accessLocation</code> found via <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, section 3.1.</p>
+<p>If, for a given certificate, no OCSP response in the C2PA Manifest Store satisfies the conditions in <a href="#ocsp_stapled">Section 15.9.1, &#8220;Determining revocation through OCSP responses in the C2PA Manifest Store&#8221;</a>, or if the claim signature does not have a time-stamp, the validator may choose to query the OCSP responder, per <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, with the responder <code>accessLocation</code> found via <a href="https://datatracker.ietf.org/doc/html/rfc6960">RFC 6960</a>, section 3.1.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6314,10 +6294,10 @@ If there are any discrepancies between the visual representation and the text, t
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Extract the <code>urn:c2pa</code> value from the ingredient manifest JUMBF URI from each tuple</p>
+<p>Extract the <a href="#manifest-identifier">manifest label</a> from the ingredient manifest JUMBF URI from each tuple</p>
 </li>
 <li>
-<p>Search the list of all redacted assertions for assertions with a matching <code>urn:c2pa</code> value</p>
+<p>Search the list of all redacted assertions for assertions with a matching <a href="#manifest-identifier">manifest label</a></p>
 </li>
 <li>
 <p>If one or more matching redacted assertions are found:</p>
@@ -6413,7 +6393,7 @@ Ignoring additional C2PA Manifests supports compatibility with custom assertions
 <p>Validate the claim signature, time-stamp, and credential revocation information as per <a href="#_validate_the_signature">Section 15.7, &#8220;Validate the Signature&#8221;</a>, <a href="#_validate_the_time_stamp">Section 15.8, &#8220;Validate the Time-Stamp&#8221;</a>, and <a href="#_validate_the_credential_revocation_information">Section 15.9, &#8220;Validate the Credential Revocation Information&#8221;</a>.</p>
 </li>
 <li>
-<p>For each URI in the list of redacted assertions with a matching <code>urn:c2pa</code> value, if the referenced assertion is present and any JUMBF Content box or padding box within it contains anything other than zero or more <code>0x00</code> bytes, the claim shall be rejected with a failure code of <code>assertion.notRedacted</code>.</p>
+<p>For each URI in the list of redacted assertions with a matching <a href="#manifest-identifier">manifest label</a>, if the referenced assertion is present and any JUMBF Content box or padding box within it contains anything other than zero or more <code>0x00</code> bytes, the claim shall be rejected with a failure code of <code>assertion.notRedacted</code>.</p>
 </li>
 <li>
 <p>Validate each non-redacted assertion per <a href="#_validate_the_assertions">Section 15.10, &#8220;Validate the Assertions&#8221;</a>, except for the hard binding assertions, which cannot be validated for ingredients.</p>
@@ -6664,19 +6644,10 @@ Discarding certain parts may prevent a validator from being able to unambiguousl
 <p>If the located parts are overlapping or do not, in aggregate, cover every byte of the asset, then the manifest shall be rejected with a failure code of <code>assertion.multiAssetHash.malformed</code>.</p>
 </div>
 <div class="paragraph">
-<p>For each located part, the validator shall compute the hash of the part using the specified algorithm &amp; methodology (i.e., data hash vs. general box hash) over the bytes of the part. If the resultant hash does not match the value present in the hard binding assertion referenced from the <code>hashAssertion</code> field, then the manifest shall be rejected with a failure code of <code>assertion.multiAssetHash.mismatch</code>. Otherwise, the validator shall add the success code <code>assertion.multiAssetHash.match</code> to the list it eventually returns.</p>
+<p>For each located part, the validator shall compute the hash of the part using the specified algorithm &amp; methodology (i.e., data hash, general box hash, or BMFF hash) over the bytes of the part. If the resultant hash does not match the value present in the hard binding assertion referenced from the <code>hashAssertion</code> field, then the manifest shall be rejected with a failure code of <code>assertion.multiAssetHash.mismatch</code>.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-These codes replace the codes that would be returned by the normal computing of hard bindings, and are associated with the hash assertion for the relevant part.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>If the hash assertion for each located part validates successfully, then the validator shall record the success code <code>assertion.multiAssetHash.match</code> and shall not record any failure codes associated with the asset&#8217;s hard binding.</p>
 </div>
 </div>
 <div class="sect3">
@@ -7802,109 +7773,115 @@ language-string /= tstr .size (1..max-tstr-length)</code></pre>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Actions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_actions">Actions</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.actions, c2pa.actions.v2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion Metadata</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_metadata_about_assertions">Assertion Metadata</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.assertion.metadata</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Asset Reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_asset_reference">Asset Reference</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.asset-ref</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Asset Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_asset_type">Asset Type</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.asset-type (deprecated), c2pa.asset-type.v2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BMFF-based Hash</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_bmff_based_hash">BMFF-based Hash</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.bmff (removed), c2pa.hash.bmff.v2 (deprecated), c2pa.hash.bmff.v3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.cloud-data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Collection Data Hash</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.collection.data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Data Hash</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Embedded Data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.embedded-data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JUMBF Embedded File</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Font Information</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">font.info</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GDepth Depthmap</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.depthmap.GDepth</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://developers.google.com/depthmap-metadata/reference" class="bare">https://developers.google.com/depthmap-metadata/reference</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">General Box Hash</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.boxes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ingredient</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.ingredient, c2pa.ingredient.v2, c2pa.ingredient.v3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JUMBF Embedded File</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JSON-LD</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Certificate Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#certificate_status_assertion">Certificate Status</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.certificate-status</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Soft Binding</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_cloud_data">Cloud Data</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.cloud-data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_collection_data_hash">Collection Data Hash</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.collection.data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_data_hash">Data Hash</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_depthmap">Depthmap</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.depthmap.GDepth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://developers.google.com/depthmap-metadata/reference" class="bare">https://developers.google.com/depthmap-metadata/reference</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_embedded_data">Embedded Data</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.embedded-data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JUMBF Embedded File</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_font_information">Font Information</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">font.info</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_general_box_hash">General Box Hash</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.boxes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#ingredient_assertion">Ingredient</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.ingredient, c2pa.ingredient.v2, c2pa.ingredient.v3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JUMBF Embedded File</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_metadata">Metadata</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.metadata</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON-LD</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_multi_asset_hash">Multi-Asset Hash</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.hash.multi-asset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#soft_binding_assertion">Soft Binding</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.soft-binding</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Thumbnail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#thumbnail_assertion">Thumbnail</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.thumbnail.claim (claim creation time), c2pa.thumbnail.ingredient (importing an ingredient)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Embedded File</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Time-stamps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#timestamp_assertion">Time-stamps</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">c2pa.time-stamp</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C2PA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CBOR</p></td>
@@ -7974,8 +7951,8 @@ data-hash-map = {
 }
 
 EXCLUSION_RANGE-map = {
-  "start": int, ; Starting byte of the range
-  "length": int, ; Number of bytes of data to exclude
+  "start": uint, ; Starting byte of the range
+  "length": uint, ; Number of bytes of data to exclude
 }</code></pre>
 </div>
 </div>
@@ -8324,7 +8301,7 @@ flag-t = flag-type .eq 3
 
 exclusions-map = {
   "xpath": tstr, ; Location of box(es) to exclude from the hash starting from the root node as an xpath formatted string of version https://www.w3.org/TR/xpath-10/ with highly constrained syntax.
-  ? "length": int, ; (optional) Length that a leafmost box must have to exclude from the hash.
+  ? "length": uint, ; (optional) Length that a leafmost box must have to exclude from the hash.
   ? "data": [1* data-map], ; (optional) The data in the leafmost box at the specified relative byte offset must be identical to the specified data for the box to be excluded from the hash.
   ? "subset":[1* subset-map], ; (optional) Only this portion of the excluded box is excluded from the hash.  Each entry in the array must have a monotonically increasing relative byte offset.  No subset within the array may overlap.  The last entry may have a length of zero; this indicates that the remainder of the box from that relative byte offset onward is excluded.  A relative byte offset or relative byte offset plus length that exceeds the length of the box is allowed; bytes beyond the end of the box are never hashed.
   ? "version": int, ; (optional) Version that must be set in a leafmost box for the box to be excluded from the hash.  Only specified for a box that inherits from FullBox.
@@ -8333,12 +8310,12 @@ exclusions-map = {
 }
 
 data-map = {
-  "offset": int,
+  "offset": uint,
   "value" : bstr,
 }
 subset-map = {
-  "offset": int,
-  "length": int,
+  "offset": uint,
+  "length": uint,
 }
 
 ; Each entry in a map is a Merkle tree rows and the associated data required to enable validation of a single
@@ -8350,7 +8327,7 @@ merkle-map = {
   ? "alg": tstr .size (1..max-tstr-length), ; A string identifying the cryptographic hash algorithm used to compute the hashes in this Merkle tree, taken from the C2PA hash algorithm identifier list. If this field is absent, the hash algorithm is taken the `alg` value of the enclosing structure as defined by that structure. If both are present, the field in this structure is used. If no value is present in any of these places, this structure is invalid; there is no default.
   ? "initHash": bstr, ; For fragmented MP4 assets which are split across multiple files, this field is required to be present and is the hash of the entire initialization segment file for chunks hashed by this Merkle tree excluding boxes listed in the exclusions array.  For fragmented MP4 assets which are stored as a single flat MP4 file, this field is required to be present and is the hash of all bytes preceding the first 'moof' box excluding boxes listed in the exclusions array.  For non-fragmented MP4, this field is required to be absent.
   "hashes": [1* bstr], ; An ordered array representing a single row of the Merkle tree which may be the leaf-most row, root row, or any intermediate row.  The depth of the row is implied by (is computed from) the number of items in this array.
-  ? "fixedBlockSize": int, ; For non-fragmented MP4 assets where the mdat box is validated piecewise, this field can be present. This field is the non-negative size in bytes of a given leaf node in the Merkle tree. For fragmented MP4, this field is not present.
+  ? "fixedBlockSize": uint, ; For non-fragmented MP4 assets where the mdat box is validated piecewise, this field can be present. This field is the non-negative size in bytes of a given leaf node in the Merkle tree. For fragmented MP4, this field is not present.
   ? "variableBlockSizes": [1* int], ; For non-fragmented MP4 assets where the mdat box is validated piecewise, this field can be present. Each entry in the array corresponds to the non-negative size in bytes of a given leaf node in the Merkle tree. The number of elements is equal to `count` and sum of the values is equal to size of payload of mdat. For fragmented MP4, this field is not present.
 }</code></pre>
 </div>
@@ -11188,7 +11165,7 @@ Since there will most likely be more than one ingredient assertion, the use of t
 <div class="sect3">
 <h4 id="_establishing_unique_identifiers"><a class="anchor" href="#_establishing_unique_identifiers"></a>18.15.2. Establishing unique identifiers</h4>
 <div class="paragraph">
-<p>If the ingredient being added contains a C2PA Manifest, then its unique identifier shall be taken from the <code>urn:c2pa</code> value of the JUMBF superbox containing the ingredient&#8217;s active C2PA Manifest, and it is not necessary to provide the optional <code>instanceID</code> field of the ingredient assertion. When the claim generator provides the optional <code>instanceID</code> field of the ingredient assertion, then the value of the unique identifier shall be determined as specified by <a href="#_identifying_non_c2pa_assets">Section 8.3, &#8220;Identifying Non-C2PA Assets&#8221;</a>.</p>
+<p>If the ingredient being added contains a C2PA Manifest, then its unique identifier shall be taken from the <a href="#manifest-identifier">manifest label</a> of the JUMBF superbox containing the ingredient&#8217;s active C2PA Manifest, and it is not necessary to provide the optional <code>instanceID</code> field of the ingredient assertion. When the claim generator provides the optional <code>instanceID</code> field of the ingredient assertion, then the value of the unique identifier shall be determined as specified by <a href="#_identifying_non_c2pa_assets">Section 8.3, &#8220;Identifying Non-C2PA Assets&#8221;</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -13257,7 +13234,7 @@ the following definition is preliminary:</p>
 <div class="sect3">
 <h4 id="_general_19"><a class="anchor" href="#_general_19"></a>A.4.1. General</h4>
 <div class="paragraph">
-<p>All C2PA Manifest Stores shall be embedded using embedded file streams (ISO 32000, 7.11.4). The file specification dictionary shall have an <code>AFRelationship</code> key (ISO 32000, 7.11.3) whose value is <code>C2PA_Manifest</code>. If a C2PA Manifest Store is embedded into an encrypted PDF, the embedded file stream shall use an <code>Identity</code> crypt filter.</p>
+<p>All C2PA Manifest Stores shall be embedded using embedded file streams (ISO 32000, 7.11.4). The embedded file specification dictionary shall have a <code>Subtype</code> key whose value is <code>application/c2pa</code> and an <code>AFRelationship</code> key (ISO 32000, 7.11.3) whose value is <code>C2PA_Manifest</code>. If a C2PA Manifest Store is embedded into an encrypted PDF, the embedded file stream shall use an <code>Identity</code> crypt filter.</p>
 </div>
 </div>
 <div class="sect3">
@@ -14906,10 +14883,19 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 <th class="tableblock halign-left valign-top">v1.4</th>
 <th class="tableblock halign-left valign-top">v2.0</th>
 <th class="tableblock halign-left valign-top">v2.1</th>
-<th class="tableblock halign-left valign-top">v2.x</th>
+<th class="tableblock halign-left valign-top">v2.2</th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time-Stamp manifest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manifest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>urn:uuid</code> namespace</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Label</p></td>
@@ -15019,6 +15005,24 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>c2pa.certificate-status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>c2pa.embedded-data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>c2pa.font.info</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
@@ -15061,6 +15065,15 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>c2pa.hash.multi-asset</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -15143,6 +15156,15 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>c2pa.time-stamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assertion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>font.info</code></p></td>
@@ -15259,6 +15281,33 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 <td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>c2pa.trainedAlgorithmicData</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DigitalSourceType</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DEPRECATED</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://c2pa.org/digitalsourcetype/trainedAlgorithmicData" class="bare">http://c2pa.org/digitalsourcetype/trainedAlgorithmicData</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DigitalSourceType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://c2pa.org/digitalsourcetype/empty" class="bare">http://c2pa.org/digitalsourcetype/empty</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DigitalSourceType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNDEFINED</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>

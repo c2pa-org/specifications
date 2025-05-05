@@ -3,9 +3,9 @@
 1 0 obj
 << /Title (C2PA Security Considerations)
 /Creator <feff>
-/Producer (Asciidoctor PDF 2.3.19, based on Prawn 2.4.0)
-/ModDate (D:20250403203101+00'00')
-/CreationDate (D:20250403203102+00'00')
+/Producer (Asciidoctor PDF 2.3.17, based on Prawn 2.4.0)
+/ModDate (D:20250504183151+00'00')
+/CreationDate (D:20250505233443+00'00')
 >>
 endobj
 2 0 obj
@@ -1082,7 +1082,7 @@ ET
 BT
 459.033 306.357 Td
 /F1.0 10.5 Tf
-<322e302c20323032352d30342d30333a2052656c65617365> Tj
+<322e302c20323032352d30352d30343a2052656c65617365> Tj
 ET
 
 0.0 0.0 0.0 SCN
