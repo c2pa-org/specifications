@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>C2PA and Content Credentials Explainer :: C2PA Specifications</title>
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/2.2/explainer/Explainer.html">
+    <meta name="page-spec" content="specifications:explainer:Explainer.adoc">
+    <meta name="generator" content="Antora 3.1.7">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <a class="navbar-item title" href="../../..">C2PA Specifications</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Download</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../../1.0/explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../../1.0/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../../1.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
+            <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
+          </div>
+        </div>
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-item" href="https://asciidoctor.zulipchat.com" target="_blank" rel="noopener" data-title="Communication">
+            <span class="icon"><img src="../../../_/img/octicons-24.svg#view-comment-discussion"></span>
+          </a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item has-icon" href="https://github.com/c2pa-org" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-mark-github"></span>
+              <span>Repository</span>
+            </a>
+            <a class="navbar-item has-icon" href="https://twitter.com/c2pa" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-hash"></span>
+              <span>Tweets</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active is-loading" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">C2PA Specifications</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Technical Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../specs/C2PA_Specification.html">Content Credentials</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../1.4/attestations/attestation.html">Attestations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../softbinding/Decoupled.html">Soft Binding API</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Informative Documents</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-url" data-depth="2">
+    <a class="nav-link" href="Explainer.html">Explainer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../guidance/Guidance.html">Guidance for Implementers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.0/ux/UX_Recommendations.html">User Experience Guidance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.0/security/Security_Considerations.html">C2PA Security Considerations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.0/security/Harms_Modelling.html">C2PA Harms Modelling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai-ml/ai_ml.html">Guidance for Artificial Intelligence and Machine Learning</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+  <script>
+;(function () {
+  var panel = document.querySelector('.nav-panel-menu')
+  var page
+  var hash = window.location.hash
+  if (hash) {
+    if (~hash.indexOf('%')) hash = decodeURIComponent(hash)
+    if (~hash.indexOf('"')) hash = hash.replace(/(?=")/g, '\\')
+    var link = panel.querySelector('.nav-link[href="' + hash + '"]')
+    if (link) page = link.parentNode
+    else if ((page = panel.querySelector('.is-current-url'))) page.classList.add('is-provisional')
+  } else {
+    page = panel.querySelector('.is-current-url')
+  }
+  if (page) {
+    var ancestor = page
+    while ((ancestor = ancestor.parentNode) && ancestor !== panel) {
+      if (ancestor.className === 'nav-item') ancestor.classList.add('is-current-path', 'is-active')
+    }
+    page.classList.add('is-current-page', 'is-active')
+    if (panel.scrollHeight > panel.clientHeight) {
+      var panelRect = panel.getBoundingClientRect()
+      var linkRect = page.querySelector('.nav-link').getBoundingClientRect()
+      panel.scrollTop += Math.round(linkRect.top - panelRect.top - (panelRect.height - linkRect.height) * 0.5)
+    }
+  } else {
+    panel.scrollTop = 0
+  }
+  panel.classList.remove('is-loading')
+})()
+  </script>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">C2PA Specifications</span>
+    <span class="version">2.2</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">C2PA Specifications</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.2</a>
+        </li>
+        <li class="version">
+          <a href="../../2.1/index.html">2.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.0/index.html">2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../1.4/index.html">1.4</a>
+        </li>
+        <li class="version">
+          <a href="../../1.3/index.html">1.3</a>
+        </li>
+        <li class="version">
+          <a href="../../1.2/index.html">1.2</a>
+        </li>
+        <li class="version">
+          <a href="../../1.1/index.html">1.1</a>
+        </li>
+        <li class="version">
+          <a href="../../1.0/index.html">1.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">C2PA Specifications</a></li>
+    <li>Informative Documents</li>
+    <li><a href="Explainer.html">Explainer</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">2.2</button>
+  <div class="version-menu">
+    <a class="version is-current" href="Explainer.html">2.2</a>
+    <a class="version is-missing" href="../../2.1/index.html">2.1</a>
+    <a class="version is-missing" href="../../2.0/index.html">2.0</a>
+    <a class="version" href="../../1.4/explainer/Explainer.html">1.4</a>
+    <a class="version" href="../../1.3/explainer/Explainer.html">1.3</a>
+    <a class="version" href="../../1.2/explainer/Explainer.html">1.2</a>
+    <a class="version is-missing" href="../../1.1/index.html">1.1</a>
+    <a class="version" href="../../1.0/explainer/Explainer.html">1.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">C2PA and Content Credentials Explainer</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_goals_and_non_goals">2. Goals and Non-goals</a></li>
+<li><a href="#_core_principles">3. Core Principles</a></li>
+<li><a href="#_core_concepts">4. Core Concepts</a></li>
+<li><a href="#_motivating_user_needs">5. Motivating User Needs</a>
+<ul class="sectlevel2">
+<li><a href="#_helping_consumers_check_the_provenance_of_the_media_they_are_consuming">5.1. Helping consumers check the provenance of the media they are consuming</a></li>
+<li><a href="#_enhancing_clarity_around_provenance_and_edits_for_journalistic_work">5.2. Enhancing clarity around provenance and edits for journalistic work</a></li>
+<li><a href="#_offering_publishers_opportunities_to_improve_their_brand_value">5.3. Offering publishers opportunities to improve their brand value</a></li>
+<li><a href="#_providing_quality_data_for_indexer_platform_content_decisions">5.4. Providing quality data for indexer / platform content decisions</a></li>
+<li><a href="#_assisting_intelligence_investigators_to_confirm_provenance_and_integrity_of_media">5.5. Assisting &#8216;Intelligence&#8217; investigators to confirm provenance and integrity of media</a></li>
+<li><a href="#_enhance_the_evidentiary_value_of_critical_footage">5.6. Enhance the evidentiary value of critical footage</a></li>
+<li><a href="#_enforcing_disclaimer_laws_on_retouchededited_images">5.7. Enforcing disclaimer laws on retouched/edited images</a></li>
+</ul>
+</li>
+<li><a href="#_how_content_credentials_works">6. How Content Credentials Works</a>
+<ul class="sectlevel2">
+<li><a href="#_an_end_to_end_workflow">6.1. An End-to-End Workflow</a></li>
+<li><a href="#_core_components">6.2. Core Components</a></li>
+</ul>
+</li>
+<li><a href="#_faq">7. FAQ</a>
+<ul class="sectlevel2">
+<li><a href="#_general">7.1. General</a></li>
+<li><a href="#_provenance">7.2. Provenance</a></li>
+<li><a href="#_multiple_sources_ingredients">7.3. Multiple Sources &amp; Ingredients</a></li>
+<li><a href="#_relationship_to_other_technologies">7.4. Relationship to other technologies</a></li>
+<li><a href="#_trust_model">7.5. Trust Model</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="http://creativecommons.org/licenses/by/4.0/"><img src="_images/CCby4.png" alt="Creative Commons License"></a>
+</div>
+</div>
+<div class="paragraph text-center">
+<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<!-- toc disabled -->
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In an era where digital media (e.g., images, videos, audio and documents) is easily created and manipulated, whether by humans or generative AI, it is important for users to be able to verify the authenticity and provenance of such media to prevent them from being misled or harmed. These concerns have been raised across journalism, social media, and other industries that rely on trust and authenticity. The Coalition for Content Provenance and Authenticity (<a href="https://c2pa.org">C2PA</a>) was formed to address these challenges by developing an open standard that enables creators, publishers, and consumers to verify the origins and history of digital content.</p>
+</div>
+<div class="paragraph">
+<p>The purpose of this explainer is to provide a clear understanding of C2PA&#8217;s work and its Content Credentials technology. This document attempts to use clear language to describe the C2PA architecture, motivating user needs and key components. It will also serve to provide some background and clarification on the development of the standard and its goals.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goals_and_non_goals"><a class="anchor" href="#_goals_and_non_goals"></a>2. Goals and Non-goals</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The goal of the C2PA Specifications for Content Credentials is to tackle the extraordinary challenge of trusting media in the context of rapidly evolving technology and the democratization of powerful creation and editing techniques. To this end, the C2PA specifications are designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals, organizations and devices, while meeting appropriate security and privacy requirements, as well as human rights considerations.</p>
+</div>
+<div class="paragraph">
+<p>Provenance, as C2PA defines it, refers to the facts about the history of a piece of digital content (also known as an asset) in a form such as an image, video, audio recording, or document. At the heart of the C2PA specification is the Content Credential, a cryptographically bound structure that records an asset&#8217;s provenance. Content Credentials, also known as a C2PA Manifest, contain one or more assertions, which are statements about the asset, such as its origin (i.e., when and where it was created), modifications (i.e., what happened using what tools) and use of AI (i.e., how it was authored). While C2PA defines a set of assertions, it also allows others to add their own. These may include assertions about who created the content, whether they wish to allow its use for AI training or industry-specific information such as supply chain info.</p>
+</div>
+<div class="paragraph">
+<p>It is important to highlight that Content Credentials do not provide value judgments about whether a given set of provenance data is 'true', but instead merely whether the provenance information is well-formed and free from tampering, valid and trusted (in that the signer of the Content Credential is associated with a known trust list). In addition, the provenance information can be verified as associated with the underlying asset ("a valid asset").</p>
+</div>
+<div class="paragraph">
+<p>It is not a cure-all for misinformation, but instead seeks to mitigate against its threats in the digital domain. It complements media literacy, fact-checking, and digital forensics approaches such as deep-fake detection by providing an infrastructure to record all of that information in a tamper-evident structure, representing the provenance of any asset.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_core_principles"><a class="anchor" href="#_core_principles"></a>3. Core Principles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some of the core principles that underpin the C2PA specifications are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Content Credentials provides a way to establish provenance of content. There are no value judgments about whether the provenance data is good or bad.</p>
+</li>
+<li>
+<p>Implementations of Content Credentials are designed to be interoperable</p>
+</li>
+<li>
+<p>C2PA specifications respect user privacy</p>
+</li>
+<li>
+<p>C2PA specifications must not lend themselves to abuse, harm and threats to human rights</p>
+</li>
+<li>
+<p>C2PA specifications are global</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The full set of principles may be found in our <a href="https://c2pa.org/principles/">Guiding Principles</a> document.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_core_concepts"><a class="anchor" href="#_core_concepts"></a>4. Core Concepts</h2>
+<div class="sectionbody">
+<div id="assertion" class="dlist">
+<dl>
+<dt class="hdlist1">Assertion</dt>
+<dd>
+<p>A data structure which represents a statement about the <a href="#asset">asset</a>. This data is a part of the <a href="#c2pa_manifest">C2PA Manifest</a>.</p>
+</dd>
+</dl>
+</div>
+<div id="asset" class="dlist">
+<dl>
+<dt class="hdlist1">Asset</dt>
+<dd>
+<p>A file or stream of data containing <a href="#digital_content">digital content</a>, <a href="#asset_metadata">asset metadata</a> and optionally, a <a href="#c2pa_manifest">C2PA Manifest</a>.</p>
+</dd>
+</dl>
+</div>
+<div id="asset_metadata" class="dlist">
+<dl>
+<dt class="hdlist1">Asset metadata</dt>
+<dd>
+<p>Non-technical information about the <a href="#asset">asset</a> and its <a href="#digital_content">digital content</a>.</p>
+</dd>
+</dl>
+</div>
+<div id="authenticity" class="dlist">
+<dl>
+<dt class="hdlist1">Authenticity</dt>
+<dd>
+<p>A property of <a href="#digital_content">digital content</a> comprising a set of facts that can be cryptographically verified as not having been tampered with.</p>
+</dd>
+</dl>
+</div>
+<div id="c2pa_manifest" class="dlist">
+<dl>
+<dt class="hdlist1">C2PA Manifest</dt>
+<dd>
+<p>The set of information about the provenance of an <a href="#asset">asset</a> consisting of one or more <a href="#assertion">assertions</a> that are digitally signed to ensure their <a href="#authenticity">authenticity</a> and integrity.</p>
+</dd>
+</dl>
+</div>
+<div id="content_credential" class="dlist">
+<dl>
+<dt class="hdlist1">Content Credential</dt>
+<dd>
+<p>This is the preferred non-technical term for a <a href="#c2pa_manifest">C2PA Manifest</a>.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Content Credentials also refers to the overall C2PA technology, and is therefore essentially treated as a plural noun. If a <a href="#c2pa_manifest">C2PA Manifest</a> is a Content Credential, then multiple <a href="#c2pa_manifest">C2PA Manifest</a> or the broader, universal concept is Content Credentials.</p>
+</div>
+<div id="content_binding" class="dlist">
+<dl>
+<dt class="hdlist1">Content binding</dt>
+<dd>
+<p>Information that associates <a href="#digital_content">digital content</a> to a specific <a href="#c2pa_manifest">C2PA Manifest</a> associated with a specific <a href="#asset">asset</a>.</p>
+</dd>
+</dl>
+</div>
+<div id="digital_content" class="dlist">
+<dl>
+<dt class="hdlist1">Digital content</dt>
+<dd>
+<p>The portion of an <a href="#asset">asset</a> that represents the actual content, such as the pixels of an image, along with any additional technical metadata required to understand the content (e.g., a colour profile or encoding parameters).</p>
+</dd>
+</dl>
+</div>
+<div id="provenance" class="dlist">
+<dl>
+<dt class="hdlist1">Provenance</dt>
+<dd>
+<p>The logical concept of understanding the history of an <a href="#asset">asset</a> as represented by the set of <a href="#c2pa_manifest">C2PA Manifests</a> for an <a href="#asset">asset</a> and its ingredients (if any).</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivating_user_needs"><a class="anchor" href="#_motivating_user_needs"></a>5. Motivating User Needs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>What follows are some key illustrative user needs that help drive the development of this technology.</p>
+</div>
+<div class="sect2">
+<h3 id="_helping_consumers_check_the_provenance_of_the_media_they_are_consuming"><a class="anchor" href="#_helping_consumers_check_the_provenance_of_the_media_they_are_consuming"></a>5.1. Helping consumers check the provenance of the media they are consuming</h3>
+<div class="paragraph">
+<p>Alice sends a video to a friend, Bob. The video includes text with alarming and controversial allegations. Bob immediately seeks confirmation of its validity, starting with its provenance.</p>
+</div>
+<div class="paragraph">
+<p>The video that Alice sent contains a Content Credential. With a Content Credential-aware application, Bob is able to establish that this video has not been modified since the Content Credential was added, was signed by a trusted implementation, and that its provenance includes (along other useful trust indicators) information about the publishing organisation. Using these indicators, Bob can make a more informed decision about the trustworthiness of the video.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enhancing_clarity_around_provenance_and_edits_for_journalistic_work"><a class="anchor" href="#_enhancing_clarity_around_provenance_and_edits_for_journalistic_work"></a>5.2. Enhancing clarity around provenance and edits for journalistic work</h3>
+<div class="paragraph">
+<p>A photojournalist uses a Content Credential-enabled capture device during a newsworthy event they are covering. The assets are then brought into a Content Credential-enabled editing application, and after editing it, they are sent to a photo editor. The editor makes additional edits also using a Content Credential-enabled application. The finalized asset is moved into the content management system of a news organization, which is also Content Credential-enabled, before posting the asset to social media.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_offering_publishers_opportunities_to_improve_their_brand_value"><a class="anchor" href="#_offering_publishers_opportunities_to_improve_their_brand_value"></a>5.3. Offering publishers opportunities to improve their brand value</h3>
+<div class="paragraph">
+<p>A news publisher is concerned about standards of public comprehension and brand value of its publications which it makes available online through a number of social media platforms. To improve audience confidence about their content, it wishes to provide a means for the audience to verify the content that originated through its output.</p>
+</div>
+<div class="paragraph">
+<p>For content that is consumed with C2PA provenance, the publisher provides the consumer needed details to rely upon the provenance and authenticity of the asset.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_providing_quality_data_for_indexer_platform_content_decisions"><a class="anchor" href="#_providing_quality_data_for_indexer_platform_content_decisions"></a>5.4. Providing quality data for indexer / platform content decisions</h3>
+<div class="paragraph">
+<p>A news video is posted to a social media platform. By utilizing the Content Credential-provided provenance in the video, the social media platform is able to verify that it came from the same source that posted it.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_assisting_intelligence_investigators_to_confirm_provenance_and_integrity_of_media"><a class="anchor" href="#_assisting_intelligence_investigators_to_confirm_provenance_and_integrity_of_media"></a>5.5. Assisting &#8216;Intelligence&#8217; investigators to confirm provenance and integrity of media</h3>
+<div class="paragraph">
+<p>An individual in a news/other context using open-source intelligence techniques (OSINT) can use the presence of a Content Credential in assets to better confirm the history and integrity of media. Additionally, an individual may use a durable Content Credential to re-correlate relevant media to its provenance.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enhance_the_evidentiary_value_of_critical_footage"><a class="anchor" href="#_enhance_the_evidentiary_value_of_critical_footage"></a>5.6. Enhance the evidentiary value of critical footage</h3>
+<div class="paragraph">
+<p>A human rights defender manages to capture footage containing a Content Credential of police violence during a protest. The human rights defender sends the footage to a human rights organization that verifies that the asset meets video-as-evidence criteria (for example, that it does not contain AI generated content). The human rights organization redacts information about the defender using a Content Credential-enabled editing application in order to protect their identity. The Content Credential is verified, which improves the chances of that footage being admissible in court proceedings.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enforcing_disclaimer_laws_on_retouchededited_images"><a class="anchor" href="#_enforcing_disclaimer_laws_on_retouchededited_images"></a>5.7. Enforcing disclaimer laws on retouched/edited images</h3>
+<div class="paragraph">
+<p>To prevent dangerous stereotypes of ideal bodies, a government enacts a law that requires advertisers and social media influencers to specify that their image has been edited if any aspect of a body&#8217;s size, shape or skin has been altered. By having their Content Credential-enabled editing application add information about each action performed, they can easily comply and the government can easily confirm.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_content_credentials_works"><a class="anchor" href="#_how_content_credentials_works"></a>6. How Content Credentials Works</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_an_end_to_end_workflow"><a class="anchor" href="#_an_end_to_end_workflow"></a>6.1. An End-to-End Workflow</h3>
+<div class="paragraph">
+<p>The C2PA specification for Content Credentials provides a standardized method for attaching Content Credentials, which can be validated, to digital assets. Here&#8217;s how it works:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Content Creation</strong>: A creator uses a Content Credential-enabled tool to produce digital content, such as a photograph or video. During this process, provenance information is generated, including a cryptographic signature and possibly including additional details about the creator, the device used, and any applied edits.</p>
+</li>
+<li>
+<p><strong>C2PA Manifest Generation</strong>: The provenance information is encoded into a data structure called a C2PA Manifest, also known as a Content Credential. This C2PA Manifest can contain variety of assertions representing the provenance of the asset, including:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A description of the asset&#8217;s origin.</p>
+</li>
+<li>
+<p>Details of any modifications or edits.</p>
+</li>
+<li>
+<p>A cryptographic hash representing the content at the time of creation.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Cryptographic Signing</strong>: The C2PA Manifest is signed with the private key of the software or hardware that performed the operations, thus ensuring its authenticity and integrity. The corresponding public key is made available for verification.</p>
+</li>
+<li>
+<p><strong>Embedding and/or Watermarking</strong>: The C2PA Manifest is commonly embedded directly within the asset, though it can also be linked externally through a soft binding system (e.g., invisible watermarks). This ensures that the provenance information is always accessible.</p>
+</li>
+<li>
+<p><strong>Distribution</strong>: The asset, along with its embedded C2PA Manifest, is distributed via platforms like social media, news sites, or file-sharing services. The C2PA Manifest travels with the asset, ensuring that the provenance information remains intact.</p>
+</li>
+<li>
+<p><strong>Verification</strong>: When an end user views or interacts with an asset using a Content Credential-enabled application, the application checks the integrity of, and verifies, the C2PA Manifest and its associated asset. It can confirm that the asset has not been modified since the C2PA Manifest was created, and that the provenance information is also unmodified and authentic, added by a trusted (or not) implementation.</p>
+</li>
+<li>
+<p><strong>Presentation</strong>: When presented to a user, verified content will be marked with a clear indicator, such as a badge or icon, signalling to the user that the asset and its provenance is authentic and intact.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_core_components"><a class="anchor" href="#_core_components"></a>6.2. Core Components</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Provenance</dt>
+<dd>
+<p>Information about content origin and modifications, and any other relevant assertion concerning the history of the asset.</p>
+</dd>
+<dt class="hdlist1">Cryptographic Hashes and Signatures</dt>
+<dd>
+<p>Ensures integrity and authenticity of the Content Credential. If any part of the Content Credential is tampered with it will invalidate one or more hashes and signalling tampering.</p>
+</dd>
+<dt class="hdlist1">Durable Credentials and Soft Binding</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>So called &#8220;soft bindings&#8221; enhance the durability of Content Credentials by enabling the discovery of the manifest if it is not embedded in an asset.</p>
+</li>
+<li>
+<p>Soft bindings can either be implemented via invisible watermarking or fingerprint lookup.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_faq"><a class="anchor" href="#_faq"></a>7. FAQ</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_general"><a class="anchor" href="#_general"></a>7.1. General</h3>
+<div class="sect3">
+<h4 id="_can_content_credentials_alone_combat_misinformation"><a class="anchor" href="#_can_content_credentials_alone_combat_misinformation"></a>7.1.1. Can Content Credentials alone combat misinformation?</h4>
+<div class="paragraph">
+<p>A C2PA Manifest, the Content Credential, is a part of the solution. It complements media literacy, fact-checking, and other efforts by providing tools for establishing content provenance. Its effectiveness depends on widespread adoption and user awareness.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_should_i_distrust_media_without_content_credentials"><a class="anchor" href="#_should_i_distrust_media_without_content_credentials"></a>7.1.2. Should I distrust media without Content Credentials?</h4>
+<div class="paragraph">
+<p>Maybe.</p>
+</div>
+<div class="paragraph">
+<p>Adding provenance to an asset is optional, and it is not the intention of the specification and guidance to create a two-tier media ecosystem where assets without Content Credentials are universally less trusted than assets with it. The C2PA specifications for Content Credentials are open and available to everyone, and so no assumption should be made about the trustworthiness of a particular asset purely based on its usage of Content Credentials.</p>
+</div>
+<div class="paragraph">
+<p>Since trust in media is based on many factors such as reputational source and confidence in the products and processes that create it, Content Credentials become useful to consumers of assets as they can use the information contained therein to determine their level of trust. For example, if a well-known media publisher adds provenance data to an asset, a consumer that knows that publisher can use Content Credentials to understand that the asset and its provenance data definitely came from them, and wasn&#8217;t manipulated. Conversely, if a bad or unknown actor adds provenance data, a consumer may not be able to locate any useful information, and that would help them to make their own decision on whether to trust the asset.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_can_manipulation_or_tampering_be_detected"><a class="anchor" href="#_can_manipulation_or_tampering_be_detected"></a>7.1.3. Can manipulation or tampering be detected?</h4>
+<div class="paragraph">
+<p>A C2PA Manifest, the Content Credential, along with the asset are the two parts of a unique puzzle. The possibility of any other pieces ever matching, either by coincidence or by a purposeful attempt to generate a match, is so low that it would be practically impossible. In other words, any alteration to either the asset or the provenance, however insignificant, would alter the shape of the piece of the puzzle, which is a mathematical algorithm called a cryptographic hash, in such a way that they would no longer match. This means that the provenance data can be said to be tamper-evident.</p>
+</div>
+<div class="paragraph">
+<p>The C2PA specification combines the use of standard cryptographic hashes, such as SHA2-256, with a Merkle tree-like approach of having one hash included in a secondary hash (etc.) and then finally digitally signed by the signer using standard X.509-based credentials.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_can_small_organizations_implement_content_credentials"><a class="anchor" href="#_can_small_organizations_implement_content_credentials"></a>7.1.4. Can small organizations implement Content Credentials?</h4>
+<div class="paragraph">
+<p>Yes. Organizations of all sizes can implement Content Credentials in their products and services, which can then be utilized by themselves or their customers (i.e., individuals).</p>
+</div>
+<div class="paragraph">
+<p>The C2PA specifications for Content Credentials are open standards that are released under a royalty free license. This enables both open and closed source implementations and thereby lowers the burden on implementers. It also enables creation of open source libraries, which further enables organizations of all sizes to implement Content Credentials.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_provenance"><a class="anchor" href="#_provenance"></a>7.2. Provenance</h3>
+<div class="sect3">
+<h4 id="_is_provenance_always_complete"><a class="anchor" href="#_is_provenance_always_complete"></a>7.2.1. Is provenance always complete?</h4>
+<div class="paragraph">
+<p>No. Provenance is not always complete. It may happen that an asset is modified in a way that the provenance data is not updated. For example, if an asset is cropped using a non-Content Credentials aware tool, the provenance data may not be updated to reflect that action.  However, if the asset is then brought back into a Content Credentials aware tool for additional modification or preparation for publication, the signer of the new Content Credential also implicitly attests to the crop action. So even though there is missing provenance information, the asset can still be trusted based on the signer of the <a href="../specs/C2PA_Specification.html#_active_manifest" class="xref page">active Content Credential</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_can_provenance_information_be_used_to_determine_whether_a_digital_asset_such_as_an_image_or_video_depicts_the_truth"><a class="anchor" href="#_can_provenance_information_be_used_to_determine_whether_a_digital_asset_such_as_an_image_or_video_depicts_the_truth"></a>7.2.2. Can provenance information be used to determine whether a digital asset, such as an image or video, depicts the truth?</h4>
+<div class="paragraph">
+<p>Provenance information can help establish the truth about the origin, history and authenticity of digital content, by providing evidence for its creation, discovery, ownership and movement over time; but provenance information alone cannot tell you whether the digital content is true, accurate or factual.</p>
+</div>
+<div class="paragraph">
+<p>Content Credentials can include assertions about the real-world identity of the provider of those assertions and the digital asset to which they refer. This allows one to determine whether those assertions or the digital asset itself were subsequently altered. This provides consumers the means to make a more informed decision about whether they believe the digital content is true, accurate or factual, based in part on the trust relationship they have with the provider of those assertions.</p>
+</div>
+<div class="paragraph">
+<p>For additional information, see the <a href="../specs/C2PA_Specification.html#_trust_model" class="xref page">Trust Model</a> section of the <a href="../specs/C2PA_Specification.html" class="xref page">Technical Specifications</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_can_the_provenance_metadata_be_removed"><a class="anchor" href="#_can_the_provenance_metadata_be_removed"></a>7.2.3. Can the provenance metadata be removed?</h4>
+<div class="paragraph">
+<p>Yes it can.  That is why the C2PA specification includes the concept of durable Content Credentials, which combines a hard binding (aka cryptographic hashing) with a soft binding (e.g., watermarking and fingerprinting). These soft bindings allows the Content Credential to be discovered in cloud-hosted storage even if it is removed from the asset.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_does_provenance_have_to_include_the_identity_of_the_creator_of_a_piece_of_media"><a class="anchor" href="#_does_provenance_have_to_include_the_identity_of_the_creator_of_a_piece_of_media"></a>7.2.4. Does provenance have to include the identity of the creator of a piece of media?</h4>
+<div class="paragraph">
+<p>The C2PA specification does not directly address the topic of human or organizational identity — that is, the identity of specific humans or organizations involved in the production of a digital asset or content. Instead, it focuses on the provenance and authenticity of the content itself. This ensures respect for user privacy.</p>
+</div>
+<div class="paragraph">
+<p>However, there are extensions to the core C2PA specification that introduce support for such identity features which can be included in a Content Credential.  When doing so, users should be aware of the privacy implications of including such information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_can_you_explain_more_about_human_and_organizational_identity_in_content_credentials"><a class="anchor" href="#_can_you_explain_more_about_human_and_organizational_identity_in_content_credentials"></a>7.2.5. Can you explain more about human and organizational identity in Content Credentials?</h4>
+<div class="paragraph">
+<p>In some use cases, an individual or organization may wish to describe their own identity or assert additional metadata that can not be directly represented as by the features of the core C2PA specification. In these cases, it is recommended to use an extensions to Content Credentials that supports the identification of the actor(s) who are making these statements, along with the ability for them to securely represent their relationship to the media asset and the specific assertions they wish to make.</p>
+</div>
+<div class="paragraph">
+<p>An example of such an assertion is the <a href="https://cawg.io/identity/">Creator Assertions Working Group’s identity assertion</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multiple_sources_ingredients"><a class="anchor" href="#_multiple_sources_ingredients"></a>7.3. Multiple Sources &amp; Ingredients</h3>
+<div class="sect3">
+<h4 id="_can_content_credentials_help_with_assets_created_from_multiple_sources"><a class="anchor" href="#_can_content_credentials_help_with_assets_created_from_multiple_sources"></a>7.3.1. Can Content Credentials help with assets created from multiple sources?</h4>
+<div class="paragraph">
+<p>Yes it can. When an asset is created from a series of other assets, those additional assets are referred to as its <a href="../specs/C2PA_Specification.html#_ingredient" class="xref page">ingredients</a>. Each ingredient that is used in the (composed) asset is recorded in that asset&#8217;s provenance, including the addition of the provenance of each individual ingredient. This process creates a tree of provenance, much like a family tree, that can stretch all the way back to each ingredient&#8217;s creation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_do_the_ingredients_of_an_asset_have_verifiable_provenance"><a class="anchor" href="#_do_the_ingredients_of_an_asset_have_verifiable_provenance"></a>7.3.2. Do the ingredients of an asset have verifiable provenance?</h4>
+<div class="paragraph">
+<p>Each <a href="../specs/C2PA_Specification.html#_ingredient" class="xref page">ingredient</a> that is included in a Content Credential can include its own provenance data, specifically the ingredient&#8217;s Content Credential is also included in the asset&#8217;s full set of Content Credentials. However, while the provenance data of each ingredient may be present, the ingredient&#8217;s provenance cannot be verified in the same way as the provenance data of the asset in which it is contained. This is because the actual data of the ingredient is not usually included in the asset&#8217;s Content Credential. Without the actual data, the ingredient&#8217;s hard bindings cannot be verified.  For this reason, the hard bindings of the ingredient, as well as the validity of its Content Credential are validated at the time they are added to the asset and a record of that validation is included in the asset&#8217;s Content Credential. This allows the consumer to see that the ingredient was validated at the time it was added to the asset and use that information to determine their level of trust in the asset.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_relationship_to_other_technologies"><a class="anchor" href="#_relationship_to_other_technologies"></a>7.4. Relationship to other technologies</h3>
+<div class="sect3">
+<h4 id="_does_this_make_use_of_the_blockchain"><a class="anchor" href="#_does_this_make_use_of_the_blockchain"></a>7.4.1. Does this make use of &#8220;the blockchain?&#8221;</h4>
+<div class="paragraph">
+<p>No, Content Credentials from the C2PA, does not rely on blockchain (or other forms of distributed ledger) technology. Instead, it uses established cryptographic techniques like cryptographic hashing, Merkle trees and digital signatures to provide tamper-evident Content Credentials. This approach avoids the complexity, environmental concerns, and scalability issues often associated with blockchain while ensuring robust provenance tracking.</p>
+</div>
+<div class="paragraph">
+<p>However, the C2PA specifications are designed to be compatible with blockchain technology, and it is possible to use blockchain technology to store and distribute Content Credentials. In fact, some members of C2PA have deployed blockchain-based solutions for this purpose.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_does_the_data_in_content_credentials_relate_to_standard_metadata_formats_such_as_iptc_xmp_and_exif"><a class="anchor" href="#_how_does_the_data_in_content_credentials_relate_to_standard_metadata_formats_such_as_iptc_xmp_and_exif"></a>7.4.2. How does the data in Content Credentials relate to standard metadata formats such as IPTC, XMP, and EXIF?</h4>
+<div class="paragraph">
+<p>Content Credentials are used in conjunction with standard metadata formats such as IPTC, XMP, and EXIF. The C2PA specification defines a set of metadata assertion along with a mapping from these existing metadata formats. This allows for interoperability between different systems and applications that use these formats, and also enables users to make their standard metadata available in a Content Credential and therefore tamper-evident.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the C2PA specification allows for the inclusion of other metadata formats - both open as well as proprietary - via custom assertions. This enables users to include additional information about the asset and its provenance using a common model.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_do_content_credentials_differ_from_digital_rights_management_drm"><a class="anchor" href="#_how_do_content_credentials_differ_from_digital_rights_management_drm"></a>7.4.3. How do Content Credentials differ from Digital Rights Management (DRM)?</h4>
+<div class="paragraph">
+<p>Unlike DRM, Content Credentials does not restrict user access or impose usage limitations. It focuses on transparency and trust by providing verifiable provenance information. Its open standard nature ensures adaptability and public accountability.</p>
+</div>
+<div class="paragraph">
+<p>However, Content Credentials can be used in conjunction with DRM systems that wish to incorporate provenance information into their content protection mechanisms.  Doing so is out of scope for the Content Credentials specification and the C2PA.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_do_content_credentials_address_the_use_of_aiml_in_the_creation_and_editing_of_assets"><a class="anchor" href="#_how_do_content_credentials_address_the_use_of_aiml_in_the_creation_and_editing_of_assets"></a>7.4.4. How do Content Credentials address the use of AI/ML in the creation and editing of assets?</h4>
+<div class="paragraph">
+<p>Each action that is performed on an asset can be recorded in the asset&#8217;s Content Credential. These actions can be performed by a human, organization or by an AI/ML system. When an action was performed by an AI/ML system, it is clearly identified as such through it&#8217;s <code>digitalSourceType</code> field.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>An example of <code>c2pa.created</code> action that might appear in an asset that was produced by a Generative AI system appears in the specification&#8217;s <a href="../specs/C2PA_Specification.html#_parameters" class="xref page">parameters clause of Actions</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_is_post_quantum_cryptography_supported_by_the_c2pa_standard"><a class="anchor" href="#_is_post_quantum_cryptography_supported_by_the_c2pa_standard"></a>7.4.5. Is post-quantum cryptography supported by the C2PA standard?</h4>
+<div class="paragraph">
+<p>Future support for ML-DSA algorithms (ML-DSA-44, ML-DSA-65, and ML-DSA-87) with approved parameters, as defined in NIST&#8217;s <a href="https://csrc.nist.gov/pubs/fips/204/final">FIPS 204</a>, is planned for the C2PA standard. ML-DSA will be added to the list of supported signature algorithms when stable ML-DSA support is broadly available in commonly used cryptographic libraries.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_trust_model"><a class="anchor" href="#_trust_model"></a>7.5. Trust Model</h3>
+<div class="sect3">
+<h4 id="_is_the_c2pa_building_their_own_trust_infrastructure"><a class="anchor" href="#_is_the_c2pa_building_their_own_trust_infrastructure"></a>7.5.1. Is the C2PA building their own trust infrastructure?</h4>
+<div class="paragraph">
+<p>Yes and no.</p>
+</div>
+<div class="paragraph">
+<p>The C2PA defines an open international standard around the creation and verification of Content Credentials. Implementers of this standard can have their implementations accredited by the C2PA, which enables users to trust in that implementation. These implementations will be recognized as part of the C2PA Trust List - similar to how a web browser or PDF viewer includes their own set of Trust Lists (e.g., CA/Browser Forum, EUTL, etc.).</p>
+</div>
+<div class="paragraph">
+<p>However, the trust in the contents of a Content Credential is based on the trust relationship between the creator of the Content Credential and the consumer of that Content Credential. This trust relationship is not defined by the C2PA, but by the ecosystem in which the Content Credential is used, including the foundational trust layer that C2PA is building. It may also include other trust list, such as from the IPTC or even a user&#8217;s own personal trust list.</p>
+</div>
+<div class="paragraph">
+<p>This trust model is based on the same technology behind SSL/TLS and PDF signatures and can be combined with established identity frameworks, such as one from the <a href="https://cawg.io/">Creator Assertions Working Group</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_what_is_the_signer_asserting_in_a_claim"><a class="anchor" href="#_what_is_the_signer_asserting_in_a_claim"></a>7.5.2. What is the signer asserting in a claim?</h4>
+<div class="paragraph">
+<p>The signer of a Content Credential is the credential holder of the certificate that is used by the Claim Generator to sign the Content Credential. Only the set of assertions that are listed in the <code>created_assertions</code> field of the Content Credential&#8217;s Claim are attributed to the signer. Those in the <code>gathered_assertions</code> field are not.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <div class="footer-main">
+    <figure class="footer-brand">
+      <a class="logo" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <figcaption class="footer-brand-name"><a href="https://c2pa.org">C2PA</a></figcaption>
+    </figure>
+    <ul class="footer-brand-links">
+      <li><a href="https://c2pa.org" target="_blank" rel="noopener">Home</a></li>
+      <li><a href="https://c2pa.org/specifications">Docs</a></li>
+      <li><a href="https://github.com/c2pa-org" target="_blank" rel="noopener">Project</a></li>
+    </ul>
+    <p class="footer-brand-follow">
+      <a href="https://twitter.com/c2pa_org" title="Follow us on Twitter" target="_blank" rel="noopener"><img src="../../../_/img/twitter-logo.svg" alt="Twitter logo" class="logo" width="28"><span class="handle">@C2PA_org</span></a>
+    </p>
+  </div>
+  <div class="footer-legal">
+    <p>Copyright © 2025 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
+  </div>
+  <div class="footer-thanks">
+    <p>Thanks to our <a href="https://c2pa.org/membership/" target="_blank" rel="noopener">membership</a> for helping to make this project possible.</p>
+    <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
+  </div>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/specifications/2.2/explainer/Explainer.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+
+  </body>
+</html>

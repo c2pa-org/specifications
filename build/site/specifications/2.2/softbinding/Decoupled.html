@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>C2PA Soft Binding API :: C2PA Specifications</title>
+    <link rel="canonical" href="https://c2pa.org/specifications/specifications/2.2/softbinding/Decoupled.html">
+    <meta name="page-spec" content="specifications:softbinding:Decoupled.adoc">
+    <meta name="generator" content="Antora 3.1.7">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+    <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <a class="navbar-item title" href="../../..">C2PA Specifications</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Download</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Specification.pdf">Technical Specifications</a> 
+            <a class="navbar-item" href="../../1.0/explainer/_attachments/Explainer.pdf">Explainer</a> 
+            <a class="navbar-item" href="../../1.0/guidance/_attachments/Guidance.pdf">Guidance for Implementers</a> 
+            <a class="navbar-item" href="../../1.0/ux/_attachments/UX_Recommendations.pdf">User Experience Guidance</a> 
+            <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf">Security Considerations</a> 
+            <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf">Harms Modelling</a> 
+            <a class="navbar-item" href="../../1.0/specs/_attachments/C2PA_Schemas.zip">CDDL and JSON Schemas</a> 
+          </div>
+        </div>
+          <div class="navbar-item">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-item" href="https://asciidoctor.zulipchat.com" target="_blank" rel="noopener" data-title="Communication">
+            <span class="icon"><img src="../../../_/img/octicons-24.svg#view-comment-discussion"></span>
+          </a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item has-icon" href="https://github.com/c2pa-org" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-mark-github"></span>
+              <span>Repository</span>
+            </a>
+            <a class="navbar-item has-icon" href="https://twitter.com/c2pa" target="_blank" rel="noopener">
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-hash"></span>
+              <span>Tweets</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active is-loading" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">C2PA Specifications</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Technical Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../specs/C2PA_Specification.html">Content Credentials</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../1.4/attestations/attestation.html">Attestations</a>
+  </li>
+  <li class="nav-item is-current-url" data-depth="2">
+    <a class="nav-link" href="Decoupled.html">Soft Binding API</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Informative Documents</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../explainer/Explainer.html">Explainer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../guidance/Guidance.html">Guidance for Implementers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.0/ux/UX_Recommendations.html">User Experience Guidance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.0/security/Security_Considerations.html">C2PA Security Considerations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.0/security/Harms_Modelling.html">C2PA Harms Modelling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ai-ml/ai_ml.html">Guidance for Artificial Intelligence and Machine Learning</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+  <script>
+;(function () {
+  var panel = document.querySelector('.nav-panel-menu')
+  var page
+  var hash = window.location.hash
+  if (hash) {
+    if (~hash.indexOf('%')) hash = decodeURIComponent(hash)
+    if (~hash.indexOf('"')) hash = hash.replace(/(?=")/g, '\\')
+    var link = panel.querySelector('.nav-link[href="' + hash + '"]')
+    if (link) page = link.parentNode
+    else if ((page = panel.querySelector('.is-current-url'))) page.classList.add('is-provisional')
+  } else {
+    page = panel.querySelector('.is-current-url')
+  }
+  if (page) {
+    var ancestor = page
+    while ((ancestor = ancestor.parentNode) && ancestor !== panel) {
+      if (ancestor.className === 'nav-item') ancestor.classList.add('is-current-path', 'is-active')
+    }
+    page.classList.add('is-current-page', 'is-active')
+    if (panel.scrollHeight > panel.clientHeight) {
+      var panelRect = panel.getBoundingClientRect()
+      var linkRect = page.querySelector('.nav-link').getBoundingClientRect()
+      panel.scrollTop += Math.round(linkRect.top - panelRect.top - (panelRect.height - linkRect.height) * 0.5)
+    }
+  } else {
+    panel.scrollTop = 0
+  }
+  panel.classList.remove('is-loading')
+})()
+  </script>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">C2PA Specifications</span>
+    <span class="version">2.2</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">C2PA Specifications</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.2</a>
+        </li>
+        <li class="version">
+          <a href="../../2.1/index.html">2.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.0/index.html">2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../1.4/index.html">1.4</a>
+        </li>
+        <li class="version">
+          <a href="../../1.3/index.html">1.3</a>
+        </li>
+        <li class="version">
+          <a href="../../1.2/index.html">1.2</a>
+        </li>
+        <li class="version">
+          <a href="../../1.1/index.html">1.1</a>
+        </li>
+        <li class="version">
+          <a href="../../1.0/index.html">1.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">C2PA Specifications</a></li>
+    <li>Technical Specifications</li>
+    <li><a href="Decoupled.html">Soft Binding API</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">2.2</button>
+  <div class="version-menu">
+    <a class="version is-current" href="Decoupled.html">2.2</a>
+    <a class="version" href="../../2.1/softbinding/Decoupled.html">2.1</a>
+    <a class="version is-missing" href="../../2.0/index.html">2.0</a>
+    <a class="version is-missing" href="../../1.4/index.html">1.4</a>
+    <a class="version is-missing" href="../../1.3/index.html">1.3</a>
+    <a class="version is-missing" href="../../1.2/index.html">1.2</a>
+    <a class="version is-missing" href="../../1.1/index.html">1.1</a>
+    <a class="version is-missing" href="../../1.0/index.html">1.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">C2PA Soft Binding API</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#SBR-API">1. Soft Binding Resolution API for C2PA Manifest Recovery</a>
+<ul class="sectlevel2">
+<li><a href="#_use_cases">1.1. Use Cases</a></li>
+<li><a href="#_usage_flows">1.2. Usage Flows</a></li>
+<li><a href="#soft-binding-algorithm-list">1.3. Soft Binding Algorithm List</a></li>
+<li><a href="#soft-binding-resolution-api">1.4. Soft Binding Resolution API specification</a></li>
+</ul>
+</li>
+<li><a href="#_federated_lookup">2. Federated Lookup</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_of_the_decentralized_soft_binding_resolution_process">2.1. Overview of the Decentralized Soft Binding Resolution Process</a></li>
+<li><a href="#_schema_for_decentralized_key_value_store">2.2. Schema for Decentralized Key-Value Store</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="http://creativecommons.org/licenses/by/4.0/"><img src="_images/CCby4.png" alt="Creative Commons License"></a>
+</div>
+</div>
+<div class="paragraph text-center">
+<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<!-- toc disabled -->
+</div>
+</div>
+<div class="sect1">
+<h2 id="SBR-API"><a class="anchor" href="#SBR-API"></a>1. Soft Binding Resolution API for C2PA Manifest Recovery</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>C2PA specifies a mechanism for recovering a C2PA Manifest for an asset, for example when the metadata containing the C2PA Manifest has been stripped. This mechanism is a soft binding (for example an invisible watermark or content fingerprint). The soft binding is used to look-up the C2PA Manifest within a Manifest Repository. The soft binding is described by the soft binding assertion.</p>
+</div>
+<div class="paragraph">
+<p>This document describes a series of <a href="#_use_cases">use cases</a> for why it is necessary to recover C2PA Manifests that have become decoupled from the asset to which they belong. It then goes into detail on how to use soft bindings to solve for these use cases. This process of recovering C2PA Manifests using soft bindings is composed of 2 key components:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="#soft-binding-algorithm-list">A soft binding algorithm list</a>.</p>
+</li>
+<li>
+<p><a href="#soft-binding-resolution-api">A soft binding resolution API</a>.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_use_cases"><a class="anchor" href="#_use_cases"></a>1.1. Use Cases</h3>
+<div class="paragraph">
+<p>The following use cases illustrate common situations in which C2PA Manifest recovery is performed. In these use cases: Alice is a content producer;  Bob is content consumer;  Mallory is a malicious `man in the middle' actor.</p>
+</div>
+<div class="sect3">
+<h4 id="_uc1_recovery_from_stripping_of_c2pa_metadata"><a class="anchor" href="#_uc1_recovery_from_stripping_of_c2pa_metadata"></a>1.1.1. UC1: Recovery from stripping of C2PA metadata</h4>
+<div class="paragraph">
+<p>Alice is a photojournalist and captures a photo of an event, editing it to enhance visibility of some content. The camera and editing tool implement C2PA and each embed a manifest within the image. Alice knows that some distribution platforms will strip C2PA metadata and so decides to add an imperceptible watermark to the photo prior to submitting it for publication. The watermark may be added via Alice&#8217;s image editing tool, modifying the image pixels prior to signing the manifest.  Or, Alice may utilize a watermark vendor&#8217;s tool to retroactively embed the watermark in the image pixels, signing the asset with a further manifest.</p>
+</div>
+<div class="paragraph">
+<p>Bob later encounters Alice’s photo on social media but the C2PA Manifest has been stripped. Bob’s software (web browser or news client) detects that a watermark is present within the photo. Bob has configured his software to automatically interrogate well-known manifest repositories (e.g., from major news organizations, vendors of watermarking/tools) to obtain the manifest using the watermark. Bob recovers and views the manifest of the photo.</p>
+</div>
+<div class="paragraph">
+<p>Bob is therefore aware of the provenance information for the asset, enabling him to make an informed trust decision on the asset.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_uc2_recovery_from_malicious_substitution_of_provenance_manifest_replaced_watermark_unchanged"><a class="anchor" href="#_uc2_recovery_from_malicious_substitution_of_provenance_manifest_replaced_watermark_unchanged"></a>1.1.2. UC2: Recovery from malicious substitution of provenance (manifest replaced, watermark unchanged)</h4>
+<div class="paragraph">
+<p>Alice is a photojournalist who embeds C2PA metadata within her assets to protect their integrity and gain attribution. Mallory wishes to manipulate the provenance of Alice’s photo to fake its creation story or to steal attribution. Mallory substitutes the manifest in the asset creating a new provenance chain signed by himself. Fortunately, Alice has included a watermark in her digital content.</p>
+</div>
+<div class="paragraph">
+<p>When Bob encounters Alice’s photo online, he performs a lookup from a manifest store to obtain the manifest associated with the watermark. Bob can then compare the recovered manifest to the manifest embedded within the asset to see if the story matches up and make an appropriate trust decision e.g., potentially deciding to believe the manifest recovered from the trusted manifest store.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_uc3_recovery_from_malicious_substitution_of_provenance_manifest_stripped_watermark_substituted"><a class="anchor" href="#_uc3_recovery_from_malicious_substitution_of_provenance_manifest_stripped_watermark_substituted"></a>1.1.3. UC3: Recovery from malicious substitution of provenance (manifest stripped, watermark substituted)</h4>
+<div class="paragraph">
+<p>Alice is a journalist who embeds C2PA metadata within her assets to protect their integrity and gain attribution. Mallory wishes to manipulate the provenance of Alice’s audio recording to fake its creation story or to steal attribution. Mallory strips the metadata from Alice’s audio recording and modifies the recording to render the watermark unreadable. She then embeds a new watermark. Mallory registers a new manifest within a watermarking vendor’s manifest store, using his new soft binding. Mallory publishes this modified audio recording on social media.</p>
+</div>
+<div class="paragraph">
+<p>Bob encounters Mallory’s audio recording on social media and detects the presence of a watermark. Bob resolves the watermark via lookup and obtains a false attribution / back story to the audio recording. However, Bob notices that the manifest was signed by Mallory not Alice so can make an appropriate trust decision.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_uc4_watermark_lookup_in_federated_manifest_store"><a class="anchor" href="#_uc4_watermark_lookup_in_federated_manifest_store"></a>1.1.4. UC4:  Watermark lookup in federated manifest store</h4>
+<div class="paragraph">
+<p>Alice is a photojournalist who embeds C2PA metadata within her assets to protect their integrity and gain attribution. She also embeds a watermark e.g., per UC1 and chooses any of several manifest repositories to store her manifest.</p>
+</div>
+<div class="paragraph">
+<p>In addition to storing her manifest, she registers her watermark within a service that maps her watermark (soft binding) to the location of her manifest in one or many manifest stores.</p>
+</div>
+<div class="paragraph">
+<p>Bob detects a watermark in Alice’s image online on social media but its manifest has been stripped by the social platform. Bob queries the service to figure out which manifest repository to resolve the watermarked soft binding against. Bob then queries the appropriate repository.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_uc5_preserving_provenance_through_non_c2pa_capable_toolchains"><a class="anchor" href="#_uc5_preserving_provenance_through_non_c2pa_capable_toolchains"></a>1.1.5. UC5: Preserving provenance through non-C2PA capable toolchains</h4>
+<div class="paragraph">
+<p>Acme Corp maintains a content production pipeline where some stages are non-C2PA capable. Bob receives an asset from freelance journalist Alice, containing a valid C2PA Manifest. Bob’s software inserts into the digital content of the assets a watermark containing a unique identifier and records the unique identifier as a soft binding assertion in the manifest. The manifest is placed within a manifest repository maintained internally by Acme Corp. The content passes through legacy content production processes that strip the C2PA Manifest. The final stages of production are C2PA compliant. The watermark is read from the asset and submitted as a query to the manifest repository run internally by Acme Corp. After passing through the non-C2PA tools, the manifest is automatically matched using the embedded watermark, and is included as an ingredient in a new manifest, which documents that actions have been performed on the content prior to entering the C2PA capable final stage of the pipeline. The manifest is embedded into the asset in the usual way. The content is published and provenance of the asset may be traced back to Alice by end consumers of the content.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_uc6_indicating_content_generated_by_ai"><a class="anchor" href="#_uc6_indicating_content_generated_by_ai"></a>1.1.6. UC6: Indicating Content Generated by AI</h4>
+<div class="paragraph">
+<p>Alice is a graphic designer working on illustrating a novel. She is working on a picture of a well-known monument being destroyed by a flood. To design this image she uses a C2PA capable generative AI tool. After several prompts and manual edits she is happy with the results and renders it into a JPEG image. Because of the regulations on GenAI in force in Alice’s country, the GenAI tool adds a manifest to the image indicating the role of GenAI in creation of the image. Alice also applies a watermark to the image per UC1.</p>
+</div>
+<div class="paragraph">
+<p>Mallory is a malicious user wanting to create fake-news from Alice’s image. He takes a screenshot of the image and publishes it on different social media platforms. Mallory&#8217;s malicious intention is to use the image of the damaged monument as clickbait in a fake-news campaign. Unfortunately, some social media platforms are not C2PA capable and strip the manifest off. However, the watermark persists through the screenshot and social media rendition processes.</p>
+</div>
+<div class="paragraph">
+<p>Bob views Mallory’s image on social media and is running web browser software that can detect the watermark. The browser recognizes that the watermark algorithm is listed in the C2PA soft binding algorithm list and displays the Content Credentials pin on the image. Bob clicks on the pin and the browser retrieves the manifest associated with the image. It displays the manifest and flags the image as generated by AI. Bob realizes he does not have to worry as the image is fictitious and was generated by AI.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_usage_flows"><a class="anchor" href="#_usage_flows"></a>1.2. Usage Flows</h3>
+<div class="sect3">
+<h4 id="_decoupled_manifests"><a class="anchor" href="#_decoupled_manifests"></a>1.2.1. Decoupled manifests</h4>
+<div class="paragraph">
+<p>While an increasing number of tools and platforms retain and add to C2PA Manifests, a number of workflows remove C2PA Manifests, leading to decoupled provenance information from assets. Consequently, the asset may lack the correct active manifest or contain no C2PA Manifest store at all. The soft binding algorithm list and resolution API may be used to recover the active manifest.</p>
+</div>
+<div class="paragraph">
+<p>This covers the following use cases: UC1, UC2, UC5, UC6</p>
+</div>
+<div class="sect4">
+<h5 id="_watermarking_algorithms"><a class="anchor" href="#_watermarking_algorithms"></a>1.2.1.1. Watermarking algorithms</h5>
+<div class="paragraph">
+<p><a href="#watermark-recovery">[watermark-recovery]</a> provides an example flow leveraging the soft binding algorithm list and resolution API to recover C2PA Manifests using an invisible watermark embedded in an asset.</p>
+</div>
+<div id="watermark-recovery" class="imageblock text-center kroki">
+<div class="content">
+<img src="https://kroki.io/plantuml/svg/eNqNVMtu2zAQvPMrFj70Fhnt0UBaKEYRGOjDsBv0UPRAUyt7UT4EcmPH_fquZLmSIjsJTxQ1Mzv7IBUTW4TJ_MMyh6_aU4mJYYUm7DEe4UC8g5-aMTod_0xUpSOToUp7bjlzS-h5AjqBabYXMGfdBuXajyFuHUqGO_IF-S3kdhuiRHZgqWWljR0Sel6rkIhDPLbAqNTJCdx8rHkzODhRTL9-wy1skUFbC4dzTnU8fY6XlA2h-o_PEv1FYHKYFPRWJ3_azYDjsRbiAAUyGu70RexblmVX-I299d3qIVoxF1EXkKQSbSFWmIJ9ZAo-ryjBw-oLlCGCCS7DJ-0qi5moX5WOM1h-X_9o9adOs9lhmm6O8-C57lSf6AMjRNruhsf1WtSRnBCaFHcII8Sge51ryJeLETZVaKgko2vE4C_6orExONR2bOhZkvefL-TYuvkkvb19qWAS9K11yK301IvvPQKV0mkTmoRHwAtNGoOkoXqvyeqN3L82o0QFvl4SSbo_e-cLtSjglSkdenrfG9J3fZUyPErYG8AnYlXXRw1v1POSn4hp2kmoKxbV2FMVg8GUZPabJweLDvwPbfBlLg==?id=watermark-recovery" alt="Diagram" width="612">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_fingerprinting_algorithms"><a class="anchor" href="#_fingerprinting_algorithms"></a>1.2.1.2. Fingerprinting algorithms</h5>
+<div class="paragraph">
+<p><a href="#fingerprint-recovery">[fingerprint-recovery]</a> provides an example flow leveraging the soft binding algorithm list and resolution API to recover C2PA Manifests using an asset&#8217;s fingerprint.</p>
+</div>
+<div id="fingerprint-recovery" class="imageblock text-center kroki">
+<div class="content">
+<img src="https://kroki.io/plantuml/svg/eNptU8tOwzAQvPsrVr3TCo6VAKUVoEo8qpaeEAeTbJqVHNvyLo_y9dhtkjYpPjnrmdnZR5SQGITR_GqZwZO2VCILrDB3Xxh28E1SwT3ZLQYfyMpIeR2EcvLaSsOaG8L4Apoh31__wbTKe1TdfPRxa1cKzMgWMRtkZutCzF2DoYbFH6ZPOHHrHZO4sGuAQamDE7i4SbwpMBrMBXJXj_FH197guPSXoM0WyuAOWYac9Wy1CQauIaAugKO9xt0K2ZlPIWczTwyb1SOULgzFe3JhCg93r43kpNaSV8iTj12jeBuNXA_51glCoG0lapGCdVRLvZEKQfW6dTQE2XKh2GNOJeU6RRTaApKU0kYUxDPwtXxZ_2Ns7qykUSbCiREYnMwIBhsTfSFQCeVxU5KvM7juxjqcBPEZmNqiMXYfQ9xHYCpwj-uKihcVy0jVHOqaQlPE23unaJzzx_CY6RdBqMZ-zkFf2i1dx8XC57gGvQEe3ri7LYrnntiZp1OxDpncH9O2YK7cd1y6_S8Ya2-5wInM6g92_DbJ?id=fingerprint-recovery" alt="Diagram" width="612">
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_recovering_manifests"><a class="anchor" href="#_recovering_manifests"></a>1.2.2. Recovering manifests</h4>
+<div class="paragraph">
+<p>The primary use of soft binding algorithms is the recovery of detached C2PA Manifests. However, they can also be used for other use cases such as providing information about the potential substitutions of manifests. This is done by comparing a local active C2PA Manifest (i.e., attached to the asset) with a C2PA Manifest recovered via the soft binding algorithm list and resolution API.</p>
+</div>
+<div class="paragraph">
+<p>This covers the following use case: UC3, UC2</p>
+</div>
+<div class="sect4">
+<h5 id="_watermarking_algorithms_2"><a class="anchor" href="#_watermarking_algorithms_2"></a>1.2.2.1. Watermarking algorithms</h5>
+<div class="paragraph">
+<p><a href="#watermark-golden">[watermark-golden]</a> provides an example flow leveraging the soft binding algorithm list and resolution API to retrieve a C2PA Manifest using an invisible watermark embedded in an asset and cross-check it with the local active C2PA manifest.</p>
+</div>
+<div id="watermark-golden" class="imageblock text-center kroki">
+<div class="content">
+<img src="https://kroki.io/plantuml/svg/eNp9U8Fu2zAMvesriNybbD0G6AbXKIYALRYkK3YYdmBkOiYqS4bEJevfT7ZlL3aD6CTL7z2-R1FKWAzBIr_fZvCClksKArl3IdzlFek3OLNU8BOFfI3-baEa9MKaG7SSaLlhsrIADKC77RVMpoVPNFbowHX6mML3rhR4ZFuwPUJmjs5HAzUYTqxwMFPC6HpHjQsszr8noL-hvKPgzB9hZyHbbkaC6hPA3ZfR3ho8YQH6vsHleegDFV0kZ68StKuX9BfrxtDyXH-Gh15iYgBDIN_VR3O8UIn51rB_3L16M_BC5CXaf9tZwwFed89QOj8vOJHza9h-3_9ImqsaRVcUVof33Flpb8s6IfB8rERtWoU6HrYOpSJQN5qmQkOaS9bYNYJsAa2UQiMK4pqZ-PZ0xUNS_hp78DAP0WpceIPZyky8C4vdXHEJBWnXmfwAvNKgj6DYTDwhGzzE55CcBy6oA47R4kapmKYN1YPWkML8-vR7OUzAplC3wvegsLqAzzSnz3EfZ5ouFAdUDBUHnMA4jQawf2KDKJxCnB7xTKc4rLOf6h9mHVVo?id=watermark-golden" alt="Diagram" width="612">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_fingerprinting_algorithms_2"><a class="anchor" href="#_fingerprinting_algorithms_2"></a>1.2.2.2. Fingerprinting Algorithms</h5>
+<div class="paragraph">
+<p><a href="#fingerprint-golden">[fingerprint-golden]</a> provides an example flow leveraging the soft binding algorithm list and resolution API to retrieve a C2PA Manifest using an asset&#8217;s fingerprint and cross-check it with the local C2PA active manifest.</p>
+</div>
+<div id="fingerprint-golden" class="imageblock text-center kroki">
+<div class="content">
+<img src="https://kroki.io/plantuml/svg/eNptUsFu2zAMvesriN7bYDsG6IbU2IYAGxbE62nYQZXpmJgsGSSXLX8_KnaSxo1Ogsj3-J74nJJGhLvq_WYF33yiFkWh4ixyX3UYfsNf0g4-U9ohD0xJ79zgWSnQ4JNOwCoSWgW8QDher3vq3Co8UWqMBVZxl9k4e4gkI0Ze4g3Ss5otDllIMx-mbnZuHAP3Hwp4CYIRg0LI_QP-8_0Q8aEd3oGPO2g5j6PmmPpp-8wRHoHRNyCmcZK4Rcnxj1JOq4EEnrdfoc08J7-i4yV8-fRjolz0XkOHsng5TIwfTcjjHJ-yIjDtOnXr8tgbW_kg7RDc1ZddBMFqs3YyYKCWgi8vDlMDhcr5qA7szHRtvtc3hFU5adlTAbwSArOzioqcbNAegVpoLzEout60-_Nu55sgedNMJ9Nov4-8RwahBo99Z1N2cWajuBl9LWEy8fPXqw2caiawsYYxOOtmDG9n1kqOhHqK3vQd6pAZ5ws8wWpLGlosrhY6lmRx4b4x3UxbjBFiDj6CD8dvOyFgL5Y0ZcK9GZ4V3X-aoTFB?id=fingerprint-golden" alt="Diagram" width="612">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_combining_watermarking_and_fingerprinting"><a class="anchor" href="#_combining_watermarking_and_fingerprinting"></a>1.2.2.3. Combining Watermarking and Fingerprinting</h5>
+<div class="paragraph">
+<p>A check may performed to verify that the recovered manifest matches the query asset bearing the watermark. This mitigates the possibility of attacking the watermarking system to spoof (e.g., transfer) a watermark from one asset to another.</p>
+</div>
+<div class="paragraph">
+<p>One way to automate this check is to store a fingerprint of the asset within the recovered manifest, and compare the fingerprint against a similarly computed fingerprint from the query asset. This is shown in <a href="#watermark-and-fingerprint">[watermark-and-fingerprint]</a>.</p>
+</div>
+<div id="watermark-and-fingerprint" class="imageblock text-center kroki">
+<div class="content">
+<img src="https://kroki.io/plantuml/svg/eNqFVMtu2zAQvPMrFjklQCunORpwC8VICgMtatgNeih6oKWVvShFCuTGrv--K0p2JFlwdNJjZjgzXEoxsUG4mT8sU_iuLRUYGFaYuT36IxyId_BLM_pS-7-gbQ4F2S36ypPlG1Vpz5RRpS23GnNDKF9AB8ji7QgmzZj2eF4ugsv2oQ9fu4LhkWwui0Jqts6LoRIMtaywMX1CJ0LlArHzxxboryivMDjzyuQspMvFmaCaBPDx89neFDzqHLKHSieHUy-Yx0jOjhIyVyb4T5eVweRQfoJZI9EzoENAH9fXZttRkXxTWD-uXrw58YLwWtqb7bSiAC-rb1A4P1ywJ-ensPyx_tlqTkrN2Q7DZHOcO8v1blnHCJ62O1aLWqGUl7VD3iGoK6WpUGFGBWU6FoEyKbWU0oYVyDUw8fVpxEOr_EU6mA1D1BodbzC4UiN7YXWcKyoglwGOJi-AIwVdgqRMvddk9EbORus8UI4ReI4mN0pJmjpUA5pCG-b3_Z_kNAGLXF0L34DCpAMfaHpkT7iXKZtB_5yuZb6xo35ikCUmbZ4rYXTO661xmTZx2PhuhCa9yBnB24b-XH14WzrpyNy9txlPNrx6lJHRHOemwwVXxFcdJ2PtByqlfQ_sLgTINrM4ZPnmnyUtnZpM-tv1H_Osn_Q=?id=watermark-and-fingerprint" alt="Diagram" width="612">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="soft-binding-algorithm-list"><a class="anchor" href="#soft-binding-algorithm-list"></a>1.3. Soft Binding Algorithm List</h3>
+<div class="paragraph">
+<p>The <a href="https://github.com/c2pa-org/softbinding-algorithm-list">soft binding algorithm list</a> is an authoritative list of C2PA supported soft binding algorithms. It lists the fingerprinting and watermarking technologies that C2PA clients may use to recover manifests. Entries in the list also contain additional information on the algorithms to facilitate interoperability.</p>
+</div>
+<div class="paragraph">
+<p>Developers wanting their soft binding algorithms to be referenced in soft binding assertions or in soft binding resolution API transactions shall request they be added as a new entries in the <a href="https://github.com/c2pa-org/softbinding-algorithm-list">soft binding algorithm list</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="soft-binding-resolution-api"><a class="anchor" href="#soft-binding-resolution-api"></a>1.4. Soft Binding Resolution API specification</h3>
+<div class="paragraph">
+<p>The soft binding resolution API is a Web API providing a standard way of retrieving C2PA Manifest stores from a soft binding resolution API endpoint given a soft binding value, a manifest identifier, or an asset.</p>
+</div>
+<div class="paragraph">
+<p>The API specification and documentation is available below in the OpenAPI format as a <a href="#soft-binding-resolution-api-json">JSON</a> or <a href="#soft-binding-resolution-api-yaml">YAML</a> document.</p>
+</div>
+<div id="soft-binding-resolution-api-json" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "C2PA Soft Binding Resolution API",
+    "description": "This is the OpenAPI specification of the C2PA Soft Binding Resolution API. This document specifies a web service API endpoint for matching soft bindings (e.g., watermarks or fingerprints) to C2PA Manifests.",
+    "version": "1.0.0"
+  },
+  "externalDocs": {
+    "description": "C2PA Specification",
+    "url": "https://c2pa.org/specifications"
+  },
+  "servers": [
+    {
+      "url": "https://c2pa.example.org/v1"
+    }
+  ],
+  "paths": {
+    "/matches/byBinding": {
+      "get": {
+        "tags": [
+          "query"
+        ],
+        "summary": "Returns C2PA Manifest identifiers corresponding to a soft binding.",
+        "description": "Given one soft binding, find zero or more manifests identifiers within the manifest store matching the soft binding.",
+        "operationId": "queryByBinding",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "query",
+            "description": "A base64-encoded string describing, in algorithm specific format, the value of the soft binding to be used as the query. Note: if the value is expected to be too large to fit in a URL then the POST method may be used.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "alg",
+            "in": "query",
+            "description": "A string identifying the soft binding algorithm and version of that algorithm used as per the authoritative list of C2PA soft binding algorithm names available at: https://github.com/c2pa-org/softbinding-algorithm-list",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "The maximum number of manifest identifiers to return for each query.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/c2pa.softBindingQueryResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query value",
+            "content": {}
+          },
+          "414": {
+            "description": "Query too long, consider using POST instead",
+            "content": {}
+          },
+          "500": {
+            "description": "Service failure",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "auth": [
+              "fetch:manifests"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "query"
+        ],
+        "summary": "Returns C2PA Manifest identifiers corresponding to a large soft binding value.",
+        "description": "Given a large soft binding value, find zero or more matching manifest identifiers. Use this method if the size of the soft binding value is expected to be large too large to fit in a URL, otherwise favor the use of GET.",
+        "operationId": "queryByLargeBinding",
+        "parameters": [
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "The maximum number of manifests to return for each query.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 10
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Soft binding query JSON document.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/c2pa.softBindingQuery"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/c2pa.softBindingQueryResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query value",
+            "content": {}
+          },
+          "500": {
+            "description": "Service failure",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "auth": [
+              "fetch:manifests"
+            ]
+          }
+        ]
+      }
+    },
+    "/matches/byContent": {
+      "post": {
+        "tags": [
+          "query"
+        ],
+        "summary": "Finds C2PA Manifest identifiers using a digital asset.",
+        "description": "Find zero or more C2PA Manifest identifiers within the manifest store using an uploaded file containing a digital asset.",
+        "operationId": "uploadFile",
+        "parameters": [
+          {
+            "name": "alg",
+            "in": "query",
+            "description": "A string identifying the soft binding algorithm and version of that algorithm used as per the authoritative list of C2PA soft binding algorithm names available at: https://github.com/c2pa-org/softbinding-algorithm-list",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "The maximum number of manifests identifiers return for the query.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 10
+            }
+          },
+          {
+            "name": "hintAlg",
+            "in": "query",
+            "description": "An optional parameter specifying an additional soft binding algorithm name and version (as per the authoritative list of C2PA soft binding algorithm names available at: https://github.com/c2pa-org/softbinding-algorithm-list) to aid in resolution of the query.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "hintValue",
+            "in": "query",
+            "description": "An optional parameter specifying an additional soft binding algorithm value for the corresponding hintAlg to aid in resolution of the query.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Asset to match to manifests.",
+          "content": {
+            "image/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary",
+                "description": "Asset of type image."
+              }
+            },
+            "audio/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary",
+                "description": "Asset of type audio."
+              }
+            },
+            "video/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary",
+                "description": "Asset of type video."
+              }
+            },
+            "application/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary",
+                "description": "Asset of type application, such as `application/pdf`."
+              }
+            },
+            "model/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary",
+                "description": "Asset of type model."
+              }
+            },
+            "text/*": {
+              "schema": {
+                "type": "string",
+                "format": "string",
+                "description": "Asset of type text."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/c2pa.softBindingQueryResult"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Invalid asset type",
+            "content": {}
+          },
+          "500": {
+            "description": "Service failure",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "auth": [
+              "fetch:manifests"
+            ]
+          }
+        ]
+      }
+    },
+    "/manifests/{manifestId}": {
+      "get": {
+        "tags": [
+          "fetch"
+        ],
+        "summary": "Returns a full C2PA Manifest Store or an active C2PA Manifest.",
+        "description": "Retrieve a C2PA Manifest by manifest identifier. This either returns the active manifest or the entire C2PA Manifest Store that the active manifest identifier is part of. C2PA Manifest identifiers should follow the format described in the C2PA Technical specification at xref:specs:C2PA_Specification.adoc[_unique_identifiers]",
+        "operationId": "getManifestById",
+        "parameters": [
+          {
+            "name": "returnActiveManifest",
+            "in": "query",
+            "description": "Specifies if only the active manifest should be returned. By default the entire C2PA Manifest Store is returned.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "manifestId",
+            "in": "path",
+            "description": "Identifier of the C2PA Manifest to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/c2pa": {}
+            }
+          },
+          "400": {
+            "description": "Invalid C2PA Manifest Id supplied",
+            "content": {}
+          },
+          "404": {
+            "description": "C2PA Manifest Id not found",
+            "content": {}
+          },
+          "500": {
+            "description": "Service failure",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "auth": [
+              "fetch:manifests"
+            ]
+          }
+        ]
+      }
+    },
+    "/services/supportedAlgorithms": {
+      "get": {
+        "tags": [
+          "service"
+        ],
+        "summary": "Returns a list of the soft binding algorithms supported by the service.",
+        "description": "Enumerate the names of soft binding algorithms supported as queries by the service. See https://github.com/c2pa-org/softbinding-algorithm-list for an authoritative list of C2PA soft binding algorithm names.",
+        "operationId": "getSupportedBindings",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/c2pa.softBindingAlgList"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Service failure",
+            "content": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "c2pa.softBindingAlgList": {
+        "description": "list of the names of soft binding algorithms supported by this service. The authoritative list of name is available here: https://github.com/c2pa-org/softbinding-algorithm-list",
+        "properties": {
+          "watermarks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "required": [
+                    "watermarks"
+                  ]
+                },
+                {
+                  "required": [
+                    "fingerprints"
+                  ]
+                }
+              ],
+              "properties": {
+                "alg": {
+                  "type": "string",
+                  "example": "foo.bar.watermark.1",
+                  "description": "Unique identifier of a fingerprint algorithm."
+                }
+              },
+              "required": [
+                "alg"
+              ]
+            }
+          },
+          "fingerprints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "alg": {
+                  "type": "string",
+                  "example": "foo.bar.fingerprint.1",
+                  "description": "Unique identifier of a watermark algorithm."
+                }
+              },
+              "required": [
+                "alg"
+              ]
+            }
+          }
+        }
+      },
+      "c2pa.softBindingQuery": {
+        "required": [
+          "value",
+          "alg"
+        ],
+        "type": "object",
+        "properties": {
+          "alg": {
+            "type": "string",
+            "description": "A string identifying the soft binding algorithm and version of that algorithm used."
+          },
+          "value": {
+            "type": "string",
+            "description": "A base64-encoded string describing, in algorithm specific format, the value of the soft binding to be used as the query."
+          }
+        }
+      },
+      "c2pa.softBindingQueryResult": {
+        "type": "object",
+        "properties": {
+          "matches": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "manifestId": {
+                  "type": "string",
+                  "description": "Unique identifier of a matched C2PA Manifest"
+                },
+                "endpoint": {
+                  "type": "string",
+                  "description": "Endpoint of a Soft Binding Resolution API from which the C2PA Manifest may be obtained. If the endpoint is absent then the C2PA Manifest is available from same endpoint the query was sent to using the /manifests endpoint."
+                },
+                "similarityScore": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 100,
+                  "description": "An integer score in the range (0-100) representing the strength of match, if appropriate, where 0 is the weakest possible match and 100 is the strongest possible match."
+                }
+              },
+              "required": [
+                "manifestId"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "auth": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "http://example.c2pa.org/oauth/dialog",
+            "scopes": {
+              "fetch:manifests": "search and read manifests within the manifest store."
+            }
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div id="soft-binding-resolution-api-yaml" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">openapi: 3.0.3
+info:
+  title: C2PA Soft Binding Resolution API
+  description: &gt;-
+    This is the OpenAPI specification of the C2PA Soft Binding Resolution API.
+    This document specifies a web service API endpoint for matching soft
+    bindings (e.g., watermarks or fingerprints) to C2PA Manifests.
+  version: 1.0.0
+externalDocs:
+  description: C2PA Specification
+  url: https://c2pa.org/specifications
+servers:
+  - url: https://c2pa.example.org/v1
+paths:
+  /matches/byBinding:
+    get:
+      tags:
+        - query
+      summary: Returns C2PA Manifest identifiers corresponding to a soft binding.
+      description: &gt;-
+        Given one soft binding, find zero or more manifests identifiers within
+        the manifest store matching the soft binding.
+      operationId: queryByBinding
+      parameters:
+        - name: value
+          in: query
+          description: &gt;-
+            A base64-encoded string describing, in algorithm specific format,
+            the value of the soft binding to be used as the query. Note: if the
+            value is expected to be too large to fit in a URL then the POST
+            method may be used.
+          required: true
+          schema:
+            type: string
+        - name: alg
+          in: query
+          description: &gt;-
+            A string identifying the soft binding algorithm and version of that
+            algorithm used as per the authoritative list of C2PA soft binding
+            algorithm names available at:
+            https://github.com/c2pa-org/softbinding-algorithm-list
+          required: true
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          description: The maximum number of manifest identifiers to return for each query.
+          schema:
+            type: integer
+            minimum: 1
+            default: 10
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/c2pa.softBindingQueryResult"
+        "400":
+          description: Invalid query value
+          content: {}
+        "414":
+          description: Query too long, consider using POST instead
+          content: {}
+        "500":
+          description: Service failure
+          content: {}
+      security:
+        - auth:
+            - fetch:manifests
+    post:
+      tags:
+        - query
+      summary: &gt;-
+        Returns C2PA Manifest identifiers corresponding to a large soft binding
+        value.
+      description: &gt;-
+        Given a large soft binding value, find zero or more matching manifest
+        identifiers. Use this method if the size of the soft binding value is
+        expected to be large too large to fit in a URL, otherwise favor the use
+        of GET.
+      operationId: queryByLargeBinding
+      parameters:
+        - name: maxResults
+          in: query
+          description: The maximum number of manifests to return for each query.
+          schema:
+            type: integer
+            minimum: 1
+            default: 10
+      requestBody:
+        description: Soft binding query JSON document.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/c2pa.softBindingQuery"
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/c2pa.softBindingQueryResult"
+        "400":
+          description: Invalid query value
+          content: {}
+        "500":
+          description: Service failure
+          content: {}
+      security:
+        - auth:
+            - fetch:manifests
+  /matches/byContent:
+    post:
+      tags:
+        - query
+      summary: Finds C2PA Manifest identifiers using a digital asset.
+      description: &gt;-
+        Find zero or more C2PA Manifest identifiers within the manifest store
+        using an uploaded file containing a digital asset.
+      operationId: uploadFile
+      parameters:
+        - name: alg
+          in: query
+          description: &gt;-
+            A string identifying the soft binding algorithm and version of that
+            algorithm used as per the authoritative list of C2PA soft binding
+            algorithm names available at:
+            https://github.com/c2pa-org/softbinding-algorithm-list
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          description: The maximum number of manifests identifiers return for the query.
+          schema:
+            type: integer
+            minimum: 1
+            default: 10
+        - name: hintAlg
+          in: query
+          description: &gt;-
+            An optional parameter specifying an additional soft binding
+            algorithm name and version (as per the authoritative list of C2PA
+            soft binding algorithm names available at:
+            https://github.com/c2pa-org/softbinding-algorithm-list) to aid in
+            resolution of the query.
+          schema:
+            type: string
+        - name: hintValue
+          in: query
+          description: &gt;-
+            An optional parameter specifying an additional soft binding
+            algorithm value for the corresponding hintAlg to aid in resolution
+            of the query.
+          schema:
+            type: string
+      requestBody:
+        description: Asset to match to manifests.
+        content:
+          image/*:
+            schema:
+              type: string
+              format: binary
+              description: Asset of type image.
+          audio/*:
+            schema:
+              type: string
+              format: binary
+              description: Asset of type audio.
+          video/*:
+            schema:
+              type: string
+              format: binary
+              description: Asset of type video.
+          application/*:
+            schema:
+              type: string
+              format: binary
+              description: Asset of type application, such as `application/pdf`.
+          model/*:
+            schema:
+              type: string
+              format: binary
+              description: Asset of type model.
+          text/*:
+            schema:
+              type: string
+              format: string
+              description: Asset of type text.
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/c2pa.softBindingQueryResult"
+        "415":
+          description: Invalid asset type
+          content: {}
+        "500":
+          description: Service failure
+          content: {}
+      security:
+        - auth:
+            - fetch:manifests
+  /manifests/{manifestId}:
+    get:
+      tags:
+        - fetch
+      summary: Returns a full C2PA Manifest Store or an active C2PA Manifest.
+      description: &gt;-
+        Retrieve a C2PA Manifest by manifest identifier. This either returns the
+        active manifest or the entire C2PA Manifest Store that the active
+        manifest identifier is part of. C2PA Manifest identifiers should follow
+        the format described in the C2PA Technical specification at
+        xref:specs:C2PA_Specification.adoc[_unique_identifiers]
+      operationId: getManifestById
+      parameters:
+        - name: returnActiveManifest
+          in: query
+          description: &gt;-
+            Specifies if only the active manifest should be returned. By default
+            the entire C2PA Manifest Store is returned.
+          schema:
+            type: boolean
+            default: false
+        - name: manifestId
+          in: path
+          description: Identifier of the C2PA Manifest to return
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/c2pa: {}
+        "400":
+          description: Invalid C2PA Manifest Id supplied
+          content: {}
+        "404":
+          description: C2PA Manifest Id not found
+          content: {}
+        "500":
+          description: Service failure
+          content: {}
+      security:
+        - auth:
+            - fetch:manifests
+  /services/supportedAlgorithms:
+    get:
+      tags:
+        - service
+      summary: Returns a list of the soft binding algorithms supported by the service.
+      description: &gt;-
+        Enumerate the names of soft binding algorithms supported as queries by
+        the service. See https://github.com/c2pa-org/softbinding-algorithm-list
+        for an authoritative list of C2PA soft binding algorithm names.
+      operationId: getSupportedBindings
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/c2pa.softBindingAlgList"
+        "500":
+          description: Service failure
+          content: {}
+components:
+  schemas:
+    c2pa.softBindingAlgList:
+      description: &gt;-
+        list of the names of soft binding algorithms supported by this service.
+        The authoritative list of name is available here:
+        https://github.com/c2pa-org/softbinding-algorithm-list
+      properties:
+        watermarks:
+          type: array
+          items:
+            type: object
+            oneOf:
+              - required:
+                  - watermarks
+              - required:
+                  - fingerprints
+            properties:
+              alg:
+                type: string
+                example: foo.bar.watermark.1
+                description: Unique identifier of a fingerprint algorithm.
+            required:
+              - alg
+        fingerprints:
+          type: array
+          items:
+            type: object
+            properties:
+              alg:
+                type: string
+                example: foo.bar.fingerprint.1
+                description: Unique identifier of a watermark algorithm.
+            required:
+              - alg
+    c2pa.softBindingQuery:
+      required:
+        - value
+        - alg
+      type: object
+      properties:
+        alg:
+          type: string
+          description: &gt;-
+            A string identifying the soft binding algorithm and version of that
+            algorithm used.
+        value:
+          type: string
+          description: &gt;-
+            A base64-encoded string describing, in algorithm specific format,
+            the value of the soft binding to be used as the query.
+    c2pa.softBindingQueryResult:
+      type: object
+      properties:
+        matches:
+          type: array
+          items:
+            type: object
+            properties:
+              manifestId:
+                type: string
+                description: Unique identifier of a matched C2PA Manifest
+              endpoint:
+                type: string
+                description: &gt;-
+                  Endpoint of a Soft Binding Resolution API from which the C2PA
+                  Manifest may be obtained. If the endpoint is absent then the
+                  C2PA Manifest is available from same endpoint the query was
+                  sent to using the /manifests endpoint.
+              similarityScore:
+                type: integer
+                minimum: 0
+                maximum: 100
+                description: &gt;-
+                  An integer score in the range (0-100) representing the
+                  strength of match, if appropriate, where 0 is the weakest
+                  possible match and 100 is the strongest possible match.
+            required:
+              - manifestId
+  securitySchemes:
+    auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://example.c2pa.org/oauth/dialog
+          scopes:
+            fetch:manifests: search and read manifests within the manifest store.</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_federated_lookup"><a class="anchor" href="#_federated_lookup"></a>2. Federated Lookup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A mechanism is required to orchestrate search across multiple independent C2PA Manifest Repositories, as in some cases it may not be practical to discover or query a complete set of C2PA Manifest Repositories.</p>
+</div>
+<div class="paragraph">
+<p>The Decentralized Soft Binding Resolution process enables query across multiple C2PA Manifest Repositories.</p>
+</div>
+<div class="sect2">
+<h3 id="_overview_of_the_decentralized_soft_binding_resolution_process"><a class="anchor" href="#_overview_of_the_decentralized_soft_binding_resolution_process"></a>2.1. Overview of the Decentralized Soft Binding Resolution Process</h3>
+<div class="paragraph">
+<p>Distributed Ledger Technology (DLT) is used to create a decentralized Key-Value (K-V) store.  The key is the soft binding value, such as may be incorporated in an asset via a watermark.  The value is a URI of an endpoint implementing the soft binding resolution API.  Optionally, the value may also contain the unique identifier of the C2PA Manifest.</p>
+</div>
+<div class="sect3">
+<h4 id="_querying_the_k_v_store"><a class="anchor" href="#_querying_the_k_v_store"></a>2.1.1. Querying the K-V Store</h4>
+<div class="paragraph">
+<p>The process to retrieve a C2PA Manifest from a C2PA Manifest Repository using these APIs is illustrated via the sequence diagram below and is as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The C2PA Manifest consumer first computes the soft binding from the asset, for example by detecting a watermark.</p>
+</li>
+<li>
+<p>The decentralized K-V store is queried using the soft binding to obtain the URI of a C2PA Manifest Repository endpoint implementing the soft binding resolution API.</p>
+</li>
+<li>
+<p>If the manifest identifier (ID) was not published within the K-V store, it may be obtained via the Soft Binding Resolution API <code>/byBinding</code> route.</p>
+</li>
+<li>
+<p>The active manifest (and optionally the entire C2PA Manifest Store) may be obtained via the Soft Binding Resolution API <code>/manifests</code> route.</p>
+</li>
+<li>
+<p>Validation and processing of the recovered C2PA Manifest continues in the usual way.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_publishing_to_the_k_v_store"><a class="anchor" href="#_publishing_to_the_k_v_store"></a>2.1.2. Publishing to the K-V Store</h4>
+<div class="paragraph">
+<p>A claim generator publishing a manifest into a C2PA Manifest Repository may optionally publish a Key-Value pair, comprising the soft binding and endpoint of the C2PA Manifest Repository, in order to make content searchable via the decentralized process</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_accessing_the_decentralized_key_value_store"><a class="anchor" href="#_accessing_the_decentralized_key_value_store"></a>2.1.3. Accessing the Decentralized Key-Value Store</h4>
+<div class="paragraph">
+<p>If the location of the Decentralized Key-Value Store is not known, then it may be obtained via the C2PA Soft Binding Algorithm List (SBAL). The SBAL contains an optional field <code>softBindingResolutionApis</code> that may contain the address of one or more Smart Contracts that reference the Key-Value store.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_schema_for_decentralized_key_value_store"><a class="anchor" href="#_schema_for_decentralized_key_value_store"></a>2.2. Schema for Decentralized Key-Value Store</h3>
+<div class="paragraph">
+<p>There are two main approaches taken by implementers to create a Key-Value store on a DLT.  The store may be contained either a) as state within a Smart Contract, or b) written out by a Smart Contract as state  within the Event Log of the DLT.  Moreover, the methods of representing information with the Key-Value store may differ across implementations.</p>
+</div>
+<div class="paragraph">
+<p>In order to capture both implementation approaches a) and b),  the Smart Contract referenced by the SBAL must implement a method returning JSON data that describes the format and access detail for the Key-Value store.</p>
+</div>
+<div class="paragraph">
+<p>The JSON description must follow the schema below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "properties": {
+      "resolutionMethod": {
+        "type": "string",
+        "enum": [
+          "smartContract",
+          "eventLog"
+        ],
+        "description": "Category of DLT method for resolving soft bindings."
+      },
+      "querySmartContract": {
+        "type": "object",
+        "properties": {
+          "smartContractAddress": {
+            "type": "string",
+            "description": "Address of the smart contract to call upon."
+          },
+          "byBindingFunctionName": {
+            "type": "string",
+            "description": "Name of the smart contract function providing lookup by binding, which accepts and returns a JSON string."
+          },
+          "byBindingInputSchema": {
+            "type": "object",
+            "description": "A JSON schema describing how to format the soft binding value input to the byBindingFunctionName input string parameter.",
+            "properties": {
+              "softBindingValue": {
+                "type": "string",
+                "description": "A base64-encoded string describing, in algorithm specific format, the value of the soft binding to be used as the query."
+              }
+            },
+            "required": ["softBindingValue"],
+            "additionalProperties": false
+          },
+          "byBindingOutputSchema": {
+            "type": "object",
+            "description": "A JSON schema describing how to parse the endpoint and manifest ID (optional) from byBindingFunctionName output string.",
+            "properties": {
+              "endpoints": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "description": "The URL(s) of the Softbinding Resolution API that may resolve this manifest ID."
+              },
+              "manifestId": {
+                "type": "string",
+                "description": "The optional unique identifier of the C2PA manifest, used to retrieve specific metadata. This may be absent if the manifest ID is not published within the K-V store."
+              }
+            },
+            "required": ["endpoints"],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "smartContractAddress",
+          "byBindingFunctionName",
+          "byBindingInputSchema",
+          "byBindingOutputSchema"
+        ]
+      },
+      "queryEventLog": {
+        "type": "object",
+        "properties": {
+          "smartContractAddress": {
+            "type": "string",
+            "description": "Address of the smart contract function to filter events by."
+          },
+          "keyTopic": {
+            "type": "string",
+            "description": "Topic used as key to lookup soft binding identifier."
+          },
+          "byBindingOutputSchema": {
+            "type": "object",
+            "description": "A JSON schema describing how to parse the endpoint and manifest ID (optional) from an event log message.",
+            "properties": {
+              "endpoints": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "description": "The URL(s) of the Softbinding Resolution API that may resolve this manifest ID."
+              },
+              "manifestId": {
+                "type": "string",
+                "description": "The optional unique identifier of the C2PA manifest, used to retrieve specific metadata. This may be absent if the manifest ID is not published within the K-V store."
+              }
+            },
+            "required": ["endpoints"],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "smartContractAddress",
+          "keyTopic",
+          "byBindingOutputSchema"
+        ]
+      }
+    },
+    "oneOf": [
+      {
+        "required": [
+          "querySmartContract"
+        ]
+      },
+      {
+        "required": [
+          "queryEventLog"
+        ]
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The schema describes an array containing one or more methods of decentralized resolution, which contain two fields.  First, a field <code>resolutionMethod</code> that indicates whether the method stores the K-V store within a smart contract (<code>smartContract</code>) or within an event log (<code>eventLog</code>).  Second, a field named either <code>querySmartContract</code> or <code>queryEventLog</code> respectively, that contains the detail on the resolution method.</p>
+</div>
+<div class="sect3">
+<h4 id="_smart_contract_k_v_stores"><a class="anchor" href="#_smart_contract_k_v_stores"></a>2.2.1. Smart Contract K-V Stores</h4>
+<div class="paragraph">
+<p>In the case of <code>querySmartContract</code>, the JSON object contains four required sub-fields.</p>
+</div>
+<div class="paragraph">
+<p><code>smartContractAddress</code>: a hex address (<code>0x&#8230;&#8203;</code>) which specifies the address of the smart contract (which may be different to the smart contract containing the <code>describe</code> method)
+<code>byBindingFunctionName</code>: the name of the function on that Smart Contract that may be called to query the K-V store using a soft binding.  The function must accept and return a single JSON string.
+<code>byBindingInputSchema</code>: the schema of the input JSON string, indicating how the soft binding is to be encoded.
+<code>byBindingOutputSchema</code>: the schema of the output JSON string, indicating how the endpoint (and optionally, the C2PA Manifest ID) are represented in the value returned by the query.</p>
+</div>
+<div class="paragraph">
+<p>The byBindingInputSchema object defines how the soft binding value is structured in the input to the smart contract function. It describes an object with one required field, softBindingValue, which is expected to be a base64-encoded string representing the soft binding identifier (e.g., a watermark ID). This identifier is passed in an algorithm-specific format.</p>
+</div>
+<div class="paragraph">
+<p>The byBindingOutputSchema object defines the structure of the response returned by the smart contract function. It includes two fields.</p>
+</div>
+<div class="paragraph">
+<p><code>endpoints</code>: An array of URIs representing the Soft Binding Resolution APIs that may be used to resolve the manifest ID.
+<code>manifestId</code>: The unique identifier of the C2PA manifest, if available. This field is not required, as it may not be present in all cases.</p>
+</div>
+<div class="paragraph">
+<p>Example JSON for a Smart Contract K-V Store:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "resolutionMethod": "smartContract",
+    "querySmartContract": {
+      "smartContractAddress": "0xABC123DEF4567890ABCDEF1234567890ABCDEF12",
+      "byBindingFunctionName": "getManifestByBinding",
+      "byBindingInputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "softBindingValue": {
+            "type": "string",
+            "description": "A base64-encoded string describing, in algorithm specific format, the value of the soft binding to be used as the query."
+          }
+        },
+        "required": ["softBindingValue"],
+        "additionalProperties": false
+      },
+      "byBindingOutputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "endpoints": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            },
+            "description": "The URL(s) of the Softbinding Resolution API that may resolve this manifest ID."
+          },
+          "manifestId": {
+            "type": "string",
+            "description": "The optional unique identifier of the C2PA manifest, used to retrieve specific metadata. This may be absent if the manifest ID is not published within the K-V store."
+          }
+        },
+        "required": ["endpoints"],
+        "additionalProperties": false
+      }
+    }
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_event_log_k_v_stores"><a class="anchor" href="#_event_log_k_v_stores"></a>2.2.2. Event Log K-V Stores</h4>
+<div class="paragraph">
+<p>In the case of <code>queryEventLog</code>, the JSON object contains three required sub-fields:</p>
+</div>
+<div class="paragraph">
+<p><code>smartContractAddress</code>: a hex address (<code>0x&#8230;&#8203;</code>) which specifies the address of the smart contract writing the event log entries, and thus the means to identify those log entries.
+<code>keyTopic</code>: The topic used to filter event logs for the soft binding key.
+<code>byBindingOutputSchema</code>: JSON schema describing how to parse the endpoint and manifest ID from an event log message.  The format is identical to the identically named field described for the Smart Contract K-V Store case.</p>
+</div>
+<div class="paragraph">
+<p>Example JSON for an Event Log K-V Store:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "resolutionMethod": "eventLog",
+  "queryEventLog": {
+    "smartContractAddress": "0xDEF4567890ABCDEF1234567890ABCDEF12345678",
+    "keyTopic": "topic1",
+    "byBindingOutputSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "endpoints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": "The URL(s) of the Softbinding Resolution API that may resolve this manifest ID."
+        },
+        "manifestId": {
+          "type": "string",
+          "description": "The optional unique identifier of the C2PA manifest, used to retrieve specific metadata. This may be absent if the manifest ID is not published within the K-V store."
+        }
+      },
+      "required": ["endpoints"],
+      "additionalProperties": false
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_accessing_the_json_schema"><a class="anchor" href="#_accessing_the_json_schema"></a>2.2.3. Accessing the JSON Schema</h4>
+<div class="paragraph">
+<p>For EVM compatible chains, the Smart Contract referenced by the SBAL must implement a function <code>describe</code> as specified below, that returns the aforementioned JSON schema.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">/// @title C2PA Decentralized Manifest Resolution
+interface C2PASoftBindingResolution  {
+    /// @dev This returns a JSON schema describing how manifests may be
+    ///  recovered using a soft binding identifier using either or both of a
+    ///  smart contract call or the event log.
+    function describe() external view returns (string _name);
+    ....</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Further definitions for Smart Contracts on non-EVM compatible DLTs may follow in future versions of this document.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <div class="footer-main">
+    <figure class="footer-brand">
+      <a class="logo" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="64"></a>
+      <figcaption class="footer-brand-name"><a href="https://c2pa.org">C2PA</a></figcaption>
+    </figure>
+    <ul class="footer-brand-links">
+      <li><a href="https://c2pa.org" target="_blank" rel="noopener">Home</a></li>
+      <li><a href="https://c2pa.org/specifications">Docs</a></li>
+      <li><a href="https://github.com/c2pa-org" target="_blank" rel="noopener">Project</a></li>
+    </ul>
+    <p class="footer-brand-follow">
+      <a href="https://twitter.com/c2pa_org" title="Follow us on Twitter" target="_blank" rel="noopener"><img src="../../../_/img/twitter-logo.svg" alt="Twitter logo" class="logo" width="28"><span class="handle">@C2PA_org</span></a>
+    </p>
+  </div>
+  <div class="footer-legal">
+    <p>Copyright © 2025 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>The <a href="https://github.com/asciidoctor/asciidoctor-docs-ui" target="_blank" rel="noopener">UI for this site</a> is derived from the Antora default UI and is licensed under the MPL-2.0 license. Several icons are imported from <a href="https://primer.style/octicons/" target="_blank" rel="noopener">Octicons</a> and are licensed under the MIT license.</p>
+  </div>
+  <div class="footer-thanks">
+    <p>Thanks to our <a href="https://c2pa.org/membership/" target="_blank" rel="noopener">membership</a> for helping to make this project possible.</p>
+    <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
+  </div>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/specifications/2.2/softbinding/Decoupled.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+
+  </body>
+</html>
