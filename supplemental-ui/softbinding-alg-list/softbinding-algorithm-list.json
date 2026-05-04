@@ -512,5 +512,91 @@
             "contact": "contact@sasha.eu",
             "informationalUrl": "https://sasha.eu/technology"
         }
+    },
+    {
+        "identifier": 34,
+        "alg": "ai.verda.watermark.image.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "encodedMediaTypes": [
+            "image/png",
+            "image/jpeg",
+            "image/avif"
+        ],
+        "entryMetadata": {
+            "description": "VerdaAI invisible image watermarking",
+            "dateEntered": "2026-04-16T00:00:00.000Z",
+            "contact": "harsha@verda.ai",
+            "informationalUrl": "https://verda.ai/watermarking"
+        }
+    },
+    {
+        "identifier": 35,
+        "alg": "ai.verda.watermark.video.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "video"
+        ],
+        "encodedMediaTypes": [
+            "video/mp4",
+            "video/webm",
+            "video/quicktime"
+        ],
+        "entryMetadata": {
+            "description": "VerdaAI invisible video watermarking",
+            "dateEntered": "2026-04-16T00:00:00.000Z",
+            "contact": "harsha@verda.ai",
+            "informationalUrl": "https://verda.ai/watermarking"
+        }
+    },
+    {
+        "identifier": 36,
+        "alg": "ai.verda.watermark.audio.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "audio"
+        ],
+        "encodedMediaTypes": [
+            "audio/mpeg",
+            "audio/wav",
+            "audio/aac",
+            "audio/ogg",
+            "audio/flac"
+        ],
+        "entryMetadata": {
+            "description": "VerdaAI invisible audio watermarking",
+            "dateEntered": "2026-04-16T00:00:00.000Z",
+            "contact": "harsha@verda.ai",
+            "informationalUrl": "https://verda.ai/watermarking"
+        "identifier": 37,
+        "alg": "com.evixar.eaw.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "audio",
+            "video"
+        ],
+        "entryMetadata": {
+            "description": "EAW (Evixar Audio Watermark) is an audible-range audio watermarking algorithm developed by Evixar Inc. Embeds and extracts a soft binding identifier for C2PA manifest recovery.",
+            "dateEntered": "2026-04-24T00:00:00.000Z",
+            "contact": "c2pa@evixar.com",
+            "informationalUrl": "https://www.evixar.com/en/technology/eaw/"
+        }
+    },
+    {
+        "identifier": 38,
+        "alg": "com.evixar.efp.type3.1",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "audio",
+            "video"
+        ],
+        "entryMetadata": {
+            "description": "EFP Type 3 (Evixar Finger Print Type 3) is an audio fingerprinting algorithm developed by Evixar Inc. Extracts a soft binding identifier from registered content via fingerprint matching for C2PA manifest recovery.",
+            "dateEntered": "2026-04-24T00:00:00.000Z",
+            "contact": "c2pa@evixar.com",
+            "informationalUrl": "https://www.evixar.com/en/technology/efp/"
+        }
     }
 ]
