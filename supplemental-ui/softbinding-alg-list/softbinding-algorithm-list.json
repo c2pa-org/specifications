@@ -570,6 +570,9 @@
             "dateEntered": "2026-04-16T00:00:00.000Z",
             "contact": "harsha@verda.ai",
             "informationalUrl": "https://verda.ai/watermarking"
+        }
+    },
+    {
         "identifier": 37,
         "alg": "com.evixar.eaw.1",
         "type": "watermark",
