@@ -601,5 +601,19 @@
             "contact": "c2pa@evixar.com",
             "informationalUrl": "https://www.evixar.com/en/technology/efp/"
         }
+    },
+    {
+        "identifier": 39,
+        "alg": "com.cognitive-proof.vsrmark.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "text"
+        ],
+        "entryMetadata": {
+            "description": "VSRMark hides a structured byte payload inside visible Unicode text by appending invisible Variation Selectors after visible characters. Each hidden byte maps to one variation selector. The payload is wrapped in a block containing a magic identifier (VSR1), version number, payload length, and CRC32 checksum.",
+            "dateEntered": "2026-06-04T00:00:00.000Z",
+            "contact": "support@cognitive-proof.com",
+            "informationalUrl": "https://github.com/Cognitive-Proof/VSRMark"
+        }
     }
 ]
