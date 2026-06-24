@@ -110,30 +110,34 @@
     },
     {
         "identifier": 8,
-        "alg": "ai.trufo.gen1.image",
+        "alg": "ai.trufo.pawprint.watermark",
         "type": "watermark",
         "decodedMediaTypes": [
-            "image"
+            "image",
+            "audio",
+            "video"
         ],
         "entryMetadata": {
-            "description": "Trufo image watermark.",
+            "description": "PawPrint neural watermarking for images, audio, and video. Imperceptible, with a 44/88 bit payload robust to compression, cropping, rotation, splicing, time/space scaling, common filters, and moderate AI transformations.",
             "dateEntered": "2024-08-14T15:00:00.000Z",
-            "contact": "tech@trufo.ai",
-            "informationalUrl": "https://trufo.ai/publications/"
+            "contact": "support@trufo.ai",
+            "informationalUrl": "https://trufo.ai/watermarks"
         }
     },
     {
         "identifier": 9,
-        "alg": "ai.trufo.gen1.image-lite",
-        "type": "watermark",
+        "alg": "ai.trufo.pawprint.fingerprint",
+        "type": "fingerprint",
         "decodedMediaTypes": [
-            "image"
+            "image",
+            "audio",
+            "video"
         ],
         "entryMetadata": {
-            "description": "Trufo image watermark (lite version).",
+            "description": "PawPrint neural fingerprinting for images, audio, and video. Generates a perceptual content signature that can be registered in or queried against Trufo's federated provenance ledgers for content matching and attribution.",
             "dateEntered": "2024-08-14T15:00:00.000Z",
-            "contact": "tech@trufo.ai",
-            "informationalUrl": "https://trufo.ai/publications/"
+            "contact": "support@trufo.ai",
+            "informationalUrl": "https://trufo.ai/watermarks"
         }
     },
     {
