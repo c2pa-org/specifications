@@ -418,8 +418,8 @@
         }
     },
     {
-       "identifier": 29,
-       "alg": "com.writerslogic.zwc-watermark.1",
+        "identifier": 29,
+        "alg": "com.writerslogic.zwc-watermark.1",
         "type": "watermark",
         "encodedMediaTypes": [
             "text/plain",
@@ -621,6 +621,23 @@
         }
     },
     {
+        "identifier": 40,
+        "alg": "me.deepmark.audio.vigil.128",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "audio"
+        ],
+        "entryMetadata": {
+            "description": "Vigil is a 128-bit-per-second neural audio watermarking algorithm developed by DeepMark Inc. Real-time capable on both CPU and GPU. Embedding can be performed by the demo DeepMark ingestion API at https://ingestion-api.deepmark.me. NOTE: This is a demo/playground deployment that signs manifests with test certificates, so manifest signatures will not validate against any trust authority.",
+            "dateEntered": "2026-06-05T00:00:00Z",
+            "contact": "hello@deepmark.me",
+            "informationalUrl": "https://www.deepmark.me"
+        },
+        "softBindingResolutionApis": [
+            "https://resolution-api.deepmark.me"
+        ]
+    },
+      {
         "identifier": 41,
         "alg": "com.writerslogic.text-fingerprint.1",
         "type": "fingerprint",
