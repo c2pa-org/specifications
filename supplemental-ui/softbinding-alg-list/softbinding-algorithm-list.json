@@ -430,7 +430,7 @@
             "description": "WritersLogic CPOP zero-width character (ZWC) watermark for text content. Embeds a truncated HMAC-SHA256 tag as zero-width Unicode characters (U+200B, U+200C, U+200D, U+FEFF) at deterministic word-boundary positions selected via HMAC-seeded Fisher-Yates shuffle. The tag binds the document content hash and Merkle Mountain Range root to the authorship evidence chain, enabling blind extraction without access to the original. Robust against copy-paste and re-encoding; invalidated by content modification (by design, as content changes require re-attestation). Part of the CPOP proof-of-process authorship attestation system implementing draft-condrey-cpop-protocol",
             "dateEntered": "2026-03-18T20:00:00.000Z",
             "contact": "david@writerslogic.com",
-            "informationalUrl": "https://writersproof.com/cpop/zwc-watermark"
+            "informationalUrl": "https://docs.writerslogic.com/soft-binding/zwc-watermark"
         }
     },
     {
@@ -637,7 +637,7 @@
             "https://resolution-api.deepmark.me"
         ]
     },
-      {
+    {
         "identifier": 41,
         "alg": "com.writerslogic.text-fingerprint.1",
         "type": "fingerprint",
@@ -651,6 +651,54 @@
             "dateEntered": "2026-06-22T00:00:00.000Z",
             "contact": "david@writerslogic.com",
             "informationalUrl": "https://docs.writerslogic.com/soft-binding/text-fingerprint"
+        }
+    },
+    {
+        "identifier": 42,
+        "alg": "com.writerslogic.zwc-watermark.2",
+        "type": "watermark",
+        "encodedMediaTypes": [
+            "text/plain",
+            "text/markdown",
+            "text/html"
+        ],
+        "entryMetadata": {
+            "description": "Revision of com.writerslogic.zwc-watermark.1. Embeds an HMAC-SHA256 routing tag as zero-width Unicode characters at deterministic word-boundary positions selected via an HMAC-seeded Fisher-Yates shuffle, binding the document content hash and Merkle Mountain Range root for blind extraction. Changes from version 1: the symbol alphabet drops U+FEFF (a byte-order-mark hazard) for U+200B, U+200C, U+200D, and U+2060, consistent with the fingerprint normalization; and the tag is protected by a Reed-Solomon erasure code spread across surplus positions, so extraction recovers from partial loss of the zero-width characters instead of failing all-or-nothing. Robust to copy-paste and re-encoding; invalidated by content modification by design. Part of the CPoE proof-of-effort authorship attestation system implementing draft-condrey-cpoe-protocol.",
+            "dateEntered": "2026-07-07T00:00:00.000Z",
+            "contact": "david@writerslogic.com",
+            "informationalUrl": "https://docs.writerslogic.com/soft-binding/zwc-watermark-v2"
+        }
+    },
+    {
+        "identifier": 43,
+        "alg": "com.writerslogic.text-structure.1",
+        "type": "fingerprint",
+        "encodedMediaTypes": [
+            "text/plain",
+            "text/markdown",
+            "text/html"
+        ],
+        "entryMetadata": {
+            "description": "WritersLogic CPoE structural text fingerprint. Computes a deterministic, model-free 256-bit SimHash over a document's structural skeleton rather than its content words, so it survives synonym-level paraphrase that changes wording but preserves structure. From NFC-normalized text (zero-width and formatting characters removed, sentence and paragraph boundaries and punctuation preserved) it derives the sentence-length sequence, the paragraph-length sequence, the punctuation-class profile, and the closed-class (function-word) skeleton, and folds these weighted features into the hash. Because the features are model-free the value is reproducible by any verifier. Two fingerprints match when their Hamming distance is at most 24 bits (about 9 percent). Robust to synonym substitution, reformatting, re-encoding, and zero-width-character injection; not robust to heavy restructuring or translation. Part of the CPoE proof-of-effort authorship attestation system implementing draft-condrey-cpoe-protocol.",
+            "dateEntered": "2026-07-07T00:00:00.000Z",
+            "contact": "david@writerslogic.com",
+            "informationalUrl": "https://docs.writerslogic.com/soft-binding/text-structure"
+        }
+    },
+    {
+        "identifier": 44,
+        "alg": "com.writerslogic.text-minhash.1",
+        "type": "fingerprint",
+        "encodedMediaTypes": [
+            "text/plain",
+            "text/markdown",
+            "text/html"
+        ],
+        "entryMetadata": {
+            "description": "WritersLogic CPoE lexical MinHash text fingerprint for excerpt and quotation matching. Over text normalized with Unicode NFC, casefolding, zero-width and formatting-character removal, whitespace collapse, and punctuation stripping, it computes a 128-value MinHash signature of word 5-gram shingles using a fixed seeded permutation family, and records 32-band by 4-row locality-sensitive-hashing band hashes as sublinear lookup keys. Estimated Jaccard set-overlap identifies the same or overlapping content at a Jaccard of 0.70 or above, so a copied paragraph or a reordered or partially deleted passage matches its source even when whole-document fingerprints diverge. Deterministic; interoperable with ISO 24138 (ISCC) Text-Code semantics. Robust to reordering, minor deletion, and reformatting; not robust to paraphrase. Part of the CPoE proof-of-effort authorship attestation system implementing draft-condrey-cpoe-protocol.",
+            "dateEntered": "2026-07-07T00:00:00.000Z",
+            "contact": "david@writerslogic.com",
+            "informationalUrl": "https://docs.writerslogic.com/soft-binding/text-minhash"
         }
     }
 ]
