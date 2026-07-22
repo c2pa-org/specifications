@@ -679,7 +679,7 @@
             "text/html"
         ],
         "entryMetadata": {
-            "description": "WritersLogic CPoE structural text fingerprint. Computes a deterministic, model-free 256-bit SimHash over a document's structural skeleton rather than its content words, so it survives synonym-level paraphrase that changes wording but preserves structure. From NFC-normalized text (zero-width and formatting characters removed, sentence and paragraph boundaries and punctuation preserved) it derives the sentence-length sequence, the paragraph-length sequence, the punctuation-class profile, and the closed-class (function-word) skeleton, and folds these weighted features into the hash. Because the features are model-free the value is reproducible by any verifier. Two fingerprints match when their Hamming distance is at most 24 bits (about 9 percent). Robust to synonym substitution, reformatting, re-encoding, and zero-width-character injection; not robust to heavy restructuring or translation. Part of the CPoE proof-of-effort authorship attestation system implementing draft-condrey-cpoe-protocol.",
+            "description": "WritersLogic CPoE structural text fingerprint. Computes a deterministic, model-free 256-bit SimHash over a document's structural skeleton rather than its content words, so it survives light synonym substitution that changes wording while preserving sentence and token lengths. From NFC-normalized text (zero-width and formatting characters removed, sentence and paragraph boundaries and punctuation preserved) it derives the sentence-length sequence, the paragraph-length sequence, the punctuation-class profile, and the closed-class (function-word) skeleton, and folds these weighted features into the hash. Because the features are model-free the value is reproducible by any verifier. Two fingerprints match when their Hamming distance is at most 24 bits (about 9 percent). Robust to light, length-preserving synonym substitution, reformatting, re-encoding, and zero-width-character injection; not robust to substantive lexical paraphrase (which alters sentence or token lengths), heavy restructuring, or translation. Part of the CPoE proof-of-effort authorship attestation system implementing draft-condrey-cpoe-protocol.",
             "dateEntered": "2026-07-07T00:00:00.000Z",
             "contact": "david@writerslogic.com",
             "informationalUrl": "https://docs.writerslogic.com/soft-binding/text-structure"
@@ -700,5 +700,24 @@
             "contact": "david@writerslogic.com",
             "informationalUrl": "https://docs.writerslogic.com/soft-binding/text-minhash"
         }
+    },
+    {
+        "identifier": 45,
+        "alg": "io.blockfact.audio.watermark.32",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "audio",
+            "image",
+            "video"
+        ],
+        "entryMetadata": {
+            "description": "BlockFact invisible watermarking for audio, image, and video provenance. Embeds a 32-bit lookup key derived from blockchain registration hash, enabling C2PA manifest recovery via the BlockFact Soft Binding Resolution API. Designed for robust provenance binding across compression, transcoding, and format conversion.",
+            "dateEntered": "2026-07-10T16:00:00.000Z",
+            "contact": "egbert@blockfact.io",
+            "informationalUrl": "https://blockfact.io"
+        },
+        "softBindingResolutionApis": [
+            "https://api.blockfact.io/api/soft-binding/v1"
+        ]
     }
 ]
