@@ -719,5 +719,20 @@
         "softBindingResolutionApis": [
             "https://api.blockfact.io/api/soft-binding/v1"
         ]
-    }
+    },
+    {
+        "identifier": 46,
+        "alg": "com.doverunner.watermark.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "video"
+        ],
+        "entryMetadata": {
+            "description": "DoveRunner's forensic watermarking solution delivers invisible, tamper-resilient traceability into video content — from enterprise distribution pipelines to end-consumer playback",
+            "dateEntered": "2026-07-27T14:00:00.000Z",
+            "contact": "c2pa@Doverunner.com",
+            "informationalUrl": "https://docs.doverunner.com/content-security/"
+        }
+
+    }    
 ]
