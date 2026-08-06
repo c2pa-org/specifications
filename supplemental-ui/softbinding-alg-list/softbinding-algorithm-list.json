@@ -733,6 +733,42 @@
             "contact": "c2pa@Doverunner.com",
             "informationalUrl": "https://docs.doverunner.com/content-security/"
         }
-
-    }    
+    },
+    {
+        "identifier": 47,
+        "alg": "com.writerslogic.text-watermark-semantic.1",
+        "type": "watermark",
+        "encodedMediaTypes": [
+            "text/plain",
+            "text/markdown",
+            "text/html"
+        ],
+        "entryMetadata": {
+            "description": "WritersLogic CPoE post-hoc semantic embedding watermark for paraphrase- and translation-robust manuscript identification. Applies key-conditioned dual-embedding watermarking: the text is revised post-generation via semantic-preserving lexical substitutions selected to align the document's contextual sentence-level and token-level embedding representations with a secret-key-derived watermark direction in the shared embedding space. Detection requires only the secret key and the candidate text; a one-sided hypothesis test on the dot product of the extracted dual embedding against the watermark direction determines presence or absence at a calibrated false-positive rate. The secret key is never embedded in the text and is not disclosed during verification. Robust to paraphrase, translation, format conversion, re-encoding, and zero-width-character injection, because the signal is anchored in the semantic embedding space rather than in surface characters or token statistics. Not robust to complete rewriting that substantially changes meaning. Works on any existing text without generation-time access; applicable to both AI-generated and human-authored content. Part of the CPoE proof-of-effort authorship attestation system implementing draft-condrey-cpoe-protocol.",
+            "dateEntered": "2026-07-28T00:00:00.000Z",
+            "contact": "david@writerslogic.com",
+            "informationalUrl": "https://docs.writerslogic.com/soft-binding/text-watermark-semantic"
+        }
+    },
+    {
+        "identifier": 48,
+        "alg": "com.joinmonolith.sha256",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "image",
+            "video",
+            "audio",
+            "text",
+            "application"
+        ],
+        "entryMetadata": {
+            "description": "Monolith SHA-256 content fingerprint for C2PA manifest recovery",
+            "dateEntered": "2026-07-29T00:00:00.000Z",
+            "contact": "contact@joinmonolith.com",
+            "informationalUrl": "https://docs.joinmonolith.com/guide/fingerprinting"
+        },
+        "softBindingResolutionApis": [
+            "https://api.joinmonolith.com/api/c2pa"
+        ]
+    }
 ]
