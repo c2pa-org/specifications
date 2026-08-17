@@ -27,3 +27,15 @@ test('writeMirrors converts every discovered page and writes a .html.md sibling'
   assert.equal(results[0].mirrorPath, mirrorPath);
   assert.equal(results[0].title, 'Content Credentials : C2PA Technical Specification');
 });
+
+test('writeMirrors surfaces each page\'s description', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'llm-export-mirrors-desc-'));
+  const pageDir = path.join(root, 'specifications/2.4/specs');
+  fs.mkdirSync(pageDir, { recursive: true });
+  fs.copyFileSync(
+    path.join(__dirname, 'fixtures/content-page.html'),
+    path.join(pageDir, 'C2PA_Specification.html')
+  );
+  const [result] = writeMirrors(root);
+  assert.equal(result.description, 'C2PA defines a way to establish provenance for digital content.');
+});

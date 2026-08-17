@@ -13,14 +13,14 @@ function writeMirrors(siteRoot) {
   const pages = discoverPages(siteRoot);
   return pages.map((sourcePath) => {
     const html = fs.readFileSync(sourcePath, 'utf8');
-    const { title, contentHtml } = extractArticle(html);
+    const { title, contentHtml, description } = extractArticle(html);
     const body = htmlToMarkdown(contentHtml).trim();
     const markdown = `# ${title}\n\n${body}\n`;
 
     const mirrorPath = `${sourcePath}.md`;
     fs.writeFileSync(mirrorPath, markdown);
 
-    return { sourcePath, mirrorPath, title, markdown };
+    return { sourcePath, mirrorPath, title, description, markdown };
   });
 }
 

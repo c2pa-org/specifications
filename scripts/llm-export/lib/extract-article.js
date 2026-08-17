@@ -1,16 +1,12 @@
 // scripts/llm-export/lib/extract-article.js
 const { createDocument } = require('@mixmark-io/domino');
 
-/**
- * Pulls the <article class="doc"> subtree out of a full rendered page,
- * dropping the in-page "Table of Contents" block (id="toc") since it's
- * redundant chrome once the markdown itself carries real headings.
- *
- * Uses @mixmark-io/domino's createDocument(html) directly — this package
- * has no DOMParser; createDocument is the API turndown itself uses
- * internally (confirmed by reading node_modules/turndown/lib/turndown.cjs.js
- * and by running createDocument against a real page fixture).
- */
+function firstSentence(text) {
+  const trimmed = text.replace(/\s+/g, ' ').trim();
+  const match = trimmed.match(/^.*?[.!?](?=\s|$)/);
+  return match ? match[0] : trimmed;
+}
+
 function extractArticle(html) {
   const doc = createDocument(html);
   const article = doc.querySelector('article.doc');
@@ -26,7 +22,16 @@ function extractArticle(html) {
 
   if (titleNode) titleNode.parentNode.removeChild(titleNode);
 
-  return { title, contentHtml: article.innerHTML };
+  const metaDescription = doc.querySelector('meta[name="description"]');
+  let description;
+  if (metaDescription) {
+    description = metaDescription.getAttribute('content').trim();
+  } else {
+    const firstParagraph = article.querySelector('p');
+    description = firstParagraph ? firstSentence(firstParagraph.textContent) : '';
+  }
+
+  return { title, contentHtml: article.innerHTML, description };
 }
 
 module.exports = { extractArticle };

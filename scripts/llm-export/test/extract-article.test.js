@@ -35,3 +35,17 @@ test('extractArticle throws on a page with no article.doc', () => {
   const redirectHtml = fs.readFileSync(path.join(__dirname, 'fixtures/redirect-stub.html'), 'utf8');
   assert.throws(() => extractArticle(redirectHtml), /no article\.doc/i);
 });
+
+test('extractArticle uses <meta name="description"> when present', () => {
+  const html = fixture.replace(
+    '<title>Content Credentials : C2PA Technical Specification :: C2PA Specifications</title>',
+    '<title>Content Credentials : C2PA Technical Specification :: C2PA Specifications</title>\n<meta name="description" content="A curated one-liner from :description:.">'
+  );
+  const { description } = extractArticle(html);
+  assert.equal(description, 'A curated one-liner from :description:.');
+});
+
+test('extractArticle falls back to the first sentence of body text when no meta description exists', () => {
+  const { description } = extractArticle(fixture);
+  assert.equal(description, 'C2PA defines a way to establish provenance for digital content.');
+});
