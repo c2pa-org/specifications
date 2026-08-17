@@ -3,7 +3,7 @@ const { createDocument } = require('@mixmark-io/domino');
 
 function firstSentence(text) {
   const trimmed = text.replace(/\s+/g, ' ').trim();
-  const match = trimmed.match(/^.*?[.!?](?=\s|$)/);
+  const match = trimmed.match(/^.*?[.!?](?=\s[A-Z]|\s*$)/);
   return match ? match[0] : trimmed;
 }
 
@@ -38,7 +38,7 @@ function extractArticle(html) {
   const metaDescription = doc.querySelector('meta[name="description"]');
   let description;
   if (metaDescription) {
-    description = metaDescription.getAttribute('content').trim();
+    description = (metaDescription.getAttribute('content') || '').trim();
   } else {
     const firstParagraph = article.querySelector('p');
     description = firstParagraph ? firstSentence(firstParagraph.textContent) : '';
@@ -47,4 +47,4 @@ function extractArticle(html) {
   return { title, contentHtml: article.innerHTML, description };
 }
 
-module.exports = { extractArticle };
+module.exports = { extractArticle, firstSentence };
