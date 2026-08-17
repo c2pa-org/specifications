@@ -43,3 +43,23 @@ test('buildLlmsTxt omits the description suffix when none is available', () => {
   assert.ok(txt.includes('- [A](a.html.md)\n'));
   assert.ok(!txt.includes('):'));
 });
+
+test('buildLlmsTxt preserves a fragment when rewriting the mirror href', () => {
+  const nav = {
+    categories: [
+      {
+        label: 'Soft Bindings',
+        pages: [{ title: 'Decoupled', href: 'softbinding/Decoupled.html#SBR-API' }],
+      },
+    ],
+  };
+  const txt = buildLlmsTxt({ siteTitle: 'T', summary: 'S', nav, descriptionsByHref: {} });
+  assert.ok(txt.includes('- [Decoupled](softbinding/Decoupled.html.md#SBR-API)'));
+});
+
+test('buildLlmsTxt omits the description suffix when the description is an empty string', () => {
+  const nav = { categories: [{ label: 'Pages', pages: [{ title: 'A', href: 'a.html' }] }] };
+  const txt = buildLlmsTxt({ siteTitle: 'T', summary: 'S', nav, descriptionsByHref: { 'a.html': '' } });
+  assert.ok(txt.includes('- [A](a.html.md)\n'));
+  assert.ok(!txt.includes('):'));
+});

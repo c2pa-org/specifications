@@ -1,3 +1,8 @@
+// Mirrors the `.html` -> `.html.md` rewrite in markdown-converter.js's
+// `rewrite-internal-html-links` rule, but applies unconditionally (no guard)
+// because nav sidebar hrefs are always internal `.html` pages by construction.
+// If that invariant ever changes, this will need the same guard logic
+// (INTERNAL_HTML_LINK / SAME_SITE_ABSOLUTE_HTML_LINK checks) as that rule.
 function toMirrorHref(href) {
   return href.replace(/\.html(#|$)/, '.html.md$1');
 }
