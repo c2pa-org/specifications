@@ -25,13 +25,15 @@ test('checkLinks reports a broken link to a missing local file', () => {
 });
 
 test('checkLinks ignores bracket/paren sequences inside fenced code blocks', () => {
-  // Real content hits this: CDDL/JSON pattern strings like
-  // (?:[A-Za-z0-9-]*[A-Za-z0-9]) inside a fenced code block would otherwise
-  // be misread as a markdown link with target "?:[A-Za-z0-9-]*[A-Za-z0-9]".
+  // Real content hits this: a JSON schema "pattern" string like
+  // "^[A-Za-z]{2,63}(?:\\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)+\\.?$"
+  // contains "[A-Za-z0-9](?:" — a "]" immediately followed by "(" — which
+  // MARKDOWN_LINK's regex would otherwise misread as a link with target
+  // "?:[A-Za-z0-9-]*[A-Za-z0-9]" if not inside a fenced code block.
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'llm-export-links-code-'));
   fs.writeFileSync(
     path.join(root, 'a.html.md'),
-    '```abnf\nlabel = 1*(ALPHA / DIGIT) (?:[A-Za-z0-9-]*[A-Za-z0-9])\n```\n'
+    '```json\n"pattern": "^[A-Za-z]{2,63}(?:\\\\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)+\\\\.?$"\n```\n'
   );
 
   const result = checkLinks([path.join(root, 'a.html.md')]);
