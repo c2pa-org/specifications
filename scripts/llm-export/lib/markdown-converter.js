@@ -5,6 +5,24 @@ const { strikethrough, taskListItems, highlightedCodeBlock } = require('turndown
 const INTERNAL_HTML_LINK = /^(?!\w+:)(?!\/\/)[^"'#]*\.html(#.*)?$/;
 const SAME_SITE_ABSOLUTE_HTML_LINK = /^https:\/\/spec\.c2pa\.org\/.*\.html(#.*)?$/;
 
+// `node.querySelectorAll('tr')` returns every descendant <tr>, including
+// rows belonging to a nested <table> (e.g. an admonition — which also
+// renders as a <table> — sitting inside a cell). That mixes an inner
+// table's rows into the outer table's row list, corrupting the outer
+// table's column count silently. Walk only this table's own thead/tbody/
+// tfoot/tr children instead, so a nested table's rows are never included.
+function directRows(table) {
+  const rows = [];
+  for (const child of Array.from(table.children)) {
+    if (child.nodeName === 'TR') {
+      rows.push(child);
+    } else if (['THEAD', 'TBODY', 'TFOOT'].includes(child.nodeName)) {
+      rows.push(...Array.from(child.children).filter((c) => c.nodeName === 'TR'));
+    }
+  }
+  return rows;
+}
+
 function createConverter() {
   const td = new TurndownService({ headingStyle: 'atx', codeBlockStyle: 'fenced' });
   // Deliberately not using turndown-plugin-gfm's bundled `gfm` (which
@@ -25,17 +43,6 @@ function createConverter() {
       const anchor = id ? `<a id="${id}"></a>\n` : '';
       return `\n\n${anchor}${'#'.repeat(level)} ${content}\n\n`;
     },
-  });
-
-  // Antora renders a decorative empty permalink anchor inside every heading
-  // with an id (<a class="anchor" href="#x"></a>); drop it before it turns
-  // into a stray empty markdown link.
-  td.addRule('strip-decorative-permalink', {
-    filter: (node) =>
-      node.nodeName === 'A' &&
-      node.getAttribute('class') === 'anchor' &&
-      !node.textContent.trim(),
-    replacement: () => '',
   });
 
   // AsciiDoc admonitions (NOTE/IMPORTANT/WARNING/TIP/CAUTION) render as
@@ -84,7 +91,7 @@ function createConverter() {
   td.addRule('tableblock-table', {
     filter: (node) => node.nodeName === 'TABLE',
     replacement(content, node) {
-      const rows = Array.from(node.querySelectorAll('tr'));
+      const rows = directRows(node);
       if (rows.length === 0) return '';
 
       const cellsOf = (row) => Array.from(row.children).filter((c) => c.nodeName === 'TD' || c.nodeName === 'TH');
@@ -137,6 +144,20 @@ function createConverter() {
       }
       return content ? `[${content}](${href})` : '';
     },
+  });
+
+  // Antora renders a decorative empty permalink anchor inside every heading
+  // with an id (<a class="anchor" href="#x"></a>); drop it before it turns
+  // into a stray empty markdown link. Registered last (turndown checks the
+  // most-recently-added matching rule first) so it wins over
+  // rewrite-internal-html-links, whose filter (any <a> with an href) is a
+  // strict superset of this one's and would otherwise always fire first.
+  td.addRule('strip-decorative-permalink', {
+    filter: (node) =>
+      node.nodeName === 'A' &&
+      node.getAttribute('class') === 'anchor' &&
+      !node.textContent.trim(),
+    replacement: () => '',
   });
 
   return td;

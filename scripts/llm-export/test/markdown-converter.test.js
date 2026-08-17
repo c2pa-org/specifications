@@ -120,3 +120,25 @@ test('preserves a same-page anchor link unchanged', () => {
   const md = htmlToMarkdown(html);
   assert.equal(md.trim(), '[introduction](#_introduction)');
 });
+
+test('does not let a nested table (e.g. an admonition inside a cell) leak rows into the outer table', () => {
+  // node.querySelectorAll('tr') would previously pull in every descendant
+  // <tr>, including the inner table's own row, corrupting the outer
+  // table's column count. The outer table here has exactly one row with
+  // two cells (one of which contains a whole nested table); that nested
+  // row must never become a second row of the outer table.
+  const html = `<table><tr><td><table><tr><td>inner</td></tr></table></td><td>outer2</td></tr></table>`;
+  const md = htmlToMarkdown(html).trim();
+  const lines = md.split('\n');
+  // Outer table: a header row and a separator row only — no extra body
+  // row contributed by the inner table's <tr>.
+  assert.equal(lines.length, 2);
+  // The separator row is the unambiguous signal for column count (the
+  // header row's own cell text may itself contain escaped "|" characters
+  // from the nested table's markdown, e.g. "\| inner \|"). It must reflect
+  // the outer table's own two columns, not some mismatched count from the
+  // inner table's single-column row leaking in.
+  assert.equal(lines[1], '| --- | --- |');
+  assert.ok(lines[0].includes('outer2'));
+  assert.ok(lines[0].includes('inner'));
+});
