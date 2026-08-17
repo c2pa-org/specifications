@@ -74,3 +74,28 @@ test('rewrites an image link the same way as a regular link', () => {
   });
   assert.equal(out, '![diagram](specs/_images/Overview_Diagram.svg)');
 });
+
+test('rewrites the real link in prose while leaving both of two separate fenced code blocks untouched', () => {
+  const md =
+    '```js\n' +
+    'const pairs = [1, 2](3);\n' +
+    '```\n' +
+    '\n' +
+    'See [spec](../specs/C2PA_Specification.html.md) for details.\n' +
+    '\n' +
+    '```json\n' +
+    '"pattern": "^[A-Za-z]{2,63}(?:\\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)+\\.?$"\n' +
+    '```\n';
+  const out = rewriteRelativeLinks(md, { fromDir: '/site/specifications/2.4/security', toDir: '/site/specifications/2.4' });
+  const expected =
+    '```js\n' +
+    'const pairs = [1, 2](3);\n' +
+    '```\n' +
+    '\n' +
+    'See [spec](specs/C2PA_Specification.html.md) for details.\n' +
+    '\n' +
+    '```json\n' +
+    '"pattern": "^[A-Za-z]{2,63}(?:\\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)+\\.?$"\n' +
+    '```\n';
+  assert.equal(out, expected);
+});

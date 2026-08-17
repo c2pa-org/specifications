@@ -5,7 +5,7 @@ const MARKDOWN_LINK = /(!?\[[^\]]*\]\()([^)]+)(\))/g;
 const FENCED_CODE_BLOCK = /```[\s\S]*?```/;
 
 function isRelativeLocalLink(target) {
-  return !/^\w+:/.test(target) && !target.startsWith('//') && !target.startsWith('#') && !target.startsWith('/');
+  return !/^\w+:/.test(target) && !target.startsWith('#') && !target.startsWith('/');
 }
 
 function rewriteLinksInProse(text, fromDir, toDir) {
