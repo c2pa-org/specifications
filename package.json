@@ -5,6 +5,12 @@
   "dependencies": {
     "@antora/lunr-extension": "1.0.0-alpha.13",
     "asciidoctor": "^3.0.4",
-    "asciidoctor-kroki": "^0.18.1"
+    "asciidoctor-kroki": "^0.18.1",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2"
+  },
+  "scripts": {
+    "llm-export": "node scripts/llm-export/generate.js build/site",
+    "test:llm-export": "node --test 'scripts/llm-export/test/*.test.js'"
   }
 }
