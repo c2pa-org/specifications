@@ -35,7 +35,7 @@ function parseNav(pageHtml) {
   const doc = createDocument(pageHtml);
   const menu = doc.querySelector('nav.nav-menu');
   if (!menu) {
-    return { categories: [], pageOrder: [] };
+    throw new Error('parseNav: page has no nav.nav-menu node');
   }
 
   // Descendant queries with no leading combinator (no `:scope`, no `>`)
@@ -64,8 +64,18 @@ function parseNav(pageHtml) {
         ungrouped = { label: 'Pages', pages: [] };
         categories.push(ungrouped);
       }
-      ungrouped.pages.push({ title: directLink.textContent.trim(), href: directLink.getAttribute('href') });
-      pageOrder.push(directLink.getAttribute('href'));
+      // Mirrors the category branch above: querySelectorAll('a.nav-link')
+      // on this item naturally includes directLink itself (as the first
+      // match, in document order) plus any nested child-page links beneath
+      // it, so a top-level entry that is both a page link and the parent
+      // of a nested list (nav.adoc's `* xref:parent[]` / `** xref:child[]`
+      // shape) doesn't lose its children.
+      const pages = Array.from(item.querySelectorAll('a.nav-link')).map((a) => ({
+        title: a.textContent.trim(),
+        href: a.getAttribute('href'),
+      }));
+      ungrouped.pages.push(...pages);
+      pages.forEach((p) => pageOrder.push(p.href));
     }
   }
 

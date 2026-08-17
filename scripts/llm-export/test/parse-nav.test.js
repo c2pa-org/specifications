@@ -46,3 +46,36 @@ test('parseNav returns a flat page order across all categories for llms-full.txt
     '../security/Security_Considerations.html',
   ]);
 });
+
+test('parseNav collects nested child pages under an ungrouped top-level link', () => {
+  // nav.adoc allows a top-level entry to be both a page link and the parent
+  // of a nested list of child pages, e.g.:
+  //   * xref:parent.adoc[Parent]
+  //   ** xref:child.adoc[Child]
+  // With no .nav-text category label present, this should still land in the
+  // fallback "Pages" category, and the child link must not be dropped.
+  const flatHtmlWithChild = `
+    <nav class="nav-menu">
+      <ul class="nav-list"><li class="nav-item" data-depth="0">
+        <ul class="nav-list"><li class="nav-item" data-depth="1">
+          <a class="nav-link" href="parent.html">Parent</a>
+          <ul class="nav-list"><li class="nav-item" data-depth="2">
+            <a class="nav-link" href="child.html">Child</a>
+          </li></ul>
+        </li></ul>
+      </li></ul>
+    </nav>`;
+  const nav = parseNav(flatHtmlWithChild);
+  assert.deepEqual(nav.categories.map((c) => c.label), ['Pages']);
+  assert.deepEqual(nav.categories[0].pages, [
+    { title: 'Parent', href: 'parent.html' },
+    { title: 'Child', href: 'child.html' },
+  ]);
+  assert.deepEqual(nav.pageOrder, ['parent.html', 'child.html']);
+});
+
+test('parseNav throws when the page has no nav.nav-menu node', () => {
+  assert.throws(() => parseNav('<html><body>no nav here</body></html>'), {
+    message: 'parseNav: page has no nav.nav-menu node',
+  });
+});
