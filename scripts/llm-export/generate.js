@@ -5,6 +5,7 @@ const { writeMirrors } = require('./lib/write-mirrors');
 const { parseNav } = require('./lib/parse-nav');
 const { buildLlmsTxt } = require('./lib/build-llms-txt');
 const { buildLlmsFullTxt } = require('./lib/build-llms-full-txt');
+const { rewriteRelativeLinks } = require('./lib/rewrite-relative-links');
 const { checkLinks } = require('./lib/check-links');
 const { checkWordCountDrift } = require('./lib/word-count-check');
 
@@ -75,12 +76,35 @@ function run(siteRoot) {
     const llmsTxt = buildLlmsTxt({ siteTitle: SITE_TITLE, summary: SITE_SUMMARY, nav, descriptionsByHref });
     fs.writeFileSync(path.join(versionDir, 'llms.txt'), llmsTxt);
 
-    const llmsFullTxt = buildLlmsFullTxt({ pageOrder: nav.pageOrder, pagesByHref });
+    // Each page's own markdown carries links relative to that page's own
+    // directory (e.g. specifications/2.4/security/), but llms-full.txt is a
+    // single flat file living at versionDir — relocate each page's links
+    // before concatenating, or nearly every link in the assembled file
+    // resolves to the wrong place.
+    const relocatedPagesByHref = {};
+    for (const [href, result] of Object.entries(pagesByHref)) {
+      relocatedPagesByHref[href] = {
+        ...result,
+        markdown: rewriteRelativeLinks(result.markdown, {
+          fromDir: path.dirname(result.sourcePath),
+          toDir: versionDir,
+        }),
+      };
+    }
+    const llmsFullTxt = buildLlmsFullTxt({ pageOrder: nav.pageOrder, pagesByHref: relocatedPagesByHref });
     fs.writeFileSync(path.join(versionDir, 'llms-full.txt'), llmsFullTxt);
 
     if (path.basename(versionDir) === latest) {
-      fs.writeFileSync(path.join(siteRoot, 'llms.txt'), llmsTxt);
-      fs.writeFileSync(path.join(siteRoot, 'llms-full.txt'), llmsFullTxt);
+      // llmsTxt/llmsFullTxt above are correct relative to versionDir; moving
+      // them up to siteRoot needs the same relocation treatment.
+      fs.writeFileSync(
+        path.join(siteRoot, 'llms.txt'),
+        rewriteRelativeLinks(llmsTxt, { fromDir: versionDir, toDir: siteRoot })
+      );
+      fs.writeFileSync(
+        path.join(siteRoot, 'llms-full.txt'),
+        rewriteRelativeLinks(llmsFullTxt, { fromDir: versionDir, toDir: siteRoot })
+      );
     }
   }
 
