@@ -122,7 +122,10 @@
             "dateEntered": "2024-08-14T15:00:00.000Z",
             "contact": "support@trufo.ai",
             "informationalUrl": "https://trufo.ai/watermarks"
-        }
+        },
+        "softBindingResolutionApis": [
+            "https://c2pa.trufo.ai/v1"
+        ]
     },
     {
         "identifier": 9,
@@ -138,7 +141,10 @@
             "dateEntered": "2024-08-14T15:00:00.000Z",
             "contact": "support@trufo.ai",
             "informationalUrl": "https://trufo.ai/watermarks"
-        }
+        },
+        "softBindingResolutionApis": [
+            "https://c2pa.trufo.ai/v1"
+        ]
     },
     {
         "identifier": 10,
@@ -770,5 +776,18 @@
         "softBindingResolutionApis": [
             "https://api.joinmonolith.com/api/c2pa"
         ]
+    }
+,
+    {
+      "identifier": 49,
+      "alg": "com.museblossom.contentsdefence.1",
+      "type": "watermark",
+      "decodedMediaTypes": ["image"],
+      "entryMetadata": {
+        "description": "Contents Defence invisible image watermark, used to recover the associated C2PA manifest when embedded metadata is absent.",
+        "dateEntered": "2026-08-10T00:00:00.000Z",
+        "contact": "contact@museblossom.com",
+        "informationalUrl": "https://museblossom.com/about"
+      }
     }
 ]
