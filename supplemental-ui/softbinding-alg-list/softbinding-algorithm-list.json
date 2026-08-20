@@ -776,8 +776,7 @@
         "softBindingResolutionApis": [
             "https://api.joinmonolith.com/api/c2pa"
         ]
-    }
-,
+    },
     {
       "identifier": 49,
       "alg": "com.museblossom.contentsdefence.1",
@@ -789,5 +788,62 @@
         "contact": "contact@museblossom.com",
         "informationalUrl": "https://museblossom.com/about"
       }
+    },
+    {
+        "identifier": 50,
+        "alg": "me.reconize.videoseal.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "image",
+            "video"
+        ],
+        "entryMetadata": {
+            "description": "Reconize deployment of the VideoSeal invisible watermark (Meta AI open research), embedding a 256-bit identity payload into image and video pixels via on-device Core ML. Used by the Reconize Mac app (C2PA conformant Generator Product) to bind C2PA manifests to pixels so provenance survives metadata stripping.",
+            "dateEntered": "2026-08-10T00:00:00.000Z",
+            "contact": "hello@reconize.me",
+            "informationalUrl": "https://reconize.me/softbinding.html"
+        }
+    },
+    {
+        "identifier": 51,
+        "alg": "io.diker.sigi.v1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "entryMetadata": {
+            "description": "Sigi invisible watermarking engine by Okeanos B.V.",
+            "dateEntered": "2026-08-11T00:00:00.000Z",
+            "contact": "support@diker.io",
+            "informationalUrl": "https://diker.io/sigi"
+        }
+    },
+    {
+        "identifier": 52,
+        "alg": "com.adobe.hiermark.A",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "audio"
+        ],
+        "entryMetadata": {
+            "description": "Adobe Hierarchical Audio watermark (HierMark) variant A",
+            "dateEntered": "2026-08-13T12:00:00.000Z",
+            "contact": "collomos@adobe.com",
+            "informationalUrl": "https://helpx.adobe.com/uk/creative-cloud/apps/adobe-content-authenticity/content-credentials/overview.html"
+        }
+    },
+    {
+        "identifier": 53,
+        "alg": "com.adobe.flowmark.A",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "video"
+        ],
+        "entryMetadata": {
+            "description": "Adobe FlowMark video watermarking variant A",
+            "dateEntered": "2026-08-13T12:00:00.000Z",
+            "contact": "collomos@adobe.com",
+            "informationalUrl": "https://arxiv.org/abs/2607.05261"
+        }
     }
 ]
