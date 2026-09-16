@@ -514,7 +514,8 @@
         ],
         "encodedMediaTypes": [
             "image/jpeg",
-            "image/png"
+            "image/png",
+            "image/webp"
         ],
         "entryMetadata": {
             "description": "Invisible watermarking technology for image and video assets, enabling C2PA manifest recovery and content provenance verification after metadata stripping or transcoding.",
