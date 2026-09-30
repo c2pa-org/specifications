@@ -11,3 +11,6 @@ WITH_KROKI=danyill/antora-kroki:latest
 docker run -u $(id -u) -v $PWD:/antora:Z \
 			--rm -t "${WITH_KROKI}" \
 			--cache-dir=./.cache/antora antora-playbook-local.yml
+
+# build pagefind index over rendered output
+npx pagefind --site build/site

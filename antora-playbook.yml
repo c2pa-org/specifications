@@ -1,6 +1,3 @@
-antora:
-  extensions:
-  - '@antora/lunr-extension'
 site:
   title: C2PA Specifications
   url: https://spec.c2pa.org/specifications
@@ -125,41 +122,6 @@ ui:
         font-size: 0.85rem;
         font-weight: 600;
       }
-      /* Search input styling */
-      .navbar-item.search {
-        position: relative;
-      }
-      #search-input {
-        box-sizing: border-box;
-        font-family: inherit;
-        font-size: inherit;
-        line-height: inherit;
-        color: #000;
-        background: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.3);
-        border-radius: 4px;
-        padding: 0.3em 0.5em;
-        width: 12em;
-        max-width: 100%;
-        transition: width 0.2s ease, border-color 0.2s ease;
-      }
-      #search-input:focus {
-        outline: none;
-        border-color: var(--color-brand-primary);
-        width: 18em;
-        max-width: calc(100vw - 4rem);
-      }
-      #search-input::placeholder {
-        color: rgba(0, 0, 0, 0.4);
-      }
-      @media screen and (max-width: 768px) {
-        #search-input {
-          width: 100%;
-        }
-        #search-input:focus {
-          width: 100%;
-        }
-      }
   - path: img/C2PA-logo.svg
     contents: |
       <?xml version="1.0" encoding="utf-8"?>
@@ -277,6 +239,20 @@ ui:
       <link rel="stylesheet" href="{{{uiRootPath}}}/css/c2pa-branding.css">
       <link rel="icon" type="image/svg+xml" sizes="any" href="{{{uiRootPath}}}/img/C2PA-favicon.svg">
       <link rel="mask-icon" href="{{{uiRootPath}}}/img/C2PA-logo.svg" color="#e40046">
+      <link rel="stylesheet" href="{{{siteRootPath}}}/_pagefind/pagefind-ui.css">
+  - path: partials/head-scripts.hbs
+    contents: |
+      <script src="{{{siteRootPath}}}/_pagefind/pagefind-ui.js"></script>
+      <script>
+        window.addEventListener('DOMContentLoaded', function () {
+          new PagefindUI({
+            element: '#search',
+            showImages: false,
+            excerptLength: 15,
+            resetStyles: false
+          });
+        });
+      </script>
   - path: partials/edit-this-page.hbs
     contents: |
       
@@ -295,13 +271,9 @@ ui:
           </div>
           <div id="topbar-nav" class="navbar-menu">
             <div class="navbar-end">
-              {{#if env.SITE_SEARCH_PROVIDER}}
-              <div class="navbar-item search hide-for-print">
-                <div id="search-field" class="field">
-                  <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search">
-                </div>
+              <div class="navbar-item hide-for-print">
+                <div id="search"></div>
               </div>
-              {{/if}}
               <div class="navbar-item has-dropdown is-hoverable">
                 <div class="navbar-link">Download</div>
                 <div class="navbar-dropdown">
@@ -326,6 +298,7 @@ ui:
           </div>
         </nav>
       </header>
+      <span hidden data-pagefind-filter="version:{{page.componentVersion}}"></span>
   - path: partials/footer-content.hbs
     contents: |
       <footer class="footer">
@@ -352,9 +325,6 @@ ui:
           <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
         </div>
       </footer>
-      {{#if env.SITE_SEARCH_PROVIDER}}
-      {{> search-scripts}}
-      {{/if}}
 asciidoc:
   extensions:
   - asciidoctor-kroki

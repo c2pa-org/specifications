@@ -7,22 +7,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-      # automated publishing takes too long so turning off...
-      # - name: Run Antora
-      #   uses: kameshsampath/antora-site-action@v0.2.4
-      #   with:
-      #     antora_playbook: antora-playbook.yml
-      #     antora_generator: 'antora-site-generator-lunr'
-      #     antora_docsearch_enabled: 'true'
-      # - name: Install Node.js
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: '14'
-      # - name: Install Antora
-      #   run: npm i --no-optional --silent @antora/cli@2.3.4 @antora/site-generator-default@2.3.4 asciidoctor-kroki
-      # - name: Run Antora
-      #   run: $(npm bin)/antora --fetch antora-playbook.yml
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build site
+        run: npx antora --fetch antora-playbook.yml
+      - name: Build Pagefind index
+        run: npx pagefind --site build/site
       - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
