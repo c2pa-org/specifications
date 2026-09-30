@@ -47,7 +47,7 @@
             "description": "ISO 24138 - International Standard Content Code (ISCC) V0 algorithm",
             "dateEntered": "2024-05-17T16:00:00Z",
             "contact": "info@iscc.io",
-            "informationalUrl": "https://www.iso.org/standard/77899.html"
+            "informationalUrl": "https://ieps.iscc.codes/iep-0020/"
         }
     },
     {
@@ -782,7 +782,7 @@
       "identifier": 49,
       "alg": "com.museblossom.contentsdefence.1",
       "type": "watermark",
-      "decodedMediaTypes": ["image"],
+      "decodedMediaTypes": ["audio", "image", "video"],
       "entryMetadata": {
         "description": "Contents Defence invisible image watermark, used to recover the associated C2PA manifest when embedded metadata is absent.",
         "dateEntered": "2026-08-10T00:00:00.000Z",
