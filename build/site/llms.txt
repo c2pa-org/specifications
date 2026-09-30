@@ -1,0 +1,23 @@
+# C2PA Technical Specification
+
+> C2PA (Coalition for Content Provenance and Authenticity) defines an end-to-end, open technical standard for certifying the provenance and history of digital media content.
+
+## Technical Specifications
+
+- [Content Credentials](specifications/2.4/specs/C2PA_Specification.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [Content Credentials JSON (crJSON)](specifications/2.4/crJSON/crjson-format.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [Attestations](specifications/1.4/attestations/attestation.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [Soft Binding API](specifications/2.4/softbinding/Decoupled.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+
+## Informative Documents
+
+- [Explainer](specifications/2.2/explainer/Explainer.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [Guidance for Implementers](specifications/2.2/guidance/Guidance.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [User Experience Guidance](specifications/2.2/ux/UX_Recommendations.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [C2PA Security Considerations](specifications/2.4/security/Security_Considerations.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [C2PA Harms Modelling](specifications/2.4/security/Harms_Modelling.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [Guidance for Artificial Intelligence and Machine Learning](specifications/2.3/ai-ml/ai_ml.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+
+## Recommendations
+
+- [Human and Organizational Identity Recommendation](specifications/2.4/identity/identity.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
