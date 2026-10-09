@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Embedding C2PA Manifests :: C2PA Specifications</title>
+    <link rel="canonical" href="https://spec.c2pa.org/specifications/specifications/2.5/specs/Embedding.html">
+    <meta name="generator" content="Antora 3.1.14">
+<link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/c2pa-branding.css">
+<link rel="icon" type="image/svg+xml" sizes="any" href="../../../_/img/C2PA-favicon.svg">
+<link rel="mask-icon" href="../../../_/img/C2PA-logo.svg" color="#e40046">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+   <div class="navbar-brand">
+    <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="96"></a>
+      <a class="navbar-item title" href="https://spec.c2pa.org/specifications/specifications/2.5/index.html">C2PA Specifications</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search">
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Download</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="../../2.3/specs/_attachments/C2PA_Specification.pdf" target="_blank">Technical Specifications (2.3)</a>
+            <a class="navbar-item" href="../../2.3/explainer/_attachments/Explainer.pdf" target="_blank">Explainer (2.3)</a>
+            <a class="navbar-item" href="../../2.3/guidance/_attachments/Guidance.pdf" target="_blank">Guidance for Implementers (2.3)</a>
+            <a class="navbar-item" href="../../2.3/specs/_attachments/C2PA_Schemas.zip" target="_blank">CDDL and JSON Schemas (2.3)</a>
+            <hr class="navbar-divider">
+            <a class="navbar-item" href="../../2.2/specs/_attachments/C2PA_Specification.pdf" target="_blank">Technical Specifications (2.2)</a>
+            <a class="navbar-item" href="../../2.2/explainer/_attachments/Explainer.pdf" target="_blank">Explainer (2.2)</a>
+            <a class="navbar-item" href="../../1.3/ux/_attachments/UX_Recommendations.pdf" target="_blank">UX Recommendations</a>
+            <a class="navbar-item" href="../../1.0/security/_attachments/Security_Considerations.pdf" target="_blank">Security Considerations</a>
+            <a class="navbar-item" href="../../1.0/security/_attachments/Harms_Modelling.pdf" target="_blank">Harms Modelling</a>
+          </div>
+        </div>
+        <a class="navbar-item github" href="https://github.com/c2pa-org" target="_blank" rel="noopener" aria-label="C2PA on GitHub" title="C2PA on GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="#000" role="img" aria-hidden="true" style="display:block">
+            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8Z"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="specifications" data-version="2.5">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">C2PA Specifications</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Technical Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="C2PA_Specification.html">Content Credentials</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../crJSON/crjson-format.html">Content Credentials JSON (crJSON)</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../1.4/attestations/attestation.html">Attestations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.4/softbinding/Decoupled.html">Soft Binding API</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Informative Documents</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.2/explainer/Explainer.html">Explainer</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.2/guidance/Guidance.html">Guidance for Implementers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.2/ux/UX_Recommendations.html">User Experience Guidance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.4/security/Security_Considerations.html">C2PA Security Considerations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.4/security/Harms_Modelling.html">C2PA Harms Modelling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.3/ai-ml/ai_ml.html">Guidance for Artificial Intelligence and Machine Learning</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Recommendations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../2.4/identity/identity.html">Human and Organizational Identity Recommendation</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">C2PA Specifications</span>
+    <span class="version">2.5</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">C2PA Specifications</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.5</a>
+        </li>
+        <li class="version">
+          <a href="../../2.4/index.html">2.4</a>
+        </li>
+        <li class="version">
+          <a href="../../2.3/index.html">2.3</a>
+        </li>
+        <li class="version">
+          <a href="../../2.2/index.html">2.2</a>
+        </li>
+        <li class="version">
+          <a href="../../2.1/index.html">2.1</a>
+        </li>
+        <li class="version">
+          <a href="../../2.0/index.html">2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../1.4/index.html">1.4</a>
+        </li>
+        <li class="version">
+          <a href="../../1.3/index.html">1.3</a>
+        </li>
+        <li class="version">
+          <a href="../../1.2/index.html">1.2</a>
+        </li>
+        <li class="version">
+          <a href="../../1.1/index.html">1.1</a>
+        </li>
+        <li class="version">
+          <a href="../../1.0/index.html">1.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">C2PA Specifications</a></li>
+    <li><a href="Embedding.html">Embedding C2PA Manifests</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">2.5</button>
+  <div class="version-menu">
+    <a class="version is-current" href="Embedding.html">2.5</a>
+    <a class="version is-missing" href="../../2.4/index.html">2.4</a>
+    <a class="version is-missing" href="../../2.3/index.html">2.3</a>
+    <a class="version is-missing" href="../../2.2/index.html">2.2</a>
+    <a class="version is-missing" href="../../2.1/index.html">2.1</a>
+    <a class="version is-missing" href="../../2.0/index.html">2.0</a>
+    <a class="version is-missing" href="../../1.4/index.html">1.4</a>
+    <a class="version is-missing" href="../../1.3/index.html">1.3</a>
+    <a class="version is-missing" href="../../1.2/index.html">1.2</a>
+    <a class="version is-missing" href="../../1.1/index.html">1.1</a>
+    <a class="version is-missing" href="../../1.0/index.html">1.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Embedding C2PA Manifests</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This page is a standalone index of the format-embedding guidance for convenient navigation and linking. The normative embedding rules themselves live in the "Embedding manifests" annex of the <a href="C2PA_Specification.html#embedding_annex" class="xref page">C2PA Technical Specification</a> and are not duplicated here.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_supported_formats"><a class="anchor" href="#_supported_formats"></a>Supported Formats</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A C2PA Manifest is embedded into an asset as part of the C2PA Manifest Store for that asset.</p>
+</div>
+<div class="paragraph">
+<p>When embedding the C2PA Manifest Store into an asset, the location will vary based on the type or format of the asset. The table below indexes well-known file formats, sorted alphabetically, by their IANA Media Type (where one is officially registered), their normative reference (where this specification cites one), and the specification section that defines the embedding location.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">IANA Media Type</th>
+<th class="tableblock halign-left valign-top">Normative Reference</th>
+<th class="tableblock halign-left valign-top">Specification Section</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Append-only JSONL streams</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_append_only_text_files" class="xref page">Embedding manifests into append-only text files</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Append-only plain-text files (logs and event logs)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>text/plain</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_append_only_text_files" class="xref page">Embedding manifests into append-only text files</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AVI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000025.shtml">RIFF</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_riff_based_assets" class="xref page">Embedding manifests into RIFF-based assets</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://helpx.adobe.com/content/dam/help/en/photoshop/pdf/dng_spec_1_6_0_0.pdf">DNG</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_tiff_based_assets" class="xref page">Embedding manifests into TIFF-based assets</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EPUB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>application/epub+zip</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_zip_based_formats" class="xref page">Embedding manifests into ZIP-based formats</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.facta</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>audio/vnd.blockfact.facta</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_facti_facta_factv" class="xref page">Embedding manifests into .facti/.facta/.factv</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.facti</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>image/vnd.blockfact.facti</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_facti_facta_factv" class="xref page">Embedding manifests into .facti/.facta/.factv</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.factv</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>video/vnd.blockfact.factv</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_facti_facta_factv" class="xref page">Embedding manifests into .facti/.facta/.factv</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FLAC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>audio/flac</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://id3.org/id3v2.3.0">ID3</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_id3" class="xref page">Embedding manifests into ID3</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fonts (OFF, OpenType)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>font/otf</code>, <code>font/ttf</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iso.org/standard/74461.html">Open Font Format</a>, <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/">OpenType</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_fonts" class="xref page">Embedding manifests into fonts</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GIF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>image/gif</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/Graphics/GIF/spec-gif89a.txt">GIF</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_gifs" class="xref page">Embedding manifests into GIFs</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HEIF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>image/heif</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iso.org/standard/83102.html">ISO/IEC 14496-12, ISO BMFF</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_bmff_based_assets" class="xref page">Embedding manifests into BMFF-based assets</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>text/html</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/html/">HTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#embedding_manifests_into_html" class="xref page">Embedding Manifests into HTML</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JPEG 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>image/jpeg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iso.org/standard/66071.html">ISO/IEC 18477-3</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_jpeg_1" class="xref page">Embedding manifests into JPEG 1</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JPEG XL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>image/jxl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO/IEC 18181-2:2024, Clause 4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_jpeg_xl" class="xref page">Embedding manifests into JPEG XL</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MOV</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>video/quicktime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iso.org/standard/83102.html">ISO/IEC 14496-12, ISO BMFF</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_bmff_based_assets" class="xref page">Embedding manifests into BMFF-based assets</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MP3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>audio/mpeg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://id3.org/id3v2.3.0">ID3</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_id3" class="xref page">Embedding manifests into ID3</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MP4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>video/mp4</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iso.org/standard/83102.html">ISO/IEC 14496-12, ISO BMFF</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_bmff_based_assets" class="xref page">Embedding manifests into BMFF-based assets</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MP4 Audio (M4A)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>audio/mp4</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iso.org/standard/83102.html">ISO/IEC 14496-12, ISO BMFF</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_bmff_based_assets" class="xref page">Embedding manifests into BMFF-based assets</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OGG Vorbis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>audio/ogg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.rfc-editor.org/rfc/rfc3533">RFC 3533</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_ogg_vorbis" class="xref page">Embedding manifests into OGG Vorbis</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ONNX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://onnx.ai/onnx/repo-docs/IR.html">ONNX Intermediate Representation Specification, Version 10</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_onnx" class="xref page">Embedding manifests into ONNX</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OOXML</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>application/vnd.openxmlformats-officedocument.*</code> (one per document type)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_zip_based_formats" class="xref page">Embedding manifests into ZIP-based formats</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open Document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>application/vnd.oasis.opendocument.*</code> (one per document type)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_zip_based_formats" class="xref page">Embedding manifests into ZIP-based formats</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenXPS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>application/oxps</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_zip_based_formats" class="xref page">Embedding manifests into ZIP-based formats</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other BMFF-based formats</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iso.org/standard/83102.html">ISO/IEC 14496-12, ISO BMFF</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_bmff_based_assets" class="xref page">Embedding manifests into BMFF-based assets</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other RIFF-based formats</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000025.shtml">RIFF</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_riff_based_assets" class="xref page">Embedding manifests into RIFF-based assets</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other TIFF-based formats</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>image/tiff</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.iso.org/standard/29377.html">TIFF/EP</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_tiff_based_assets" class="xref page">Embedding manifests into TIFF-based assets</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other ZIP-based formats</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_zip_based_formats" class="xref page">Embedding manifests into ZIP-based formats</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parquet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>application/vnd.apache.parquet</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://parquet.apache.org/docs/file-format/">Apache Parquet File Format</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_parquet" class="xref page">Embedding manifests into Parquet</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PDF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>application/pdf</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 32000-2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_pdfs" class="xref page">Embedding manifests into PDFs</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PNG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>image/png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/png-3/">PNG</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_png" class="xref page">Embedding manifests into PNG</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SafeTensors</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://huggingface.co/docs/safetensors/index">SafeTensors Format Specification</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_safetensors" class="xref page">Embedding manifests into SafeTensors</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Structured text (with comment or front-matter syntax)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>text/&#42;</code> (excluding <code>text/html</code> and <code>text/vtt</code>, which have their own rows, <code>text/csv</code>, and append-only text files)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.rfc-editor.org/rfc/rfc9580#section-6.2">RFC 9580, section 6.2</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#embedding_manifests_into_structured_text" class="xref page">Embedding Manifests into Structured Text</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SVG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>image/svg+xml</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/SVG11/">SVG</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_svg" class="xref page">Embedding manifests into SVG</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TTML</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>application/ttml+xml</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/ttml2/">TTML2</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_ttml" class="xref page">Embedding manifests into TTML</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unstructured text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#embedding_manifests_into_unstructured_text" class="xref page">Embedding Manifests into Unstructured Text</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WAV and BWF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000025.shtml">RIFF</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_riff_based_assets" class="xref page">Embedding manifests into RIFF-based assets</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WARC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>application/warc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{warc}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#embedding_manifests_into_warc" class="xref page">Embedding manifests into WARC files</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WebP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>image/webp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000025.shtml">RIFF</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#_embedding_manifests_into_riff_based_assets" class="xref page">Embedding manifests into RIFF-based assets</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WebVTT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>text/vtt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/webvtt1/">WebVTT</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="C2PA_Specification.html#embedding_manifests_into_structured_text" class="xref page">Embedding Manifests into Structured Text</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Non-BMFF-based audio formats which are being considered for addition to this specification include the native container version of the Free Lossless Audio Codec (Native FLAC).
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+"—" in the IANA Media Type column means no media type for that format is officially registered with IANA (verified against the IANA Media Types registry at the time of writing) — this affects AVI, DNG, ONNX, SafeTensors, WAV, and BWF, none of which have a registered type despite informal/legacy strings sometimes used for them in the wild, plus the generic "other formats" rows, which are catch-alls rather than a single format. "—" in the Normative Reference column means the corresponding section of this specification does not cite a standard via a document attribute; PDF and the ZIP-based formats cite their standards (ISO 32000-2, ECMA-376, ISO/IEC 26300, etc.) as plain text instead.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_embedding_manifests_in_multi_part_assets"><a class="anchor" href="#_embedding_manifests_in_multi_part_assets"></a>Embedding manifests in multi-part assets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When embedding a C2PA Manifest into a multi-part asset ("multi-asset"), there shall be a C2PA Manifest Store embedded into the primary part of the asset (which contains the active manifest), though additional parts may also contain their own C2PA Manifest Stores. The active manifest of the primary part shall contain a <a href="C2PA_Specification.html#_multi_asset_hash" class="xref page">multi-asset hash assertion</a> that describes the location and hash of each part within the asset and should describe the provenance of the whole multi-part asset.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <div class="footer-main">
+    <figure class="footer-brand">
+      <a class="logo" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="96"></a>
+      <figcaption class="footer-brand-name"><a href="https://c2pa.org">C2PA</a></figcaption>
+    </figure>
+    <ul class="footer-brand-links">
+      <li><a href="https://c2pa.org" target="_blank" rel="noopener">Home</a></li>
+      <li><a href="https://spec.c2pa.org/specifications">Docs</a></li>
+      <li><a href="https://github.com/c2pa-org" target="_blank" rel="noopener">Project</a></li>
+    </ul>
+    <p class="footer-brand-follow">
+      <a href="https://twitter.com/c2pa_org" title="Follow us on Twitter" target="_blank" rel="noopener"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231d9bf0'%3E%3Cpath d='M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 9 0 11-4s1-8.2 0-11c-.5-.55-.5-1-1-1.2z'/%3E%3C/svg%3E" alt="Twitter logo" class="logo" width="24" style="display:inline; margin-right:0.25em;"><span class="handle">@C2PA_org</span></a>
+    </p>
+  </div>
+  <div class="footer-legal">
+    <p>Copyright © 2026 Coalition for Content Provenance and Authenticity (C2PA). Except where noted, the content is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+    <p>The <a href="https://gitlab.com/antora/antora-ui-default" target="_blank" rel="noopener">UI for this site</a> is the Antora default UI, licensed under the MPL-2.0 license.</p>
+  </div>
+  <div class="footer-thanks">
+    <p>Thanks to our <a href="https://c2pa.org/membership/" target="_blank" rel="noopener">membership</a> for helping to make this project possible.</p>
+    <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
+  </div>
+</footer>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+  </body>
+</html>
