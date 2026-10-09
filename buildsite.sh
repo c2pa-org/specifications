@@ -13,6 +13,9 @@ docker run --rm \
   "$WITH_KROKI" \
   --cache-dir=./.cache/antora antora-playbook.yml
 
+# build pagefind index over rendered output
+npx pagefind --site "$SCRIPT_DIR/build/site"
+
 # generate llms.txt / llms-full.txt / per-page markdown mirrors from the built site
 docker run --rm \
   --user "$(id -u):$(id -g)" \

@@ -10,6 +10,18 @@
 <link rel="stylesheet" href="../../../_/css/c2pa-branding.css">
 <link rel="icon" type="image/svg+xml" sizes="any" href="../../../_/img/C2PA-favicon.svg">
 <link rel="mask-icon" href="../../../_/img/C2PA-logo.svg" color="#e40046">
+<link rel="stylesheet" href="../../../pagefind/pagefind-ui.css">
+<script src="../../../pagefind/pagefind-ui.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    new PagefindUI({
+      element: '#search',
+      showImages: false,
+      excerptLength: 15,
+      resetStyles: false
+    });
+  });
+</script>
   </head>
   <body class="article">
 <header class="header">
@@ -25,10 +37,8 @@
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-        <div class="navbar-item search hide-for-print">
-          <div id="search-field" class="field">
-            <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search">
-          </div>
+        <div class="navbar-item hide-for-print">
+          <div id="search"></div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
@@ -54,6 +64,7 @@
     </div>
   </nav>
 </header>
+<span hidden data-pagefind-filter="version:2.5"></span>
 <div class="body">
 <div class="nav-container" data-component="specifications" data-version="2.5">
   <aside class="nav">
@@ -363,52 +374,56 @@
 <li><a href="#_disclosure_levels">B.2. Disclosure Levels</a></li>
 <li><a href="#_threats_and_security_considerations">B.3. Threats and Security Considerations</a></li>
 <li><a href="#_harms_misuse_and_abuse">B.4. Harms, Misuse, and Abuse</a></li>
-<li><a href="#_completely_supported_schemas">B.5. Completely Supported Schemas</a></li>
-<li><a href="#_partially_supported_schemas">B.6. Partially Supported Schemas</a></li>
 </ul>
 </li>
-<li><a href="#validation_codes_annex">Appendix C: Standard Validation Status Codes</a>
+<li><a href="#metadata_annex">Appendix C: Implementation Details for <code>c2pa.metadata</code></a>
 <ul class="sectlevel2">
-<li><a href="#_success_codes">C.1. Success codes</a></li>
-<li><a href="#_informational_codes">C.2. Informational codes</a></li>
-<li><a href="#_failure_codes">C.3. Failure codes</a></li>
+<li><a href="#_completely_supported_schemas">C.1. Completely Supported Schemas</a></li>
+<li><a href="#_partially_supported_schemas">C.2. Partially Supported Schemas</a></li>
 </ul>
 </li>
-<li><a href="#versioning_annex">Appendix D: Considerations for Deprecation</a>
+<li><a href="#validation_codes_annex">Appendix D: Standard Validation Status Codes</a>
 <ul class="sectlevel2">
-<li><a href="#_status_of_constructs">D.1. Status of Constructs</a></li>
+<li><a href="#_success_codes">D.1. Success codes</a></li>
+<li><a href="#_informational_codes">D.2. Informational codes</a></li>
+<li><a href="#_failure_codes">D.3. Failure codes</a></li>
 </ul>
 </li>
-<li><a href="#version_history">Appendix E: Version History</a>
+<li><a href="#versioning_annex">Appendix E: Considerations for Deprecation</a>
 <ul class="sectlevel2">
-<li><a href="#_2_5_october_2026">E.1. 2.5 - October 2026</a></li>
-<li><a href="#_2_4_april_2026">E.2. 2.4 - April 2026</a></li>
-<li><a href="#_2_3_december_2025">E.3. 2.3 - December 2025</a></li>
-<li><a href="#_2_2_may_2025">E.4. 2.2 - May 2025</a></li>
-<li><a href="#_2_1_september_2024">E.5. 2.1 - September 2024</a></li>
-<li><a href="#_2_0_january_2024">E.6. 2.0 - January 2024</a></li>
-<li><a href="#_1_4_november_2023">E.7. 1.4 - November 2023</a></li>
-<li><a href="#_1_3_april_2023">E.8. 1.3 - April 2023</a></li>
-<li><a href="#_1_2_october_2022">E.9. 1.2 - October 2022</a></li>
-<li><a href="#_1_1_september_2022">E.10. 1.1 - September 2022</a></li>
-<li><a href="#_1_0_december_2021">E.11. 1.0 - December 2021</a></li>
-<li><a href="#_index">E.12. Index</a></li>
-<li><a href="#_core_schemas">E.13. Core Schemas</a></li>
-<li><a href="#_uri_types">E.14. URI Types</a></li>
-<li><a href="#_hash_assertions">E.15. Hash Assertions</a></li>
-<li><a href="#_content_assertions">E.16. Content Assertions</a></li>
-<li><a href="#_trust_and_security">E.17. Trust and Security</a></li>
-<li><a href="#_common_types">E.18. Common Types</a></li>
-<li><a href="#_live_media">E.19. Live Media</a></li>
+<li><a href="#_status_of_constructs">E.1. Status of Constructs</a></li>
 </ul>
 </li>
-<li><a href="#deprecated_constructs_annex">Appendix F: Deprecated Constructs</a>
+<li><a href="#version_history">Appendix F: Version History</a>
 <ul class="sectlevel2">
-<li><a href="#_datasource_field">F.1. <code>dataSource</code> Field in Assertion Metadata</a></li>
-<li><a href="#_string_label_x5chain">F.2. String Label <code>x5chain</code></a></li>
-<li><a href="#_data_boxes">F.3. Data Boxes</a></li>
-<li><a href="#_data_box_store">F.4. Data Box Store</a></li>
-<li><a href="#_action_c2pa_removed">F.5. Action <code>c2pa.removed</code></a></li>
+<li><a href="#_2_5_october_2026">F.1. 2.5 - October 2026</a></li>
+<li><a href="#_2_4_april_2026">F.2. 2.4 - April 2026</a></li>
+<li><a href="#_2_3_december_2025">F.3. 2.3 - December 2025</a></li>
+<li><a href="#_2_2_may_2025">F.4. 2.2 - May 2025</a></li>
+<li><a href="#_2_1_september_2024">F.5. 2.1 - September 2024</a></li>
+<li><a href="#_2_0_january_2024">F.6. 2.0 - January 2024</a></li>
+<li><a href="#_1_4_november_2023">F.7. 1.4 - November 2023</a></li>
+<li><a href="#_1_3_april_2023">F.8. 1.3 - April 2023</a></li>
+<li><a href="#_1_2_october_2022">F.9. 1.2 - October 2022</a></li>
+<li><a href="#_1_1_september_2022">F.10. 1.1 - September 2022</a></li>
+<li><a href="#_1_0_december_2021">F.11. 1.0 - December 2021</a></li>
+<li><a href="#_index">F.12. Index</a></li>
+<li><a href="#_core_schemas">F.13. Core Schemas</a></li>
+<li><a href="#_uri_types">F.14. URI Types</a></li>
+<li><a href="#_hash_assertions">F.15. Hash Assertions</a></li>
+<li><a href="#_content_assertions">F.16. Content Assertions</a></li>
+<li><a href="#_trust_and_security">F.17. Trust and Security</a></li>
+<li><a href="#_common_types">F.18. Common Types</a></li>
+<li><a href="#_live_media">F.19. Live Media</a></li>
+</ul>
+</li>
+<li><a href="#deprecated_constructs_annex">Appendix G: Deprecated Constructs</a>
+<ul class="sectlevel2">
+<li><a href="#_datasource_field">G.1. <code>dataSource</code> Field in Assertion Metadata</a></li>
+<li><a href="#_string_label_x5chain">G.2. String Label <code>x5chain</code></a></li>
+<li><a href="#_data_boxes">G.3. Data Boxes</a></li>
+<li><a href="#_data_box_store">G.4. Data Box Store</a></li>
+<li><a href="#_action_c2pa_removed">G.5. Action <code>c2pa.removed</code></a></li>
 </ul>
 </li>
 </ul>
@@ -839,7 +854,7 @@ C2PA specifications DO NOT provide value judgements about whether a given set of
 <strong>Why:</strong> Provides a basic mental model of how the C2PA specification is structured, including claims, assertions, manifests, signatures, ingredients, and validation.</p>
 </div>
 <div class="paragraph">
-<p><strong><a href="#_information_security">Information Security Considerations</a></strong><br>
+<p><strong><a href="#_threats_and_security_considerations">Information Security Considerations</a></strong><br>
 <strong>Read:</strong> All of this section.<br>
 <strong>Why:</strong> This is the core security-review section. It outlines threats, harms, misuse and abuse scenarios, and other security considerations for reviewers to evaluate.</p>
 </div>
@@ -953,7 +968,7 @@ An organization or group of <a href="#_actor">actors</a> may also be considered 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The claim generator is is a component of a larger system, such as a library, software development kit (SDK), or shared service that a signer relies on to generate and embed claims in assets, but is not the Signer itself and thus does not assume responsibility for the content of the Claim or Assertions.
+The claim generator is a component of a larger system, such as a library, software development kit (SDK), or shared service that a signer relies on to generate and embed claims in assets, but is not the Signer itself and thus does not assume responsibility for the content of the Claim or Assertions.
 </td>
 </tr>
 </table>
@@ -1292,7 +1307,7 @@ A <a href="#_c2pa_manifest">C2PA Manifest</a> can reference other <a href="#_c2p
 <p>As the Content Credentials specification has evolved, constructs such as box labels, assertions (and their fields), claims and time stamps have also evolved. New assertions have been added, and some existing assertions and the claim have newer versions with additional fields. In addition, some constructs have been deprecated. In this specification, when a construct is marked as deprecated, that means that a claim generator shall not write that construct (or value), but that a validator should read it.</p>
 </div>
 <div class="paragraph">
-<p>To facilitate testing and diagnosing interoperability issues between claim generators and validators, a claim generator should declare which version of the specification it is using to generate the C2PA Manifest by providing a <a href="#claim-specVersion"><code>specVersion</code> key</a> in the <code>claim_generator_info</code> field of the claim. When a claim generator sets this field, it is declaring that the active manifest of the asset is produced in accordance with that version of the specification and thus, for example, does not contain any constructs that are deprecated in that version of the specification (see <a href="#deprecated_constructs_table">Table 21, &#8220;Status of constructs&#8221;</a> of <a href="#versioning_annex">Appendix D, <em>Considerations for Deprecation</em></a>).</p>
+<p>To facilitate testing and diagnosing interoperability issues between claim generators and validators, a claim generator should declare which version of the specification it is using to generate the C2PA Manifest by providing a <a href="#claim-specVersion"><code>specVersion</code> key</a> in the <code>claim_generator_info</code> field of the claim. When a claim generator sets this field, it is declaring that the active manifest of the asset is produced in accordance with that version of the specification and thus, for example, does not contain any constructs that are deprecated in that version of the specification (see <a href="#deprecated_constructs_table">Table 21, &#8220;Status of constructs&#8221;</a> of <a href="#versioning_annex">Appendix E, <em>Considerations for Deprecation</em></a>).</p>
 </div>
 <div class="paragraph">
 <p>A validator shall be compatible with at least one version of the specification, but may be compatible with additional versions. A validator that is compatible with a specific version of the specification shall support all non-deprecated constructs listed for that version. If the validator encounters a C2PA Manifest that uses constructs from a version of the specification that the validator does not support (either because they are deprecated or unknown), it may ignore the unsupported construct and process the rest of C2PA Manifest as if that construct were not present.</p>
@@ -1659,7 +1674,7 @@ Green lines denote containment (one component is structurally embedded within an
 <p>metadata (e.g., camera information such as maker or lens);</p>
 </li>
 <li>
-<p>actions performed on the asset (e.g., clipping, color correction);</p>
+<p>actions performed on the asset (e.g., clipping, colour correction);</p>
 </li>
 <li>
 <p>thumbnail of the asset or its ingredients;</p>
@@ -2071,7 +2086,7 @@ Previous versions of this specification used <a href="https://www.rfc-editor.org
 <p>A <code>hashed_uri</code> is used when the URI is for something embedded in the same C2PA Manifest Store.</p>
 </div>
 <div class="paragraph">
-<p>This specification provides an equivalent <code>hashed-uri-map</code> data structure for schemas using a <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_hashed_uri">Section E.14.1, &#8220;Hashed URI&#8221;</a> for the complete normative schema):</p>
+<p>This specification provides an equivalent <code>hashed-uri-map</code> data structure for schemas using a <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_hashed_uri">Section F.14.1, &#8220;Hashed URI&#8221;</a> for the complete normative schema):</p>
 </div>
 <div id="hashed-uri-map" class="listingblock">
 <div class="title">CDDL for hashed URI</div>
@@ -2123,7 +2138,7 @@ jumbf-uri-type  /= tstr .regexp "self#jumbf=[A-Za-z0-9/][A-Za-z0-9./:&amp;=-]*[A
 <div class="sect4">
 <h5 id="hashed-ext-uri"><a class="anchor" href="#hashed-ext-uri"></a>9.4.2.2. External</h5>
 <div class="paragraph">
-<p>When referring to a resource that exists externally to the C2PA Manifest Store, a <code>hashed-ext-uri-map</code> data structure is used.  It is a variation on the <code>hashed-uri</code>, in that it references an external URI instead of a <code>self#jumbf</code>. The <code>hashed-ext-uri</code> data structure is defined by the <code>hashed-ext-uri-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_hashed_ext_uri">Section E.14.2, &#8220;Hashed External URI&#8221;</a> for the complete normative schema):</p>
+<p>When referring to a resource that exists externally to the C2PA Manifest Store, a <code>hashed-ext-uri-map</code> data structure is used.  It is a variation on the <code>hashed-uri</code>, in that it references an external URI instead of a <code>self#jumbf</code>. The <code>hashed-ext-uri</code> data structure is defined by the <code>hashed-ext-uri-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_hashed_ext_uri">Section F.14.2, &#8220;Hashed External URI&#8221;</a> for the complete normative schema):</p>
 </div>
 <div id="hashed-ext-uri-map" class="listingblock">
 <div class="title">CDDL for hashed external URI</div>
@@ -2143,7 +2158,7 @@ $hashed-ext-uri-map /= {
   ? "size": size-type, ; Number of bytes of data
 
   ; additional information about the data's type
-  ? "data_types": [1* $asset-type-map],
+  ? "data_types": [1* asset-type-map],
 }
 
 ; with CBOR Head (#) and tail ($) are introduced in regexp, so not needed
@@ -2257,7 +2272,7 @@ Previous versions supported the use of assertion metadata with claims, but this 
 <div class="sect3">
 <h4 id="_schema"><a class="anchor" href="#_schema"></a>10.2.1. Schema</h4>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>claim-map-v2</code> and <code>claim-map</code> rules in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> for claims with labels <code>c2pa.claim.v2</code> and <code>c2pa.claim</code>, respectively (see <a href="#cddl_annex_claim">Section E.13.1, &#8220;Claim&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>claim-map-v2</code> and <code>claim-map</code> rules in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> for claims with labels <code>c2pa.claim.v2</code> and <code>c2pa.claim</code>, respectively (see <a href="#cddl_annex_claim">Section F.13.1, &#8220;Claim&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2267,7 +2282,7 @@ claim-map-v2 = {
   "instanceID": tstr .size (1..max-tstr-length),
 
   ; the claim generator of this claim
-  "claim_generator_info": $generator-info-map,
+  "claim_generator_info": generator-info-map,
 
   ; JUMBF URI reference to the signature of this claim
   "signature": jumbf-uri-type,
@@ -2690,10 +2705,10 @@ The value of the <code>signature</code> field includes the entire serialized <co
 <div class="sect5">
 <h6 id="_storing_the_time_stamp"><a class="anchor" href="#_storing_the_time_stamp"></a>10.3.2.5.4. Storing the time stamp</h6>
 <div class="paragraph">
-<p>v1 time stamps (deprecated) are stored in a COSE unprotected header whose label is the string <code>sigTst</code>. If present, the value of this header shall be a <code>tstContainer</code> defined by <a href="#cddl_annex_tst_container">Section E.13.2, &#8220;Timestamp Container&#8221;</a>. The content of the <code>TimeStampResp</code> structure received in reply from the TSA shall be stored as the value of the <code>val</code> property of an element of <code>tstTokens</code>.</p>
+<p>v1 time stamps (deprecated) are stored in a COSE unprotected header whose label is the string <code>sigTst</code>. If present, the value of this header shall be a <code>tstContainer</code> defined by <a href="#cddl_annex_tst_container">Section F.13.2, &#8220;Timestamp Container&#8221;</a>. The content of the <code>TimeStampResp</code> structure received in reply from the TSA shall be stored as the value of the <code>val</code> property of an element of <code>tstTokens</code>.</p>
 </div>
 <div class="paragraph">
-<p>v2 time stamps shall be stored in a COSE unprotected header whose label is the string <code>sigTst2</code>.  When present, the value of this header shall be a <code>tstContainer</code> defined by <a href="#cddl_annex_tst_container">Section E.13.2, &#8220;Timestamp Container&#8221;</a>. The value of the <code>timeStampToken</code> field of the <code>TimeStampResp</code> structure received in reply from the TSA shall be stored as the value of the <code>val</code> property of an element of <code>tstTokens</code>. It shall be formatted as a DER-encoded <a href="https://www.rfc-editor.org/rfc/rfc3161">RFC 3161</a> <code>TimeStampToken</code> wrapped in a CBOR byte string.</p>
+<p>v2 time stamps shall be stored in a COSE unprotected header whose label is the string <code>sigTst2</code>.  When present, the value of this header shall be a <code>tstContainer</code> defined by <a href="#cddl_annex_tst_container">Section F.13.2, &#8220;Timestamp Container&#8221;</a>. The value of the <code>timeStampToken</code> field of the <code>TimeStampResp</code> structure received in reply from the TSA shall be stored as the value of the <code>val</code> property of an element of <code>tstTokens</code>. It shall be formatted as a DER-encoded <a href="https://www.rfc-editor.org/rfc/rfc3161">RFC 3161</a> <code>TimeStampToken</code> wrapped in a CBOR byte string.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2711,7 +2726,7 @@ A v2 time stamp is equivalent to the "CTT" model of <a href="https://datatracker
 <p>If no time stamps are included, then neither header (<code>sigTst</code> nor <code>sigTst2</code>) shall be present in the COSE unprotected header.</p>
 </div>
 <div class="paragraph">
-<p>The <code>tstContainer</code> schema is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_tst_container">Section E.13.2, &#8220;Timestamp Container&#8221;</a> for the complete normative schema):</p>
+<p>The <code>tstContainer</code> schema is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_tst_container">Section F.13.2, &#8220;Timestamp Container&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2734,7 +2749,7 @@ tstToken = {
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The <code>tstContainer</code> schema (see <a href="#cddl_annex_tst_container">Section E.13.2, &#8220;Timestamp Container&#8221;</a>) is a CBOR adaptation of a subset of the schema from <a href="https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.01.01_60/ts_11918201v010101p.pdf">JAdES</a>, section 5.3.4 and <a href="https://forge.etsi.org/rep/esi/x19_182_JAdES/raw/v1.1.1/19182-jsonSchema.json">its JSON schema</a>, except with the modification that the content of <code>val</code> is a byte string and not a Base64-encoded string.</p>
+<p>The <code>tstContainer</code> schema (see <a href="#cddl_annex_tst_container">Section F.13.2, &#8220;Timestamp Container&#8221;</a>) is a CBOR adaptation of a subset of the schema from <a href="https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.01.01_60/ts_11918201v010101p.pdf">JAdES</a>, section 5.3.4 and <a href="https://forge.etsi.org/rep/esi/x19_182_JAdES/raw/v1.1.1/19182-jsonSchema.json">its JSON schema</a>, except with the modification that the content of <code>val</code> is a byte string and not a Base64-encoded string.</p>
 </div>
 </td>
 </tr>
@@ -2922,7 +2937,7 @@ The ingredient&#8217;s C2PA Manifest can be either a standard manifest or an upd
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-C2PA previously supported a Data Box Store (<code>c2pa.databoxes</code>). See <a href="#_data_box_store">Section F.4, &#8220;Data Box Store&#8221;</a> in <a href="#deprecated_constructs_annex">Appendix F, <em>Deprecated Constructs</em></a> for historical information.
+C2PA previously supported a Data Box Store (<code>c2pa.databoxes</code>). See <a href="#_data_box_store">Section G.4, &#8220;Data Box Store&#8221;</a> in <a href="#deprecated_constructs_annex">Appendix G, <em>Deprecated Constructs</em></a> for historical information.
 </td>
 </tr>
 </table>
@@ -3295,7 +3310,7 @@ In the case of JPEG 1 files, this can be achieved either by eliminating padding 
 <div class="sect3">
 <h4 id="_complete_the_c2pa_manifest"><a class="anchor" href="#_complete_the_c2pa_manifest"></a>11.7.3. Complete the C2PA Manifest</h4>
 <div class="paragraph">
-<p>At this point all of the boxes that comprise the entire C2PA Manifest for the asset are completed and can be (if not already) constructed into its final form. The asset&#8217;s C2PA Manifest, along with the manifests of any ingredients, are combined together to form the complete C2PA Manifest Store. The active manifest is required to be the last C2PA Manifest superbox in the C2PA Manifest Store superbox. The C2PA Manifest Store can then be embedded into the asset as discussed in <a href="#_embedding_manifests_into_various_file_formats">[_embedding_manifests_into_various_file_formats]</a>.</p>
+<p>At this point all of the boxes that comprise the entire C2PA Manifest for the asset are completed and can be (if not already) constructed into its final form. The asset&#8217;s C2PA Manifest, along with the manifests of any ingredients, are combined together to form the complete C2PA Manifest Store. The active manifest is required to be the last C2PA Manifest superbox in the C2PA Manifest Store superbox. The C2PA Manifest Store can then be embedded into the asset as discussed in <a href="#embedding_annex">Appendix A, <em>Embedding manifests</em></a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -3336,7 +3351,7 @@ In the case of JPEG 1 files, this can be achieved either by eliminating padding 
 <div class="paragraph">
 <p>In some cases, it may not be possible (or practical) to embed a C2PA Manifest Store in an asset.
 In those cases, keeping the C2PA Manifests externally to the asset is an acceptable model for providing provenance to assets.
-The C2PA Manifest should be stored in a location, referred to as a manifest repository, that is easily locatable by a Manifest Consumer working with the asset, such as <a href="#_by_reference_or_uri">by reference or URI</a>.
+The C2PA Manifest should be stored in a location, referred to as a manifest repository, that is easily locatable by a Manifest Consumer working with the asset, such as <a href="#manifests-by-reference">by reference or URI</a>.
 As the C2PA Manifest Store is a JUMBF box, it shall be served with the Media Type for C2PA Manifest Stores, <code>application/c2pa</code>.</p>
 </div>
 <div class="admonitionblock note">
@@ -3582,7 +3597,7 @@ Only signed C2PA created_assertions are attributed to the signer. Any asset meta
 </table>
 </div>
 <div class="paragraph">
-<p>Any asset metadata values that are supported by the <a href="#_metadata">common metadata assertion</a>, as described in <a href="#metadata_annex">[metadata_annex]</a>, and can be asserted by the signer, should be copied into such an assertion and included in the C2PA Manifest.</p>
+<p>Any asset metadata values that are supported by the <a href="#_metadata">common metadata assertion</a>, as described in <a href="#metadata_annex">Appendix C, <em>Implementation Details for <code>c2pa.metadata</code></em></a>, and can be asserted by the signer, should be copied into such an assertion and included in the C2PA Manifest.</p>
 </div>
 </div>
 </div>
@@ -4245,7 +4260,7 @@ Previous versions of this specification required the presence of <code>id-kp-ema
 <div class="ulist">
 <ul>
 <li>
-<p>Claim generators shall use only the integer <code>33</code> as the label when inserting this header into a COSE signature. Use of the string label <code>x5chain</code> is deprecated (see <a href="#_string_label_x5chain">Section F.2, &#8220;String Label <code>x5chain</code>&#8221;</a>). Claim generators shall place this header only in the protected header bucket of the COSE signature as required above.</p>
+<p>Claim generators shall use only the integer <code>33</code> as the label when inserting this header into a COSE signature. Use of the string label <code>x5chain</code> is deprecated (see <a href="#_string_label_x5chain">Section G.2, &#8220;String Label <code>x5chain</code>&#8221;</a>). Claim generators shall place this header only in the protected header bucket of the COSE signature as required above.</p>
 </li>
 <li>
 <p>Validators shall accept either the string <code>x5chain</code> or the integer <code>33</code> as the label for this header. If both labels are present, this shall be treated as a single credential for the purpose of <a href="#_identity_of_signers">Section 13.2, &#8220;Identity of Signers&#8221;</a>; validators shall use the header with the integer label <code>33</code> and ignore the header with the string <code>x5chain</code> as the label.
@@ -4491,7 +4506,7 @@ The <code>signatureAlgorithm</code> field identifies the algorithm the issuing C
 <p>A conforming CA should include an AuthorityInfoAccess (AIA) extension (<a href="https://www.rfc-editor.org/rfc/rfc5280">RFC 5280</a>, section 4.2.2.1) in their issued certificates to provide access information for the OCSP service operated by the CA.</p>
 </div>
 <div class="paragraph">
-<p>If the certificate has an AIA extension, revocation information shall be stored in an unprotected header of the <code>COSE_Sign1</code> structure with the string label <code>rVals</code> and the value&#8217;s schema shall follow the <code>rVals</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_rvals">Section E.17.4, &#8220;Revocation Values (<code>rVals</code>)&#8221;</a> for the complete normative schema):</p>
+<p>If the certificate has an AIA extension, revocation information shall be stored in an unprotected header of the <code>COSE_Sign1</code> structure with the string label <code>rVals</code> and the value&#8217;s schema shall follow the <code>rVals</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_rvals">Section F.17.4, &#8220;Revocation Values (<code>rVals</code>)&#8221;</a> for the complete normative schema):</p>
 </div>
 <div id="rVals-cddl" class="listingblock">
 <div class="content">
@@ -4499,7 +4514,7 @@ The <code>signatureAlgorithm</code> field identifies the algorithm the issuing C
 ; https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.01.01_60/ts_11918201v010101p.pdf
 ; section 5.3.5.2
 rVals = {
-  "ocspVals": [1* bstr] 
+  "ocspVals": [1* bstr]
 }</code></pre>
 </div>
 </div>
@@ -4591,7 +4606,7 @@ If there are any discrepancies between the visual representation and the text, t
 <p>The validation algorithm shall return a consolidated set of validation results, per the <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> schema in <a href="#_validation_structures">Section 14.2.2, &#8220;Validation Structures&#8221;</a>, for the all manifests in the asset&#8217;s C2PA Manifest Store, including the active manifest as well all other manifests in the C2PA Manifest Store that are referenced via ingredient assertions.</p>
 </div>
 <div class="paragraph">
-<p>Validation results include a standard set of success, informational, and failure codes, as defined in <a href="#validation_codes_annex">Appendix C, <em>Standard Validation Status Codes</em></a>.  Custom status codes are also permitted, when a claim generator has a need to record some process-specific status information.  Custom codes shall conform to the same syntax as <a href="#_namespacing">entity-specific namespaces</a>, e.g. <code>com.litware</code>.</p>
+<p>Validation results include a standard set of success, informational, and failure codes, as defined in <a href="#validation_codes_annex">Appendix D, <em>Standard Validation Status Codes</em></a>.  Custom status codes are also permitted, when a claim generator has a need to record some process-specific status information.  Custom codes shall conform to the same syntax as <a href="#_namespacing">entity-specific namespaces</a>, e.g. <code>com.litware</code>.</p>
 </div>
 <div class="paragraph">
 <p>When a claim generator adds an ingredient asset via an ingredient assertion, it shall act as a validator, and perform the full validation algorithm described in this section on the ingredient. The claim generator shall record the validation results of the ingredient, per the <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> schema in <a href="#_validation_structures">Section 14.2.2, &#8220;Validation Structures&#8221;</a>, as the value of the <code>validationResults</code> field in the <a href="#ingredient_assertion">ingredient assertion</a>.</p>
@@ -4603,7 +4618,7 @@ If there are any discrepancies between the visual representation and the text, t
 <div class="sect3">
 <h4 id="_validation_structures"><a class="anchor" href="#_validation_structures"></a>14.2.2. Validation Structures</h4>
 <div class="paragraph">
-<p>The following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> schema defines the data structures used for validation results (see <a href="#cddl_annex_validation_result_structs">Section E.18.3, &#8220;Validation Result Structures&#8221;</a> for the complete normative schema):</p>
+<p>The following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> schema defines the data structures used for validation results (see <a href="#cddl_annex_validation_result_structs">Section F.18.3, &#8220;Validation Result Structures&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="title">CDDL for Validation Results</div>
@@ -4618,9 +4633,9 @@ status-map = {
   ; "url": JUMBF URI reference to the JUMBF box to which this status code applies.
   ; "resourceUrl": the "url" or "uri" value of the specific entry (for example, in a
   ; linked resource integrity assertion) to which this status code applies.
-  ( 
-    ? "url": jumbf-uri-type // 
-    ? "resourceUrl": tstr .size (1..max-tstr-length) 
+  (
+    ? "url": jumbf-uri-type //
+    ? "resourceUrl": tstr .size (1..max-tstr-length)
   ),
 
   ? "explanation": tstr .size (1..max-tstr-length), ; A human readable string explaining the status
@@ -4628,9 +4643,9 @@ status-map = {
 }
 
 status-codes-map = {
-    "success": [* $status-map],          ; an array of validation success codes. May be empty.
-    "informational": [* $status-map],    ; an array of validation informational codes. May be empty.
-    "failure": [* $status-map]           ; an array of validation failure codes. May be empty.
+    "success": [* status-map],          ; an array of validation success codes. May be empty.
+    "informational": [* status-map],    ; an array of validation informational codes. May be empty.
+    "failure": [* status-map]           ; an array of validation failure codes. May be empty.
 }
 
 ; Objects containing validation results for a manifest and its ingredients
@@ -4646,8 +4661,8 @@ trust-list-uri-map = {
 }
 
 validation-results-map = {
-    ? "activeManifest": $status-codes-map, ; Validation status codes for the ingredient's active manifest. Present if ingredient is a C2PA asset. Not present if the ingredient is not a C2PA asset.
-    ? "ingredientDeltas": [* $ingredient-delta-validation-result-map], ; List of any changes/deltas between the current and previous validation results for each ingredient's manifest. Present if the ingredient is a C2PA asset.
+    ? "activeManifest": status-codes-map, ; Validation status codes for the ingredient's active manifest. Present if ingredient is a C2PA asset. Not present if the ingredient is not a C2PA asset.
+    ? "ingredientDeltas": [* ingredient-delta-validation-result-map], ; List of any changes/deltas between the current and previous validation results for each ingredient's manifest. Present if ingredient is a C2PA asset.
     ? "specVersion": semver-string, ; The version of the specification against which the validation was performed (SemVer formatted string)
     ? (
         "trustListUri": tstr .size (1..max-tstr-length) ; DEPRECATED. URI to the trust list that was used to validate certificates
@@ -4658,7 +4673,7 @@ validation-results-map = {
 
 ingredient-delta-validation-result-map = {
     "ingredientAssertionURI": jumbf-uri-type,  ; JUMBF URI reference to the ingredient assertion
-    "validationDeltas": $status-codes-map       ; Validation results for the ingredient's active manifest
+    "validationDeltas": status-codes-map       ; Validation results for the ingredient's active manifest
 }</code></pre>
 </div>
 </div>
@@ -5028,7 +5043,7 @@ Well-formed CBOR is defined in <a href="https://www.rfc-editor.org/rfc/rfc8949">
 <p>If the <code>claim_generator_info</code> field does not contain a <code>name</code> field, the claim shall be rejected with a failure code of <code>claim.malformed</code>.</p>
 </div>
 <div class="paragraph">
-<p>If there is an <code>icon</code> field in the <code>generator-info-map</code> referenced by the <code>claim_generator_info</code> field of the <code>claim-map</code> or <code>claim-map-v2</code>, then its value shall be validated as described in <a href="#validation_of_references">[validation_of_references]</a>.</p>
+<p>If there is an <code>icon</code> field in the <code>generator-info-map</code> referenced by the <code>claim_generator_info</code> field of the <code>claim-map</code> or <code>claim-map-v2</code>, then its value shall be validated as described in <a href="#_validation_of_references">Section 14.10.4.3, &#8220;Validation of References&#8221;</a>.</p>
 </div>
 </div>
 </div>
@@ -5063,7 +5078,7 @@ Well-formed CBOR is defined in <a href="https://www.rfc-editor.org/rfc/rfc8949">
 <div class="sect4">
 <h5 id="_embedded_in_the_claim_signature"><a class="anchor" href="#_embedded_in_the_claim_signature"></a>14.8.1.1. Embedded in the Claim Signature</h5>
 <div class="paragraph">
-<p>If either the <code>sigTst</code> or <code>sigTst2</code> header is present, then the <code>tstTokens</code> array is expected to contain a single <code>tstToken</code>. If the header contains more than one <code>tstToken</code>, the validator shall issue a <code>timestamp.malformed</code> informational code and ignore the time stamps.</p>
+<p>If either the <code>sigTst</code> or <code>sigTst2</code> header is present, then the <code>tstTokens</code> array is expected to contain a single <code>tstToken</code>. If the header contains more than one <code>tstToken</code>, the validator shall issue a <code>timeStamp.malformed</code> informational code and ignore the time stamps.</p>
 </div>
 <div class="paragraph">
 <p>A validator that supports <code>sigTst</code> shall perform the following procedures to validate the time stamp response:</p>
@@ -5113,25 +5128,25 @@ Well-formed CBOR is defined in <a href="https://www.rfc-editor.org/rfc/rfc8949">
 <div class="ulist">
 <ul>
 <li>
-<p>If the signature algorithm in the <code>timeStampToken</code> is not on the allowed or deprecated list in <a href="#_digital_signatures">Section 12.3, &#8220;Digital Signatures&#8221;</a>, then the validator shall issue a <code>timestamp.untrusted</code> informational code and ignore the time stamp.</p>
+<p>If the signature algorithm in the <code>timeStampToken</code> is not on the allowed or deprecated list in <a href="#_digital_signatures">Section 12.3, &#8220;Digital Signatures&#8221;</a>, then the validator shall issue a <code>timeStamp.untrusted</code> informational code and ignore the time stamp.</p>
 </li>
 <li>
-<p>Validate the signature in the <code>timeStampToken</code>, as described in <a href="https://www.rfc-editor.org/rfc/rfc5652">RFC 5652</a>, Section 5.6. If the signature is not valid, then the validator shall issue a <code>timestamp.mismatch</code> informational code and ignore the time stamp.</p>
+<p>Validate the signature in the <code>timeStampToken</code>, as described in <a href="https://www.rfc-editor.org/rfc/rfc5652">RFC 5652</a>, Section 5.6. If the signature is not valid, then the validator shall issue a <code>timeStamp.mismatch</code> informational code and ignore the time stamp.</p>
 </li>
 <li>
-<p>If the <code>timeStampToken</code> does not contain a <code>messageImprint</code> field, the validator shall issue a <code>timestamp.malformed</code> informational code and ignore the time stamp.</p>
+<p>If the <code>timeStampToken</code> does not contain a <code>messageImprint</code> field, the validator shall issue a <code>timeStamp.malformed</code> informational code and ignore the time stamp.</p>
 </li>
 <li>
-<p>If the message imprint hash algorithm is not on the allowed or deprecated list in <a href="#_hashing">Section 12.1, &#8220;Hashing&#8221;</a>, then the validator shall issue a <code>timestamp.untrusted</code> informational code and ignore the time stamp.</p>
+<p>If the message imprint hash algorithm is not on the allowed or deprecated list in <a href="#_hashing">Section 12.1, &#8220;Hashing&#8221;</a>, then the validator shall issue a <code>timeStamp.untrusted</code> informational code and ignore the time stamp.</p>
 </li>
 <li>
-<p>Validate that the value of the <code>messageImprint</code> field (in the <code>timeStampToken</code>), matches either the claim (v1, <code>sigTst</code>) or <code>COSE_Sign1_Tagged</code> structure&#8217;s <code>signature</code> field (v2, <code>sigTst2</code>) of the C2PA Manifest being validated, as described in <a href="#_choosing_the_payload">Section 10.3.2.5.2, &#8220;Choosing the Payload&#8221;</a>. If the values do not match, the validator shall issue a <code>timestamp.mismatch</code> informational code and ignore the time stamp.</p>
+<p>Validate that the value of the <code>messageImprint</code> field (in the <code>timeStampToken</code>), matches either the claim (v1, <code>sigTst</code>) or <code>COSE_Sign1_Tagged</code> structure&#8217;s <code>signature</code> field (v2, <code>sigTst2</code>) of the C2PA Manifest being validated, as described in <a href="#_choosing_the_payload">Section 10.3.2.5.2, &#8220;Choosing the Payload&#8221;</a>. If the values do not match, the validator shall issue a <code>timeStamp.mismatch</code> informational code and ignore the time stamp.</p>
 </li>
 <li>
-<p>Validate that the <code>certificates</code> field of the <code>timeStampToken</code> is present, the TSA&#8217;s certificate can be found in the provided set of certificates in this field, and it is possible to build a trust chain from the TSA&#8217;s certificate to an entry in C2PA TSA Trust List (or other list of trust anchors present in the validator for this purpose). If the certificate cannot be located or a trust chain cannot be constructed, the validator shall issue a <code>timestamp.untrusted</code> informational code and ignore the time stamp.  If the validator determines that a certificate is invalid it may additionally return the informational code <code>timeStamp.credentialInvalid</code>.</p>
+<p>Validate that the <code>certificates</code> field of the <code>timeStampToken</code> is present, the TSA&#8217;s certificate can be found in the provided set of certificates in this field, and it is possible to build a trust chain from the TSA&#8217;s certificate to an entry in C2PA TSA Trust List (or other list of trust anchors present in the validator for this purpose). If the certificate cannot be located or a trust chain cannot be constructed, the validator shall issue a <code>timeStamp.untrusted</code> informational code and ignore the time stamp.  If the validator determines that a certificate is invalid it may additionally return the informational code <code>timeStamp.credentialInvalid</code>.</p>
 </li>
 <li>
-<p>Validate that the attested time, as found in the <code>genTime</code> field (in the <code>timeStampToken</code>), falls within the validity period of the TSA&#8217;s signing certificate and all CA certificates up to the trust anchor. If it does not, the validator shall issue a <code>timestamp.outsideValidity</code> informational code and ignore the time stamp.</p>
+<p>Validate that the attested time, as found in the <code>genTime</code> field (in the <code>timeStampToken</code>), falls within the validity period of the TSA&#8217;s signing certificate and all CA certificates up to the trust anchor. If it does not, the validator shall issue a <code>timeStamp.outsideValidity</code> informational code and ignore the time stamp.</p>
 </li>
 <li>
 <p>If the time stamp validation does not stop or fail due to any of the above conditions, then the validator shall issue the success codes of <code>timeStamp.trusted</code> and <code>timeStamp.validated</code>.</p>
@@ -6438,7 +6453,7 @@ If there are any discrepancies between the visual representation and the text, t
 <p>Begin recursion.</p>
 </li>
 <li>
-<p>Locate the claim, as described in <a href="#_locating_and_validating_the_claim">[_locating_and_validating_the_claim]</a>. If unable to, reject claim with a <code>claim.missing</code> failure code.</p>
+<p>Locate the claim, as described in <a href="#validating_the_claim">Section 14.6, &#8220;Locating and Validating the Claim&#8221;</a>. If unable to, reject claim with a <code>claim.missing</code> failure code.</p>
 </li>
 <li>
 <p>If the claim of the target manifest contains a <code>redacted_assertions</code> field, check the JUMBF URI of each redacted assertion.</p>
@@ -7407,7 +7422,7 @@ The value of <code>streamId</code> can be any string that uniquely identifies th
 <div class="sect4">
 <h5 id="_schema_and_example"><a class="anchor" href="#_schema_and_example"></a>15.4.2.1. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>livevideo-segment-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_livevideo_segment">Section E.19.1, &#8220;Live Media Segment&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>livevideo-segment-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_livevideo_segment">Section F.19.1, &#8220;Live Media Segment&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7567,7 +7582,7 @@ This requirement applies only to workflows that chose the <code>verifiable-segme
 </ul>
 </div>
 <div class="paragraph">
-<p>The schema for <code>verifiable-segment-info</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_verifiable_segment_info">Section E.19.2, &#8220;Verifiable Segment Info&#8221;</a> for the complete normative schema):</p>
+<p>The schema for <code>verifiable-segment-info</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_verifiable_segment_info">Section F.19.2, &#8220;Verifiable Segment Info&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7584,7 +7599,7 @@ segment-info-map = {
     "manifestId" =&gt; tstr, ; shall be as described in &lt;&lt;manifest-identifier&gt;&gt;
 
     ; optional hashed-ext-uri-map to where manifest can be retrieved
-    ? "manifestUri" =&gt; hashed-ext-uri-map
+    ? "manifestUri" =&gt; $hashed-ext-uri-map
 }</code></pre>
 </div>
 </div>
@@ -7748,7 +7763,7 @@ When several message streams are published on the same connection, this clause d
 </dl>
 </div>
 <div class="paragraph">
-<p>The schema for <code>rtmp-segment-info-map</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_rtmp_segment_info">Section E.19.3, &#8220;Enhanced RTMP Segment Info&#8221;</a> for the complete normative schema):</p>
+<p>The schema for <code>rtmp-segment-info-map</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_rtmp_segment_info">Section F.19.3, &#8220;Enhanced RTMP Segment Info&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8377,7 +8392,7 @@ This restriction exists to address a technical incompatibility between the two.
 <div class="sect4">
 <h5 id="_schema_and_example_2"><a class="anchor" href="#_schema_and_example_2"></a>16.3.1.2. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>data-hash-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_data_hash">Section E.15.1, &#8220;Data Hash&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>data-hash-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_data_hash">Section F.15.1, &#8220;Data Hash&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8760,7 +8775,7 @@ Common boxes (<strong>not</strong> exhaustive) with file offsets include <code>'
 <div class="sect4">
 <h5 id="_schema_and_example_3"><a class="anchor" href="#_schema_and_example_3"></a>16.3.2.3. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for the <code>c2pa.hash.bmff.v2</code> (deprecated) and <code>c2pa.hash.bmff.v3</code> assertions are defined by the <code>bmff-hash-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_bmff_hash">Section E.15.2, &#8220;BMFF Hash&#8221;</a> for the complete normative schema):</p>
+<p>The schema for the <code>c2pa.hash.bmff.v2</code> (deprecated) and <code>c2pa.hash.bmff.v3</code> assertions are defined by the <code>bmff-hash-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_bmff_hash">Section F.15.2, &#8220;BMFF Hash&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9387,7 +9402,7 @@ Previous versions of this specification documented use of general box hash with 
 <div class="sect5">
 <h6 id="_gif_specific_handling"><a class="anchor" href="#_gif_specific_handling"></a>16.3.3.3.4. GIF-specific Handling</h6>
 <div class="paragraph">
-<p>The hash of a box containing a 'Packed Fields' attribute will also hash the optional data indicated by that attribute. For example, The Image Descriptor will include the Local Color Table block, and the Logical Screen Descriptor will include the Global Color Table block, if they exist.</p>
+<p>The hash of a box containing a 'Packed Fields' attribute will also hash the optional data indicated by that attribute. For example, the Image Descriptor will include the Local Color Table block, and the Logical Screen Descriptor will include the Global Color Table block, if they exist.</p>
 </div>
 <div class="paragraph">
 <p>For all boxes containing a block label, the naming convention shall be as follows: "&lt;Block Label&gt;".</p>
@@ -9546,7 +9561,7 @@ inclusion of inter-table padding.</p>
 <div class="sect4">
 <h5 id="_schema_and_example_4"><a class="anchor" href="#_schema_and_example_4"></a>16.3.3.4. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>box-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_boxes_hash">Section E.15.4, &#8220;Boxes Hash&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>box-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_boxes_hash">Section F.15.4, &#8220;Boxes Hash&#8221;</a> for the complete normative schema):</p>
 </div>
 <div id="cddl_annex_boxes_hash_inline" class="listingblock">
 <div class="title">CDDL for Box Hash</div>
@@ -9883,13 +9898,13 @@ It is possible to describe each folder of the training data set of an AI/ML mode
 <div class="sect4">
 <h5 id="_schema_and_example_5"><a class="anchor" href="#_schema_and_example_5"></a>16.3.4.2. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>collection-data-hash-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_collection_data_hash">Section E.15.5, &#8220;Collection Data Hash&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>collection-data-hash-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_collection_data_hash">Section F.15.5, &#8220;Collection Data Hash&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; An array of URIs and their associated hashes
 $collection-data-hash-map /= {
-  "uris": [1* uri-hashed-data-map],
+  "uris": [1* $uri-hashed-data-map],
 
   ; A string identifying the cryptographic hash algorithm used to compute the
   ; hash on each entry of the `uris` array, taken from the C2PA hash algorithm
@@ -10119,7 +10134,7 @@ Adding these label suffixes makes it clear that hard binding assertions for part
 <div class="sect4">
 <h5 id="_schema_and_example_6"><a class="anchor" href="#_schema_and_example_6"></a>16.3.5.3. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>multi-asset-hash-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_multi_asset_hash">Section E.15.6, &#8220;Multi-Asset Hash&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>multi-asset-hash-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_multi_asset_hash">Section F.15.6, &#8220;Multi-Asset Hash&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10295,7 +10310,7 @@ The length of a sentinel line carrying an inline C2PA Manifest Store cannot be k
 <div class="sect4">
 <h5 id="_schema_and_example_7"><a class="anchor" href="#_schema_and_example_7"></a>16.3.6.3. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>segment-hash-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_segment_hash">Section E.15.7, &#8220;Segment Hash&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>segment-hash-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_segment_hash">Section F.15.7, &#8220;Segment Hash&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10397,7 +10412,7 @@ predecessor-sentinel-map = {
 <div class="sect4">
 <h5 id="_schema_and_example_8"><a class="anchor" href="#_schema_and_example_8"></a>16.3.7.2. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>soft-binding-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_soft_binding">Section E.16.12, &#8220;Soft Binding&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>soft-binding-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_soft_binding">Section F.16.12, &#8220;Soft Binding&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10692,7 +10707,7 @@ This is useful for providing extra information that would be useful to a specifi
 </div>
 </div>
 <div class="paragraph">
-<p>An JSON example of a entry in the soft binding algorithm list is shown below:</p>
+<p>A JSON example of an entry in the soft binding algorithm list is shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10758,7 +10773,7 @@ This is useful for providing extra information that would be useful to a specifi
 <p>The deprecation status of the algorithm is given in the <code>deprecated</code> field. A validator should not resolve any soft bindings that use deprecated algorithms. C2PA Manifests shall not be written using deprecated soft bindings.</p>
 </div>
 <div class="paragraph">
-<p>The soft binding algorithm list entry shall contain a list of supported media types either as <code>encodedMediaTypes</code> or as <code>decodedMediaTypes</code>. The supported media types for <code>decodedMediaTypes</code> shall correspond to one more of the top-level IANA media types comprising of: "application", "audio", "image", "model", "text", "video". The supported media types for <code>encodedMediaTypes</code> shall correspond to one more of the registered IANA subtypes of a <code>decodedMediaType</code> listed in the preceding sentence. These IANA top-level and subtypes are listed at <a href="https://www.iana.org/assignments/media-types/media-types.xhtml" class="bare">https://www.iana.org/assignments/media-types/media-types.xhtml</a></p>
+<p>The soft binding algorithm list entry shall contain a list of supported media types either as <code>encodedMediaTypes</code> or as <code>decodedMediaTypes</code>. The supported media types for <code>decodedMediaTypes</code> shall correspond to one or more of the top-level IANA media types: "application", "audio", "image", "model", "text", "video". The supported media types for <code>encodedMediaTypes</code> shall correspond to one or more of the registered IANA subtypes of a <code>decodedMediaType</code> listed in the preceding sentence. These IANA top-level types and subtypes are listed at <a href="https://www.iana.org/assignments/media-types/media-types.xhtml" class="bare">https://www.iana.org/assignments/media-types/media-types.xhtml</a></p>
 </div>
 <div class="paragraph">
 <p>Additional information shall accompany each entry in the soft binding algorithm list, within the <code>entryMetadata</code> field.  These are a human readable description of the algorithm (<code>description</code>), and the date it was proposed for entry into the soft binding algorithm list (<code>dateEntered</code>).</p>
@@ -11449,7 +11464,7 @@ This mechanism provides a general-purpose way for actions to reference assertion
 <div class="sect4">
 <h5 id="_watermarking"><a class="anchor" href="#_watermarking"></a>16.4.1.5. Watermarking</h5>
 <div class="paragraph">
-<p>When using a`c2pa.watermarked.bound` action, a <a href="#soft_binding_assertion">soft binding assertion</a> shall also be included in the C2PA Manifest to describe the inserted watermark.  The <code>c2pa.watermarked.bound</code> action should reference one or more of these corresponding soft binding assertions using the <code>relatedAssertions</code> field in the <code>parameters</code> object of that action.</p>
+<p>When using a <code>c2pa.watermarked.bound</code> action, a <a href="#soft_binding_assertion">soft binding assertion</a> shall also be included in the C2PA Manifest to describe the inserted watermark.  The <code>c2pa.watermarked.bound</code> action should reference one or more of these corresponding soft binding assertions using the <code>relatedAssertions</code> field in the <code>parameters</code> object of that action.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -11854,7 +11869,7 @@ The referenced ingredient assertion could be one whose C2PA Manifest was located
 <div class="sect4">
 <h5 id="_schema_and_example_9"><a class="anchor" href="#_schema_and_example_9"></a>16.4.1.14. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for <code>c2pa.actions</code> is defined by the <code>actions-map</code> rule, and the schema for <code>c2pa.actions.v2</code> is defined by the <code>actions-map-v2</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_actions">Section E.16.1, &#8220;Actions&#8221;</a> for the complete normative schema):</p>
+<p>The schema for <code>c2pa.actions</code> is defined by the <code>actions-map</code> rule, and the schema for <code>c2pa.actions.v2</code> is defined by the <code>actions-map-v2</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_actions">Section F.16.1, &#8220;Actions&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="title">CDDL for Action choices</div>
@@ -11947,10 +11962,10 @@ actions-map-v2 = {
   "actions" : [1* action-item-map-v2], ; list of actions
 
   ; list of templates for the actions
-  ? "templates": [1* $action-template-map-v2],
+  ? "templates": [1* action-template-map-v2],
 
-  ; A list of of the software/hardware that did the action
-  ? "softwareAgents": [1* $generator-info-map],
+  ; A list of the software/hardware that did the action
+  ? "softwareAgents": [1* generator-info-map],
 
   ; additional information about the assertion
   ? "metadata": $assertion-metadata-map,
@@ -11963,7 +11978,7 @@ actions-map-v2 = {
 
 action-common-map-v2 = {
   ; Description of the software/hardware that did the action
-  ? "softwareAgent": $generator-info-map,
+  ? "softwareAgent": generator-info-map,
 
   ; 0-based index into the softwareAgents array in the actions-map-2
   ? "softwareAgentIndex": int,
@@ -12024,7 +12039,7 @@ parameters-common-map-v2 = (
 parameters-map-v2 = {
   ; A JUMBF URI to the redacted assertion, required when the action is
   ; `c2pa.redacted`
-  ? "redacted": $jumbf-uri-type,
+  ? "redacted": jumbf-uri-type,
 
   ; A list of hashed JUMBF URI(s) to the ingredient (v2 or v3) assertion(s) that
   ; this action acts on
@@ -12044,7 +12059,7 @@ parameters-map-v2 = {
   ? "name": tstr .size (1..max-tstr-length),
 
   ? "multipleInstances": bool, ; was this action performed multiple times
- 
+
   parameters-common-map-v2, ; anything from the common parameters
 }
 
@@ -12098,7 +12113,7 @@ parameters-map = {
 </div>
 </div>
 <div class="paragraph">
-<p>Standard actions specific to font assets are described in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_font_actions">Section E.16.3, &#8220;Font Actions&#8221;</a>):</p>
+<p>Standard actions specific to font assets are described in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_font_actions">Section F.16.3, &#8220;Font Actions&#8221;</a>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12355,14 +12370,14 @@ All aspects of the version history record are implementation dependent.
 <div class="sect4">
 <h5 id="_schema_and_example_10"><a class="anchor" href="#_schema_and_example_10"></a>16.4.2.3. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>external-reference-map</code> and <code>hashed-external-reference-map</code> rules in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_external_reference">Section E.16.8, &#8220;External Reference&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>external-reference-map</code> and <code>hashed-external-reference-map</code> rules in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_external_reference">Section F.16.8, &#8220;External Reference&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Assertion that references assertion data stored externally by URI (no hash)
 external-reference-map = {
   ; specifies the location and type of the remote data
-  "location": $unhashed-ext-uri-map,
+  "location": unhashed-ext-uri-map,
 
   ; label for the referenced assertion, if relevant (e.g., c2pa.metadata)
   ? "label": tstr,
@@ -12391,7 +12406,7 @@ hashed-external-reference-map = {
 </div>
 </div>
 <div class="paragraph">
-<p>The schema for the <code>unhashed-ext-uri-map</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_unhashed_ext_uri">Section E.14.3, &#8220;Unhashed External URI&#8221;</a>):</p>
+<p>The schema for the <code>unhashed-ext-uri-map</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_unhashed_ext_uri">Section F.14.3, &#8220;Unhashed External URI&#8221;</a>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12404,12 +12419,12 @@ unhashed-ext-uri-map = {
   ? "size": size-type, ; Number of bytes of data
 
   ; additional information about the data's type
-  ? "data_types": [1* $asset-type-map],
+  ? "data_types": [1* asset-type-map],
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The schema for the <code>hashed-ext-uri-map</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_hashed_ext_uri">Section E.14.2, &#8220;Hashed External URI&#8221;</a>):</p>
+<p>The schema for the <code>hashed-ext-uri-map</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_hashed_ext_uri">Section F.14.2, &#8220;Hashed External URI&#8221;</a>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12428,7 +12443,7 @@ $hashed-ext-uri-map /= {
   ? "size": size-type, ; Number of bytes of data
 
   ; additional information about the data's type
-  ? "data_types": [1* $asset-type-map],
+  ? "data_types": [1* asset-type-map],
 }
 
 ; with CBOR Head (#) and tail ($) are introduced in regexp, so not needed
@@ -12537,7 +12552,7 @@ ext-url-type  /= tstr .regexp "https?:\/\/[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]
 <div class="sect4">
 <h5 id="_schema_and_example_11"><a class="anchor" href="#_schema_and_example_11"></a>16.4.3.2. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>linked-resource-integrity-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_linked_resource_integrity">Section E.16.15, &#8220;Linked Resource Integrity&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>linked-resource-integrity-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_linked_resource_integrity">Section F.16.15, &#8220;Linked Resource Integrity&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12573,7 +12588,7 @@ linked-resource-integrity-map = {
 </div>
 </div>
 <div class="paragraph">
-<p>The schema for the <code>hashed-ext-uri-map</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_hashed_ext_uri">Section E.14.2, &#8220;Hashed External URI&#8221;</a>):</p>
+<p>The schema for the <code>hashed-ext-uri-map</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_hashed_ext_uri">Section F.14.2, &#8220;Hashed External URI&#8221;</a>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12592,7 +12607,7 @@ $hashed-ext-uri-map /= {
   ? "size": size-type, ; Number of bytes of data
 
   ; additional information about the data's type
-  ? "data_types": [1* $asset-type-map],
+  ? "data_types": [1* asset-type-map],
 }
 
 ; with CBOR Head (#) and tail ($) are introduced in regexp, so not needed
@@ -12601,7 +12616,7 @@ ext-url-type  /= tstr .regexp "https?:\/\/[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]
 </div>
 </div>
 <div class="paragraph">
-<p>The schema for the <code>uri-hashed-data-map</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_uri_hashed_data">Section E.14.4, &#8220;URI Hashed Data&#8221;</a>):</p>
+<p>The schema for the <code>uri-hashed-data-map</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_uri_hashed_data">Section F.14.4, &#8220;URI Hashed Data&#8221;</a>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12613,7 +12628,7 @@ $uri-hashed-data-map /= {
   ? "dc:format": format-string, ; IANA media type of the data
 
   ; additional information about the data's type
-  ? "data_types": [1* $asset-type-map],
+  ? "data_types": [1* asset-type-map],
 }
 
 ; An RFC 3986 relative-reference with no scheme and no authority: excludes
@@ -12704,7 +12719,7 @@ Expressing a <code>uri</code> provides flexibility to source the asset from web 
 <div class="sect4">
 <h5 id="_schema_and_example_12"><a class="anchor" href="#_schema_and_example_12"></a>16.4.4.2. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>asset-ref-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_asset_ref">Section E.16.5, &#8220;Asset Reference&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>asset-ref-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_asset_ref">Section F.16.5, &#8220;Asset Reference&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13027,7 +13042,7 @@ See <a href="#actions_ingredients_relationship">Section 16.4.1.12, &#8220;Relati
 </table>
 </div>
 <div class="paragraph">
-<p>An ingredient assertion with a <code>parentOf</code> or <code>componentOf</code> relationship shall be listed in the same field of the claim (<code>created_assertions</code> or <code>gathered_assertions</code>, see <a href="#_adding_assertions_and_redactions">Section 10.3.2.1, &#8220;Adding Assertions and Redactions&#8221;</a>) as the actions assertion that refers to it (see <a href="#parameters">[parameters]</a>). For example, since the actions assertion containing the mandatory <code>c2pa.opened</code> action is required to be listed in <code>created_assertions</code> (see <a href="#mandatory-inception-actions">Section 16.4.1.2, &#8220;Mandatory presence of at least one actions assertion&#8221;</a>), and its associated <code>parentOf</code> ingredient assertion shall likewise only be listed in <code>created_assertions</code>.</p>
+<p>An ingredient assertion with a <code>parentOf</code> or <code>componentOf</code> relationship shall be listed in the same field of the claim (<code>created_assertions</code> or <code>gathered_assertions</code>, see <a href="#_adding_assertions_and_redactions">Section 10.3.2.1, &#8220;Adding Assertions and Redactions&#8221;</a>) as the actions assertion that refers to it (see <a href="#_parameters">Section 16.4.1.4.8, &#8220;Parameters&#8221;</a>). For example, since the actions assertion containing the mandatory <code>c2pa.opened</code> action is required to be listed in <code>created_assertions</code> (see <a href="#mandatory-inception-actions">Section 16.4.1.2, &#8220;Mandatory presence of at least one actions assertion&#8221;</a>), and its associated <code>parentOf</code> ingredient assertion shall likewise only be listed in <code>created_assertions</code>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -13045,7 +13060,7 @@ See <a href="#actions_ingredients_relationship">Section 16.4.1.12, &#8220;Relati
 <div class="sect3">
 <h4 id="ingredient_schema"><a class="anchor" href="#ingredient_schema"></a>16.5.6. Schema and Example</h4>
 <div class="paragraph">
-<p>The <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> for this type is shown below (see <a href="#cddl_annex_ingredient">Section E.16.4, &#8220;Ingredient&#8221;</a> for the complete normative schema, including all versions):</p>
+<p>The <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> for this type is shown below (see <a href="#cddl_annex_ingredient">Section F.16.4, &#8220;Ingredient&#8221;</a> for the complete normative schema, including all versions):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13061,7 +13076,7 @@ ingredient-map-v3 = {
   ; Results from the claim generator performing full validation on the
   ; ingredient asset. May be present whether or not `activeManifest` is
   ; present.
-  ? "validationResults": $validation-results-map,
+  ? "validationResults": validation-results-map,
 
   ; unique identifier such as the value of the ingredient's `xmpMM:InstanceID`
   ? "instanceID": tstr,
@@ -13071,7 +13086,7 @@ ingredient-map-v3 = {
   ? "data" : $hashed-uri-map / $hashed-ext-uri-map,
 
   ; additional information about the data's type to the ingredient V3 structure
-  ? "dataTypes": [1* $asset-type-map],
+  ? "dataTypes": [1* asset-type-map],
 
   (
     ; hashed_uri to the box corresponding to the active manifest of the
@@ -13128,14 +13143,14 @@ ingredient-map-v2 = {
   ? "data" : $hashed-uri-map / $hashed-ext-uri-map,
 
   ; additional information about the data's type to the ingredient V2 structure.
-  ? "data_types": [1* $asset-type-map],
+  ? "data_types": [1* asset-type-map],
 
   ; hashed_uri reference to the C2PA Manifest of the ingredient
   ? "c2pa_manifest": $hashed-uri-map,
 
   ; hashed_uri reference to a thumbnail in a embedded data assertion
   ? "thumbnail": $hashed-uri-map,
-  ? "validationStatus": [1* $status-map] ; validation status of the ingredient
+  ? "validationStatus": [1* status-map] ; validation status of the ingredient
 
   ; Additional description of the ingredient
   ? "description": tstr .size (1..max-tstr-length)
@@ -13165,7 +13180,7 @@ ingredient-map = {
 
   ; hashed_uri reference to an ingredient thumbnail
   ? "thumbnail": $hashed-uri-map,
-  ? "validationStatus": [1* $status-map] ; validation status of the ingredient
+  ? "validationStatus": [1* status-map] ; validation status of the ingredient
 
   ; additional information about the assertion
   ? "metadata": $assertion-metadata-map
@@ -13733,7 +13748,7 @@ By including an ingredient assertion containing a <code>digitalSourceType</code>
 <p>In a v2 ingredient assertion with no <code>c2pa_manifest</code> field, the <code>validationStatus</code> field is optional, but if present may contain an empty array.</p>
 </div>
 <div class="paragraph">
-<p>In a v2 ingredient assertion with <code>c2pa_manifest</code> field, each object in the <code>validationStatus</code> array consists of a <code>code</code> field whose value describes the validation status of a specific part of the manifest along with an optional <code>success</code> field whose boolean value indicates whether the code reflects success (true) or failure (false). An optional description of the validation status may be present in the <code>explanation</code> field if there is a need for an additional human readable explanation. In addition, each <code>status-map</code> object has a <code>url</code> field which should contain, in the case of failures, a JUMBF URI reference to the specific element in the manifest about which the status refers. Depending on the code, the <code>url</code> will be to a C2PA Claim, a C2PA Claim Signature or a specific C2PA Assertion. Status codes are defined in <a href="#validation_codes_annex">Appendix C, <em>Standard Validation Status Codes</em></a>.</p>
+<p>In a v2 ingredient assertion with <code>c2pa_manifest</code> field, each object in the <code>validationStatus</code> array consists of a <code>code</code> field whose value describes the validation status of a specific part of the manifest along with an optional <code>success</code> field whose boolean value indicates whether the code reflects success (true) or failure (false). An optional description of the validation status may be present in the <code>explanation</code> field if there is a need for an additional human readable explanation. In addition, each <code>status-map</code> object has a <code>url</code> field which should contain, in the case of failures, a JUMBF URI reference to the specific element in the manifest about which the status refers. Depending on the code, the <code>url</code> will be to a C2PA Claim, a C2PA Claim Signature or a specific C2PA Assertion. Status codes are defined in <a href="#validation_codes_annex">Appendix D, <em>Standard Validation Status Codes</em></a>.</p>
 </div>
 <div class="paragraph">
 <p>Custom status codes are permitted when a claim generator has a need to record some process-specific status information.  The code shall conform to the same syntax as <a href="#_namespacing">entity-specific namespaces</a> (e.g. <code>com.litware.malformedFrobber</code>) and the <code>validationStatus</code> object shall contain a <code>success</code> boolean.</p>
@@ -13825,7 +13840,7 @@ While this is an intentionally contrived example, it is designed to elucidate th
 </div>
 </div>
 <div id="validation-results" class="paragraph">
-<p>Each validation result (as described using a <code>status-codes-map</code>), consists of an array of <code>success</code>, <code>informational</code>, and <code>failure</code> codes. Each code is represented as a <code>status-map</code> object which shall contain a <code>code</code> field with the status code. In addition, it may contain a <code>url</code> field with a JUMBF URI reference to the specific element in the manifest about which the status refers, and an optional <code>explanation</code> field with a human-readable explanation of the status. Status codes are defined in <a href="#validation_codes_annex">Appendix C, <em>Standard Validation Status Codes</em></a>.</p>
+<p>Each validation result (as described using a <code>status-codes-map</code>), consists of an array of <code>success</code>, <code>informational</code>, and <code>failure</code> codes. Each code is represented as a <code>status-map</code> object which shall contain a <code>code</code> field with the status code. In addition, it may contain a <code>url</code> field with a JUMBF URI reference to the specific element in the manifest about which the status refers, and an optional <code>explanation</code> field with a human-readable explanation of the status. Status codes are defined in <a href="#validation_codes_annex">Appendix D, <em>Standard Validation Status Codes</em></a>.</p>
 </div>
 <div class="paragraph">
 <p>Custom status codes are permitted when a claim generator has a need to record some process-specific status information.  The code shall conform to the same syntax as <a href="#_namespacing">entity-specific namespaces</a> (e.g. <code>com.litware.malformedFrobber</code>).</p>
@@ -13871,6 +13886,29 @@ A <code>uri</code> value in a <code>trustListUris</code> object is a URI and not
 </div>
 <div class="paragraph">
 <p>A <code>trust-list-uri-map</code> object may also contain an optional <code>identifier</code> field, which is a unique identifier for a specific instance of the trust list. For trust lists formatted per <a href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a> or <a href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.04.01_60/ts_119612v020401p.pdf">ETSI TS 119 612</a> (including the C2PA Trust List and C2PA TSA Trust List), if the <code>identifier</code> field is present, it shall contain the decimal string representation of the sequence number (<code>LoTESequenceNumber</code>, e.g. <code>"1"</code>, <code>"42"</code>) from the trust list&#8217;s <code>ListAndSchemeInformation</code> header. For all other trust lists, this may be a version number, a commit hash, a release date, or another unique identifier defined by the maintaining authority.</p>
+</div>
+<div class="paragraph">
+<p>An example <code>validation-results-map</code> referencing the C2PA Trust List and C2PA TSA Trust List with illustrative sequence numbers is shown in <a href="#example-trust-list-uri-map">Validation results with trust list references in CBOR diagnostic notation (RFC 8949, clause 8)</a>.</p>
+</div>
+<div id="example-trust-list-uri-map" class="listingblock">
+<div class="title">Validation results with trust list references in CBOR diagnostic notation (<a href="https://www.rfc-editor.org/rfc/rfc8949">RFC 8949</a>, clause 8)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">{
+  "specVersion": "2.5.0",
+  "trustListUris": [
+    {
+      "uri": "https://c2pa.org/trustlist",
+      "type": "c2pa.trustList",
+      "identifier": "42"
+    },
+    {
+      "uri": "https://c2pa.org/trustlist-tsa",
+      "type": "c2pa.tsaTrustList",
+      "identifier": "17"
+    }
+  ]
+}</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -14076,14 +14114,14 @@ An OPI referenced using a multi-asset part index can only be validated when the 
 <div class="sect5">
 <h6 id="_schema_and_example_13"><a class="anchor" href="#_schema_and_example_13"></a>16.6.2.2.2. Schema and Example</h6>
 <div class="paragraph">
-<p>The schema for this assertion is defined by the <code>original-preservation-image-representation</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_alt_content_rep">Section E.16.17, &#8220;Alternative Content Representation&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this assertion is defined by the <code>original-preservation-image-representation</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_alt_content_rep">Section F.16.17, &#8220;Alternative Content Representation&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Describes a reference to an alternative version of the content
 ; (e.g. an original preservation image in Exif, a secure capture from TEE, etc.)
-alternative-content-representation = 
-  original-preservation-image-representation 
+alternative-content-representation =
+  original-preservation-image-representation
   / generic-representation
 
 ; The original-preservation-image-representation describes the location of the
@@ -14105,7 +14143,7 @@ original-preservation-image-params = {
   ; hashed URI reference to the embedded data assertion containing OPI, or to
   ; another assertion that is technically equivalent to an embedded data
   ; assertion (e.g., c2pa.thumbnail.claim).
-  ? "embeddedOriginalPreservationImage": hashed-uri-map,
+  ? "embeddedOriginalPreservationImage": $hashed-uri-map,
   * tstr =&gt; any ; custom fields
 }
 
@@ -14412,7 +14450,7 @@ Earlier versions of this specification documented a <code>c2pa.asset-type</code>
 <div class="sect4">
 <h5 id="_schema_and_example_14"><a class="anchor" href="#_schema_and_example_14"></a>16.6.3.2. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>asset-types</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_asset_type">Section E.16.6, &#8220;Asset Type&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>asset-types</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_asset_type">Section F.16.6, &#8220;Asset Type&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14570,7 +14608,7 @@ asset-types = {
 <div class="sect4">
 <h5 id="_schema_and_example_15"><a class="anchor" href="#_schema_and_example_15"></a>16.6.4.2. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>font-info-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_font_info">Section E.16.18, &#8220;Font Information&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>font-info-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_font_info">Section F.16.18, &#8220;Font Information&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14619,7 +14657,7 @@ $font-format-choice /= "OpenType"
 font-copyright-year-range = 1..9999
 
 ; Font weight range
-font-weight-range = 1..1000
+font-weight-range /= 1..1000
 
 ; The font style
 $font-style /= "Normal"
@@ -14794,7 +14832,7 @@ There are no concerns with splitting up the GDepth data when it grows beyond 64K
 <div class="sect4">
 <h5 id="_schema_and_example_16"><a class="anchor" href="#_schema_and_example_16"></a>16.6.5.3. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>depthmap-gdepth-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_depthmap_gdepth">Section E.16.16, &#8220;Depth Map (GDepth)&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>depthmap-gdepth-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_depthmap_gdepth">Section F.16.16, &#8220;Depth Map (GDepth)&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14859,7 +14897,7 @@ depthmap-gdepth-map = {
 
 base64-string-type = tstr
 
-$mime-choice /= "image/jpeg" 
+$mime-choice /= "image/jpeg"
 $mime-choice /= "image/png"
 
 mime-type = $mime-choice .default "image/jpeg"
@@ -15057,7 +15095,7 @@ The <code>content_type</code> field was previously used to record this media typ
 <div class="sect4">
 <h5 id="_schema_and_example_17"><a class="anchor" href="#_schema_and_example_17"></a>16.6.7.2. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>cloud-data-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_cloud_data">Section E.16.9, &#8220;Cloud Data&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>cloud-data-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_cloud_data">Section F.16.9, &#8220;Cloud Data&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15130,7 +15168,7 @@ These assertions can represent existing standards or they can be private specifi
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>.metadata.ingredient</code> form is to enable for support <a href="#_ingredient_related_assertions">related assertions to ingredients</a>.
+The <code>.metadata.ingredient</code> form supports <a href="#ingredient_related_assertions">related assertions to ingredients</a>.
 </td>
 </tr>
 </table>
@@ -15142,7 +15180,7 @@ The <code>.metadata.ingredient</code> form is to enable for support <a href="#_i
 <div class="sect4">
 <h5 id="_the_c2pa_metadata_assertion"><a class="anchor" href="#_the_c2pa_metadata_assertion"></a>16.6.8.3. The <code>c2pa.metadata</code> assertion</h5>
 <div class="paragraph">
-<p>This specification defines one metadata assertion, whose label is <code>c2pa.metadata</code>, which is used to represent a subset of common metadata schemas that may be used in any C2PA Manifest. Claim generators shall include in this assertion only the specific metadata fields enumerated in <a href="#metadata_annex">[metadata_annex]</a>.</p>
+<p>This specification defines one metadata assertion, whose label is <code>c2pa.metadata</code>, which is used to represent a subset of common metadata schemas that may be used in any C2PA Manifest. Claim generators shall include in this assertion only the specific metadata fields enumerated in <a href="#metadata_annex">Appendix C, <em>Implementation Details for <code>c2pa.metadata</code></em></a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -15254,12 +15292,12 @@ Custom labelled metadata assertions can contain any values from any schemas.
 <div class="sect4">
 <h5 id="_schema_and_example_18"><a class="anchor" href="#_schema_and_example_18"></a>16.7.1.2. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>cert-status-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_cert_status">Section E.17.1, &#8220;Certificate Status&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>cert-status-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_cert_status">Section F.17.1, &#8220;Certificate Status&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">certificate-status-map = {
-  "ocspVals": [1* bstr] 
+  "ocspVals": [1* bstr]
 }</code></pre>
 </div>
 </div>
@@ -15283,7 +15321,7 @@ Custom labelled metadata assertions can contain any values from any schemas.
 <p>A certificate status assertion shall have a label of <code>c2pa.certificate-status</code>, and a C2PA Manifest shall contain at most one certificate status assertion.</p>
 </div>
 <div class="paragraph">
-<p>The certificate status assertion consists of a CBOR map (defined as a <code>certificate-status-map</code>) and shall contain at least one entry in the <code>ocspVals</code> array. As described in <a href="#_certificate_revocation">Section 13.5.2, &#8220;Certificate Revocation&#8221;</a>, the claim generator queries the OCSP service indicated by the signing certificate, captures the response, and shall store it the same binary format as used when it is stored as an element of the <code>ocspVals</code> array of the <code>rVals</code> header (see <a href="#cddl_annex_rvals">Section E.17.4, &#8220;Revocation Values (<code>rVals</code>)&#8221;</a>).</p>
+<p>The certificate status assertion consists of a CBOR map (defined as a <code>certificate-status-map</code>) and shall contain at least one entry in the <code>ocspVals</code> array. As described in <a href="#_certificate_revocation">Section 13.5.2, &#8220;Certificate Revocation&#8221;</a>, the claim generator queries the OCSP service indicated by the signing certificate, captures the response, and shall store it the same binary format as used when it is stored as an element of the <code>ocspVals</code> array of the <code>rVals</code> header (see <a href="#cddl_annex_rvals">Section F.17.4, &#8220;Revocation Values (<code>rVals</code>)&#8221;</a>).</p>
 </div>
 </div>
 </div>
@@ -15301,7 +15339,7 @@ Custom labelled metadata assertions can contain any values from any schemas.
 <div class="sect4">
 <h5 id="_schema_and_example_19"><a class="anchor" href="#_schema_and_example_19"></a>16.7.2.2. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>time-stamp-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_time_stamp">Section E.17.3, &#8220;Time Stamp&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>time-stamp-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_time_stamp">Section F.17.3, &#8220;Time Stamp&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15400,7 +15438,7 @@ $time-stamp-entry /= tstr .regexp "^urn:c2pa:[\\da-zA-Z_-]+$"</code></pre>
 <div class="sect4">
 <h5 id="_schema_and_example_20"><a class="anchor" href="#_schema_and_example_20"></a>16.7.3.3. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>session-keys-data</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_session_keys">Section E.17.2, &#8220;Session Keys&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>session-keys-data</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_session_keys">Section F.17.2, &#8220;Session Keys&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15425,7 +15463,7 @@ session-key = {
     ; A signature of the Signer's end-entity certificate, using the session key
     ; `key`, enabling verification that the session key is associated with this
     ; Signer
-    "signerBinding" =&gt; COSE_Sign1_tagged,
+    "signerBinding" =&gt; COSE_Sign1_Tagged,
 }</code></pre>
 </div>
 </div>
@@ -15520,7 +15558,7 @@ session-key = {
 <div class="sect4">
 <h5 id="_schema_and_example_21"><a class="anchor" href="#_schema_and_example_21"></a>16.8.1.2. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>environmental-sustainability-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_environmental_sustainability">Section E.16.13, &#8220;Environmental Sustainability&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>environmental-sustainability-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_environmental_sustainability">Section F.16.13, &#8220;Environmental Sustainability&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15628,7 +15666,7 @@ $sustainability-measurement-method /= tstr .regexp "([\\da-zA-Z_-]+\\.)+[\\da-zA
 <div class="sect4">
 <h5 id="_schema_and_example_22"><a class="anchor" href="#_schema_and_example_22"></a>16.8.2.4. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>ai-model-disclosure-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_ai_disclosure">Section E.16.14, &#8220;AI Disclosure&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>ai-model-disclosure-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_ai_disclosure">Section F.16.14, &#8220;AI Disclosure&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15751,7 +15789,7 @@ human-oversight-enum =
 <p>Below shows the core schemas used inside other assertions.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> for the <code>assertion-metadata-map</code> rule is in the following listing (see <a href="#cddl_annex_assertion_metadata_common">Section E.18.1, &#8220;Assertion Metadata Common Types&#8221;</a> for the complete normative schema):</p>
+<p>The <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> for the <code>assertion-metadata-map</code> rule is in the following listing (see <a href="#cddl_annex_assertion_metadata_common">Section F.18.1, &#8220;Assertion Metadata Common Types&#8221;</a> for the complete normative schema):</p>
 </div>
 <div id="assertion-metadata-cddl" class="listingblock">
 <div class="title">CDDL for Assertion Metadata</div>
@@ -15789,10 +15827,10 @@ $assertion-metadata-map /= {
   ? "dataSource": source-map,
 
   ; localizations for strings in the assertion
-  ? "localizations" : [1* localization-data-entry]
+  ? "localizations" : [1* $localization-data-entry]
 
   ; describes a region of the asset where this assertion is relevant
-  ? "regionOfInterest" : $region-map
+  ? "regionOfInterest" : region-map
 
   ; Recorded start of the overall process or lower bound
   ? "processStart": generator-lower-bound-time-type,
@@ -15834,7 +15872,7 @@ rating-map = {
 
 ; The data structures used to store localization dictionaries
 $localization-data-entry /= {
-  * $$language-string
+  * language-string
 }
 
 language-string /= tstr .size (1..max-tstr-length)</code></pre>
@@ -15886,7 +15924,7 @@ language-string /= tstr .size (1..max-tstr-length)</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>dataSource</code> field is deprecated. See <a href="#_datasource_field">Section F.1, &#8220;<code>dataSource</code> Field in Assertion Metadata&#8221;</a>.
+The <code>dataSource</code> field is deprecated. See <a href="#_datasource_field">Section G.1, &#8220;<code>dataSource</code> Field in Assertion Metadata&#8221;</a>.
 </td>
 </tr>
 </table>
@@ -16000,7 +16038,7 @@ The <code>processStart</code> and <code>processEnd</code> fields are claim gener
 <div class="sect5">
 <h6 id="_localization_dictionary"><a class="anchor" href="#_localization_dictionary"></a>16.9.1.10.2. Localization Dictionary</h6>
 <div class="paragraph">
-<p>A localization dictionary shall consist of a single object, where each of its keys represent the translations using the language indexing technique from <a href="https://www.w3.org/TR/json-ld/#language-indexing">JSON-LD</a>.  If the value that requires translation is not associated with a top-level key, then "dot notation" (<code>.</code>) shall be used to reference keys nested in objects. Array indexing notation (<code>[n]</code>, <code>n&gt;=0</code>) shall be used where a specific element in an array needs to be traversed. When the value requiring translation is itself an array, a specific element may be referenced. Some examples are shown in <a href="#localization-dictionary-examples">Example 17, &#8220;Examples of Localization Dictionaries&#8221;</a>:</p>
+<p>A localization dictionary shall consist of a single object, where each of its keys represents the translations using the language indexing technique from <a href="https://www.w3.org/TR/json-ld/#language-indexing">JSON-LD</a>.  If the value that requires translation is not associated with a top-level key, then "dot notation" (<code>.</code>) shall be used to reference keys nested in objects. Array indexing notation (<code>[n]</code>, <code>n&gt;=0</code>) shall be used where a specific element in an array needs to be traversed. When the value requiring translation is itself an array, a specific element may be referenced. Some examples are shown in <a href="#localization-dictionary-examples">Example 17, &#8220;Examples of Localization Dictionaries&#8221;</a>:</p>
 </div>
 <div id="localization-dictionary-examples" class="exampleblock">
 <div class="title">Example 17. Examples of Localization Dictionaries</div>
@@ -16088,7 +16126,7 @@ It is expected that the C2PA&#8217;s User Experience Task Force will take this u
 </table>
 </div>
 <div class="paragraph">
-<p>A <code>region</code> may also contain one of more common fields:</p>
+<p>A <code>region</code> may also contain one or more common fields:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -16141,7 +16179,7 @@ It is expected that the C2PA&#8217;s User Experience Task Force will take this u
 <div class="sect5">
 <h6 id="_spatial"><a class="anchor" href="#_spatial"></a>16.9.2.2.2. Spatial</h6>
 <div class="paragraph">
-<p>Spatial ranges are described using a <code>shape</code> object. A <code>shape</code> can be use to represent a rectangle, a circle or a polygon.  It is modelled on the <a href="http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#region-boundary-structure">Region Boundary Structure</a> from the IPTC.</p>
+<p>Spatial ranges are described using a <code>shape</code> object. A <code>shape</code> can be used to represent a rectangle, a circle or a polygon.  It is modelled on the <a href="http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#region-boundary-structure">Region Boundary Structure</a> from the IPTC.</p>
 </div>
 </div>
 <div class="sect5">
@@ -16214,13 +16252,13 @@ Absolute, or wall clock time, is useful in scenarios where the media asset repre
 <div class="sect4">
 <h5 id="_schema_2"><a class="anchor" href="#_schema_2"></a>16.9.2.3. Schema</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>region-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_regions_of_interest">Section E.16.10, &#8220;Regions of Interest&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>region-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_regions_of_interest">Section F.16.10, &#8220;Regions of Interest&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">region-map = {
     ; definition of the range, one or more ranges
-    "region":        [1* $range-map],
+    "region":        [1* range-map],
 
     ; a free-text string representing a human-readable name for the region which
     ; could be used in a user interface.
@@ -16250,17 +16288,17 @@ $range-choice /= "identified"
 range-map = {
     ; either "spatial", "temporal", "frame", "textual" or "identified"
     "type":     $range-choice,
-    ? "shape":     $shape-map, ; description of the shape of a spatial range
+    ? "shape":     shape-map, ; description of the shape of a spatial range
 
     ; description of the time boundaries of a temporal range
-    ? "time":     $time-map,
+    ? "time":     time-map,
 
     ; description of the frame boundaries of a temporal range
-    ? "frame":     $frame-map,
-    ? "text":     $text-map, ; description of the boundaries of a textual range
+    ? "frame":     frame-map,
+    ? "text":     text-map, ; description of the boundaries of a textual range
 
     ; description of the boundaries of an identified range
-    ? "item":     $item-map,
+    ? "item":     item-map,
 }
 
 coordinate-map = {
@@ -16279,7 +16317,7 @@ $unit-choice /= "percent" ; units are in percent of the total size
 shape-map = {
     "type":     $shape-choice, ; either "rectangle", "circle" or "polygon"
     "unit":        $unit-choice, ; either "pixel" or "percent"
-    "origin":     $coordinate-map, ; starting/origin coordinate of the shape.
+    "origin":     coordinate-map, ; starting/origin coordinate of the shape.
 
     ; width for rectangles, diameter for circles (ignored for polygons)
     ? "width":     float,
@@ -16287,7 +16325,7 @@ shape-map = {
     ? "inside" : bool, ; inside or outside the shape, default is `true`
 
     ; remaining points/vertices of the polygon
-    ? "vertices":    [1* $coordinate-map]
+    ? "vertices":    [1* coordinate-map]
 }
 
 ; npt and utc start and end times have different regex formats
@@ -16343,15 +16381,15 @@ text-selector-map = {
 
 ; one or two text-selector-maps used to identify the range
 text-selector-range-map = {
-    "selector":     $text-selector-map, ; start (or only) text selector
+    "selector":     text-selector-map, ; start (or only) text selector
 
     ; if present, represents the end of the text range
-    ? "end":         $text-selector-map
+    ? "end":         text-selector-map
 }
 
 text-map = {
     ; array of (possibly discontinuous) ranges of text
-    "selectors": [1* $text-selector-range-map]
+    "selectors": [1* text-selector-range-map]
 }
 
 item-map = {
@@ -18144,7 +18182,7 @@ aligned(8) class ContentProvenanceBox(string box_purpose) extends FullBox (
 </dd>
 <dt class="hdlist1"><code>update</code></dt>
 <dd>
-<p>The supplimental C2PA Manifest Store containing one or more <a href="#update_manifests">Update Manifests</a> used when the asset has gone through an update workflow</p>
+<p>The supplementary C2PA Manifest Store containing one or more <a href="#_update_manifests">Update Manifests</a> used when the asset has gone through an update workflow</p>
 </dd>
 <dt class="hdlist1"><code>merkle</code></dt>
 <dd>
@@ -18181,7 +18219,7 @@ aligned(8) class ContentProvenanceBox(string box_purpose) extends FullBox (
 <p>A <code>ContentProvenanceBox</code> with a <code>box_purpose</code> of <code>update</code> shall be the last top-level box of the asset.</p>
 </div>
 <div class="paragraph">
-<p>If a <code>ContentProvenanceBox</code> with a <code>box_purpose</code> of <code>'manifest'</code> is not the last box of the asset, <a href="#update_manifests">Update Manifests</a> are supported by changing the <code>box_purpose</code> from <code>manifest</code> to <code>original</code> and the active manifest shall be stored within a new <code>ContentProvenanceBox</code> with a <code>box_purpose</code> of <code>update</code>.</p>
+<p>If a <code>ContentProvenanceBox</code> with a <code>box_purpose</code> of <code>'manifest'</code> is not the last box of the asset, <a href="#_update_manifests">Update Manifests</a> are supported by changing the <code>box_purpose</code> from <code>manifest</code> to <code>original</code> and the active manifest shall be stored within a new <code>ContentProvenanceBox</code> with a <code>box_purpose</code> of <code>update</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -18392,7 +18430,7 @@ The <code>'original'</code> and <code>'manifest'</code> boxes are identical apar
 <div class="sect4">
 <h5 id="_schema_and_example_24"><a class="anchor" href="#_schema_and_example_24"></a>A.5.3.2. Schema and Example</h5>
 <div class="paragraph">
-<p>The schema for this type is defined by the <code>bmff-merkle-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_bmff_merkle">Section E.15.3, &#8220;BMFF Merkle Hash&#8221;</a> for the complete normative schema):</p>
+<p>The schema for this type is defined by the <code>bmff-merkle-map</code> rule in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_bmff_merkle">Section F.15.3, &#8220;BMFF Merkle Hash&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -18601,13 +18639,13 @@ Using a specially named file in the list of files was considered, but was not ac
 </table>
 </div>
 <div class="paragraph">
-<p>The schema for the <code>collection-data-hash-map</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_collection_data_hash">Section E.15.5, &#8220;Collection Data Hash&#8221;</a> for the complete normative schema):</p>
+<p>The schema for the <code>collection-data-hash-map</code> is defined in the following <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> (see <a href="#cddl_annex_collection_data_hash">Section F.15.5, &#8220;Collection Data Hash&#8221;</a> for the complete normative schema):</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; An array of URIs and their associated hashes
 $collection-data-hash-map /= {
-  "uris": [1* uri-hashed-data-map],
+  "uris": [1* $uri-hashed-data-map],
 
   ; A string identifying the cryptographic hash algorithm used to compute the
   ; hash on each entry of the `uris` array, taken from the C2PA hash algorithm
@@ -20063,11 +20101,16 @@ A conformant claim generator has no reason to emit an oversized member, so these
 <p><a href="../../2.2/guidance/Guidance.html" class="xref page">Guidance for implementers</a></p>
 </li>
 <li>
-<p><a href="../../2.2/ux/UX_Recommendations.html" class="xref page">User experience guidance</a>
-== Implementation Details for <code>c2pa.metadata</code></p>
+<p><a href="../../2.2/ux/UX_Recommendations.html" class="xref page">User experience guidance</a></p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="metadata_annex"><a class="anchor" href="#metadata_annex"></a>Appendix C: Implementation Details for <code>c2pa.metadata</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The <code>c2pa.metadata</code> assertion shall only contain the subset of schemas and their fields as described below. However <a href="#_common_requirements">custom metadata assertions</a> may contain any values from these or other schemas.</p>
 </div>
@@ -20086,9 +20129,8 @@ A machine readable list of all the valid schemas and their fields can be found o
 <div class="paragraph">
 <p>The values present in a <code>c2pa.metadata</code> assertion may be unique to the metadata assertion or they may be taken from the standard "metadata blocks" of the asset format. In either case, they shall be serialized according to the rules of <a href="https://www.iso.org/standard/79384.html">JSON-LD serialization of XMP</a> as described <a href="#_common_requirements">here</a>.</p>
 </div>
-</div>
 <div class="sect2">
-<h3 id="_completely_supported_schemas"><a class="anchor" href="#_completely_supported_schemas"></a>B.5. Completely Supported Schemas</h3>
+<h3 id="_completely_supported_schemas"><a class="anchor" href="#_completely_supported_schemas"></a>C.1. Completely Supported Schemas</h3>
 <div class="paragraph">
 <p>The following schemas/namespaces, in <a href="#fully-supported-schemas">Table 14, &#8220;Completely supported schemas&#8221;</a>, are supported in full by any signer:</p>
 </div>
@@ -20127,7 +20169,7 @@ A machine readable list of all the valid schemas and their fields can be found o
 </table>
 </div>
 <div class="sect2">
-<h3 id="_partially_supported_schemas"><a class="anchor" href="#_partially_supported_schemas"></a>B.6. Partially Supported Schemas</h3>
+<h3 id="_partially_supported_schemas"><a class="anchor" href="#_partially_supported_schemas"></a>C.2. Partially Supported Schemas</h3>
 <div class="paragraph">
 <p>The following schemas/namespaces, in <a href="#partially-supported-schemas">Table 15, &#8220;Partially supported schemas&#8221;</a>, are only supported in part.</p>
 </div>
@@ -20183,7 +20225,7 @@ A machine readable list of all the valid schemas and their fields can be found o
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="_dublin_core_dc"><a class="anchor" href="#_dublin_core_dc"></a>B.6.1. Dublin Core (DC)</h4>
+<h4 id="_dublin_core_dc"><a class="anchor" href="#_dublin_core_dc"></a>C.2.1. Dublin Core (DC)</h4>
 <div class="paragraph">
 <p>Only the following Dublin Core (<code>dc</code>) properties are supported:</p>
 </div>
@@ -20223,7 +20265,7 @@ A machine readable list of all the valid schemas and their fields can be found o
 </div>
 </div>
 <div class="sect3">
-<h4 id="_iptc_core"><a class="anchor" href="#_iptc_core"></a>B.6.2. IPTC Core</h4>
+<h4 id="_iptc_core"><a class="anchor" href="#_iptc_core"></a>C.2.2. IPTC Core</h4>
 <div class="paragraph">
 <p>Only the following IPTC Core (<code>Iptc4xmpCore</code>) properties are supported:</p>
 </div>
@@ -20248,7 +20290,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect3">
-<h4 id="_iptc_extension"><a class="anchor" href="#_iptc_extension"></a>B.6.3. IPTC Extension</h4>
+<h4 id="_iptc_extension"><a class="anchor" href="#_iptc_extension"></a>C.2.3. IPTC Extension</h4>
 <div class="paragraph">
 <p>Only the following IPTC Extension (<code>Iptc4xmpExt</code>) properties are supported:</p>
 </div>
@@ -20294,7 +20336,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect3">
-<h4 id="_exif"><a class="anchor" href="#_exif"></a>B.6.4. Exif</h4>
+<h4 id="_exif"><a class="anchor" href="#_exif"></a>C.2.4. Exif</h4>
 <div class="paragraph">
 <p>Only the following Exif properties, in <a href="#exif-properties">Table 16, &#8220;Supported Exif Properties&#8221;</a>, are supported:</p>
 </div>
@@ -20555,7 +20597,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </table>
 </div>
 <div class="sect3">
-<h4 id="_exifex"><a class="anchor" href="#_exifex"></a>B.6.5. ExifEx</h4>
+<h4 id="_exifex"><a class="anchor" href="#_exifex"></a>C.2.5. ExifEx</h4>
 <div class="paragraph">
 <p>Only the following ExifEx properties are supported:</p>
 </div>
@@ -20673,7 +20715,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect3">
-<h4 id="_photoshop"><a class="anchor" href="#_photoshop"></a>B.6.6. Photoshop</h4>
+<h4 id="_photoshop"><a class="anchor" href="#_photoshop"></a>C.2.6. Photoshop</h4>
 <div class="paragraph">
 <p>Only the following Photoshop properties are supported:</p>
 </div>
@@ -20722,7 +20764,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tiff"><a class="anchor" href="#_tiff"></a>B.6.7. TIFF</h4>
+<h4 id="_tiff"><a class="anchor" href="#_tiff"></a>C.2.7. TIFF</h4>
 <div class="paragraph">
 <p>Only the following TIFF properties are supported:</p>
 </div>
@@ -20792,7 +20834,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect3">
-<h4 id="_xmp_dynamic_media"><a class="anchor" href="#_xmp_dynamic_media"></a>B.6.8. XMP Dynamic Media</h4>
+<h4 id="_xmp_dynamic_media"><a class="anchor" href="#_xmp_dynamic_media"></a>C.2.8. XMP Dynamic Media</h4>
 <div class="paragraph">
 <p>Only the following XMP Dynamic Media (<code>xmpDM</code>) properties, in <a href="#xmpDM-properties">Table 17, &#8220;XMP Dynamic Media properties&#8221;</a>, are supported:</p>
 </div>
@@ -21017,7 +21059,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </table>
 </div>
 <div class="sect3">
-<h4 id="_plus"><a class="anchor" href="#_plus"></a>B.6.9. PLUS</h4>
+<h4 id="_plus"><a class="anchor" href="#_plus"></a>C.2.9. PLUS</h4>
 <div class="paragraph">
 <p>Only the following PLUS properties are supported:</p>
 </div>
@@ -21051,10 +21093,10 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect1">
-<h2 id="validation_codes_annex"><a class="anchor" href="#validation_codes_annex"></a>Appendix C: Standard Validation Status Codes</h2>
+<h2 id="validation_codes_annex"><a class="anchor" href="#validation_codes_annex"></a>Appendix D: Standard Validation Status Codes</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_success_codes"><a class="anchor" href="#_success_codes"></a>C.1. Success codes</h3>
+<h3 id="_success_codes"><a class="anchor" href="#_success_codes"></a>D.1. Success codes</h3>
 <table id="validation_success_codes" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 18. Validation success codes</caption>
 <colgroup>
@@ -21164,7 +21206,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </table>
 </div>
 <div class="sect2">
-<h3 id="_informational_codes"><a class="anchor" href="#_informational_codes"></a>C.2. Informational codes</h3>
+<h3 id="_informational_codes"><a class="anchor" href="#_informational_codes"></a>D.2. Informational codes</h3>
 <table id="validation_informational_codes" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 19. Validation informational codes</caption>
 <colgroup>
@@ -21294,7 +21336,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </table>
 </div>
 <div class="sect2">
-<h3 id="_failure_codes"><a class="anchor" href="#_failure_codes"></a>C.3. Failure codes</h3>
+<h3 id="_failure_codes"><a class="anchor" href="#_failure_codes"></a>D.3. Failure codes</h3>
 <table id="validation_failure_codes" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 20. Validation failure codes</caption>
 <colgroup>
@@ -21746,10 +21788,10 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect1">
-<h2 id="versioning_annex"><a class="anchor" href="#versioning_annex"></a>Appendix D: Considerations for Deprecation</h2>
+<h2 id="versioning_annex"><a class="anchor" href="#versioning_annex"></a>Appendix E: Considerations for Deprecation</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_status_of_constructs"><a class="anchor" href="#_status_of_constructs"></a>D.1. Status of Constructs</h3>
+<h3 id="_status_of_constructs"><a class="anchor" href="#_status_of_constructs"></a>E.1. Status of Constructs</h3>
 <div class="paragraph">
 <p>The table below lists constructs whose status has changed as this specification has evolved.</p>
 </div>
@@ -22491,10 +22533,10 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect1">
-<h2 id="version_history"><a class="anchor" href="#version_history"></a>Appendix E: Version History</h2>
+<h2 id="version_history"><a class="anchor" href="#version_history"></a>Appendix F: Version History</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_2_5_october_2026"><a class="anchor" href="#_2_5_october_2026"></a>E.1. 2.5 - October 2026</h3>
+<h3 id="_2_5_october_2026"><a class="anchor" href="#_2_5_october_2026"></a>F.1. 2.5 - October 2026</h3>
 <div class="paragraph">
 <p>This version expands support for additional asset formats and live media, while introducing new provenance capabilities and clarifying validation, cryptographic, and content binding requirements.</p>
 </div>
@@ -22592,7 +22634,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect2">
-<h3 id="_2_4_april_2026"><a class="anchor" href="#_2_4_april_2026"></a>E.2. 2.4 - April 2026</h3>
+<h3 id="_2_4_april_2026"><a class="anchor" href="#_2_4_april_2026"></a>F.2. 2.4 - April 2026</h3>
 <div class="paragraph">
 <p>This version introduces new asset format support, new assertions, and a new JSON-based serialization for Content Credentials, alongside clarifications and improvements to actions, ingredients, live video, and cryptography.</p>
 </div>
@@ -22770,7 +22812,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect2">
-<h3 id="_2_3_december_2025"><a class="anchor" href="#_2_3_december_2025"></a>E.3. 2.3 - December 2025</h3>
+<h3 id="_2_3_december_2025"><a class="anchor" href="#_2_3_december_2025"></a>F.3. 2.3 - December 2025</h3>
 <div class="paragraph">
 <p>This version introduces several new features and enhancements to the C2PA Specification, focusing on expanding support for various asset types, improving validation processes, and refining existing assertions and actions. Key highlights include:</p>
 </div>
@@ -22897,7 +22939,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect2">
-<h3 id="_2_2_may_2025"><a class="anchor" href="#_2_2_may_2025"></a>E.4. 2.2 - May 2025</h3>
+<h3 id="_2_2_may_2025"><a class="anchor" href="#_2_2_may_2025"></a>F.4. 2.2 - May 2025</h3>
 <div class="paragraph">
 <p>This version focuses on both technical and editorial changes to the specification to clarify some of the new features of 2.1, while addressing requests from implementers. The specification has been updated to reflect the latest best practices in the field.</p>
 </div>
@@ -22977,7 +23019,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect2">
-<h3 id="_2_1_september_2024"><a class="anchor" href="#_2_1_september_2024"></a>E.5. 2.1 - September 2024</h3>
+<h3 id="_2_1_september_2024"><a class="anchor" href="#_2_1_september_2024"></a>F.5. 2.1 - September 2024</h3>
 <div class="paragraph">
 <p>This version focuses on both technical and editorial changes to the specification for the purposes of improving the security and reliability of Content Credentials. All publicly disclosed security vulnerabilities have been addressed, and the specification has been updated to reflect the latest best practices in the field.</p>
 </div>
@@ -23187,7 +23229,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect2">
-<h3 id="_2_0_january_2024"><a class="anchor" href="#_2_0_january_2024"></a>E.6. 2.0 - January 2024</h3>
+<h3 id="_2_0_january_2024"><a class="anchor" href="#_2_0_january_2024"></a>F.6. 2.0 - January 2024</h3>
 <div class="paragraph">
 <p>This version represents a significant departure from previous versions. It reduces reliance on the term "actor" within the trust and validation model, shifting the basis for trust decisions away from identifying individual humans or organisations and toward the hardware and software components identified by X.509 certificates. In addition to validator-configured trust lists, it also introduces a new default trust list, the "C2PA Trust List", which is intended to cover certificates issued to hardware and software.  This philosophical change led to the following functional changes in the specification:</p>
 </div>
@@ -23314,7 +23356,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect2">
-<h3 id="_1_4_november_2023"><a class="anchor" href="#_1_4_november_2023"></a>E.7. 1.4 - November 2023</h3>
+<h3 id="_1_4_november_2023"><a class="anchor" href="#_1_4_november_2023"></a>F.7. 1.4 - November 2023</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -23363,7 +23405,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect2">
-<h3 id="_1_3_april_2023"><a class="anchor" href="#_1_3_april_2023"></a>E.8. 1.3 - April 2023</h3>
+<h3 id="_1_3_april_2023"><a class="anchor" href="#_1_3_april_2023"></a>F.8. 1.3 - April 2023</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -23424,7 +23466,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect2">
-<h3 id="_1_2_october_2022"><a class="anchor" href="#_1_2_october_2022"></a>E.9. 1.2 - October 2022</h3>
+<h3 id="_1_2_october_2022"><a class="anchor" href="#_1_2_october_2022"></a>F.9. 1.2 - October 2022</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -23443,7 +23485,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect2">
-<h3 id="_1_1_september_2022"><a class="anchor" href="#_1_1_september_2022"></a>E.10. 1.1 - September 2022</h3>
+<h3 id="_1_1_september_2022"><a class="anchor" href="#_1_1_september_2022"></a>F.10. 1.1 - September 2022</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -23492,7 +23534,7 @@ Some IPTC Core properties have been superseded by newer versions in the IPTC Ext
 </div>
 </div>
 <div class="sect2">
-<h3 id="_1_0_december_2021"><a class="anchor" href="#_1_0_december_2021"></a>E.11. 1.0 - December 2021</h3>
+<h3 id="_1_0_december_2021"><a class="anchor" href="#_1_0_december_2021"></a>F.11. 1.0 - December 2021</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -23520,7 +23562,7 @@ Each section of the specification shows the current data structures inline for r
 </div>
 </div>
 <div class="sect2">
-<h3 id="_index"><a class="anchor" href="#_index"></a>E.12. Index</h3>
+<h3 id="_index"><a class="anchor" href="#_index"></a>F.12. Index</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 42.8571%;">
@@ -23537,226 +23579,226 @@ Each section of the specification shows the current data structures inline for r
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Claim</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_claim">Section E.13.1, &#8220;Claim&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_claim">Section F.13.1, &#8220;Claim&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>claim.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Timestamp container</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_tst_container">Section E.13.2, &#8220;Timestamp Container&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_tst_container">Section F.13.2, &#8220;Timestamp Container&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>tstContainer.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hashed JUMBF URI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_hashed_uri">Section E.14.1, &#8220;Hashed URI&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_hashed_uri">Section F.14.1, &#8220;Hashed URI&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>hashed-uri.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hashed external URI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_hashed_ext_uri">Section E.14.2, &#8220;Hashed External URI&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_hashed_ext_uri">Section F.14.2, &#8220;Hashed External URI&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>hashed-ext-uri.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unhashed external URI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_unhashed_ext_uri">Section E.14.3, &#8220;Unhashed External URI&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_unhashed_ext_uri">Section F.14.3, &#8220;Unhashed External URI&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>unhashed-ext-uri.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">URI hashed data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_uri_hashed_data">Section E.14.4, &#8220;URI Hashed Data&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_uri_hashed_data">Section F.14.4, &#8220;URI Hashed Data&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>uri-hashed-data.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Data hash assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_data_hash">Section E.15.1, &#8220;Data Hash&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_data_hash">Section F.15.1, &#8220;Data Hash&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data-hash.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">BMFF hash assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_bmff_hash">Section E.15.2, &#8220;BMFF Hash&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_bmff_hash">Section F.15.2, &#8220;BMFF Hash&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bmff-hash.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">BMFF Merkle hash</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_bmff_merkle">Section E.15.3, &#8220;BMFF Merkle Hash&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_bmff_merkle">Section F.15.3, &#8220;BMFF Merkle Hash&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bmff-merkle.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Boxes hash assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_boxes_hash">Section E.15.4, &#8220;Boxes Hash&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_boxes_hash">Section F.15.4, &#8220;Boxes Hash&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>boxes-hash.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Collection data hash assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_collection_data_hash">Section E.15.5, &#8220;Collection Data Hash&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_collection_data_hash">Section F.15.5, &#8220;Collection Data Hash&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>collection-data-hash.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Multi-asset hash assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_multi_asset_hash">Section E.15.6, &#8220;Multi-Asset Hash&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_multi_asset_hash">Section F.15.6, &#8220;Multi-Asset Hash&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>multi-asset-hash.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Segment hash assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_segment_hash">Section E.15.7, &#8220;Segment Hash&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_segment_hash">Section F.15.7, &#8220;Segment Hash&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>segment-hash.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Actions assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_actions">Section E.16.1, &#8220;Actions&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_actions">Section F.16.1, &#8220;Actions&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>actions.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action enumeration values</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_action_choices">Section E.16.2, &#8220;Action Enumeration Values&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_action_choices">Section F.16.2, &#8220;Action Enumeration Values&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>action-choices.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Font actions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_font_actions">Section E.16.3, &#8220;Font Actions&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_font_actions">Section F.16.3, &#8220;Font Actions&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>font-actions.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ingredient assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_ingredient">Section E.16.4, &#8220;Ingredient&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_ingredient">Section F.16.4, &#8220;Ingredient&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ingredient.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Asset reference</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_asset_ref">Section E.16.5, &#8220;Asset Reference&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_asset_ref">Section F.16.5, &#8220;Asset Reference&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>asset-ref.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Asset type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_asset_type">Section E.16.6, &#8220;Asset Type&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_asset_type">Section F.16.6, &#8220;Asset Type&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>asset-type.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Asset type and model enumeration values</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_asset_type_choices">Section E.16.7, &#8220;Asset Type and Model Enumeration Values&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_asset_type_choices">Section F.16.7, &#8220;Asset Type and Model Enumeration Values&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>asset-type-choices.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">External reference assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_external_reference">Section E.16.8, &#8220;External Reference&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_external_reference">Section F.16.8, &#8220;External Reference&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>external-reference.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cloud data assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_cloud_data">Section E.16.9, &#8220;Cloud Data&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_cloud_data">Section F.16.9, &#8220;Cloud Data&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloud-data.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Regions of interest assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_regions_of_interest">Section E.16.10, &#8220;Regions of Interest&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_regions_of_interest">Section F.16.10, &#8220;Regions of Interest&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>regions-of-interest.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Region role enumeration values</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_region_role_choices">Section E.16.11, &#8220;Region Role Enumeration Values&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_region_role_choices">Section F.16.11, &#8220;Region Role Enumeration Values&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>region-role-choices.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Soft binding assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_soft_binding">Section E.16.12, &#8220;Soft Binding&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_soft_binding">Section F.16.12, &#8220;Soft Binding&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>soft-binding.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Environmental sustainability assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_environmental_sustainability">Section E.16.13, &#8220;Environmental Sustainability&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_environmental_sustainability">Section F.16.13, &#8220;Environmental Sustainability&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>environmental-sustainability.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AI disclosure assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_ai_disclosure">Section E.16.14, &#8220;AI Disclosure&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_ai_disclosure">Section F.16.14, &#8220;AI Disclosure&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ai-disclosure.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Linked resource integrity assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_linked_resource_integrity">Section E.16.15, &#8220;Linked Resource Integrity&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_linked_resource_integrity">Section F.16.15, &#8220;Linked Resource Integrity&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>linked-resource-integrity.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Depth map (GDepth) assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_depthmap_gdepth">Section E.16.16, &#8220;Depth Map (GDepth)&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_depthmap_gdepth">Section F.16.16, &#8220;Depth Map (GDepth)&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>depthmap-gdepth.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Alternative content representation assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_alt_content_rep">Section E.16.17, &#8220;Alternative Content Representation&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_alt_content_rep">Section F.16.17, &#8220;Alternative Content Representation&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>alternative-content-representation.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Font information assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_font_info">Section E.16.18, &#8220;Font Information&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_font_info">Section F.16.18, &#8220;Font Information&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>font-info.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Font weight class enumeration values</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_font_weight_class">Section E.16.19, &#8220;Font Weight Class Enumeration Values&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_font_weight_class">Section F.16.19, &#8220;Font Weight Class Enumeration Values&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>font-weight-class.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Certificate status assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_cert_status">Section E.17.1, &#8220;Certificate Status&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_cert_status">Section F.17.1, &#8220;Certificate Status&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>certificate-status.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Session keys assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_session_keys">Section E.17.2, &#8220;Session Keys&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_session_keys">Section F.17.2, &#8220;Session Keys&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>session-keys.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time stamp assertion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_time_stamp">Section E.17.3, &#8220;Time Stamp&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_time_stamp">Section F.17.3, &#8220;Time Stamp&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>time-stamp.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Revocation values (<code>rVals</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_rvals">Section E.17.4, &#8220;Revocation Values (<code>rVals</code>)&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_rvals">Section F.17.4, &#8220;Revocation Values (<code>rVals</code>)&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rVals.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Assertion metadata common types</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_assertion_metadata_common">Section E.18.1, &#8220;Assertion Metadata Common Types&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_assertion_metadata_common">Section F.18.1, &#8220;Assertion Metadata Common Types&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>assertion-metadata-common.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Assertion metadata enumeration values</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_assertion_metadata_choices">Section E.18.2, &#8220;Assertion Metadata Enumeration Values&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_assertion_metadata_choices">Section F.18.2, &#8220;Assertion Metadata Enumeration Values&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>assertion-metadata-choices.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validation result structures</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_validation_result_structs">Section E.18.3, &#8220;Validation Result Structures&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_validation_result_structs">Section F.18.3, &#8220;Validation Result Structures&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>validation-result-structs.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Live media segment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_livevideo_segment">Section E.19.1, &#8220;Live Media Segment&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_livevideo_segment">Section F.19.1, &#8220;Live Media Segment&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>livevideo-segment.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verifiable segment info</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_verifiable_segment_info">Section E.19.2, &#8220;Verifiable Segment Info&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_verifiable_segment_info">Section F.19.2, &#8220;Verifiable Segment Info&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>verifiable-segment-info.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enhanced RTMP segment info</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_rtmp_segment_info">Section E.19.3, &#8220;Enhanced RTMP Segment Info&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_rtmp_segment_info">Section F.19.3, &#8220;Enhanced RTMP Segment Info&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rtmp-segment-info.cddl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enhanced RTMP hash</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_rtmp_hash">Section E.19.4, &#8220;Enhanced RTMP Hash&#8221;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cddl_annex_rtmp_hash">Section F.19.4, &#8220;Enhanced RTMP Hash&#8221;</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rtmp-hash.cddl</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_core_schemas"><a class="anchor" href="#_core_schemas"></a>E.13. Core Schemas</h3>
+<h3 id="_core_schemas"><a class="anchor" href="#_core_schemas"></a>F.13. Core Schemas</h3>
 <div class="sect3">
-<h4 id="cddl_annex_claim"><a class="anchor" href="#cddl_annex_claim"></a>E.13.1. Claim</h4>
+<h4 id="cddl_annex_claim"><a class="anchor" href="#cddl_annex_claim"></a>F.13.1. Claim</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; CDDL schema for a claim map in C2PA
@@ -23765,7 +23807,7 @@ claim-map-v2 = {
   "instanceID": tstr .size (1..max-tstr-length),
 
   ; the claim generator of this claim
-  "claim_generator_info": $generator-info-map,
+  "claim_generator_info": generator-info-map,
 
   ; JUMBF URI reference to the signature of this claim
   "signature": jumbf-uri-type,
@@ -23856,7 +23898,7 @@ generator-info-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_tst_container"><a class="anchor" href="#cddl_annex_tst_container"></a>E.13.2. Timestamp Container</h4>
+<h4 id="cddl_annex_tst_container"><a class="anchor" href="#cddl_annex_tst_container"></a>F.13.2. Timestamp Container</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; CBOR version of tstContainer and related structures based on JSON schema at
@@ -23885,9 +23927,9 @@ This definition is a CBOR adaptation of a subset of the schema from <a href="htt
 </div>
 </div>
 <div class="sect2">
-<h3 id="_uri_types"><a class="anchor" href="#_uri_types"></a>E.14. URI Types</h3>
+<h3 id="_uri_types"><a class="anchor" href="#_uri_types"></a>F.14. URI Types</h3>
 <div class="sect3">
-<h4 id="cddl_annex_hashed_uri"><a class="anchor" href="#cddl_annex_hashed_uri"></a>E.14.1. Hashed URI</h4>
+<h4 id="cddl_annex_hashed_uri"><a class="anchor" href="#cddl_annex_hashed_uri"></a>F.14.1. Hashed URI</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The data structure used to store a reference to a URL within the same JUMBF
@@ -23914,7 +23956,7 @@ jumbf-uri-type  /= tstr .regexp "self#jumbf=[A-Za-z0-9/][A-Za-z0-9./:&amp;=-]*[A
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_hashed_ext_uri"><a class="anchor" href="#cddl_annex_hashed_ext_uri"></a>E.14.2. Hashed External URI</h4>
+<h4 id="cddl_annex_hashed_ext_uri"><a class="anchor" href="#cddl_annex_hashed_ext_uri"></a>F.14.2. Hashed External URI</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The data structure used to store a reference to an external URL and its hash.
@@ -23932,7 +23974,7 @@ $hashed-ext-uri-map /= {
   ? "size": size-type, ; Number of bytes of data
 
   ; additional information about the data's type
-  ? "data_types": [1* $asset-type-map],
+  ? "data_types": [1* asset-type-map],
 }
 
 ; with CBOR Head (#) and tail ($) are introduced in regexp, so not needed
@@ -23942,7 +23984,7 @@ ext-url-type  /= tstr .regexp "https?:\/\/[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_unhashed_ext_uri"><a class="anchor" href="#cddl_annex_unhashed_ext_uri"></a>E.14.3. Unhashed External URI</h4>
+<h4 id="cddl_annex_unhashed_ext_uri"><a class="anchor" href="#cddl_annex_unhashed_ext_uri"></a>F.14.3. Unhashed External URI</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The data structure used to store a reference to an external URI WITHOUT a
@@ -23954,13 +23996,13 @@ unhashed-ext-uri-map = {
   ? "size": size-type, ; Number of bytes of data
 
   ; additional information about the data's type
-  ? "data_types": [1* $asset-type-map],
+  ? "data_types": [1* asset-type-map],
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_uri_hashed_data"><a class="anchor" href="#cddl_annex_uri_hashed_data"></a>E.14.4. URI Hashed Data</h4>
+<h4 id="cddl_annex_uri_hashed_data"><a class="anchor" href="#cddl_annex_uri_hashed_data"></a>F.14.4. URI Hashed Data</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The data structure used to store a reference to a URI and its hash.
@@ -23971,7 +24013,7 @@ $uri-hashed-data-map /= {
   ? "dc:format": format-string, ; IANA media type of the data
 
   ; additional information about the data's type
-  ? "data_types": [1* $asset-type-map],
+  ? "data_types": [1* asset-type-map],
 }
 
 ; An RFC 3986 relative-reference with no scheme and no authority: excludes
@@ -23988,9 +24030,9 @@ relative-url-type  /= tstr .regexp "/?[-a-zA-Z0-9@%_\\+.~#?&amp;=][-a-zA-Z0-9@%_
 </div>
 </div>
 <div class="sect2">
-<h3 id="_hash_assertions"><a class="anchor" href="#_hash_assertions"></a>E.15. Hash Assertions</h3>
+<h3 id="_hash_assertions"><a class="anchor" href="#_hash_assertions"></a>F.15. Hash Assertions</h3>
 <div class="sect3">
-<h4 id="cddl_annex_data_hash"><a class="anchor" href="#cddl_annex_data_hash"></a>E.15.1. Data Hash</h4>
+<h4 id="cddl_annex_data_hash"><a class="anchor" href="#cddl_annex_data_hash"></a>F.15.1. Data Hash</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Also check optionality within the hash-map
@@ -24026,7 +24068,7 @@ EXCLUSION_RANGE-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_bmff_hash"><a class="anchor" href="#cddl_annex_bmff_hash"></a>E.15.2. BMFF Hash</h4>
+<h4 id="cddl_annex_bmff_hash"><a class="anchor" href="#cddl_annex_bmff_hash"></a>F.15.2. BMFF Hash</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">bmff-hash-map = {
@@ -24168,7 +24210,7 @@ merkle-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_bmff_merkle"><a class="anchor" href="#cddl_annex_bmff_merkle"></a>E.15.3. BMFF Merkle Hash</h4>
+<h4 id="cddl_annex_bmff_merkle"><a class="anchor" href="#cddl_annex_bmff_merkle"></a>F.15.3. BMFF Merkle Hash</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The data structure used to store sufficient information to validate a single
@@ -24195,7 +24237,7 @@ bmff-merkle-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_boxes_hash"><a class="anchor" href="#cddl_annex_boxes_hash"></a>E.15.4. Boxes Hash</h4>
+<h4 id="cddl_annex_boxes_hash"><a class="anchor" href="#cddl_annex_boxes_hash"></a>F.15.4. Boxes Hash</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">box-map = {
@@ -24250,12 +24292,12 @@ box-exclusions-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_collection_data_hash"><a class="anchor" href="#cddl_annex_collection_data_hash"></a>E.15.5. Collection Data Hash</h4>
+<h4 id="cddl_annex_collection_data_hash"><a class="anchor" href="#cddl_annex_collection_data_hash"></a>F.15.5. Collection Data Hash</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; An array of URIs and their associated hashes
 $collection-data-hash-map /= {
-  "uris": [1* uri-hashed-data-map],
+  "uris": [1* $uri-hashed-data-map],
 
   ; A string identifying the cryptographic hash algorithm used to compute the
   ; hash on each entry of the `uris` array, taken from the C2PA hash algorithm
@@ -24271,7 +24313,7 @@ relative-url-type  /= tstr .regexp "urn:[a-zA-Z0-9][a-zA-Z0-9-]{0,30}[a-zA-Z0-9]
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_multi_asset_hash"><a class="anchor" href="#cddl_annex_multi_asset_hash"></a>E.15.6. Multi-Asset Hash</h4>
+<h4 id="cddl_annex_multi_asset_hash"><a class="anchor" href="#cddl_annex_multi_asset_hash"></a>F.15.6. Multi-Asset Hash</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">multi-asset-hash-map = {
@@ -24303,7 +24345,7 @@ part-hash-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_segment_hash"><a class="anchor" href="#cddl_annex_segment_hash"></a>E.15.7. Segment Hash</h4>
+<h4 id="cddl_annex_segment_hash"><a class="anchor" href="#cddl_annex_segment_hash"></a>F.15.7. Segment Hash</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Segment hash assertion for append-only plain-text files.
@@ -24365,9 +24407,9 @@ predecessor-sentinel-map = {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_content_assertions"><a class="anchor" href="#_content_assertions"></a>E.16. Content Assertions</h3>
+<h3 id="_content_assertions"><a class="anchor" href="#_content_assertions"></a>F.16. Content Assertions</h3>
 <div class="sect3">
-<h4 id="cddl_annex_actions"><a class="anchor" href="#cddl_annex_actions"></a>E.16.1. Actions</h4>
+<h4 id="cddl_annex_actions"><a class="anchor" href="#cddl_annex_actions"></a>F.16.1. Actions</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Structural definitions for actions assertions.
@@ -24394,10 +24436,10 @@ actions-map-v2 = {
   "actions" : [1* action-item-map-v2], ; list of actions
 
   ; list of templates for the actions
-  ? "templates": [1* $action-template-map-v2],
+  ? "templates": [1* action-template-map-v2],
 
-  ; A list of of the software/hardware that did the action
-  ? "softwareAgents": [1* $generator-info-map],
+  ; A list of the software/hardware that did the action
+  ? "softwareAgents": [1* generator-info-map],
 
   ; additional information about the assertion
   ? "metadata": $assertion-metadata-map,
@@ -24410,7 +24452,7 @@ actions-map-v2 = {
 
 action-common-map-v2 = {
   ; Description of the software/hardware that did the action
-  ? "softwareAgent": $generator-info-map,
+  ? "softwareAgent": generator-info-map,
 
   ; 0-based index into the softwareAgents array in the actions-map-2
   ? "softwareAgentIndex": int,
@@ -24471,7 +24513,7 @@ parameters-common-map-v2 = (
 parameters-map-v2 = {
   ; A JUMBF URI to the redacted assertion, required when the action is
   ; `c2pa.redacted`
-  ? "redacted": $jumbf-uri-type,
+  ? "redacted": jumbf-uri-type,
 
   ; A list of hashed JUMBF URI(s) to the ingredient (v2 or v3) assertion(s) that
   ; this action acts on
@@ -24491,7 +24533,7 @@ parameters-map-v2 = {
   ? "name": tstr .size (1..max-tstr-length),
 
   ? "multipleInstances": bool, ; was this action performed multiple times
- 
+
   parameters-common-map-v2, ; anything from the common parameters
 }
 
@@ -24546,7 +24588,7 @@ parameters-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_action_choices"><a class="anchor" href="#cddl_annex_action_choices"></a>E.16.2. Action Enumeration Values</h4>
+<h4 id="cddl_annex_action_choices"><a class="anchor" href="#cddl_annex_action_choices"></a>F.16.2. Action Enumeration Values</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; DO NOT EDIT — generated from actions.yaml
@@ -24612,7 +24654,7 @@ $action-choice /= tstr .regexp "([\\da-zA-Z_-]+\\.)+[\\da-zA-Z_-]+"</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_font_actions"><a class="anchor" href="#cddl_annex_font_actions"></a>E.16.3. Font Actions</h4>
+<h4 id="cddl_annex_font_actions"><a class="anchor" href="#cddl_annex_font_actions"></a>F.16.3. Font Actions</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Maps, ranges and parameters for font-specific actions.
@@ -24660,7 +24702,7 @@ font-parameter-created-from-variable-font-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_ingredient"><a class="anchor" href="#cddl_annex_ingredient"></a>E.16.4. Ingredient</h4>
+<h4 id="cddl_annex_ingredient"><a class="anchor" href="#cddl_annex_ingredient"></a>F.16.4. Ingredient</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Version 3 (v3) of the ingredient assertion
@@ -24675,7 +24717,7 @@ ingredient-map-v3 = {
   ; Results from the claim generator performing full validation on the
   ; ingredient asset. May be present whether or not `activeManifest` is
   ; present.
-  ? "validationResults": $validation-results-map,
+  ? "validationResults": validation-results-map,
 
   ; unique identifier such as the value of the ingredient's `xmpMM:InstanceID`
   ? "instanceID": tstr,
@@ -24685,7 +24727,7 @@ ingredient-map-v3 = {
   ? "data" : $hashed-uri-map / $hashed-ext-uri-map,
 
   ; additional information about the data's type to the ingredient V3 structure
-  ? "dataTypes": [1* $asset-type-map],
+  ? "dataTypes": [1* asset-type-map],
 
   (
     ; hashed_uri to the box corresponding to the active manifest of the
@@ -24742,14 +24784,14 @@ ingredient-map-v2 = {
   ? "data" : $hashed-uri-map / $hashed-ext-uri-map,
 
   ; additional information about the data's type to the ingredient V2 structure.
-  ? "data_types": [1* $asset-type-map],
+  ? "data_types": [1* asset-type-map],
 
   ; hashed_uri reference to the C2PA Manifest of the ingredient
   ? "c2pa_manifest": $hashed-uri-map,
 
   ; hashed_uri reference to a thumbnail in a embedded data assertion
   ? "thumbnail": $hashed-uri-map,
-  ? "validationStatus": [1* $status-map] ; validation status of the ingredient
+  ? "validationStatus": [1* status-map] ; validation status of the ingredient
 
   ; Additional description of the ingredient
   ? "description": tstr .size (1..max-tstr-length)
@@ -24779,7 +24821,7 @@ ingredient-map = {
 
   ; hashed_uri reference to an ingredient thumbnail
   ? "thumbnail": $hashed-uri-map,
-  ? "validationStatus": [1* $status-map] ; validation status of the ingredient
+  ? "validationStatus": [1* status-map] ; validation status of the ingredient
 
   ; additional information about the assertion
   ? "metadata": $assertion-metadata-map
@@ -24796,7 +24838,7 @@ $relation-choice /= "inputTo"</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_asset_ref"><a class="anchor" href="#cddl_annex_asset_ref"></a>E.16.5. Asset Reference</h4>
+<h4 id="cddl_annex_asset_ref"><a class="anchor" href="#cddl_annex_asset_ref"></a>F.16.5. Asset Reference</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The asset reference assertion (ARA) describes where a copy of the asset may be
@@ -24821,7 +24863,7 @@ ara-reference-uri-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_asset_type"><a class="anchor" href="#cddl_annex_asset_type"></a>E.16.6. Asset Type</h4>
+<h4 id="cddl_annex_asset_type"><a class="anchor" href="#cddl_annex_asset_type"></a>F.16.6. Asset Type</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The asset type assertion provides a way to describe the type or format of an
@@ -24848,7 +24890,7 @@ asset-types = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_asset_type_choices"><a class="anchor" href="#cddl_annex_asset_type_choices"></a>E.16.7. Asset Type and Model Enumeration Values</h4>
+<h4 id="cddl_annex_asset_type_choices"><a class="anchor" href="#cddl_annex_asset_type_choices"></a>F.16.7. Asset Type and Model Enumeration Values</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Enumerated values for $model-type-choice and $asset-type-choice
@@ -24907,13 +24949,13 @@ $asset-type-choice /= tstr .regexp "([\\da-zA-Z_-]+\\.)+[\\da-zA-Z_-]+"</code></
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_external_reference"><a class="anchor" href="#cddl_annex_external_reference"></a>E.16.8. External Reference</h4>
+<h4 id="cddl_annex_external_reference"><a class="anchor" href="#cddl_annex_external_reference"></a>F.16.8. External Reference</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Assertion that references assertion data stored externally by URI (no hash)
 external-reference-map = {
   ; specifies the location and type of the remote data
-  "location": $unhashed-ext-uri-map,
+  "location": unhashed-ext-uri-map,
 
   ; label for the referenced assertion, if relevant (e.g., c2pa.metadata)
   ? "label": tstr,
@@ -24943,7 +24985,7 @@ hashed-external-reference-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_cloud_data"><a class="anchor" href="#cddl_annex_cloud_data"></a>E.16.9. Cloud Data</h4>
+<h4 id="cddl_annex_cloud_data"><a class="anchor" href="#cddl_annex_cloud_data"></a>F.16.9. Cloud Data</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Assertion that references the actual assertion stored in the cloud
@@ -24967,12 +25009,12 @@ size-type = int .ge 1</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_regions_of_interest"><a class="anchor" href="#cddl_annex_regions_of_interest"></a>E.16.10. Regions of Interest</h4>
+<h4 id="cddl_annex_regions_of_interest"><a class="anchor" href="#cddl_annex_regions_of_interest"></a>F.16.10. Regions of Interest</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">region-map = {
     ; definition of the range, one or more ranges
-    "region":        [1* $range-map],
+    "region":        [1* range-map],
 
     ; a free-text string representing a human-readable name for the region which
     ; could be used in a user interface.
@@ -25002,17 +25044,17 @@ $range-choice /= "identified"
 range-map = {
     ; either "spatial", "temporal", "frame", "textual" or "identified"
     "type":     $range-choice,
-    ? "shape":     $shape-map, ; description of the shape of a spatial range
+    ? "shape":     shape-map, ; description of the shape of a spatial range
 
     ; description of the time boundaries of a temporal range
-    ? "time":     $time-map,
+    ? "time":     time-map,
 
     ; description of the frame boundaries of a temporal range
-    ? "frame":     $frame-map,
-    ? "text":     $text-map, ; description of the boundaries of a textual range
+    ? "frame":     frame-map,
+    ? "text":     text-map, ; description of the boundaries of a textual range
 
     ; description of the boundaries of an identified range
-    ? "item":     $item-map,
+    ? "item":     item-map,
 }
 
 coordinate-map = {
@@ -25031,7 +25073,7 @@ $unit-choice /= "percent" ; units are in percent of the total size
 shape-map = {
     "type":     $shape-choice, ; either "rectangle", "circle" or "polygon"
     "unit":        $unit-choice, ; either "pixel" or "percent"
-    "origin":     $coordinate-map, ; starting/origin coordinate of the shape.
+    "origin":     coordinate-map, ; starting/origin coordinate of the shape.
 
     ; width for rectangles, diameter for circles (ignored for polygons)
     ? "width":     float,
@@ -25039,7 +25081,7 @@ shape-map = {
     ? "inside" : bool, ; inside or outside the shape, default is `true`
 
     ; remaining points/vertices of the polygon
-    ? "vertices":    [1* $coordinate-map]
+    ? "vertices":    [1* coordinate-map]
 }
 
 ; npt and utc start and end times have different regex formats
@@ -25095,15 +25137,15 @@ text-selector-map = {
 
 ; one or two text-selector-maps used to identify the range
 text-selector-range-map = {
-    "selector":     $text-selector-map, ; start (or only) text selector
+    "selector":     text-selector-map, ; start (or only) text selector
 
     ; if present, represents the end of the text range
-    ? "end":         $text-selector-map
+    ? "end":         text-selector-map
 }
 
 text-map = {
     ; array of (possibly discontinuous) ranges of text
-    "selectors": [1* $text-selector-range-map]
+    "selectors": [1* text-selector-range-map]
 }
 
 item-map = {
@@ -25119,7 +25161,7 @@ item-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_region_role_choices"><a class="anchor" href="#cddl_annex_region_role_choices"></a>E.16.11. Region Role Enumeration Values</h4>
+<h4 id="cddl_annex_region_role_choices"><a class="anchor" href="#cddl_annex_region_role_choices"></a>F.16.11. Region Role Enumeration Values</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Enumerated values for $role-choice (used in regions-of-interest.cddl)
@@ -25147,7 +25189,7 @@ $role-choice /= "c2pa.watermarked.unbound"</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_soft_binding"><a class="anchor" href="#cddl_annex_soft_binding"></a>E.16.12. Soft Binding</h4>
+<h4 id="cddl_annex_soft_binding"><a class="anchor" href="#cddl_annex_soft_binding"></a>F.16.12. Soft Binding</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Align regions-of-interest object structure in soft-binding assertions with
@@ -25229,7 +25271,7 @@ soft-binding-metadata-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_environmental_sustainability"><a class="anchor" href="#cddl_annex_environmental_sustainability"></a>E.16.13. Environmental Sustainability</h4>
+<h4 id="cddl_annex_environmental_sustainability"><a class="anchor" href="#cddl_annex_environmental_sustainability"></a>F.16.13. Environmental Sustainability</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The environmental sustainability assertion describes sustainability
@@ -25253,7 +25295,7 @@ $sustainability-measurement-method /= tstr .regexp "([\\da-zA-Z_-]+\\.)+[\\da-zA
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_ai_disclosure"><a class="anchor" href="#cddl_annex_ai_disclosure"></a>E.16.14. AI Disclosure</h4>
+<h4 id="cddl_annex_ai_disclosure"><a class="anchor" href="#cddl_annex_ai_disclosure"></a>F.16.14. AI Disclosure</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; CDDL Schema for AI Model Disclosure Metadata
@@ -25320,7 +25362,7 @@ human-oversight-enum =
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_linked_resource_integrity"><a class="anchor" href="#cddl_annex_linked_resource_integrity"></a>E.16.15. Linked Resource Integrity</h4>
+<h4 id="cddl_annex_linked_resource_integrity"><a class="anchor" href="#cddl_annex_linked_resource_integrity"></a>F.16.15. Linked Resource Integrity</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; One or more external resources with cryptographic hashes, used when the
@@ -25356,7 +25398,7 @@ linked-resource-integrity-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_depthmap_gdepth"><a class="anchor" href="#cddl_annex_depthmap_gdepth"></a>E.16.16. Depth Map (GDepth)</h4>
+<h4 id="cddl_annex_depthmap_gdepth"><a class="anchor" href="#cddl_annex_depthmap_gdepth"></a>F.16.16. Depth Map (GDepth)</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Assertion that encodes a GDepth-formatted 3D depth map of the captured scene
@@ -25420,7 +25462,7 @@ depthmap-gdepth-map = {
 
 base64-string-type = tstr
 
-$mime-choice /= "image/jpeg" 
+$mime-choice /= "image/jpeg"
 $mime-choice /= "image/png"
 
 mime-type = $mime-choice .default "image/jpeg"
@@ -25444,13 +25486,13 @@ depth-meas-type = $depth-meas-choice .default "OpticalAxis"</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_alt_content_rep"><a class="anchor" href="#cddl_annex_alt_content_rep"></a>E.16.17. Alternative Content Representation</h4>
+<h4 id="cddl_annex_alt_content_rep"><a class="anchor" href="#cddl_annex_alt_content_rep"></a>F.16.17. Alternative Content Representation</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Describes a reference to an alternative version of the content
 ; (e.g. an original preservation image in Exif, a secure capture from TEE, etc.)
-alternative-content-representation = 
-  original-preservation-image-representation 
+alternative-content-representation =
+  original-preservation-image-representation
   / generic-representation
 
 ; The original-preservation-image-representation describes the location of the
@@ -25472,7 +25514,7 @@ original-preservation-image-params = {
   ; hashed URI reference to the embedded data assertion containing OPI, or to
   ; another assertion that is technically equivalent to an embedded data
   ; assertion (e.g., c2pa.thumbnail.claim).
-  ? "embeddedOriginalPreservationImage": hashed-uri-map,
+  ? "embeddedOriginalPreservationImage": $hashed-uri-map,
   * tstr =&gt; any ; custom fields
 }
 
@@ -25487,7 +25529,7 @@ generic-representation = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_font_info"><a class="anchor" href="#cddl_annex_font_info"></a>E.16.18. Font Information</h4>
+<h4 id="cddl_annex_font_info"><a class="anchor" href="#cddl_annex_font_info"></a>F.16.18. Font Information</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Assertion data for font.info assertion.
@@ -25535,7 +25577,7 @@ $font-format-choice /= "OpenType"
 font-copyright-year-range = 1..9999
 
 ; Font weight range
-font-weight-range = 1..1000
+font-weight-range /= 1..1000
 
 ; The font style
 $font-style /= "Normal"
@@ -25581,7 +25623,7 @@ font-designer-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_font_weight_class"><a class="anchor" href="#cddl_annex_font_weight_class"></a>E.16.19. Font Weight Class Enumeration Values</h4>
+<h4 id="cddl_annex_font_weight_class"><a class="anchor" href="#cddl_annex_font_weight_class"></a>F.16.19. Font Weight Class Enumeration Values</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Enumerated values for $font-weight-class (used in font-info.cddl)
@@ -25614,19 +25656,19 @@ $font-weight-class /= "MegaBlack"</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_trust_and_security"><a class="anchor" href="#_trust_and_security"></a>E.17. Trust and Security</h3>
+<h3 id="_trust_and_security"><a class="anchor" href="#_trust_and_security"></a>F.17. Trust and Security</h3>
 <div class="sect3">
-<h4 id="cddl_annex_cert_status"><a class="anchor" href="#cddl_annex_cert_status"></a>E.17.1. Certificate Status</h4>
+<h4 id="cddl_annex_cert_status"><a class="anchor" href="#cddl_annex_cert_status"></a>F.17.1. Certificate Status</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">certificate-status-map = {
-  "ocspVals": [1* bstr] 
+  "ocspVals": [1* bstr]
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_session_keys"><a class="anchor" href="#cddl_annex_session_keys"></a>E.17.2. Session Keys</h4>
+<h4 id="cddl_annex_session_keys"><a class="anchor" href="#cddl_annex_session_keys"></a>F.17.2. Session Keys</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Data structure to supply session keys used for live-media validation
@@ -25650,13 +25692,13 @@ session-key = {
     ; A signature of the Signer's end-entity certificate, using the session key
     ; `key`, enabling verification that the session key is associated with this
     ; Signer
-    "signerBinding" =&gt; COSE_Sign1_tagged,
+    "signerBinding" =&gt; COSE_Sign1_Tagged,
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_time_stamp"><a class="anchor" href="#cddl_annex_time_stamp"></a>E.17.3. Time Stamp</h4>
+<h4 id="cddl_annex_time_stamp"><a class="anchor" href="#cddl_annex_time_stamp"></a>F.17.3. Time Stamp</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The data structures used to store an array of
@@ -25670,14 +25712,14 @@ $time-stamp-entry /= tstr .regexp "^urn:c2pa:[\\da-zA-Z_-]+$"</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_rvals"><a class="anchor" href="#cddl_annex_rvals"></a>E.17.4. Revocation Values (<code>rVals</code>)</h4>
+<h4 id="cddl_annex_rvals"><a class="anchor" href="#cddl_annex_rvals"></a>F.17.4. Revocation Values (<code>rVals</code>)</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; CBOR version of rVals and related structures based on JSON schema in
 ; https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.01.01_60/ts_11918201v010101p.pdf
 ; section 5.3.5.2
 rVals = {
-  "ocspVals": [1* bstr] 
+  "ocspVals": [1* bstr]
 }</code></pre>
 </div>
 </div>
@@ -25696,9 +25738,9 @@ This definition is a CBOR adaptation of a subset of the schema from <a href="htt
 </div>
 </div>
 <div class="sect2">
-<h3 id="_common_types"><a class="anchor" href="#_common_types"></a>E.18. Common Types</h3>
+<h3 id="_common_types"><a class="anchor" href="#_common_types"></a>F.18. Common Types</h3>
 <div class="sect3">
-<h4 id="cddl_annex_assertion_metadata_common"><a class="anchor" href="#cddl_annex_assertion_metadata_common"></a>E.18.1. Assertion Metadata Common Types</h4>
+<h4 id="cddl_annex_assertion_metadata_common"><a class="anchor" href="#cddl_annex_assertion_metadata_common"></a>F.18.1. Assertion Metadata Common Types</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Describes additional information about an assertion, including a hashed-uri
@@ -25734,10 +25776,10 @@ $assertion-metadata-map /= {
   ? "dataSource": source-map,
 
   ; localizations for strings in the assertion
-  ? "localizations" : [1* localization-data-entry]
+  ? "localizations" : [1* $localization-data-entry]
 
   ; describes a region of the asset where this assertion is relevant
-  ? "regionOfInterest" : $region-map
+  ? "regionOfInterest" : region-map
 
   ; Recorded start of the overall process or lower bound
   ? "processStart": generator-lower-bound-time-type,
@@ -25779,7 +25821,7 @@ rating-map = {
 
 ; The data structures used to store localization dictionaries
 $localization-data-entry /= {
-  * $$language-string
+  * language-string
 }
 
 language-string /= tstr .size (1..max-tstr-length)</code></pre>
@@ -25787,7 +25829,7 @@ language-string /= tstr .size (1..max-tstr-length)</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_assertion_metadata_choices"><a class="anchor" href="#cddl_annex_assertion_metadata_choices"></a>E.18.2. Assertion Metadata Enumeration Values</h4>
+<h4 id="cddl_annex_assertion_metadata_choices"><a class="anchor" href="#cddl_annex_assertion_metadata_choices"></a>F.18.2. Assertion Metadata Enumeration Values</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; Enumerated values for $source-type and $review-code
@@ -25820,7 +25862,7 @@ $review-code /= "stds.schema-org.CreativeWork.missingAttribution"</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_validation_result_structs"><a class="anchor" href="#cddl_annex_validation_result_structs"></a>E.18.3. Validation Result Structures</h4>
+<h4 id="cddl_annex_validation_result_structs"><a class="anchor" href="#cddl_annex_validation_result_structs"></a>F.18.3. Validation Result Structures</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; custom status codes
@@ -25833,9 +25875,9 @@ status-map = {
   ; "url": JUMBF URI reference to the JUMBF box to which this status code applies.
   ; "resourceUrl": the "url" or "uri" value of the specific entry (for example, in a
   ; linked resource integrity assertion) to which this status code applies.
-  ( 
-    ? "url": jumbf-uri-type // 
-    ? "resourceUrl": tstr .size (1..max-tstr-length) 
+  (
+    ? "url": jumbf-uri-type //
+    ? "resourceUrl": tstr .size (1..max-tstr-length)
   ),
 
   ? "explanation": tstr .size (1..max-tstr-length), ; A human readable string explaining the status
@@ -25843,9 +25885,9 @@ status-map = {
 }
 
 status-codes-map = {
-    "success": [* $status-map],          ; an array of validation success codes. May be empty.
-    "informational": [* $status-map],    ; an array of validation informational codes. May be empty.
-    "failure": [* $status-map]           ; an array of validation failure codes. May be empty.
+    "success": [* status-map],          ; an array of validation success codes. May be empty.
+    "informational": [* status-map],    ; an array of validation informational codes. May be empty.
+    "failure": [* status-map]           ; an array of validation failure codes. May be empty.
 }
 
 ; Objects containing validation results for a manifest and its ingredients
@@ -25861,8 +25903,8 @@ trust-list-uri-map = {
 }
 
 validation-results-map = {
-    ? "activeManifest": $status-codes-map, ; Validation status codes for the ingredient's active manifest. Present if ingredient is a C2PA asset. Not present if the ingredient is not a C2PA asset.
-    ? "ingredientDeltas": [* $ingredient-delta-validation-result-map], ; List of any changes/deltas between the current and previous validation results for each ingredient's manifest. Present if the ingredient is a C2PA asset.
+    ? "activeManifest": status-codes-map, ; Validation status codes for the ingredient's active manifest. Present if ingredient is a C2PA asset. Not present if the ingredient is not a C2PA asset.
+    ? "ingredientDeltas": [* ingredient-delta-validation-result-map], ; List of any changes/deltas between the current and previous validation results for each ingredient's manifest. Present if ingredient is a C2PA asset.
     ? "specVersion": semver-string, ; The version of the specification against which the validation was performed (SemVer formatted string)
     ? (
         "trustListUri": tstr .size (1..max-tstr-length) ; DEPRECATED. URI to the trust list that was used to validate certificates
@@ -25873,16 +25915,16 @@ validation-results-map = {
 
 ingredient-delta-validation-result-map = {
     "ingredientAssertionURI": jumbf-uri-type,  ; JUMBF URI reference to the ingredient assertion
-    "validationDeltas": $status-codes-map       ; Validation results for the ingredient's active manifest
+    "validationDeltas": status-codes-map       ; Validation results for the ingredient's active manifest
 }</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_live_media"><a class="anchor" href="#_live_media"></a>E.19. Live Media</h3>
+<h3 id="_live_media"><a class="anchor" href="#_live_media"></a>F.19. Live Media</h3>
 <div class="sect3">
-<h4 id="cddl_annex_livevideo_segment"><a class="anchor" href="#cddl_annex_livevideo_segment"></a>E.19.1. Live Media Segment</h4>
+<h4 id="cddl_annex_livevideo_segment"><a class="anchor" href="#cddl_annex_livevideo_segment"></a>F.19.1. Live Media Segment</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; assertion used to carry live media segment information
@@ -25909,7 +25951,7 @@ livevideo-segment-map-manifestId = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_verifiable_segment_info"><a class="anchor" href="#cddl_annex_verifiable_segment_info"></a>E.19.2. Verifiable Segment Info</h4>
+<h4 id="cddl_annex_verifiable_segment_info"><a class="anchor" href="#cddl_annex_verifiable_segment_info"></a>F.19.2. Verifiable Segment Info</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">verifiable-segment-info = COSE_Sign1_Tagged
@@ -25925,13 +25967,13 @@ segment-info-map = {
     "manifestId" =&gt; tstr, ; shall be as described in &lt;&lt;manifest-identifier&gt;&gt;
 
     ; optional hashed-ext-uri-map to where manifest can be retrieved
-    ? "manifestUri" =&gt; hashed-ext-uri-map
+    ? "manifestUri" =&gt; $hashed-ext-uri-map
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_rtmp_segment_info"><a class="anchor" href="#cddl_annex_rtmp_segment_info"></a>E.19.3. Enhanced RTMP Segment Info</h4>
+<h4 id="cddl_annex_rtmp_segment_info"><a class="anchor" href="#cddl_annex_rtmp_segment_info"></a>F.19.3. Enhanced RTMP Segment Info</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">rtmp-media-type = "audio" / "video"
@@ -25958,7 +26000,7 @@ rtmp-segment-info-map = {
 </div>
 </div>
 <div class="sect3">
-<h4 id="cddl_annex_rtmp_hash"><a class="anchor" href="#cddl_annex_rtmp_hash"></a>E.19.4. Enhanced RTMP Hash</h4>
+<h4 id="cddl_annex_rtmp_hash"><a class="anchor" href="#cddl_annex_rtmp_hash"></a>F.19.4. Enhanced RTMP Hash</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-cddl hljs" data-lang="cddl">; The data structure used to store the cryptographic hash of an
@@ -25975,13 +26017,13 @@ rtmp-hash-map = {
 </div>
 </div>
 <div class="sect1">
-<h2 id="deprecated_constructs_annex"><a class="anchor" href="#deprecated_constructs_annex"></a>Appendix F: Deprecated Constructs</h2>
+<h2 id="deprecated_constructs_annex"><a class="anchor" href="#deprecated_constructs_annex"></a>Appendix G: Deprecated Constructs</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This annex provides historical information about constructs that have been deprecated in this specification. Claim generators shall not use these constructs. Validators should still accept them for backwards compatibility as described in <a href="#versioning_annex">Appendix D, <em>Considerations for Deprecation</em></a>.</p>
+<p>This annex provides historical information about constructs that have been deprecated in this specification. Claim generators shall not use these constructs. Validators should still accept them for backwards compatibility as described in <a href="#versioning_annex">Appendix E, <em>Considerations for Deprecation</em></a>.</p>
 </div>
 <div class="sect2">
-<h3 id="_datasource_field"><a class="anchor" href="#_datasource_field"></a>F.1. <code>dataSource</code> Field in Assertion Metadata</h3>
+<h3 id="_datasource_field"><a class="anchor" href="#_datasource_field"></a>G.1. <code>dataSource</code> Field in Assertion Metadata</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -26057,7 +26099,7 @@ rtmp-hash-map = {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_string_label_x5chain"><a class="anchor" href="#_string_label_x5chain"></a>F.2. String Label <code>x5chain</code></h3>
+<h3 id="_string_label_x5chain"><a class="anchor" href="#_string_label_x5chain"></a>G.2. String Label <code>x5chain</code></h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -26077,7 +26119,7 @@ rtmp-hash-map = {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_data_boxes"><a class="anchor" href="#_data_boxes"></a>F.3. Data Boxes</h3>
+<h3 id="_data_boxes"><a class="anchor" href="#_data_boxes"></a>G.3. Data Boxes</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -26093,7 +26135,7 @@ rtmp-hash-map = {
 </table>
 </div>
 <div class="sect3">
-<h4 id="_general_25"><a class="anchor" href="#_general_25"></a>F.3.1. General</h4>
+<h4 id="_general_25"><a class="anchor" href="#_general_25"></a>G.3.1. General</h4>
 <div class="paragraph">
 <p>Data boxes provide a way to include arbitrary data into the C2PA Manifest that is referenced from an assertion, instead of embedding it directly into a field of the assertion as a binary string. These data boxes are placed in the <a href="#_data_box_store">Data Box Store</a> and each one will be a single CBOR Content Type box (<code>cbor</code>).</p>
 </div>
@@ -26120,7 +26162,7 @@ IANA structured suffixes (<a href="https://www.iana.org/assignments/media-type-s
 </div>
 </div>
 <div class="sect3">
-<h4 id="_schema_and_example_25"><a class="anchor" href="#_schema_and_example_25"></a>F.3.2. Schema and Example</h4>
+<h4 id="_schema_and_example_25"><a class="anchor" href="#_schema_and_example_25"></a>G.3.2. Schema and Example</h4>
 <div class="paragraph">
 <p>The schema for this type is defined by the <code>data-box-map</code> rule in the <a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL Definition</a> in <a href="#cddl_for_data_box">CDDL for data box</a>.:</p>
 </div>
@@ -26134,14 +26176,14 @@ data-box-map = {
   "data" : bstr, ; arbitrary text/binary data
 
   ; additional information about the data's type
-  ? "data_types": [1* $asset-type-map],
+  ? "data_types": [1* asset-type-map],
 }</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_data_box_store"><a class="anchor" href="#_data_box_store"></a>F.4. Data Box Store</h3>
+<h3 id="_data_box_store"><a class="anchor" href="#_data_box_store"></a>G.4. Data Box Store</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -26170,7 +26212,7 @@ data-box-map = {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_action_c2pa_removed"><a class="anchor" href="#_action_c2pa_removed"></a>F.5. Action <code>c2pa.removed</code></h3>
+<h3 id="_action_c2pa_removed"><a class="anchor" href="#_action_c2pa_removed"></a>G.5. Action <code>c2pa.removed</code></h3>
 <div class="paragraph">
 <p>A previous version of this specification allowed claim generators to write the action <code>c2pa.removed</code> for <code>componentOf</code> ingredients that have been removed. This action has since been deprecated in favour of using the <code>ingredient</code> field of the <code>c2pa.deleted</code> action. Claim generators shall not use the <code>c2pa.removed</code> action.</p>
 </div>
@@ -26178,7 +26220,7 @@ data-box-map = {
 <p>Validators should continue to accept the <code>c2pa.removed</code> action for backwards compatibility.</p>
 </div>
 <div class="sect3">
-<h4 id="_validation_rule"><a class="anchor" href="#_validation_rule"></a>F.5.1. Validation rule</h4>
+<h4 id="_validation_rule"><a class="anchor" href="#_validation_rule"></a>G.5.1. Validation rule</h4>
 <div class="paragraph">
 <p>Check that the <code>ingredients</code> field (or <code>ingredient</code> field for <code>c2pa.actions</code>) contains one or more valid hashed URIs, each of which can be resolved to an ingredient assertion in another manifest whose <code>relationship</code> field is <code>componentOf</code>. If not, then the claim shall be rejected with a failure code of <code>assertion.action.ingredientMismatch</code>.</p>
 </div>
@@ -26214,13 +26256,7 @@ data-box-map = {
     <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
   </div>
 </footer>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
   </body>
 </html>
