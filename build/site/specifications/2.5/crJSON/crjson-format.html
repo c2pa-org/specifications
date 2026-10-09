@@ -10,6 +10,18 @@
 <link rel="stylesheet" href="../../../_/css/c2pa-branding.css">
 <link rel="icon" type="image/svg+xml" sizes="any" href="../../../_/img/C2PA-favicon.svg">
 <link rel="mask-icon" href="../../../_/img/C2PA-logo.svg" color="#e40046">
+<link rel="stylesheet" href="../../../pagefind/pagefind-ui.css">
+<script src="../../../pagefind/pagefind-ui.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    new PagefindUI({
+      element: '#search',
+      showImages: false,
+      excerptLength: 15,
+      resetStyles: false
+    });
+  });
+</script>
   </head>
   <body class="article">
 <header class="header">
@@ -25,10 +37,8 @@
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-        <div class="navbar-item search hide-for-print">
-          <div id="search-field" class="field">
-            <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search">
-          </div>
+        <div class="navbar-item hide-for-print">
+          <div id="search"></div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
@@ -54,6 +64,7 @@
     </div>
   </nav>
 </header>
+<span hidden data-pagefind-filter="version:2.5"></span>
 <div class="body">
 <div class="nav-container" data-component="specifications" data-version="2.5">
   <aside class="nav">
@@ -892,6 +903,42 @@ An X.509 certificate can contain all sorts of information, and implementations m
 </div>
 <div class="paragraph">
 <p>The <code>validationTime</code> field is the date and time when validation was performed, represented as an RFC 3339 date-time string.</p>
+</div>
+<div class="sect3">
+<h4 id="_trust_list_references"><a class="anchor" href="#_trust_list_references"></a>3.8.1. Trust List References</h4>
+<div class="paragraph">
+<p>A per-manifest <code>validationResults</code> object may contain a <code>trustListUris</code> field identifying the trust lists containing matching trust anchors during the validation of that manifest&#8217;s claim signature or a TSA time-stamp. If no trust match was found, this field is omitted. If present, the array contains one or more objects, each with a <code>uri</code> field identifying the trust list and a <code>type</code> field identifying its type. Only trust lists containing matching trust anchors are included, rather than every trust list consulted during validation. Each object may contain an <code>identifier</code> field identifying the specific instance of the trust list used.</p>
+</div>
+<div class="paragraph">
+<p>The same entry structure and identifier semantics apply to <code>trustListUris</code> in an ingredient assertion&#8217;s recorded <code>validationResults</code>. Those references describe the earlier validation recorded by the claim generator, whereas the per-manifest references describe the validation performed by the validator producing crJSON.</p>
+</div>
+<div class="paragraph">
+<p>Both <code>trustListUris</code> and each entry&#8217;s <code>identifier</code> are optional, including when cached or bundled list instances are used.</p>
+</div>
+<div id="trust-list-references-example" class="listingblock">
+<div class="title">Example of per-manifest validation results with illustrative trust list sequence numbers</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "success": [],
+  "informational": [],
+  "failure": [],
+  "specVersion": "2.5.0",
+  "validationTime": "2026-10-08T13:18:44Z",
+  "trustListUris": [
+    {
+      "uri": "https://c2pa.org/trustlist",
+      "type": "c2pa.trustList",
+      "identifier": "42"
+    },
+    {
+      "uri": "https://c2pa.org/trustlist-tsa",
+      "type": "c2pa.tsaTrustList",
+      "identifier": "17"
+    }
+  ]
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2334,6 +2381,14 @@ An X.509 certificate can contain all sorts of information, and implementations m
                     "type": "string",
                     "format": "date-time",
                     "description": "Time when the validation was performed; RFC 3339 format"
+                },
+                "trustListUris": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/trustListUriEntry"
+                    },
+                    "minItems": 1,
+                    "description": "Trust lists containing matching trust anchors during this manifest's claim signature or TSA time-stamp validation"
                 }
             },
             "required": [
@@ -2944,7 +2999,7 @@ An X.509 certificate can contain all sorts of information, and implementations m
         },
         "trustListUriEntry": {
             "type": "object",
-            "description": "A trust list used to validate certificates in the trust chain. CDDL: validation-results.cddl trust-list-uri-map.",
+            "description": "A trust list containing a matching trust anchor during claim signature or TSA time-stamp validation. CDDL: validation-result-structs.cddl trust-list-uri-map.",
             "properties": {
                 "uri": {
                     "type": "string",
@@ -2954,11 +3009,11 @@ An X.509 certificate can contain all sorts of information, and implementations m
                 "type": {
                     "type": "string",
                     "pattern": "([\\da-zA-Z_-]+\\.)+[\\da-zA-Z_-]+",
-                    "description": "Label identifying the type of trust list (e.g. a C2PA-defined type such as c2pa.trustList, or a custom type using reverse-domain notation)"
+                    "description": "Label identifying the type of trust list: `c2pa.trustList` for claim-signing credentials, `c2pa.tsaTrustList` for TSA credentials, or a custom type using entity-specific namespace syntax"
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "A unique identifier for a specific instance of the trust list, which may be a version number, a hash, or other unique identifier"
+                    "description": "Optional unique identifier for a specific instance of the trust list, which may be a version number, a hash, or other unique identifier"
                 }
             },
             "required": [
@@ -3199,13 +3254,7 @@ An X.509 certificate can contain all sorts of information, and implementations m
     <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
   </div>
 </footer>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
   </body>
 </html>
