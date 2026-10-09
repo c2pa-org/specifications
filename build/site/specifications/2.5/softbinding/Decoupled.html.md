@@ -73,7 +73,7 @@ Bob views Mallory’s image on social media and is running web browser software 
 <a id="_decoupled_manifests"></a>
 #### 1.2.1. Decoupled manifests
 
-While an increasing number of tools and platforms retain and add to C2PA Manifests, a number of workflows remove C2PA Manifests, leading to decoupled provenance information from assets. Consequently, the asset may lack the correct active manifest or contain no C2PA Manifest store at all. The soft binding algorithm list and resolution API may be used to recover the active manifest.
+While an increasing number of tools and platforms retain and add to C2PA Manifests, a number of workflows remove C2PA Manifests, leading to decoupled provenance information from assets. Consequently, the asset may lack the correct active manifest or contain no C2PA Manifest Store at all. The soft binding algorithm list and resolution API may be used to recover the active manifest.
 
 This covers the following use cases: UC1, UC2, UC5, UC6
 
@@ -124,17 +124,36 @@ One way to automate this check is to store a fingerprint of the asset within the
 <a id="soft-binding-algorithm-list"></a>
 ### 1.3. Soft Binding Algorithm List
 
-The [soft binding algorithm list](https://spec.c2pa.org/softbinding-alg-list) is an authoritative list of C2PA supported soft binding algorithms. It lists the fingerprinting and watermarking technologies that C2PA clients may use to recover manifests. Entries in the list also contain additional information on the algorithms to facilitate interoperability.
+The soft binding algorithm list is a machine readable authoritative list of C2PA supported soft binding algorithms accessible on [https://sbal.c2pa.org](https://sbal.c2pa.org). It lists the registered fingerprinting and watermarking technologies that C2PA clients may use to recover manifests. Entries in the list also contain additional information on the algorithms to facilitate interoperability.
 
-Developers wanting their soft binding algorithms to be referenced in soft binding assertions or in soft binding resolution API transactions shall request they be added as a new entries in the [soft binding algorithm list](https://spec.c2pa.org/softbinding-alg-list).
+Developers wanting their soft binding algorithms to be referenced in soft binding assertions or in soft binding resolution API transactions shall request they be added as a new entries in the soft binding algorithm list by submitting a pull request in the [soft binding algorithm list public repository](https://github.com/c2pa-org/softbinding-algorithm-list).
 
 <a id="soft-binding-resolution-api"></a>
 ### 1.4. Soft Binding Resolution API specification
 
 The soft binding resolution API is a Web API providing a standard way of retrieving C2PA Manifest stores from a soft binding resolution API endpoint given a soft binding value, a manifest identifier, or an asset. It also offers a standard API for manifest repositories with API endpoints to store C2PA Manifests and link them to soft binding identifiers.
 
+<a id="_versioning"></a>
+#### 1.4.1. Versioning
+
+The soft binding resolution API uses the following versioning mechanisms:
+
+OpenAPI `info.version`
+
+The `version` field in the OpenAPI `info` object identifies the version of this API definition. This value shall follow Semantic Versioning and should match the version of the C2PA specification that defines the API.
+
+URI path version
+
+The `/v1` path segment identifies the major compatibility version of the HTTP API surface. This path version does not change for every C2PA specification minor or patch release. It should change only when a breaking change requires clients to use a different route base.
+
+C2PA specification version
+
+The `c2paSpecificationVersion` field returned by `GET /services/capabilities` and `GET /.well-known/c2pa-soft-binding-resolution` identifies the version of the C2PA specification whose Soft Binding Resolution API semantics are implemented by that service endpoint. This field is not an independent API version. It shall follow Semantic Versioning and shall have the same value as the OpenAPI `info.version` field for the API definition implemented by the service endpoint.
+
+For example, an implementation of the soft binding resolution API defined by C2PA Specification 2.4 can have an OpenAPI `info.version` of `2.4.0`, return a `c2paSpecificationVersion` of `2.4.0`, and still use `/v1` as the route base when the HTTP API remains compatible with version 1 clients.
+
 <a id="_route_overview"></a>
-#### 1.4.1. Route overview
+#### 1.4.2. Route overview
 
 The soft binding resolution API is organized into four route groups:
 
@@ -144,7 +163,7 @@ searches for matching manifests using a soft binding. The soft binding value is 
 
 `fetch`
 
-retrieves C2PA Manifest Stores using provided identifiers, or verify a supplied receipt.
+retrieves C2PA Manifest Stores using provided active manifest identifiers, or verify a supplied receipt.
 
 `store`
 
@@ -152,14 +171,14 @@ ingests C2PA Manifest Stores and create, update, or delete their associations wi
 
 `service`
 
-exposes repository capabilities, such as the list of supported soft binding algorithms.
+exposes repository capabilities, service operational status, and service discovery.
 
 <a id="_query_routes"></a>
-##### 1.4.1.1. Query routes
+##### 1.4.2.1. Query routes
 
 `GET /matches/byBinding`
 
-Given a soft binding value and algorithm identifier, returns zero or more matching manifest identifiers. This is the preferred route when the query fits comfortably in a URL.
+Given a soft binding value and algorithm identifier, returns zero or more matching active manifest identifiers. This is the preferred route when the query fits comfortably in a URL.
 
 `POST /matches/byBinding`
 
@@ -167,14 +186,16 @@ Performs the same logical query as `GET /matches/byBinding`, but accepts the sof
 
 `POST /matches/byContent`
 
-Accepts an uploaded asset and returns zero or more matching manifest identifiers. This route is useful when the client can provide the asset directly and wants the repository to extract or compute the relevant soft binding.
+Accepts an uploaded asset and returns zero or more matching active manifest identifiers. This route is useful when the client can provide the asset directly and wants the repository to extract or compute the relevant soft binding.
 
 `POST /matches/byReference`
 
 An optional route that accepts a reference HTTPS URL instead of uploading the asset itself. It is intended primarily for large assets, such as large video files, where upload is inefficient or impractical.
 
+All services implementing the Soft Binding Resolution API shall implement at least one of the query routes.
+
 <a id="_store_routes"></a>
-##### 1.4.1.2. Store routes
+##### 1.4.2.2. Store routes
 
 `POST /manifests`
 
@@ -188,34 +209,46 @@ Creates an association between a soft binding value and the active manifest of a
 
 Updates the manifest associated with an existing soft binding value. This route is used when a binding already exists and the repository should point that soft binding to an updated C2PA Manifest Store.
 
-`DELETE /manifests/{manifestId}`
+`DELETE /manifests/{activeManifestId}`
 
 Removes the C2PA Manifest Store identified by the supplied active manifest identifier.
 
 <a id="_fetch_routes"></a>
-##### 1.4.1.3. Fetch routes
+##### 1.4.2.3. Fetch routes
 
-`GET /manifests/{manifestId}`
+`GET /manifests/{activeManifestId}`
 
-Retrieves a stored manifest by identifier. By default this returns the full C2PA Manifest Store, but the client may request a C2PA Manifes Store containing only the active manifest.
+Retrieves a stored active manifest by identifier. All services implementing the Soft Binding Resolution API shall implement this route. By default, this returns the full C2PA Manifest Store; however, a client may choose to request the active manifest only.
 
-`GET /manifests/{manifestId}/receipts`
+`GET /manifests/{activeManifestId}/receipts`
 
-Returns the repository receipt for a stored manifest together with its verification status. This allows clients to retrieve proof that the manifest was ingested by the repository.
+Returns the repository receipt for a stored manifest together with its verification status. This allows clients to retrieve proof that the active manifest was ingested by the repository.
 
-`POST /manifests/{manifestId}/receipts`
+`POST /manifests/{activeManifestId}/receipts`
 
-Accepts a receipt from the client, verifies it against the specified manifest identifier, and returns the verification result.
+Accepts a receipt from the client, verifies it against the specified active manifest identifier, and returns the verification result.
 
 <a id="_service_routes"></a>
-##### 1.4.1.4. Service routes
+##### 1.4.2.4. Service routes
 
 `GET /services/supportedAlgorithms`
 
 Returns the watermarking and fingerprinting algorithms supported by the service for query operations. This helps clients determine which soft binding algorithms may be used with the repository.
 
+`GET /services/status`
+
+Returns the current operational status of the service. This endpoint is unauthenticated and is intended for health checks and monitoring systems.
+
+`GET /services/capabilities`
+
+Returns the C2PA specification version implemented by the service endpoint and a `supportedCapabilities` array listing the optional capabilities supported by this service instance. Absence of a capability name from the array unambiguously indicates it is not supported; unknown values in the array should be ignored by clients, allowing future versions of this specification to introduce new capability names without breaking existing implementations. This endpoint is unauthenticated to allow clients to determine service capabilities before authenticating.
+
+`GET /.well-known/c2pa-soft-binding-resolution`
+
+A well-known URI (RFC 8615) served at the host root (outside of `/v1`) that allows clients to discover the API endpoint of the service. Returns the versioned API endpoint, the C2PA specification version implemented by the service endpoint, and links to the status and capabilities endpoints. This endpoint is unauthenticated.
+
 <a id="_openapi_specification_of_the_soft_binding_resolution_api"></a>
-#### 1.4.2. OpenAPI Specification of the Soft Binding Resolution API
+#### 1.4.3. OpenAPI Specification of the Soft Binding Resolution API
 
 The API specification and documentation is available below in the OpenAPI format as a [JSON](#soft-binding-resolution-api-json) or [YAML](#soft-binding-resolution-api-yaml) document.
 
@@ -224,8 +257,8 @@ The API specification and documentation is available below in the OpenAPI format
    "openapi": "3.1.1",
    "info": {
       "title": "C2PA Soft Binding Resolution API",
-      "description": "This is the OpenAPI specification of the C2PA Soft Binding Resolution API. This document specifies a web service API endpoint for matching soft bindings (e.g., watermarks or fingerprints) to C2PA Manifests",
-      "version": "2.3.0",
+      "description": "This is the OpenAPI specification of the C2PA Soft Binding Resolution API. This document specifies a web service API endpoint for matching soft bindings (e.g., watermarks or fingerprints) to C2PA Manifests. Implementations of this API shall implement at least one of the query endpoints and the fetch GET /manifests/{activeManifestId} endpoint for retrieving a C2PA Manifest store",
+      "version": "2.4.0",
       "license": {
          "name": "Creative Commons Attribution 4.0 International",
          "url": "https://creativecommons.org/licenses/by/4.0/"
@@ -254,7 +287,7 @@ The API specification and documentation is available below in the OpenAPI format
             "tags": [
                "query"
             ],
-            "summary": "Returns C2PA Manifest identifiers corresponding to a soft binding",
+            "summary": "Returns active C2PA Manifest identifiers corresponding to a soft binding",
             "description": "Given one soft binding, find zero or more C2PA Manifests identifiers within the manifest repository matching the soft binding",
             "operationId": "queryByBinding",
             "parameters": [
@@ -279,7 +312,7 @@ The API specification and documentation is available below in the OpenAPI format
                {
                   "name": "maxResults",
                   "in": "query",
-                  "description": "The maximum number of manifest identifiers to return for each query",
+                  "description": "The maximum number of active manifests identifiers to return for each query",
                   "schema": {
                      "type": "integer",
                      "minimum": 1,
@@ -327,14 +360,14 @@ The API specification and documentation is available below in the OpenAPI format
             "tags": [
                "query"
             ],
-            "summary": "Returns C2PA Manifest identifiers corresponding to a large soft binding value",
-            "description": "Given a large soft binding value, find zero or more matching manifest identifiers. Use this method if the size of the soft binding value is expected to be large too large to fit in a URL, otherwise favor the use of GET",
+            "summary": "Returns active C2PA Manifest identifiers corresponding to a large soft binding value",
+            "description": "Given a large soft binding value, find zero or more matching active manifest identifiers. Use this method if the size of the soft binding value is expected to be large too large to fit in a URL, otherwise favor the use of GET",
             "operationId": "queryByLargeBinding",
             "parameters": [
                {
                   "name": "maxResults",
                   "in": "query",
-                  "description": "The maximum number of manifests to return for each query",
+                  "description": "The maximum number of active manifests identifiers to return for each query",
                   "schema": {
                      "type": "integer",
                      "minimum": 1,
@@ -789,28 +822,28 @@ The API specification and documentation is available below in the OpenAPI format
             ]
          }
       },
-      "/manifests/{manifestId}": {
+      "/manifests/{activeManifestId}": {
          "get": {
             "tags": [
                "fetch"
             ],
             "summary": "Returns a full C2PA Manifest Store or an active C2PA Manifest",
-            "description": "Retrieve a C2PA Manifest by manifest identifier. This either returns the active manifest or the entire C2PA Manifest Store that the active manifest identifier is part of. C2PA Manifest identifiers should follow the format described in the C2PA Technical specification",
+            "description": "Retrieve a C2PA Manifest by manifest identifier. This either returns the active manifest or the entire C2PA Manifest Store that the requested manifest identifier is part of. C2PA Manifest identifiers should follow the format described in the C2PA Technical specification. This endpoint is required to be implemented by all services implementing the Soft Binding Resolution API",
             "operationId": "getManifestById",
             "parameters": [
                {
                   "name": "returnActiveManifest",
                   "in": "query",
-                  "description": "Specifies if only the active manifest should be returned. By default the entire C2PA Manifest Store is returned",
+                  "description": "Specifies if only the requested manifest should be returned. By default the entire C2PA Manifest Store the requested manifest is part of is returned",
                   "schema": {
                      "type": "boolean",
                      "default": false
                   }
                },
                {
-                  "name": "manifestId",
+                  "name": "activeManifestId",
                   "in": "path",
-                  "description": "Identifier of the C2PA Manifest to return",
+                  "description": "Identifier of the active C2PA Manifest to return",
                   "required": true,
                   "schema": {
                      "type": "string"
@@ -858,7 +891,7 @@ The API specification and documentation is available below in the OpenAPI format
             "operationId": "deleteManifest",
             "parameters": [
                {
-                  "name": "manifestId",
+                  "name": "activeManifestId",
                   "in": "path",
                   "description": "Identifier of the active C2PA Manifest in the C2PA Manifest Store to be deleted",
                   "required": true,
@@ -869,7 +902,7 @@ The API specification and documentation is available below in the OpenAPI format
             ],
             "responses": {
                "204": {
-                  "description": "Manifest deleted successfully",
+                  "description": "Manifest store deleted successfully",
                   "content": {}
                },
                "400": {
@@ -898,7 +931,7 @@ The API specification and documentation is available below in the OpenAPI format
             ]
          }
       },
-      "/manifests/{manifestId}/receipts": {
+      "/manifests/{activeManifestId}/receipts": {
          "get": {
             "tags": [
                "fetch"
@@ -908,7 +941,7 @@ The API specification and documentation is available below in the OpenAPI format
             "operationId": "getVerifiedReceipt",
             "parameters": [
                {
-                  "name": "manifestId",
+                  "name": "activeManifestId",
                   "in": "path",
                   "description": "Identifier of the C2PA Manifest Store for which to retrieve a receipt.",
                   "required": true,
@@ -958,9 +991,9 @@ The API specification and documentation is available below in the OpenAPI format
             "operationId": "verifyReceipt",
             "parameters": [
                {
-                  "name": "manifestId",
+                  "name": "activeManifestId",
                   "in": "path",
-                  "description": "Identifier of the C2PA Manifest against which the receipt is to be verified",
+                  "description": "Identifier of the active C2PA Manifest against which the receipt is to be verified",
                   "required": true,
                   "schema": {
                      "type": "string"
@@ -1043,6 +1076,98 @@ The API specification and documentation is available below in the OpenAPI format
                   "content": {}
                }
             }
+         }
+      },
+      "/services/status": {
+         "get": {
+            "tags": [
+               "service"
+            ],
+            "summary": "Returns the operational status of the service",
+            "description": "Returns the current operational status of the soft binding resolution service",
+            "operationId": "getServiceStatus",
+            "responses": {
+               "200": {
+                  "description": "Successful operation",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/c2pa.serviceStatus"
+                        }
+                     }
+                  }
+               },
+               "500": {
+                  "description": "Service failure",
+                  "content": {}
+               }
+            },
+            "security": [
+               {}
+            ]
+         }
+      },
+      "/services/capabilities": {
+         "get": {
+            "tags": [
+               "service"
+            ],
+            "summary": "Returns the capabilities of the service",
+            "description": "Returns information about which endpoints are supported by this service instance. The list of supported soft binding algorithms is available separately via GET /services/supportedAlgorithms.",
+            "operationId": "getServiceCapabilities",
+            "responses": {
+               "200": {
+                  "description": "Successful operation",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/c2pa.serviceCapabilities"
+                        }
+                     }
+                  }
+               },
+               "500": {
+                  "description": "Service failure",
+                  "content": {}
+               }
+            },
+            "security": [
+               {}
+            ]
+         }
+      },
+      "/.well-known/c2pa-soft-binding-resolution": {
+         "servers": [
+            {
+               "url": "https://c2pa.fabrikam.org"
+            }
+         ],
+         "get": {
+            "tags": [
+               "service"
+            ],
+            "summary": "Returns discovery information for this soft binding resolution service",
+            "description": "A well-known URI (RFC 8615) allowing clients to discover the API endpoint and capabilities of this C2PA Soft Binding Resolution service",
+            "operationId": "getWellKnown",
+            "responses": {
+               "200": {
+                  "description": "Successful operation",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/c2pa.wellKnownDiscovery"
+                        }
+                     }
+                  }
+               },
+               "500": {
+                  "description": "Service failure",
+                  "content": {}
+               }
+            },
+            "security": [
+               {}
+            ]
          }
       }
    },
@@ -1535,6 +1660,93 @@ The API specification and documentation is available below in the OpenAPI format
                "type",
                "identified"
             ]
+         },
+         "c2pa.serviceStatus": {
+            "type": "object",
+            "description": "Operational status of the soft binding resolution service",
+            "properties": {
+               "status": {
+                  "type": "string",
+                  "enum": [
+                     "ok",
+                     "degraded",
+                     "down"
+                  ],
+                  "description": "Current operational status of the service",
+                  "example": "ok"
+               },
+               "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Time at which the status was generated",
+                  "example": "2024-01-01T00:00:00Z"
+               }
+            },
+            "required": [
+               "status"
+            ]
+         },
+         "c2pa.serviceCapabilities": {
+            "type": "object",
+            "description": "Capabilities of the soft binding resolution service",
+            "properties": {
+               "c2paSpecificationVersion": {
+                  "type": "string",
+                  "description": "Version of the C2PA specification whose Soft Binding Resolution API semantics are implemented by this service endpoint, formatted as a Semantic Versioning (SemVer) string per https://semver.org. This value is not an independent API version and shall match the OpenAPI info.version field for the API definition implemented by the service endpoint",
+                  "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$",
+                  "example": "2.4.0"
+               },
+               "supportedCapabilities": {
+                  "type": "array",
+                  "description": "List of optional capabilities supported by this service instance. Absence of a capability name from this list unambiguously indicates the capability is not supported. Clients should ignore unknown values, allowing future versions of this specification to introduce new capability names without breaking existing implementations. Known values are: queryByContent (POST /matches/byContent), queryByReference (POST /matches/byReference), storeManifests (POST /manifests and DELETE /manifests/{manifestId}), storeBindings (POST and PUT /bindings).",
+                  "items": {
+                     "type": "string"
+                  },
+                  "example": [
+                     "queryByContent",
+                     "storeManifests",
+                     "storeBindings"
+                  ]
+               }
+            },
+            "required": [
+               "c2paSpecificationVersion",
+               "supportedCapabilities"
+            ]
+         },
+         "c2pa.wellKnownDiscovery": {
+            "type": "object",
+            "description": "Discovery information for a C2PA Soft Binding Resolution service",
+            "properties": {
+               "apiEndpoint": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Base URI of the versioned C2PA Soft Binding Resolution API. The path segment, such as /v1, identifies the major compatibility version of the HTTP API surface and does not change for every C2PA specification minor or patch release",
+                  "example": "/v1"
+               },
+               "c2paSpecificationVersion": {
+                  "type": "string",
+                  "description": "Version of the C2PA specification whose Soft Binding Resolution API semantics are implemented by this service endpoint, formatted as a Semantic Versioning (SemVer) string per https://semver.org. This value is not an independent API version and shall match the OpenAPI info.version field for the API definition implemented by the service endpoint",
+                  "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$",
+                  "example": "2.4.0"
+               },
+               "capabilitiesEndpoint": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "URI of the capabilities endpoint for this service",
+                  "example": "/v1/services/capabilities"
+               },
+               "statusEndpoint": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "URI of the status endpoint for this service",
+                  "example": "/v1/services/status"
+               }
+            },
+            "required": [
+               "apiEndpoint",
+               "c2paSpecificationVersion"
+            ]
          }
       },
       "securitySchemes": {
@@ -1555,11 +1767,11 @@ The API specification and documentation is available below in the OpenAPI format
 ```
 
 ```yaml
-openapi: 3.0.3
+openapi: 3.1.1
 info:
   title: C2PA Soft Binding Resolution API
-  description: This is the OpenAPI specification of the C2PA Soft Binding Resolution API. This document specifies a web service API endpoint for matching soft bindings (e.g., watermarks or fingerprints) to C2PA Manifests.
-  version: 1.1.0
+  description: This is the OpenAPI specification of the C2PA Soft Binding Resolution API. This document specifies a web service API endpoint for matching soft bindings (e.g., watermarks or fingerprints) to C2PA Manifests. Implementations of this API shall implement at least one of the query endpoints and the fetch GET /manifests/{activeManifestId} endpoint for retrieving a C2PA Manifest store
+  version: 2.4.0
   license:
     name: Creative Commons Attribution 4.0 International
     url: https://creativecommons.org/licenses/by/4.0/
@@ -1577,13 +1789,13 @@ paths:
     get:
       tags:
         - query
-      summary: Returns C2PA Manifest identifiers corresponding to a soft binding.
-      description: Given one soft binding, find zero or more manifests identifiers within the manifest store matching the soft binding.
+      summary: Returns active C2PA Manifest identifiers corresponding to a soft binding
+      description: Given one soft binding, find zero or more C2PA Manifests identifiers within the manifest repository matching the soft binding
       operationId: queryByBinding
       parameters:
         - name: value
           in: query
-          description: 'A base64-encoded string describing, in algorithm specific format, the value of the soft binding to be used as the query. Note: if the value is expected to be too large to fit in a URL then the POST method may be used.'
+          description: 'A base64-encoded string describing, in algorithm specific format, the value of the soft binding to be used as the query. Note: if the value is expected to be too large to fit in a URL then the POST method may be used'
           required: true
           schema:
             type: string
@@ -1595,25 +1807,28 @@ paths:
             type: string
         - name: maxResults
           in: query
-          description: The maximum number of manifest identifiers to return for each query.
+          description: The maximum number of active manifests identifiers to return for each query
           schema:
             type: integer
             minimum: 1
             default: 10
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/c2pa.softBindingQueryResult'
-        '400':
+        "400":
           description: Invalid query value
           content: {}
-        '414':
+        "414":
           description: Query too long, consider using POST instead
           content: {}
-        '500':
+        "403":
+          description: Client not allowed to perform this operation
+          content: {}
+        "500":
           description: Service failure
           content: {}
       security:
@@ -1622,46 +1837,114 @@ paths:
     post:
       tags:
         - query
-      summary: Returns C2PA Manifest identifiers corresponding to a large soft binding value.
-      description: Given a large soft binding value, find zero or more matching manifest identifiers. Use this method if the size of the soft binding value is expected to be large too large to fit in a URL, otherwise favor the use of GET.
+      summary: Returns active C2PA Manifest identifiers corresponding to a large soft binding value
+      description: Given a large soft binding value, find zero or more matching active manifest identifiers. Use this method if the size of the soft binding value is expected to be large too large to fit in a URL, otherwise favor the use of GET
       operationId: queryByLargeBinding
       parameters:
         - name: maxResults
           in: query
-          description: The maximum number of manifests to return for each query.
+          description: The maximum number of active manifests identifiers to return for each query
           schema:
             type: integer
             minimum: 1
             default: 10
       requestBody:
-        description: Soft binding query JSON document.
+        description: Soft binding query JSON document
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/c2pa.softBindingQuery'
         required: true
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/c2pa.softBindingQueryResult'
-        '400':
+        "400":
           description: Invalid request body
           content: {}
-        '500':
+        "403":
+          description: Client not allowed to perform this operation
+          content: {}
+        "500":
           description: Service failure
           content: {}
       security:
         - auth:
             - fetch:manifests
+  /bindings:
+    post:
+      tags:
+        - store
+      summary: Binds a C2PA Manifest Store to a soft binding value
+      description: Associates the active C2PA Manifest of a C2PA Manifest Store with the given soft binding value
+      operationId: associateManifest
+      requestBody:
+        description: New C2PA Manifest Store for the given soft binding value
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/c2pa.bindings'
+        required: true
+      responses:
+        "204":
+          description: Manifest bound successfully
+          content: {}
+        "400":
+          description: Invalid request body
+          content: {}
+        "404":
+          description: Soft binding id or C2PA Manifest id not found
+          content: {}
+        "403":
+          description: Client not allowed to perform this operation
+          content: {}
+        "500":
+          description: Service failure
+          content: {}
+      security:
+        - auth:
+            - store:bindings
+    put:
+      tags:
+        - store
+      summary: Update the C2PA Manifest Store for a soft binding value
+      description: Replaces the C2PA Manifest Store associated with the given soft binding value with an updated C2PA Manifest Store referenced by the active C2PA Manifest id
+      operationId: updateAssociatedManifest
+      requestBody:
+        description: Identifier of the updated active C2PA Manifest in a C2PA Manifest Store for the given soft binding value
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/c2pa.bindings'
+        required: true
+      responses:
+        "204":
+          description: Manifest updated successfully
+          content: {}
+        "400":
+          description: Invalid request body
+          content: {}
+        "404":
+          description: Soft binding value not found
+          content: {}
+        "403":
+          description: Client not allowed to perform this operation
+          content: {}
+        "500":
+          description: Service failure
+          content: {}
+      security:
+        - auth:
+            - store:bindings
   /matches/byContent:
     post:
       tags:
         - query
-      summary: Finds C2PA Manifest identifiers using a digital asset.
-      description: Find zero or more C2PA Manifest identifiers within the manifest store using an uploaded file containing a digital asset.
+      summary: Finds C2PA Manifest identifiers using a digital asset
+      description: Find zero or more C2PA Manifest identifiers using an uploaded file containing a digital asset
       operationId: uploadFile
       parameters:
         - name: alg
@@ -1671,68 +1954,71 @@ paths:
             type: string
         - name: maxResults
           in: query
-          description: The maximum number of manifests identifiers return for the query.
+          description: The maximum number of manifests identifiers return for the query
           schema:
             type: integer
             minimum: 1
             default: 10
         - name: hintAlg
           in: query
-          description: 'An optional parameter specifying an additional soft binding algorithm name and version (as per the authoritative list of C2PA soft binding algorithm names available at: https://github.com/c2pa-org/softbinding-algorithm-list) to aid in resolution of the query.'
+          description: 'An optional parameter specifying an additional soft binding algorithm name and version (as per the authoritative list of C2PA soft binding algorithm names available at: https://github.com/c2pa-org/softbinding-algorithm-list) to aid in resolution of the query'
           schema:
             type: string
         - name: hintValue
           in: query
-          description: An optional parameter specifying an additional soft binding algorithm value for the corresponding hintAlg to aid in resolution of the query.
+          description: An optional parameter specifying an additional soft binding algorithm value for the corresponding hintAlg to aid in resolution of the query
           schema:
             type: string
       requestBody:
-        description: Asset to match to manifests.
+        description: Asset to match to manifests
         content:
           image/*:
             schema:
               type: string
               format: binary
-              description: Asset of type image.
+              description: Asset of type image
           audio/*:
             schema:
               type: string
               format: binary
-              description: Asset of type audio.
+              description: Asset of type audio
           video/*:
             schema:
               type: string
               format: binary
-              description: Asset of type video.
+              description: Asset of type video
           application/*:
             schema:
               type: string
               format: binary
-              description: Asset of type application, such as `application/pdf`.
+              description: Asset of type application, such as `application/pdf`
           model/*:
             schema:
               type: string
               format: binary
-              description: Asset of type model.
+              description: Asset of type model
           text/*:
             schema:
               type: string
               format: string
-              description: Asset of type text.
+              description: Asset of type text
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/c2pa.softBindingQueryResult'
-        '400':
-          description: Invalid request body
-          content: {}
-        '415':
+        "415":
           description: Invalid asset type
           content: {}
-        '500':
+        "400":
+          description: Invalid request body
+          content: {}
+        "403":
+          description: Client not allowed to perform this operation
+          content: {}
+        "500":
           description: Service failure
           content: {}
       security:
@@ -1742,8 +2028,8 @@ paths:
     post:
       tags:
         - query
-      summary: An optional endpoint that finds C2PA Manifest identifiers using a reference URL.
-      description: Optional endpoint to find zero or more C2PA Manifest identifiers within the manifest store by downloading an asset or parts of an asset via a reference HTTPS URL provided by the client. As this method requires downloading the asset, it is recommended to use this method only when the asset is too large to be uploaded directly (e.g., in the case of a large video asset). Downloading arbitrary content from a URL is a potential attack vector, so the service should limit the size of the asset to be downloaded and reject an asset larger than this value. The service should also check that the downloaded asset matches the type specified in the request and reject it if it does not. The service should also check that the reference URL is using HTTPS and reject it if it is not. Other security measures should be taken to limit attacks, such as but not limited to, preventing SSRF (Server-Side Request Forgery) attacks.
+      summary: An optional endpoint that finds C2PA Manifest identifiers using a reference URL
+      description: Optional endpoint to find zero or more C2PA Manifest identifiers within the manifest repository by downloading an asset or parts of an asset via a reference HTTPS URL provided by the client. As this method requires downloading the asset, it is recommended to use this method only when the asset is too large to be uploaded directly (e.g., in the case of a large video asset). Downloading arbitrary content from a URL is a potential attack vector, so the service should limit the size of the asset to be downloaded and reject an asset larger than this value. The service should also check that the downloaded asset matches the type specified in the request and reject it if it does not. The service should also check that the reference URL is using HTTPS and reject it if it is not. Other security measures should be taken to limit attacks, such as but not limited to, preventing SSRF (Server-Side Request Forgery) attacks
       operationId: queryByReference
       parameters:
         - name: alg
@@ -1753,23 +2039,23 @@ paths:
             type: string
         - name: maxResults
           in: query
-          description: The maximum number of manifests identifiers return for the query.
+          description: The maximum number of manifests identifiers return for the query
           schema:
             type: integer
             minimum: 1
             default: 10
         - name: hintAlg
           in: query
-          description: 'An optional parameter specifying an additional soft binding algorithm name and version (as per the authoritative list of C2PA soft binding algorithm names available at: https://github.com/c2pa-org/softbinding-algorithm-list) to aid in resolution of the query.'
+          description: 'An optional parameter specifying an additional soft binding algorithm name and version (as per the authoritative list of C2PA soft binding algorithm names available at: https://github.com/c2pa-org/softbinding-algorithm-list) to aid in resolution of the query'
           schema:
             type: string
         - name: hintValue
           in: query
-          description: An optional parameter specifying an additional soft binding algorithm value for the corresponding hintAlg to aid in resolution of the query.
+          description: An optional parameter specifying an additional soft binding algorithm value for the corresponding hintAlg to aid in resolution of the query
           schema:
             type: string
       requestBody:
-        description: JSON document to provide an asset by reference.
+        description: JSON document to provide an asset by reference
         content:
           application/json:
             schema:
@@ -1779,19 +2065,19 @@ paths:
                   type: string
                   format: uri
                   pattern: ^https://.*
-                  description: An HTTPS URL referencing the resource to be used for finding the C2PA Manifest identifiers. To limit attacks, this URL should be signed and should expire after a short time.
+                  description: An HTTPS URL referencing the resource to be used for finding the C2PA Manifest identifiers. To limit attacks, this URL should be signed and should expire after a short time
                   example: https://example.com/video.mp4?ClientAccessKeyId=AKIA...&Expires=1712345678&Signature=abcdefg
                 assetLength:
                   type: integer
-                  description: Size of the asset to be downloaded from the reference URL in bytes. The service shall use this value to limit the size of the asset to be downloaded and reject an asset larger than this value.
+                  description: Size of the asset to be downloaded from the reference URL in bytes. The service shall use this value to limit the size of the asset to be downloaded and reject an asset larger than this value
                   example: 20971520
                 assetType:
                   type: string
-                  description: The IANA Media Type of the asset to be downloaded from the reference URL, such as 'video/mp4' or 'audio/mpeg'. The service shall check that the downloaded asset matches this type and reject it if it does not.
+                  description: The IANA Media Type of the asset to be downloaded from the reference URL, such as 'video/mp4' or 'audio/mpeg'. The service shall check that the downloaded asset matches this type and reject it if it does not
                   example: video/mp4
                 region:
                   type: array
-                  description: An optional array specifying the region of interest within the asset as per the C2PA Regions of Interest specification (see https://spec.c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html#_regions_of_interest). If specified, the service shall only match soft bindings within the specified region of interest. If not specified, the service shall match soft bindings within the entire asset.
+                  description: An optional array specifying the region of interest within the asset as per the C2PA Regions of Interest specification (see https://spec.c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html#_regions_of_interest). If specified, the service shall only match soft bindings within the specified region of interest. If not specified, the service shall match soft bindings within the entire asset
                   items:
                     $ref: '#/components/schemas/c2pa.regionOfInterest'
               required:
@@ -1799,53 +2085,201 @@ paths:
                 - assetLength
         required: true
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/c2pa.softBindingQueryResult'
-        '400':
+        "400":
           description: Invalid request body
           content: {}
-        '500':
+        "403":
+          description: Client not allowed to perform this operation
+          content: {}
+        "500":
           description: Service failure
           content: {}
       security:
         - auth:
             - fetch:manifests
-  /manifests/{manifestId}:
+  /manifests:
+    post:
+      tags:
+        - store
+      summary: Add a C2PA Manifest Store to the repository
+      description: Submit a C2PA Manifest Store to store it in the repository
+      operationId: addManifest
+      parameters:
+        - name: returnReceipt
+          in: query
+          description: Specifies if a verification receipt should be returned alongside the manifest identifier in the response body. By default only the manifest identifier is returned
+          schema:
+            type: boolean
+            default: false
+      requestBody:
+        description: C2PA Manifest to store
+        content:
+          application/c2pa: {}
+        required: true
+      responses:
+        "200":
+          description: C2PA Manifest Store stored successfully. The response includes the active C2PA Manifest identifier and may additionally include a receipt when returnReceipt=true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/c2pa.manifestCreateResult'
+        "400":
+          description: Invalid request body
+          content: {}
+        "403":
+          description: Client not allowed to perform this operation
+          content: {}
+        "500":
+          description: Service failure
+          content: {}
+      security:
+        - auth:
+            - store:manifests
+  /manifests/{activeManifestId}:
     get:
       tags:
         - fetch
-      summary: Returns a full C2PA Manifest Store or an active C2PA Manifest.
-      description: Retrieve a C2PA Manifest by manifest identifier. This either returns the active manifest or the entire C2PA Manifest Store that the active manifest identifier is part of. C2PA Manifest identifiers should follow the format described in the C2PA Technical specification at xref:specs:C2PA_Specification.adoc[_unique_identifiers]
+      summary: Returns a full C2PA Manifest Store or an active C2PA Manifest
+      description: Retrieve a C2PA Manifest by manifest identifier. This either returns the active manifest or the entire C2PA Manifest Store that the requested manifest identifier is part of. C2PA Manifest identifiers should follow the format described in the C2PA Technical specification. This endpoint is required to be implemented by all services implementing the Soft Binding Resolution API
       operationId: getManifestById
       parameters:
         - name: returnActiveManifest
           in: query
-          description: Specifies if only the active manifest should be returned. By default the entire C2PA Manifest Store is returned.
+          description: Specifies if only the requested manifest should be returned. By default the entire C2PA Manifest Store the requested manifest is part of is returned
           schema:
             type: boolean
             default: false
-        - name: manifestId
+        - name: activeManifestId
           in: path
-          description: Identifier of the C2PA Manifest to return
+          description: Identifier of the active C2PA Manifest to return
           required: true
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/c2pa: {}
-        '400':
+        "400":
           description: Invalid query value
           content: {}
-        '404':
-          description: C2PA Manifest Id not found
+        "404":
+          description: C2PA Manifest not found
           content: {}
-        '500':
+        "403":
+          description: Client not allowed to perform this operation
+          content: {}
+        "500":
+          description: Service failure
+          content: {}
+      security:
+        - auth:
+            - fetch:manifests
+    delete:
+      tags:
+        - store
+      summary: Remove a C2PA Manifest Store from the repository
+      description: Delete a stored C2PA Manifest Store. This should also remove the corresponding soft binding associated with the manifest to ensure it is no longer returned in query results
+      operationId: deleteManifest
+      parameters:
+        - name: activeManifestId
+          in: path
+          description: Identifier of the active C2PA Manifest in the C2PA Manifest Store to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Manifest store deleted successfully
+          content: {}
+        "400":
+          description: Invalid request
+          content: {}
+        "404":
+          description: C2PA Manifest Store not found
+          content: {}
+        "403":
+          description: Client not allowed to perform this operation
+          content: {}
+        "500":
+          description: Service failure
+          content: {}
+      security:
+        - auth:
+            - store:manifests
+  /manifests/{activeManifestId}/receipts:
+    get:
+      tags:
+        - fetch
+      summary: Returns a receipt and verification value for a C2PA Manifest Store.
+      description: Retrieve the receipt of a C2PA Manifest Store selected by manifest identifier along with  its verification status. A receipt is a proof that a C2PA Manifest Store was ingested by the repository
+      operationId: getVerifiedReceipt
+      parameters:
+        - name: activeManifestId
+          in: path
+          description: Identifier of the C2PA Manifest Store for which to retrieve a receipt.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/c2pa.verifiedManifestReceipt'
+        "400":
+          description: Invalid query value.
+          content: {}
+        "404":
+          description: C2PA Manifest Store or receipt not found.
+          content: {}
+        "500":
+          description: Service failure.
+          content: {}
+      security:
+        - auth:
+            - fetch:manifests
+    post:
+      tags:
+        - fetch
+      summary: Submit a receipt and receive a verification result
+      description: Verify the supplied  receipt against the specified C2PA Manifest identifier and return the verified receipt
+      operationId: verifyReceipt
+      parameters:
+        - name: activeManifestId
+          in: path
+          description: Identifier of the active C2PA Manifest against which the receipt is to be verified
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Receipt JSON document.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/c2pa.manifestReceipt'
+        required: true
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/c2pa.verifiedManifestReceipt'
+        "400":
+          description: Invalid request body or verification input
+          content: {}
+        "404":
+          description: C2PA Manifest not found
+          content: {}
+        "500":
           description: Service failure
           content: {}
       security:
@@ -1855,22 +2289,84 @@ paths:
     get:
       tags:
         - service
-      summary: Returns a list of the soft binding algorithms supported by the service.
-      description: Enumerate the names of soft binding algorithms supported as queries by the service. See https://github.com/c2pa-org/softbinding-algorithm-list for an authoritative list of C2PA soft binding algorithm names.
+      summary: Returns a list of the soft binding algorithms supported by the service
+      description: Enumerate the names of soft binding algorithms supported as queries by the service. See https://github.com/c2pa-org/softbinding-algorithm-list for an authoritative list of C2PA soft binding algorithm names
       operationId: getSupportedBindings
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/c2pa.softBindingAlgList'
-        '400':
+        "400":
           description: Invalid request
           content: {}
-        '500':
+        "403":
+          description: Client not allowed to perform this operation
+          content: {}
+        "500":
           description: Service failure
           content: {}
+  /services/status:
+    get:
+      tags:
+        - service
+      summary: Returns the operational status of the service
+      description: Returns the current operational status of the soft binding resolution service
+      operationId: getServiceStatus
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/c2pa.serviceStatus'
+        "500":
+          description: Service failure
+          content: {}
+      security:
+        - {}
+  /services/capabilities:
+    get:
+      tags:
+        - service
+      summary: Returns the capabilities of the service
+      description: Returns information about which endpoints are supported by this service instance. The list of supported soft binding algorithms is available separately via GET /services/supportedAlgorithms.
+      operationId: getServiceCapabilities
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/c2pa.serviceCapabilities'
+        "500":
+          description: Service failure
+          content: {}
+      security:
+        - {}
+  /.well-known/c2pa-soft-binding-resolution:
+    servers:
+      - url: https://c2pa.fabrikam.org
+    get:
+      tags:
+        - service
+      summary: Returns discovery information for this soft binding resolution service
+      description: A well-known URI (RFC 8615) allowing clients to discover the API endpoint and capabilities of this C2PA Soft Binding Resolution service
+      operationId: getWellKnown
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/c2pa.wellKnownDiscovery'
+        "500":
+          description: Service failure
+          content: {}
+      security:
+        - {}
 components:
   schemas:
     c2pa.softBindingAlgList:
@@ -1889,7 +2385,7 @@ components:
               alg:
                 type: string
                 example: foo.bar.watermark.1
-                description: Unique identifier of a fingerprint algorithm.
+                description: Unique identifier of a fingerprint algorithm
             required:
               - alg
         fingerprints:
@@ -1900,7 +2396,7 @@ components:
               alg:
                 type: string
                 example: foo.bar.fingerprint.1
-                description: Unique identifier of a watermark algorithm.
+                description: Unique identifier of a watermark algorithm
             required:
               - alg
     c2pa.softBindingQuery:
@@ -1911,10 +2407,38 @@ components:
       properties:
         alg:
           type: string
-          description: A string identifying the soft binding algorithm and version of that algorithm used.
+          description: A string identifying the soft binding algorithm and version of that algorithm used
         value:
           type: string
-          description: A base64-encoded string describing, in algorithm specific format, the value of the soft binding to be used as the query.
+          description: A base64-encoded string describing, in algorithm specific format, the value of the soft binding to be used as the query
+    c2pa.bindings:
+      required:
+        - bindingValue
+        - manifestId
+      type: object
+      properties:
+        bindingValue:
+          type: string
+          description: A soft binding value to be associated with a C2PA Manifest Store
+        manifestId:
+          type: string
+          description: Identifier of the active C2PA Manifest of a C2PA Manifest Store to be associated with the soft binding identifier
+    c2pa.manifestCreateResultIdOnly:
+      type: object
+      properties:
+        manifestId:
+          type: string
+          description: Identifier of the active C2PA Manifest of the stored C2PA Manifest Store. This identifier format shall correspond to the format described in the C2PA Technical specification
+      required:
+        - manifestId
+    c2pa.manifestCreateResult:
+      allOf:
+        - $ref: '#/components/schemas/c2pa.manifestCreateResultIdOnly'
+        - type: object
+          properties:
+            receipt:
+              $ref: '#/components/schemas/c2pa.manifestReceipt'
+              description: Verification receipt returned when the returnReceipt query parameter is true
     c2pa.softBindingQueryResult:
       type: object
       properties:
@@ -1928,14 +2452,94 @@ components:
                 description: Unique identifier of a matched C2PA Manifest
               endpoint:
                 type: string
-                description: Endpoint of a Soft Binding Resolution API from which the C2PA Manifest may be obtained. If the endpoint is absent then the C2PA Manifest is available from same endpoint the query was sent to using the /manifests endpoint.
+                description: Endpoint of a Soft Binding Resolution API from which the C2PA Manifest may be obtained. If the endpoint is absent then the C2PA Manifest is available from same endpoint the query was sent to using the /manifests endpoint
               similarityScore:
                 type: integer
                 minimum: 0
                 maximum: 100
-                description: An integer score in the range (0-100) representing the strength of match, if appropriate, where 0 is the weakest possible match and 100 is the strongest possible match.
+                description: An integer score in the range (0-100) representing the strength of match, if appropriate, where 0 is the weakest possible match and 100 is the strongest possible match
             required:
               - manifestId
+    c2pa.manifestReceipt:
+      type: object
+      additionalProperties: false
+      properties:
+        '@context':
+          oneOf:
+            - type: object
+            - type: string
+          description: JSON-LD context for the C2PA Manifest receipt
+          example:
+            c2pa: https://c2pa.org/ns/
+            receipt: https://c2pa.org/ns/manifest-receipt#
+        '@type':
+          type: string
+          const: org.c2pa.manifest-receipt
+          description: JSON-LD type identifier for a C2PA Manifest receipt
+          example: org.c2pa.manifest-receipt
+        repository:
+          type: object
+          additionalProperties: false
+          properties:
+            uri:
+              type: string
+              format: uri
+              description: Base URI of the manifest repository issuing this C2PA Manifest receipt
+              example: https://repo.example.org
+            manifestId:
+              type: string
+              description: Canonical identifier of the ingested C2PA Manifest within this repository
+              example: urn:c2pa:F9168C5E-CEB2-4FAA-B6BF-329BF39FA1E4
+          required:
+            - uri
+            - manifestId
+        anchor:
+          type: object
+          additionalProperties: true
+          description: Information describing a repository-specific proof that the C2PA Manifest was ingested and where that proof may be verified or retrieved
+          properties:
+            uri:
+              type: string
+              format: uri
+              description: URI where the proof may be verified or retrieved.
+              example: https://repo.example.org/anchors/7f3d91
+            parameters:
+              type: object
+              description: Optional repository-specific key/value parameters used when accessing the anchor URI
+              additionalProperties: true
+              example:
+                view: verification
+            proof:
+              type: object
+              additionalProperties: true
+              description: Repository-specific JSON object used to demonstrate proof that the C2PA Manifest was ingested
+              example:
+                alg: ES256
+                value: BASE64URL_PROOF_VALUE
+          required:
+            - uri
+            - proof
+      required:
+        - '@context'
+        - '@type'
+        - repository
+        - anchor
+    c2pa.verifiedManifestReceipt:
+      allOf:
+        - $ref: '#/components/schemas/c2pa.manifestReceipt'
+        - type: object
+          additionalProperties: false
+          properties:
+            verified:
+              type: boolean
+              description: Result of the verification. A value of true means the verification was successful
+              example: true
+            error:
+              type: string
+              description: Optional explanation of why verification failed
+              example: The supplied receipt manifestId does not match the requested manifestId
+          required:
+            - verified
     c2pa.regionOfInterest:
       oneOf:
         - $ref: '#/components/schemas/SpatialRange'
@@ -1980,12 +2584,12 @@ components:
                 x:
                   type: number
                   example: 10
-                'y':
+                y:
                   type: number
                   example: 5
               required:
                 - x
-                - 'y'
+                - y
           required:
             - kind
             - unit
@@ -2001,7 +2605,7 @@ components:
             - temporal
         time:
           type: object
-          description: A time range described either using Normal Play Time as described in RFC 2326 or Wall Clock Time using the Internet profile of ISO 8601 as described in RFC 3339.
+          description: A time range described either using Normal Play Time as described in RFC 2326 or Wall Clock Time using the Internet profile of ISO 8601 as described in RFC 3339
           properties:
             type:
               type: string
@@ -2010,10 +2614,10 @@ components:
                 - wall-clock
             start:
               type: string
-              example: '12:05:30.5'
+              example: 12:05:30.5
             end:
               type: string
-              example: '12:07:40.2'
+              example: 12:07:40.2
           required:
             - start
             - end
@@ -2057,7 +2661,7 @@ components:
               properties:
                 fragment:
                   type: string
-                  description: Fragment identifier, as per RFC3023 or ISO 32000-2, Annex O.
+                  description: Fragment identifier, as per RFC3023 or ISO 32000-2, Annex O
                   example: page=1,rect=10,10,450,500
                 start:
                   type: integer
@@ -2092,6 +2696,73 @@ components:
       required:
         - type
         - identified
+    c2pa.serviceStatus:
+      type: object
+      description: Operational status of the soft binding resolution service
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+            - degraded
+            - down
+          description: Current operational status of the service
+          example: ok
+        timestamp:
+          type: string
+          format: date-time
+          description: Time at which the status was generated
+          example: "2024-01-01T00:00:00Z"
+      required:
+        - status
+    c2pa.serviceCapabilities:
+      type: object
+      description: Capabilities of the soft binding resolution service
+      properties:
+        c2paSpecificationVersion:
+          type: string
+          description: Version of the C2PA specification whose Soft Binding Resolution API semantics are implemented by this service endpoint, formatted as a Semantic Versioning (SemVer) string per https://semver.org. This value is not an independent API version and shall match the OpenAPI info.version field for the API definition implemented by the service endpoint
+          pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$
+          example: 2.4.0
+        supportedCapabilities:
+          type: array
+          description: 'List of optional capabilities supported by this service instance. Absence of a capability name from this list unambiguously indicates the capability is not supported. Clients should ignore unknown values, allowing future versions of this specification to introduce new capability names without breaking existing implementations. Known values are: queryByContent (POST /matches/byContent), queryByReference (POST /matches/byReference), storeManifests (POST /manifests and DELETE /manifests/{manifestId}), storeBindings (POST and PUT /bindings).'
+          items:
+            type: string
+          example:
+            - queryByContent
+            - storeManifests
+            - storeBindings
+      required:
+        - c2paSpecificationVersion
+        - supportedCapabilities
+    c2pa.wellKnownDiscovery:
+      type: object
+      description: Discovery information for a C2PA Soft Binding Resolution service
+      properties:
+        apiEndpoint:
+          type: string
+          format: uri
+          description: Base URI of the versioned C2PA Soft Binding Resolution API. The path segment, such as /v1, identifies the major compatibility version of the HTTP API surface and does not change for every C2PA specification minor or patch release
+          example: /v1
+        c2paSpecificationVersion:
+          type: string
+          description: Version of the C2PA specification whose Soft Binding Resolution API semantics are implemented by this service endpoint, formatted as a Semantic Versioning (SemVer) string per https://semver.org. This value is not an independent API version and shall match the OpenAPI info.version field for the API definition implemented by the service endpoint
+          pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$
+          example: 2.4.0
+        capabilitiesEndpoint:
+          type: string
+          format: uri
+          description: URI of the capabilities endpoint for this service
+          example: /v1/services/capabilities
+        statusEndpoint:
+          type: string
+          format: uri
+          description: URI of the status endpoint for this service
+          example: /v1/services/status
+      required:
+        - apiEndpoint
+        - c2paSpecificationVersion
   securitySchemes:
     auth:
       type: oauth2
@@ -2099,7 +2770,7 @@ components:
         clientCredentials:
           tokenUrl: https://auth.example.com/oauth/token
           scopes:
-            fetch:manifests: Search and read manifests within the manifest store.
+            fetch:manifests: Search and read manifests within the manifest repository
 ```
 
 <a id="_federated_lookup"></a>

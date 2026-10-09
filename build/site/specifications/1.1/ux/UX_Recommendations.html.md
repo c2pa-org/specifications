@@ -7,7 +7,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 <a id="_introduction"></a>
 ## 1\. Introduction
 
-The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders. The results will balance uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback. Please reference the Glossary in the [C2PA Specifications](../specs/C2PA_Specification.html.md#_glossary) for clarifications on terminology used within this document. For general guidance on other areas of the specification, please see [Guidance for Implementors](#guidance:Guidance.adoc).
+The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders. The results will balance uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback. Please reference the Glossary in the [C2PA Specifications](#1.1@specs:C2PA_Specification.adoc#_glossary) for clarifications on terminology used within this document. For general guidance on other areas of the specification, please see [Guidance for Implementors](#guidance:Guidance.adoc).
 
 <a id="_principles"></a>
 ## 2\. Principles
@@ -104,7 +104,7 @@ Behaviour of L1 indicators should reveal L2 progressive disclosure, either via a
 
 Figure 3. L1 validation states
 
-In the event that the active manifest is invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See Chapter 14, Validation in the [C2PA Technical Specifications](../specs/C2PA_Specification.html.md#_validation) for further information.
+In the event that the active manifest is invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See Chapter 14, Validation in the [C2PA Technical Specifications](#1.1@specs:C2PA_Specification.adoc#_validation) for further information.
 
 <a id="l2-section"></a>
 ## 5\. L2 – provenance summaries
@@ -288,7 +288,7 @@ Note the lack of thumbnail image in the update manifest. Since update manifests 
 
 Figure 22. No thumbnail in update manifest
 
-It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the [actions section of the technical specification](../specs/C2PA_Specification.html.md#_actions). Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.
+It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the [actions section of the technical specification](#1.1@specs:C2PA_Specification.adoc#_actions). Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.
 
 ![l2tol3](_images/l2tol3.png)
 
@@ -527,7 +527,7 @@ Please refer to [L1 interface language](#l1-language) for a reminder of the impo
 <a id="_user_facing_edit_and_activity_labels_and_descriptions"></a>
 ### 9.3. User-facing edit and activity labels and descriptions
 
-The [names and descriptions of C2PA actions](../specs/C2PA_Specification.html.md#_actions) have generally been written with implementers in mind. Users who are less familiar with the C2PA will benefit from clear labeling and descriptions of actions that capture as much of the related actions that may apply as possible.
+The [names and descriptions of C2PA actions](#1.1@specs:C2PA_Specification.adoc#_actions) have generally been written with implementers in mind. Users who are less familiar with the C2PA will benefit from clear labeling and descriptions of actions that capture as much of the related actions that may apply as possible.
 
 Here we provide a matrix of current C2PA actions with recommended labels and optional descriptions for them in the "Edits and activity" section of consumer manifest UIs.
 

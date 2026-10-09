@@ -428,7 +428,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 2.0 - January 2024
 
-This version represents a significant departure from previous versions. It no longer has any references to actors as humans or organizations, they can only be hardware or software entities. This philosophical change led to the following functional changes in the specification:
+This version represents a significant departure from previous versions. It reduces reliance on the term "actor" within the trust and validation model, shifting the basis for trust decisions away from identifying individual humans or organizations and toward the hardware and software entities identified by X.509 certificates. This philosophical change led to the following functional changes in the specification:
 
 *   Only X.509 certificates may be used for signing.
     

@@ -8268,12 +8268,12 @@ Provenance generally refers to the facts about the history of a piece of digital
 
 The provenance data and the asset are the two parts of the same puzzle - a unique puzzle. The possibility of any other pieces ever matching, either by coincidence or by a purposeful attempt to generate a match, is so low that it would be practically impossible. In other words, any alteration to either the asset or the provenance, however insignificant, would alter the mathematical algorithm - the shape of the piece of the puzzle - in such a way that they would no longer match.
 
-We refer to this as a hard binding. For more technical information on this see "hard binding" in the [glossary](../1.1/specs/C2PA_Specification.html.md#_glossary) and the [non-normative guidance](../1.3/guidance/Guidance.html.md).
+We refer to this as a hard binding. For more technical information on this see "hard binding" in the [glossary](#1.1@specs:C2PA_Specification.adoc#_glossary) and the [non-normative guidance](../1.3/guidance/Guidance.html.md).
 
 <a id="_can_c2pa_help_with_assets_created_from_multiple_sources"></a>
 #### 3.1.3. Can C2PA help with assets created from multiple sources?
 
-When one asset is created from a series of other assets, those sources are referred to as the [ingredients](../1.1/specs/C2PA_Specification.html.md#_ingredient). Each ingredient that is used in the (composed) asset is recorded in that asset’s provenance, including the addition of the provenance of each individual ingredient. This process creates a chain of provenance that can stretch all the way back to each ingredient’s creation.
+When one asset is created from a series of other assets, those sources are referred to as the [ingredients](#1.1@specs:C2PA_Specification.adoc#_ingredient). Each ingredient that is used in the (composed) asset is recorded in that asset’s provenance, including the addition of the provenance of each individual ingredient. This process creates a chain of provenance that can stretch all the way back to each ingredient’s creation.
 
 <a id="_what_is_redaction_and_how_does_it_work"></a>
 #### 3.1.4. What is redaction and how does it work?
@@ -8285,7 +8285,7 @@ For example, if a human rights organization wishes to remove assertions about th
 <a id="_is_provenance_always_complete"></a>
 #### 3.1.5. Is provenance always complete?
 
-No. Provenance is not always complete. It may happen that an asset is modified in a way that the provenance data is not updated. For example, if an asset is cropped using a non-C2PA aware tool, the provenance data may not be updated to reflect that action. However, if the asset is then brought back into a C2PA-aware tool for additional modification or preparation for publication, the actor responsible for signing the new C2PA Manifest also implicitly attests to the crop action. So even though there is missing provenance information, the asset can still be trusted based on the signer of the [active C2PA Manifest](../1.1/specs/C2PA_Specification.html.md#_active_manifest).
+No. Provenance is not always complete. It may happen that an asset is modified in a way that the provenance data is not updated. For example, if an asset is cropped using a non-C2PA aware tool, the provenance data may not be updated to reflect that action. However, if the asset is then brought back into a C2PA-aware tool for additional modification or preparation for publication, the actor responsible for signing the new C2PA Manifest also implicitly attests to the crop action. So even though there is missing provenance information, the asset can still be trusted based on the signer of the [active C2PA Manifest](#1.1@specs:C2PA_Specification.adoc#_active_manifest).
 
 <a id="_trust"></a>
 ### 3.2. Trust
@@ -8319,7 +8319,7 @@ C2PA provenance only becomes useful to users when they can use the data and the 
 <a id="_do_the_ingredients_of_an_asset_have_verifiable_provenance"></a>
 #### 3.2.3. Do the ingredients of an asset have verifiable provenance?
 
-Each [ingredient](../1.1/specs/C2PA_Specification.html.md#_ingredient) that is included in a C2PA Manifest can include its own provenance data, specifically its C2PA Manifest is also included in the asset’s C2PA Manifest Store. However, while the provenance data of each ingredient may be present, the ingredient’s provenance cannot be verified in the same way as the provenance data of the asset in which it is contained. This is because the actual data of the ingredient is not usually included in the asset’s C2PA Manifest. Without the actual data, the ingredient’s hard bindings cannot be verified.
+Each [ingredient](#1.1@specs:C2PA_Specification.adoc#_ingredient) that is included in a C2PA Manifest can include its own provenance data, specifically its C2PA Manifest is also included in the asset’s C2PA Manifest Store. However, while the provenance data of each ingredient may be present, the ingredient’s provenance cannot be verified in the same way as the provenance data of the asset in which it is contained. This is because the actual data of the ingredient is not usually included in the asset’s C2PA Manifest. Without the actual data, the ingredient’s hard bindings cannot be verified.
 
 <a id="_can_provenance_information_be_used_to_determine_whether_a_digital_asset_such_as_an_image_or_video_depicts_the_truth"></a>
 ### 3.3. Can provenance information be used to determine whether a digital asset, such as an image or video, depicts the truth?
@@ -8330,7 +8330,7 @@ C2PA signed provenance information can include assertions about the real-world i
 
 > Signed provenance information transits trust between a creator and a consumer, based on a trust relationship between those two that exists outside the scope of C2PA. Trust anchors operate by providing digital identities within a particular ecosystem that link to real-world identities, and perform an ecosystem-specific validation to ensure those identities are sufficiently trustworthy, and that consumers can be confident when an asset is verified as being signed by a known creator, they can rely upon their existing trust relationship with that known creator. — **_C2PA Implementation Guidance [Trust Model](#guidance:_trust)_**
 
-For additional information, see the [Trust Model](../1.1/specs/C2PA_Specification.html.md#_trust_model) section of the [Technical Specifications](../1.1/specs/C2PA_Specification.html.md).
+For additional information, see the [Trust Model](#1.1@specs:C2PA_Specification.adoc#_trust_model) section of the [Technical Specifications](#1.1@specs:C2PA_Specification.adoc).
 
 <a id="_what_does_it_mean_that_provenance_data_is_cryptographically_bound_to_the_asset_2"></a>
 ### 3.4. What does it mean that provenance data is cryptographically bound to the asset?
@@ -8347,12 +8347,12 @@ This inability to always be able to verify the provenance of an ingredient is no
 
 Each action that is performed on an asset is recorded in the asset’s C2PA Manifest. These actions can be performed by a human or by an AI/ML system. When an action was performed by an AI/ML system, it is clearly identified as such through it’s `digitalSourceType` field.
 
-An example of `c2pa.created` action that might appear in an asset that was produced by a Generative AI system appears in the specification’s [parameters clause of Actions](../1.1/specs/C2PA_Specification.html.md#_parameters).
+An example of `c2pa.created` action that might appear in an asset that was produced by a Generative AI system appears in the specification’s [parameters clause of Actions](#1.1@specs:C2PA_Specification.adoc#_parameters).
 
 <a id="_can_c2pa_be_used_to_label_assets_that_should_not_be_used_for_training_or_data_mining"></a>
 #### 3.5.2. Can C2PA be used to label assets that should not be used for training or data mining?
 
-Yes. A C2PA Manifest include a [Training and Data Mining](../1.1/specs/C2PA_Specification.html.md#_training_and_data_mining) assertion that can be used to indicate that the asset should not be used for either training or data mining purposes. The assertion is flexible and allows the author of the asset to specify whether each type of process - data mining, general AI training, or training specific to generative AI - is permitted, or not.
+Yes. A C2PA Manifest include a [Training and Data Mining](#1.1@specs:C2PA_Specification.adoc#_training_and_data_mining) assertion that can be used to indicate that the asset should not be used for either training or data mining purposes. The assertion is flexible and allows the author of the asset to specify whether each type of process - data mining, general AI training, or training specific to generative AI - is permitted, or not.
 
 <a id="_todo"></a>
 ## 4\. TODO
@@ -8430,7 +8430,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 <a id="_overview"></a>
 ### 1.1. Overview
 
-The Coalition for Content Provenance and Authenticity (C2PA) has developed their [technical specification](../1.1/specs/C2PA_Specification.html.md) for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.
+The Coalition for Content Provenance and Authenticity (C2PA) has developed their [technical specification](#1.1@specs:C2PA_Specification.adoc) for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.
 
 The specification has been, and continues to be, informed by scenarios, workflows and requirements gathered from industry experts and partner organizations. However many of these requirements are not normative in nature or may differ between organizations or workflows - in those cases it is important to provide non-normative guidance to implementers - which is the goal of this document.
 
@@ -8462,7 +8462,7 @@ Each of the actors in the system that creates or processes an asset will produce
 <a id="_encryption_of_assertions"></a>
 #### 3.1.2. Encryption of Assertions
 
-The [set of assertions](../1.1/specs/C2PA_Specification.html.md#_c2pa_standard_assertions), their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.
+The [set of assertions](#1.1@specs:C2PA_Specification.adoc#_c2pa_standard_assertions), their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.
 
 A use case for creating variants of existing assertions would be to encrypt them to prevent access to those not possessing the necessary decryption key. This might be for privacy protection or the establishment of a more secure end-to-end workflow.
 
@@ -8522,7 +8522,7 @@ Replacing an existing manifest store with a different manifest store is not reco
 <a id="_manifests_for_existing_media"></a>
 #### 3.3.7. Manifests for existing media
 
-It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described [here](../1.1/specs/C2PA_Specification.html.md#_external_manifests), all assets can have provenance, no matter their age.
+It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described [here](#1.1@specs:C2PA_Specification.adoc#_external_manifests), all assets can have provenance, no matter their age.
 
 <a id="_ingredients"></a>
 ### 3.4. Ingredients
@@ -8560,14 +8560,14 @@ Selection of the specific hashing algorithm to use for a hard binding should be 
 <a id="_byte_range_bindings"></a>
 #### 4.1.2. Byte Range Bindings
 
-The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in [the core specification](../1.1/specs/C2PA_Specification.html.md#_hashing). Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset. However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.
+The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in [the core specification](#1.1@specs:C2PA_Specification.adoc#_hashing). Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset. However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.
 
 <a id="_general_box_bindings"></a>
 #### 4.1.3. General Box Bindings
 
 Some file formats, such as JPEG, PNG, or GIF, use a general box structure, that can be used to improve the flexibility of the bindings over that of a byte range binding. When possible, the use of a general box binding is strongly recommended over a byte range binding.
 
-A [general box hash assertion](../1.1/specs/C2PA_Specification.html.md#_general_boxes_hash) consists of an array of structures, each one listing one or more boxes (by their name/identifier) and a hash that covers that data of those boxes, along with the algorithm used for hashing.
+A [general box hash assertion](#1.1@specs:C2PA_Specification.adoc#_general_boxes_hash) consists of an array of structures, each one listing one or more boxes (by their name/identifier) and a hash that covers that data of those boxes, along with the algorithm used for hashing.
 
 > **NOTE:**
 > Some formats, such as JPEG and GIF, require special handling.
@@ -8688,7 +8688,7 @@ Trust in the lookup process is derived from trust in the integrity of the manife
 
 As part of a workflow, some claim generators may allow actors to enter arbitrary text as the value for fields in some assertions - for example, as the value of the `copyright` field in a Creative Work assertion.
 
-The signer of the manifest is responsible for ensuring that any user generated text that will be present in the manifest is something they are willing to take responsibility for, since that is a key role of the signer as described in our [trust model](../1.1/specs/C2PA_Specification.html.md#_trust_model).
+The signer of the manifest is responsible for ensuring that any user generated text that will be present in the manifest is something they are willing to take responsibility for, since that is a key role of the signer as described in our [trust model](#1.1@specs:C2PA_Specification.adoc#_trust_model).
 
 <a id="_consumption"></a>
 ##### 5.1.1.2. Consumption
@@ -8706,9 +8706,9 @@ Manifest consumers should consider doing any necessary "character filtering" on 
 <a id="_general_4"></a>
 #### 5.2.1. General
 
-As described in [the actions section of the C2PA specification](../1.1/specs/C2PA_Specification.html.md#_actions), "an actions assertion provides information on edits and other actions taken that affect the asset’s content." Each action declares what took place on the asset, along with various other (optional) information such as when it took place or what software performed the action.
+As described in [the actions section of the C2PA specification](#1.1@specs:C2PA_Specification.adoc#_actions), "an actions assertion provides information on edits and other actions taken that affect the asset’s content." Each action declares what took place on the asset, along with various other (optional) information such as when it took place or what software performed the action.
 
-The listed C2PA actions are those that have been defined to date as common operations for various types of software and hardware actors operating on various asset types. However, because not all possible operations can be anticipated, the C2PA specification also allows for the use of custom actions using the standard [custom labels syntax](../1.1/specs/C2PA_Specification.html.md#_labels).
+The listed C2PA actions are those that have been defined to date as common operations for various types of software and hardware actors operating on various asset types. However, because not all possible operations can be anticipated, the C2PA specification also allows for the use of custom actions using the standard [custom labels syntax](#1.1@specs:C2PA_Specification.adoc#_labels).
 
 When using one of the C2PA actions, you should choose the one that most closely represents the action being taken. If there is not something specific, then either use a more general one (e.g., `c2pa.edited` or `c2pa.filtered`) or a custom one that specifically describes your case.
 
@@ -8722,7 +8722,7 @@ When using a generic action or a custom action, it is recommended to add a free-
 <a id="actions-aiml"></a>
 #### 5.2.2. Identifying use of AI/ML
 
-Each action can identify whether it was performed by an AI/ML system through the use of the `digitalSourceType` field. An example `c2pa.created` action is shown in the specification [in the parameters clause of Actions](../1.1/specs/C2PA_Specification.html.md#_parameters). The `digitalSourceType` field is used to identify the type of digital source that was used to create the asset, including the value `[http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia](http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia)` which indicates that the asset was created by an AI/ML system and is therefore "trained algorithmic media".
+Each action can identify whether it was performed by an AI/ML system through the use of the `digitalSourceType` field. An example `c2pa.created` action is shown in the specification [in the parameters clause of Actions](#1.1@specs:C2PA_Specification.adoc#_parameters). The `digitalSourceType` field is used to identify the type of digital source that was used to create the asset, including the value `[http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia](http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia)` which indicates that the asset was created by an AI/ML system and is therefore "trained algorithmic media".
 
 <a id="_ingredients_2"></a>
 ### 5.3. Ingredients
@@ -8730,7 +8730,7 @@ Each action can identify whether it was performed by an AI/ML system through the
 <a id="ingredients-aiml"></a>
 #### 5.3.1. Identifying use of AI/ML
 
-When an asset is the result of Generative AI, where the asset is produced as the result of inference on an specialized AI/ML model, it is important to be able to store not only that such a process took place, but also information about any input data to the model that was used, such as a prompt as well as the info about the model itself. This data can all be recorded as part of an ingredient assertion. An example of an asset produced from a text prompt can be found [here](../1.1/specs/C2PA_Specification.html.md#_ingredient_data).
+When an asset is the result of Generative AI, where the asset is produced as the result of inference on an specialized AI/ML model, it is important to be able to store not only that such a process took place, but also information about any input data to the model that was used, such as a prompt as well as the info about the model itself. This data can all be recorded as part of an ingredient assertion. An example of an asset produced from a text prompt can be found [here](#1.1@specs:C2PA_Specification.adoc#_ingredient_data).
 
 <a id="_trust"></a>
 ## 6\. Trust
@@ -9005,7 +9005,7 @@ A manifest consumer that is performing validation (e.g., a web browser) may dete
 <a id="_validation_of_ingredient_manifests"></a>
 ### 7.2. Validation of Ingredient manifests
 
-As described in the [Validation section of the specification](../1.1/specs/C2PA_Specification.html.md#_validation), "The validator may optionally recursively validate the ingredient’s ingredients". To do so, the implementation resolves each ingredient’s `url` field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.
+As described in the [Validation section of the specification](#1.1@specs:C2PA_Specification.adoc#_validation), "The validator may optionally recursively validate the ingredient’s ingredients". To do so, the implementation resolves each ingredient’s `url` field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.
 
 <a id="_data_validation"></a>
 ### 7.3. Data validation
@@ -9047,7 +9047,7 @@ The right to use an asset for Data Mining and/or Training an AI model is communi
 > **NOTE:**
 > Since an AI/ML model is itself considered an asset, the Training and Data Mining assertion can also be used to indicate the rights to use a model for inference or to data mine the model. This is useful in the case of potentially preventing a [model extraction attack](https://ssg.aalto.fi/research/projects/mlsec/model-extraction/).
 
-The four possible rights, as described in the [specification](../1.1/specs/C2PA_Specification.html.md#<em>training_and_data_mining</em>) are:
+The four possible rights, as described in the [specification](#1.1@specs:C2PA_Specification.adoc#<em>training_and_data_mining</em>) are:
 
 *   `c2pa.data_mining`
     
@@ -9184,7 +9184,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 <a id="_introduction"></a>
 ## 1\. Introduction
 
-The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders. The results will balance uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback. Please reference the Glossary in the [C2PA Specifications](../1.1/specs/C2PA_Specification.html.md#_glossary) for clarifications on terminology used within this document. For general guidance on other areas of the specification, please see [Guidance for Implementors](#guidance:Guidance.adoc).
+The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders. The results will balance uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback. Please reference the Glossary in the [C2PA Specifications](#1.1@specs:C2PA_Specification.adoc#_glossary) for clarifications on terminology used within this document. For general guidance on other areas of the specification, please see [Guidance for Implementors](#guidance:Guidance.adoc).
 
 <a id="_principles"></a>
 ## 2\. Principles
@@ -9281,7 +9281,7 @@ Behaviour of L1 indicators should reveal L2 progressive disclosure, either via a
 
 Figure 3. L1 validation states
 
-In the event that the active manifest is invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See Chapter 14, Validation in the [C2PA Technical Specifications](../1.1/specs/C2PA_Specification.html.md#_validation) for further information.
+In the event that the active manifest is invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See Chapter 14, Validation in the [C2PA Technical Specifications](#1.1@specs:C2PA_Specification.adoc#_validation) for further information.
 
 <a id="l2-section"></a>
 ## 5\. L2 – provenance summaries
@@ -9465,7 +9465,7 @@ Note the lack of thumbnail image in the update manifest. Since update manifests 
 
 Figure 22. No thumbnail in update manifest
 
-It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the [actions section of the technical specification](../1.1/specs/C2PA_Specification.html.md#_actions). Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.
+It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the [actions section of the technical specification](#1.1@specs:C2PA_Specification.adoc#_actions). Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.
 
 ![l2tol3](../1.1/ux/_images/l2tol3.png)
 
@@ -9704,7 +9704,7 @@ Please refer to [L1 interface language](#l1-language) for a reminder of the impo
 <a id="_user_facing_edit_and_activity_labels_and_descriptions"></a>
 ### 9.3. User-facing edit and activity labels and descriptions
 
-The [names and descriptions of C2PA actions](../1.1/specs/C2PA_Specification.html.md#_actions) have generally been written with implementers in mind. Users who are less familiar with the C2PA will benefit from clear labeling and descriptions of actions that capture as much of the related actions that may apply as possible.
+The [names and descriptions of C2PA actions](#1.1@specs:C2PA_Specification.adoc#_actions) have generally been written with implementers in mind. Users who are less familiar with the C2PA will benefit from clear labeling and descriptions of actions that capture as much of the related actions that may apply as possible.
 
 Here we provide a matrix of current C2PA actions with recommended labels and optional descriptions for them in the "Edits and activity" section of consumer manifest UIs.
 
@@ -10552,7 +10552,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 <a id="_introduction"></a>
 ## 1\. Introduction
 
-The [C2PA specification](../1.1/specs/C2PA_Specification.html.md) can be used to add cryptographic information to detect the tampering of media files and streams. Similarly, the C2PA framework can also be used in artificial intelligence (AI) and machine learning (ML) systems to indicate the tampering of datasets, software, and models which are utilized during training and inference. This document provides guidance about how C2PA can be employed by AI and ML systems.
+The [C2PA specification](#1.1@specs:C2PA_Specification.adoc) can be used to add cryptographic information to detect the tampering of media files and streams. Similarly, the C2PA framework can also be used in artificial intelligence (AI) and machine learning (ML) systems to indicate the tampering of datasets, software, and models which are utilized during training and inference. This document provides guidance about how C2PA can be employed by AI and ML systems.
 
 Recent research has demonstrated that ML systems are susceptible to different forms of poisoning attacks. For these types of attacks, the goal of the adversary is to cause the model to make incorrect predictions which can either be targeted or non-targeted attacks. In targeted attacks, a classifier can be maliciously trained to provide a backdoor that can be exploited by the attacker to produce a specific incorrect prediction class. One example of a targeted attack is to modify a face recognition system to allow the adversary to successfully log onto a computer as someone else. A model that has been poisoned using an untargeted attack may generate any result that is incorrect. At a minimum, the ML system must protect against three types of poisoning attacks including data poisoning, software poisoning, and model poisoning attacks [\[Stokes21\]](#Stokes21). C2PA can be used to help prevent these types of attacks by protecting the data, software, and models.
 
@@ -10565,7 +10565,7 @@ Many of the existing training sets are stored in a single file, and these files 
 
 In other settings, the training and inference data may be split across multiple files, including media files such as images which are used to train an object detection model. In addition, the training or inference data may be streamed. In these scenarios, the data may be protected by a top-level C2PA Content Credential which includes each of the files as ingredients. In the case where the ingredients are media files, they may contain their own Content Credentials.
 
-In images and videos, a C2PA Content Credential can be [embedded](../1.1/specs/C2PA_Specification.html.md#_embedding_manifests_into_assets) in the media file. However, existing machine learning datasets are either text or binary files which prevents the embedding of a Credential in the file. In these cases, the Content Credential can be stored in a separate, sidecar file. The Content Credential can then use the Asset Reference Assertion to provide a URI to the dataset file or streamed data chunk.
+In images and videos, a C2PA Content Credential can be [embedded](#1.1@specs:C2PA_Specification.adoc#_embedding_manifests_into_assets) in the media file. However, existing machine learning datasets are either text or binary files which prevents the embedding of a Credential in the file. In these cases, the Content Credential can be stored in a separate, sidecar file. The Content Credential can then use the Asset Reference Assertion to provide a URI to the dataset file or streamed data chunk.
 
 <a id="_software_poisoning_attacks"></a>
 ## 3\. Software Poisoning Attacks
@@ -10600,13 +10600,13 @@ The C2PA Content Credential for an AI-ML model provides the consumer, e.g. a sys
 
 AI-ML output results have a wide range of concerns and risks depending on how the models were prepared and how the consumer uses the output. Accordingly, the AI-ML provenance information is explored in levels of depth, reflecting the consumers need to reduce risk by establishing deeper trust in the results. Briefly these levels describe the model itself, the training data used to create the model, and finally additional information about the training of the model, the training environment, and various extensions that relate explainability, transparency, and indicators of trust for the model.
 
-If the model provider does not want the model and its output to be used to train other models in an attempt to extract the model’s functionality, the model Content Credential can contain a data mining assertion that asserts rights as allowed, constrained, or not allowed for generative or non-generative AI-ML models or both. See [data mining](../1.1/specs/C2PA_Specification.html.md#<em>training_and_data_mining</em>) for more detail.
+If the model provider does not want the model and its output to be used to train other models in an attempt to extract the model’s functionality, the model Content Credential can contain a data mining assertion that asserts rights as allowed, constrained, or not allowed for generative or non-generative AI-ML models or both. See [data mining](#1.1@specs:C2PA_Specification.adoc#<em>training_and_data_mining</em>) for more detail.
 
 ![Visual diagram of the elements contained in a model Content Credential](../1.3/ai-ml/_images/Model-Manifest-v1.3.svg)
 
 The most basic provenance information allows the consumer to understand what type of model is being used, authenticate the claim signature, and to verify that the model had not been tampered with.
 
-An [asset type assertion](../1.1/specs/C2PA_Specification.html.md#_asset_type) provides the basic model information that a validator would use to further validate the model. By including the model’s name, machine learning framework, and the type, the consumer is better able to understand what the model does and how it does it.
+An [asset type assertion](#1.1@specs:C2PA_Specification.adoc#_asset_type) provides the basic model information that a validator would use to further validate the model. By including the model’s name, machine learning framework, and the type, the consumer is better able to understand what the model does and how it does it.
 
 An example of an asset type assertion for an OpenVINO model, in CBOR Diagnostic Format (`.cbordiag`) would be:
 
@@ -10622,7 +10622,7 @@ An example of an asset type assertion for an OpenVINO model, in CBOR Diagnostic 
 }
 ```
 
-The [asset reference assertion](../1.1/specs/C2PA_Specification.html.md#_asset_reference) provides a URI to the data of the asset, such as a AI-ML model. This assertion is accompanied by a data hash that provides a hard binding to the asset (e.g., a model file) enabling the validator to confirm its integrity.
+The [asset reference assertion](#1.1@specs:C2PA_Specification.adoc#_asset_reference) provides a URI to the data of the asset, such as a AI-ML model. This assertion is accompanied by a data hash that provides a hard binding to the asset (e.g., a model file) enabling the validator to confirm its integrity.
 
 OpenVINO represents the model in two files, included as ingredients. An XML file contains the topology:
 

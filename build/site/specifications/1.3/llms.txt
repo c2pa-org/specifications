@@ -4,7 +4,7 @@
 
 ## Pages
 
-- [Technical Specifications](../1.1/specs/C2PA_Specification.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [Technical Specifications](#1.1@specs:C2PA_Specification.adoc)
 - [Explainer](explainer/Explainer.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
 - [Guidance for Implementers](guidance/Guidance.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
 - [User Experience Guidance](../1.1/ux/UX_Recommendations.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.

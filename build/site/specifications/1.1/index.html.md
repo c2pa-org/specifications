@@ -4,7 +4,7 @@ The Coalition for Content Provenance and Authenticity (C2PA) addresses the preva
 
 This site contains the various specifications and documents produced by the C2PA.
 
-*   [Technical Specifications](specs/C2PA_Specification.html.md)
+*   [Technical Specifications](#specs:C2PA_Specification.adoc)
     
 *   [Explainer](../1.0/explainer/Explainer.html.md)
     

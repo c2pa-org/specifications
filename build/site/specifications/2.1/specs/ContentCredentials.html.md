@@ -7364,7 +7364,7 @@ EPUB’s digital signatures are based on [W3C XML DigSig Core](https://www.w3.or
 OOXML’s digital signatures are based on [W3C XML DigSig Core](https://www.w3.org/TR/xmldsig-core1/), where each file that is signed is listed as a `<Reference>` element in the `<Manifest>` element of the `<Signature>` element. In addition, no support exists for signing the ZIP Central Directory. As such, OOXML native signing shall take place before the introduction of the C2PA Manifest.
 
 > **NOTE:**
-> OpenXPS is based on the same Open Packaging Convention (OPC) standard as OOXML, and as such, the same approach applies. <<<<<<< Updated upstream :revdate: 2026-04-23 ======= :revdate: 2025-12-22 >>>>>>> Stashed changes :version-label!: :sectnums: :sectnumlevels: 5 :chapter-label: :source-highlighter: rouge
+> OpenXPS is based on the same Open Packaging Convention (OPC) standard as OOXML, and as such, the same approach applies. :revdate: 2026-10-09 :version-label!: :sectnums: :sectnumlevels: 5 :chapter-label: :source-highlighter: rouge
 
 <a id="metadata_annex"></a>
 ## Appendix B: Implementation Details for `c2pa.metadata`

@@ -579,7 +579,7 @@ This version focuses on both technical and editorial changes to the specificatio
 <a id="_2_0_january_2024"></a>
 #### 5.2.2. 2.0 - January 2024
 
-This version represents a significant departure from previous versions. It reduces the use of the term "actor", which no longer represents humans and organisations. In addition to validator-configured trust lists, it also introduces a new default trust list, the "C2PA Trust List", which is intended to cover certificates issued to hardware and software. This philosophical change led to the following functional changes in the specification:
+This version represents a significant departure from previous versions. It reduces reliance on the term "actor" within the trust and validation model, shifting the basis for trust decisions away from identifying individual humans or organisations and toward the hardware and software components identified by X.509 certificates. In addition to validator-configured trust lists, it also introduces a new default trust list, the "C2PA Trust List", which is intended to cover certificates issued to hardware and software. This philosophical change led to the following functional changes in the specification:
 
 *   Only X.509 certificates may be used for signing.
     
@@ -7894,7 +7894,7 @@ EPUB’s digital signatures are based on [W3C XML DigSig Core](https://www.w3.or
 OOXML’s digital signatures are based on [W3C XML DigSig Core](https://www.w3.org/TR/xmldsig-core1/), where each file that is signed is listed as a `<Reference>` element in the `<Manifest>` element of the `<Signature>` element. In addition, no support exists for signing the ZIP Central Directory. As such, OOXML native signing shall take place before the introduction of the C2PA Manifest.
 
 > **NOTE:**
-> OpenXPS is based on the same Open Packaging Convention (OPC) standard as OOXML, and as such, the same approach applies. <<<<<<< Updated upstream :revdate: 2026-04-23 ======= :revdate: 2025-12-22 >>>>>>> Stashed changes :version-label!: :sectnums: :sectnumlevels: 5 :chapter-label: :source-highlighter: rouge
+> OpenXPS is based on the same Open Packaging Convention (OPC) standard as OOXML, and as such, the same approach applies. :revdate: 2026-10-09 :version-label!: :sectnums: :sectnumlevels: 5 :chapter-label: :source-highlighter: rouge
 
 <a id="metadata_annex"></a>
 ## Appendix B: Implementation Details for `c2pa.metadata`
@@ -8157,7 +8157,7 @@ Only the following PLUS properties are supported:
 *   `plus:Version`
     
 
-For more information about these, see [http://ns.useplus.org/LDF/ldf-XMPSpecification](http://ns.useplus.org/LDF/ldf-XMPSpecification). <<<<<<< Updated upstream :revdate: 2026-04-23 ======= :revdate: 2025-12-22 >>>>>>> Stashed changes :version-label!: :sectnums: :sectnumlevels: 5 :chapter-label: :source-highlighter: rouge
+For more information about these, see [http://ns.useplus.org/LDF/ldf-XMPSpecification](http://ns.useplus.org/LDF/ldf-XMPSpecification). :revdate: 2026-10-09 :version-label!: :sectnums: :sectnumlevels: 5 :chapter-label: :source-highlighter: rouge
 
 <a id="versioning_annex"></a>
 ## Appendix C: Considerations for Deprecation
@@ -20341,7 +20341,7 @@ EPUB’s digital signatures are based on [W3C XML DigSig Core](https://www.w3.or
 OOXML’s digital signatures are based on [W3C XML DigSig Core](https://www.w3.org/TR/xmldsig-core1/), where each file that is signed is listed as a `<Reference>` element in the `<Manifest>` element of the `<Signature>` element. In addition, no support exists for signing the ZIP Central Directory. As such, OOXML native signing shall take place before the introduction of the C2PA Manifest.
 
 > **NOTE:**
-> OpenXPS is based on the same Open Packaging Convention (OPC) standard as OOXML, and as such, the same approach applies. <<<<<<< Updated upstream :revdate: 2026-04-23 ======= :revdate: 2025-12-22 >>>>>>> Stashed changes :version-label!: :sectnums: :sectnumlevels: 5 :chapter-label: :source-highlighter: rouge
+> OpenXPS is based on the same Open Packaging Convention (OPC) standard as OOXML, and as such, the same approach applies. :revdate: 2026-10-09 :version-label!: :sectnums: :sectnumlevels: 5 :chapter-label: :source-highlighter: rouge
 
 <a id="metadata_annex"></a>
 ## Appendix B: Implementation Details for `c2pa.metadata`

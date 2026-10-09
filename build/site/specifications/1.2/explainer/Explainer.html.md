@@ -48,7 +48,7 @@ The provenance data and the asset are the two parts of the same puzzle - a uniqu
 
 In other words, any alteration to either the asset or the provenance, however insignificant, would alter the mathematical algorithm - the shape of the piece of the puzzle – in such a way that they would no longer match.
 
-For more technical information on this see "Hard binding" in the [glossary](../../1.1/specs/C2PA_Specification.html.md#glossary) and the [non-normative guidance](../guidance/Guidance.html.md).
+For more technical information on this see "Hard binding" in the [glossary](#1.1@specs:C2PA_Specification.adoc#glossary) and the [non-normative guidance](../guidance/Guidance.html.md).
 
 <a id="_can_c2pa_help_with_assets_created_from_multiple_sources"></a>
 ### 3.4. Can C2PA help with assets created from multiple sources?

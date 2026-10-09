@@ -1958,7 +1958,7 @@ As described in the Certificate Profile, Certification Authority (CA) certificat
 <a id="_certificate_revocation"></a>
 #### 9.5.2. Certificate Revocation
 
-X.509 certificates support revocation status queries. A claim generator should use the Online Certificate Status Protocol (OCSP, [\[RFC 6960\]](#RFC6960)) and OCSP stapling (as originally conceptualized in [clause=8](#RFC6066), but implemented as described in this clause) to implement revocation. The claim generator shall not use Certificate Revocation Lists (CRLs, [\[RFC 5280\]](#RFC5280)).
+X.509 certificates support revocation status queries. A claim generator should use the Online Certificate Status Protocol (OCSP, [\[RFC 6960\]](#RFC6960)) and OCSP stapling (as originally conceptualized in [clause=8](#RFC6066), but implemented as described in this clause) to implement revocation. The claim generator shall not use Certificate Revocation Lists (CRLs, [\[RFC 5280\]](#RFC5280)). \`\`
 
 > **NOTE:**
 > Using CRLs requires downloading the entire list of revoked certificates for each Certificate Authority encountered, which can be time-consuming. Although a CRL could be included in the same way an OCSP response is stapled, the potential size of a CRL relative to an OCSP response also makes this undesirable.
@@ -2273,6 +2273,7 @@ ingredient-delta-validation-result-map = {
 | `assertion.cloud-data.hardBinding` | A hard binding assertion is in a cloud data assertion. | C2PA Assertion |
 | `assertion.cloud-data.malformed` | The cloud-data assertion was incomplete | C2PA Assertion |
 | `assertion.cloud-data.labelMismatch` | The label of the JUMBF box retrieved from the cloud data assertion does not match the expected label. | C2PA Assertion |
+| `assertion.cbor.invalid` | The cbor of an assertion is not valid | C2PA Assertion |
 | `assertion.collectionHash.incorrectFileCount` | An asset that was listed in the collection data hash assertion is missing from the collection. | C2PA Assertion |
 | `assertion.collectionHash.invalidURI` | A URI of an asset in the collection data hash assertion contains the file part '..' or '.'. | C2PA Assertion |
 | `assertion.collectionHash.malformed` | The collection hash assertion was incomplete | C2PA Assertion |
@@ -2799,30 +2800,24 @@ If the assertion’s label is `c2pa.cloud-data`:
     
 2.  If the `label` field of the external assertion is any of the following values, the claim shall be rejected with a failure code of `assertion.cloud-data.hardBinding`.
     
-    1.  `c2pa.action` (deprecated)
+    1.  `c2pa.cloud-data`
         
-    2.  `c2pa.actions.v2`
+    2.  `c2pa.action` (deprecated)
         
-    3.  `c2pa.cloud-data`
+    3.  `c2pa.actions.v2`
         
-    4.  `c2pa.hash.bmff.v2` (deprecated)
+    4.  `c2pa.hash.data`
         
-    5.  `c2pa.hash.bmff.v3`
+    5.  `c2pa.hash.boxes`
         
-    6.  `c2pa.hash.boxes`
+    6.  `c2pa.hash.collection.data`
         
-    7.  `c2pa.hash.collection.data`
+    7.  `c2pa.hash.bmff.v2` (deprecated)
         
-    8.  `c2pa.hash.data`
+    8.  `c2pa.hash.bmff.v3`
         
     9.  `c2pa.hash.multi-asset`
         
-    10.  `c2pa.ingredient` (deprecated)
-         
-    11.  `c2pa.ingredient.v2` (deprecated)
-         
-    12.  `c2pa.ingredient.v3`
-         
     
 3.  If the manifest is an update manifest and the `label` field of the external assertion is `c2pa.actions` or `c2pa.actions.v2`, the claim shall be rejected with a failure code of `assertion.cloud-data.actions`.
     
@@ -2875,27 +2870,25 @@ If the assertion’s label is `c2pa.external-reference`:
         
     2.  `c2pa.actions.v2`
         
-    3.  `c2pa.cloud-data`
+    3.  `c2pa.external-reference`
         
-    4.  `c2pa.external-reference`
+    4.  `c2pa.hash.bmff.v2` (deprecated)
         
-    5.  `c2pa.hash.bmff.v2` (deprecated)
+    5.  `c2pa.hash.bmff.v3`
         
-    6.  `c2pa.hash.bmff.v3`
+    6.  `c2pa.hash.boxes`
         
-    7.  `c2pa.hash.boxes`
+    7.  `c2pa.hash.collection.data`
         
-    8.  `c2pa.hash.collection.data`
+    8.  `c2pa.hash.data`
         
-    9.  `c2pa.hash.data`
+    9.  `c2pa.hash.multi-asset`
         
-    10.  `c2pa.hash.multi-asset`
+    10.  `c2pa.ingredient` (deprecated)
          
-    11.  `c2pa.ingredient` (deprecated)
+    11.  `c2pa.ingredient.v2` (deprecated)
          
-    12.  `c2pa.ingredient.v2` (deprecated)
-         
-    13.  `c2pa.ingredient.v3`
+    12.  `c2pa.ingredient.v3`
          
     
 5.  If the `label` field is present and the data is retrieved from the URI in the `location` field, the label of the retrieved JUMBF box shall match the value of the `label` field. If it does not, the validator shall report a failure code of `assertion.external-reference.labelMismatch`.
@@ -4160,7 +4153,7 @@ Example 4. Examples of Localization Dictionaries
     "es-MX": "Los Cinco Gatos de Kevin",
     "es-ES": "Los Thinco Gatos de Kevin",
     "fr": "Les Cinq Chats de Kevin",
-    "ja": "ケヴィンの５匹の猫"
+    "jp": "ケヴィンの５匹の猫"
   }
 }
 ```
@@ -4172,7 +4165,7 @@ Example 4. Examples of Localization Dictionaries
     "en-GB": "Joe's Photo Editor",
     "es": "Editor de fotos de Joe",
     "fr": "L'éditeur de photos de Joe",
-    "ja": "ジョーの写真編集者"
+    "jp": "ジョーの写真編集者"
   }
 }
 ```
@@ -4192,7 +4185,7 @@ Localized Actions
   "com.litware.filter": {
     "en-US": "Filter",
     "es-ES": "Filtrar",
-    "ja-JP": "フィルター"
+    "jp-JP": "フィルター"
   }
 }
 ```
@@ -5682,7 +5675,7 @@ A C2PA Validator should not use this information when validating the soft bindin
 
 The soft binding algorithm list is a machine readable list of recommended values for the `alg` field. The value of the `alg` field should correspond to the `alg` field of an algorithm present in that list. The format of `alg-params` and `value` fields are algorithm specific and described via a human readable information page referenced by `informationalUrl` within the entry for `alg` in the list.
 
-The list is maintained as a JSON document by the C2PA at the following location: [https://spec.c2pa.org/softbinding-alg-list/softbinding-algorithm-list.json](https://spec.c2pa.org/softbinding-alg-list/softbinding-algorithm-list.json)
+The list is maintained as a JSON document by the C2PA at the following location: [https://spec.c2pa.org/softbinding-alg-list](https://spec.c2pa.org/softbinding-alg-list)
 
 Entries in the soft binding algorithm list that have a `deprecated` field of `true` shall be considered deprecated and shall not be used to create soft binding assertions in manifests. Soft binding algorithms marked deprecated may be used for resolving soft bindings but this behaviour is discouraged.
 
@@ -5933,21 +5926,21 @@ A cloud data assertion shall have a label of `c2pa.cloud-data`.
 
 A cloud data assertion shall not refer to an assertion with any of the following labels:
 
+*   `c2pa.cloud-data`
+    
 *   `c2pa.action` (deprecated)
     
 *   `c2pa.actions.v2`
     
-*   `c2pa.cloud-data`
-    
-*   `c2pa.hash.bmff.v2` (deprecated)
-    
-*   `c2pa.hash.bmff.v3`
+*   `c2pa.hash.data`
     
 *   `c2pa.hash.boxes`
     
 *   `c2pa.hash.collection.data`
     
-*   `c2pa.hash.data`
+*   `c2pa.hash.bmff.v2` (deprecated)
+    
+*   `c2pa.hash.bmff.v3`
     
 *   `c2pa.hash.multi-asset`
     
@@ -8149,8 +8142,6 @@ When used to reference an assertion, the `label` field shall be present and shal
     
 *   `c2pa.actions.v2`
     
-*   `c2pa.cloud-data`
-    
 *   `c2pa.external-reference`
     
 *   `c2pa.hash.bmff.v2` (deprecated)
@@ -8606,14 +8597,14 @@ An example of a repository receipt JSON object is provided in the following:
 As part of an ongoing effort to enhance AI transparency and accountability, a new AI Disclosure assertion is introduced to provide a means for a Claim Generator to provide machine-readable AI transparency information. This assertion enables verifiable AI transparency, automated compliance verification, and trustworthy AI content at scale.
 
 <a id="_details_2"></a>
-#### 11.28.2. Details
+##### 11.28.1.1. Details
 
 The AI Disclosure assertion shall have a label of `c2pa.ai-disclosure`.
 
 The value of the `modelType` field is an enumeration of AI model types defined in [Model type values](#model-types) and it shall be present in the `ai-model-disclosure-map` object. If present, the value of the `scientificDomain` field shall conform to the [arXiv taxonomy](https://arxiv.org/category_taxonomy), e.g., "cs.AI", "physics.optics". All other fields are optional, but if present, they shall conform to the types specified in the CDDL schema defined below.
 
 <a id="_relationship_between_digitalsourcetype_and_humanoversightlevel"></a>
-#### 11.28.3. Relationship Between `digitalSourceType` and `humanOversightLevel`
+### 11.29. Relationship Between `digitalSourceType` and `humanOversightLevel`
 
 The `c2pa.ai-disclosure` assertion is designed to complement existing C2PA signals rather than replace them. In particular, `c2pa.actions` and `digitalSourceType` already provide a strong foundation for recording how an asset was created or modified. What this assertion introduces are three critical provenance primitives not previously captured in the ecosystem: model provenance — full disclosure of the AI models used for maximum transparency; scientific routing metadata — surfacing the discipline and sensitivity of the content domain; and human oversight level — a structured signal of the degree of human involvement practised during the generation pipeline.
 
@@ -8627,7 +8618,7 @@ Since there may be a perceived overlap between `digitalSourceType` and `humanOve
 | `digitalCreation` | **not applicable** | No trained model invoked; AI Model Disclosure assertion is not attached |
 
 <a id="_schema_and_example_20"></a>
-#### 11.28.4. Schema and Example
+#### 11.29.1. Schema and Example
 
 The schema for this type is defined by the `ai-model-disclosure-map` rule in the following [CDDL Definition](#RFC8610):
 
@@ -10488,57 +10479,57 @@ Construct is fully supported (validators are required to accept it).
 
 | Construct | Type | v1.3 | v1.4 | v2.0 | v2.1 | v2.2 | v2.3 | v2.4 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Time-Stamp manifest | Manifest | UNDEFINED | UNDEFINED | UNDEFINED |  | UNDEFINED | UNDEFINED | UNDEFINED |
-| `urn:uuid` namespace | Label |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
+| Time-Stamp manifest | Manifest | UNDEFINED | UNDEFINED | UNDEFINED |  | UNDEFINED | UNDEFINED |  |
+| `urn:uuid` namespace | Label |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |  |
 | `urn:c2pa` namespace | Label | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |  |
-| `c2pa.data` (Data Box) | Label |  |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |
-| `c2pa.databoxes` (Data Box Store) | Label |  |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |
-| `sigTst` timestamp | Time-stamp |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
+| `c2pa.data` (Data Box) | Label |  |  |  |  | DEPRECATED | DEPRECATED |  |
+| `c2pa.databoxes` (Data Box Store) | Label |  |  |  |  | DEPRECATED | DEPRECATED |  |
+| `sigTst` timestamp | Time-stamp |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |  |
 | `sigTst2` timestamp | Time-stamp | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |  |
-| `c2pa.claim` | Assertion |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
+| `c2pa.claim` | Assertion |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |  |
 | `c2pa.claim.v2` | Assertion | UNDEFINED | UNDEFINED |  |  |  |  |  |
-| `c2pa.actions` | Assertion |  |  |  |  |  | DEPRECATED | DEPRECATED |
+| `c2pa.actions` | Assertion |  |  |  |  |  | DEPRECATED |  |
 | `c2pa.actions.v2` | Assertion |  |  |  |  |  |  |  |
-| `c2pa.asset-type` | Assertion |  |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |
+| `c2pa.asset-type` | Assertion |  |  |  |  | DEPRECATED | DEPRECATED |  |
 | `c2pa.asset-type.v2` | Assertion | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |
 | `c2pa.certificate-status` | Assertion | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |
 | `c2pa.embedded-data` | Assertion | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |
-| `c2pa.font.info` | Assertion | UNDEFINED |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
-| `c2pa.hash.bmff` | Assertion | DEPRECATED | DEPRECATED | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED |
-| `c2pa.hash.bmff.v2` | Assertion |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
+| `c2pa.font.info` | Assertion | UNDEFINED |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |  |
+| `c2pa.hash.bmff` | Assertion | DEPRECATED | DEPRECATED | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED |  |
+| `c2pa.hash.bmff.v2` | Assertion |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |  |
 | `c2pa.hash.bmff.v3` | Assertion | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |  |
-| `c2pa.hash.boxes` for TIFF-based assets | Assertion |  |  |  |  |  | UNDEFINED | UNDEFINED |
+| `c2pa.hash.boxes` for TIFF-based assets | Assertion |  |  |  |  |  | UNDEFINED |  |
 | `c2pa.hash.collection.data` | Assertion | UNDEFINED |  |  |  |  |  |  |
 | `c2pa.hash.multi-asset` | Assertion | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |
-| `c2pa.ingredient` | Assertion |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
-| `c2pa.ingredient.v2` | Assertion |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
+| `c2pa.ingredient` | Assertion |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |  |
+| `c2pa.ingredient.v2` | Assertion |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |  |
 | `c2pa.ingredient.v3` | Assertion | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |  |
-| `stds.metadata` | Assertion | UNDEFINED |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
+| `stds.metadata` | Assertion | UNDEFINED |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |  |
 | `c2pa.metadata` | Assertion | UNDEFINED | UNDEFINED |  |  |  |  |  |
 | `c2pa.thumbnail.claim` | Assertion | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |
-| `c2pa.thumbnail.claim.*` | Assertion |  |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |
+| `c2pa.thumbnail.claim.*` | Assertion |  |  |  |  | DEPRECATED | DEPRECATED |  |
 | `c2pa.thumbnail.ingredient` | Assertion | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |
-| `c2pa.thumbnail.ingredient.*` | Assertion |  |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |
+| `c2pa.thumbnail.ingredient.*` | Assertion |  |  |  |  | DEPRECATED | DEPRECATED |  |
 | `c2pa.time-stamp` | Assertion | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |
 | `font.info` | Assertion | UNDEFINED | UNDEFINED |  |  |  |  |  |
-| `stds.iptc` | Assertion |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
-| `stds.exif` | Assertion |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
-| `stds.schema-org` | Assertion |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
-| `role` in `region-map` | Field |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
-| `actors` in `action-item-map-v2` | Field |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
+| `stds.iptc` | Assertion |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |  |
+| `stds.exif` | Assertion |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |  |
+| `stds.schema-org` | Assertion |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |  |
+| `role` in `region-map` | Field |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |  |
+| `actors` in `action-item-map-v2` | Field |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |  |
 | `softwareAgents` in `actions-map-v2` | Field | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |  |
 | `softwareAgentIndex` in `action-common-map-v2` | Field | UNDEFINED | UNDEFINED |  |  |  |  |  |
-| `changed` in `action-item-map-v2` | Field |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
+| `changed` in `action-item-map-v2` | Field |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |  |
 | `changes` in `action-item-map-v2` | Field | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |  |
-| `instanceID` in `parameters-map-v2` | Field |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
+| `instanceID` in `parameters-map-v2` | Field |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |  |
 | `sourceLanguage` in `parameters-map-v2` | Field | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |  |
 | `targetLanguage` in `parameters-map-v2` | Field | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |  |
-| `c2pa.trainedAlgorithmicData` | DigitalSourceType |  |  |  |  | DEPRECATED | DEPRECATED | DEPRECATED |
+| `c2pa.trainedAlgorithmicData` | DigitalSourceType |  |  |  |  | DEPRECATED | DEPRECATED |  |
 | `[http://c2pa.org/digitalsourcetype/trainedAlgorithmicData](http://c2pa.org/digitalsourcetype/trainedAlgorithmicData)` | DigitalSourceType | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |
 | `[http://c2pa.org/digitalsourcetype/empty](http://c2pa.org/digitalsourcetype/empty)` | DigitalSourceType | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED |  |  |  |
-| `c2pa.color_adjustments` | Action |  |  | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED | DEPRECATED |
-| `c2pa.watermarked` | Action | UNDEFINED | UNDEFINED |  |  | DEPRECATED | DEPRECATED | DEPRECATED |
-| `assertion.dataHash.redacted` | Status Code | UNDEFINED | UNDEFINED | UNDEFINED |  |  | DEPRECATED | DEPRECATED |
+| `c2pa.color_adjustments` | Action |  |  | DEPRECATED | DEPRECATED | DEPRECATED |  |  |
+| `c2pa.watermarked` | Action | UNDEFINED | UNDEFINED |  |  | DEPRECATED |  |  |
+| `assertion.dataHash.redacted` | Status Code | UNDEFINED | UNDEFINED | UNDEFINED |  |  | DEPRECATED |  |
 | `specVersion` | Claim | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED | UNDEFINED |  | DEPRECATED |
 
 <a id="_bibliography"></a>
