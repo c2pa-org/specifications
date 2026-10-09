@@ -1,13 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# add x for debugging
-set -eu
+set -euo pipefail
 
-# possible images to use
-ANTORA=antora/antora
 WITH_KROKI=danyill/antora-kroki:latest
+NODE_IMAGE=node:20-alpine
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# run antora on the current playbook
-docker run -u $(id -u) -v $PWD:/antora:Z \
-			--rm -t "${WITH_KROKI}" \
-			--cache-dir=./.cache/antora antora-playbook.yml
+docker run --rm \
+  --user "$(id -u):$(id -g)" \
+  --volume "$SCRIPT_DIR:/antora" \
+  --workdir /antora \
+  "$WITH_KROKI" \
+  --cache-dir=./.cache/antora antora-playbook.yml
+
+# generate llms.txt / llms-full.txt / per-page markdown mirrors from the built site
+docker run --rm \
+  --user "$(id -u):$(id -g)" \
+  -e HOME=/tmp \
+  --volume "$SCRIPT_DIR:/antora" \
+  --workdir /antora \
+  "$NODE_IMAGE" \
+  sh -c "npm install --no-audit --no-fund && npm run llm-export"

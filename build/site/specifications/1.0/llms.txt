@@ -1,0 +1,12 @@
+# C2PA Technical Specification
+
+> C2PA (Coalition for Content Provenance and Authenticity) defines an end-to-end, open technical standard for certifying the provenance and history of digital media content.
+
+## Pages
+
+- [Technical Specifications](specs/C2PA_Specification.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [Explainer](explainer/Explainer.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [Guidance for Implementors](guidance/Guidance.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [User Experience Guidance](ux/UX_Recommendations.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [C2PA Security Considerations](security/Security_Considerations.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [C2PA Harms Modelling](security/Harms_Modelling.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.

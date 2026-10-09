@@ -1,59 +1,59 @@
 :revealjs_theme: white
 
-= C2PA and Antora
+= Building and maintaining the C2PA documentation site
 
-== Status
+The C2PA documentation site is assembled with Antora from content stored in several repositories. This repository supplies the site playbooks, its landing page and navigation, supplemental UI files, and the generated site. The published site is at https://spec.c2pa.org/specifications/[spec.c2pa.org/specifications].
 
-All existing repos have been reorganized & we have a https://c2pa.org/specifications/specifications/x.y/index.html[site]!
+== Repository and content versions
 
-NOTE: I will probably fix the URL...
+The site component descriptor is `docs/antora.yml`. It defines the component name, version, and start page. The landing page and navigation are in `docs/modules/ROOT/pages/index.adoc` and `docs/modules/nav.adoc`.
 
-[.columns]
-== Outstanding issues
+The playbooks list the content repositories and branches Antora reads:
 
+* `antora-playbook.yml` reads the corresponding repositories from GitHub, using branches matching `antora-*`.
+* `antora-playbook-local.yml` reads local Git checkouts. The checkout for this repository and the sibling C2PA documentation repositories must be available at the paths listed in the playbook. Each source uses branches matching `antora-*`; local sources also set `worktrees: true` to allow Antora to read matching Git worktrees.
 
-== Repo Organization
+Keep component versions, navigation targets, and cross-reference targets in sync when adding or releasing documentation. A target component and version must be available in the playbook's content sources.
 
-[plantuml, antora-layout]
-....
-@startwbs
-* docs
-**> modules
-***> <name>
-**** pages
-**** //partials//
-**** //images//
-**** //attachments//
-**** //other//
-@endwbs
-....
+== Build and preview
 
+Run the build scripts from the repository root. Docker must be installed and running.
 
-[.columns]
-== Cross-Document Linking
+[source,shell]
+----
+./buildsite.sh
+----
 
-.Examples
-* pass:[xref:_lower_case_with_underbars[Internal Link]]
-* pass:[xref:MODULE:DOCUMENT.adoc#SECTION[External Link]]
-* pass:[xref:MODULE:../partials/DOCUMENT.adoc#SECTION[External Link]]
+This uses `antora-playbook.yml` and fetches content from GitHub.
 
-[.columns]
-== Building the Site
+[source,shell]
+----
+./buildsite-local.sh
+----
 
-[.column]
---
-* github repo: `specifications`
-* run script `buildsite.sh`
-** uses dockerized antora 
-** uses standard `antora-playbook.yml`
-** auto-downloads `main` branches of "child" repos
-* output in `build/site/index.html`
-* create PR, push changes, merge PR
-** site will be auto-published to https://c2pa.org/specifications/specifications/1.x/index.html[gh-pages]
---
+This uses `antora-playbook-local.yml` and your local sibling checkouts, including uncommitted changes. It is the preferred preview while editing multiple C2PA repositories.
 
-== Building Local Site
+Both scripts run Antora in the Docker image configured in the script, use `.cache/antora/` for Antora's cache, and write the site to `build/site/` (open `build/site/index.html` to inspect it). Treat this directory as generated output; do not edit its HTML by hand. Review generated changes when rebuilding the site.
 
-Local builds can be done with installed `antora` and the `antora-playbook-local.yml`
+== Write pages and links
+
+Follow Antora's component layout: each content repository has a `docs/antora.yml` descriptor and organizes pages beneath `docs/modules/<module>/pages/`. Put reusable content in that module's `partials/` directory and assets in `images/` or `attachments/`, rather than duplicating content across pages. Use Antora resource IDs for includes and links so Antora can resolve them across modules and components.
+
+Use AsciiDoc `xref:` macros instead of hard-coded site URLs. Examples from this repository:
+
+[source,asciidoc]
+----
+xref:_section_anchor[Link to a section in this document]
+xref:ROOT:index.adoc[Link to a page in this component]
+xref:2.5@specs:C2PA_Specification.adoc[Link to the versioned core specification]
+----
+
+The general cross-component form is `xref:version@component:module:page.adoc#anchor[Link text]`. Use the exact component, version, module, page, and anchor from the target. Prefer descriptive link text; omit the bracketed text only when the target page title is an adequate label. For reusable module content, use an Antora partial resource ID such as `include::partial$filename.adoc[]`.
+
+Build the site after editing to catch unresolved pages, missing includes, and broken cross-references. When a reference fails, check the target's component descriptor, version, module and page path, and confirm the source is included by the selected playbook.
+
+== Publishing
+
+The `.github/workflows/publish.yml` workflow runs on pushes to `main` and deploys `build/site/` to GitHub Pages. Its Antora build steps are currently commented out, so the workflow publishes the checked-in generated output; it does not rebuild the site from source. To publish documentation changes, build and review `build/site/`, then include the intended generated changes with the source changes.
 
  

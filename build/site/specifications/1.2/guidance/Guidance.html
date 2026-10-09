@@ -16,7 +16,7 @@
   <nav class="navbar">
    <div class="navbar-brand">
     <a class="navbar-item logo" title="C2PA" href="https://c2pa.org"><img src="../../../_/img/C2PA-logo.svg" alt="C2PA" width="96"></a>
-      <a class="navbar-item title" href="https://spec.c2pa.org/specifications/specifications/2.4/index.html">C2PA Specifications</a>
+      <a class="navbar-item title" href="https://spec.c2pa.org/specifications/specifications/2.5/index.html">C2PA Specifications</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -95,9 +95,12 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <div class="title"><a href="../../2.4/index.html">C2PA Specifications</a></div>
+      <div class="title"><a href="../../2.5/index.html">C2PA Specifications</a></div>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../2.5/index.html">2.5</a>
+        </li>
+        <li class="version">
           <a href="../../2.4/index.html">2.4</a>
         </li>
         <li class="version">
@@ -137,7 +140,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../2.4/index.html" class="home-link"></a>
+  <a href="../../2.5/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">C2PA Specifications</a></li>
@@ -147,6 +150,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">1.2</button>
   <div class="version-menu">
+    <a class="version is-missing" href="../../2.5/index.html">2.5</a>
     <a class="version" href="../../2.4/guidance/Guidance.html">2.4</a>
     <a class="version" href="../../2.3/guidance/Guidance.html">2.3</a>
     <a class="version" href="../../2.2/guidance/Guidance.html">2.2</a>
@@ -240,7 +244,7 @@
 <div class="sect2">
 <h3 id="_overview"><a class="anchor" href="#_overview"></a>1.1. Overview</h3>
 <div class="paragraph">
-<p>The Coalition for Content Provenance and Authenticity (C2PA) has developed their <a href="../../1.1/specs/C2PA_Specification.html" class="xref page">technical specification</a> for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.</p>
+<p>The Coalition for Content Provenance and Authenticity (C2PA) has developed their <a href="#1.1@specs:C2PA_Specification.adoc" class="xref unresolved">technical specification</a> for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.</p>
 </div>
 <div class="paragraph">
 <p>The specification has been, and continues to be, informed by scenarios, workflows and requirements gathered from industry experts and partner organizations. However many of these requirements are not normative in nature or may differ between organizations or workflows - in those cases it is important to provide non-normative guidance to implementers - which is the goal of this document.</p>
@@ -282,7 +286,7 @@
 <div class="sect3">
 <h4 id="_encryption_of_assertions"><a class="anchor" href="#_encryption_of_assertions"></a>3.1.2. Encryption of Assertions</h4>
 <div class="paragraph">
-<p>The <a href="../../1.1/specs/C2PA_Specification.html#_c2pa_standard_assertions" class="xref page">set of assertions</a>, their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.</p>
+<p>The <a href="#1.1@specs:C2PA_Specification.adoc#_c2pa_standard_assertions" class="xref unresolved">set of assertions</a>, their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.</p>
 </div>
 <div class="paragraph">
 <p>A use case for creating variants of existing assertions would be to encrypt them to prevent access to those not possessing the necessary decryption key. This might be for privacy protection or the establishment of a more secure end-to-end workflow.</p>
@@ -384,7 +388,7 @@
 <div class="sect3">
 <h4 id="_manifests_for_existing_media"><a class="anchor" href="#_manifests_for_existing_media"></a>3.3.7. Manifests for existing media</h4>
 <div class="paragraph">
-<p>It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described <a href="../../1.1/specs/C2PA_Specification.html#_external_manifests" class="xref page">here</a>, all assets can have provenance, no matter their age.</p>
+<p>It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described <a href="#1.1@specs:C2PA_Specification.adoc#_external_manifests" class="xref unresolved">here</a>, all assets can have provenance, no matter their age.</p>
 </div>
 </div>
 </div>
@@ -441,7 +445,7 @@
 <div class="sect3">
 <h4 id="_byte_range_bindings"><a class="anchor" href="#_byte_range_bindings"></a>4.1.2. Byte Range Bindings</h4>
 <div class="paragraph">
-<p>The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in <a href="../../1.1/specs/C2PA_Specification.html#_hashing" class="xref page">the core specification</a>. Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset.  However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.</p>
+<p>The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in <a href="#1.1@specs:C2PA_Specification.adoc#_hashing" class="xref unresolved">the core specification</a>. Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset.  However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.</p>
 </div>
 </div>
 <div class="sect3">
@@ -733,7 +737,7 @@ Attaching a time-stamp and freshness information to the signature allows validat
 <div class="sect2">
 <h3 id="_validation_of_ingredient_manifests"><a class="anchor" href="#_validation_of_ingredient_manifests"></a>6.2. Validation of Ingredient manifests</h3>
 <div class="paragraph">
-<p>As described in the <a href="../../1.1/specs/C2PA_Specification.html#validation" class="xref page">Validation section of the specification</a>, "The validator may optionally recursively validate the ingredient&#8217;s ingredients". To do so, the implementation resolves each ingredient&#8217;s <code>url</code> field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.</p>
+<p>As described in the <a href="#1.1@specs:C2PA_Specification.adoc#validation" class="xref unresolved">Validation section of the specification</a>, "The validator may optionally recursively validate the ingredient&#8217;s ingredients". To do so, the implementation resolves each ingredient&#8217;s <code>url</code> field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.</p>
 </div>
 </div>
 <div class="sect2">

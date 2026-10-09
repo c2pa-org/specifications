@@ -1,6 +1,6 @@
 * Technical Specifications
-** xref:2.4@specs:C2PA_Specification.adoc[Content Credentials]
-** xref:2.4@crJSON:crjson-format.adoc[Content Credentials JSON (crJSON)]
+** xref:2.5@specs:C2PA_Specification.adoc[Content Credentials]
+** xref:2.5@crJSON:crjson-format.adoc[Content Credentials JSON (crJSON)]
 ** xref:1.4@attestations:attestation.adoc[Attestations]
 ** xref:2.4@softbinding:Decoupled.adoc[Soft Binding API]
 * Informative Documents
