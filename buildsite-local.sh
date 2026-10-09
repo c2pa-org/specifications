@@ -13,3 +13,6 @@ docker run --rm \
   --workdir "/workspace/$PROJECT_DIR" \
   "$WITH_KROKI" \
   --cache-dir=./.cache/antora antora-playbook-local.yml
+
+# build pagefind index over rendered output
+npx pagefind --site build/site

@@ -11,3 +11,6 @@ docker run --rm \
   --workdir /antora \
   "$WITH_KROKI" \
   --cache-dir=./.cache/antora antora-playbook.yml
+
+# build pagefind index over rendered output
+npx pagefind --site build/site
