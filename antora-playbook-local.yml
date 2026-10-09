@@ -236,10 +236,10 @@ ui:
       <link rel="stylesheet" href="{{{uiRootPath}}}/css/c2pa-branding.css">
       <link rel="icon" type="image/svg+xml" sizes="any" href="{{{uiRootPath}}}/img/C2PA-favicon.svg">
       <link rel="mask-icon" href="{{{uiRootPath}}}/img/C2PA-logo.svg" color="#e40046">
-      <link rel="stylesheet" href="{{{siteRootPath}}}/_pagefind/pagefind-ui.css">
+      <link rel="stylesheet" href="{{{siteRootPath}}}/pagefind/pagefind-ui.css">
   - path: partials/head-scripts.hbs
     contents: |
-      <script src="{{{siteRootPath}}}/_pagefind/pagefind-ui.js"></script>
+      <script src="{{{siteRootPath}}}/pagefind/pagefind-ui.js"></script>
       <script>
         window.addEventListener('DOMContentLoaded', function () {
           new PagefindUI({
@@ -295,7 +295,7 @@ ui:
           </div>
         </nav>
       </header>
-      <span hidden data-pagefind-filter="version:{{page.componentVersion}}"></span>
+      <span hidden data-pagefind-filter="version:{{page.version}}"></span>
   - path: partials/footer-content.hbs
     contents: |
       <footer class="footer">
