@@ -1,16 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# add x for debugging
-set -eu
+set -euo pipefail
 
-# possible images to use
-ANTORA=antora/antora
 WITH_KROKI=danyill/antora-kroki:latest
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE_DIR="$(dirname "$SCRIPT_DIR")"
+PROJECT_DIR="$(basename "$SCRIPT_DIR")"
 
-# run antora on the current playbook
-docker run -u $(id -u) -v $PWD:/antora:Z \
-			--rm -t "${WITH_KROKI}" \
-			--cache-dir=./.cache/antora antora-playbook-local.yml
+docker run --rm \
+  --user "$(id -u):$(id -g)" \
+  --volume "$WORKSPACE_DIR:/workspace" \
+  --workdir "/workspace/$PROJECT_DIR" \
+  "$WITH_KROKI" \
+  --cache-dir=./.cache/antora antora-playbook-local.yml
 
 # build pagefind index over rendered output
 npx pagefind --site build/site
