@@ -9,6 +9,18 @@
 <link rel="stylesheet" href="/specifications/_/css/c2pa-branding.css">
 <link rel="icon" type="image/svg+xml" sizes="any" href="/specifications/_/img/C2PA-favicon.svg">
 <link rel="mask-icon" href="/specifications/_/img/C2PA-logo.svg" color="#e40046">
+<link rel="stylesheet" href="/specifications/pagefind/pagefind-ui.css">
+<script src="/specifications/pagefind/pagefind-ui.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    new PagefindUI({
+      element: '#search',
+      showImages: false,
+      excerptLength: 15,
+      resetStyles: false
+    });
+  });
+</script>
   </head>
   <body class="status-404">
 <header class="header">
@@ -24,10 +36,8 @@
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-        <div class="navbar-item search hide-for-print">
-          <div id="search-field" class="field">
-            <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search">
-          </div>
+        <div class="navbar-item hide-for-print">
+          <div id="search"></div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">Download</div>
@@ -53,6 +63,7 @@
     </div>
   </nav>
 </header>
+<span hidden data-pagefind-filter="version:"></span>
 <div class="body">
 <div class="nav-container">
   <aside class="nav">
@@ -147,13 +158,7 @@ If you typed the URL of this page manually, please double check that you entered
     <p>Authored in AsciiDoc.<br>Produced by <a href="https://antora.org" target="_blank" rel="noopener">Antora</a> and <a href="https://asciidoctor.org" target="_blank" rel="noopener">Asciidoctor</a>.</p>
   </div>
 </footer>
-<script src="/specifications/_/js/vendor/lunr.js"></script>
-<script src="/specifications/_/js/search-ui.js" id="search-ui-script" data-site-root-path="/specifications" data-snippet-length="100" data-stylesheet="/specifications/_/css/search.css"></script>
-<script async src="/specifications/search-index.js"></script>
 <script id="site-script" src="/specifications/_/js/site.js" data-ui-root-path="/specifications/_"></script>
 <script async src="/specifications/_/js/vendor/highlight.js"></script>
-<script src="/specifications/_/js/vendor/lunr.js"></script>
-<script src="/specifications/_/js/search-ui.js" id="search-ui-script" data-site-root-path="/specifications" data-snippet-length="100" data-stylesheet="/specifications/_/css/search.css"></script>
-<script async src="/specifications/search-index.js"></script>
   </body>
 </html>

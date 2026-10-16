@@ -165,7 +165,7 @@ A JSON-LD serialised claim
     
 *   `gathered_assertions` — array of zero or more hashed URI maps (same structure as created\_assertions); set to an empty array if it’s missing in the source
     
-*   `redacted_assertions` — array of sero or more JUMBF URI strings (references to redacted ingredient manifest assertions); set to an empty array if it’s missing in the source
+*   `redacted_assertions` — array of zero or more JUMBF URI strings (references to redacted ingredient manifest assertions); set to an empty array if it’s missing in the source
     
 
 Optional properties:
@@ -455,6 +455,39 @@ An example of a per-manifest `validationResults` object is shown in [\[results-e
 ```
 
 The `validationTime` field is the date and time when validation was performed, represented as an RFC 3339 date-time string.
+
+<a id="_trust_list_references"></a>
+#### 3.8.1. Trust List References
+
+A per-manifest `validationResults` object may contain a `trustListUris` field identifying the trust lists containing matching trust anchors during the validation of that manifest’s claim signature or a TSA time-stamp. If no trust match was found, this field is omitted. If present, the array contains one or more objects, each with a `uri` field identifying the trust list and a `type` field identifying its type. Only trust lists containing matching trust anchors are included, rather than every trust list consulted during validation. Each object may contain an `identifier` field identifying the specific instance of the trust list used.
+
+The same entry structure and identifier semantics apply to `trustListUris` in an ingredient assertion’s recorded `validationResults`. Those references describe the earlier validation recorded by the claim generator, whereas the per-manifest references describe the validation performed by the validator producing crJSON.
+
+Both `trustListUris` and each entry’s `identifier` are optional, including when cached or bundled list instances are used.
+
+Example of per-manifest validation results with illustrative trust list sequence numbers
+
+```json
+{
+  "success": [],
+  "informational": [],
+  "failure": [],
+  "specVersion": "2.5.0",
+  "validationTime": "2026-10-08T13:18:44Z",
+  "trustListUris": [
+    {
+      "uri": "https://c2pa.org/trustlist",
+      "type": "c2pa.trustList",
+      "identifier": "42"
+    },
+    {
+      "uri": "https://c2pa.org/trustlist-tsa",
+      "type": "c2pa.tsaTrustList",
+      "identifier": "17"
+    }
+  ]
+}
+```
 
 <a id="_minimal_example"></a>
 ## 4\. Minimal Example
@@ -1889,6 +1922,14 @@ The following example conforms to the crJSON schema. In many of the example valu
                     "type": "string",
                     "format": "date-time",
                     "description": "Time when the validation was performed; RFC 3339 format"
+                },
+                "trustListUris": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/trustListUriEntry"
+                    },
+                    "minItems": 1,
+                    "description": "Trust lists containing matching trust anchors during this manifest's claim signature or TSA time-stamp validation"
                 }
             },
             "required": [
@@ -2045,18 +2086,9 @@ The following example conforms to the crJSON schema. In many of the example valu
             "dependentRequired": {
                 "activeManifest": ["validationResults"]
             },
-            "allOf": [
-                {
-                    "not": {
-                        "required": ["activeManifest", "digitalSourceType"]
-                    }
-                },
-                {
-                    "not": {
-                        "required": ["activeManifest", "relatedAssertions"]
-                    }
-                }
-            ],
+            "not": {
+                "required": ["activeManifest", "digitalSourceType"]
+            },
             "properties": {
                 "dc:title": {
                     "type": "string",
@@ -2101,7 +2133,7 @@ The following example conforms to the crJSON schema. In many of the example valu
                 },
                 "activeManifest": {
                     "$ref": "#/definitions/hashedUriMap",
-                    "description": "Hashed URI to the box corresponding to the active manifest of the ingredient. Cannot be combined with digitalSourceType or relatedAssertions."
+                    "description": "Hashed URI to the box corresponding to the active manifest of the ingredient. Cannot be combined with digitalSourceType."
                 },
                 "digitalSourceType": {
                     "type": "string",
@@ -2113,7 +2145,7 @@ The following example conforms to the crJSON schema. In many of the example valu
                     "items": {
                         "$ref": "#/definitions/hashedUriMap"
                     },
-                    "description": "Hashed JUMBF URI(s) to assertion(s) related to this ingredient that are neither ingredients nor actions. Cannot be combined with activeManifest."
+                    "description": "Hashed JUMBF URI(s) to assertion(s) related to this ingredient that are neither ingredients nor actions."
                 },
                 "claimSignature": {
                     "$ref": "#/definitions/hashedUriMap",
@@ -2499,7 +2531,7 @@ The following example conforms to the crJSON schema. In many of the example valu
         },
         "trustListUriEntry": {
             "type": "object",
-            "description": "A trust list used to validate certificates in the trust chain. CDDL: validation-results.cddl trust-list-uri-map.",
+            "description": "A trust list containing a matching trust anchor during claim signature or TSA time-stamp validation. CDDL: validation-result-structs.cddl trust-list-uri-map.",
             "properties": {
                 "uri": {
                     "type": "string",
@@ -2509,11 +2541,11 @@ The following example conforms to the crJSON schema. In many of the example valu
                 "type": {
                     "type": "string",
                     "pattern": "([\\da-zA-Z_-]+\\.)+[\\da-zA-Z_-]+",
-                    "description": "Label identifying the type of trust list (e.g. a C2PA-defined type such as c2pa.trustList, or a custom type using reverse-domain notation)"
+                    "description": "Label identifying the type of trust list: `c2pa.trustList` for claim-signing credentials, `c2pa.tsaTrustList` for TSA credentials, or a custom type using entity-specific namespace syntax"
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "A unique identifier for a specific instance of the trust list, which may be a version number, a hash, or other unique identifier"
+                    "description": "Optional unique identifier for a specific instance of the trust list, which may be a version number, a hash, or other unique identifier"
                 }
             },
             "required": [
