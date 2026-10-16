@@ -10,8 +10,8 @@ The site component descriptor is `docs/antora.yml`. It defines the component nam
 
 The playbooks list the content repositories and branches Antora reads:
 
-* `antora-playbook.yml` reads local Git checkouts. The checkout for this repository and the sibling C2PA documentation repositories must be available at the paths listed in the playbook. Each source uses branches matching `antora-*`; local sources also set `worktrees: true` to allow Antora to read matching Git worktrees.
-* `antora-playbook-local.yml` reads the corresponding repositories from GitHub, also using branches matching `antora-*`. Despite the playbook and script names, this is the remote-source build, not a build using a locally installed Antora.
+* `antora-playbook.yml` reads the corresponding repositories from GitHub, using branches matching `antora-*`.
+* `antora-playbook-local.yml` reads local Git checkouts. The checkout for this repository and the sibling C2PA documentation repositories must be available at the paths listed in the playbook. Each source uses branches matching `antora-*`; local sources also set `worktrees: true` to allow Antora to read matching Git worktrees.
 
 Keep component versions, navigation targets, and cross-reference targets in sync when adding or releasing documentation. A target component and version must be available in the playbook's content sources.
 
@@ -24,14 +24,14 @@ Run the build scripts from the repository root. Docker must be installed and run
 ./buildsite.sh
 ----
 
-This uses `antora-playbook.yml` and your local checkouts, including uncommitted changes in the current checkout. It is the preferred preview while editing multiple C2PA repositories.
+This uses `antora-playbook.yml` and fetches content from GitHub.
 
 [source,shell]
 ----
 ./buildsite-local.sh
 ----
 
-This uses `antora-playbook-local.yml` and fetches content from GitHub. It previews the matching remote branches, not uncommitted local edits.
+This uses `antora-playbook-local.yml` and your local sibling checkouts, including uncommitted changes. It is the preferred preview while editing multiple C2PA repositories.
 
 Both scripts run Antora in the Docker image configured in the script, use `.cache/antora/` for Antora's cache, and write the site to `build/site/` (open `build/site/index.html` to inspect it). Treat this directory as generated output; do not edit its HTML by hand. Review generated changes when rebuilding the site.
 
