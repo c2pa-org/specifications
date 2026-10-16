@@ -482,7 +482,7 @@
 <p><code>gathered_assertions</code> — array of zero or more hashed URI maps (same structure as created_assertions); set to an empty array if it&#8217;s missing in the source</p>
 </li>
 <li>
-<p><code>redacted_assertions</code> — array of sero or more JUMBF URI strings (references to redacted ingredient manifest assertions); set to an empty array if it&#8217;s missing in the source</p>
+<p><code>redacted_assertions</code> — array of zero or more JUMBF URI strings (references to redacted ingredient manifest assertions); set to an empty array if it&#8217;s missing in the source</p>
 </li>
 </ul>
 </div>
@@ -2545,18 +2545,9 @@ An X.509 certificate can contain all sorts of information, and implementations m
             "dependentRequired": {
                 "activeManifest": ["validationResults"]
             },
-            "allOf": [
-                {
-                    "not": {
-                        "required": ["activeManifest", "digitalSourceType"]
-                    }
-                },
-                {
-                    "not": {
-                        "required": ["activeManifest", "relatedAssertions"]
-                    }
-                }
-            ],
+            "not": {
+                "required": ["activeManifest", "digitalSourceType"]
+            },
             "properties": {
                 "dc:title": {
                     "type": "string",
@@ -2601,7 +2592,7 @@ An X.509 certificate can contain all sorts of information, and implementations m
                 },
                 "activeManifest": {
                     "$ref": "#/definitions/hashedUriMap",
-                    "description": "Hashed URI to the box corresponding to the active manifest of the ingredient. Cannot be combined with digitalSourceType or relatedAssertions."
+                    "description": "Hashed URI to the box corresponding to the active manifest of the ingredient. Cannot be combined with digitalSourceType."
                 },
                 "digitalSourceType": {
                     "type": "string",
@@ -2613,7 +2604,7 @@ An X.509 certificate can contain all sorts of information, and implementations m
                     "items": {
                         "$ref": "#/definitions/hashedUriMap"
                     },
-                    "description": "Hashed JUMBF URI(s) to assertion(s) related to this ingredient that are neither ingredients nor actions. Cannot be combined with activeManifest."
+                    "description": "Hashed JUMBF URI(s) to assertion(s) related to this ingredient that are neither ingredients nor actions."
                 },
                 "claimSignature": {
                     "$ref": "#/definitions/hashedUriMap",

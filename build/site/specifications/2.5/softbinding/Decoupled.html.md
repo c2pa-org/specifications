@@ -126,7 +126,7 @@ One way to automate this check is to store a fingerprint of the asset within the
 
 The soft binding algorithm list is a machine readable authoritative list of C2PA supported soft binding algorithms accessible on [https://sbal.c2pa.org](https://sbal.c2pa.org). It lists the registered fingerprinting and watermarking technologies that C2PA clients may use to recover manifests. Entries in the list also contain additional information on the algorithms to facilitate interoperability.
 
-Developers wanting their soft binding algorithms to be referenced in soft binding assertions or in soft binding resolution API transactions shall request they be added as a new entries in the soft binding algorithm list by submitting a pull request in the [soft binding algorithm list public repository](https://github.com/c2pa-org/softbinding-algorithm-list).
+Developers wanting their soft binding algorithms to be referenced in soft binding assertions or in soft binding resolution API transactions shall request they be added as new entries in the soft binding algorithm list by submitting a pull request in the [soft binding algorithm list public repository](https://github.com/c2pa-org/softbinding-algorithm-list).
 
 <a id="soft-binding-resolution-api"></a>
 ### 1.4. Soft Binding Resolution API specification
@@ -258,7 +258,7 @@ The API specification and documentation is available below in the OpenAPI format
    "info": {
       "title": "C2PA Soft Binding Resolution API",
       "description": "This is the OpenAPI specification of the C2PA Soft Binding Resolution API. This document specifies a web service API endpoint for matching soft bindings (e.g., watermarks or fingerprints) to C2PA Manifests. Implementations of this API shall implement at least one of the query endpoints and the fetch GET /manifests/{activeManifestId} endpoint for retrieving a C2PA Manifest store",
-      "version": "2.4.0",
+      "version": "2.5.0",
       "license": {
          "name": "Creative Commons Attribution 4.0 International",
          "url": "https://creativecommons.org/licenses/by/4.0/"
@@ -1771,7 +1771,7 @@ openapi: 3.1.1
 info:
   title: C2PA Soft Binding Resolution API
   description: This is the OpenAPI specification of the C2PA Soft Binding Resolution API. This document specifies a web service API endpoint for matching soft bindings (e.g., watermarks or fingerprints) to C2PA Manifests. Implementations of this API shall implement at least one of the query endpoints and the fetch GET /manifests/{activeManifestId} endpoint for retrieving a C2PA Manifest store
-  version: 2.4.0
+  version: 2.5.0
   license:
     name: Creative Commons Attribution 4.0 International
     url: https://creativecommons.org/licenses/by/4.0/
