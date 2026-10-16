@@ -23,3 +23,6 @@ docker run --rm \
   --workdir "/workspace/$PROJECT_DIR" \
   "$NODE_IMAGE" \
   sh -c "npm install --no-audit --no-fund && npm run llm-export"
+  
+# build pagefind index over rendered output
+npx pagefind --site build/site
