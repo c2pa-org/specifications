@@ -4,7 +4,7 @@ This repository assembles the C2PA specifications and guidance into the public d
 
 The published site is available at <https://spec.c2pa.org/specifications/>. For site structure, local previews, cross-references, and publishing details, see the [Antora guide](UsingAntora.adoc).
 
-To preview the site with local sibling checkouts, run `./buildsite.sh` from this repository root. To build from the GitHub repositories instead, run `./buildsite-local.sh`. Both scripts use Docker and write the generated site to `build/site/`.
+To build from the GitHub repositories, run `./buildsite.sh` from this repository root. To preview the site with local sibling checkouts, run `./buildsite-local.sh`. Both scripts use Docker and write the generated site to `build/site/`.
 
 The GitHub Pages workflow deploys the existing `build/site/` output when changes reach `main`; it does not currently run Antora. Regenerate and review the site output when documentation changes need to appear on the published site.
 
