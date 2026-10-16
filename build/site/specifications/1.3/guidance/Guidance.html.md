@@ -10,7 +10,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 <a id="_overview"></a>
 ### 1.1. Overview
 
-The Coalition for Content Provenance and Authenticity (C2PA) has developed their [technical specification](../../1.1/specs/C2PA_Specification.html.md) for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.
+The Coalition for Content Provenance and Authenticity (C2PA) has developed their [technical specification](#1.1@specs:C2PA_Specification.adoc) for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.
 
 The specification has been, and continues to be, informed by scenarios, workflows and requirements gathered from industry experts and partner organizations. However many of these requirements are not normative in nature or may differ between organizations or workflows - in those cases it is important to provide non-normative guidance to implementers - which is the goal of this document.
 
@@ -42,7 +42,7 @@ Each of the actors in the system that creates or processes an asset will produce
 <a id="_encryption_of_assertions"></a>
 #### 3.1.2. Encryption of Assertions
 
-The [set of assertions](../../1.1/specs/C2PA_Specification.html.md#_c2pa_standard_assertions), their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.
+The [set of assertions](#1.1@specs:C2PA_Specification.adoc#_c2pa_standard_assertions), their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.
 
 A use case for creating variants of existing assertions would be to encrypt them to prevent access to those not possessing the necessary decryption key. This might be for privacy protection or the establishment of a more secure end-to-end workflow.
 
@@ -102,7 +102,7 @@ Replacing an existing manifest store with a different manifest store is not reco
 <a id="_manifests_for_existing_media"></a>
 #### 3.3.7. Manifests for existing media
 
-It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described [here](../../1.1/specs/C2PA_Specification.html.md#_external_manifests), all assets can have provenance, no matter their age.
+It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described [here](#1.1@specs:C2PA_Specification.adoc#_external_manifests), all assets can have provenance, no matter their age.
 
 <a id="_ingredients"></a>
 ### 3.4. Ingredients
@@ -140,14 +140,14 @@ Selection of the specific hashing algorithm to use for a hard binding should be 
 <a id="_byte_range_bindings"></a>
 #### 4.1.2. Byte Range Bindings
 
-The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in [the core specification](../../1.1/specs/C2PA_Specification.html.md#_hashing). Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset. However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.
+The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in [the core specification](#1.1@specs:C2PA_Specification.adoc#_hashing). Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset. However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.
 
 <a id="_general_box_bindings"></a>
 #### 4.1.3. General Box Bindings
 
 Some file formats, such as JPEG, PNG, or GIF, use a general box structure, that can be used to improve the flexibility of the bindings over that of a byte range binding. When possible, the use of a general box binding is strongly recommended over a byte range binding.
 
-A [general box hash assertion](../../1.1/specs/C2PA_Specification.html.md#_general_boxes_hash) consists of an array of structures, each one listing one or more boxes (by their name/identifier) and a hash that covers that data of those boxes, along with the algorithm used for hashing.
+A [general box hash assertion](#1.1@specs:C2PA_Specification.adoc#_general_boxes_hash) consists of an array of structures, each one listing one or more boxes (by their name/identifier) and a hash that covers that data of those boxes, along with the algorithm used for hashing.
 
 > **NOTE:**
 > Some formats, such as JPEG and GIF, require special handling.
@@ -268,7 +268,7 @@ Trust in the lookup process is derived from trust in the integrity of the manife
 
 As part of a workflow, some claim generators may allow actors to enter arbitrary text as the value for fields in some assertions - for example, as the value of the `copyright` field in a Creative Work assertion.
 
-The signer of the manifest is responsible for ensuring that any user generated text that will be present in the manifest is something they are willing to take responsibility for, since that is a key role of the signer as described in our [trust model](../../1.1/specs/C2PA_Specification.html.md#_trust_model).
+The signer of the manifest is responsible for ensuring that any user generated text that will be present in the manifest is something they are willing to take responsibility for, since that is a key role of the signer as described in our [trust model](#1.1@specs:C2PA_Specification.adoc#_trust_model).
 
 <a id="_consumption"></a>
 ##### 5.1.1.2. Consumption
@@ -286,9 +286,9 @@ Manifest consumers should consider doing any necessary "character filtering" on 
 <a id="_general_4"></a>
 #### 5.2.1. General
 
-As described in [the actions section of the C2PA specification](../../1.1/specs/C2PA_Specification.html.md#_actions), "an actions assertion provides information on edits and other actions taken that affect the asset’s content." Each action declares what took place on the asset, along with various other (optional) information such as when it took place or what software performed the action.
+As described in [the actions section of the C2PA specification](#1.1@specs:C2PA_Specification.adoc#_actions), "an actions assertion provides information on edits and other actions taken that affect the asset’s content." Each action declares what took place on the asset, along with various other (optional) information such as when it took place or what software performed the action.
 
-The listed C2PA actions are those that have been defined to date as common operations for various types of software and hardware actors operating on various asset types. However, because not all possible operations can be anticipated, the C2PA specification also allows for the use of custom actions using the standard [custom labels syntax](../../1.1/specs/C2PA_Specification.html.md#_labels).
+The listed C2PA actions are those that have been defined to date as common operations for various types of software and hardware actors operating on various asset types. However, because not all possible operations can be anticipated, the C2PA specification also allows for the use of custom actions using the standard [custom labels syntax](#1.1@specs:C2PA_Specification.adoc#_labels).
 
 When using one of the C2PA actions, you should choose the one that most closely represents the action being taken. If there is not something specific, then either use a more general one (e.g., `c2pa.edited` or `c2pa.filtered`) or a custom one that specifically describes your case.
 
@@ -302,7 +302,7 @@ When using a generic action or a custom action, it is recommended to add a free-
 <a id="actions-aiml"></a>
 #### 5.2.2. Identifying use of AI/ML
 
-Each action can identify whether it was performed by an AI/ML system through the use of the `digitalSourceType` field. An example `c2pa.created` action is shown in the specification [in the parameters clause of Actions](../../1.1/specs/C2PA_Specification.html.md#_parameters). The `digitalSourceType` field is used to identify the type of digital source that was used to create the asset, including the value `[http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia](http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia)` which indicates that the asset was created by an AI/ML system and is therefore "trained algorithmic media".
+Each action can identify whether it was performed by an AI/ML system through the use of the `digitalSourceType` field. An example `c2pa.created` action is shown in the specification [in the parameters clause of Actions](#1.1@specs:C2PA_Specification.adoc#_parameters). The `digitalSourceType` field is used to identify the type of digital source that was used to create the asset, including the value `[http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia](http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia)` which indicates that the asset was created by an AI/ML system and is therefore "trained algorithmic media".
 
 <a id="_ingredients_2"></a>
 ### 5.3. Ingredients
@@ -310,7 +310,7 @@ Each action can identify whether it was performed by an AI/ML system through the
 <a id="ingredients-aiml"></a>
 #### 5.3.1. Identifying use of AI/ML
 
-When an asset is the result of Generative AI, where the asset is produced as the result of inference on an specialized AI/ML model, it is important to be able to store not only that such a process took place, but also information about any input data to the model that was used, such as a prompt as well as the info about the model itself. This data can all be recorded as part of an ingredient assertion. An example of an asset produced from a text prompt can be found [here](../../1.1/specs/C2PA_Specification.html.md#_ingredient_data).
+When an asset is the result of Generative AI, where the asset is produced as the result of inference on an specialized AI/ML model, it is important to be able to store not only that such a process took place, but also information about any input data to the model that was used, such as a prompt as well as the info about the model itself. This data can all be recorded as part of an ingredient assertion. An example of an asset produced from a text prompt can be found [here](#1.1@specs:C2PA_Specification.adoc#_ingredient_data).
 
 <a id="_trust"></a>
 ## 6\. Trust
@@ -585,7 +585,7 @@ A manifest consumer that is performing validation (e.g., a web browser) may dete
 <a id="_validation_of_ingredient_manifests"></a>
 ### 7.2. Validation of Ingredient manifests
 
-As described in the [Validation section of the specification](../../1.1/specs/C2PA_Specification.html.md#_validation), "The validator may optionally recursively validate the ingredient’s ingredients". To do so, the implementation resolves each ingredient’s `url` field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.
+As described in the [Validation section of the specification](#1.1@specs:C2PA_Specification.adoc#_validation), "The validator may optionally recursively validate the ingredient’s ingredients". To do so, the implementation resolves each ingredient’s `url` field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.
 
 <a id="_data_validation"></a>
 ### 7.3. Data validation
@@ -627,7 +627,7 @@ The right to use an asset for Data Mining and/or Training an AI model is communi
 > **NOTE:**
 > Since an AI/ML model is itself considered an asset, the Training and Data Mining assertion can also be used to indicate the rights to use a model for inference or to data mine the model. This is useful in the case of potentially preventing a [model extraction attack](https://ssg.aalto.fi/research/projects/mlsec/model-extraction/).
 
-The four possible rights, as described in the [specification](../../1.1/specs/C2PA_Specification.html.md#<em>training_and_data_mining</em>) are:
+The four possible rights, as described in the [specification](#1.1@specs:C2PA_Specification.adoc#<em>training_and_data_mining</em>) are:
 
 *   `c2pa.data_mining`
     

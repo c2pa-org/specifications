@@ -4,8 +4,8 @@
 
 ## Technical Specifications
 
-- [Content Credentials](specifications/2.4/specs/C2PA_Specification.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
-- [Content Credentials JSON (crJSON)](specifications/2.4/crJSON/crjson-format.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [Content Credentials](specifications/2.5/specs/C2PA_Specification.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
+- [Content Credentials JSON (crJSON)](specifications/2.5/crJSON/crjson-format.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
 - [Attestations](specifications/1.4/attestations/attestation.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
 - [Soft Binding API](specifications/2.4/softbinding/Decoupled.html.md): This work is licensed under a Creative Commons Attribution 4.0 International License.
 

@@ -7,7 +7,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 <a id="_introduction"></a>
 ## 1\. Introduction
 
-The [C2PA specification](../../1.1/specs/C2PA_Specification.html.md) can be used to add cryptographic information to detect the tampering of media files and streams. Similarly, the C2PA framework can also be used in artificial intelligence (AI) and machine learning (ML) systems to indicate the tampering of datasets, software, and models which are utilized during training and inference. This document provides guidance about how C2PA can be employed by AI and ML systems.
+The [C2PA specification](#1.1@specs:C2PA_Specification.adoc) can be used to add cryptographic information to detect the tampering of media files and streams. Similarly, the C2PA framework can also be used in artificial intelligence (AI) and machine learning (ML) systems to indicate the tampering of datasets, software, and models which are utilized during training and inference. This document provides guidance about how C2PA can be employed by AI and ML systems.
 
 Recent research has demonstrated that ML systems are susceptible to different forms of poisoning attacks. For these types of attacks, the goal of the adversary is to cause the model to make incorrect predictions which can either be targeted or non-targeted attacks. In targeted attacks, a classifier can be maliciously trained to provide a backdoor that can be exploited by the attacker to produce a specific incorrect prediction class. One example of a targeted attack is to modify a face recognition system to allow the adversary to successfully log onto a computer as someone else. A model that has been poisoned using an untargeted attack may generate any result that is incorrect. At a minimum, the ML system must protect against three types of poisoning attacks including data poisoning, software poisoning, and model poisoning attacks [\[Stokes21\]](#Stokes21). C2PA can be used to help prevent these types of attacks by protecting the data, software, and models.
 
@@ -20,7 +20,7 @@ Many of the existing training sets are stored in a single file, and these files 
 
 In other settings, the training and inference data may be split across multiple files, including media files such as images which are used to train an object detection model. In addition, the training or inference data may be streamed. In these scenarios, the data may be protected by a top-level C2PA Content Credential which includes each of the files as ingredients. In the case where the ingredients are media files, they may contain their own Content Credentials.
 
-In images and videos, a C2PA Content Credential can be [embedded](../../1.1/specs/C2PA_Specification.html.md#_embedding_manifests_into_assets) in the media file. However, existing machine learning datasets are either text or binary files which prevents the embedding of a Credential in the file. In these cases, the Content Credential can be stored in a separate, sidecar file. The Content Credential can then use the Asset Reference Assertion to provide a URI to the dataset file or streamed data chunk.
+In images and videos, a C2PA Content Credential can be [embedded](#1.1@specs:C2PA_Specification.adoc#_embedding_manifests_into_assets) in the media file. However, existing machine learning datasets are either text or binary files which prevents the embedding of a Credential in the file. In these cases, the Content Credential can be stored in a separate, sidecar file. The Content Credential can then use the Asset Reference Assertion to provide a URI to the dataset file or streamed data chunk.
 
 <a id="_software_poisoning_attacks"></a>
 ## 3\. Software Poisoning Attacks
@@ -55,13 +55,13 @@ The C2PA Content Credential for an AI-ML model provides the consumer, e.g. a sys
 
 AI-ML output results have a wide range of concerns and risks depending on how the models were prepared and how the consumer uses the output. Accordingly, the AI-ML provenance information is explored in levels of depth, reflecting the consumers need to reduce risk by establishing deeper trust in the results. Briefly these levels describe the model itself, the training data used to create the model, and finally additional information about the training of the model, the training environment, and various extensions that relate explainability, transparency, and indicators of trust for the model.
 
-If the model provider does not want the model and its output to be used to train other models in an attempt to extract the model’s functionality, the model Content Credential can contain a data mining assertion that asserts rights as allowed, constrained, or not allowed for generative or non-generative AI-ML models or both. See [data mining](../../1.1/specs/C2PA_Specification.html.md#<em>training_and_data_mining</em>) for more detail.
+If the model provider does not want the model and its output to be used to train other models in an attempt to extract the model’s functionality, the model Content Credential can contain a data mining assertion that asserts rights as allowed, constrained, or not allowed for generative or non-generative AI-ML models or both. See [data mining](#1.1@specs:C2PA_Specification.adoc#<em>training_and_data_mining</em>) for more detail.
 
 ![Visual diagram of the elements contained in a model Content Credential](_images/Model-Manifest-v1.3.svg)
 
 The most basic provenance information allows the consumer to understand what type of model is being used, authenticate the claim signature, and to verify that the model had not been tampered with.
 
-An [asset type assertion](../../1.1/specs/C2PA_Specification.html.md#_asset_type) provides the basic model information that a validator would use to further validate the model. By including the model’s name, machine learning framework, and the type, the consumer is better able to understand what the model does and how it does it.
+An [asset type assertion](#1.1@specs:C2PA_Specification.adoc#_asset_type) provides the basic model information that a validator would use to further validate the model. By including the model’s name, machine learning framework, and the type, the consumer is better able to understand what the model does and how it does it.
 
 An example of an asset type assertion for an OpenVINO model, in CBOR Diagnostic Format (`.cbordiag`) would be:
 
@@ -77,7 +77,7 @@ An example of an asset type assertion for an OpenVINO model, in CBOR Diagnostic 
 }
 ```
 
-The [asset reference assertion](../../1.1/specs/C2PA_Specification.html.md#_asset_reference) provides a URI to the data of the asset, such as a AI-ML model. This assertion is accompanied by a data hash that provides a hard binding to the asset (e.g., a model file) enabling the validator to confirm its integrity.
+The [asset reference assertion](#1.1@specs:C2PA_Specification.adoc#_asset_reference) provides a URI to the data of the asset, such as a AI-ML model. This assertion is accompanied by a data hash that provides a hard binding to the asset (e.g., a model file) enabling the validator to confirm its integrity.
 
 OpenVINO represents the model in two files, included as ingredients. An XML file contains the topology:
 

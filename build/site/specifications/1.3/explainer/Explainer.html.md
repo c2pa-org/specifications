@@ -34,12 +34,12 @@ Provenance generally refers to the facts about the history of a piece of digital
 
 The provenance data and the asset are the two parts of the same puzzle - a unique puzzle. The possibility of any other pieces ever matching, either by coincidence or by a purposeful attempt to generate a match, is so low that it would be practically impossible. In other words, any alteration to either the asset or the provenance, however insignificant, would alter the mathematical algorithm - the shape of the piece of the puzzle - in such a way that they would no longer match.
 
-We refer to this as a hard binding. For more technical information on this see "hard binding" in the [glossary](../../1.1/specs/C2PA_Specification.html.md#_glossary) and the [non-normative guidance](../guidance/Guidance.html.md).
+We refer to this as a hard binding. For more technical information on this see "hard binding" in the [glossary](#1.1@specs:C2PA_Specification.adoc#_glossary) and the [non-normative guidance](../guidance/Guidance.html.md).
 
 <a id="_can_c2pa_help_with_assets_created_from_multiple_sources"></a>
 #### 3.1.3. Can C2PA help with assets created from multiple sources?
 
-When one asset is created from a series of other assets, those sources are referred to as the [ingredients](../../1.1/specs/C2PA_Specification.html.md#_ingredient). Each ingredient that is used in the (composed) asset is recorded in that asset’s provenance, including the addition of the provenance of each individual ingredient. This process creates a chain of provenance that can stretch all the way back to each ingredient’s creation.
+When one asset is created from a series of other assets, those sources are referred to as the [ingredients](#1.1@specs:C2PA_Specification.adoc#_ingredient). Each ingredient that is used in the (composed) asset is recorded in that asset’s provenance, including the addition of the provenance of each individual ingredient. This process creates a chain of provenance that can stretch all the way back to each ingredient’s creation.
 
 <a id="_what_is_redaction_and_how_does_it_work"></a>
 #### 3.1.4. What is redaction and how does it work?
@@ -51,7 +51,7 @@ For example, if a human rights organization wishes to remove assertions about th
 <a id="_is_provenance_always_complete"></a>
 #### 3.1.5. Is provenance always complete?
 
-No. Provenance is not always complete. It may happen that an asset is modified in a way that the provenance data is not updated. For example, if an asset is cropped using a non-C2PA aware tool, the provenance data may not be updated to reflect that action. However, if the asset is then brought back into a C2PA-aware tool for additional modification or preparation for publication, the actor responsible for signing the new C2PA Manifest also implicitly attests to the crop action. So even though there is missing provenance information, the asset can still be trusted based on the signer of the [active C2PA Manifest](../../1.1/specs/C2PA_Specification.html.md#_active_manifest).
+No. Provenance is not always complete. It may happen that an asset is modified in a way that the provenance data is not updated. For example, if an asset is cropped using a non-C2PA aware tool, the provenance data may not be updated to reflect that action. However, if the asset is then brought back into a C2PA-aware tool for additional modification or preparation for publication, the actor responsible for signing the new C2PA Manifest also implicitly attests to the crop action. So even though there is missing provenance information, the asset can still be trusted based on the signer of the [active C2PA Manifest](#1.1@specs:C2PA_Specification.adoc#_active_manifest).
 
 <a id="_trust"></a>
 ### 3.2. Trust
@@ -85,7 +85,7 @@ C2PA provenance only becomes useful to users when they can use the data and the 
 <a id="_do_the_ingredients_of_an_asset_have_verifiable_provenance"></a>
 #### 3.2.3. Do the ingredients of an asset have verifiable provenance?
 
-Each [ingredient](../../1.1/specs/C2PA_Specification.html.md#_ingredient) that is included in a C2PA Manifest can include its own provenance data, specifically its C2PA Manifest is also included in the asset’s C2PA Manifest Store. However, while the provenance data of each ingredient may be present, the ingredient’s provenance cannot be verified in the same way as the provenance data of the asset in which it is contained. This is because the actual data of the ingredient is not usually included in the asset’s C2PA Manifest. Without the actual data, the ingredient’s hard bindings cannot be verified.
+Each [ingredient](#1.1@specs:C2PA_Specification.adoc#_ingredient) that is included in a C2PA Manifest can include its own provenance data, specifically its C2PA Manifest is also included in the asset’s C2PA Manifest Store. However, while the provenance data of each ingredient may be present, the ingredient’s provenance cannot be verified in the same way as the provenance data of the asset in which it is contained. This is because the actual data of the ingredient is not usually included in the asset’s C2PA Manifest. Without the actual data, the ingredient’s hard bindings cannot be verified.
 
 <a id="_can_provenance_information_be_used_to_determine_whether_a_digital_asset_such_as_an_image_or_video_depicts_the_truth"></a>
 ### 3.3. Can provenance information be used to determine whether a digital asset, such as an image or video, depicts the truth?
@@ -96,7 +96,7 @@ C2PA signed provenance information can include assertions about the real-world i
 
 > Signed provenance information transits trust between a creator and a consumer, based on a trust relationship between those two that exists outside the scope of C2PA. Trust anchors operate by providing digital identities within a particular ecosystem that link to real-world identities, and perform an ecosystem-specific validation to ensure those identities are sufficiently trustworthy, and that consumers can be confident when an asset is verified as being signed by a known creator, they can rely upon their existing trust relationship with that known creator. — **_C2PA Implementation Guidance [Trust Model](#guidance:_trust)_**
 
-For additional information, see the [Trust Model](../../1.1/specs/C2PA_Specification.html.md#_trust_model) section of the [Technical Specifications](../../1.1/specs/C2PA_Specification.html.md).
+For additional information, see the [Trust Model](#1.1@specs:C2PA_Specification.adoc#_trust_model) section of the [Technical Specifications](#1.1@specs:C2PA_Specification.adoc).
 
 <a id="_what_does_it_mean_that_provenance_data_is_cryptographically_bound_to_the_asset_2"></a>
 ### 3.4. What does it mean that provenance data is cryptographically bound to the asset?
@@ -113,12 +113,12 @@ This inability to always be able to verify the provenance of an ingredient is no
 
 Each action that is performed on an asset is recorded in the asset’s C2PA Manifest. These actions can be performed by a human or by an AI/ML system. When an action was performed by an AI/ML system, it is clearly identified as such through it’s `digitalSourceType` field.
 
-An example of `c2pa.created` action that might appear in an asset that was produced by a Generative AI system appears in the specification’s [parameters clause of Actions](../../1.1/specs/C2PA_Specification.html.md#_parameters).
+An example of `c2pa.created` action that might appear in an asset that was produced by a Generative AI system appears in the specification’s [parameters clause of Actions](#1.1@specs:C2PA_Specification.adoc#_parameters).
 
 <a id="_can_c2pa_be_used_to_label_assets_that_should_not_be_used_for_training_or_data_mining"></a>
 #### 3.5.2. Can C2PA be used to label assets that should not be used for training or data mining?
 
-Yes. A C2PA Manifest include a [Training and Data Mining](../../1.1/specs/C2PA_Specification.html.md#_training_and_data_mining) assertion that can be used to indicate that the asset should not be used for either training or data mining purposes. The assertion is flexible and allows the author of the asset to specify whether each type of process - data mining, general AI training, or training specific to generative AI - is permitted, or not.
+Yes. A C2PA Manifest include a [Training and Data Mining](#1.1@specs:C2PA_Specification.adoc#_training_and_data_mining) assertion that can be used to indicate that the asset should not be used for either training or data mining purposes. The assertion is flexible and allows the author of the asset to specify whether each type of process - data mining, general AI training, or training specific to generative AI - is permitted, or not.
 
 <a id="_todo"></a>
 ## 4\. TODO

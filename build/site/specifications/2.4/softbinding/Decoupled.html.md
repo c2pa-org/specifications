@@ -124,9 +124,9 @@ One way to automate this check is to store a fingerprint of the asset within the
 <a id="soft-binding-algorithm-list"></a>
 ### 1.3. Soft Binding Algorithm List
 
-The [soft binding algorithm list](https://spec.c2pa.org/softbinding-alg-list/softbinding-algorithm-list.json) is an authoritative list of C2PA supported soft binding algorithms. It lists the fingerprinting and watermarking technologies that C2PA clients may use to recover manifests. Entries in the list also contain additional information on the algorithms to facilitate interoperability.
+The [soft binding algorithm list](https://spec.c2pa.org/softbinding-alg-list) is an authoritative list of C2PA supported soft binding algorithms. It lists the fingerprinting and watermarking technologies that C2PA clients may use to recover manifests. Entries in the list also contain additional information on the algorithms to facilitate interoperability.
 
-Developers wanting their soft binding algorithms to be referenced in soft binding assertions or in soft binding resolution API transactions shall request they be added as a new entries in the [soft binding algorithm list](https://spec.c2pa.org/softbinding-alg-list/softbinding-algorithm-list.json).
+Developers wanting their soft binding algorithms to be referenced in soft binding assertions or in soft binding resolution API transactions shall request they be added as a new entries in the [soft binding algorithm list](https://spec.c2pa.org/softbinding-alg-list).
 
 <a id="soft-binding-resolution-api"></a>
 ### 1.4. Soft Binding Resolution API specification

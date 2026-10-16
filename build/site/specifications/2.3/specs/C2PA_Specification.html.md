@@ -746,7 +746,7 @@ This version focuses on both technical and editorial changes to the specificatio
 <a id="_2_0_january_2024"></a>
 #### 5.3.4. 2.0 - January 2024
 
-This version represents a significant departure from previous versions. It reduces the use of the term "actor", which no longer represents humans and organisations. In addition to validator-configured trust lists, it also introduces a new default trust list, the "C2PA Trust List", which is intended to cover certificates issued to hardware and software. This philosophical change led to the following functional changes in the specification:
+This version represents a significant departure from previous versions. It reduces reliance on the term "actor" within the trust and validation model, shifting the basis for trust decisions away from identifying individual humans or organisations and toward the hardware and software components identified by X.509 certificates. In addition to validator-configured trust lists, it also introduces a new default trust list, the "C2PA Trust List", which is intended to cover certificates issued to hardware and software. This philosophical change led to the following functional changes in the specification:
 
 *   Only X.509 certificates may be used for signing.
     
