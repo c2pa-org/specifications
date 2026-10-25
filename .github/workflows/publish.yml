@@ -8,16 +8,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Install dependencies
-        run: npm install
-      - name: Build site
-        run: npx antora --fetch antora-playbook.yml
-      - name: Build Pagefind index
-        run: npx pagefind --site build/site
       - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
