@@ -1,0 +1,20 @@
+@startuml Soft_Binding_Resolution_Recovery
+
+participant "C2PA client" as client
+participant "Smart Contract" as dlt
+participant "Decentralized K-V Store" as kvs
+participant "Soft Binding Algorithm list" as sbl
+participant "Soft Binding Resolution API" as sbr
+
+client -> sbl: get all softbinding alg
+client -> client: try finding a watermark...
+client -> client: alg 1 watermark found
+client -> dlt: Get JSON specification of K-V Store
+client -> kvs: Query DLT with watermark = endpoint (and optionally, manifestId) 
+client -> sbr: GET /matches/byBinding from the endpoint (if no manifestId)
+sbr -> client: manifestId
+client -> sbr: manifest = GET /manifests/manifestId
+sbr -> client: manifest
+client -> client: show recovered manifest
+
+@enduml

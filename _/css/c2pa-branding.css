@@ -57,38 +57,3 @@ header.header {
   font-weight: 600;
   line-height: 1.2;
 }
-/* Search input styling */
-.navbar-item.search {
-  position: relative;
-}
-#search-input {
-  box-sizing: border-box;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: #000;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-  padding: 0.3em 0.5em;
-  width: 12em;
-  max-width: 100%;
-  transition: width 0.2s ease, border-color 0.2s ease;
-}
-#search-input:focus {
-  outline: none;
-  border-color: var(--color-brand-primary);
-  width: 18em;
-  max-width: calc(100vw - 4rem);
-}
-#search-input::placeholder {
-  color: rgba(0, 0, 0, 0.4);
-}
-@media screen and (max-width: 768px) {
-  #search-input {
-    width: 100%;
-  }
-  #search-input:focus {
-    width: 100%;
-  }
-}
