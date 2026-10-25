@@ -5,3 +5,4 @@ package-lock.json
 alex-out.txt
 links-out.txt
 .DS_Store
+.scout/scout.config.yaml
