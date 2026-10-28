@@ -881,5 +881,45 @@
             "contact": "collomos@adobe.com",
             "informationalUrl": "https://github.com/adobe/trustmark/"
         }
+    },
+    {
+        "identifier": 56,
+        "alg": "com.quatvision.quatmark.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "encodedMediaTypes": [
+            "image/jpeg",
+            "image/png",
+            "image/tiff",
+            "image/webp"
+        ],
+        "entryMetadata": {
+            "description": "QuatMark keyed invisible image watermark. The watermark carries a compact record identifier bound to the asset's C2PA Manifest in the QuatMark manifest repository; QuatVision resolves the identifier back to the signed manifest when the manifest has been stripped from the file. Generator product on the C2PA Conforming Products List (Level 1, September 2026).",
+            "dateEntered": "2026-10-16T00:00:00.000Z",
+            "contact": "info@quatvision.ai",
+            "informationalUrl": "https://quatmark.com/en/products/c2pa-content-credentials"
+        }
+    },
+    {
+        "identifier": 60,
+        "alg": "studio.aidr.silentcipher.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "audio"
+        ],
+        "encodedMediaTypes": [
+            "audio/wav"
+        ],
+        "entryMetadata": {
+            "description": "AIDR Studio deployment of Sony Research's open SilentCipher 44.1 kHz audio watermark (silentcipher 1.0.5, MIT), used without retraining. Embeds a 40-bit payload (public AIDR brand byte 0xAD + 32-bit per-clip identifier issued by AIDR's watermark register) into every AI-generated speech clip before C2PA signing; the identifier resolves to the clip's original C2PA manifest in AIDR's register, so provenance survives sample-rate conversion, re-encoding and metadata stripping (EU AI Act Art. 50(2) second marking layer).",
+            "dateEntered": "2026-10-28T00:00:00.000Z",
+            "contact": "info@aidr.studio",
+            "informationalUrl": "https://aidr.studio/provenance/watermark/"
+        },
+        "softBindingResolutionApis": [
+            "https://aidr.studio/api/c2pa/v1"
+        ]
     }
 ]
