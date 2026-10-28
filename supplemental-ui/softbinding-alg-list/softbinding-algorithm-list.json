@@ -779,16 +779,20 @@
         ]
     },
     {
-      "identifier": 49,
-      "alg": "com.museblossom.contentsdefence.1",
-      "type": "watermark",
-      "decodedMediaTypes": ["audio", "image", "video"],
-      "entryMetadata": {
-        "description": "Contents Defence invisible image watermark, used to recover the associated C2PA manifest when embedded metadata is absent.",
-        "dateEntered": "2026-08-10T00:00:00.000Z",
-        "contact": "contact@museblossom.com",
-        "informationalUrl": "https://museblossom.com/about"
-      }
+        "identifier": 49,
+        "alg": "com.museblossom.contentsdefence.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "audio",
+            "image",
+            "video"
+        ],
+        "entryMetadata": {
+            "description": "Contents Defence invisible image watermark, used to recover the associated C2PA manifest when embedded metadata is absent.",
+            "dateEntered": "2026-08-10T00:00:00.000Z",
+            "contact": "contact@museblossom.com",
+            "informationalUrl": "https://museblossom.com/about"
+        }
     },
     {
         "identifier": 50,
@@ -862,6 +866,20 @@
             "dateEntered": "2026-10-12T00:00:00.000Z",
             "contact": "support@immostory.ai",
             "informationalUrl": "https://immostory.ai/en/provenance"
+        }
+    },
+    {
+        "identifier": 55,
+        "alg": "com.adobe.trustmark.F",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "entryMetadata": {
+            "description": "Adobe FiLMCAM Conditional Access Watermarking / Trustmark variant F",
+            "dateEntered": "2026-10-14T14:00:00.000Z",
+            "contact": "collomos@adobe.com",
+            "informationalUrl": "https://github.com/adobe/trustmark/"
         }
     }
 ]
