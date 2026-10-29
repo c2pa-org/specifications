@@ -1,6 +1,6 @@
 # Guidance for Artificial Intelligence and Machine Learning
 
-[![Creative Commons License](_images/CCby4.png)](https://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](https://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
@@ -57,7 +57,7 @@ AI-ML output results have a wide range of concerns and risks depending on how th
 
 If the model provider does not want the model and its output to be used to train other models in an attempt to extract the model’s functionality, the model C2PA Manifest can contain a data mining assertion that asserts rights as allowed, constrained, or not allowed for generative or non-generative AI-ML models or both. See [data mining](../specs/C2PA_Specification.html.md#<em>training_and_data_mining</em>) for more detail.
 
-![Visual diagram of the elements contained in a model Content Credential](_images/Model-Manifest-v1.3.svg)
+[Visual diagram of the elements contained in a model Content Credential](_images/Model-Manifest-v1.3.svg)
 
 The most basic provenance information allows the consumer to understand what type of model is being used, authenticate the claim signature, and to verify that the model had not been tampered with.
 
@@ -187,7 +187,7 @@ It is also possible for a Content Credential to include information about the da
 <a id="_ai_ml_training_data_set_content_credential"></a>
 ## 8\. AI-ML Training Data Set Content Credential
 
-![Visual diagram of the elements contained in a Training Data Set Credential](_images/Training-Data-Credentials.svg)
+[Visual diagram of the elements contained in a Training Data Set Credential](_images/Training-Data-Credentials.svg)
 
 The figure represents a possible credential for an AIML training data set that not only establishes the credentials of the overall training data set, but also it provides transparency for how the data set was used in the training process.
 
@@ -254,8 +254,8 @@ In addition the AI-ML output may contain the prompt used for the input to a gene
 <a id="_references"></a>
 ## References
 
-*   \[Stokes21\] J. W. Stokes, P. England and K. Kane, "Preventing Machine Learning Poisoning Attacks Using Authentication and Provenance," MILCOM 2021 - 2021 IEEE Military Communications Conference (MILCOM), 2021, pp. 181-188.
-    
-*   \[EU19\] [https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32019R0881](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32019R0881)
-    
-*   \[Biden21\] [https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/).
+*   <a id="Stokes21"></a>\[Stokes21\] J. W. Stokes, P. England and K. Kane, "Preventing Machine Learning Poisoning Attacks Using Authentication and Provenance," MILCOM 2021 - 2021 IEEE Military Communications Conference (MILCOM), 2021, pp. 181-188.
+
+*   <a id="EU19"></a>\[EU19\] [https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32019R0881](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32019R0881)
+
+*   <a id="Biden21"></a>\[Biden21\] [https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/).

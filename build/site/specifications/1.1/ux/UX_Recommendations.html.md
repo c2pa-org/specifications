@@ -1,6 +1,6 @@
 # C2PA User Experience Guidance for Implementers
 
-[![Creative Commons License](_images/CCby4.png)](http://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](http://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
@@ -15,9 +15,9 @@ The C2PA intends to provide clear guidance for implementers of provenance-enable
 The UX recommendations aim to define best practices for presenting C2PA provenance to consumers. The recommendations strive to describe standard, readily recognizable experiences that:
 
 *   provide asset creators a means to capture information and history about the content they are creating, and
-    
+
 *   provide asset consumers information and history about the content they are experiencing, thereby empowering them to understand where it came from and decide how much to trust it.
-    
+
 
 User interfaces designed for the consumption of C2PA provenance must be informed by the context of the asset. C2PA have studied four primary user groups and a collection of contexts in which C2PA assets are encountered. These user groups have been defined in the [C2PA Guiding Principles](https://c2pa.org/principles/) as Consumers, Creators, Publishers and Verifiers (or Investigators). To serve the needs of each of these groups across common contexts, exemplary user interfaces are presented for many common cases. These are recommendations, not mandates, and we expect best practices to evolve.
 
@@ -56,7 +56,7 @@ Some data will assert an individual or organizational identity. Wherever possibl
 
 Because the complete set of C2PA data for a given asset can be overwhelming to a user, C2PA describes four levels of progressive disclosure which guide the designs:
 
-![disclosure summary 2x](_images/disclosure_summary_2x.png)
+[disclosure summary 2x](_images/disclosure_summary_2x.png)
 
 Figure 1. Disclosure levels
 
@@ -79,7 +79,7 @@ For sophisticated, forensic investigatory usage, a standalone tool capable of re
 <a id="_l1_indicator_of_c2pa_data"></a>
 ## 4\. L1 – indicator of C2PA data
 
-![L1 display options 2x](_images/L1-display-options_2x.png)
+[L1 display options 2x](_images/L1-display-options_2x.png)
 
 Figure 2. The L1 indicator
 
@@ -100,7 +100,7 @@ Behaviour of L1 indicators should reveal L2 progressive disclosure, either via a
 <a id="_validation_states"></a>
 ### 4.3. Validation states
 
-![L1 states 2x](_images/L1-states_2x.png)
+[L1 states 2x](_images/L1-states_2x.png)
 
 Figure 3. L1 validation states
 
@@ -112,7 +112,7 @@ In the event that the active manifest is invalid, a stateful indicator of data v
 <a id="_minimum_viable_provenance"></a>
 ### 5.1. Minimum viable provenance
 
-![discrete 1 2x](_images/discrete-1_2x.png)
+[discrete 1 2x](_images/discrete-1_2x.png)
 
 Figure 4. Minimum viable provenance display
 
@@ -127,7 +127,7 @@ For content recommendations see the [section on interface language](#interface-l
 
 L2 UI options are displayed along a spectrum from depth of information to breadth of provenance representation. In the figure below, the left side represents a single manifest summary and the right side represents the complete provenance summary depicting multiple manifests. However, the middle example shows a customized provenance summary wherein certain manifest assertions are highlighted. This flexibility allows implementers to show more depth for a given subset of manifests.
 
-![L2 spectrum 2x](_images/L2_spectrum_2x.png)
+[L2 spectrum 2x](_images/L2_spectrum_2x.png)
 
 Figure 5. Provenance summary depth versus breadth
 
@@ -136,7 +136,7 @@ In order to summarize the data in a context-specific manner, it is recommended t
 <a id="_manifest_summaries_depth"></a>
 ### 5.3. Manifest summaries (depth)
 
-![L2 depth 2x](_images/L2_depth_2x.png)
+[L2 depth 2x](_images/L2_depth_2x.png)
 
 Figure 6. A single manifest summary
 
@@ -147,31 +147,31 @@ A manifest summary only represents a single manifest. It could be the active man
 
 A provenance summary represents the collection of manifests related to the C2PA-enabled content. Manifests should be presented in the order that they are referenced via ingredient assertions, starting with the active manifest at the top and ending with the origin ingredients below. Origin ingredients represent the beginning of their respective history branches.
 
-![summary 1 2x](_images/summary-1_2x.png)
+[summary 1 2x](_images/summary-1_2x.png)
 
 Figure 7. Provenance summary, two manifests
 
 Summary displays should show at minimum the origin ingredients and active manifests, or if screen real estate allows, with at least one manifest in between.
 
-![summary 2 2x](_images/summary-2_2x.png)
+[summary 2 2x](_images/summary-2_2x.png)
 
 Figure 8. Provenance summary, three manifests
 
 In order to provide users with a succinct summary and to allow for limited screen real estate, the manifests in between origin and active can be collapsed and represented as a numerical count. C2PA recommends a baseline rule for collapsing manifests if the total number exceeds four. However, this threshold can be altered according to context. In keeping with the core recommendations, a link to the full set of data in L3 should always follow the summary list of manifests.
 
-![summary 3 2x](_images/summary-3_2x.png)
+[summary 3 2x](_images/summary-3_2x.png)
 
 Figure 9. Provenance summary, four manifests
 
 When multiple origins are present, either as multiple ingredients in a single manifest or across multiple manifests, they can be summarized in the origin section of the UI. The L1 indicator can be used as a badge on ingredient thumbnails to distinguish C2PA-enabled assets.
 
-![summary 4 2x](_images/summary-4_2x.png)
+[summary 4 2x](_images/summary-4_2x.png)
 
 Figure 10. Provenance summary, two origins
 
 L2 UI is flexible enough to allow for various combinations of manifest counts and origin assets.
 
-![summary 5 2x](_images/summary-5_2x.png)
+[summary 5 2x](_images/summary-5_2x.png)
 
 Figure 11. Provenance summary, multiple origins and manifests
 
@@ -180,7 +180,7 @@ Figure 11. Provenance summary, multiple origins and manifests
 
 Implementers should consider audience needs when weighing the balance of depth and breadth in combinatory summaries in order to concisely display the most complete and relevant representation of content provenance. For example, travel companies may opt to display location assertions from the origin manifest in a provenance summary so as to provide their users with key information. Similarly, a news publisher may choose to show action assertions from an ingredient manifest to disclose edits that occurred to published content.
 
-![L2 middle 2x](_images/L2_middle_2x.png)
+[L2 middle 2x](_images/L2_middle_2x.png)
 
 Figure 12. Customized summary combinations
 
@@ -192,17 +192,17 @@ Figure 12. Customized summary combinations
 
 There will be instances when C2PA-enabled content is incomplete data. Most commonly, this will happen if the content is edited without capturing C2PA data. In this event, the L2 and L3 UI should reflect when data is incomplete, as well as the manifest data that came before or after. A dotted line can be drawn between manifests to suggest the connection is not the same as between valid, intact manifests. Incomplete data should not automatically signal that one should discount the content as untrustworthy. For this reason, C2PA discourages the use of an indicator designed to trigger alarm, which should be reserved for more apparent tamper-evident use cases, in favour of a more descriptive and neutral indicator.
 
-![error 1 2x](_images/error-1_2x.png)
+[error 1 2x](_images/error-1_2x.png)
 
 Figure 13. Incomplete data in the active manifest position
 
-![error 4 2x](_images/error-4_2x.png)
+[error 4 2x](_images/error-4_2x.png)
 
 Figure 14. Incomplete data in an ingredient position
 
 Following the established pattern of collapsing additional manifests, incomplete data can be called out via the text string to bring awareness to the questionable validity of ingredients.
 
-![error 2 2x](_images/error-2_2x.png)
+[error 2 2x](_images/error-2_2x.png)
 
 Figure 15. Incomplete data collapsed
 
@@ -211,11 +211,11 @@ Figure 15. Incomplete data collapsed
 
 There may be instances when C2PA-enabled content has been maliciously edited to tamper with C2PA data, or is signed by an untrusted entity. In this case, no additional prior data can be displayed.
 
-![error 5 2x](_images/error-5_2x.png)
+[error 5 2x](_images/error-5_2x.png)
 
 Figure 16. Invalid data in the active manifest position
 
-![error 3 2x](_images/error-3_2x.png)
+[error 3 2x](_images/error-3_2x.png)
 
 Figure 17. Invalid data in an ingredient position
 
@@ -230,20 +230,20 @@ L3 should provide asset consumers as complete and comprehensive an overview of a
 Implementers should weigh the display of assertion information based on the needs of their anticipated audiences. Overly technical assertions or custom assertions from third-party implementers can be left to L4 displays only. The following types of assertions can be considered appropriate for L3 to display:
 
 *   Identity information
-    
+
 *   Actions
-    
+
 *   Creative Work
-    
+
 *   Fields pertaining to copyright, descriptions, and usage rights
-    
+
 *   Exif information and related metadata
-    
+
 
 <a id="_navigation"></a>
 ### 6.2. Navigation
 
-![L3 tree view](_images/L3-tree-view.png)
+[L3 tree view](_images/L3-tree-view.png)
 
 Figure 18. L3 tree view
 
@@ -252,7 +252,7 @@ In the above image, we propose a tree structure that shows each manifest or non-
 <a id="_comparing_manifests"></a>
 ### 6.3. Comparing manifests
 
-![L3 compare](_images/L3-compare.png)
+[L3 compare](_images/L3-compare.png)
 
 Figure 19. Compare state
 
@@ -261,7 +261,7 @@ To understand changes between manifests over time, it may benefit users to have 
 <a id="_manifest_recovery"></a>
 ### 6.4. Manifest recovery
 
-![L3 manifest recovery](_images/L3-manifest-recovery.png)
+[L3 manifest recovery](_images/L3-manifest-recovery.png)
 
 Figure 20. Manifest recovery
 
@@ -276,7 +276,7 @@ Redaction of data will always prompt a separate update manifest signed by the ac
 
 It is recommended that both the update manifest and the updated manifest (that where the redaction tool place) signify their state and reference one another. It is recommended that consistent patterns (language, iconography, interaction etc.) are used in the display of both manifests.
 
-![redaction](_images/redaction.png)
+[redaction](_images/redaction.png)
 
 Figure 21. Redactions in L2
 
@@ -284,13 +284,13 @@ NB: For simplicity, both the update and the updated manifest are visible here wi
 
 Note the lack of thumbnail image in the update manifest. Since update manifests do not involve changes to the digital content, they should not include any assertions that could suggest that i.e. actions, or a thumbnail.
 
-![thumbnailexample](_images/thumbnailexample.png)
+[thumbnailexample](_images/thumbnailexample.png)
 
 Figure 22. No thumbnail in update manifest
 
 It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the [actions section of the technical specification](#1.1@specs:C2PA_Specification.adoc#_actions). Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.
 
-![l2tol3](_images/l2tol3.png)
+[l2tol3](_images/l2tol3.png)
 
 Figure 23. Journey from L2 to L3
 
@@ -307,11 +307,11 @@ In this section, the term _creator_ means a party creating _manifests_. This cou
 As per the [C2PA Guiding Principles](https://c2pa.org/principles/), C2PA implementations should provide a mechanism for creators of a given content to assert, in a verifiable manner, any information they wish to disclose about the creation of that content and any actions taken since the asset’s creation. As such, the creator experience requires the following:
 
 *   A clear acknowledgement of creator consent before a C2PA implementation can begin accumulating data;
-    
+
 *   Disclosure or preview of the nature of information that is being recorded;
-    
+
 *   Creator control over recorded information, with particular sensitivity to the creator’s identity and process.
-    
+
 
 C2PA recommends an opt-in flow that concisely represents these requirements and can be opted-out of just as easily at any time. Once opted-in, creators should be able to distinguish between non-removable information as defined by the C2PA specifications and information that can be adjusted according to the user’s preferences.
 
@@ -321,15 +321,15 @@ C2PA recommends an opt-in flow that concisely represents these requirements and 
 Creators should be able to control the information in their assertions as much as is allowed by C2PA specifications. The [Harms Modelling document](../../1.0/security/Harms_Modelling.html.md) covers the reasoning behind why creator control is imperative. To provide coverage against harms and misuse, C2PA suggests the following types of assertions be manageable by the creator:
 
 *   Identity information
-    
+
 *   Actions
-    
+
 *   Creative Work
-    
+
 *   Fields pertaining to copyright, descriptions, and usage rights
-    
+
 *   Exif information and related metadata
-    
+
 
 To be accommodating to the user’s preferences, C2PA recommends presenting a UI wherein these assertion categories can be toggled on or off on a per document basis. To assist the creator in understanding the tradeoffs they are making, C2PA also suggests displaying a manifest preview that concisely and accurately depicts what information will be added into the manifest.
 
@@ -362,11 +362,11 @@ Validation of an ingredient’s manifest is equally important to convey to creat
 It is important to provide clear guidance about the different manifest storage options available to creators. Creators want or need to know where their manifest data is being stored, either locally or remotely, when they export their content. The following options may be presented to creators regarding the location of their manifest data:
 
 *   An option indicating that the manifest will only be directly attached to and stored as part of the exported file.
-    
-*   An option indicating that the manifest will both be directly attached to and stored as part of the exported file, and stored in a separate remote storage location.
-    
 
-![creator manifest storage](_images/creator-manifest-storage.png)
+*   An option indicating that the manifest will both be directly attached to and stored as part of the exported file, and stored in a separate remote storage location.
+
+
+[creator manifest storage](_images/creator-manifest-storage.png)
 
 Figure 24. Example of manifest storage settings
 
@@ -396,7 +396,7 @@ Since video is a temporal medium, it poses significant challenges to distilling 
 
 A notable difference with video content is the necessity for a player for viewing. This limits the ways in which an L1 indicator of C2PA data can be placed on the content and interacted with, and may likely require an integration into the player itself. However, the L1 indicator may still be placed next to the video outside of the content.
 
-![video 1 2x](_images/video-1_2x.png)
+[video 1 2x](_images/video-1_2x.png)
 
 Figure 25. Video L1
 
@@ -405,17 +405,17 @@ Figure 25. Video L1
 
 Video L2 displays should largely follow the same patterns as described in [L2 – progressive disclosures](#L2 – progressive disclosures). However, for now we stop short of recommending the inclusion of ingredients or non-C2PA origin content due to the potential complexity of volume. Instead, we suggest showing a minimal manifest summary or provenance summary.
 
-![video 2 2x](_images/video-2_2x.png)
+[video 2 2x](_images/video-2_2x.png)
 
 Figure 26. Video L2 minimum viable provenance
 
-![video 3 2x](_images/video-3_2x.png)
+[video 3 2x](_images/video-3_2x.png)
 
 Figure 27. Video L2 provenance summary
 
 An important detail for video UX is the L2 thumbnail displays. [Read more on thumbnails here.](#thumbnails) Specifically in the case of video, to help distinguish these assets from images, a filmstrip icon is added to the thumbnail to depict its media type. If the video asset containing the active manifest is playable, the media type icon should depict a play icon. However, even if the initial asset is a playable video, its ingredients may be static representations.
 
-![video 5](_images/video-5.png)
+[video 5](_images/video-5.png)
 
 Figure 28. Video L2 thumbnails with duration
 
@@ -444,20 +444,20 @@ Amongst media types (image, video, audio, docs, 3D models etc.) single image thu
 
 Depending on the media type, a meaningful ‘thumbnail’ can be comprised of more than one element (but does not need to include all). The below example uses video as an example but is intended to demonstrate how the different elements can be used to create a thumbnail of any kind.
 
-![thumbnail](_images/thumbnail.png)
+[thumbnail](_images/thumbnail.png)
 
 Figure 29. Anatomy of a thumbnail
 
 *   Interactions (i.e. hover or long press to skip through a sequence or swipe to rotate model)
-    
+
 *   Where relevant, an L1 indication of provenance
-    
+
 *   Some representation of the media (see below for different approaches)
-    
+
 *   Data (i.e. media duration for temporal media)
-    
+
 *   Relevant iconography
-    
+
 
 **Media representations**
 

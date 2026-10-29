@@ -1,6 +1,6 @@
 # C2PA User Experience Guidance for Implementers
 
-[![Creative Commons License](../_images/CCby4.png)](http://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](http://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
@@ -15,9 +15,9 @@ The C2PA intends to provide clear guidance for implementers of Content Credentia
 These UX recommendations define best practices for presenting Content Credentials to creators and consumers. The recommendations describe standard, readily recognizable experiences that:
 
 *   provide asset creators a means to capture information and history about the content they are creating, and
-    
+
 *   provide asset consumers information and history about the content they are experiencing, thereby empowering them to understand its provenance and decide how much to trust it.
-    
+
 
 User interfaces designed for the consumption of Content Credentials must be informed by the context of the asset. C2PA have studied four primary user groups and a collection of contexts in which C2PA assets are encountered. These user groups have been defined in the [C2PA Guiding Principles](https://c2pa.org/principles/) as Consumers, Creators, Publishers and Verifiers (or Investigators). To serve the needs of each of these groups across common contexts, exemplary user interfaces are presented for many common cases. These are recommendations, not mandates, and we expect best practices to evolve.
 
@@ -101,11 +101,11 @@ A specialized interface for forensic or investigatory use. It exposes the full t
 Consistency in terminology across implementations aids general creator and consumer understanding. Key recommended terms include:
 
 *   "Content Credentials"
-    
+
 *   "Signed by \[name\]" (instead of technical terms like 'claim generator')
-    
+
 *   "Produced by", "Used in", "Edited on" for additional descriptors
-    
+
 
 Avoid technical jargon unless providing an optional detail view or glossary. Prioritize clarity and comprehension.
 
@@ -130,11 +130,11 @@ Content Credentials can be used to record changes to content over time. Creative
 When presented in a UX to the user, action disclosures should have easy-to-understand labels like:
 
 *   Color adjustments (brightness, tone, filters)
-    
+
 *   Compositing (merging, layering)
-    
+
 *   Filtered (styles, effects)
-    
+
 
 Granularity of actions is worth considering. In some cases, grouping actions into high level categories may be more understandable for consumers, versus presenting a list of detailed, creation-specific actions that may be unique to the implementation.
 
@@ -274,11 +274,11 @@ Creators should be warned that omitting actions may impact audience trust, espec
 Creators who incorporate other assets (e.g., stock photography, graphics, or collaborative contributions) need to be aware of the presence of these ingredients in their Content Credentials. Ingredient manifests must be included where possible and clearly labeled in previews. UI recommendations include:
 
 *   Ingredient thumbnails or icons
-    
+
 *   Hover states, badges, or modals displaying errors related to the ingredient’s valid, well-formed, or trusted states
-    
+
 *   Alerts or badges for risky or unverifiable content
-    
+
 
 By surfacing this information during the creation or editing process, creators can make informed decisions about content sourcing, editing, and reuse.
 
@@ -288,13 +288,13 @@ By surfacing this information during the creation or editing process, creators c
 Within an interactive application, Export and Save As functions are opportunities to reinforce creator control. When a user finishes a creative session or completes a project, they should be prompted to finalize the provenance package:
 
 *   Review a manifest preview
-    
+
 *   Toggle visibility for optional assertions
-    
+
 *   Confirm or modify identity details
-    
+
 *   Decide if and how to attach the provenance to the final asset
-    
+
 
 C2PA recommends making this process non-intrusive and in line with the application’s existing flows. For example, include a Content Credentials section in a Save dialog. This ensures creators retain ownership over how and when their content is associated with provenance data. For non-interactive applications, such as API calls, implementers should include accessible documentation about the assertions that will be signed into the manifest when initiated.
 
@@ -311,9 +311,9 @@ Time-based media like video and audio require unique handling. In particular, th
 There are two predominant ways video is delivered to devices over the web, these include:
 
 1.  Dynamic video streaming (typically done via MPEG-DASH or HLS) where small video segments (also referred to as packets) are sent progressively to the browser. This allows for adaptive bitrate streaming, where the quality of the video can change on the fly depending on the viewer’s network conditions.
-    
+
 2.  As one single file (monolithic architecture), where all aspects of the video are managed in a single tightly integrated system. This approach is less flexible and therefore rarer.
-    
+
 
 For both approaches, the manifest can be validated on load and subsequently valid provenance data can be displayed. However, dynamic video streaming requires that each segment is validated as it’s rendered. While the full video’s validation status can’t be reported, the status of individual segments can. While each segment can be validated, video streams inherently have different bitrates, opening up the possibility for the same segment to show conflicting validation statuses depending on the bitrate being played at the time. As soon as a segment is requested by the player, whether it is the first or multiple times afterwards, it’s validated. The UI should communicate that validation is conducted per viewing instance, not per video.
 
@@ -352,7 +352,7 @@ For platform continuity, ensure Content Credential displays are responsive and r
 <a id="_content_credentials_icon"></a>
 ### 4.1. Content Credentials Icon
 
-![Content Credentials icon](_images/2-2_cr.jpg)
+[Content Credentials icon](_images/2-2_cr.jpg)
 
 Figure 1. Content Credentials icon
 
@@ -386,13 +386,13 @@ Implementers should consider the way in which L1 indicators are introduced acros
 Manifest summaries are a curated collection of assertions across the entire provenance of an asset. These are best suited for L2 and L3, and should be optimized to show the most relevant assertions, such as:
 
 *   Signer (e.g., EditorSuite) and optional logo for brand recognition
-    
+
 *   Trusted timestamp, if present
-    
+
 *   Source disclosures, if applicable
-    
+
 *   Identity information, if applicable
-    
+
 
 Previous implementations have shown summaries of active manifest assertions only. However, implementers should consider summarizing key assertions across the entire provenance to avoid inadvertently hiding important information about how content has been edited, or if there are errors that occurred earlier in the asset’s provenance history.
 
@@ -406,11 +406,11 @@ For complex manifest histories, wherein there are multiple ingredients, consider
 Visual states are critical to helping users interpret the reliability of data. There are several different [C2PA Manifest validation states](../specs/C2PA_Specification.html.md#_validation_states) that implementers should consider communicating. A C2PA Manifest may be one of the following:
 
 *   Valid: The manifest is well-formed and the signature is valid.
-    
+
 *   Well-formed: Hard bindings are intact and all assertions and ingredients abide by normative C2PA requirements.
-    
+
 *   Trusted: The C2PA Manifest is valid, and the signer is found on a supported Trust List.
-    
+
 
 When a C2PA Manifest meets one of these criteria, no additional positive affordance is needed to communicate its status across the progressive disclosures. However, when a manifest fails to meet one or more of these states, implementers must communicate the impact to the manifest’s reliability.
 

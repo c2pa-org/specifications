@@ -1,6 +1,6 @@
 # C2PA Soft Binding API
 
-[![Creative Commons License](_images/CCby4.png)](http://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](http://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
@@ -12,9 +12,9 @@ C2PA specifies a mechanism for recovering a C2PA Manifest for an asset, for exam
 This document describes a series of [use cases](#_use_cases) for why it is necessary to recover C2PA Manifests that have become decoupled from the asset to which they belong. It then goes into detail on how to use soft bindings to solve for these use cases. This process of recovering C2PA Manifests using soft bindings is composed of 2 key components:
 
 1.  [A soft binding algorithm list](#soft-binding-algorithm-list).
-    
+
 2.  [A soft binding resolution API](#soft-binding-resolution-api).
-    
+
 
 <a id="_use_cases"></a>
 ### 1.1. Use Cases
@@ -82,14 +82,14 @@ This covers the following use cases: UC1, UC2, UC5, UC6
 
 [\[watermark-recovery\]](#watermark-recovery) provides an example flow leveraging the soft binding algorithm list and resolution API to recover C2PA Manifests using an invisible watermark embedded in an asset.
 
-![Diagram](https://kroki.io/plantuml/svg/eNqNVMtu2zAQvPMrFj70Fhnt0UBaKEYRGOjDsBv0UPRAUyt7UT4EcmPH_fquZLmSIjsJTxQ1Mzv7IBUTW4TJ_MMyh6_aU4mJYYUm7DEe4UC8g5-aMTod_0xUpSOToUp7bjlzS-h5AjqBabYXMGfdBuXajyFuHUqGO_IF-S3kdhuiRHZgqWWljR0Sel6rkIhDPLbAqNTJCdx8rHkzODhRTL9-wy1skUFbC4dzTnU8fY6XlA2h-o_PEv1FYHKYFPRWJ3_azYDjsRbiAAUyGu70RexblmVX-I299d3qIVoxF1EXkKQSbSFWmIJ9ZAo-ryjBw-oLlCGCCS7DJ-0qi5moX5WOM1h-X_9o9adOs9lhmm6O8-C57lSf6AMjRNruhsf1WtSRnBCaFHcII8Sge51ryJeLETZVaKgko2vE4C_6orExONR2bOhZkvefL-TYuvkkvb19qWAS9K11yK301IvvPQKV0mkTmoRHwAtNGoOkoXqvyeqN3L82o0QFvl4SSbo_e-cLtSjglSkdenrfG9J3fZUyPErYG8AnYlXXRw1v1POSn4hp2kmoKxbV2FMVg8GUZPabJweLDvwPbfBlLg==?id=watermark-recovery)
+[Diagram](https://kroki.io/plantuml/svg/eNqNVMtu2zAQvPMrFj70Fhnt0UBaKEYRGOjDsBv0UPRAUyt7UT4EcmPH_fquZLmSIjsJTxQ1Mzv7IBUTW4TJ_MMyh6_aU4mJYYUm7DEe4UC8g5-aMTod_0xUpSOToUp7bjlzS-h5AjqBabYXMGfdBuXajyFuHUqGO_IF-S3kdhuiRHZgqWWljR0Sel6rkIhDPLbAqNTJCdx8rHkzODhRTL9-wy1skUFbC4dzTnU8fY6XlA2h-o_PEv1FYHKYFPRWJ3_azYDjsRbiAAUyGu70RexblmVX-I299d3qIVoxF1EXkKQSbSFWmIJ9ZAo-ryjBw-oLlCGCCS7DJ-0qi5moX5WOM1h-X_9o9adOs9lhmm6O8-C57lSf6AMjRNruhsf1WtSRnBCaFHcII8Sge51ryJeLETZVaKgko2vE4C_6orExONR2bOhZkvefL-TYuvkkvb19qWAS9K11yK301IvvPQKV0mkTmoRHwAtNGoOkoXqvyeqN3L82o0QFvl4SSbo_e-cLtSjglSkdenrfG9J3fZUyPErYG8AnYlXXRw1v1POSn4hp2kmoKxbV2FMVg8GUZPabJweLDvwPbfBlLg==?id=watermark-recovery)
 
 <a id="_fingerprinting_algorithms"></a>
 ##### 1.2.1.2. Fingerprinting algorithms
 
 [\[fingerprint-recovery\]](#fingerprint-recovery) provides an example flow leveraging the soft binding algorithm list and resolution API to recover C2PA Manifests using an asset’s fingerprint.
 
-![Diagram](https://kroki.io/plantuml/svg/eNptU8tOwzAQvPsrVr3TCo6VAKUVoEo8qpaeEAeTbJqVHNvyLo_y9dhtkjYpPjnrmdnZR5SQGITR_GqZwZO2VCILrDB3Xxh28E1SwT3ZLQYfyMpIeR2EcvLaSsOaG8L4Apoh31__wbTKe1TdfPRxa1cKzMgWMRtkZutCzF2DoYbFH6ZPOHHrHZO4sGuAQamDE7i4SbwpMBrMBXJXj_FH197guPSXoM0WyuAOWYac9Wy1CQauIaAugKO9xt0K2ZlPIWczTwyb1SOULgzFe3JhCg93r43kpNaSV8iTj12jeBuNXA_51glCoG0lapGCdVRLvZEKQfW6dTQE2XKh2GNOJeU6RRTaApKU0kYUxDPwtXxZ_2Ns7qykUSbCiREYnMwIBhsTfSFQCeVxU5KvM7juxjqcBPEZmNqiMXYfQ9xHYCpwj-uKihcVy0jVHOqaQlPE23unaJzzx_CY6RdBqMZ-zkFf2i1dx8XC57gGvQEe3ri7LYrnntiZp1OxDpncH9O2YK7cd1y6_S8Ya2-5wInM6g92_DbJ?id=fingerprint-recovery)
+[Diagram](https://kroki.io/plantuml/svg/eNptU8tOwzAQvPsrVr3TCo6VAKUVoEo8qpaeEAeTbJqVHNvyLo_y9dhtkjYpPjnrmdnZR5SQGITR_GqZwZO2VCILrDB3Xxh28E1SwT3ZLQYfyMpIeR2EcvLaSsOaG8L4Apoh31__wbTKe1TdfPRxa1cKzMgWMRtkZutCzF2DoYbFH6ZPOHHrHZO4sGuAQamDE7i4SbwpMBrMBXJXj_FH197guPSXoM0WyuAOWYac9Wy1CQauIaAugKO9xt0K2ZlPIWczTwyb1SOULgzFe3JhCg93r43kpNaSV8iTj12jeBuNXA_51glCoG0lapGCdVRLvZEKQfW6dTQE2XKh2GNOJeU6RRTaApKU0kYUxDPwtXxZ_2Ns7qykUSbCiREYnMwIBhsTfSFQCeVxU5KvM7juxjqcBPEZmNqiMXYfQ9xHYCpwj-uKihcVy0jVHOqaQlPE23unaJzzx_CY6RdBqMZ-zkFf2i1dx8XC57gGvQEe3ri7LYrnntiZp1OxDpncH9O2YK7cd1y6_S8Ya2-5wInM6g92_DbJ?id=fingerprint-recovery)
 
 <a id="_recovering_manifests"></a>
 #### 1.2.2. Recovering manifests
@@ -103,14 +103,14 @@ This covers the following use case: UC3, UC2
 
 [\[watermark-golden\]](#watermark-golden) provides an example flow leveraging the soft binding algorithm list and resolution API to retrieve a C2PA Manifest using an invisible watermark embedded in an asset and cross-check it with the local active C2PA manifest.
 
-![Diagram](https://kroki.io/plantuml/svg/eNp9U8Fu2zAMvesriNybbD0G6AbXKIYALRYkK3YYdmBkOiYqS4bEJevfT7ZlL3aD6CTL7z2-R1FKWAzBIr_fZvCClksKArl3IdzlFek3OLNU8BOFfI3-baEa9MKaG7SSaLlhsrIADKC77RVMpoVPNFbowHX6mML3rhR4ZFuwPUJmjs5HAzUYTqxwMFPC6HpHjQsszr8noL-hvKPgzB9hZyHbbkaC6hPA3ZfR3ho8YQH6vsHleegDFV0kZ68StKuX9BfrxtDyXH-Gh15iYgBDIN_VR3O8UIn51rB_3L16M_BC5CXaf9tZwwFed89QOj8vOJHza9h-3_9ImqsaRVcUVof33Flpb8s6IfB8rERtWoU6HrYOpSJQN5qmQkOaS9bYNYJsAa2UQiMK4pqZ-PZ0xUNS_hp78DAP0WpceIPZyky8C4vdXHEJBWnXmfwAvNKgj6DYTDwhGzzE55CcBy6oA47R4kapmKYN1YPWkML8-vR7OUzAplC3wvegsLqAzzSnz3EfZ5ouFAdUDBUHnMA4jQawf2KDKJxCnB7xTKc4rLOf6h9mHVVo?id=watermark-golden)
+[Diagram](https://kroki.io/plantuml/svg/eNp9U8Fu2zAMvesriNybbD0G6AbXKIYALRYkK3YYdmBkOiYqS4bEJevfT7ZlL3aD6CTL7z2-R1FKWAzBIr_fZvCClksKArl3IdzlFek3OLNU8BOFfI3-baEa9MKaG7SSaLlhsrIADKC77RVMpoVPNFbowHX6mML3rhR4ZFuwPUJmjs5HAzUYTqxwMFPC6HpHjQsszr8noL-hvKPgzB9hZyHbbkaC6hPA3ZfR3ho8YQH6vsHleegDFV0kZ68StKuX9BfrxtDyXH-Gh15iYgBDIN_VR3O8UIn51rB_3L16M_BC5CXaf9tZwwFed89QOj8vOJHza9h-3_9ImqsaRVcUVof33Flpb8s6IfB8rERtWoU6HrYOpSJQN5qmQkOaS9bYNYJsAa2UQiMK4pqZ-PZ0xUNS_hp78DAP0WpceIPZyky8C4vdXHEJBWnXmfwAvNKgj6DYTDwhGzzE55CcBy6oA47R4kapmKYN1YPWkML8-vR7OUzAplC3wvegsLqAzzSnz3EfZ5ouFAdUDBUHnMA4jQawf2KDKJxCnB7xTKc4rLOf6h9mHVVo?id=watermark-golden)
 
 <a id="_fingerprinting_algorithms_2"></a>
 ##### 1.2.2.2. Fingerprinting Algorithms
 
 [\[fingerprint-golden\]](#fingerprint-golden) provides an example flow leveraging the soft binding algorithm list and resolution API to retrieve a C2PA Manifest using an asset’s fingerprint and cross-check it with the local C2PA active manifest.
 
-![Diagram](https://kroki.io/plantuml/svg/eNptUsFu2zAMvesriN7bYDsG6IbU2IYAGxbE62nYQZXpmJgsGSSXLX8_KnaSxo1Ogsj3-J74nJJGhLvq_WYF33yiFkWh4ixyX3UYfsNf0g4-U9ohD0xJ79zgWSnQ4JNOwCoSWgW8QDher3vq3Co8UWqMBVZxl9k4e4gkI0Ze4g3Ss5otDllIMx-mbnZuHAP3Hwp4CYIRg0LI_QP-8_0Q8aEd3oGPO2g5j6PmmPpp-8wRHoHRNyCmcZK4Rcnxj1JOq4EEnrdfoc08J7-i4yV8-fRjolz0XkOHsng5TIwfTcjjHJ-yIjDtOnXr8tgbW_kg7RDc1ZddBMFqs3YyYKCWgi8vDlMDhcr5qA7szHRtvtc3hFU5adlTAbwSArOzioqcbNAegVpoLzEout60-_Nu55sgedNMJ9Nov4-8RwahBo99Z1N2cWajuBl9LWEy8fPXqw2caiawsYYxOOtmDG9n1kqOhHqK3vQd6pAZ5ws8wWpLGlosrhY6lmRx4b4x3UxbjBFiDj6CD8dvOyFgL5Y0ZcK9GZ4V3X-aoTFB?id=fingerprint-golden)
+[Diagram](https://kroki.io/plantuml/svg/eNptUsFu2zAMvesriN7bYDsG6IbU2IYAGxbE62nYQZXpmJgsGSSXLX8_KnaSxo1Ogsj3-J74nJJGhLvq_WYF33yiFkWh4ixyX3UYfsNf0g4-U9ohD0xJ79zgWSnQ4JNOwCoSWgW8QDher3vq3Co8UWqMBVZxl9k4e4gkI0Ze4g3Ss5otDllIMx-mbnZuHAP3Hwp4CYIRg0LI_QP-8_0Q8aEd3oGPO2g5j6PmmPpp-8wRHoHRNyCmcZK4Rcnxj1JOq4EEnrdfoc08J7-i4yV8-fRjolz0XkOHsng5TIwfTcjjHJ-yIjDtOnXr8tgbW_kg7RDc1ZddBMFqs3YyYKCWgi8vDlMDhcr5qA7szHRtvtc3hFU5adlTAbwSArOzioqcbNAegVpoLzEout60-_Nu55sgedNMJ9Nov4-8RwahBo99Z1N2cWajuBl9LWEy8fPXqw2caiawsYYxOOtmDG9n1kqOhHqK3vQd6pAZ5ws8wWpLGlosrhY6lmRx4b4x3UxbjBFiDj6CD8dvOyFgL5Y0ZcK9GZ4V3X-aoTFB?id=fingerprint-golden)
 
 <a id="_combining_watermarking_and_fingerprinting"></a>
 ##### 1.2.2.3. Combining Watermarking and Fingerprinting
@@ -119,7 +119,7 @@ A check may performed to verify that the recovered manifest matches the query as
 
 One way to automate this check is to store a fingerprint of the asset within the recovered manifest, and compare the fingerprint against a similarly computed fingerprint from the query asset. This is shown in [\[watermark-and-fingerprint\]](#watermark-and-fingerprint).
 
-![Diagram](https://kroki.io/plantuml/svg/eNqFVMtu2zAQvPMrFjklQCunORpwC8VICgMtatgNeih6oKWVvShFCuTGrv--K0p2JFlwdNJjZjgzXEoxsUG4mT8sU_iuLRUYGFaYuT36IxyId_BLM_pS-7-gbQ4F2S36ypPlG1Vpz5RRpS23GnNDKF9AB8ji7QgmzZj2eF4ugsv2oQ9fu4LhkWwui0Jqts6LoRIMtaywMX1CJ0LlArHzxxboryivMDjzyuQspMvFmaCaBPDx89neFDzqHLKHSieHUy-Yx0jOjhIyVyb4T5eVweRQfoJZI9EzoENAH9fXZttRkXxTWD-uXrw58YLwWtqb7bSiAC-rb1A4P1ywJ-ensPyx_tlqTkrN2Q7DZHOcO8v1blnHCJ62O1aLWqGUl7VD3iGoK6WpUGFGBWU6FoEyKbWU0oYVyDUw8fVpxEOr_EU6mA1D1BodbzC4UiN7YXWcKyoglwGOJi-AIwVdgqRMvddk9EbORus8UI4ReI4mN0pJmjpUA5pCG-b3_Z_kNAGLXF0L34DCpAMfaHpkT7iXKZtB_5yuZb6xo35ikCUmbZ4rYXTO661xmTZx2PhuhCa9yBnB24b-XH14WzrpyNy9txlPNrx6lJHRHOemwwVXxFcdJ2PtByqlfQ_sLgTINrM4ZPnmnyUtnZpM-tv1H_Osn_Q=?id=watermark-and-fingerprint)
+[Diagram](https://kroki.io/plantuml/svg/eNqFVMtu2zAQvPMrFjklQCunORpwC8VICgMtatgNeih6oKWVvShFCuTGrv--K0p2JFlwdNJjZjgzXEoxsUG4mT8sU_iuLRUYGFaYuT36IxyId_BLM_pS-7-gbQ4F2S36ypPlG1Vpz5RRpS23GnNDKF9AB8ji7QgmzZj2eF4ugsv2oQ9fu4LhkWwui0Jqts6LoRIMtaywMX1CJ0LlArHzxxboryivMDjzyuQspMvFmaCaBPDx89neFDzqHLKHSieHUy-Yx0jOjhIyVyb4T5eVweRQfoJZI9EzoENAH9fXZttRkXxTWD-uXrw58YLwWtqb7bSiAC-rb1A4P1ywJ-ensPyx_tlqTkrN2Q7DZHOcO8v1blnHCJ62O1aLWqGUl7VD3iGoK6WpUGFGBWU6FoEyKbWU0oYVyDUw8fVpxEOr_EU6mA1D1BodbzC4UiN7YXWcKyoglwGOJi-AIwVdgqRMvddk9EbORus8UI4ReI4mN0pJmjpUA5pCG-b3_Z_kNAGLXF0L34DCpAMfaHpkT7iXKZtB_5yuZb6xo35ikCUmbZ4rYXTO661xmTZx2PhuhCa9yBnB24b-XH14WzrpyNy9txlPNrx6lJHRHOemwwVXxFcdJ2PtByqlfQ_sLgTINrM4ZPnmnyUtnZpM-tv1H_Osn_Q=?id=watermark-and-fingerprint)
 
 <a id="soft-binding-algorithm-list"></a>
 ### 1.3. Soft Binding Algorithm List
@@ -1535,15 +1535,15 @@ Distributed Ledger Technology (DLT) is used to create a decentralized Key-Value 
 The process to retrieve a C2PA Manifest from a C2PA Manifest Repository using these APIs is illustrated via the sequence diagram below and is as follows:
 
 1.  The C2PA Manifest consumer first computes the soft binding from the asset, for example by detecting a watermark.
-    
+
 2.  The decentralized K-V store is queried using the soft binding to obtain the URI of a C2PA Manifest Repository endpoint implementing the soft binding resolution API.
-    
+
 3.  If the manifest identifier (ID) was not published within the K-V store, it may be obtained via the Soft Binding Resolution API `/byBinding` route.
-    
+
 4.  The active manifest (and optionally the entire C2PA Manifest Store) may be obtained via the Soft Binding Resolution API `/manifests` route.
-    
+
 5.  Validation and processing of the recovered C2PA Manifest continues in the usual way.
-    
+
 
 <a id="_publishing_to_the_k_v_store"></a>
 #### 2.1.2. Publishing to the K-V Store

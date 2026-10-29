@@ -1,6 +1,6 @@
 # Attestation in the C2PA Framework
 
-[![Creative Commons License](_images/CCby4.png)](https://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](https://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
@@ -21,17 +21,17 @@ Attestation is a rapidly evolving field. At the time of writing, there are sever
 This document is organized as follows.
 
 1.  [Chapter 2](#_glossary) contains a glossary of attestation-related terms used in this specification. This document also uses terms defined in the C2PA specification [C2PA Glossary](https://c2pa.org/specifications/specifications/1.3/specs/C2PA_Specification.html#_glossary).
-    
+
 2.  [Chapter 3](#_c2pa_trust_model_overview) and [Chapter 4](#_attestation_overview) describe the existing C2PA trust model and provide an introduction to attestation.
-    
+
 3.  [Chapter 5](#_scenarios) describes some motivating scenarios using different types of attestation technology.
-    
+
 4.  [Chapter 6](#_implicit_attestation) and [Explicit Attestation](#_explicit_attestation) are the main normative parts of the specification. These chapters describe two different approaches to adding attestation to C2PA data structures. The architecture and data structures described in these chapters are attestation-technology-agnostic. [Appendix A](#appendix-a) provides information on how the currently supported attestation technologies can be used, and how the resulting attestations are encoded.
-    
+
 5.  [Chapter 8](#_trust_roots_for_attestation) contains considerations for how C2PA Trust Roots should be supplemented to enable interoperable attestation creation and verification.
-    
+
 6.  [Chapter 9](#_implementation_considerations) provides guidance for selecting an attestation technology and choosing how to encode the attestation evidence.
-    
+
 
 This specification assumes a working understanding of the C2PA architecture and data structures: in particular, Claims, Assertions, Claim Signatures and how these data objects are packaged into C2PA manifests. This specification also assumes some understanding of attestation technologies.
 
@@ -124,13 +124,13 @@ A well-formed C2PA Claim Signature demonstrates that the Claim Creator had acces
 Attestation, in the context of C2PA, seeks to refine this Trust Model to allow relying parties to infer more information about the _device or application_ that created Claim and Manifest. The additional information might include:
 
 1.  The specific device that created the Claim.
-    
+
 2.  The _class_ of device that created the Claim, without revealing the specific device (to preserve privacy.)
-    
+
 3.  The application that created the Claim. This might be a specific application identified by a cryptographic digest, a family of applications identified by a signing key or certificate, or a publisher, identified by a unique name in the context of an app-store.
-    
+
 4.  The security properties of the environment in which the app is running. This might include the operating system that is hosting the application as well as its security configuration (e.g. non-rooted or no admin-access.) In some cases, the security environment is provided by the CPU vendor with little or no additional software, in which case the security properties might included whether the "enclave" is debuggable.
-    
+
 
 This additional information may supplement or replace the information conventionally conveyed by a Claim Signature (i.e., the organization or person that created the Claim.)
 
@@ -145,13 +145,13 @@ Explicit Attestation works slightly differently than Implicit Attestation does. 
 For example:
 
 *   TPM quote-operations are a signature over some application-provided data together with an encoding of current Platform Configuration Registers (PCR) values. Compliant platforms record measurements of the booting software into the PCRs, so the TPM quote reports reflects the software running on the platform.
-    
+
 *   Android Play Integrity is a system/cloud-service that allows app-developers to generate signed statements indicating the package that requested the integrity verdict, as well information about the security posture of the requesting device - e.g., the running operating system.
-    
+
 *   Intel’s Software Guard Extensions (SGX) provides a reporting/quoting feature that is a signature over the measurement of the code that was loaded into the enclave, as well as other critical security settings.
-    
+
 *   ARM’s Platform Security Architecture (PSA) provides the calling application with attestation tokens that contain security claims about the underlying platform.
-    
+
 
 Attestations can be directly consumed by relying parties or can be forwarded to a Trust Broker (a Verification Service) where they are translated into an easier-to-understand form, sometime called an Attestation Verdict. For example, Android Play Integrity verdicts use a Google-provided Trust Broker service.
 
@@ -185,13 +185,13 @@ Attestation can be used to distinguish imagery captured by a trusted camera and 
 For example, a Trusted Camera application can use attestation to
 
 1.  Indicate the application that captured the image,
-    
+
 2.  Implicitly prove that an image was obtained from the sensor,
-    
+
 3.  Indicate that the phone operating system is up-to-date and configured securely, and
-    
+
 4.  Indicate the type of phone or other device that was used.
-    
+
 
 Android Play Integrity is a Google service for obtaining such attestations.
 
@@ -257,20 +257,20 @@ Implementers should consult platform documentation for usage and the expected st
 Summarizing the previous sections in the form of a timeline, the following steps are required when provisioning and using a key for Implicit Attestation.
 
 1.  It is assumed that devices are provisioned with a platform key and certificate (or a platform key and a pre-established trust relationship with a server.) This step is usually performed during manufacture.
-    
+
 2.  At some point in the life of the device, the C2PA-compliant Claim Creator application is installed.
-    
+
 3.  During installation (or later), the Claim Creator will interact with a trusted service to create a certified key known as "certified IA-key" for signing Claims. The certified key is derived from platform key as its root. The Claim Creator uses an Attestation Protocol to prove that it is an authorized application (permitted to use the certified key) running on a trusted device. Hence the Application is now directly or indirectly associated to the platform key in (1).
-    
+
 4.  The certified IA-key and certificate can be used immediately to sign Claims or Partial Claims.
-    
+
 5.  If the platform provides suitable _sealing_ facilities, the IA-private key can be persisted in such a way that only the authorized application can retrieve it.
-    
+
     1.  If this is the case, then the IA-key can be stored and protected so that the application retain the same key, during multiple restarts of the same application.
-        
+
     2.  If this is not the case, then the IA-key should not be persisted: instead, the application should follow step (3) to obtain a new IA-key on each startup.
-        
-    
+
+
 
 <a id="_validation_of_claims_using_implicit_attestation"></a>
 ### 6.6. Validation of Claims Using Implicit Attestation
@@ -285,9 +285,9 @@ This section describes how an attestation can be created and embedded as an asse
 The current C2PA trust model is built using two signatures:
 
 1.  A signature over a CBOR-serialized Claim. The signature is encoded in the Manifest, and the certificate chain for the signing key is usually also included.
-    
+
 2.  Optionally, a countersignature from an [RFC 3161](https://www.ietf.org/rfc/rfc3161.txt)\-compliant time stamping service.
-    
+
 
 Attestations, in the context of this document, are also digital signatures. This section describes options for how the additional attestation signature(s) can be added to the two that are already defined. Note that the discussion in this section is simplified: later sections present the complete design and normative requirements.
 
@@ -298,9 +298,9 @@ The simplest option for adding an attestation would be to include it as a second
 To achieve the Claim-Signature/attestation binding, the following procedure is used:
 
 1.  An attestation over the serialized _partial C2PA Claim_ is performed first and then the claim signature is performed over the complete C2PA Claim that contains attestation. This prevents the attestation being removed or replaced independently of the Claim Signature, because any modification of the attestation will invalidate the Claim Signature
-    
+
 2.  To prevent the Claim Signature being replaced, the attestation can optionally contain the public key of the subsequent Claim Signer. This means that validators can detect and reject a Claim Signature if the Claim Signature key specified in the attestation does not match the keys used for the actual Claim Signature.
-    
+
 
 To summarize: The Claim Signer signs the attestation, which prevents tampering of the attestation. The attestation contains the public key of the Claim Signer, so the Claim Signature cannot be replaced with a signature using a different key.
 
@@ -309,7 +309,7 @@ To summarize: The Claim Signer signs the attestation, which prevents tampering o
 
 The binding is illustrated [below](#_dep1).
 
-![Cryptographic dependencies](https://kroki.io/mermaid/svg/eNpLL0osyFDwCbLmUgCCzBRDDcfi4tQSTQVdXTsg10jDOScxM1dTAco31nAsKUktLkksyczPgykygShSCM5Mz0ssKS1K1YSZZgo2rQikuFgTJgYzWgGmykRBVw9iOkzECGayNQA5BisY?id=dep1)
+[Cryptographic dependencies](https://kroki.io/mermaid/svg/eNpLL0osyFDwCbLmUgCCzBRDDcfi4tQSTQVdXTsg10jDOScxM1dTAco31nAsKUktLkksyczPgykygShSCM5Mz0ssKS1K1YSZZgo2rQikuFgTJgYzWgGmykRBVw9iOkzECGayNQA5BisY?id=dep1)
 
 Figure 1. Cryptographic dependencies
 
@@ -337,9 +337,9 @@ This architecture is attractive because normal Claim creation and Claim Validati
 
 The (simplified) logical work flow for creating a manifest with and without an attestation is illustrated [below](#_simple-steps).
 
-![Diagram](https://kroki.io/mermaid/svg/eNp1UE1rwkAQvfsrBgKi0GBjPG1jIGhLD8VCc-hBeth0J3FxzYbdsVrwx3ey2pzaYQ_Lm_cxM42T3Q5e3h5GwOWPVROAzWv5XKwf19usykuSrZJOwZOxJxhHi_uNhYIIPUnStvUMJdmsyj-Ch9IOP3ucXQOgVTIpvEeaQhznFzAolQeycOHWfMIJfdcFSUnWYe-VdfxAGt20S4M15fKXEyeisuf4ILts9j9pLlYOebwvfLdu_1dy2ievjNSHW94g9oHOJM_GEChBsRgUUHJH0vE66zSsia0aXY9I3waHC0KtjRFRHerOk7N7FFGaprd_fNKKdiLpzj_3an-W)
+[Diagram](https://kroki.io/mermaid/svg/eNp1UE1rwkAQvfsrBgKi0GBjPG1jIGhLD8VCc-hBeth0J3FxzYbdsVrwx3ey2pzaYQ_Lm_cxM42T3Q5e3h5GwOWPVROAzWv5XKwf19usykuSrZJOwZOxJxhHi_uNhYIIPUnStvUMJdmsyj-Ch9IOP3ucXQOgVTIpvEeaQhznFzAolQeycOHWfMIJfdcFSUnWYe-VdfxAGt20S4M15fKXEyeisuf4ILts9j9pLlYOebwvfLdu_1dy2ievjNSHW94g9oHOJM_GEChBsRgUUHJH0vE66zSsia0aXY9I3waHC0KtjRFRHerOk7N7FFGaprd_fNKKdiLpzj_3an-W)
 
-![Simplified Steps](https://kroki.io/mermaid/svg/eNq1kj1vwjAQhnf_ihMsVCIqiTMFmiqlZUKiKgND1cGpTbAwSWSbQiV-fP1BAqIfEkM9WXfPvfeefYUk9QqmL0Ok9KdgMJlMZwtYciGS7tKdPigtqzVLuhjjvr8HO071KonrPVLbvHAarvK1M8rTiah2sON6BbOSQaY1U5poXpWj2zztvKHMkujBYoiVFJ00slbjrArGkvkLKSk8bXJGKS-Lo5i3nV1rm9MYgiCFwzvZKqbgAJyGgws7zqKzA6bbfdvNxa_pBuYY_Z4dTCmmrfebYzRqotLNONeVZDY_qoEIXpR3gi11ShogCJO82gcbUv8GRIl_sA-2qOS6aYNtm2diECJgLAjf-CanQtWgce_iAx6JJueWQ-f5b5EQtwzMjUuit36uFhj87-C_UTghp9Ha17HLcAAteVEwCWeE24x42Jo2oCUFI1SBrvziREPUAPA9Hf0Qw6itiPwigjJm_c94UYOYdfwCvNssHw==?id=simple-steps)
+[Simplified Steps](https://kroki.io/mermaid/svg/eNq1kj1vwjAQhnf_ihMsVCIqiTMFmiqlZUKiKgND1cGpTbAwSWSbQiV-fP1BAqIfEkM9WXfPvfeefYUk9QqmL0Ok9KdgMJlMZwtYciGS7tKdPigtqzVLuhjjvr8HO071KonrPVLbvHAarvK1M8rTiah2sON6BbOSQaY1U5poXpWj2zztvKHMkujBYoiVFJ00slbjrArGkvkLKSk8bXJGKS-Lo5i3nV1rm9MYgiCFwzvZKqbgAJyGgws7zqKzA6bbfdvNxa_pBuYY_Z4dTCmmrfebYzRqotLNONeVZDY_qoEIXpR3gi11ShogCJO82gcbUv8GRIl_sA-2qOS6aYNtm2diECJgLAjf-CanQtWgce_iAx6JJueWQ-f5b5EQtwzMjUuit36uFhj87-C_UTghp9Ha17HLcAAteVEwCWeE24x42Jo2oCUFI1SBrvziREPUAPA9Hf0Qw6itiPwigjJm_c94UYOYdfwCvNssHw==?id=simple-steps)
 
 Figure 2. Simplified Steps
 
@@ -356,7 +356,7 @@ Additional details are included in the normative parts of the specification belo
 
 The [diagram](#_dep2) below is a more detailed version of [dependencies](#_dep1) using Partial Claims
 
-![Cryptographic dependencies](https://kroki.io/mermaid/svg/eNpLL0osyFDwCbLmUgCCzBQLDSXf1JLElMSSRAWbpCI7IGHnWFycWlSSmZ9XDOQoaSro6toBVRpBdRhqgORL4MIaAYlAxYk5Cs45iZm5MGFjDceSktTikkSQOTBBEw23zDx0laYaYK5CcGZ6XmJJaVGqJsxtJgq6ehDDrAFMszUq?id=dep2)
+[Cryptographic dependencies](https://kroki.io/mermaid/svg/eNpLL0osyFDwCbLmUgCCzBQLDSXf1JLElMSSRAWbpCI7IGHnWFycWlSSmZ9XDOQoaSro6toBVRpBdRhqgORL4MIaAYlAxYk5Cs45iZm5MGFjDceSktTikkSQOTBBEw23zDx0laYaYK5CcGZ6XmJJaVGqJsxtJgq6ehDDrAFMszUq?id=dep2)
 
 Figure 3. Cryptographic dependencies
 
@@ -373,7 +373,7 @@ If more than one attestation is required then they are ordered and each subseque
 
 The cryptographic dependencies are illustrated [below](#_dep3). The manifest is built from the top to the bottom. An arrow from `A` to `B` indicates that `B` has a cryptographic dependence on `A`.
 
-![Cryptographic dependencies.](https://kroki.io/mermaid/svg/eNptj8EKwjAMhu97ihzbQwWdTkEQNsGbIMyTt2DLVpittBFf346WMbU55JD_40vSOXz2cG32BYTScsfOilAiIdTeK0faGs9BiEMIVwlasjGjacwuGEAc4DigfsBbUw835SzURMoTjpKMrmQn7TzNKR6Tdc74DyfPhrXqbo3MZVXYYb49jQ1thk73bFmkWt0ZpJdTPP1bgVjETb-DsvgA0cBlGg==?id=dep3)
+[Cryptographic dependencies.](https://kroki.io/mermaid/svg/eNptj8EKwjAMhu97ihzbQwWdTkEQNsGbIMyTt2DLVpittBFf346WMbU55JD_40vSOXz2cG32BYTScsfOilAiIdTeK0faGs9BiEMIVwlasjGjacwuGEAc4DigfsBbUw835SzURMoTjpKMrmQn7TzNKR6Tdc74DyfPhrXqbo3MZVXYYb49jQ1thk73bFmkWt0ZpJdTPP1bgVjETb-DsvgA0cBlGg==?id=dep3)
 
 Figure 4. Cryptographic dependencies.
 
@@ -485,30 +485,30 @@ attestation-info-map = {
 These are the detailed steps for creating an embedding an Attestation into a Claim. In the 1.3 version of the C2PA specification, these steps should be performed immediately prior to _“11.3.2.4. Signing a Claim”_. Following the steps listed here, the Claim should be signed as described in the main specification.
 
 1.  Create a copy of the `claim-map` containing all non-attestation assertions.
-    
+
 2.  Calculate the hash of the serialized (Partial) `claim-map` to form _hash(claim-map)_.
-    
+
 3.  Create an `attestation-tbs-map` data structure, including _hash(claim-map)_, the time, and (optionally) the public key of the Claim Signer. Add any desired optional data to `attestation-tbs-map`. CBOR-serialize and hash to form _hash(attestation-tbs-map)_.
-    
+
 4.  Use the appropriate platform service to obtain an attestation over _hash(attestation-tbs-map)_ to form attestation _attest(hash(`attestation-tbs-map`))_
-    
+
 5.  Create a new `attestation-info-map`, then:
-    
+
     1.  Set `att-type` to the type-selector for the attestation performed ([Appendix A](#appendix-a))
-        
+
     2.  Set `attestation-tbs` to `attestation-tbs-map`
-        
+
     3.  Set `attestation-results` to _attest(hash(attestation-tbs-map))_ obtained in the previous step. Note that defined types and encodings are specified in [Appendix A](#appendix-a).
-        
-    
+
+
 6.  Create a JUMBF attestation container with label `c2pa.attestation` (or `c2pa.attestation_00n`, if more than one attestation must be included) containing the `attestation-info-map` being prepared.
-    
+
 7.  Add the `attestation-info-map` to the Assertion Store.
-    
+
 8.  Add a new `hashed-uri-map` to the `assertions` array in `claim-map`, referencing the newly added Attestation Assertion.
-    
+
 9.  If more than one attestation is required, go back to (2), but start with the current Partial `claim-map` containing the attestations calculated thus far.
-    
+
 
 At this point, the final claim has been created, and processing can continue according to _“11.3.2.4. Signing a Claim”_ using the `claim-map` with all embedded Attestation Assertions.
 
@@ -530,36 +530,36 @@ An attestation aware validator should perform all of the steps documented in the
 If all currently defined checks defined in the main specification succeed, then an attestation-aware validator will perform the following additional steps. If any of the checks specified here fail then the Claim should be considered invalid.
 
 1.  To perform attestation validation, first all Attestation Assertions are removed from the `assertions` array in the Claim to form the (first) Partial Claim.\[[3](#_footnotedef_3)\]
-    
+
 2.  If there is only one Attestation Assertion, then that Attestation Assertion becomes the Current Attestation Assertion. If the Claim contains more than one Attestation Assertion, then the first Attestation Assertion becomes the Current Attestation Assertion.
-    
+
 3.  The Current Attestation Assertion is then checked using the following steps:
-    
+
     1.  The `att-type` field is checked to see if it understood and expected.
-        
+
     2.  The `attestation-tbs-map` is extracted from the `attestation-info-map` and the following checks are performed:
-        
+
         1.  If the `alg` field is present, then the Validator should check that the algorithm is supported. If `alg` is not present, then the hash algorithm defined by the enclosing claim should be used.
-            
+
         2.  The `hash` field is checked to see if it matches the hash of the current Partial Claim.
-            
+
         3.  If present, the `pub-key` field must match the public key associated with the Claim Signature.
-            
-        
+
+
     3.  The `attestation-results` is validated. How this validation is performed will depend on the attestation technology used. The following steps are generic. See [Appendix A](#appendix-a) for scheme-specific detail.
-        
+
         1.  `attestation-results` encodes the attestation measurement. The external data hash that was used when the attestation was created should match the hash of the `attestation-tbs-map` that is encoded in this assertion.
-            
+
         2.  `attestation-results` is typically a signature that chains up to an Attestation Trust Root. If `certificates` is present, Validators should check that the certificate chain is valid and chains up to a known Attestation Trust Root. If `certificates` is not present, then the Validator should check that the attestation measurement is signed by a known Attestation Trust Root.
-            
+
         3.  `attestation-results` also typically encodes measurements of the device, application, and/or security environment when the Attestation was created. The policy for evaluating these measurements is not in scope for this specification. General considerations for managing attestation measurements are discussed in [Chapter 3](#_c2pa_trust_model_overview).
-            
-        
-    
+
+
+
 4.  If the preceding checks succeed then this Attestation Assertion has been validated.
-    
+
 5.  If the Claim contains additional Attestation Assertions, the `attestation-info-map` that was just processed is added back to the `assertions` array in Partial Claim in the place that it was removed forming the next Partial Claim, and processing continues at Step 3 using the next Attestation Assertion as the Current Attestation Assertion.
-    
+
 
 When all Attestation Assertions have been processed successfully, the Claim is considered valid.
 
@@ -598,11 +598,11 @@ A variety of hardware-based attestation technologies are available. Most platfor
 System architects may consider the following factors when choosing an attestation technology:
 
 1.  What is available? The platform may only offer one attestation technology. For example, a TPM may be the only attestation technology available on a platform. In this case, the choice is made for the system architect.
-    
+
 2.  Which System Services need to be "trusted?" Some aspects of Claim Creation can be performed without use of external services. For example, creating asset-bindings (hashes) can be implemented entirely by the Claim Creator without the use of OS services. However, some scenarios benefit from attesting that data was securely obtained from IO devices such as a camera sensor or GPS receiver. If attestation is to increase trust in data "passed in" from outside the Claim Creator application, then the device or OS that provides this data must be attested, be immutable, or be authenticated. This is generally simplest when the whole OS is attested.
-    
+
 3.  Online or Offline? Some attestation technologies (PlayIntegrity, RATS) require an online connection to a server create an attestation. Others can create attestations offline.
-    
+
 
 <a id="_implicit_or_explicit_attestation"></a>
 ### 9.2. Implicit or Explicit Attestation
@@ -639,9 +639,9 @@ RATS (Remote Attestation Procedures) is a suite of technologies and protocols th
 This is generally a good thing, but it comes at the cost of:
 
 1.  The availability of a RATS server that is trusted by the Claim Verifier, and
-    
+
 2.  An online connection to a RATS server at the time of Claim Creation.
-    
+
 
 Note that RATS also defines protocols for "key attestation." These techniques can be used to enroll keys for Implicit Attestation.
 
@@ -676,9 +676,9 @@ Embedded Explicit Attestations processed by attestation-aware Claim Validators r
 When a C2PA Manifest uses a `c2pa.hash.data` assertion for the hard binding to the media, there is an interdependency between the hard binding assertion and the attestation assertion. This interdependency can be summarized by highlighting two key steps in the process:
 
 1.  The `c2pa.attestation` assertion contains a hash of the Partial Claim, which in turn contains a hash of the `c2pa.hash.data` assertion.
-    
+
 2.  The `c2pa.hash.data` assertion contains an `exclusions` field in it, which implicitly encodes the size of the C2PA Manifest. But the size of the C2PA Manifest will change when the `c2pa.attestation` assertion is finalized.
-    
+
 
 The contents of the `c2pa.attestation` assertion depends on the contents of the `c2pa.hash.data` assertion, which depends on the size of the `c2pa.attestation` assertion. The solution to the problem is to use padding. For example, the `pad` and `pad2` fields of the `attestation-info-map` can be used to add padding to the `c2pa.attestation` assertion before finalizing the `exclusions` field of the `c2pa.hash.data`. A procedure for accomplishing this is described in [Section 11.4](https://c2pa.org/specifications/specifications/1.3/specs/C2PA_Specification.html#_multiple_step_processing) of the C2PA specification.
 
@@ -711,9 +711,9 @@ The documentation for some of the schemes presented here are incomplete. C2PA se
 Android Key Attestation provides a way to determine if an asymmetric key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. See the following Android references for details:
 
 *   [Key and ID Attestation](https://source.android.com/docs/security/features/keystore/attestation)
-    
+
 *   [Verifying hardware-backed key pairs with Key Attestation](https://developer.android.com/training/articles/security-key-attestation)
-    
+
 
 <a id="_other_android_attestation_methods"></a>
 #### A.1.1. Other Android Attestation Methods
@@ -721,14 +721,14 @@ Android Key Attestation provides a way to determine if an asymmetric key pair is
 Key Attestation is one method of performing attestation on Android devices. Other methods include:
 
 *   **SafetyNet Attestation API** - This API has been deprecated and replaced by the Play Integrity API.
-    
+
 *   **Play Integrity API** - Attestations received via this API are primarily intended to verify "internal" communications between collaborative application services, and are not designed to be ingested by a 3rd party. There are two problems associated with Play Integrity attestations that limit their applicability for C2PA attestation:
-    
+
     *   The _integrity verdict_ provided by Play Integrity is wrapped in JWE (JSON Web Encryption). It can only be decrypted by an entity in possession of the application’s decryption key, which should not be shared publicly, and probably should not even be stored or accessed locally on the Android device.
-        
+
     *   Once the _integrity verdict_ is decrypted, it contains a JWS (JSON Web Signature) which must be verified with the proper public key. Google provides this public key to developers without a backing certificate, and it is not clear how long-lived this key is and how relying parties should handle key rotations.
-        
-    
+
+
 
 <a id="_key_attestation_overview"></a>
 #### A.1.2. Key Attestation Overview
@@ -741,19 +741,19 @@ The end-entity certificate (the one containing the public key portion of the key
 #### A.1.3. Creating the Assertion
 
 1.  Generate the `attestation-tbs-map` as described in [Section 7.6.1.2](#attestation-to-be-signed-definition).
-    
+
 2.  Hash this `attestation-tbs-map`. This hash will be used as the _challenge_ value for the Key Attestation. The hashing algorithm used should be the same algorithm that was used when creating the `partial-claim-hash` parameter of the `attestation-tbs-map` (the algorithm reported in the `alg` parameter of the `attestation-tbs-map`).
-    
+
 3.  Request a keypair from the Android keystore, passing the _challenge_ value in a call to `setAttestationChallenge()` [as described here](https://developer.android.com/reference/android/security/keystore/KeyGenParameterSpec.Builder#setAttestationChallenge%28byte%5B%5D%29). This will create a private key, secured in the keystore, and a certificate chain containing all certificates from the Google root to the end-entity certificate, which provides the public key for this keypair.
-    
+
 4.  Sign the previously generated `attestation-tbs-map` with the private key in the keystore.
-    
+
 5.  Place the signature, along with the certificate chain (minus the root certificate) into the `attestation-info-map`, as described in [Section 7.6.1.3](#attestation-assertion-definition).
-    
+
 6.  Store the `attestation-info-map` in the C2PA manifest’s Assertion Store as a new `c2pa.attestation` assertion.
-    
+
 7.  Continue with the normal C2PA claim signing process.
-    
+
 
 <a id="_definition_of_fields_in_attestation_info_map_for_android_key_attestation"></a>
 #### A.1.4. Definition of Fields in `attestation-info-map` for Android Key Attestation
@@ -769,22 +769,22 @@ The end-entity certificate (the one containing the public key portion of the key
 #### A.1.5. Validating the Assertion
 
 1.  Obtain [Google’s Hardware Attestation Root certificates](https://developer.android.com/training/articles/security-key-attestation#root_certificate). Since various devices will provide a trust chain against any one of these roots, the validator should attempt to verify the assertion’s certificate chain against each of them.
-    
+
 2.  Check each certificate in the chain for revocation using the [certificate revocation status list](https://developer.android.com/training/articles/security-key-attestation#certificate_status) (CRL) maintained by Google.
-    
+
 3.  The assertion is validated according to the procedure described in [Section 7.8](#validating-a-claim). The `attestation-results` signature should be verified by checking the signature digest with the public key in the end-entity certificate from the `certificates` field. The signing algorithm is provided in the `other-info` field, as described above.
-    
+
 4.  If this validation succeeds, then extra steps may optionally be performed to provide increased confidence in the integrity of the signing device.
-    
+
     1.  From the end-entity certificate, find and extract the x509v3 extension with OID of `1.3.6.1.4.1.11129.2.1.17`. This is the _attestation extension_. It is an ASN.1 structure adhering to [this schema](https://source.android.com/docs/security/features/keystore/attestation#schema).
-        
+
     2.  In the _attestation extension_, check the `attestationSecurityLevel` and the `keymasterSecurityLevel`. Both should be set to a value of `2` (`StrongBox`).
-        
+
     3.  In the _attestation extension_, check the `attestationChallenge` value. It should match a hash of the `attestation-tbs` parameter from the `attestation-info-map`.
-        
+
     4.  In the `teeEnforced` structure of the _attestation extension_, in the `rootOfTrust` structure, check the `verifiedBootState` parameter. It should be set to a value of `0` (`Verified`).
-        
-    
+
+
 
 <a id="_intel_sgx"></a>
 ### A.2. Intel SGX
@@ -794,17 +794,17 @@ Intel SGX Attestation provides evidence that the application is running on an In
 The high-level flow of an Intel SGX ECDSA attestation is:
 
 1.  The Intel SGX workload contacts the relying party and requests access to a service or resource.
-    
+
 2.  The relying party responds by issuing a challenge: it asks the Intel SGX workload to identify itself and provide proof that its credentials are valid.
-    
+
 3.  To satisfy the challenge, the Intel SGX workload generates a quote, which is a cryptographic measurement of the instantiated enclave. The quote is signed using the attesttion collateral that’s stored in the data center caching service.
-    
+
 4.  The quote is sent it to the relying party over the secure communications channel.
-    
+
 5.  The relying party verifies the quote. It fetches the attestation collateral associated with the quote from the data center caching service and uses it to verify the signature.
-    
+
 6.  Assuming the quote is valid, it examines the quote metadata and the trusted compute base (TCB) level that is associated with the signing key. The service then applies its security policy and decides whether it should trust the enclave.
-    
+
 
 Intel does not define a specific protocol for communications between the Intel SGX workload and the relying party. How the two systems establish their secure communications channel and exchange information is up to the solution provider.
 
@@ -876,13 +876,13 @@ The sample application performs two verifications. The first, labeled “Trusted
 With the quote verified, inspect the quote and examine its contents. Remember that quote verification merely tells whether the quote is valid, and whether there are issues with the remote enclave’s TCB. Trusting the quote is not the same as trusting the enclave: to make a trust decision about the enclave, its metadata must be examined and, at minimum, answer the following questions:
 
 *   Is this enclave one that can be recognized? Specifically, can verification recognize MRSIGNER, MRENCLAVE, and the vendor-specific identifiers?
-    
+
 *   Is the debug attribute set?
-    
+
 *   Is the quoting enclave one that can be identified? And is it up to date?
-    
+
 *   Is the enclave’s software version up to date? Note that this check assumes the software that generates the SGX image maintains a proper SVN process.
-    
+
 
 A production service may have even more stringent requirements. Ultimately, these are all policy matters; it is up to the service provider to decide which enclaves their service will trust and how that service should arrive at its decisions.
 
@@ -957,13 +957,13 @@ In order to comply with C2PA requirement of binding user-supplied data (the hash
 With this enhancement in place, the following sequence should be used to create the attestation:
 
 1.  The C2PA Claim-Signer Application invokes the binding layer API `uint8_t request_attestation(uint8_t* data_ptr, uint8_t data_size, uint8_t* result_data_ptr, uint8_t* result_size)`. Here `data_ptr` points to the hash of `attestation-tbs-map` and `data_size` is the size of the hash, in bytes. The remaining arguments are return values that are set if the function call completes successfully.
-    
+
 2.  Upon receipt of the call, an attestation protocol handshake is performed between the binding layer and the [Veraison](https://github.com/veraison) RATS Trust Broker Service. The exact message exchange follows the RATS Challenge-Response Protocol, which is described [here](https://github.com/veraison/docs/tree/main/api/challenge-response). The high level flow of RATS Verification steps performed by a RATS Trust Broker Service can be found [here](https://ietf-rats-wg.github.io/draft-ietf-rats-corim/draft-ietf-rats-corim.html#name-corim-based-appraisal-of-ev).
-    
+
 3.  If the attestation protocol completes successfully, the function returns `0` and the `result_data_ptr` receives the attestation verdict encoded as a signed Jason Web Token (JWT) or CBOR Web Token (CWT) object.
-    
+
 4.  In the case of JWT, `attestation-results` in `attestation-info-map` is set to the UTF-8-encoded JWT, as described in [Section 7.6.1.3](#attestation-assertion-definition). In the case of CWT, `attestation-results` in `attestation-info-map` is set to the CBOR-encoded token without further encoding. The media type of the `attestation-results` payload is used to deduce the encoding. For example, a JWT serialization would use: `application/eat-jwt; eat_profile="tag:github.com,2023:veraison/ear"` and CWT would use `application/eat-cwt; eat_profile="tag:github.com,2023:veraison/ear"`
-    
+
 
 <a id="_verifying_the_attestation_assertion"></a>
 #### A.4.2. Verifying the Attestation Assertion
@@ -973,23 +973,23 @@ A RATS Attestation Result is based on the [EAT Attestation Result](https://datat
 An attestation-aware C2PA Validator shall perform the following steps for attestation verification.
 
 1.  Extract the Attestation Assertion
-    
+
 2.  Extract the `att-result` field to obtain the CWT or JWT, then verify the signature using the public key of the Verifier. The Verifier public key can be either pre-fetched from the Verifier or obtained at the time of Verification using the defined public interface, [here](https://github.com/veraison/docs/tree/main/api/well-known)
-    
+
 3.  Upon signature verification, decode the CWT or JWT, for example, using the EAT Attestation Result(EAR) Library [here](https://github.com/veraison/c-ear).
-    
+
 4.  From the decoded content, extract the `user data` from the EAR Veraison specific extension
-    
+
 5.  Compute the hash of the Partial Claim and match it with `user data` claim from the EAR
-    
+
 6.  Decode the `att-result` to get the structure of the Attestation Results as given in [EAT Attestation Result](https://github.com/veraison/ear/tree/main/) or using equivalent "C" based decoder [here](https://github.com/veraison/c-ear)
-    
+
 7.  Decode the Appraisal structure to obtain the `Trustworthiness Vector`
-    
+
 8.  Ascertain that the Status value is `TrustTierAffirming`. A Verifier which receives Status value as `TrustTierContraindicated` can conclude that the underlying platform is not trustworthy
-    
+
 9.  Verify that the Hardware and Executables trustworthiness claim are set to `TrustTierAffirming`. This is an indicator of a genuine hardware running a trusted executable platform
-    
+
 
 <a id="_definition_of_fields_in_attestation_info_map_for_ietf_rats"></a>
 #### A.4.3. Definition of Fields in `attestation-info-map` for IETF RATS

@@ -1,6 +1,6 @@
 # C2PA Security Considerations
 
-[![Creative Commons License](_images/CCby4.png)](https://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](https://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
@@ -10,11 +10,11 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 This document provides information security considerations for technology described in the [C2PA core specification](../specs/C2PA_Specification.html.md). It complements security-related content in other C2PA documents. This document includes:
 
 *   A summary of relevant security features of C2PA technology
-    
+
 *   Security considerations for practical use of C2PA technology
-    
+
 *   Threats to C2PA technology and respective treatment of those threats, including countermeasures
-    
+
 
 Analysis in this document does not assess security risk or likelihoods associated with threats or outcomes. These may vary based on a number of factors, such as the context in which C2PA technology is deployed and changes in the threat landscape. However, content in this document may be helpful in developing security risk and likelihood assessments related to use of C2PA technology.
 
@@ -46,19 +46,19 @@ Like other security activities, we expect our threat modelling process to evolve
 A variety of references and experiences are used to inform threat modelling and related security activities for the C2PA. This section provides a subset of public documents for reference.
 
 *   [IETF on security considerations](https://datatracker.ietf.org/doc/html/rfc3552#page-26)
-    
+
 *   [IETF on privacy considerations (guidelines)](https://datatracker.ietf.org/doc/html/rfc6973#section-7)
-    
+
 *   [W3C security and privacy self-review questionnaire](https://www.w3.org/TR/security-privacy-questionnaire/)
-    
+
 *   [OAuth2 threat model (example)](https://datatracker.ietf.org/doc/html/rfc6819)
-    
+
 *   [Threat Modelling: Designing for Security](https://shostack.org/books/threat-modeling-book)
-    
+
 *   [OWASP Threat Modelling](https://owasp.org/www-community/Threat_Modeling)
-    
+
 *   [Microsoft Threat Modelling](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling)
-    
+
 
 <a id="_security_features"></a>
 ## 2\. Security features
@@ -111,7 +111,7 @@ Active Manifest
 
 The last manifest in the list of _C2PA Manifests_ inside of a _C2PA Manifest Store_ which is the one with the set of _content bindings_ that are able to be validated.
 
-![A C2PA Manifest and its parts](_images/Manifest.drawio.svg)
+[A C2PA Manifest and its parts](_images/Manifest.drawio.svg)
 
 Figure 1. A C2PA Manifest and its constituent parts
 
@@ -162,11 +162,11 @@ The complete validation algorithm is described in detail in the [validation sect
 C2PA provides features that can be used to protect confidentiality of personal information while still establishing the provenance of an asset.
 
 *   Anonymous or pseudo-anonymous identities may be used within identity assertions. In addition, identity assertions are optional and do not need to be included within a claim.
-    
+
 *   Assertions that may contain sensitive information can be removed via [redaction](../specs/C2PA_Specification.html.md#_redaction_of_assertions).
-    
+
 *   Assertions can be customized for specific workflows, such as where specific information is required to remain encrypted end-to-end.
-    
+
 
 Note that confidentiality of personal information and other privacy-related concerns are addressed in the [Harms Considerations document](Harms_Modelling.html.md).
 
@@ -191,13 +191,13 @@ Attempts to compromise the integrity of C2PA provenance data associated with a r
 For embedded C2PA Manifests, malicious association of an existing manifest with a differing asset is also tamper-evident. In addition, the following actions are tamper-evident for all manifests:
 
 *   C2PA Manifest Store: Malicious addition or removal of a manifest.
-    
+
 *   C2PA Manifest: Malicious modification of an active or ingredient manifest.
-    
+
 *   Claims and claim signatures: Addition, removal, or modification of an existing claim in an existing C2PA Manifest.
-    
+
 *   Assertions: Addition, removal, or modification of assertions in the assertion store referenced by an existing claim.
-    
+
 
 Availability
 
@@ -212,20 +212,20 @@ Confidentiality
 C2PA does not specify confidentiality properties for assets, provenance model primitives, private address books, or cryptographic secrets.
 
 *   They may be kept confidential via other means. For example by transmitting assets via TLS. However, enforcing this confidentiality is considered out-of-scope for this specification.
-    
+
 *   Some private data, such as claim signing keys or private address books, must adhere to conventional confidentiality principles. Compromise of this private data could lead to indirect violation of other principles specified in this section. Enforcing confidentiality of this adjacent private data is considered out-of-scope for this specification.
-    
+
 *   C2PA does not specify Digital Rights Management (DRM) technology.
-    
+
 *   C2PA does not specify guarantees of confidentiality of personal information.
-    
+
     *   However, C2PA provides features that can be used to protect confidentiality of personal information ([summary](#_protection_of_personal_information))
-        
+
     *   Confidentiality of personal information and other privacy-related concerns are addressed in the [Harms Considerations document](Harms_Modelling.html.md).
-        
+
         In general, these assertions are achieved through application of the [C2PA Trust Model](../specs/C2PA_Specification.html.md#_trust_model) to the claim generation process, and corresponding checks in the validation process.
-        
-    
+
+
 
 Non-repudiation
 
@@ -243,13 +243,13 @@ This section documents information security threats to C2PA technology. Threats 
 Each threat scenarios is described as follows:
 
 *   Description: A short description of the threat scenario
-    
+
 *   Prerequisites: Relevant requirements for attempting an attack or threat scenario
-    
+
 *   Impact analysis: Summary of the impact of the threat scenario on the C2PA security model
-    
+
 *   Guidance: Any supplementary security guidance on addressing the threat scenario or treating potential residual security risk
-    
+
 
 > **NOTE:**
 > This document refers to threat sources, agents, actors and other malicious entities commonly as attackers.
@@ -262,7 +262,7 @@ Each threat scenarios is described as follows:
 
 Below is simple workflow diagram that represents a common C2PA workflow. Since each implementation may vary, this workflow diagram is not representative of any specific implementation. For instance, C2PA supports multiple asset types, and this diagram only represents the creation and viewing of a signed image. The intent of this diagram is solely to provide a high-level starting point for discussion.
 
-![A C2PA workflow for images](_images/C2PA-Flow-Diagram.drawio.svg)
+[A C2PA workflow for images](_images/C2PA-Flow-Diagram.drawio.svg)
 
 Figure 2. A C2PA workflow for images
 
@@ -275,30 +275,30 @@ Figure 2. A C2PA workflow for images
 The following assumptions are made about entities that may attack C2PA technology:
 
 *   Attackers have full access to public assets and associated public metadata, including C2PA Manifests.
-    
+
 *   Attackers may attempt to access claim generator software (e.g., C2PA-enabled photo editing software) as a typical user.
-    
+
 *   Attackers do not have access to private keys referenced within the C2PA ecosystem (e.g., claim signing private keys, Time-stamping Authority private keys, etc.). They may, however, attempt to access these keys via exploitation techniques.
-    
+
 *   Attackers have the ability to publish assets to an impactful audience, for example, as a social media user.
-    
+
 *   Quantum computing cryptanalytic attacks are considered out-of-scope.
-    
+
 
 The following additional assumptions are made about the threat model:
 
 *   Attacks that rely on bypassing conventional security models of non-C2PA technology are considered out-of-scope. For example:
-    
+
     *   Attacks against the C2PA validator as an architectural component within a user agent (e.g., web browser) are considered in-scope.
-        
+
     *   A compromise of the C2PA validation logic via some non-C2PA attack vector within the user agent is considered out-of-scope, since this would typically require bypassing the security model of the user agent (e.g. escaping a web browser sandbox or compromising the host via other means).
-        
-    
+
+
 *   Attacks across conventional trust boundaries are considered in-scope.
-    
+
     *   For example, attacks against C2PA-enabled assets traversing the internet.
-        
-    
+
+
 
 <a id="_attack_targets"></a>
 #### 4.2.2. Attack targets
@@ -349,84 +349,84 @@ These types of attacks are focused on human assumptions rather than technical at
 Threats within this section are grouped by the attacker’s goals. Each threat scenario includes a description, prerequisites, impact analysis, and security guidance.
 
 *   [Section 4.3.1, “Goal: Degrading access to provenance information”](#_goal_degrading_access_to_provenance_information)
-    
+
     *   [Section 4.3.1.1, “Threat: Stripping C2PA Manifests”](#_threat_stripping_c2pa_manifests)
-        
+
     *   [Section 4.3.1.2, “Threat: Stripping data within C2PA Manifests”](#_threat_stripping_data_within_c2pa_manifests)
-        
+
     *   [Section 4.3.1.3, “Threat: Stripping time-stamp information”](#_threat_stripping_time_stamp_information)
-        
-    
+
+
 *   [Section 4.3.2, “Goal: Tamper with provenance information”](#_goal_tamper_with_provenance_information)
-    
+
     *   [Section 4.3.2.1, “Threat: Copying C2PA Manifests”](#_threat_copying_c2pa_manifests)
-        
+
     *   [Section 4.3.2.2, “Threat: Spoofing signed C2PA Manifests via a stolen key”](#_threat_spoofing_signed_c2pa_manifests_via_a_stolen_key)
-        
+
     *   [Section 4.3.2.3, “Threat: Spoofing signed C2PA Manifests via misuse of claim generator”](#_threat_spoofing_signed_c2pa_manifests_via_misuse_of_claim_generator)
-        
+
     *   [Section 4.3.2.4, “Threat: Issuance of claim signing keys to malicious entity”](#_threat_issuance_of_claim_signing_keys_to_malicious_entity)
-        
+
     *   [Section 4.3.2.5, “Threat: Swapping ingredients”](#_threat_swapping_ingredients)
-        
+
     *   [Section 4.3.2.6, “Threat: Binding malicious media asset to valid provenance via soft-binding collision”](#_threat_binding_malicious_media_asset_to_valid_provenance_via_soft_binding_collision)
-        
+
     *   [Section 4.3.2.7, “Threat: Binding valid media asset to malicious provenance via soft-binding collision”](#_threat_binding_valid_media_asset_to_malicious_provenance_via_soft_binding_collision)
-        
+
     *   [Section 4.3.2.8, “Threat: Recovering redacted information”](#_threat_recovering_redacted_information)
-        
+
     *   [Section 4.3.2.9, “Threat: Injection of conflicting assertion types”](#_threat_injection_of_conflicting_assertion_types)
-        
+
     *   [Section 4.3.2.10, “Threat: Outdated Trust List information”](#_threat_outdated_trust_list_information)
-        
+
     *   [Section 4.3.2.11, “Threat: Displaying revoked C2PA Manifests as valid”](#_threat_displaying_revoked_c2pa_manifests_as_valid)
-        
+
     *   [Section 4.3.2.12, “Threat: Impersonating conforming claim generator during automated certificate enrollment”](#_threat_impersonating_conforming_claim_generator_during_automated_certificate_enrollment)
-        
+
     *   [Section 4.3.2.13, “Threat: Tampering with assets and assertions at generation”](#_threat_tampering_with_assets_and_assertions_at_generation)
-        
+
     *   [Section 4.3.2.14, “Threat: Downgrade attack via the specVersion field”](#_threat_downgrade_attack_via_the_specversion_field)
-        
-    
+
+
 *   [Section 4.3.3, “Goal: Gain control of the C2PA implementation or environment”](#_goal_gain_control_of_the_c2pa_implementation_or_environment)
-    
+
     *   [Section 4.3.3.1, “Threat: Interfering with UI rendering of C2PA Manifests”](#_threat_interfering_with_ui_rendering_of_c2pa_manifests)
-        
+
     *   [Section 4.3.3.2, “Threat: Interference with the storage and organization of C2PA Manifest data”](#_threat_interference_with_the_storage_and_organization_of_c2pa_manifest_data)
-        
+
     *   [Section 4.3.3.3, “Threat: Exploitation of the application software”](#_threat_exploitation_of_the_application_software)
-        
+
     *   [Section 4.3.3.4, “Threat: Exploitation of the hosting environment”](#_threat_exploitation_of_the_hosting_environment)
-        
+
     *   [Section 4.3.3.5, “Threat: Interception and/or modification of traffic between two trusted sources”](#_threat_interception_andor_modification_of_traffic_between_two_trusted_sources)
-        
+
     *   [Section 4.3.3.6, “Threat: Exploitation of older C2PA versions”](#_threat_exploitation_of_older_c2pa_versions)
-        
+
     *   [Section 4.3.3.7, “Threat: Exploitation of the trustListURI”](#_threat_exploitation_of_the_trustlisturi)
-        
+
     *   [Section 4.3.3.8, “Threat: Resource exhaustion via excessively nested ingredient manifests”](#_threat_resource_exhaustion_via_excessively_nested_ingredient_manifests)
-        
-    
+
+
 *   [Section 4.3.4, “Goal: Targeting the human consumer of C2PA information”](#_goal_targeting_the_human_consumer_of_c2pa_information)
-    
+
     *   [Section 4.3.4.1, “Threat: Tracking the human consumer of C2PA information”](#_threat_tracking_the_human_consumer_of_c2pa_information)
-        
+
     *   [Section 4.3.4.2, “Threat: Name collision attacks”](#_threat_name_collision_attacks)
-        
+
     *   [Section 4.3.4.3, “Threat: Assumed trust relationship between two identities”](#_threat_assumed_trust_relationship_between_two_identities)
-        
+
     *   [Section 4.3.4.4, “Threat: Misuse of signed C2PA assets”](#_threat_misuse_of_signed_c2pa_assets)
-        
+
     *   [Section 4.3.4.5, “Threat: Inability to identify artificial content”](#_threat_inability_to_identify_artificial_content)
-        
-    
+
+
 *   [Section 4.3.5, “Goal: Identifying the human creator of content”](#_goal_identifying_the_human_creator_of_content)
-    
+
     *   [Section 4.3.5.1, “Threat: Using a certificate or key to discover identity”](#_threat_using_a_certificate_or_key_to_discover_identity)
-        
+
     *   [Section 4.3.5.2, “Threat: Inability to redact title information”](#_threat_inability_to_redact_title_information)
-        
-    
+
+
 
 <a id="_goal_degrading_access_to_provenance_information"></a>
 #### 4.3.1. Goal: Degrading access to provenance information
@@ -1123,15 +1123,15 @@ The privacy and anonymity of the consumer is compromised. In some contexts, this
 When designing certificate provisioning models and certificate policies, care should be taken to avoid the pre-requisites being available to attackers. Mitigations could include:
 
 *   Use single-use certificates in combination with environments that provide cryptographically strong protection for the storage and deletion of the certificate after it is used.
-    
+
 *   Ensure that the public certificate and key combination for the claim generator is used by a sufficiently large enough population that it can’t be statistically determined to be unique to a given individual. A risk may also exist if the certificate can be associated with an organization in scenarios where being identified as a member of that organization could put anyone within the group at risk.
-    
+
 *   If a claim has been signed by a certificate that could put an individual or group at risk, then one option is to remove the manifest containing that claim signature. The information from the removed manifest can be transferred to a new claim signed by a claim signing certificate that would not put the party at risk. For instance, an at-risk journalist could have their manifest removed from an asset and the parent news organization could create a new claim using their claim generator with the same information. If the information putting the individual at risk is a single assertion and not the claim signature itself, then it is possible to redact individual assertions instead of the entire manifest.
-    
+
 *   At-risk individuals should be aware of what their claim generator logs with regards to signing actions and whether those logs would be accessible to the party putting them at risk.
-    
+
 *   If the claim signing system cannot provide guarantees of anonymity to at-risk individuals, then the claim signing system should make it clear to users of the system that they could be individually identified. This would allow at-risk individuals to find a service that can provide the safety guarantees for their situation.
-    
+
 
 <a id="_threat_inability_to_redact_title_information"></a>
 ##### 4.3.5.2. Threat: Inability to redact title information
@@ -1163,11 +1163,11 @@ Every organization should have a plan for when a key becomes compromised. Even i
 A revocation of a key can be triggered by many types of events. For simplicity, this document will discuss three common scenarios.
 
 1.  _Early planned retirement of a trusted key._ This can occur when an organization wants to change a property of an existing certificate by switching to a new certificate that meets the new requirements. For instance, an organization may want to upgrade the cryptographic algorithms used to secure their certifcate or change the values in the certificate’s subject fields. Another scenario where early revocation might occur is as part of an end-of-life (EOL) process for infrastructure that is no longer supported. By revoking certificates that are no longer in use, an organization can reduce the risks of an attacker gaining access to old key material. This is an optional step taken by some organizations to help ensure that their key material is not used after it is no longer needed. Depending on the design of the PKI heirarchy in use by the organization, this process could potentially involve the revocation of intermediate certificates in addition to leaf certificates.
-    
+
 2.  _Attackers gain access to the key material._ Another scenario is that malicious actors are able to gain access to the key which invalidates the key’s integrity. The attacker’s access can either be direct or indirect. Direct access is when the attackers are able to extract a copy of the private key. Indirect access occurs when the attackers gain access to systems that are permitted to send signing requests to a hardware security module (HSM). Access to these systems allow the attackers to sign their own content with the organization’s code signing key. When either of these attacks occur, the organization must revoke their key to protect the integrity of their organization.
-    
+
 3.  _The certificate authority (CA) is compromised._ This is the least common scenario. However, it is possible that the organization’s certificate authority becomes compromised and an intermediary certificate needs to be revoked. This can occur when a third-party certificate authority is breached. If the organization has its own intermediary certificate, then this event could happen if a data breach of the organization affects the intermediate certificate. Depending on the CA, revocations may be issued for all leaf certificates affected by the breach in addition to revocation of the intermediate certificate. While these events are rare, they are still a possibility that organizations should have a plan to address since it could result in the revocation of a large amount of content.
-    
+
 
 A revocation is a request made to the Certificate Authority (CA) to end the validity of the certificate prior to the certificate’s original expiration date. When the request is made as part of a normal operational process, such as the first scenario, the revocation is effective as of the date when the CA adds the certificate to its revocation list. This ensures that all content signed prior to the revocation date is still valid and trusted. Any attempts to sign content after the revocation date will result in untrusted content.
 
@@ -1183,44 +1183,44 @@ Sometimes an organization will choose not to time-stamp the content that they si
 The first step in revocation planning starts before a key is even created. This includes plans for how many keys will be necessary, their scope and usage, their protection, and operational policies. A good key management plan can help minimize the impact of any unplanned need for key revocation.
 
 1.  **Storage:** It is highly recommended that keys be stored in a Hardware Security Module (HSM). These devices can ensure that a private key, either uploaded or created by the system, can never be extracted from the system with the proper settings. This is true even for the HSM owner. HSMs provide several layers of protections. An attacker will never be able to steal a direct copy of the private key. Access to the key is controlled via authentication and authorization. In addition, all signing requests are logged which can allow a forensics team to determine when an attacker made requests to HSM system and the hashes of any binaries that were signed as a result.
-    
+
 2.  **Scope of usage:** Organizations that sign high volumes of content should split the signing of content across multiple keys. For instance, if an organization chooses to use a single key for all their signing needs, this creates the possibility that a revocation of that key due to a security breach will result in a large amount of content being revoked. As an example, assume that a system signs 1,000 images per day. An attacker compromises a key on the first of the month. It takes the company 7 days to detect the breach, clean up the environment, and rotate to a new key. During that time, in addition to the content that the attacker created, the 7,000 valid images created during that window would also be revoked. It is not possible to revoke individual pieces of content based on the hashes of the binaries that the attackers created with the HSMs. If the signing needs of an organization were instead split across multiple keys, then a revocation of any one of those keys would have a much smaller impact than the single key approach. By leveraging multiple claim generators, each with unique certificates, the breach of any individal environment does not impact the other enviroments. As another example, a global organization will have to conform to the laws of many different governments. Therefore, deploying unique claim generators with unique certificates to specific regions can help reduce risk. If the organization ever chooses to decommission an implementation within a specific region due to a legal disagreement, then the revocation of that region’s certificate does not impact the other regional claim generators.
-    
+
 3.  **Lifetime of the certificate:** Short-lived certificates that are only valid for days, hours, or minutes can help reduce the possibility of a private key with a valid public key certificate being stolen. For instance, some organizations may choose to generate short-lived certificates in higher risk scenarios. A client would indicate that they have content that is ready to sign, the claim generator would perform an authentication and authorization check to confirm that the client is allowed to use the service, and then the claim generating service would create a short-lived certificate for that signature or a defined time window for multiple signatures. These approaches often help to reduce the windows of opportunity that a malicious third-party has to successfully gain access to a valid certificate and key.
-    
+
     However, it is important to note that this approach does not guarantee that the volume of content that an adversary can sign with a stolen key will be small. If an advanced adversary has planned ahead and already pre-generated the content that they want to sign with the stolen key, then the adversary can likely sign all of that content within the window of time that the key is valid. In this scenario, a revocation could apply to a large amount of malicious content but it would only affect a small number of valid users since the certificate was generated for a specific purpose.
-    
+
     Short-lived certificates are a best practice in scenarios where signing requests are infrequent since certificates are only generated as needed and have no value outside of those short time windows. Short-lived certicates can also be at a technique to limit the number of impacted users when a revocation needs to occur because the certificate was generated for a specific set of content. However, short-lived certificates may not be practical for all scenarios since the overhead of generating and protecting the certificates at scale may be too high in some situations.
-    
+
 4.  **Time-stamps:** By applying time-stamps to signed content, it is possible to ensure that any content created prior to the breach remains trusted. If a revocation occurs and the content does not have a time-stamp for comparison against the revocation date, then the content will be assumed to be untrusted. Time-stamps also allow customers to have a secondary method to confirm whether their content will be affected in the event that a revocation deployment takes time to roll out.
-    
+
 5.  **OCSP Stapling:** Revocation checking behavior may depend on choices made during the content signing process. All C2PA content signers should ensure that their systems are not using revoked or expired certificates as described in [14.6.2](../specs/C2PA_Specification.html.md#x509_certificates). The OCSP response from that verification can be attached to the image using OCSP stapling techniques. This technique, along with time-stamps, will allow a downstream validator to confirm that the certificate was not revoked at the time the content was signed. This pre-check can be useful in streamlining downstream validation processes and assisting when the OCSP server is unavailable. For content that may be sensitive to view, this technique can also help reduce unnecessary network calls when viewing the content.
-    
+
     However, OCSP stapling can have drawbacks since it is possible that the signing process occurred after the key’s compromise date but before the compromise was detected. Once the revocation is issued by the CA, the signed content would be considered to be revoked if a query is made to the OCSP server. However, the revocation check for that content may not occur until the OCSP response stapled to the content expires.
-    
+
     OCSP stapling is optional within the C2PA specification, and organizations should balance the benefits and risks associated with OCSP stapling. If OCSP stapling is used, then organizations should also be careful when choosing the length of the validity period for the stapled response in order to balance the risks associated with a potentially delayed revocation check.
-    
+
 6.  **Pre-existing information stores** Any revocation plan should take into account places where the image or the Content Credentials may be stored or cached. For instance, Content Delivery Networks (CDNs) may have caches of the images that persist and need to be cleared. In addition, an image’s watermark or digital fingerprint may have been stored by online services along with the original Content Credential. When a search is conducted via these online services, the original Content Credential with the revoked certificate may be returned. Planning for a revocation includes planning for how to handle situations when customers encounter older versions of the image based on the revoked certificate.
-    
+
 7.  **Policies and plans:** It is important to have documentation ahead of time for how to handle a revocation. Contact your certificate authority to understand their procedures and point of contact for a revocation. Revoking certificates once they are no longer planned to be used is a healthy practice that eliminates the risk of attackers being able to use those keys before their expiration date.
-    
+
     For revocations associated with a data breach, it is likely that some valid content will get labeled as untrusted due to a revocation. Therefore, have a plan in place for how to rotate the keys and have a plan for any content that will need to be quickly re-signed by the new, valid certificate. Depending on the usage of the key and the window between compromise and revocation, this may be a process that needs to work at scale. In addition, content may need to replaced where it has been deployed. The ability to act quickly is necessary to minimize the impact for the organization and users.
-    
+
 8.  **Communications plans:** A communication plan is one type of policy and plan related to the above suggestions. However, this plan is being called out separately because the situation may be complicated. A revocation can cause confusion for content consumers who may not understand the errors that they are seeing. In addition, the content consumers may be consuming the content on a site that isn’t controlled by the entity whose certificate is revoked. It is also important to note that multiple audiences may need to be notified and provided messaging appropriate to their relationship with revoked certificates.
-    
+
     Revocation in complex content workflows may also be confusing for content consumers. As an example, assume that the certificate that needs to be revoked was used in the middle of a processing chain. For this example, assume that the content processing chain is:
-    
+
     A) An image was created and signed by a camera.  
     B) The organization’s tool was used to apply some edits to the photo.  
     C) Another tool was used to apply contextual labeling to the photo.  
     D) A fourth tool is used to apply some final production edits prior to publishing.  
-    
+
     The final image from this workflow has manifests from all four steps in that process. When the certificate associated with step B is revoked, it affects all of organizations involved in steps C and D. If a content consumer looks at the manifest history, then it will show A is valid, B is revoked, C is valid, and D is valid. This will likely result in confusion for consumers of the content and the other organizations involved. Therefore, a robust communication plan will need to be in place. The communication plan should cover all potentially involved parties since each party may need different information. For instance, a communications plan may need to cover messaging to employees, customers, law enforcement, business partners and other key stakeholders.
-    
+
     In addition, a communication plan should be familiar with the user experience that a content consumer will see when viewing content with a revoked certificate. While each C2PA implementation will have variations in the overall user experience, the C2PA User Experience Guidance documentation establishes a baseline model for consistency in the usage of icons and messages. A revoked certificate would be addressed by the [invalid states](../../2.2/ux/UX_Recommendations.html.md#_invalid_states) section of that document.
-    
+
     For deployments using OCSP stapling, be prepared for questions regarding why some content may still appear to be valid after the revocation has been posted. The content may continue to appear valid until the OCSP stapling validity period expires. In addition, older versions of the C2PA Manifest may have been stored in systems that track images based on digital fingerprints, watermarks, and C2PA Manifests. Customers may come across the original C2PA Manifest when searching these systems with the new image.
-    
+
 
 <a id="_revoking_a_certificate"></a>
 ### 5.3. Revoking a certificate
@@ -1243,9 +1243,9 @@ D) A fourth tool is used to apply some final production edits prior to publishin
 For this scenario, assume that the certificate associated with phase B is revoked. The organization has two options:
 
 1.  Revert back to the version of the asset associated with the last valid manifest before the revoked manifest, and then restart the process from that point. This may or may not be technically possible depending on the changes that have occurred with the asset since that phase. In addition, this approach will depend on how important maintaining the original time-stamps are for the provenance of the content.
-    
+
 2.  Leave the content unchanged. Leverage your communications plan to inform consumers of the situation and how best to handle the revoked content. This approach would require a method for consumers to easily find your communications in the event that pro-active messaging directly to the consumers is possible.
-    
+
 
 <a id="_additional_implementation_best_practices"></a>
 ## 6\. Additional Implementation Best Practices

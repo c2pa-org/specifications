@@ -70,16 +70,38 @@ test('preserves the language hint on a fenced code block', () => {
   assert.ok(md.includes('qualified-namespace = "c2pa" / entity'));
 });
 
-test('keeps alt text on a diagram image', () => {
+test('links a diagram image using its alt text without embedding it', () => {
   const html = `<img src="_images/Overview_Diagram.svg" alt="A diagram of how all the parts of C2PA go together">`;
   const md = htmlToMarkdown(html);
-  assert.equal(md.trim(), '![A diagram of how all the parts of C2PA go together](_images/Overview_Diagram.svg)');
+  assert.equal(md.trim(), '[A diagram of how all the parts of C2PA go together](_images/Overview_Diagram.svg)');
 });
 
-test('falls back to a placeholder for a diagram with no alt text', () => {
+test('links an image even when it has no alt text', () => {
   const html = `<img src="_images/mystery.svg">`;
   const md = htmlToMarkdown(html);
-  assert.equal(md.trim(), '[Diagram omitted]');
+  assert.equal(md.trim(), '[Image](_images/mystery.svg)');
+});
+
+test('does not nest Markdown links for an image already inside a link', () => {
+  const md = htmlToMarkdown('<a href="https://creativecommons.org/licenses/by/4.0/"><img src="license.png" alt="CC BY 4.0"></a>');
+  assert.equal(md.trim(), '[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)');
+});
+
+test('preserves explicitly marked original HTML source links', () => {
+  const md = htmlToMarkdown('<a href="C2PA_Specification.html#example" data-llm-source-link="true">Example</a>');
+  assert.equal(md.trim(), '[Example](C2PA_Specification.html#example)');
+});
+
+test('removes blank-line padding from lists without changing hard breaks or code whitespace', () => {
+  const md = htmlToMarkdown(`<ul><li><p>First item.</p></li><li><p>Second item.</p></li></ul>
+    <p>Line one.<br>Line two.</p>
+    <pre class="highlightjs highlight"><code class="language-none hljs">first
+${' '.repeat(4)}
+last</code></pre>`);
+  const prose = md.replace(/```[\s\S]*?```/g, '');
+  assert.ok(!/^[ \t]+$/m.test(prose));
+  assert.ok(md.includes('Line one.  \nLine two.'));
+  assert.ok(md.includes('first\n    \nlast'));
 });
 
 test('rewrites a relative same-site internal link to its .md sibling', () => {

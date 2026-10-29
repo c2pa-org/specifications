@@ -1,6 +1,6 @@
 # C2PA Harms Modelling
 
-[![Creative Commons License](_images/CCby4.png)](https://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](https://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
@@ -72,15 +72,15 @@ Who will be impacted by the use of the C2PA standard including non-users?
 In Phase II, the Taskforce reviewed and adapted Microsoft’s taxonomy of harm to better reflect the context and implications of the C2PA specifications. This process is intertwined with the actual assessment of the identified harms. The guiding questions in this phase are:
 
 *   How could people be harmed by the use of C2PA? What use-cases are most likely to cause harm? To whom?
-    
+
 *   What use-cases are most likely to cause harm? To whom?
-    
+
 *   How could a misuse or abuse of C2PA lead to harm? Who would be affected?
-    
+
 *   What contextual evidence from either an existing technology or societal phenomenon either provides direct evidence of this harm or harm in a related context?
-    
+
 *   What is the severity, scale, frequency, likelihood, and disproportionate impact on vulnerable groups of a particular potential harm?
-    
+
 
 <a id="_phase_iii_due_diligence_actions"></a>
 ### 2.3. Phase III: Due Diligence Actions
@@ -88,11 +88,11 @@ In Phase II, the Taskforce reviewed and adapted Microsoft’s taxonomy of harm t
 Phase III is aimed at mitigating potential abuse and misuse, and offering considerations and guidelines for the protection of human rights and for the optimization of the benefits that prompted the development of the C2PA specifications. The questions that guide us in this phase are:
 
 *   How could the C2PA specifications be designed to prevent harmful impacts?
-    
+
 *   How could the C2PA specifications be built to protect human rights?
-    
+
 *   What guidance, compliance requirements or technical steps can address these?
-    
+
 
 Answers to these questions are reflected in the due diligence strategy that affects the specifications and its accompanying documents, which includes guidance for implementers, guidance on user experience, security considerations, and an explainer aimed at the general public.
 
@@ -134,15 +134,15 @@ Accompanying documentation
 The accompanying documentation should reflect considerations from the harms, misuse and abuse assessment. The documentation includes:
 
 *   Guidance for implementers;
-    
+
 *   Guidance on user experience;
-    
+
 *   Security considerations;
-    
+
 *   Guidance for Artificial Intelligence and Machine Learning;
-    
+
 *   Explainer aimed for the general public.
-    
+
 
 Non-technical and multilateral harms response actions
 
@@ -151,11 +151,11 @@ The harms, misuse and abuse assessment has also highlighted the need for continu
 Other areas for due diligence actions include:
 
 *   Multilateral cooperation for the promotion of a diverse C2PA ecosystem, including efforts to resource public-interest implementations;
-    
+
 *   Sensitization of the specifications to a broad base of users and stakeholders;
-    
+
 *   Promote parallel efforts to ensure compliance around C2PA specs-enabled products.
-    
+
 
 <a id="_public_review_and_feedback"></a>
 ## 4\. Public Review and Feedback
@@ -204,11 +204,11 @@ To address accessibility concerns related to the use of C2PA enabled tools and s
 The following potential harms may still occur in specific implementations of the C2PA specifications:
 
 *   Inadvertent disclosure of information: C2PA claim generators may automatically add, or require to add, information to manifests that may be sensitive. [User experience guidance](../../2.2/ux/UX_Recommendations.html.md) has been published alongside the specs to offer a clear acknowledgement of creator consent before a C2PA implementation can begin accumulating data.
-    
+
 *   Redacted (deleted) information from Content Credentials may still be accessible: If a soft binding lookup is enabled or required by manifest stores, then previous versions of a manifest with sensitive information may be located.
-    
+
 *   The use of C2PA-enabled tools and services in adverse legal or political situations may result in human rights violations: The C2PA specifications include features to protect the privacy of users, but this does not preclude the possibility of malicious actors, including potentially state actors, misusing or abusing the system to enable mechanisms of surveillance, including via legislative approaches.
-    
+
 
 <a id="_general_considerations_for_content_consumers_consumers_of_content_credentials"></a>
 ### 6.2. General considerations for content consumers (consumers of Content Credentials)
@@ -218,17 +218,17 @@ The C2PA specifications do not provide value judgments about the truth or falseh
 As of version 2.0 of the specifications, the C2PA issues the following comments and considerations for content consumers:
 
 *   Digital assets, such as images and videos, can have valid C2PA manifests and still be deemed to be mis or disinformation.
-    
+
 *   Content consumers should note that the verification of an active manifest includes validating the signature. An invalid manifest cannot be associated with the signer.
-    
+
 *   The fact that any digital asset does not have Content Credentials does not mean that its contents are not to be trusted. This may be especially relevant to note in a scenario where these specifications are widely adopted. In other words, it is important to know that there may be content creators who will have legitimate reasons to not use C2PA enabled tools and services, and their content should not be dismissed or undermined for not being connected to Content Credentials.
-    
+
 *   Invalid Content Credentials could mean that either the digital content or the manifest has been tampered with, though this may not always be the case.
-    
+
 *   The [User Experience Guidance](../../2.2/ux/UX_Recommendations.html.md) is being designed to define best practices for presenting C2PA provenance to consumers. The recommendations strive to describe standard, readily recognizable experiences that provide asset consumers information and history about the content they are consuming, thereby empowering them to understand where it came from and decide how much to trust it.
-    
+
 *   If a content consumer trusts a particular signer, then they may be inclined to believe that the information in the Content Credentials is authentic. In other words, a preexisting relationship of trust between a signer and a content consumer is the basis of the C2PA trust model. C2PA specifications are designed to provide signals for content consumers to know that the signer is in fact who they say they are and that the manifest is in fact connected to a particular asset.
-    
+
 
 <a id="_general_considerations_for_civic_community_and_independent_media"></a>
 ### 6.3. General considerations for civic, community, and independent media
@@ -240,11 +240,11 @@ The harms, misuse and abuse assessment laid out in this document identifies a li
 As of version 2.0 of the specifications, the C2PA issues the following harms considerations for civic, community, and independent media that may be interested in 1. creating their own C2PA-enabled tool, 2. in becoming a signer, or 3. in simply using C2PA-enabled tools.
 
 1.  creating their own C2PA-enabled tool,
-    
+
 2.  in becoming a signer, or
-    
+
 3.  in simply using C2PA-enabled tools.
-    
+
 
 _Implementing the C2PA specifications (creating C2PA-enabled tools)_
 
@@ -273,11 +273,11 @@ To address accessibility concerns related to the use of C2PA enabled tools and s
 The following potential harms may still occur in specific implementations of the C2PA specifications:
 
 *   Inadvertent disclosure of information: C2PA claim generators may automatically add, or require to add, information to manifests that may be sensitive. Specification-compliant implementations may intentionally or unintentionally hide this feature.
-    
+
 *   Redacted (deleted) information from Content Credentials may still be accessible: If soft binding lookup is enabled or required by manifest stores, then previous versions of a manifest with sensitive information may be located.
-    
+
 *   The use of C2PA-enabled tools and services in adverse legal or political situations may result in human rights violations: The C2PA specifications include features to protect the privacy of users, but this does not preclude the possibility of malicious actors, including potentially state actors, to misuse or abuse the system to enable mechanisms of surveillance, including via legislative approaches.
-    
+
 
 **Other considerations for civic, community, and independent media**
 

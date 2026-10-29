@@ -1,6 +1,6 @@
 # C2PA User Experience Guidance for Implementers
 
-[![Creative Commons License](../../1.1/ux/_images/CCby4.png)](http://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](http://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
@@ -15,9 +15,9 @@ The C2PA intends to provide clear guidance for implementers of provenance-enable
 The UX recommendations aim to define best practices for presenting C2PA provenance to consumers. The recommendations strive to describe standard, readily recognizable experiences that:
 
 *   provide asset creators a means to capture information and history about the content they are creating, and
-    
+
 *   provide asset consumers information and history about the content they are experiencing, thereby empowering them to understand where it came from and decide how much to trust it.
-    
+
 
 User interfaces designed for the consumption of C2PA provenance must be informed by the context of the asset. C2PA have studied four primary user groups and a collection of contexts in which C2PA assets are encountered. These user groups have been defined in the [C2PA Guiding Principles](https://c2pa.org/principles/) as Consumers, Creators, Publishers and Verifiers (or Investigators). To serve the needs of each of these groups across common contexts, exemplary user interfaces are presented for many common cases. These are recommendations, not mandates, and we expect best practices to evolve.
 
@@ -56,7 +56,7 @@ Some data will assert an individual or organizational identity. Wherever possibl
 
 Because the complete set of C2PA data for a given asset can be overwhelming to a user, C2PA describes four levels of progressive disclosure which guide the designs:
 
-![image$disclosure summary 2x](../../1.1/ux/_images/disclosure_summary_2x.png)
+[image$disclosure summary 2x](../../1.1/ux/_images/disclosure_summary_2x.png)
 
 Figure 1. Disclosure levels
 
@@ -79,7 +79,7 @@ For sophisticated, forensic investigatory usage, a standalone tool capable of re
 <a id="_l1_indicator_of_c2pa_data"></a>
 ## 4\. L1 – indicator of C2PA data
 
-![image$L1 display options 2x](../../1.1/ux/_images/L1-display-options_2x.png)
+[image$L1 display options 2x](../../1.1/ux/_images/L1-display-options_2x.png)
 
 Figure 2. The L1 indicator
 
@@ -98,7 +98,7 @@ Behaviour of L1 indicators should reveal L2 progressive disclosure, either via a
 <a id="_validation_states"></a>
 ### 4.3. Validation states
 
-![image$L1 states 2x](../../1.1/ux/_images/L1-states_2x.png)
+[image$L1 states 2x](../../1.1/ux/_images/L1-states_2x.png)
 
 Figure 3. L1 validation states
 
@@ -127,7 +127,7 @@ In the following table, we recommend terminology for consumer-facing L1 UI:
 <a id="_minimum_viable_provenance"></a>
 ### 5.1. Minimum viable provenance
 
-![image$discrete 1 2x](../../1.1/ux/_images/discrete-1_2x.png)
+[image$discrete 1 2x](../../1.1/ux/_images/discrete-1_2x.png)
 
 Figure 4. Minimum viable provenance display
 
@@ -140,7 +140,7 @@ L2 styles, fonts, etc. can be customized to fit the given context. Iconography a
 
 L2 UI options are displayed along a spectrum from depth of information to breadth of provenance representation. In the figure below, the left side represents a single manifest summary and the right side represents the complete provenance summary depicting multiple manifests. However, the middle example shows a customized provenance summary wherein certain manifest assertions are highlighted. This flexibility allows implementers to show more depth for a given subset of manifests.
 
-![image$L2 spectrum 2x](../../1.1/ux/_images/L2_spectrum_2x.png)
+[image$L2 spectrum 2x](../../1.1/ux/_images/L2_spectrum_2x.png)
 
 Figure 5. Provenance summary depth versus breadth
 
@@ -149,7 +149,7 @@ In order to summarize the data in a context-specific manner, it is recommended t
 <a id="_manifest_summaries_depth"></a>
 ### 5.3. Manifest summaries (depth)
 
-![image$L2 depth 2x](../../1.1/ux/_images/L2_depth_2x.png)
+[image$L2 depth 2x](../../1.1/ux/_images/L2_depth_2x.png)
 
 Figure 6. A single manifest summary
 
@@ -160,31 +160,31 @@ A manifest summary only represents a single manifest. It could be the active man
 
 A provenance summary represents the collection of manifests related to the C2PA-enabled content. Manifests should be presented in the order that they are referenced via ingredient assertions, starting with the active manifest at the top and ending with the origin ingredients below. Origin ingredients represent the beginning of their respective history branches.
 
-![image$summary 1 2x](../../1.1/ux/_images/summary-1_2x.png)
+[image$summary 1 2x](../../1.1/ux/_images/summary-1_2x.png)
 
 Figure 7. Provenance summary, two manifests
 
 Summary displays should show at minimum the origin ingredients and active manifests, or if screen real estate allows, with at least one manifest in between.
 
-![image$summary 2 2x](../../1.1/ux/_images/summary-2_2x.png)
+[image$summary 2 2x](../../1.1/ux/_images/summary-2_2x.png)
 
 Figure 8. Provenance summary, three manifests
 
 In order to provide users with a succinct summary and to allow for limited screen real estate, the manifests in between origin and active can be collapsed and represented as a numerical count. C2PA recommends a baseline rule for collapsing manifests if the total number exceeds four. However, this threshold can be altered according to context. In keeping with the core recommendations, a link to the full set of data in L3 should always follow the summary list of manifests.
 
-![image$summary 3 2x](../../1.1/ux/_images/summary-3_2x.png)
+[image$summary 3 2x](../../1.1/ux/_images/summary-3_2x.png)
 
 Figure 9. Provenance summary, four manifests
 
 When multiple origins are present, either as multiple ingredients in a single manifest or across multiple manifests, they can be summarized in the origin section of the UI. The L1 indicator can be used as a badge on ingredient thumbnails to distinguish C2PA-enabled assets.
 
-![image$summary 4 2x](../../1.1/ux/_images/summary-4_2x.png)
+[image$summary 4 2x](../../1.1/ux/_images/summary-4_2x.png)
 
 Figure 10. Provenance summary, two origins
 
 L2 UI is flexible enough to allow for various combinations of manifest counts and origin assets.
 
-![image$summary 5 2x](../../1.1/ux/_images/summary-5_2x.png)
+[image$summary 5 2x](../../1.1/ux/_images/summary-5_2x.png)
 
 Figure 11. Provenance summary, multiple origins and manifests
 
@@ -193,7 +193,7 @@ Figure 11. Provenance summary, multiple origins and manifests
 
 Implementers should consider audience needs when weighing the balance of depth and breadth in combinatory summaries in order to concisely display the most complete and relevant representation of content provenance. For example, travel companies may opt to display location assertions from the origin manifest in a provenance summary so as to provide their users with key information. Similarly, a news publisher may choose to show action assertions from an ingredient manifest to disclose edits that occurred to published content.
 
-![image$L2 middle 2x](../../1.1/ux/_images/L2_middle_2x.png)
+[image$L2 middle 2x](../../1.1/ux/_images/L2_middle_2x.png)
 
 Figure 12. Customized summary combinations
 
@@ -205,17 +205,17 @@ Figure 12. Customized summary combinations
 
 There will be instances when C2PA-enabled content is incomplete data. Most commonly, this will happen if the content is edited without capturing C2PA data. In this event, the L1, L2 and L3 UI should reflect when data is incomplete, as well as the manifest data that came before or after. A dotted line can be drawn between manifests to suggest the connection is not the same as between valid, intact manifests. Incomplete data should not automatically signal that one should discount the content as untrustworthy. For this reason, C2PA discourages the use of an indicator designed to trigger alarm, which should be reserved for more apparent tamper-evident use cases, in favour of a more descriptive and neutral indicator.
 
-![image$error 1 2x](../../1.1/ux/_images/error-1_2x.png)
+[image$error 1 2x](../../1.1/ux/_images/error-1_2x.png)
 
 Figure 13. Incomplete data in the active manifest position
 
-![image$error 4 2x](../../1.1/ux/_images/error-4_2x.png)
+[image$error 4 2x](../../1.1/ux/_images/error-4_2x.png)
 
 Figure 14. Incomplete data in an ingredient position
 
 Following the established pattern of collapsing additional manifests, incomplete data can be called out via the text string to bring awareness to the questionable validity of ingredients.
 
-![image$error 2 2x](../../1.1/ux/_images/error-2_2x.png)
+[image$error 2 2x](../../1.1/ux/_images/error-2_2x.png)
 
 Figure 15. Incomplete data collapsed
 
@@ -224,11 +224,11 @@ Figure 15. Incomplete data collapsed
 
 There may be instances when C2PA-enabled content has been maliciously edited to tamper with C2PA data, or is signed by an untrusted entity. In this case, no additional prior data can be displayed.
 
-![image$error 5 2x](../../1.1/ux/_images/error-5_2x.png)
+[image$error 5 2x](../../1.1/ux/_images/error-5_2x.png)
 
 Figure 16. Invalid data in the active manifest position
 
-![image$error 3 2x](../../1.1/ux/_images/error-3_2x.png)
+[image$error 3 2x](../../1.1/ux/_images/error-3_2x.png)
 
 Figure 17. Invalid data in an ingredient position
 
@@ -262,7 +262,7 @@ Since video is a temporal medium, it poses significant challenges to distilling 
 
 A notable difference with video content is the necessity for a player for viewing. This limits the ways in which an L1 indicator of C2PA data can be placed on the content and interacted with, and may likely require an integration into the player itself. However, the L1 indicator may still be placed next to the video outside of the content.
 
-![image$video 1 2x](../../1.1/ux/_images/video-1_2x.png)
+[image$video 1 2x](../../1.1/ux/_images/video-1_2x.png)
 
 Figure 18. Video L1
 
@@ -271,11 +271,11 @@ Figure 18. Video L1
 
 Video L2 displays should largely follow the same patterns as described in [L2 – progressive disclosures](#L2 – progressive disclosures). However, for now we stop short of recommending the inclusion of ingredients or non-C2PA origin content due to the potential complexity of volume. Instead, we suggest showing a minimal manifest summary or provenance summary.
 
-![image$video 2 2x](../../1.1/ux/_images/video-2_2x.png)
+[image$video 2 2x](../../1.1/ux/_images/video-2_2x.png)
 
 Figure 19. Video L2 minimum viable provenance
 
-![image$video 3 2x](../../1.1/ux/_images/video-3_2x.png)
+[image$video 3 2x](../../1.1/ux/_images/video-3_2x.png)
 
 Figure 20. Video L2 provenance summary
 
@@ -294,11 +294,11 @@ In this section, the term _creator_ means a party creating _manifests_. This cou
 As per the [C2PA Guiding Principles](https://c2pa.org/principles/), C2PA implementations should provide a mechanism for creators of a given content to assert, in a verifiable manner, any information they wish to disclose about the creation of that content and any actions taken since the asset’s creation. As such, the creator experience requires the following:
 
 *   A clear acknowledgement of creator consent before a C2PA implementation can begin accumulating data;
-    
+
 *   Disclosure or preview of the nature of information that is being recorded;
-    
+
 *   Creator control over recorded information, with particular sensitivity to the creator’s identity and process.
-    
+
 
 C2PA recommends an opt-in flow that concisely represents these requirements and can be opted-out of just as easily at any time. Once opted-in, creators should be able to distinguish between non-removable information as defined by the C2PA specifications and information that can be adjusted according to the user’s preferences.
 
@@ -308,15 +308,15 @@ C2PA recommends an opt-in flow that concisely represents these requirements and 
 Creators should be able to control the information in their assertions as much as is allowed by C2PA specifications. The [Harms Modelling document](../security/Harms_Modelling.html.md) covers the reasoning behind why creator control is imperative. To provide coverage against harms and misuse, C2PA suggests the following types of assertions be manageable by the creator:
 
 *   Identity information
-    
+
 *   Actions
-    
+
 *   Creative Work
-    
+
 *   Fields pertaining to copyright, descriptions, and usage rights
-    
+
 *   Exif information and related metadata
-    
+
 
 To be accommodating to the user’s preferences, C2PA recommends presenting a UI wherein these assertion categories can be toggled on or off on a per document basis. To assist the creator in understanding the tradeoffs they are making, C2PA also suggests displaying a manifest preview that concisely and accurately depicts what information will be added into the manifest.
 

@@ -1,6 +1,6 @@
 # Human and Organizational Identity Recommendation
 
-[![Creative Commons License](_images/CCby4.png)](https://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](https://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 

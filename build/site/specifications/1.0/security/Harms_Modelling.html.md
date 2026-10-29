@@ -1,6 +1,6 @@
 # C2PA Harms Modelling
 
-[![Creative Commons License](_images/CCby4.png)](https://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](https://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
@@ -69,15 +69,15 @@ Who will be impacted by the use of the C2PA standard including non-users?
 In Phase II, the Taskforce reviewed and adapted Microsoft’s taxonomy of harm to better reflect the context and implications of the C2PA specifications. This process was intertwined with the actual assessment of the identified harms. The guiding questions in this phase were:
 
 *   How could people be harmed by the use of C2PA? What use-cases are most likely to cause harm? To whom?
-    
+
 *   What use-cases are most likely to cause harm? To whom?
-    
+
 *   How could a misuse or abuse of C2PA lead to harm? Who would be affected?
-    
+
 *   What contextual evidence from either an existing technology or societal phenomenon either provides direct evidence of this harm or harm in a related context?
-    
+
 *   What is the severity, scale, frequency, likelihood, and disproportionate impact on vulnerable groups of a particular potential harm?
-    
+
 
 <a id="_phase_iii_due_diligence_actions"></a>
 ### 2.3. Phase III: Due Diligence Actions
@@ -85,11 +85,11 @@ In Phase II, the Taskforce reviewed and adapted Microsoft’s taxonomy of harm t
 Phase III was aimed at mitigating potential abuse and misuse, and offering considerations and guidelines for the protection of human rights and for the optimization of the benefits that prompted the development of the C2PA standard. The questions that guided us in this phase were:
 
 *   How could the C2PA specifications be designed to prevent harmful impacts?
-    
+
 *   How could the C2PA specifications be built to protect human rights?
-    
+
 *   What guidance, compliance requirements or technical steps can address these?
-    
+
 
 Answers to these questions are reflected in the due diligence strategy that affects the specifications and its accompanying documents, which includes guidance for implementers, guidance on user experience, security considerations, and an explainer aimed at the general public.
 
@@ -161,13 +161,13 @@ Accompanying documentation
 The accompanying documentation should reflect considerations from the harms, misuse and abuse assessment. The documentation includes:
 
 *   Guidance for implementers;
-    
+
 *   Guidance on user experience;
-    
+
 *   Security considerations;
-    
+
 *   Explainer aimed for the general public.
-    
+
 
 Non-technical and multilateral harms response actions
 
@@ -176,11 +176,11 @@ The harms, misuse and abuse assessment has also highlighted the need for continu
 Other areas for due diligence actions include:
 
 *   Multilateral cooperation for the promotion of a diverse C2PA ecosystem, including efforts to resource public-interest implementations;
-    
+
 *   Sensitization of the specifications to a broad base of users and stakeholders;
-    
+
 *   Promote parallel efforts to ensure compliance around C2PA specs-enabled products
-    
+
 
 <a id="_public_review_and_feedback"></a>
 ## 4\. Public Review and Feedback

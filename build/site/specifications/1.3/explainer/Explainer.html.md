@@ -1,6 +1,6 @@
 # C2PA Explainer
 
-[![Creative Commons License](_images/CCby4.png)](http://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](http://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
@@ -127,7 +127,7 @@ Yes. A C2PA Manifest include a [Training and Data Mining](#1.1@specs:C2PA_Specif
 > Some of the additional areas that information will be provided about include:
 >
 > *   Privacy
->     
+>
 > *   Guarantees C2PA is providing the consumer
 
 <a id="_use_case_examples"></a>
