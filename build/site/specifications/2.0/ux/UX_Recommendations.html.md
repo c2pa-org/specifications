@@ -13,9 +13,9 @@ The C2PA intends to provide clear guidance for implementers of provenance-enable
 The UX recommendations aim to define best practices for presenting C2PA provenance to consumers. The recommendations strive to describe standard, readily recognizable experiences that:
 
 *   provide asset creators a means to capture information and history about the content they are creating, and
-    
+
 *   provide asset consumers information and history about the content they are experiencing, thereby empowering them to understand where it came from and decide how much to trust it.
-    
+
 
 User interfaces designed for the consumption of C2PA provenance must be informed by the context of the asset. C2PA have studied four primary user groups and a collection of contexts in which C2PA assets are encountered. These user groups have been defined in the [C2PA Guiding Principles](https://c2pa.org/principles/) as Consumers, Creators, Publishers and Verifiers (or Investigators). To serve the needs of each of these groups across common contexts, exemplary user interfaces are presented for many common cases. These are recommendations, not mandates, and we expect best practices to evolve.
 
@@ -54,7 +54,7 @@ Because the complete set of C2PA data for a given asset can be overwhelming to a
 
 C2PA describes four levels of progressive disclosure which guide the designs:
 
-![Disclosure levels](../../2.2/ux/_images/disclosure_summary.png)
+[Disclosure levels](../../2.2/ux/_images/disclosure_summary.png)
 
 Figure 1. Disclosure levels
 
@@ -82,16 +82,16 @@ For sophisticated, forensic investigatory usage, a standalone tool capable of re
 
 C2PA requires the name "Content Credentials" to be used for provenance-enabled user experiences that follow the technical specification. It is critical that viewers of Content Credentials develop trust in the system itself, over the individual data presented. Therefore, implementors of Content Credentials must adhere to the proper usage of the Content Credentials name and visual marks to assure that each experience is consistent, coherent and cooperative.
 
-![Content Credentials logo and icon](../../2.2/ux/_images/icon_and_wordmark.png)
+[Content Credentials logo and icon](../../2.2/ux/_images/icon_and_wordmark.png)
 
 Figure 2. Content Credentials logo and icon
 
 The Content Credentials marks may be used in the following ways to provide consistency across the ecosystem:
 
 *   Verifying and displaying Content Credentials on a website or web application
-    
+
 *   Creating and writing Content Credentials to supported file formats
-    
+
 
 <a id="_design_and_construction"></a>
 ### 4.2. Design and construction
@@ -107,7 +107,7 @@ It’s proximity to other international attribution symbols, like copyright and 
 <a id="correct-usage-of-the-icon"></a>
 #### 4.2.1. Correct usage of the icon
 
-![Correct usage of the icon](../../2.2/ux/_images/icon_usage.png)
+[Correct usage of the icon](../../2.2/ux/_images/icon_usage.png)
 
 Figure 3. Correct usage of the icon
 
@@ -118,7 +118,7 @@ In the event that the active manifest is invalid, a stateful indicator of data v
 <a id="_incorrect_usage_of_the_icon"></a>
 #### 4.2.2. Incorrect usage of the icon
 
-![Incorrect usage of the icon](../../2.2/ux/_images/icon_usage_incorrect.png)
+[Incorrect usage of the icon](../../2.2/ux/_images/icon_usage_incorrect.png)
 
 Figure 4. Incorrect usage of the icon
 
@@ -131,7 +131,7 @@ Following the consistency principle, it is important in developing trust that us
 
 L1 can be applied using only the icon, the title, or both. If using the icon alone, ensure its appearance meets accessibility criteria so that consumers can easily identify its presence on or near the C2PA-enabled content.
 
-![Placement options for the L1 indicator](../../2.2/ux/_images/L1_display_options.png)
+[Placement options for the L1 indicator](../../2.2/ux/_images/L1_display_options.png)
 
 Figure 5. Placement options for the L1 indicator
 
@@ -145,7 +145,7 @@ Behaviour of L1 indicators should reveal L2 progressive disclosure, either via a
 <a id="_minimum_viable_provenance"></a>
 ### 5.1. Minimum viable provenance
 
-![Minimum viable provenance display](../../2.2/ux/_images/L2_mvp.png)
+[Minimum viable provenance display](../../2.2/ux/_images/L2_mvp.png)
 
 Figure 6. Minimum viable provenance display
 
@@ -160,7 +160,7 @@ For content recommendations see the [section on interface language](#interface-l
 
 L2 UI options are displayed along a spectrum from depth of information to breadth of provenance representation. In the figure below, the left side represents a single manifest summary and the right side represents the complete provenance summary depicting multiple manifests. However, the middle example shows a customized provenance summary wherein certain manifest assertions are highlighted. This flexibility allows implementers to show more depth for a given subset of manifests.
 
-![Provenance summary depth versus breadth](../../2.2/ux/_images/L2_spectrum.png)
+[Provenance summary depth versus breadth](../../2.2/ux/_images/L2_spectrum.png)
 
 Figure 7. Provenance summary depth versus breadth
 
@@ -169,7 +169,7 @@ In order to summarize the data in a context-specific manner, it is recommended t
 <a id="_manifest_summaries_depth"></a>
 ### 5.3. Manifest summaries (depth)
 
-![A single manifest summary with optional displays of assertions](../../2.2/ux/_images/L2_depth.png)
+[A single manifest summary with optional displays of assertions](../../2.2/ux/_images/L2_depth.png)
 
 Figure 8. A single manifest summary with optional displays of assertions
 
@@ -180,31 +180,31 @@ A manifest summary only represents a single manifest. It could be the active man
 
 A provenance summary represents the collection of manifests related to the C2PA-enabled content. Manifests should be presented in the order that they are referenced via ingredient assertions, starting with the active manifest at the top and ending with the origin ingredients below. Origin ingredients represent the beginning of their respective history branches.
 
-![Provenance summary](../../2.2/ux/_images/L2_summary_1.png)
+[Provenance summary](../../2.2/ux/_images/L2_summary_1.png)
 
 Figure 9. Provenance summary, two manifests
 
 Summary displays should show at minimum the origin ingredients and active manifests, or if screen real estate allows, with at least one manifest in between.
 
-![Provenance summary](../../2.2/ux/_images/L2_summary_2.png)
+[Provenance summary](../../2.2/ux/_images/L2_summary_2.png)
 
 Figure 10. Provenance summary, three manifests
 
 In order to provide users with a succinct summary and to allow for limited screen real estate, the manifests in between origin and active can be collapsed and represented as a numerical count. C2PA recommends a baseline rule for collapsing manifests if the total number exceeds four. However, this threshold can be altered according to context. In keeping with the core recommendations, a link to the full set of data in L3 should always follow the summary list of manifests.
 
-![Provenance summary](../../2.2/ux/_images/L2_summary_3.png)
+[Provenance summary](../../2.2/ux/_images/L2_summary_3.png)
 
 Figure 11. Provenance summary, four manifests
 
 When multiple origins are present, either as multiple ingredients in a single manifest or across multiple manifests, they can be summarized in the origin section of the UI. The L1 indicator can be used as a badge on ingredient thumbnails to distinguish C2PA-enabled assets.
 
-![Provenance summary](../../2.2/ux/_images/L2_summary_4.png)
+[Provenance summary](../../2.2/ux/_images/L2_summary_4.png)
 
 Figure 12. Provenance summary, two origins
 
 L2 UI is flexible enough to allow for various combinations of manifest counts and origin assets.
 
-![Provenance summary](../../2.2/ux/_images/L2_summary_5.png)
+[Provenance summary](../../2.2/ux/_images/L2_summary_5.png)
 
 Figure 13. Provenance summary, multiple origins and manifests
 
@@ -213,7 +213,7 @@ Figure 13. Provenance summary, multiple origins and manifests
 
 Implementers should consider audience needs when weighing the balance of depth and breadth in combinatory summaries in order to concisely display the most complete and relevant representation of content provenance. For example, travel companies may opt to display location assertions from the origin manifest in a provenance summary so as to provide their users with key information. Similarly, a news publisher may choose to show action assertions from an ingredient manifest to disclose edits that occurred to published content.
 
-![Customized summary combinations](../../2.2/ux/_images/L2_combinatory_summaries.png)
+[Customized summary combinations](../../2.2/ux/_images/L2_combinatory_summaries.png)
 
 Figure 14. Customized summary combinations
 
@@ -224,11 +224,11 @@ There may be instances when C2PA-enabled content has been maliciously edited to 
 
 For additional invalid states, see the [section on interface language](#interface-language).
 
-![Invalid data in the active manifest position](../../2.2/ux/_images/L2_invalid_active.png)
+[Invalid data in the active manifest position](../../2.2/ux/_images/L2_invalid_active.png)
 
 Figure 15. Invalid data in the active manifest position
 
-![Invalid data in an ingredient position](../../2.2/ux/_images/L2_invalid_ingredient.png)
+[Invalid data in an ingredient position](../../2.2/ux/_images/L2_invalid_ingredient.png)
 
 Figure 16. Invalid data in an ingredient position
 
@@ -243,14 +243,14 @@ L3 should provide asset consumers as complete and comprehensive an overview of a
 Implementers should weigh the display of assertion information based on the needs of their anticipated audiences. Overly technical assertions or custom assertions from third-party implementers can be left to L4 displays only. The following types of assertions can be considered appropriate for L3 to display:
 
 *   Actions
-    
+
 *   Metadata
-    
+
 
 <a id="_navigation"></a>
 ### 6.2. Navigation
 
-![L3 tree view](../../2.2/ux/_images/L3_tree_view.png)
+[L3 tree view](../../2.2/ux/_images/L3_tree_view.png)
 
 Figure 17. L3 tree view
 
@@ -259,7 +259,7 @@ In the above image, we propose a tree structure that shows each manifest or non-
 <a id="_comparing_manifests"></a>
 ### 6.3. Comparing manifests
 
-![Compare state](../../2.2/ux/_images/L3_compare.png)
+[Compare state](../../2.2/ux/_images/L3_compare.png)
 
 Figure 18. Compare state
 
@@ -268,7 +268,7 @@ To understand changes between manifests over time, it may benefit users to have 
 <a id="_manifest_recovery"></a>
 ### 6.4. Manifest recovery
 
-![Manifest recovery](../../2.2/ux/_images/L3_manifest_recovery.png)
+[Manifest recovery](../../2.2/ux/_images/L3_manifest_recovery.png)
 
 Figure 19. Manifest recovery
 
@@ -283,7 +283,7 @@ Redaction of data will always prompt a separate update manifest signed by the ac
 
 It is recommended that both the update manifest and the updated manifest (that where the redaction tool place) signify their state and reference one another. It is recommended that consistent patterns (language, iconography, interaction etc.) are used in the display of both manifests.
 
-![Redactions in L2](../../2.2/ux/_images/L2_redaction.png)
+[Redactions in L2](../../2.2/ux/_images/L2_redaction.png)
 
 Figure 20. Redactions in L2
 
@@ -291,13 +291,13 @@ NB: For simplicity, both the update and the updated manifest are visible here wi
 
 Note the lack of thumbnail image in the update manifest. Since update manifests do not involve changes to the digital content, they should not include any assertions that could suggest that i.e. actions, or a thumbnail.
 
-![No thumbnail in update manifest](../../2.2/ux/_images/L2_thumbnail_example.png)
+[No thumbnail in update manifest](../../2.2/ux/_images/L2_thumbnail_example.png)
 
 Figure 21. No thumbnail in update manifest
 
 It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the [actions section of the technical specification](../../1.4/specs/C2PA_Specification.html.md#_actions). Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.
 
-![Journey from L2 to L3](../../2.2/ux/_images/L2_to_L3.png)
+[Journey from L2 to L3](../../2.2/ux/_images/L2_to_L3.png)
 
 Figure 22. Journey from L2 to L3
 
@@ -340,7 +340,7 @@ Note on `Camera-captured`: The `Camera-captured` label should be used to indicat
 
 Implementers may use color to attract the attention of the user in line with the design recommendations outlined in this chapter. If doing so, maintain a consistent color throughout the steps of progressive disclosure to provide a sense of continuity for the user and to reinforce the connection between related information.
 
-![Progressive disclosure UI with labeling](../../2.2/ux/_images/content_disclosure_1.png)
+[Progressive disclosure UI with labeling](../../2.2/ux/_images/content_disclosure_1.png)
 
 Figure 23. Progressive disclosure UI with labeling
 
@@ -353,7 +353,7 @@ At L1 only one label should be showcased at once.
 <a id="_l1"></a>
 ### 7.5. L1
 
-![L1 with optional disclosure labels](../../2.2/ux/_images/content_disclosure_2.png)
+[L1 with optional disclosure labels](../../2.2/ux/_images/content_disclosure_2.png)
 
 Figure 24. L1 with optional disclosure labels
 
@@ -367,7 +367,7 @@ As per section [4.2.1. Correct usage of the icon](#correct-usage-of-the-icon), t
 
 Due to the limited space available, disclose the one and only relevant label in the second line of the Content Credentials indicator. The label may also be showcased alone within the Content Credentials indicator. If the active manifest is invalid, this information should take precedence over any other label.
 
-![L1 label syles](../../2.2/ux/_images/content_disclosure_3.png)
+[L1 label syles](../../2.2/ux/_images/content_disclosure_3.png)
 
 Figure 25. L1 label syles
 
@@ -398,7 +398,7 @@ The label should be placed high up in the nutrition fact style interface. It sho
 
 To reduce cognitive load, label descriptions can be located behind an accordion UI pattern, accessible on request, with key assertions at the forefront of the experience. Other label related information may be chunked with the description.
 
-![L2 interaction patterns for disclosure](../../2.2/ux/_images/content_disclosure_4.png)
+[L2 interaction patterns for disclosure](../../2.2/ux/_images/content_disclosure_4.png)
 
 Figure 26. L2 interaction patterns for disclosure
 
@@ -416,7 +416,7 @@ The visual design of the label card should be consistent with L2. Given the addi
 
 To aid users when exploring the genealogical tree, L1 labels should be placed on thumbnails.
 
-![L3 thumbnail with label](../../2.2/ux/_images/content_disclosure_5.png)
+[L3 thumbnail with label](../../2.2/ux/_images/content_disclosure_5.png)
 
 Figure 27. L3 thumbnail with label
 
@@ -429,7 +429,7 @@ Information contained in label cards should be considered important. Therefore t
 
 As the L3 assertion panel allows for more room, multiple label cards may be stacked one above another.
 
-![L3 manifest panel with label description](../../2.2/ux/_images/content_disclosure_6.png)
+[L3 manifest panel with label description](../../2.2/ux/_images/content_disclosure_6.png)
 
 Figure 28. L3 manifest panel with label description
 
@@ -440,13 +440,13 @@ Figure 28. L3 manifest panel with label description
 
 An active state may be used to reinforce user interaction / thumbnail selection.
 
-![Select states for a manifest thumbnail](../../2.2/ux/_images/content_disclosure_7.png)
+[Select states for a manifest thumbnail](../../2.2/ux/_images/content_disclosure_7.png)
 
 Figure 29. Select states for a manifest thumbnail
 
 To support users as they navigate and understand generative AI concepts, tooltips should be provided.
 
-![L3 tree view with labels](../../2.2/ux/_images/content_disclosure_8.png)
+[L3 tree view with labels](../../2.2/ux/_images/content_disclosure_8.png)
 
 Figure 30. L3 tree view with labels
 
@@ -461,11 +461,11 @@ In this section, the term _creator_ means a party creating _manifests_. This cou
 As per the [C2PA Guiding Principles](https://c2pa.org/principles/), C2PA implementations should provide a mechanism for creators of a given content to assert, in a verifiable manner, any information they wish to disclose about the creation of that content and any actions taken since the asset’s creation. As such, the creator experience requires the following:
 
 *   A clear acknowledgement of creator consent before a C2PA implementation can begin accumulating data;
-    
+
 *   Disclosure or preview of the nature of information that is being recorded;
-    
+
 *   Creator control over recorded information, with particular sensitivity to the creator’s process.
-    
+
 
 C2PA recommends an opt-in flow that concisely represents these requirements and can be opted-out of just as easily at any time. Once opted-in, creators should be able to distinguish between non-removable information as defined by the C2PA specifications and information that can be adjusted according to the user’s preferences.
 
@@ -475,9 +475,9 @@ C2PA recommends an opt-in flow that concisely represents these requirements and 
 Creators should be able to control the information in their assertions as much as is allowed by C2PA specifications. The [Harms Modelling document](../../1.4/security/Harms_Modelling.html.md) covers the reasoning behind why creator control is imperative. To provide coverage against harms and misuse, C2PA suggests the following types of assertions be manageable by the creator:
 
 *   Actions
-    
+
 *   Metadata
-    
+
 
 To be accommodating to the user’s preferences, C2PA recommends presenting a UI wherein these assertion categories can be toggled on or off on a per document basis. To assist the creator in understanding the tradeoffs they are making, C2PA also suggests displaying a manifest preview that concisely and accurately depicts what information will be added into the manifest.
 
@@ -501,11 +501,11 @@ Validation of an ingredient’s manifest is equally important to convey to creat
 It is important to provide clear guidance about the different manifest storage options available to creators. Creators want or need to know where their manifest data is being stored, either locally or remotely, when they export their content. The following options may be presented to creators regarding the location of their manifest data:
 
 *   An option indicating that the manifest will only be directly attached to and stored as part of the exported file.
-    
-*   An option indicating that the manifest will both be directly attached to and stored as part of the exported file, and stored in a separate remote storage location.
-    
 
-![Example of manifest storage settings](../../2.2/ux/_images/creator_manifest_storage.png)
+*   An option indicating that the manifest will both be directly attached to and stored as part of the exported file, and stored in a separate remote storage location.
+
+
+[Example of manifest storage settings](../../2.2/ux/_images/creator_manifest_storage.png)
 
 Figure 31. Example of manifest storage settings
 
@@ -538,9 +538,9 @@ Since video is a temporal medium, it poses significant challenges to distilling 
 There are two predominant ways video is delivered to devices over the web, these include:
 
 1.  Dynamic video streaming (typically done via MPEG-DASH or HLS) where small video segments (also referred to as packets) are sent progressively to the browser. This allows for adaptive bitrate streaming, where the quality of the video can change on the fly depending on the viewer’s network conditions.
-    
+
 2.  As one single file (monolithic architecture), where all aspects of the video are managed in a single tightly integrated system. This approach is less flexible and therefore rarer.
-    
+
 
 For both approaches, the manifest can be validated on load and subsequently provenance data can be displayed. However, different UX treatment is required when it comes to the asset validation process as the video files (asset) are handled differently depending on the video delivery method as outlined above. See sections [validation process](#_validation_process) and [validation states](#_validation_states).
 
@@ -548,7 +548,7 @@ For both approaches, the manifest can be validated on load and subsequently prov
 
 L1 and L2 information should be located within the video player as this will increase its visibility and association with the media. By doing this, C2PA data will also be available even when videos are embedded on third party platforms.
 
-![Example of correct and incorrect placement of L1 indicator](../../2.2/ux/_images/video_placement_0.png)
+[Example of correct and incorrect placement of L1 indicator](../../2.2/ux/_images/video_placement_0.png)
 
 Figure 32. Example of correct and incorrect placement of L1 indicator
 
@@ -568,7 +568,7 @@ An invalid state is immutable; therefore, an invalid manifest or asset (whether 
 
 If the video player doesn’t natively provide a background gradient where the indicator is to be positioned, it should be given its own background. This ensures its visibility remains constant for the entire length of the video.
 
-![L1 indicator should be visible throughout the video](../../2.2/ux/_images/video_appearance.png)
+[L1 indicator should be visible throughout the video](../../2.2/ux/_images/video_appearance.png)
 
 Figure 33. L1 indicator should be visible throughout the video, therefore, a background is recommended.
 
@@ -578,7 +578,7 @@ For content recommendations see the [section on interface language](#_interface_
 
 In the event that the active manifest or content is invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See sections [validation process](#_validation_process) and [validation states](#_validation_states).
 
-![The two validation states: valid and invalid](../../2.2/ux/_images/video_validation_states.png)
+[The two validation states: valid and invalid](../../2.2/ux/_images/video_validation_states.png)
 
 Figure 34. The two validation states: valid and invalid, shown respectfully
 
@@ -589,7 +589,7 @@ Place the L1 indicator directly on the video. This will help encourage users to 
 
 It is advised not to place the fully expanded L1 (using the icon and title) close to the timeline or lower down in the player as this is typically where subtitles sit.
 
-![Illustrative examples of L1 positioning within the video player. From left to right: a) Top right b)Bottom left c) Within controls.](../../2.2/ux/_images/video_placement_1.png)
+[Illustrative examples of L1 positioning within the video player. From left to right: a) Top right b)Bottom left c) Within controls.](../../2.2/ux/_images/video_placement_1.png)
 
 Figure 35. Illustrative examples of L1 positioning within the video player. From left to right: a) Top right b)Bottom left c) Within controls.
 
@@ -603,11 +603,11 @@ When communicating validation progress and states to the user, they should have 
 Ensuring an unaltered and undisturbed viewing experience is paramount, and any potential compromises should be kept minimal when possible, therefore:
 
 1.  The L1 indicator must be displayed as soon as the page loads and C2PA information is available. This indicator should be overlaid on the video’s poster image. This means that when someone first navigates to the page, they should be able to immediately see the L1 indicator on top of the video poster image.
-    
+
 2.  When the process of validating the video is underway and no invalidities have been detected, the L1 indicator can behave like other elements of the video player’s UI. For example, it can fade out along with other controls (like play, pause, etc.) and then reappear when the user hovers or interacts with the video player.
-    
+
 3.  If the validation state changes at any point, this change must be made visible to the user straight away. This means, for instance if the validation process finishes, this information should be displayed to the user immediately.
-    
+
 
 <a id="_l2_provenance_summaries"></a>
 #### 9.1.3. L2 - provenance summaries
@@ -628,7 +628,7 @@ Validated segments will have matching time codes that make it possible to commun
 
 Many player timelines are already information heavy with progress, buffering, and chapter data. Thus, it is recommended to avoid adding more information to prevent confusing or overwhelming the user. However, linking a user interaction (like a hover state) with the timeline could help users understand their relationship and enhance information transfer. This approach can be used to provide validation progress and segment status information directly in the timeline, providing the user with more context. This solution, due to its limited accessibility and desktop-specific nature, should complement other approaches rather than being the sole strategy.
 
-![Illustrative example showing disclosure of invalid video segment on the timeline](../../2.2/ux/_images/video_placement_2.png)
+[Illustrative example showing disclosure of invalid video segment on the timeline](../../2.2/ux/_images/video_placement_2.png)
 
 Figure 36. Illustrative example showing disclosure of invalid video segment on the timeline, activated on user interaction with L1
 
@@ -643,16 +643,16 @@ L2 information should be contained as part of the video player. The video should
 
 Some suggestions are provided below.
 
-![Three examples of L2 placement](../../2.2/ux/_images/video_placement_3.png)
+[Three examples of L2 placement](../../2.2/ux/_images/video_placement_3.png)
 
 Figure 37. Three examples of L2 placement, from left to right: a) within the video player, b) exploiting PiP, c) split-frame layout
 
 *   As a video player overlay when user interacts with the C2PA indicator
-    
+
 *   Exploiting the Picture-in-Picture (PiP) feature to display information in the main video frame while video is presented in PiP window/overlay, or vice-versa.
-    
+
 *   Split-frame layout, where the main video frame is divided into two or more sections to showcase the video content and information side by side.
-    
+
 
 <a id="_interaction_5"></a>
 ##### 9.1.3.3. Interaction
@@ -664,7 +664,7 @@ An invalid state should be surfaced to the user as soon as it is detected. There
 
 [Failure codes](../../1.4/specs/C2PA_Specification.html.md#_failure_codes) `manifest.inaccessible` and `assertion.inaccessible` do not suggest invalidity and instead represent temporarily inaccessible information due to connection issues. These should be handled by the player as they are not considered validation issues.
 
-![Illustrative example of a L2 summary for an invalid state for streaming playback](../../2.2/ux/_images/video_status_summaries_for_invalid_states.png)
+[Illustrative example of a L2 summary for an invalid state for streaming playback](../../2.2/ux/_images/video_status_summaries_for_invalid_states.png)
 
 Figure 38. Illustrative example of a L2 summary for an invalid state for streaming playback
 
@@ -699,11 +699,11 @@ For dynamic video streaming each segment is validated as it’s rendered. While 
 Manifest validation occurs quickly on page load, any Manifest failures should be surfaced to the user at this point. Depending on the video player implimentation, different levels of information can be communicated about the asset:
 
 *   **Lazy loading**: Players set to lazy load defer the loading of resources until they are needed, improving initial page load time and reducing bandwidth usage. User interaction is required for the asset validation process to initiate. Active Manifest data can be shown. If it is shown it should be clear that the content hasn’t yet been validated against this information, therefore there is some uncertainty.
-    
+
 *   **Preloading**: Players set to ‘preload’ fetch video resources ahead of time to eliminate waiting periods. In this scenario the initial segment or some segments may be downloaded before the user interacts. Active Manifest data can be shown and the validation status of these initial segments maybe communicated confidently.
-    
+
 *   **Autoplay**: Players set to autoplay don’t require user interaction to initiate playback, subsequently, the validation process will commence in parallel. Active Manifest data can be shown and the validation status of the rendered segments maybe communicated confidently and progressively inline with playback.
-    
+
 
 <a id="_during_streaming"></a>
 ##### 9.1.4.3. During streaming
@@ -714,11 +714,11 @@ The Asset validation process is dependent on the video download speed. Video str
 ##### 9.1.4.4. User-video-player interactions and their impact on validation
 
 *   **Trick play**: Video players allow users to easily move back and forth to specific moments in the video. When parts of the video are skipped these sections may not be validated, leading to uncertainty about their accuracy or validity. However, it is not recommended to attempt to communicate this uncertainty as it may create confusion to the user. What has not been viewed should be left as unknown.
-    
-*   **Adjusting video quality**: When a user adjusts the video quality (changes the bitrate), the new segments will be revalidated.
-    
 
-![Flow showing a) when the manifest and asset validations happen during the video streaming experience b) the validation status logic across this journey](../../2.2/ux/_images/video_streaming_validation_process.png)
+*   **Adjusting video quality**: When a user adjusts the video quality (changes the bitrate), the new segments will be revalidated.
+
+
+[Flow showing a) when the manifest and asset validations happen during the video streaming experience b) the validation status logic across this journey](../../2.2/ux/_images/video_streaming_validation_process.png)
 
 Figure 39. Flow showing a) when the manifest and asset validations happen during the video streaming experience b) the validation status logic across this journey
 
@@ -756,20 +756,20 @@ Amongst media types (image, video, audio, docs, 3D models etc.) single image thu
 
 Depending on the media type, a meaningful ‘thumbnail’ can be comprised of more than one element (but does not need to include all). The below example uses video as an example but is intended to demonstrate how the different elements can be used to create a thumbnail of any kind.
 
-![Anatomy of a thumbnail](../../2.2/ux/_images/thumbnail_anatomy.png)
+[Anatomy of a thumbnail](../../2.2/ux/_images/thumbnail_anatomy.png)
 
 Figure 40. Anatomy of a thumbnail
 
 *   Interactions (i.e. hover or long press to skip through a sequence or swipe to rotate model)
-    
+
 *   Where relevant, an L1 indication of provenance
-    
+
 *   Some representation of the media (see below for different approaches)
-    
+
 *   Data (i.e. media duration for temporal media)
-    
+
 *   Relevant iconography
-    
+
 
 <a id="_media_representations"></a>
 #### 9.2.2. Media representations

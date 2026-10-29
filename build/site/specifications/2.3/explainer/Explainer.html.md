@@ -1,6 +1,6 @@
 # C2PA and Content Credentials Explainer
 
-[![Creative Commons License](_images/CCby4.png)](http://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](http://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
@@ -28,15 +28,15 @@ It is not a cure-all for misinformation, but instead seeks to mitigate against i
 Some of the core principles that underpin the C2PA specifications are:
 
 *   Content Credentials provides a way to establish provenance of content. There are no value judgments about whether the provenance data is good or bad.
-    
+
 *   Implementations of Content Credentials are designed to be interoperable
-    
+
 *   C2PA specifications respect user privacy
-    
+
 *   C2PA specifications must not lend themselves to abuse, harm and threats to human rights
-    
+
 *   C2PA specifications are global
-    
+
 
 > **NOTE:**
 > The full set of principles may be found in our [Guiding Principles](https://c2pa.org/principles/) document.
@@ -135,26 +135,26 @@ To prevent dangerous stereotypes of ideal bodies, a government enacts a law that
 The C2PA specification for Content Credentials provides a standardized method for attaching Content Credentials, which can be validated, to digital assets. Here’s how it works:
 
 1.  **Content Creation**: A creator uses a Content Credential-enabled tool to produce digital content, such as a photograph or video. During this process, provenance information is generated, including a cryptographic signature and possibly including additional details about the creator, the device used, and any applied edits.
-    
+
 2.  **C2PA Manifest Generation**: The provenance information is encoded into a data structure called a C2PA Manifest, also known as a Content Credential. This C2PA Manifest can contain variety of assertions representing the provenance of the asset, including:
-    
+
     *   A description of the asset’s origin.
-        
+
     *   Details of any modifications or edits.
-        
+
     *   A cryptographic hash representing the content at the time of creation.
-        
-    
+
+
 3.  **Cryptographic Signing**: The C2PA Manifest is signed with the private key of the software or hardware that performed the operations, thus ensuring its authenticity and integrity. The corresponding public key is made available for verification.
-    
+
 4.  **Embedding and/or Watermarking**: The C2PA Manifest is commonly embedded directly within the asset, though it can also be linked externally through a soft binding system (e.g., invisible watermarks). This ensures that the provenance information is always accessible.
-    
+
 5.  **Distribution**: The asset, along with its embedded C2PA Manifest, is distributed via platforms like social media, news sites, or file-sharing services. The C2PA Manifest travels with the asset, ensuring that the provenance information remains intact.
-    
+
 6.  **Verification**: When an end user views or interacts with an asset using a Content Credential-enabled application, the application checks the integrity of, and verifies, the C2PA Manifest and its associated asset. It can confirm that the asset has not been modified since the C2PA Manifest was created, and that the provenance information is also unmodified and authentic, added by a trusted (or not) implementation.
-    
+
 7.  **Presentation**: When presented to a user, verified content will be marked with a clear indicator, such as a badge or icon, signalling to the user that the asset and its provenance is authentic and intact.
-    
+
 
 <a id="_core_components"></a>
 ### 6.2. Core Components
@@ -170,9 +170,9 @@ Ensures integrity and authenticity of the Content Credential. If any part of the
 Durable Credentials and Soft Binding
 
 *   So called “soft bindings” enhance the durability of Content Credentials by enabling the discovery of the manifest if it is not embedded in an asset.
-    
+
 *   Soft bindings can either be implemented via invisible watermarking or fingerprint lookup.
-    
+
 
 <a id="_faq"></a>
 ## 7\. FAQ

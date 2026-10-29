@@ -1,6 +1,6 @@
 # C2PA Security Considerations
 
-[![Creative Commons License](_images/CCby4.png)](https://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](https://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
@@ -10,11 +10,11 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 This document provides information security considerations for technology described in the [C2PA core specification](../specs/C2PA_Specification.html.md). It complements security-related content in other C2PA documents. This document includes:
 
 *   A summary of relevant security features of C2PA technology
-    
+
 *   Security considerations for practical use of C2PA technology
-    
+
 *   Threats to C2PA technology and respective treatment of those threats, including countermeasures
-    
+
 
 Analysis in this document does not assess security risk or likelihoods associated with threats or outcomes. These may vary based on a number of factors, such as the context in which C2PA technology is deployed and changes in the threat landscape. However, content in this document may be helpful in developing security risk and likelihood assessments related to use of C2PA technology.
 
@@ -46,19 +46,19 @@ Like other security activities, we expect our threat modelling process to evolve
 A variety of references and experiences are used to inform threat modelling and related security activities for the C2PA. This section provides a subset of public documents for reference.
 
 *   [IETF on security considerations](https://datatracker.ietf.org/doc/html/rfc3552#page-26)
-    
+
 *   [IETF on privacy considerations (guidelines)](https://datatracker.ietf.org/doc/html/rfc6973#section-7)
-    
+
 *   [W3C security and privacy self-review questionnaire](https://www.w3.org/TR/security-privacy-questionnaire/)
-    
+
 *   [OAuth2 threat model (example)](https://datatracker.ietf.org/doc/html/rfc6819)
-    
+
 *   [Threat Modelling: Designing for Security](https://shostack.org/books/threat-modeling-book)
-    
+
 *   [OWASP Threat Modelling](https://owasp.org/www-community/Threat_Modeling)
-    
+
 *   [Microsoft Threat Modelling](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling)
-    
+
 
 <a id="_security_features"></a>
 ## 2\. Security features
@@ -111,7 +111,7 @@ Active Manifest
 
 The last manifest in the list of _C2PA Manifests_ inside of a _C2PA Manifest Store_ which is the one with the set of _content bindings_ that are able to be validated.
 
-![A C2PA Manifest and its parts](_images/Manifest.drawio.svg)
+[A C2PA Manifest and its parts](_images/Manifest.drawio.svg)
 
 Figure 1. A C2PA Manifest and its constituent parts
 
@@ -151,13 +151,13 @@ Validation checks provenance claim signatures and performs supporting operations
 C2PA provides features that can be used to protect confidentiality of personal information while still establishing the provenance of an asset.
 
 *   Anonymous or pseudo-anonymous identities may be used for signing claims.
-    
+
 *   Assertions that may contain sensitive information can be removed via [redaction](../specs/C2PA_Specification.html.md#_redaction_of_assertions).
-    
+
 *   Assertions can be customized for specific workflows, such as where specific information is required to remain encrypted end-to-end.
-    
+
 *   Manifests may include [W3C Verifiable Credentials](../specs/C2PA_Specification.html.md#_w3c_verifiable_credentials).
-    
+
 
 Note that confidentiality of personal information and other privacy-related concerns are addressed in the [Harms Considerations document](Harms_Modelling.html.md).
 
@@ -175,13 +175,13 @@ Attempts to compromise the integrity of C2PA provenance data associated with a r
 For embedded C2PA Manifests, malicious association of an existing manifest with a differing asset is also tamper-evident. In addition, the following actions are tamper-evident for all manifests:
 
 *   C2PA Manifest Store: Malicious addition or removal of a manifest.
-    
+
 *   C2PA Manifest: Malicious modification of an active or ingredient manifest.
-    
+
 *   Claims and claim signatures: Addition, removal, or modification of an existing claim in an existing C2PA Manifest.
-    
+
 *   Assertions: Addition, removal, or modification of assertions in the assertion store referenced by an existing claim.
-    
+
 
 Availability
 
@@ -196,20 +196,20 @@ Confidentiality
 C2PA does not specify confidentiality properties for assets, provenance model primitives, private address books, or cryptographic secrets.
 
 *   They may be kept confidential via other means. For example by transmitting assets via TLS. However, enforcing this confidentiality is considered out-of-scope for this specification.
-    
+
 *   Some private data, such as claim signing keys or private address books, must adhere to conventional confidentiality principles. Compromise of this private data could lead to indirect violation of other principles specified in this section. Enforcing confidentiality of this adjacent private data is considered out-of-scope for this specification.
-    
+
 *   C2PA does not specify Digital Rights Management (DRM) technology.
-    
+
 *   C2PA does not specify guarantees of confidentiality of personal information.
-    
+
     *   However, C2PA provides features that can be used to protect confidentiality of personal information ([summary](#_protection_of_personal_information))
-        
+
     *   Confidentiality of personal information and other privacy-related concerns are addressed in the [Harms Considerations document](Harms_Modelling.html.md).
-        
+
         In general, these assertions are achieved through application of the [C2PA Trust Model](../specs/C2PA_Specification.html.md#_trust_model) to the claim generation process, and corresponding checks in the validation process.
-        
-    
+
+
 
 <a id="_threat_model"></a>
 ## 4\. Threat model
@@ -219,13 +219,13 @@ This section documents information security threats to C2PA technology. Threats 
 Each threat scenarios is described as follows:
 
 *   Description: A short description of the threat scenario
-    
+
 *   Prerequisites: Relevant requirements for attempting an attack or threat scenario
-    
+
 *   Impact analysis: Summary of the impact of the threat scenario on the C2PA security model
-    
+
 *   Guidance: Any supplementary security guidance on addressing the threat scenario or treating potential residual security risk
-    
+
 
 > **NOTE:**
 > This document refers to threat sources, agents, actors and other malicious entities commonly as attackers.
@@ -236,30 +236,30 @@ Each threat scenarios is described as follows:
 The following assumptions are made about entities that may attack C2PA technology:
 
 *   Attackers have full access to public assets and associated public metadata, including C2PA Manifests.
-    
+
 *   Attackers may attempt to access claim generator software (e.g., C2PA-enabled photo editing software) as a typical user.
-    
+
 *   Attackers do not have access to private keys referenced within the C2PA ecosystem (e.g., claim signing private keys, Time-stamping Authority private keys, etc.). They may, however, attempt to access these keys via exploitation techniques.
-    
+
 *   Attackers have the ability to publish assets to an impactful audience, for example, as a social media user.
-    
+
 *   Quantum computing cryptanalytic attacks are considered out-of-scope.
-    
+
 
 The following additional assumptions are made about the threat model:
 
 *   Attacks that rely on bypassing conventional security models of non-C2PA technology are considered out-of-scope. For example:
-    
+
     *   Attacks against the C2PA Validator as an architectural component within a user agent (e.g., web browser) are considered in-scope.
-        
+
     *   A compromise of the C2PA validation logic via some non-C2PA attack vector within the user agent is considered out-of-scope, since this would typically require bypassing the security model of the user agent (e.g., escaping a web browser sandbox or compromising the host via other means).
-        
-    
+
+
 *   Attacks across conventional trust boundaries are considered in-scope.
-    
+
     *   For example, attacks against C2PA-enabled assets traversing the internet.
-        
-    
+
+
 
 <a id="_threats"></a>
 ### 4.2. Threats
@@ -500,11 +500,11 @@ An attacker copies a valid W3C Verified Credential (VC) from an existing C2PA Ma
 ###### 4.2.2.7.2. Prerequisites
 
 *   Ability to copy a valid VC from an existing C2PA Manifest
-    
+
 *   Ability to generate and sign a claim that passes validation
-    
+
 *   Ability to deliver assets to consumer(s), for example via publishing to social media
-    
+
 
 <a id="_impact_analysis_9"></a>
 ###### 4.2.2.7.3. Impact analysis

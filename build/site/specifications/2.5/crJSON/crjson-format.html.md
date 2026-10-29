@@ -1,6 +1,6 @@
 # Content Credentials JSON (crJSON) File Format Specification
 
-[![Creative Commons License](_images/CCby4.png)](http://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](http://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
@@ -82,9 +82,9 @@ Since a `@context` element can appear inside of any object in JSON-LD, it is pos
 The `jsonGenerator` field is an object that contains information about the tool that generated the crJSON document. It shall contain the following fields:
 
 *   `name` (required): the name of the tool that generated the crJSON document
-    
+
 *   `version` (required): the version of the tool that generated the crJSON document, in SemVer 2.0 format
-    
+
 
 <a id="_manifests"></a>
 ### 3.4. Manifests
@@ -94,21 +94,21 @@ A C2PA Manifest consists of, at least, a set of Assertions, Claims, and Claim Si
 Each manifest object shall include the following properties (per schema: required `label`, `isUpdateManifest`, `isCompressedManifest`, `assertions`, `signature`; exactly one of `claim` or `claim.v2`):
 
 *   `label` (manifest label/URN)
-    
+
 *   `isUpdateManifest` (true if update manifest)
-    
+
 *   `isCompressedManifest` (true if compressed manifest)
-    
+
 *   `assertions` (object keyed by assertion label)
-    
+
 *   `claim` (v1, per C2PA `claim-map`) or `claim.v2` (v2, per C2PA `claim-map-v2`)
-    
+
 *   `signature` (signature and credential details object)
-    
+
 *   `validationResults` (optional per-manifest validation status code groups)
-    
+
 *   `ingredientDeltas` (optional per-manifest ingredient validation deltas)
-    
+
 
 The `label` field’s value is a string that identifies the C2PA Manifest using the label of its JUMBF box, such as `urn:c2pa:2702fc84-a1ae-44d1-9825-dd86311e980b`.
 
@@ -156,30 +156,30 @@ A JSON-LD serialised claim
 `claim.v2` conforms to the C2PA CDDL claim-map-v2. Required properties:
 
 *   `instanceID` — uniquely identifies a specific version of an asset
-    
+
 *   `claim_generator_info` — single generator-info map (object with e.g. `name`, `version`, optional `icon`, `operating_system`, `specVersion`)
-    
+
 *   `signature` — JUMBF URI reference to the signature of this claim (e.g. `self#jumbf=/c2pa/{label}/c2pa.signature`)
-    
+
 *   `created_assertions` — array of one or more hashed URI maps; each entry has `url`, `hash`, and optionally `alg`
-    
+
 *   `gathered_assertions` — array of zero or more hashed URI maps (same structure as created\_assertions); set to an empty array if it’s missing in the source
-    
+
 *   `redacted_assertions` — array of zero or more JUMBF URI strings (references to redacted ingredient manifest assertions); set to an empty array if it’s missing in the source
-    
+
 
 Optional properties:
 
 *   `dc:title` — name of the asset
-    
+
 *   `alg` — cryptographic hash algorithm for data hash assertions (e.g. `SHA-256`)
-    
+
 *   `alg_soft` — algorithm for soft binding assertions
-    
+
 *   `specVersion` — specification version (SemVer)
-    
+
 *   `metadata` — (DEPRECATED) additional information
-    
+
 
 All `hash` values in hashed URI maps shall be Base64 strings with `b64'` prefix and suffixed with a single `'`. (e.g., `b64’VGhpcyBpcyBhIHRlc3Q='`)
 
@@ -189,17 +189,17 @@ All `hash` values in hashed URI maps shall be Base64 strings with `b64'` prefix 
 When a manifest uses `claim` instead of `claim.v2`, it conforms to the C2PA CDDL claim-map (claimV1). Required properties:
 
 *   `claim_generator` — User-Agent string for the claim generator
-    
+
 *   `claim_generator_info` — array of one or more generator-info maps
-    
+
 *   `signature` — JUMBF URI reference to the signature
-    
+
 *   `assertions` — array of one or more hashed URI maps (`url`, `hash`, optional `alg`)
-    
+
 *   `dc:format` — media type of the asset
-    
+
 *   `instanceID` — uniquely identifies a specific version of an asset
-    
+
 
 Optional: `dc:title`, `redacted_assertions` (JUMBF URI strings), `alg`, `alg_soft`, `metadata`.
 
@@ -316,11 +316,11 @@ JSON-LD representation of [\[actions-cbordiag\]](#actions-cbordiag)
 crJSON normalizes CBOR byte-strings (`bstr`) into Base64 ([\[RFC4648\]](#RFC4648)) string encodings, starting with the `b64'` prefix and suffixed with a single `'`. For example, the following fields would be serialized as such:
 
 *   `hash`
-    
+
 *   `pad`
-    
+
 *   `pad2`
-    
+
 
 <a id="_custom_assertions"></a>
 #### 3.6.4. Custom Assertions
@@ -342,15 +342,15 @@ The `certificateInfo` field contains information about the signing certificate, 
 The signature information shall include (if available):
 
 *   `serialNumber` (from X.509 certificate)
-    
+
 *   `issuer` (from X.509 certificate, a DN map, e.g., `C`, `ST`, `L`, `O`, `OU`, `CN`)
-    
+
 *   `subject` (from X.509 certificate, a DN map)
-    
+
 *   `validity.notBefore`
-    
+
 *   `validity.notAfter`
-    
+
 
 > **NOTE:**
 > An X.509 certificate can contain all sorts of information, and implementations may choose to include additional information in their JSON-LD representation.
@@ -358,9 +358,9 @@ The signature information shall include (if available):
 The `timeStampInfo` field contains information about the time stamp applied to the signature, such as the time it was created. If present, it shall contain the following fields:
 
 *   `timestamp` (RFC 3339 formatted)
-    
+
 *   `certificateInfo` (from the time stamp authority’s leaf X.509 certificate, same structure as the `certificateInfo` field described above)
-    
+
 
 An example signature field with X.509 certificate information, with no time stamp
 

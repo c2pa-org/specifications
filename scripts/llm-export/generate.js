@@ -2,7 +2,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { writeMirrors } = require('./lib/write-mirrors');
-const { parseNav } = require('./lib/parse-nav');
 const { buildLlmsTxt } = require('./lib/build-llms-txt');
 const { buildLlmsFullTxt } = require('./lib/build-llms-full-txt');
 const { rewriteRelativeLinks } = require('./lib/rewrite-relative-links');
@@ -13,10 +12,6 @@ const SITE_TITLE = 'C2PA Technical Specification';
 const SITE_SUMMARY =
   'C2PA (Coalition for Content Provenance and Authenticity) defines an end-to-end, open technical ' +
   'standard for certifying the provenance and history of digital media content.';
-
-function stripTags(html) {
-  return html.replace(/<[^>]*>/g, ' ');
-}
 
 function versionRootsIn(siteRoot) {
   // e.g. build/site/specifications/2.4 — single `specifications` segment on
@@ -47,31 +42,17 @@ function run(siteRoot) {
   const latest = latestVersion(versionDirs);
 
   for (const versionDir of versionDirs) {
-    const indexPath = path.join(versionDir, 'index.html');
-    if (!fs.existsSync(indexPath)) continue;
-    const nav = parseNav(fs.readFileSync(indexPath, 'utf8'));
-
-    const pagesByHref = {};
-    for (const category of nav.categories) {
-      for (const page of category.pages) {
-        const resolvedSource = path.resolve(versionDir, page.href);
-        const result = resultsBySourcePath.get(resolvedSource);
-        if (result) pagesByHref[page.href] = result;
-      }
+    const href = 'specs/C2PA_Specification.html';
+    const core = resultsBySourcePath.get(path.join(versionDir, href));
+    if (!core) {
+      throw new Error(`llm-export: missing main core specification in ${versionDir}`);
     }
-    // include orphans (pages under this version dir not reachable from nav)
-    for (const result of results) {
-      if (!result.sourcePath.startsWith(versionDir + path.sep)) continue;
-      const href = path.relative(versionDir, result.sourcePath);
-      if (!Object.values(pagesByHref).some((p) => p === result)) {
-        pagesByHref[href] = result;
-      }
-    }
-
-    const descriptionsByHref = {};
-    for (const [href, result] of Object.entries(pagesByHref)) {
-      if (result.description) descriptionsByHref[href] = result.description;
-    }
+    const nav = {
+      categories: [{ label: 'Core Specification', pages: [{ title: 'Content Credentials', href }] }],
+      pageOrder: [href],
+    };
+    const pagesByHref = { [href]: core };
+    const descriptionsByHref = { [href]: SITE_SUMMARY };
 
     const llmsTxt = buildLlmsTxt({ siteTitle: SITE_TITLE, summary: SITE_SUMMARY, nav, descriptionsByHref });
     fs.writeFileSync(path.join(versionDir, 'llms.txt'), llmsTxt);
@@ -129,7 +110,7 @@ function run(siteRoot) {
   }
 
   const driftInput = results.map((r) => ({
-    sourceText: stripTags(fs.readFileSync(r.sourcePath, 'utf8')),
+    sourceText: r.sourceText,
     markdown: r.markdown,
   }));
   const drift = checkWordCountDrift(driftInput, 0.5);

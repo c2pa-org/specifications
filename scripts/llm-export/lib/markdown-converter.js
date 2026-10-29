@@ -121,13 +121,14 @@ function createConverter() {
     },
   });
 
-  // Diagrams (e.g. Kroki/PlantUML SVGs) degrade to alt text; with no alt
-  // text there's nothing text-only consumers can use, so say so explicitly.
-  td.addRule('image-alt-or-placeholder', {
+  td.addRule('image-link', {
     filter: 'img',
     replacement(content, node) {
-      const alt = (node.getAttribute('alt') || '').trim();
-      return alt ? `![${alt}](${node.getAttribute('src')})` : '[Diagram omitted]';
+      const alt = (node.getAttribute('alt') || '').trim() || 'Image';
+      for (let parent = node.parentNode; parent; parent = parent.parentNode) {
+        if (parent.nodeName === 'A' && parent.getAttribute('href')) return alt;
+      }
+      return `[${alt}](${node.getAttribute('src')})`;
     },
   });
 
@@ -139,11 +140,17 @@ function createConverter() {
     filter: (node) => node.nodeName === 'A' && !!node.getAttribute('href'),
     replacement(content, node) {
       let href = node.getAttribute('href');
-      if (INTERNAL_HTML_LINK.test(href) || SAME_SITE_ABSOLUTE_HTML_LINK.test(href)) {
+      if (!node.hasAttribute('data-llm-source-link') &&
+        (INTERNAL_HTML_LINK.test(href) || SAME_SITE_ABSOLUTE_HTML_LINK.test(href))) {
         href = href.replace(/\.html(#|$)/, '.html.md$1');
       }
       return content ? `[${content}](${href})` : '';
     },
+  });
+
+  td.addRule('explicit-anchor', {
+    filter: (node) => node.nodeName === 'A' && node.hasAttribute('id') && !node.hasAttribute('href'),
+    replacement: (content, node) => node.outerHTML,
   });
 
   // Antora renders a decorative empty permalink anchor inside every heading
@@ -166,7 +173,10 @@ function createConverter() {
 const converter = createConverter();
 
 function htmlToMarkdown(html) {
-  return converter.turndown(html);
+  const parts = converter.turndown(html).split(/(```[\s\S]*?```)/g);
+  return parts.map((part, i) => i % 2 === 1
+    ? part
+    : part.replace(/^[ \t>]*[ \t]+$/gm, (line) => line.trimEnd())).join('');
 }
 
 module.exports = { htmlToMarkdown };

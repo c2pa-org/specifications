@@ -1,6 +1,6 @@
 # Guidance for Artificial Intelligence and Machine Learning
 
-[![Creative Commons License](_images/CCby4.png)](https://creativecommons.org/licenses/by/4.0/)
+[Creative Commons License](https://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
@@ -59,7 +59,7 @@ AI-ML output results have a wide range of concerns and risks depending on how th
 
 If the model provider does not want the model and its output to be used to train other models in an attempt to extract the model’s functionality, the model C2PA Manifest can contain a data mining assertion that asserts whether the asset is allowed, constrained, or not allowed for generative or non-generative AI-ML models or both. See [https://creator-assertions.github.io/training-and-data-mining/1.0](https://creator-assertions.github.io/training-and-data-mining/1.0) for more detail.
 
-![Visual diagram of the elements contained in a model Content Credential](_images/Model-Manifest-v1.3.svg)
+[Visual diagram of the elements contained in a model Content Credential](_images/Model-Manifest-v1.3.svg)
 
 Figure 1. Model Content Credential
 
@@ -193,7 +193,7 @@ It is also possible for a Content Credential to include information about the da
 <a id="_ai_ml_training_data_set_content_credential"></a>
 ## 8\. AI-ML Training Data Set Content Credential
 
-![Visual diagram of the elements contained in a Training Data Set Credential](_images/Training-Data-Credentials.svg)
+[Visual diagram of the elements contained in a Training Data Set Credential](_images/Training-Data-Credentials.svg)
 
 Figure 2. Training Data Set Credential
 
@@ -284,7 +284,7 @@ Provenance of a LoRA adapter should follow the same guidance as regular fine-tun
 
 Large generative models tend to have multiple, versioned releases beyond the original. Consequently, there are multiple concurrent versions of the same model used and customised by the community. The absence of well-structured provenance information does not allow tracking the dependency between the subsequent releases (c.f. [Figure 3, “Ambiguous model provenance”](#model-versioning)).
 
-![Visual diagram of the linear dependency between model versions and lack thereof](_images/model-versioning.png)
+[Visual diagram of the linear dependency between model versions and lack thereof](_images/model-versioning.png)
 
 Figure 3. Ambiguous model provenance
 
@@ -296,14 +296,14 @@ Model providers can provide additional trust with a clear dependency tree by rec
 <a id="_references"></a>
 ## References
 
-*   \[Stokes21\] J. W. Stokes, P. England and K. Kane, "Preventing Machine Learning Poisoning Attacks Using Authentication and Provenance," MILCOM 2021 - 2021 IEEE Military Communications Conference (MILCOM), 2021, pp. 181-188.
-    
-*   \[EU19\] [https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32019R0881](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32019R0881)
-    
-*   \[Biden21\] [https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/).
-    
-*   \[LoRA21\] Edward J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang, Weizhu Chen, "LoRA: Low-Rank Adaptation of Large Language Models," ICLR 2021 International Conference of Learning Representations
-    
-*   \[MNIST\] LeCun, Y., Cortes, C. and Burges, C.J.C., "The MNIST Database of Handwritten Digits"
-    
-*   \[GZIP\] [https://www.rfc-editor.org/rfc/rfc1952.html](https://www.rfc-editor.org/rfc/rfc1952.html)
+*   <a id="Stokes21"></a>\[Stokes21\] J. W. Stokes, P. England and K. Kane, "Preventing Machine Learning Poisoning Attacks Using Authentication and Provenance," MILCOM 2021 - 2021 IEEE Military Communications Conference (MILCOM), 2021, pp. 181-188.
+
+*   <a id="EU19"></a>\[EU19\] [https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32019R0881](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32019R0881)
+
+*   <a id="Biden21"></a>\[Biden21\] [https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/).
+
+*   <a id="LoRA21"></a>\[LoRA21\] Edward J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang, Weizhu Chen, "LoRA: Low-Rank Adaptation of Large Language Models," ICLR 2021 International Conference of Learning Representations
+
+*   <a id="MNIST"></a>\[MNIST\] LeCun, Y., Cortes, C. and Burges, C.J.C., "The MNIST Database of Handwritten Digits"
+
+*   <a id="GZIP"></a>\[GZIP\] [https://www.rfc-editor.org/rfc/rfc1952.html](https://www.rfc-editor.org/rfc/rfc1952.html)
