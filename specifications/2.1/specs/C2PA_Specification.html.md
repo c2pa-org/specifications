@@ -175,9 +175,9 @@ A composed asset is an [asset](#_asset) that is created by building up a collect
 **EXAMPLES:**
 
 *   A video created by importing existing video clips and audio segments into a "blank slate".
-    
+
 *   An image where another image is imported and super-imposed on top of the starting image.
-    
+
 
 <a id="_core_aspects_of_c2pa"></a>
 ### 2.3. Core Aspects of C2PA
@@ -306,131 +306,131 @@ Figure 3. Elements of C2PA
 ### 3.1. Core Formats
 
 *   [CBOR](https://tools.ietf.org/html/rfc8949)
-    
+
 *   [JSON](https://tools.ietf.org/html/rfc8259)
-    
+
 *   [JSON-LD](https://www.w3.org/TR/json-ld11/)
-    
+
 *   [JPEG universal metadata box format](https://www.iso.org/standard/73604.html) (JUMBF)
-    
+
 
 <a id="_schemas"></a>
 ### 3.2. Schemas
 
 *   [CDDL](https://datatracker.ietf.org/doc/html/rfc8610)
-    
+
 *   [JSON Schema](https://json-schema.org/specification-links.html#2020-12)
-    
+
 *   [Dublin Core Metadata Initiative](https://www.dublincore.org/specifications/dublin-core/dces/)
-    
+
 
 <a id="_digital_electronic_signatures"></a>
 ### 3.3. Digital & Electronic Signatures
 
 *   [X.509 Certificates](https://tools.ietf.org/html/rfc5280)
-    
+
 *   [JSON Web Algorithms](https://tools.ietf.org/html/rfc7518) (JWA)
-    
+
 *   [CBOR Object Signing and Encryption](https://tools.ietf.org/html/rfc8152) (COSE)
-    
+
 *   [Using RSA Algorithms with COSE Messages](https://tools.ietf.org/html/rfc8230)
-    
+
 *   [Online Certificate Status Protocol](https://tools.ietf.org/html/rfc6960) (OCSP)
-    
+
 *   [Transport Layer Security (TLS) Extensions: Extension Definitions](https://tools.ietf.org/html/rfc6066)
-    
+
 *   [Internet X.509 PKI Time-Stamp Protocol](https://tools.ietf.org/html/rfc3161)
-    
+
 *   [CBOR Object Signing and Encryption (COSE): Header Parameters for Carrying and Referencing X.509 Certificates](https://datatracker.ietf.org/doc/html/rfc9360)
-    
+
 *   [Algorithms and Identifiers for the Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile](https://tools.ietf.org/html/rfc3279)
-    
+
 *   [Internet X.509 Public Key Infrastructure: Additional Algorithms and Identifiers for DSA and ECDSA](https://tools.ietf.org/html/rfc5758)
-    
+
 *   [Algorithm Identifiers for Ed25519, Ed448, X25519, and X448 for Use in the Internet X.509 Public Key Infrastructure](https://tools.ietf.org/html/rfc8410)
-    
+
 *   [PKCS #1: RSA Cryptography Specifications Version 2.2](https://tools.ietf.org/html/rfc8017)
-    
+
 *   [Edwards-Curve Digital Signature Algorithm (EdDSA)](https://tools.ietf.org/html/rfc8032)
-    
+
 *   [JSON Advanced Electronic Signatures](https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.01.01_60/ts_11918201v010101p.pdf) (JAdES)
-    
+
 *   [US Secure Hash Algorithms](https://datatracker.ietf.org/doc/html/rfc6234)
-    
+
 *   [X.509 Certificate General-Purpose Extended Key Usage (EKU) for Document Signing](https://www.rfc-editor.org/rfc/rfc9336)
-    
+
 *   [Internet X.509 Public Key Infrastructure: Logotypes in X.509 Certificates](https://www.rfc-editor.org/rfc/rfc9399.html)
-    
+
 
 <a id="_embeddable_formats"></a>
 ### 3.4. Embeddable Formats
 
 *   [ISO Base Media File Format](https://www.iso.org/standard/74428.html) (BMFF)
-    
+
 *   [PDF 1.7](https://www.iso.org/standard/51502.html)
-    
+
 *   [PDF 2.0](https://www.iso.org/standard/75839.html)
-    
+
 *   [JPEG 1](https://www.iso.org/standard/18902.html)
-    
+
 *   [JPEG XT, ISO/IEC 18477-3](https://www.iso.org/standard/66071.html)
-    
+
 *   [JPEG XL, ISO/IEC 18181-2:2021](https://www.iso.org/standard/80617.html)
-    
+
 *   [PNG](https://www.w3.org/TR/2003/REC-PNG-20031110/)
-    
+
 *   [SVG](https://www.w3.org/TR/SVG11/)
-    
+
 *   [GIF](https://www.w3.org/Graphics/GIF/spec-gif89a.txt)
-    
+
 *   [ID3](https://id3.org/id3v2.3.0)
-    
+
 *   [Digital Negative or DNG](https://helpx.adobe.com/content/dam/help/en/photoshop/pdf/dng_spec_1_6_0_0.pdf)
-    
+
 *   [TIFF/EP](https://www.iso.org/standard/29377.html)
-    
+
 *   [TIFF v6](https://www.itu.int/itudoc/itu-t/com16/tiff-fx/docs/tiff6.pdf))
-    
+
 *   [RIFF](https://www.loc.gov/preservation/digital/formats/fdd/fdd000025.shtml)
-    
+
 *   [Multi-Picture Format (MPF)](https://www.cipa.jp/e/std/std-sec.html)
-    
+
 *   [Open Font Format](https://www.iso.org/standard/74461.html)
-    
+
 *   [OpenType](https://learn.microsoft.com/en-us/typography/opentype/spec/)
-    
+
 
 <a id="_other"></a>
 ### 3.5. Other
 
 *   [eXtensible Metadata Platform](https://www.iso.org/standard/75163.html) (XMP)
-    
+
 *   [JSON-LD serialization of XMP](https://www.iso.org/standard/79384.html)
-    
+
 *   [IPTC Photo Metadata Standard](http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata)
-    
+
 *   [Exif](https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E)
-    
+
 *   [UUID](https://tools.ietf.org/html/rfc4122)
-    
+
 *   [Uniform Resource Names (URNs)](https://tools.ietf.org/html/rfc8141)
-    
+
 *   [Universally Unique IDentifiers (UUIDs)](https://tools.ietf.org/html/rfc9562)
-    
+
 *   [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)
-    
+
 *   [RFC 3339](https://https://www.rfc-editor.org/rfc/rfc3339)
-    
+
 *   [RFC 2326](https://www.ietf.org/rfc/rfc2326.txt)
-    
+
 *   [Media Fragments](https://www.w3.org/TR/media-frags/)
-    
+
 *   [Web Annotation Data Model](https://www.w3.org/TR/annotation-model/)
-    
+
 *   [Brotli Compressed Data Format](https://datatracker.ietf.org/doc/html/rfc7932)
-    
+
 *   [RFC 5646, BCP 47](https://www.rfc-editor.org/info/rfc5646)
-    
+
 
 <a id="_standard_terms"></a>
 ## 4\. Standard Terms
@@ -461,120 +461,120 @@ A validator shall be compatible with at least one version of the specification, 
 This version focuses on both technical and editorial changes to the specification for the purposes of improving the security and reliability of Content Credentials. All publicly disclosed security vulnerabilities have been addressed, and the specification has been updated to reflect the latest best practices in the field.
 
 *   Clear definitions of Manifest & Asset states
-    
+
     *   Well-formed Manifests
-        
+
     *   Valid Manifests
-        
+
     *   Trusted Manifests
-        
+
     *   Valid Assets
-        
-    
+
+
 *   Clear definitions and processes for handling deprecation and versioning
-    
+
 *   New `c2pa` URN namespace for labelling manifests!
-    
+
     *   including a fully specified ABNF
-        
-    
+
+
 *   New `ingredients v3` assertion
-    
+
     *   Supports richer models of ingredient-based workflows.
-        
+
     *   Support for `dataTypes` and `claimSignature`.
-        
+
     *   Fields renamed to be more consistent with other assertions.
-        
+
     *   Added new validation status fields to accompany the new status info
-        
+
     *   `dc:title` and `dc:format` are now optional
-        
-    
+
+
 *   New `c2pa.hash.bmff.v3` assertion
-    
+
     *   Supports hashing of fixed & variable block sizes for BMFF-based assets
-        
-    
+
+
 *   New time-stamp manifest
-    
+
     *   Establishing a "time of existence" for a given asset.
-        
+
     *   Similar to an update manifest, but with the signer being a TSA
-        
-    
+
+
 *   Improved model for doing standard RFC 3161 time-stamping.
-    
+
     *   `sigTst2` & CTT time-stamping
-        
+
     *   Introduces the new C2PA TSA Trust List
-        
-    
+
+
 *   Improvements in Validation
-    
+
     *   Detailed validation instructions for all standard assertions
-        
+
     *   Validation of ingredients is now required when using the `ingredients` assertion
-        
+
     *   Extended ingredient validation to provide more detailed status information
-        
+
     *   Support for validation of redacted assertions in ingredients
-        
+
     *   Addition of detailed requirements for validation of time-stamps
-        
+
     *   Hashed URIs to data boxes, and any custom boxes, are now validated
-        
+
     *   Defined procedure for handling manifests with matching unique IDs
-        
+
     *   Address "orphaned manifests" in the validation process
-        
+
     *   LOTS of new validation status codes, including a new "informational" code type
-        
-    
+
+
 *   Improvements in documentation & security of hashing methods
-    
+
     *   BMFF-based assets
-        
+
     *   "general boxes"
-        
+
     *   ZIP
-        
-    
+
+
 *   The format embedding section has been moved to its own annex
-    
+
     *   Added support for JPEG-XL
-        
-    
+
+
 *   Improvements to soft bindings
-    
+
 *   Improvements to action assertions
-    
+
     *   Either a `c2pa.created` or a `c2pa.opened` is now mandatory in a standard manifest
-        
+
     *   Some new standard action types were added
-        
+
     *   It is now possible to have multiple action assertions in a single manifest
-        
+
     *   Action templates are now better explained with more examples.
-        
+
     *   RFC 3339-based regions of interest
-        
-    
+
+
 *   The various types/forms of unique identifiers for assets have been clarified.
-    
+
 *   Added some missing compatibility support for JPEG Trust
-    
+
 *   Cleaned up all CDDLs, including removing any normative language
-    
+
 *   And various areas of editorial improvements
-    
+
     *   Redefined custom labels to a custom naming scheme.
-        
+
     *   Embedding in PDFs
-        
+
     *   LOTS of editorial improvements to prepare the document for standardization by ISO
-        
-    
+
+
 
 <a id="_2_0_january_2024"></a>
 #### 5.2.2. 2.0 - January 2024
@@ -582,195 +582,195 @@ This version focuses on both technical and editorial changes to the specificatio
 This version represents a significant departure from previous versions. It reduces reliance on the term "actor" within the trust and validation model, shifting the basis for trust decisions away from identifying individual humans or organisations and toward the hardware and software components identified by X.509 certificates. In addition to validator-configured trust lists, it also introduces a new default trust list, the "C2PA Trust List", which is intended to cover certificates issued to hardware and software. This philosophical change led to the following functional changes in the specification:
 
 *   Only X.509 certificates may be used for signing.
-    
+
 *   Improvements to the Validation & Trust Model sections
-    
+
     *   Introduces the concepts of "well-formed" and "valid" C2PA Manifests
-        
+
     *   Clarifies various aspects of the validation process
-        
-    
+
+
 *   Refined metadata handling
-    
+
     *   removed the deprecated Exif, IPTC and Schema.org metadata assertions
-        
+
     *   defined a new general "metadata assertion" concept
-        
+
     *   `c2pa.metadata` only allows a fixed set of schemas & values
-        
+
     *   the process for creating `c2pa.metadata` is now documented in more detail
-        
+
     *   XMP processing sections have been revamped to reflect relevant changes
-        
+
     *   improved recommendations concerning hashing of standard metadata locations outside the manifest
-        
-    
+
+
 *   Removed the "W3C Verifiable Credentials" section
-    
+
     *   Removed any references to it and the VC Store.
-        
+
     *   Removed the `actors` field from the actions assertion
-        
+
     *   Removed identified humans from assertion metadata
-        
-    
+
+
 *   Removed the "Training & Data Mining" assertion
-    
+
 *   Removed the "Endorsements" assertion
-    
+
 
 In addition, the following other changes were made to improve various aspects of the spec:
 
 *   Version v2 version of the claim.
-    
+
     *   Removes deprecated and unused fields
-        
+
     *   Split `assertions` into `created_assertions` & `gathered_assertions`
-        
+
     *   Only allows a single claim generator, which must be the signer
-        
+
     *   `claim-generator-info` now has a specific `operating_system` field
-        
-    
+
+
 *   Box-based hashing is now strongly recommended for any format that supports it
-    
+
 *   Removed the deprecated `c2pa.hash.bmff` assertion
-    
+
 *   Added a new `c2pa.watermarked` action
-    
+
 *   `c2pa.font` actions are now just `font` actions
-    
+
     *   also `c2pa.font.info` is now just `font.info`
-        
-    
+
+
 *   Cleaned up rendering of CDDL schemas
-    
+
 *   Updated some normative references & removed notes about future versions
-    
+
 *   Lots of editorial improvements including fixed links
-    
+
 
 <a id="_1_4_november_2023"></a>
 #### 5.2.3. 1.4 - November 2023
 
 *   Added support for embedding a C2PA Manifest into a ZIP-based format (e.g., EPUB, OOXML, ODF, OpenXPS)
-    
+
 *   Manifests can now be compressed into a special `brob` box.
-    
+
 *   Added support for multiple file, aka collection, hashing
-    
+
 *   Added new regions of interest for text-based formats (e.g., PDF, Office, EPUB, etc.)
-    
+
 *   Added new `c2pa.metadata` assertion to support Exif, IPTC, Schema.org and XMP
-    
+
 *   Major revision to TIFF embedding support
-    
+
 *   Added support for embedding C2PA Manifests inside of OpenType and TrueType fonts
-    
+
 *   Introduced support for object-level manifests in PDF
-    
+
 *   Extended the Link header support for embedded manifests
-    
+
 *   Clarified issues with box hashing
-    
+
 *   Clarified issues on signing including time stamping, PKIStatus & document signing EKU
-    
+
 *   Align with Exif 3.0
-    
+
 *   Improvements to the CDDL schemas
-    
+
 *   Many editorial improvements
-    
+
 
 <a id="_1_3_april_2023"></a>
 #### 5.2.4. 1.3 - April 2023
 
 *   New v2 version of the actions assertion with support for many new options
-    
+
 *   New v2 version of the ingredient assertion with support for embedded data
-    
+
 *   New asset reference & asset type assertions
-    
+
 *   New data boxes, for storing arbitrary data inside the Manifest
-    
+
 *   New generic box hash methodology for a more inclusive byte range hashing
-    
+
 *   New "Regions of Interest" data structures that can be applied to various assertions
-    
+
 *   Added document signing EKU as an alternative default EKU for C2PA signers when a validator is not configured with an EKU list
-    
+
 *   Added a new `digitalSourceType` field for use by C2PA
-    
+
 *   Added support for many new formats: MPF, WebP, AIFF, AVI, GIF
-    
+
 *   Updated Entity diagram to reflect additions since 1.0
-    
+
 *   Updated COSE header definition for X.509 certificates to RFC 9360
-    
+
 *   Updated the guidance on PDF embedding and its relationship to PDF signatures
-    
+
 *   Updated information about JUMBF hashing and JUMBF box toggles
-    
+
 *   Deprecated v1 of the BMFF Hash
-    
+
 *   Clarified use of the JUMBF Protection Box in a C2PA Manifest
-    
+
 *   Clarified C2PA-specific requirement that all intermediate X.509 certificates be included in COSE signatures
-    
+
 *   Clarified that time-stamps are valid indefinitely
-    
+
 *   LOTS of editorial improvements!!
-    
+
 
 <a id="_1_2_october_2022"></a>
 #### 5.2.5. 1.2 - October 2022
 
 *   Added details about how to embed a C2PA Manifest in DNG or TIFF
-    
+
 *   Added new `digitalSourceType` field to Actions
-    
+
 *   Changed `stds.iptc.photometadata` → `stds.iptc` to support IPTC video metadata
-    
+
 *   Clarified versioning of assertions when adding optional fields
-    
+
 
 <a id="_1_1_september_2022"></a>
 #### 5.2.6. 1.1 - September 2022
 
 *   Define a mechanism to support salting box hashing
-    
+
 *   New `c2pa.hash.bmff.v2` assertion, with changes to hashing model, to improve security
-    
+
 *   Enable assertion metadata for the Claim
-    
+
 *   Replaced `claim_generator_hints` with `claim_generator_info`
-    
+
 *   Added a new assertion to support the concept of Endorsements
-    
+
 *   Improvements to the `c2pa.actions` assertion
-    
+
 *   All Error & Status Codes are now prefixed with `c2pa`
-    
+
 *   Define mechanism for redaction of W3C VC’s
-    
+
 *   Clarify validation of EKUs in certificates
-    
+
 *   Validation algorithm revised to reflect technical changes
-    
+
 *   Corrections to the CDDL and JSON schemas to match normative text
-    
+
 *   Revise figures to reflect changes
-    
+
 *   Various Editorial and Typographical Corrections
-    
+
 *   Update Normative References (incl. JUMBF & W3C VC Data Model)
-    
+
 
 <a id="_1_0_december_2021"></a>
 #### 5.2.7. 1.0 - December 2021
 
 *   Initial Release
-    
+
 
 <a id="_assertions"></a>
 ## 6\. Assertions
@@ -783,13 +783,13 @@ It is expected that each claim generator, used by actors in the system that crea
 Some examples of assertions are:
 
 *   metadata (e.g., camera information such as maker or lens);
-    
+
 *   actions performed on the asset (e.g., clipping, color correction);
-    
+
 *   thumbnail of the asset or its ingredients;
-    
+
 *   content bindings (e.g., cryptographic hashes).
-    
+
 
 Certain assertions may be redacted by subsequent claims (see [Section 6.8, “Redaction of Assertions”](#_redaction_of_assertions)), but they cannot be modified once made as part of a claim.
 
@@ -931,13 +931,13 @@ Every C2PA Manifest is uniquely identified and referenced by a Uniform Resource 
 A `c2pa` URN shall consist of two mandatory and two optional components, in the following order, with colons (`:`) between each section.
 
 *   URN identifier (`urn:c2pa`): REQUIRED
-    
+
 *   UUID v4, in string representation (as per RFC 9562, section 4): REQUIRED
-    
+
 *   Claim Generator identifier string : OPTIONAL
-    
+
 *   Version and Reason string (as described below) : OPTIONAL
-    
+
 
 When present, the "Claim Generator identifier" string shall consist of no more than 32 characters from the ASCII range (as per RFC 20), but which are not Control Characters (RFC 20, 5.2) or Graphic Characters (RFC 20, 5.3).
 
@@ -978,13 +978,13 @@ reason = 1*DIGIT
 Examples:
 
 *   `urn:c2pa:F9168C5E-CEB2-4FAA-B6BF-329BF39FA1E4`
-    
+
 *   `urn:c2pa:F9168C5E-CEB2-4FAA-B6BF-329BF39FA1E4:acme`
-    
+
 *   `urn:c2pa:F9168C5E-CEB2-4FAA-B6BF-329BF39FA1E4:acme:2_1`
-    
+
 *   `urn:c2pa:F9168C5E-CEB2-4FAA-B6BF-329BF39FA1E4::2_1`
-    
+
 
 > **NOTE:**
 > Previous versions of this specification used [RFC 9562, UUIDs](https://tools.ietf.org/html/rfc9562) URN, and had the identifier of the claim generator at the beginning of the URN. However, this was found to be not in compliance with either [RFC 9562, UUIDs](https://tools.ietf.org/html/rfc9562) or [RFC 8141, URNs](https://tools.ietf.org/html/rfc8141).
@@ -999,12 +999,12 @@ Situations may arise where it is necessary to re-label a C2PA Manifest due to a 
 To re-label a manifest:
 
 *   If the current URN does not contain a "Claim Generator identifier string", then the claim generator shall append a `:`.
-    
+
 *   In all cases, the claim generator shall append a `:` to the URN followed by a monotonically increasing integer, starting with 1, followed by an underscore (`_`) and then an integer from the list below representing the reason for the re-labeling.
-    
+
     *   1: Conflict with another C2PA Manifest
-        
-    
+
+
 
 For example, if the claim generator has to re-label a C2PA Manifest for the second time due to a conflict, the appended string would be `:2_1`.
 
@@ -1056,9 +1056,9 @@ Example 1. Example `self#jumbf` URIs
 The following are examples of valid `self#jumbf` URIs:
 
 *   `self#jumbf=/c2pa/urn:c2pa:F095F30E-6CD5-4BF7-8C44-CE8420CA9FB7/c2pa.assertions/c2pa.thumbnail.claim.jpeg` is relative to the entire store (since it starts with `/`);
-    
+
 *   `self#jumbf=c2pa.assertions/c2pa.thumbnail.claim.jpeg` would be relative to the manifest of the box containing the URI.
-    
+
 
 <a id="_external"></a>
 ##### 8.4.2.2. External
@@ -1105,11 +1105,11 @@ When creating a URI reference to any JUMBF box (e.g., [assertions](#_assertions)
 As described in the latest version of JUMBF (ISO 19566-5:2023), and shown in [Figure 4, “Example `c2pa.actions` assertion”](#example-actions-assertion), a new `Private` field can be present as part of any JUMBF Description box. This C2PA specification defines the C2PA salt as a `Private` field whose value is a standard box consisting of:
 
 *   a box length (LBox, as a 4-byte big-endian unsigned integer);
-    
+
 *   a box type (TBox, 4-byte big-endian unsigned integer, with a value of `c2sh` (for C2PA salt hash));
-    
+
 *   and payload data (consisting of randomly-generated binary data of either 16 or 32 bytes in length).
-    
+
 
 ![Example assertion structure](_images/assertion_JUMBF.drawio.svg)
 
@@ -1412,21 +1412,21 @@ The "v2 payload", of the "v2 time-stamp", is the value of the `signature` field 
 All time-stamps shall be obtained as described in [RFC 3161](http://datatracker.ietf.org/doc/html/rfc3161) with the following additional requirements:
 
 *   The `MessageImprint` of the `TimeStampReq` structure ([RFC 3161](http://datatracker.ietf.org/doc/html/rfc3161), section 2.4.1) shall be computed by creating the `ToBeSigned` value in [RFC 8152](https://datatracker.ietf.org/doc/html/rfc8152), section 4.4, with the following values for elements of `Sig_structure`:
-    
+
     *   The `context` element shall be `CounterSignature`.
-        
+
     *   The `payload` element shall be the value described by [Section 10.3.2.5.2, “Choosing the Payload”](#_choosing_the_payload).
-        
+
     *   The remaining elements of `Sig_structure` are as described in [Section 13.2.3, “Computing the Signature”](#_computing_the_signature).
-        
-    
+
+
 *   The `ToBeSigned` value is then hashed using a hash algorithm from the allowed list in [Section 13.1, “Hashing”](#_hashing) that the TSA supports, and that hash algorithm and value are placed in the `MessageImprint`. If the TSA does not support any hash algorithms from the allowed list, it cannot be used for time-stamping.
-    
+
     *   Where possible, the hash algorithm should use the same hash algorithm used in the digital signature of the claim.
-        
-    
+
+
 *   The `certReq` boolean of the `TimeStampReq` structure shall be asserted in the request to the TSA, to ensure its certificate chain is provided in the response.
-    
+
 
 <a id="_storing_the_time_stamp"></a>
 ###### 10.3.2.5.4. Storing the time-stamp
@@ -1520,13 +1520,13 @@ At this point, the temporary claim is complete and can be added to the C2PA Mani
 Since the claim is only temporary at this time, it is not possible to sign it. To ensure the claim signature box contains a valid CBOR structure, create a temporary `COSE_Sign1_Tagged` structure as described in [RFC 8152](https://datatracker.ietf.org/doc/html/rfc8152), section 4.2. The `COSE_Sign1_Tagged` is a tag byte followed by a `COSE_Sign1` structure, which is a four-element CBOR array. Construct the array as follows:
 
 *   The first element is the `protected` header bucket ([RFC 8152](https://datatracker.ietf.org/doc/html/rfc8152), section 3). Create an empty bucket by placing a `bstr` of size 0 in this position.
-    
+
 *   The second element is the `unprotected` header bucket, which is a CBOR map. Create a map of 1 pair. Use the string `pad` as the label, and place a `bstr` of the desired padding size filled with zero bytes (0x00) as the value. A 25 kilobyte size is recommended for the initial size of this padding.
-    
+
 *   The third element is the `payload`. Place the value `nil` (CBOR major type 7, value 22) here.
-    
+
 *   The fourth element is `signature`. Place a `bstr` of size 0 here.
-    
+
 
 <a id="_complete_the_c2pa_manifest"></a>
 #### 10.4.3. Complete the C2PA Manifest
@@ -1561,15 +1561,15 @@ A C2PA Manifest may contain assertions defined outside of this specification, an
 In order to support many of the requirements of C2PA, C2PA Manifests needed to be stored (serialized) into a structured binary data store that enables some specific functionality including:
 
 *   Ability to store multiple manifests (e.g., parents and ingredients) in a single container.
-    
+
 *   Ability to refer to individual elements (both within and across manifests) via URIs.
-    
+
 *   Ability to clearly identify the parts of an element to be hashed.
-    
+
 *   Ability to store pre-defined data types used by C2PA (e.g., JSON and CBOR).
-    
+
 *   Ability to store arbitrary data formats (e.g., XML, JPEG, etc.).
-    
+
 
 In addition to supporting all of the requirements above, our chosen container format - ISO 19566-5:2023 (JUMBF) - is also natively supported by the JPEG family of formats and is compatible with the box-based model (i.e., [ISOBMFF, ISO 14496-12](https://www.iso.org/standard/68960.html)) used by many common image and video file formats. Using JUMBF enables all the same benefits (and a few extras, such as [URI References](#_uri_references)) while being able to work with classic image formats, such as JPEG/JFIF and PNG as well as 3D and document (e.g., PDF) formats. This serialized format shall be used also in formats that do not natively support JUMBF, or when C2PA Manifest Stores are stored separately from the asset, such as in a separate file or URI location.
 
@@ -1715,13 +1715,13 @@ An Update Manifest shall not contain assertions of types `c2pa.hash.data`, `c2pa
 An Update Manifest may contain assertions of type `c2pa.actions` or `c2pa.actions.v2`, provided that the value of the `action` field of each action present in the `actions` array of these assertions shall only be one of the following values:
 
 *   `c2pa.edited.metadata`
-    
+
 *   `c2pa.opened`
-    
+
 *   `c2pa.published`
-    
+
 *   `c2pa.redacted`
-    
+
 
 An Update Manifest shall not contain an assertion of type `c2pa.actions` or `c2pa.actions.v2` that contains an `action` field outside of this list.
 
@@ -1772,14 +1772,14 @@ In some cases, it may not be possible (or practical) to embed a C2PA Manifest St
 Some common reasons to use an external manifest are:
 
 *   It may not be technically possible, such as with a `.txt` file.
-    
+
 *   It may not be practical, such as when the size of the C2PA Manifest Store is larger than the asset’s digital content.
-    
+
 *   It may not be appropriate, such as when it would modify an asset that should not be modified.
-    
+
     > **NOTE:**
     > a good example of this is creating a manifest for a pre-existing asset.
-    
+
 
 <a id="_embedding_a_reference_to_an_external_manifest"></a>
 ### 11.5. Embedding a Reference to an external Manifest
@@ -1809,9 +1809,9 @@ Figure 11. C2PA Entity Diagram
 All cryptographic hashes that are applied as per the technical requirements of this specification shall be generated using one of the hash algorithms as described in this section. This section defines both:
 
 *   A list of hash algorithms that are allowed for generating hashes of new content as well as required for validating hashes of existing content (the allowed list);
-    
+
 *   A list of hash algorithms that are required to be supported for validating hashes of existing content but are not allowed for generating hashes of new content (the deprecated list).
-    
+
 
 > **NOTE:**
 > This section does not govern algorithms used for soft bindings as described in [Section 18.9, “Soft Binding”](#soft_binding_assertion).
@@ -1828,11 +1828,11 @@ These lists establish the allowed algorithms for creating hashes and a string al
 The allowed list is:
 
 *   SHA2-256 ("sha256");
-    
+
 *   SHA2-384 ("sha384");
-    
+
 *   SHA2-512 ("sha512").
-    
+
 
 > **NOTE:**
 > The SHA-3 family of hash algorithms are not on the allowed list for consistency with the digital signature algorithm allowed list, because COSE has not yet established digital signature algorithms that use a SHA-3 algorithm as the hash algorithm.
@@ -1845,9 +1845,9 @@ The deprecated list is empty.
 All digital signatures applied as per the technical requirements of this specification shall be generated using one of the digital signature algorithms and key types listed as described in this section. This section defines both:
 
 *   A list of digital signature algorithms and key types that are allowed for generating signatures for new claim signatures as well as required for validating existing claim signatures (the allowed list);
-    
+
 *   A list of digital signature algorithms and key types that are required to be supported for validating existing claim signatures but are not allowed for generating new claim signatures (the deprecated list).
-    
+
 
 > **NOTE:**
 > This section does not govern digital signatures used by custom assertions that are defined outside of this specification.
@@ -1863,22 +1863,22 @@ These lists establish the allowed algorithms and key types by referencing an alg
 The allowed list is:
 
 *   ES256 (ECDSA with SHA-256);
-    
+
 *   ES384 (ECDSA with SHA-384);
-    
+
 *   ES512 (ECDSA with SHA-512);
-    
+
 *   PS256 (RSASSA-PSS using SHA-256 and MGF1 with SHA-256);
-    
+
 *   PS384 (RSASSA-PSS using SHA-384 and MGF1 with SHA-384);
-    
+
 *   PS512 (RSASSA-PSS using SHA-512 and MGF1 with SHA-512);
-    
+
 *   EdDSA (Edwards-Curve DSA).
-    
+
     *   Ed25519 instance only. No other EdDSA instances are allowed.
-        
-    
+
+
 
 The deprecated list is empty.
 
@@ -1887,14 +1887,14 @@ Implementations are required to check that keys provided for signing or verifica
 These requirements are summarized here for convenience:
 
 *   ECDSA requires elliptic curve keys on the P-256, P-384, or P-521 elliptic curves.
-    
+
     *   Although it is recommended to use P-256 keys with `ES256`, P-384 keys with `ES384`, and P-521 keys with `ES512`, it is not required. Implementations shall accept keys on any of these curves for all ECDSA algorithm choices.
-        
-    
+
+
 *   Ed25519 requires elliptic curve keys on the X25519 elliptic curve.
-    
+
 *   RSASSA-PSS requires RSA keys with a modulus length of at least 2048 bits.
-    
+
 
 Implementations shall refuse to generate or verify signatures with keys that are not correct for the algorithm choice. Implementations may refuse RSA keys with modulus length greater than 16384 bits.
 
@@ -1918,23 +1918,23 @@ When computing or verifying the signature of a time-stamp manifest, the `payload
 The signature is computed or verified as described in [RFC 8152](https://datatracker.ietf.org/doc/html/rfc8152), section 4.4. The following additional requirements apply to the construction of `Sig_structure`:
 
 *   The value for the `context` element shall be `Signature1` except where a particular use of digital signatures in this specification specifies using `CounterSignature` instead. `Signature` shall not be used.
-    
+
 *   The value for the `payload` element will be specified by each use of digital signatures in this specification.
-    
+
 *   The `external_aad` element shall be a `bstr` of length zero. External authenticated data shall not be used.
-    
+
 *   The `alg` header specifying the signature algorithm shall be present in the `body_protected` element as defined in [RFC 8152](https://datatracker.ietf.org/doc/html/rfc8152), section 3.1.
-    
+
     > **NOTE:**
     > The `alg` header is a standard COSE header, and therefore is always included in the protected header map with the integer `1` as its label, as established in the [IANA COSE Header Parameters Registry](https://www.iana.org/assignments/cose/cose.xhtml#header-parameters). The literal string `alg` is never used as the label. The `sign_protected` element is always omitted when using `COSE_Sign1`.
-    
+
 
 All digital signatures in C2PA structures shall be a `COSE_Sign1_Tagged` structure as defined in [RFC 8152](https://datatracker.ietf.org/doc/html/rfc8152), section 4.2. `COSE_Sign1_Tagged` contains a `COSE_Sign1` structure. The following additional requirements apply to the construction of `COSE_Sign1_Tagged`:
 
 *   The same `alg` header in the `Sig_structure` above shall be present in the `protected` header bucket.
-    
+
 *   The value for the `payload` field and whether the payload is present in the signature or detached will be specified by each use of digital signatures in this specification. When the `payload` is specified as detached, its value here shall be `nil`. Conversely, when the payload is present in the signature, the binary contents of the payload are stored in this field as a `bstr`.
-    
+
 
 > **NOTE:**
 > COSE defines `nil` to be major type 7, value 22 in [RFC 8152](https://datatracker.ietf.org/doc/html/rfc8152), section 1.3, and uses this value exclusively for detached content. A byte array (major type 2) of length zero cannot be used to indicate detached content.
@@ -1995,11 +1995,11 @@ A validator is a Manifest Consumer that will make some [validation](#validation-
 Based on these statements, a C2PA Manifest may be one of the following:
 
 *   [Well-Formed](#_well_formed_manifest)
-    
+
 *   [Valid](#_valid_manifest)
-    
+
 *   [Trusted](#_trusted_manifest)
-    
+
 
 > **NOTE:**
 > Any Trusted manifest is also Valid, and any Valid manifest is also Well-Formed.
@@ -2015,13 +2015,13 @@ If a validator reports that the portions of the asset that are covered by conten
 A C2PA Manifest is Well-Formed if validation determines that each of the following is true:
 
 *   The manifest’s contents abide by the normative requirements of this specification, that are validated via the [validation process](#_validation_process).
-    
+
 *   Only those assertions allowed for the [specific type](#_types_of_manifests) of the manifest are present \[[Section 15.10.1, “Validate the correct assertions for the type of manifest”](#_validate_the_correct_assertions_for_the_type_of_manifest)\].
-    
+
 *   The assertions of the manifest meet all the requirements for assertions \[[Section 15.10.3, “Assertion Validation”](#_assertion_validation)\].
-    
+
 *   Any ingredients present in the manifest meet all the requirements for ingredients \[[Section 15.11, “Validate the Ingredients”](#_validate_the_ingredients)\].
-    
+
 
 <a id="_valid_manifest"></a>
 #### 14.3.5. Valid Manifest
@@ -2029,15 +2029,15 @@ A C2PA Manifest is Well-Formed if validation determines that each of the followi
 A C2PA Manifest is Valid if validation determines that each of the following is true:
 
 *   The manifest is Well-Formed \[[Section 14.3.4, “Well-Formed Manifest”](#_well_formed_manifest)\].
-    
+
 *   The manifest has not been modified since the manifest was signed \[[Section 13.2.5, “Cryptographic validation”](#_cryptographic_validation)\].
-    
+
 *   The claim signature receives a success code of `claimSignature.validated` \[[Section 15.7, “Validate the Signature”](#_validate_the_signature)\].
-    
+
 *   Validation of the claim signature validity period receives the success code of `claimSignature.insideValidity` \[[Section 15.8, “Validate the Time-Stamp”](#_validate_the_time_stamp)\].
-    
+
 *   The credential of the signer of the C2PA Manifest is not rejected with a failure code of `signingCredential.ocsp.revoked`, or `signingCredential.ocsp.unknown` \[[Section 15.9, “Validate the Credential Revocation Information”](#_validate_the_credential_revocation_information)\].
-    
+
 
 If a C2PA Manifest is Valid, then the manifest’s claim can be attributed to the claim generator which is identified by the `claim_generator_info` field of the claim \[[Section 10.2.3, “Claim Generator Info”](#_claim_generator_info)\].
 
@@ -2047,9 +2047,9 @@ If a C2PA Manifest is Valid, then the manifest’s claim can be attributed to th
 A C2PA Manifest is Trusted if validation determines that each of the following is true:
 
 *   The manifest is Valid \[[Section 14.3.5, “Valid Manifest”](#_valid_manifest)\].
-    
+
 *   The signing credential of the C2PA Manifest receives the success code of `signingCredential.trusted` \[[Section 15.7, “Validate the Signature”](#_validate_the_signature)\].
-    
+
 
 <a id="_trust_lists"></a>
 ### 14.4. Trust Lists
@@ -2060,11 +2060,11 @@ A C2PA Manifest is Trusted if validation determines that each of the following i
 A validator shall maintain the following lists for C2PA signers:
 
 *   The list of X.509 certificate trust anchors provided by the C2PA (i.e., the C2PA Trust List).
-    
+
 *   A list of additional X.509 certificate trust anchors.
-    
+
 *   A list of accepted Extended Key Usage (EKU) values.
-    
+
 
 > **NOTE:**
 > Some of these lists can be empty.
@@ -2118,9 +2118,9 @@ The `subjectPublicKeyInfo` element of the first or only certificate will be the 
 A previous version of this specification required claim generators to write the string label `x5chain` only to avoid the unlikely possibility that the integer label `33` would not be standardized. Integer label `33` has now been standardized, and this specification now adopts it as standard, and deprecates use of the string label. Therefore:
 
 *   Claim generators should use only the integer `33` as the label when inserting this header into a COSE signature. Claim generators may continue to write the string label `x5chain` but this behaviour is now deprecated and claim generators should be updated to use the integer label only. Claim generators shall place this header only in the protected header bucket of the COSE signature as required above.
-    
+
 *   Validators shall accept either the string `x5chain` or the integer `33` as the label for this header. If both labels are present, validators shall use the header with the integer label `33` and ignore the header with the string `x5chain` as the label. Validators shall accept the header from either the protected or unprotected bucket, to maintain compatibility with previous versions of this specification. In compliance with [Section 14.2, “Identity of Signers”](#_identity_of_signers), if this header appears in both the protected and unprotected buckets with the same label, a validator shall reject the claim signature as malformed due to the presence of multiple credentials.
-    
+
 
 <a id="_certificate_profiles"></a>
 #### 14.5.1. Certificate Profiles
@@ -2133,108 +2133,108 @@ This section defines the requirements to validate that an X.509 certificate is a
 All certificates shall fulfill the following requirements.
 
 *   The `algorithm` field of the `signatureAlgorithm` field shall be one of the following values:
-    
+
     `ecdsa-with-SHA256`
-    
+
     [RFC 5758, section 3.2](https://datatracker.ietf.org/doc/html/rfc5758#section-3.2)
-    
+
     `ecdsa-with-SHA384`
-    
+
     [RFC 5758, section 3.2](https://datatracker.ietf.org/doc/html/rfc5758#section-3.2)
-    
+
     `ecdsa-with-SHA512`
-    
+
     [RFC 5758, section 3.2](https://datatracker.ietf.org/doc/html/rfc5758#section-3.2)
-    
+
     `sha256WithRSAEncryption`
-    
+
     [RFC 8017, appendix A.2.4](https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.4)
-    
+
     `sha384WithRSAEncryption`
-    
+
     [RFC 8017, appendix A.2.4](https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.4)
-    
+
     `sha512WithRSAEncryption`
-    
+
     [RFC 8017, appendix A.2.4](https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.4)
-    
+
     `id-RSASSA-PSS`
-    
+
     [RFC 8017, appendix A.2.3](https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.3)
-    
+
     `id-Ed25519`
-    
+
     [RFC 8410 section 3](https://datatracker.ietf.org/doc/html/rfc8410#section-3)
-    
+
 *   If the `algorithm` field of the `signatureAlgorithm` field is `id-RSASSA-PSS`, the `parameters` field is of type `RSASSA-PSS-params`. Its fields shall have the following requirements as defined in [RFC 8017, appendix A.2.3](https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.3):
-    
+
     *   The `hashAlgorithm` field shall be present.
-        
+
     *   The `algorithm` field of the `hashAlgorithm` field shall be one of the following values as defined in [RFC 8017, appendix B.1](https://datatracker.ietf.org/doc/html/rfc8017#appendix-B.1):
-        
+
         *   `id-sha256`.
-            
+
         *   `id-sha384`.
-            
+
         *   `id-sha512`.
-            
-        
+
+
     *   The `maskGenAlgorithm` field shall be present.
-        
+
     *   The `algorithm` field of the `parameters` field of the `maskGenAlgorithm` field shall be equal to the `algorithm` field of the `hashAlgorithm` field.
-        
-    
+
+
 *   If the `algorithm` field of the `algorithm` field of the certificate’s `subjectPublicKeyInfo` is `id-ecPublicKey`, the `parameters` field shall be one of the following named curves from [RFC 5480, section 2.1.1.1](https://datatracker.ietf.org/doc/html/rfc5480#section-2.1.1.1):
-    
+
     *   `prime256v1`.
-        
+
     *   `secp384r1`.
-        
+
     *   `secp521r1`.
-        
-    
+
+
 *   If the `algorithm` field of the `algorithm` field of the certificate’s `subjectPublicKeyInfo` is `rsaEncryption` or `id-RSASSA-PSS`, the `modulus` field of the `parameters` field shall have a length of at least 2048 bits.
-    
+
 
 All certificates except those in the private credential store for X.509 certificates shall fulfill the following additional requirements to be acceptable.
 
 *   Version shall be `v3` as per [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280), section 4.1.2.1.
-    
+
 *   The `issuerUniqueID` and `subjectUniqueID` optional fields of the `TBSCertificate` sequence shall not be present, as per [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280), section 4.1.2.8.
-    
+
 *   The Basic Constraints extension shall follow [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280), section 4.2.1.9. In particular, one of the following shall be true:
-    
+
     *   If the certified public key can be used to verify certificate signatures, the Basic Constraints extension shall be present with the `cA` boolean asserted.
-        
+
     *   If the certified public key cannot be used to verify certificate signatures, either the Basic Constraints extension shall be absent or the `cA` boolean in the extension shall not be asserted and the `keyCertSign` bit in the key usage extension shall not be asserted.
-        
-    
+
+
 *   The Authority Key Identifier extension shall be present in any certificate that is not self-signed, as per [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280), section 4.2.1.1.
-    
+
 *   As prescribed in [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280), section 4.2.1.2, the Subject Key Identifier extension shall be present in any certificate that acts as a CA. It should be present in end entity certificates.
-    
+
 *   As prescribed in [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280), section 4.2.1.3, the Key Usage extension shall be present and should be marked as critical. Certificates used to sign C2PA manifests shall assert the `digitalSignature` bit. The `keyCertSign` bit shall only be asserted if the `cA` boolean is asserted in the Basic Constraints extension.
-    
+
 *   The Extended Key Usage (EKU) extension shall be present and non-empty in any certificate where the Basic Constraints extension is absent or the `cA` boolean is not asserted, as per [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280), section 4.2.1.12. These are commonly called "end entity" or "leaf" certificates.
-    
+
     *   The `anyExtendedKeyUsage` EKU (2.5.29.37.0) shall not be present.
-        
+
     *   If the configuration store contains a list of EKUs, a certificate that signs C2PA manifests shall be valid for at least one of the listed purposes.
-        
+
     *   If the configuration store does not contain a list of EKUs, a certificate that signs C2PA manifests shall be valid for the `id-kp-emailProtection` (1.3.6.1.5.5.7.3.4) purpose and/or the `id-kp-documentSigning` (1.3.6.1.5.5.7.3.36) purpose.
-        
+
         *   The `id-kp-emailProtection` and `id-kp-documentSigning` purposes are not implicitly included by default if a list of EKUs has been configured. This only applies when no list has been configured.
-            
-        
+
+
     *   A certificate that signs time-stamping countersignatures shall be valid for the `id-kp-timeStamping` (1.3.6.1.5.5.7.3.8) purpose.
-        
+
     *   A certificate that signs OCSP responses for certificates shall be valid for the `id-kp-OCSPSigning` (1.3.6.1.5.5.7.3.9) purpose.
-        
+
     *   If a certificate is valid for either `id-kp-timeStamping` or `id-kp-OCSPSigning`, it shall be valid for exactly one of those two purposes, and not valid for any other purpose.
-        
+
     *   A certificate should not be valid for any other purposes outside of the purposes listed above, but the presence of any EKUs not mentioned in this profile and not in the list of EKUs in the configuration store shall not cause the certificate to be rejected.
-        
-    
+
+
 
 <a id="_certificate_trust_chain"></a>
 ##### 14.5.1.2. Certificate Trust Chain
@@ -2299,17 +2299,17 @@ Validation of a C2PA Manifest is a multi-step process that involves validating t
 These phases, which are listed in no particular order, are described in the following clauses:
 
 *   [Section 15.10, “Validate the Assertions”](#_validate_the_assertions): Validation of the assertions.
-    
+
 *   [Section 15.11, “Validate the Ingredients”](#_validate_the_ingredients): Validation of the ingredients, if any.
-    
+
 *   [Section 15.8, “Validate the Time-Stamp”](#_validate_the_time_stamp): Validation of the time-stamp.
-    
+
 *   [Section 15.9, “Validate the Credential Revocation Information”](#_validate_the_credential_revocation_information): Validation of the credential revocation information.
-    
+
 *   [Section 15.7, “Validate the Signature”](#_validate_the_signature): Validation of the claim signature.
-    
+
 *   [Section 15.12, “Validate the Asset’s Content”](#_validate_the_assets_content): Validation of the content of the asset.
-    
+
 
 As described in [Section 14.3, “Validation states”](#_validation_states), a C2PA Manifest may be considered as [Well-Formed](#_well_formed_manifest), [Valid](#_valid_manifest) or [Trusted](#_trusted_manifest) based on the results of these steps.
 
@@ -2568,9 +2568,9 @@ ingredient-delta-validation-result-map = {
 Manifest Consumers should not display data from manifests which are not [Valid](#_valid_manifest) nor from assets which are not [Valid](#_asset_states). If the Manifest Consumer chooses to display such data, it shall include as part of the display:
 
 *   a warning about the lack of validity,
-    
+
 *   a warning that the data shall not be attributed to the manifest’s signer, and in the case of an ingredient manifest, additional not to the asset’s manifest’s signer.
-    
+
 
 > **NOTE:**
 > In authoring scenarios, it is desirable to more prominently raise warnings so that a creator can make an informed decision about how to proceed with an asset that is not Valid or that has a flawed provenance history .
@@ -2633,13 +2633,13 @@ If there are multiple C2PA Manifest Stores present in a single update section, t
 If there is no embedded C2PA Manifest Store, the following attempts should be made to locate one at a remote location.
 
 *   If the asset was retrieved via an HTTP connection, the [Link Header](#_by_link_header) clause below describes how to find a manifest via the `Link` header.
-    
+
 *   If the asset has any XMP in the standard asset locations (i.e., outside the C2PA Manifest) and that XMP contains a `dcterms:provenance` key, the provided URI should be used to locate the active manifest.
-    
+
 *   If the asset is a font with a `C2PA` table and its `activeManifestUriLength` is non-zero, then the indicated URI should be used to locate the active manifest.
-    
+
 *   If no C2PA Manifest Store has been located, the validator should look for files at the same path or URI, but with a filename extension of `.c2pa`. If the C2PA Manifest Store is not found, a validator may look in whatever additional places it deems most appropriate to locate it. For example, a child folder of a file system.
-    
+
 
 > **NOTE:**
 > A validator is not restricted to only the above locations, it can choose to look in additional locations as well.
@@ -2689,13 +2689,13 @@ If the content of the claim is not well-formed CBOR, the claim shall be rejected
 For a "c2pa.claim.v2", the following fields are expected to be present in the CBOR object. If any are absent, then the claim shall be rejected with a failure code of `claim.malformed`.
 
 *   `instanceID`
-    
+
 *   `signature`
-    
+
 *   `created_assertions`
-    
+
 *   `claim_generator_info`
-    
+
 
 If the `claim_generator_info` field does not contain a `name` field, the claim shall be rejected with a failure code of `claim.malformed`.
 
@@ -2726,33 +2726,33 @@ If either the `sigTst` or `sigTst2` header is present, then the `tstTokens` arra
 A validator that supports `sigTst` shall perform the following procedures to validate the time-stamp response:
 
 *   Retrieve the `val` property from the `tstToken`, which shall be an RFC3161-compliant `TimeStampResp` (time-stamp response).
-    
+
 *   Check the value of the `status` field `PKIStatusInfo`, which is the value of the `status` field of `TimeStampResp`.
-    
+
     *   If it contains any value other than `0` (`granted`) or `1` (`grantedWithMods`), the validator shall issue a `timeStamp.malformed` informational code and ignore that time-stamp.
-        
+
     *   If it is either `0` (`granted`) or `1` (`grantedWithMods`), continue with the rest of the time-stamp validation process as described below.
-        
-    
+
+
 *   Retrieve the value of the `timeStampToken` field of the `TimeStampResp` for use in the remainder of the validation process.
-    
+
 
 A validator for `sigTst2` shall retrieve the `val` property from the `tstToken`, which shall be an RFC3161-compliant `timeStampToken` (TimeStampToken, TST).
 
 All validators shall continue the process as follows:
 
 *   If the `timeStampToken` does not contain a `messageImprint` field, the validator shall issue a `timestamp.malformed` informational code and ignore the time-stamp.
-    
+
 *   Validate that the value of the `messageImprint` field (in the `timeStampToken`), matches either the claim (v1, `sigTst`) or `COSE_Sign1_Tagged` structure’s `signature` field (v2, `sigTst2`) of the C2PA Manifest being validated, as described in [Section 10.3.2.5.2, “Choosing the Payload”](#_choosing_the_payload). If the values do not match, the validator shall issue a `timestamp.mismatch` informational code and ignore the time-stamp.
-    
+
 *   Validate that the TSA’s certificate exists, as described in [RFC 3161](http://datatracker.ietf.org/doc/html/rfc3161), section 2.4.1, and it is possible to build a trust chain from the certificate to an entry in C2PA TSA Trust List (or other list of trust anchors present in the validator for this purpose). If the certificate cannot be located or a trust chain cannot be constructed, the validator shall issue a `timestamp.untrusted` informational code and ignore the time-stamp.
-    
+
 *   Validate that the attested time, as found in the `genTime` field (in the `timeStampToken`), falls within the validity period of the TSA’s signing certificate. If it does not, the validator shall issue a `timestamp.outsideValidity` informational code and ignore the time-stamp.
-    
+
 *   If the time-stamp validation does not stop or fail due to any of the above conditions, then the validator shall issue the success codes of `timeStamp.trusted` and `timeStamp.validated`.
-    
+
 *   If the validator issued both `timeStamp.trusted` and `timeStamp.validated` success codes, then the validator shall validate that the time attested by the Time Stamp Authority (TSA), as found in the `genTime` field (in the `timeStampToken`), falls within the validity period of the signing credential. If it does not, the validator shall reject the claim with a `claimSignature.outsideValidity` failure code.
-    
+
 
 > **NOTE:**
 > Time-stamps remain valid even after the signing credential of the time-stamp authority expires, so long as the attested time falls within the time-stamp authority’s certificate’s validity period. This is a special type of trust extended only to time-stamp authorities.
@@ -2770,11 +2770,11 @@ If neither the `sigTst` nor the `sigTst2` headers are present, or if at least on
 A validator will encounter one of the following three scenarios:
 
 *   The signer’s credential does not support revocation status, or the credential’s issuer did not provide a method to query its revocation status. In this case, the validator shall treat the credential as not revoked.
-    
+
 *   The claim generator "stapled" an OCSP response for the signing credential in the `rVals` header of the `COSE_Sign1` structure. In such a case, the validator shall decode and validate the stapled OCSP response as described [below](#ocsp_revocation).
-    
+
 *   The claim generator did not "staple" an OCSP response for its signing credential or the C2PA Manifest does not have a time-stamp. In such a case, the validator should attempt to determine the revocation status of the signing credential by querying the OCSP responder as described [below](#ocsp_revocation).
-    
+
 
 <a id="ocsp_revocation"></a>
 #### 15.9.1. Determining revocation through OCSP response in `rVals` header
@@ -2782,26 +2782,26 @@ A validator will encounter one of the following three scenarios:
 A validator shall decode the OCSP response per the requirements of [RFC 6960](https://datatracker.ietf.org/doc/html/rfc6960), in particular [RFC 6960](https://datatracker.ietf.org/doc/html/rfc6960), section 3. If it is accepted and if all of the following requirements are met, then this establishes that the signer’s certificate was not revoked at the time of signing.
 
 *   The manifest has an attested time provided by a valid signed time-stamp.
-    
+
 *   There exists a `SingleResponse` in the `responses` array of the `tbsResponseData` field of the OCSP response such that:
-    
+
     *   The attested time from the time-stamp:
-        
+
         *   is earlier than `thisUpdate`, or
-            
+
         *   falls within the `(thisUpdate,nextUpdate)` interval, if `nextUpdate` is present, or
-            
+
         *   falls within the `(thisUpdate,producedAt)` interval where `producedAt` is the field in the containing `ResponseData`, if `nextUpdate` is not present,
-            
-        
+
+
     *   The `certStatus` field of the `SingleResponse` is `good`, or `revoked` but with a `revocationReason` of `removeFromCRL`,
-        
+
         > **NOTE:**
         > The `removeFromCRL` is unique amongst the values of `revocationReason` because it is equivalent to a `good` response. Despite being a type of `revoked` response, this response indicates the certificate had temporarily been put "on hold" (the `certificateHold` reason) previously due to some concern about its integrity, but that the concern has been resolved and the issuer is stating the certificate remains trustworthy.
-        
-    
+
+
 *   The signer of the response is an "authorized responder" as defined by [RFC 6960](https://datatracker.ietf.org/doc/html/rfc6960), section 4.2.2.2.
-    
+
 
 Validators shall check the `revocationReason` of any `revoked` response to disambiguate the `removedFromCRL` case from an actual revocation.
 
@@ -2822,23 +2822,23 @@ If the validator attempts to query the OCSP responder but is unable to receive a
 If a response is received and accepted per the requirements of [RFC 6960](https://datatracker.ietf.org/doc/html/rfc6960), it shall establish the signer’s certificate was not revoked at the time of signing if either of the following requirements is fulfilled:
 
 *   The claim signature has a valid time-stamp, and the attested time falls within the `(thisUpdate,nextUpdate)` interval of the response, or
-    
+
 *   The claim signature does not have a `sigTst` or `sigTst2` header but the current real-world time falls within the `(thisUpdate,nextUpdate)` interval of the response,
-    
+
 
 And both of the following requirements are fulfilled:
 
 *   The `certStatus` field of the response is `good`, or `revoked` but with a `revocationReason` of `removeFromCRL`, and
-    
+
 *   The signer of the response is an "authorized responder" as defined by [RFC 6960](https://datatracker.ietf.org/doc/html/rfc6960), section 4.2.2.2.
-    
+
 
 If the `certStatus` field of the response is `revoked` but with a `revocationReason` that is not `removeFromCRL`, it shall establish the signer’s certificate was not revoked at the time of signing if both of the following requirements are met:
 
 *   The manifest has a valid time-stamp, and the attested time falls within the `(thisUpdate,nextUpdate)` interval of the response, and
-    
+
 *   The `revocationTime` in the response is after the attested time-stamp.
-    
+
 
 If the above conditions are met, the certificate shall be considered not revoked at the time of signing, the validator shall issue a `signingCredential.ocsp.notRevoked` success code.
 
@@ -2861,9 +2861,9 @@ Depending on the [type of manifest](#_types_of_manifests), there are assertions 
 If it is a [standard manifest](#_standard_manifests):
 
 1.  Validate that there is exactly one [hard binding to content](#_binding_to_content) assertion - either a `c2pa.hash.data`, a `c2pa.hash.boxes`, a `c2pa.hash.collection.data`, `c2pa.hash.bmff.v2` (deprecated), or a `c2pa.hash.bmff.v3`. If no such assertion is present, the manifest shall be rejected with a failure code of `claim.hardBindings.missing`. If there is more than one such assertion, the manifest shall be rejected with a failure code of `assertion.multipleHardBindings`.
-    
+
 2.  Validate that there are zero or one `c2pa.ingredient` assertions whose `relationship` is `parentOf`. If there is more than one, the manifest shall be rejected with a failure code of `manifest.multipleParents`.
-    
+
 
 <a id="_update_manifest_assertions"></a>
 ##### 15.10.1.3. Update Manifest Assertions
@@ -2871,11 +2871,11 @@ If it is a [standard manifest](#_standard_manifests):
 If it is an [update manifest](#_update_manifests):
 
 1.  Validate that exactly one ingredient assertion is present and that its `relationship` is `parentOf`. If there is not (i.e., either it is missing, there are more than one, or the value of `relationship` is not `parentOf`), the manifest shall be rejected with a failure code of `manifest.update.wrongParents`.
-    
+
 2.  Validate that there are no `c2pa.hash.data`, `c2pa.hash.boxes`, `c2pa.hash.collection.data`, `c2pa.hash.bmff.v2` (deprecated), `c2pa.hash.bmff.v3`, or [thumbnail](#thumbnail_assertion) assertions. If there are, the manifest shall be rejected with a failure code of `manifest.update.invalid`.
-    
+
 3.  If there is one or more `c2pa.actions` or `c2pa.actions.v2` assertions, validate that the `action` field of each action found in the `actions` array of any such assertion is one of the supported values specified in [Update Manifests](#_update_manifests). If it is not, the manifest shall be rejected with a failure code of `manifest.update.invalid`.
-    
+
 
 <a id="_time_stamp_manifest_assertions"></a>
 ##### 15.10.1.4. Time-Stamp Manifest Assertions
@@ -2883,9 +2883,9 @@ If it is an [update manifest](#_update_manifests):
 If it is a [time-stamp manifest](#time_stamp_manifests):
 
 1.  Validate that exactly one ingredient assertion is present and that its `relationship` is `parentOf`. If there is not (i.e., either it is missing, there are more than one, or the value of `relationship` is not `parentOf`), the manifest shall be rejected with a failure code of `manifest.timestamp.wrongParents`.
-    
+
 2.  Validate that there are no assertions other than the ingredient assertion. If other assertions are present, the manifest shall be rejected with a failure code of `manifest.timestamp.invalid`.
-    
+
 
 <a id="_preparing_the_list_of_redacted_assertions"></a>
 #### 15.10.2. Preparing the list of redacted assertions
@@ -2929,13 +2929,13 @@ For each URI in the claim’s `redacted_assertions` array, if the URI points int
 For each assertion, the validator shall check the assertion’s label and if it is listed below, the validator shall perform the specific validation steps for that assertion type. If the assertion’s label is not listed below, then that type of assertion does not require any additional validation steps beyond those already described.
 
 *   `c2pa.cloud-data`, [Section 15.10.3.2.1, “`c2pa.cloud-data` validation”](#_c2pa_cloud_data_validation)
-    
+
 *   `c2pa.actions` or `c2pa.actions.v2`, [Section 15.10.3.2.2, “`c2pa.actions` validation”](#_c2pa_actions_validation)
-    
+
 *   `c2pa.ingredient` or `c2pa.ingredient.v2` or `c2pa.ingredient.v3`, [Section 15.11, “Validate the Ingredients”](#_validate_the_ingredients)
-    
+
 *   `c2pa.metadata`, [Section 15.10.3.2.3, “`c2pa.metadata` validation”](#_c2pa_metadata_validation)
-    
+
 
 If the value of any field of an assertion is of type `hashed_uri` or `hashed_ext_uri`, the validator shall perform the steps described in [Section 15.10.3.3, “Validation of References”](#_validation_of_references).
 
@@ -2945,13 +2945,13 @@ If the value of any field of an assertion is of type `hashed_uri` or `hashed_ext
 If the assertion’s label is `c2pa.cloud-data`:
 
 1.  Check that the assertion contains the following fields: `label`, `size`, `location` and `content_type`. If any of those fields are missing, the claim shall be rejected with a failure code of `assertion.cloud-data.malformed`.
-    
+
 2.  If the `label` field of the external assertion is `c2pa.hash.data`, `c2pa.hash.boxes`, `c2pa.hash.collection.data`, `c2pa.hash.bmff.v2` (deprecated), `c2pa.hash.bmff.v3`, the claim shall be rejected with a failure code of `assertion.cloud-data.hardBinding`.
-    
+
 3.  If the manifest is an update manifest and the `label` field of the external assertion is `c2pa.actions` or `c2pa.actions.v2`, the claim shall be rejected with a failure code of `assertion.cloud-data.actions`.
-    
+
 4.  The `location` field shall be validated according to [Section 15.10.4.2, “Validation of External References”](#_validation_of_external_references).
-    
+
 
 <a id="_c2pa_actions_validation"></a>
 ###### 15.10.3.2.2. `c2pa.actions` validation
@@ -2959,48 +2959,48 @@ If the assertion’s label is `c2pa.cloud-data`:
 If the assertion’s label is `c2pa.actions` or `c2pa.actions.v2`:
 
 1.  Ensure that it has an `actions` field. If not, the claim shall be rejected with a failure code of `assertion.action.malformed`.
-    
+
 2.  If this is the first actions assertion in the `created_assertions` array in the claim, check that the first element of the `actions` array in the actions assertion has a value of `c2pa.created` or `c2pa.opened`. If not, the claim shall be rejected with a failure code of `assertion.action.malformed`.
-    
+
     1.  For all other actions assertions, check if the first element of the `actions` array in the actions assertion has a value of `c2pa.created` or `c2pa.opened`. If it is, the claim shall be rejected with a failure code of `assertion.action.malformed`.
-        
-    
+
+
 3.  For each action in the `actions` list:
-    
+
     1.  Ensure that it has an `action` field. If not, the claim shall be rejected with a failure code of `assertion.action.malformed`.
-        
+
     2.  If the `action` field is `c2pa.created` or `c2pa.opened` and it is not the first element of the `actions` array, then the claim shall be rejected with a failure code of `assertion.action.malformed`.
-        
+
     3.  If the `action` field is `c2pa.opened`, `c2pa.placed`, `c2pa.removed`, `c2pa.repackaged`, or `c2pa.transcoded`:
-        
+
         1.  If the action has no `ingredients` field (or `ingredient` field for `c2pa.actions`) in the `parameters` object, or the field’s value is empty, the claim shall be rejected with a failure code of `assertion.action.ingredientMismatch`.
-            
+
         2.  If any element in the `ingredients` field (or `ingredient` field for `c2pa.actions`) in the `parameters` object has no JUMBF URI, or the JUMBF URI cannot be resolved to an ingredient assertion in the current manifest, the claim shall be rejected with a failure code of `assertion.action.ingredientMismatch`.
-            
+
             1.  For `c2pa.opened`, `c2pa.repackaged`, or `c2pa.transcoded`: Check that the value of the `relationship` field is `parentOf`. If it is not, the claim shall be rejected with a failure code of `assertion.action.ingredientMismatch`.
-                
+
             2.  For `c2pa.placed` or `c2pa.removed`: Check that the value of the `relationship` field is `componentOf`. If it is not, the claim shall be rejected with a failure code of `assertion.action.ingredientMismatch`.
-                
+
             3.  Check the `activeManifest` field in the ingredient assertion for the presence of a hashed URI. If the hashed URI is not present, or cannot be resolved to a manifest, the claim shall be rejected with a failure code of `assertion.action.ingredientMismatch`.
-                
-            
-        
+
+
+
     4.  If the `action` field is `c2pa.redacted`:
-        
+
         1.  Check the `redacted` field that is a member of the `parameters` object for the presence of a JUMBF URI. If the JUMBF URI is not present, or cannot be resolved to an assertion, the claim shall be rejected with a failure code of `assertion.action.redactionMismatch`.
-            
-        
+
+
     5.  If there is a `softwareAgent` field in the `action-common-map-v2` or one or more `softwareAgents` listed in the `softwareAgents` field of the `actions-map-v2`:
-        
+
         1.  If there is an `icon` field in the `generator-info-map`, then it shall be validated as described in [Section 15.10.3.3, “Validation of References”](#_validation_of_references).
-            
-        
+
+
     6.  For each template in the `templates` list:
-        
+
         1.  If there is an `icon` field in the `action-template-map-v2`, then it shall be validated as described in [Section 15.10.3.3, “Validation of References”](#_validation_of_references).
-            
-        
-    
+
+
+
 
 <a id="_c2pa_metadata_validation"></a>
 ###### 15.10.3.2.3. `c2pa.metadata` validation
@@ -3037,25 +3037,25 @@ If a validator chooses to retrieve any of the external data in a cloud data asse
 The following procedure shall be used to validate the external data referenced in a cloud data assertion:
 
 1.  Resolve the URI reference in the `url` field to obtain its data. If the `url` field is not present or the URI cannot be resolved and the data retrieved, the validator shall abort the attempt to retrieve the external data.
-    
+
 2.  If the size of the retrieved data is not equal to the value of the `size` field, the validator shall return a failure code of `assertion.hashedURI.mismatch` to the application and not provide the retrieved data.
-    
+
 3.  Validate that the content type returned in the `Content-Type` header of the HTTP response is equal to the declared content type. If they do not match, the validator shall return a failure code of `assertion.hashedURI.mismatch` to the application and not provide the retrieved data. The declared content type is determined by:
-    
+
     1.  For external data, the content type is determined by the `dc:format` field of the `hashed_ext_uri` structure. If the `dc:format` field is absent, content type validation is always successful.
-        
+
     2.  For a cloud data assertion, if the `dc:format` field is present in its `location` field, that determines the content type and the value of the cloud data assertion’s `content_type` field is ignored. If `location` does not have a `dc:format` field, then the assertion’s `content_type` field determines the content type.
-        
-    
+
+
 4.  Determine the hash algorithm to be used as specified in [Section 15.4.2, “For Hashed Ext URIs”](#_for_hashed_ext_uris) or possible failure codes.
-    
+
 5.  Compute the hash of the data using the determined hash algorithm and the procedure described in [Section 8.4.2.3, “Hashing JUMBF Boxes”](#_hashing_jumbf_boxes) on the retrieved content. For external data, use the hash algorithm and the exact retrieved content as input to the hash function.
-    
+
     1.  Compare the computed hash value with the value in the `hash` field. If the `hash` field is not present or they do not match, the validator shall return a failure code of `assertion.hashedURI.mismatch` to the application and not provide the retrieved data.
-        
+
     2.  Otherwise, the validator shall record a success code of `assertion.hashedURI.match` and provide the retrieved data to the application.
-        
-    
+
+
 
 <a id="_validate_the_ingredients"></a>
 ### 15.11. Validate the Ingredients
@@ -3113,90 +3113,90 @@ The value of the `relationship` field shall be one of the following: `parentOf`,
 The validator shall recursively validate all ingredient manifests in the asset, for example using a depth-first search as described below. A validator need not implement the algorithm exactly as described, but the results of the validation shall be equivalent to the results of this algorithm.
 
 1.  Create two empty lists:
-    
+
     1.  A list to hold the `hashed_uri` values of all ingredient manifests used in the asset, anywhere in its lineage.
-        
+
     2.  A list to hold the JUMBF URIs of all redacted assertions in the asset, anywhere in its lineage.
-        
-    
+
+
 2.  Set the active manifest of the asset being validated as the target manifest
-    
+
 3.  Begin recursion.
-    
+
 4.  Locate the claim, as described in [Section 15.6, “Locating and Validating the Claim”](#_locating_and_validating_the_claim). If unable to, reject claim with a `claim.missing` failure code.
-    
+
 5.  If the claim of the target manifest contains a `redacted_assertions` field, check the JUMBF URI of each redacted assertion.
-    
+
     1.  If the redacted assertion is from the target manifest, reject the claim with an `assertion.selfRedacted` failure code.
-        
+
     2.  Otherwise, append the JUMBF URI of the redacted assertion to the list of all redacted assertions.
-        
-    
+
+
 6.  Validate all assertions in the claim, as described in [Section 15.10, “Validate the Assertions”](#_validate_the_assertions).
-    
+
 7.  If the claim of the target manifest includes ingredient assertions:
-    
+
     1.  For each ingredient assertion:
-        
+
         1.  Attempt to resolve the URI of the ingredient assertion. If unable to, reject the claim with an `assertion.missing` failure code.
-            
+
         2.  If the ingredient assertion has an `activeManifest` field:
-            
+
             1.  Append a tuple that includes the following values to the list of all ingredient manifests:
-                
+
                 *   The `hashed_uri` value of the `activeManifest` field in the ingredient assertion to the list of all ingredient manifests
-                    
+
                 *   The `hashed_uri` value of the `claimSignature` field in the ingredient assertion to the list of all ingredient manifests
-                    
-                
+
+
             2.  Set the just-appended ingredient manifest as the target manifest, and repeat the process as above from the "Begin recursion" step.
-                
-            
+
+
         3.  If the ingredient assertion does not have an `activeManifest` field, record an `ingredient.unknownProvenance` informational code unless the value of the `relationship` field is `inputTo`, and then skip to the next ingredient assertion until they are all exhausted. At that point, return from the current recursion level.
-            
-        
-    
+
+
+
 8.  If the claim of the target manifest does not include ingredient assertions, return from the current recursion level.
-    
+
 9.  End recursion.
-    
+
 
 Having compiled a list of all ingredient manifests and a list of all redacted assertions, the validator shall perform the following validation algorithm:
 
 1.  For each ingredient manifest in the list of all ingredient manifests:
-    
+
     1.  Extract the `urn:c2pa` value from the ingredient manifest JUMBF URI from each tuple
-        
+
     2.  Search the list of all redacted assertions for assertions with a matching `urn:c2pa` value
-        
+
     3.  If one or more matching redacted assertions are found:
-        
+
         1.  Validate the ingredient using the claim signature hash validation method, described in [Section 15.11.3.3.1, “Claim Signature Hash Validation Method”](#_claim_signature_hash_validation_method).
-            
-        
+
+
     4.  If no matching redacted assertions are found:
-        
+
         1.  Validate the ingredient using either the manifest hash validation method, described in [Section 15.11.3.3.2, “Manifest Hash Validation Method”](#_manifest_hash_validation_method), or the claim signature hash validation method, described in [Section 15.11.3.3.1, “Claim Signature Hash Validation Method”](#_claim_signature_hash_validation_method).
-            
-        
+
+
     5.  If the ingredient assertion contains a `validationResults` field:
-        
+
         1.  For each entry in the value of the `validationResults` field, if an equivalent entry was not returned as part of the validation process, return it as part of the validation results.
-            
+
         2.  If there are any entries returned as part of the validation process that are not present in the `validationResults` field, return it as part of the validation results.
-            
-        
+
+
     6.  If no `validationResults` field is present and the ingredient assertion is a v3 ingredient assertion with the `activeManifest` field present, then return the failure code `assertion.ingredient.malformed`.
-        
-    
+
+
 2.  For each C2PA Manifest in the C2PA Manifest Store, except the active manifest:
-    
+
     1.  Search the compiled list of ingredient manifests for a manifest with a matching `urn:c2pa` value
-        
+
         1.  If no matching manifest is found, then the claim shall be rejected with the failure code `manifest.unreferenced` (as this indicates that there is a C2PA Manifest in the C2PA Manifest Store that is not referenced by any ingredient assertion).
-            
-        
-    
+
+
+
 
 <a id="_claim_signature_hash_validation_method"></a>
 ###### 15.11.3.3.1. Claim Signature Hash Validation Method
@@ -3204,28 +3204,28 @@ Having compiled a list of all ingredient manifests and a list of all redacted as
 This method includes a full validation of the ingredient’s claim, like that performed for the active manifest, except that content bindings are not evaluated:
 
 1.  Resolve the URI reference in the `url` value of the `claimSignature` field to obtain the ingredient’s claim signature box. If the URI reference cannot be resolved, or the `claimSignature` field is not present, the ingredient claim is rejected with a failure code of `ingredient.claimSignature.missing`.
-    
+
 2.  Determine the hash algorithm identifier (or possible failure code) by following the procedure in [Section 15.4, “Determining the hashing algorithm”](#_determining_the_hashing_algorithm).
-    
+
 3.  Compute the hash of the ingredient claim signature box using that algorithm and the procedure described in [Section 8.4.2.3, “Hashing JUMBF Boxes”](#_hashing_jumbf_boxes).
-    
+
 4.  Compare the computed hash with the value in the `hash` field.
-    
+
     1.  If the hashes are not equal or the `hash` field is not present:
-        
+
         1.  Reject the claim with a failure code of `ingredient.claimSignature.mismatch`.
-            
-        
+
+
     2.  If the hashes are equal, issue a `ingredient.claimSignature.validated`.
-        
+
         1.  Validate the claim signature, time-stamp, and credential revocation information as per [Section 15.7, “Validate the Signature”](#_validate_the_signature), [Section 15.8, “Validate the Time-Stamp”](#_validate_the_time_stamp), and [Section 15.9, “Validate the Credential Revocation Information”](#_validate_the_credential_revocation_information).
-            
+
         2.  For each URI in the list of redacted assertions with a matching `urn:c2pa` value, if the referenced assertion is present and its data consists of anything other than zero or more `0x00` bytes, the claim shall be rejected with a failure code of `assertion.notRedacted`.
-            
+
         3.  Validate each non-redacted assertion per [Section 15.10, “Validate the Assertions”](#_validate_the_assertions), except for the hard binding assertions, which cannot be validated for ingredients.
-            
-        
-    
+
+
+
 
 <a id="_manifest_hash_validation_method"></a>
 ###### 15.11.3.3.2. Manifest Hash Validation Method
@@ -3233,21 +3233,21 @@ This method includes a full validation of the ingredient’s claim, like that pe
 An ingredient manifest that has not been changed due to redaction can be validated faster if the current validator trusts the previous claim generator’s validation results:
 
 1.  Resolve the URI reference in the `url` value of the `activeManifest` field to obtain the ingredient’s manifest box. If the `url` field is not present or the URI reference cannot be resolved, the ingredient claim is rejected with a failure code of `ingredient.manifest.missing`.
-    
+
 2.  Determine the hash algorithm identifier (or possible failure code) by following the procedure in [Section 15.4, “Determining the hashing algorithm”](#_determining_the_hashing_algorithm).
-    
+
 3.  Compute the hash of the ingredient manifest box using that algorithm and the procedure described in [Section 8.4.2.3, “Hashing JUMBF Boxes”](#_hashing_jumbf_boxes).
-    
+
 4.  Compare the computed hash with the value in the `hash` field.
-    
+
     1.  If the hashes are not equal or the `hash` field is not present:
-        
+
         1.  Reject the claim with a failure code of `ingredient.manifest.mismatch`.
-            
-        
+
+
     2.  If the hashes are equal, the ingredient is fully validated and a `ingredient.manifest.validated` success code is issued.
-        
-    
+
+
 
 <a id="_validate_the_assets_content"></a>
 ### 15.12. Validate the Asset’s Content
@@ -3379,9 +3379,9 @@ The C2PA intends to provide clear recommendations and guidance for implementers 
 The UX recommendations aim to define best practices for presenting C2PA provenance to consumers. The recommendations strive to describe standard, readily recognizable experiences that:
 
 *   provide asset creators a means to capture information and history about the content they are creating, and
-    
+
 *   provide asset consumers information and history about the content they are experiencing, thereby empowering them to understand where it came from and decide how much to trust it.
-    
+
 
 User interfaces designed for the consumption of C2PA provenance must be informed by the context of the asset. We have studied 4 primary user groups and a collection of contexts in which C2PA assets are encountered. These user groups have been defined in the [C2PA Guiding Principles](https://c2pa.org/principles/) as Consumers, Creators, Publishers and Verifiers (or Investigators). To serve the needs of each of these groups across common contexts, exemplary user interfaces are presented for many common cases. These are recommendations, not mandates, and we expect best practices to evolve.
 
@@ -3391,13 +3391,13 @@ User interfaces designed for the consumption of C2PA provenance must be informed
 Because the complete set of C2PA data for a given asset can be overwhelming to a user, we describe 4 levels of progressive disclosure which guide the designs:
 
 *   Level 1: An indication that C2PA data is present and its cryptographic validation status.
-    
+
 *   Level 2: A summary of C2PA data available for a given asset. This level should provide enough information for the particular content, user, and context to allow the consumer to understand to a sufficient degree how the asset came to its current state.
-    
+
 *   Level 3: A detailed display of all relevant provenance data. Note that the relevance of certain items over others is contextual and determined by the UX implementer.
-    
+
 *   Level 4: For sophisticated, forensic investigatory usage, a tool capable of revealing all the granular detail of signatures and trust signals is recommended.
-    
+
 
 <a id="_public_review_feedback_and_evolution"></a>
 ### 16.4. Public Review, Feedback and Evolution
@@ -3420,11 +3420,11 @@ Information security is a principal concern of C2PA. C2PA maintains a threat mod
 The C2PA is developing security considerations documentation that includes:
 
 *   A summary of relevant security features of C2PA technology
-    
+
 *   Security considerations for practical use of C2PA technology
-    
+
 *   Threats to C2PA technology and respective treatment of those threats, including countermeasures
-    
+
 
 <a id="_threat_modelling_process_overview"></a>
 #### 17.1.2. Threat modelling process overview
@@ -3443,19 +3443,19 @@ Like other security activities, we expect our threat modelling process to evolve
 A variety of references and experiences are used to inform threat modelling and related security activities for the C2PA. This section provides a subset of public documents for reference.
 
 *   [IETF on security considerations](https://datatracker.ietf.org/doc/html/rfc3552#page-26)
-    
+
 *   [IETF on privacy considerations (guidelines)](https://datatracker.ietf.org/doc/html/rfc6973#section-7)
-    
+
 *   [W3C security and privacy self-review questionnaire](https://www.w3.org/TR/security-privacy-questionnaire/)
-    
+
 *   [OAuth2 threat model (example)](https://datatracker.ietf.org/doc/html/rfc6819)
-    
+
 *   [Threat modelling: Designing for Security](https://shostack.org/books/threat-modelling-book)
-    
+
 *   [OWASP Threat modelling](https://owasp.org/www-community/Threat_modelling)
-    
+
 *   [Microsoft Threat modelling](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodelling)
-    
+
 
 <a id="_harms_misuse_and_abuse"></a>
 ### 17.2. Harms, Misuse, and Abuse
@@ -3470,11 +3470,11 @@ To ensure that the C2PA is meeting this aspect of its principles, the harms, mis
 In addition, the specifications are being reviewed to:
 
 *   Anticipate and mitigate potential abuse and misuse;
-    
+
 *   Address common privacy concerns of its users; and
-    
+
 *   Consider the needs of users and stakeholders throughout the world.
-    
+
 
 <a id="_considerations"></a>
 #### 17.2.2. Considerations
@@ -3504,13 +3504,13 @@ The [Harms Modelling documentation](../../1.0/security/Harms_Modelling.html.md) 
 The harms, misuse and abuse assessment has informed, and should continue to inform, the development of the C2PA technical specifications as well as its accompanying documentation:
 
 *   [Guidance for implementers](../../1.3/guidance/Guidance.html.md)
-    
+
 *   [User experience guidance](../../1.4/ux/UX_Recommendations.html.md)
-    
+
 *   [Security Considerations](../../1.0/security/Security_Considerations.html.md)
-    
+
 *   [Explainer](../../1.3/explainer/Explainer.html.md)
-    
+
 
 In addition, the harms, misuse and abuse assessment should inform the governance of the Coalition and guide potential multilateral cooperation for the promotion of a diverse C2PA ecosystem that pushes for the optimization of the benefits in terms of trust in media, user control and transparency that prompted the development of the C2PA specifications.
 
@@ -3570,15 +3570,15 @@ Older versions of this specification included a `role` field. This field has bee
 All ranges consist of a `type` field whose value is either "spatial", "temporal", "frame", "textual" or "identified". In addition, it shall contain one of the following fields whose data is an object consisting of the specific data for that range:
 
 *   `shape` (for spatial);
-    
+
 *   `time` (for temporal);
-    
+
 *   `frame` (for temporal or textual);
-    
+
 *   `text` (for textual);
-    
+
 *   `item` (for specifically identified items).
-    
+
 
 <a id="_spatial"></a>
 ##### 18.2.2.2. Spatial
@@ -3979,7 +3979,7 @@ $source-type /= "humanEntry"
 $source-type /= "humanEntry.anonymous"
 $source-type /= "humanEntry.identified"
 
-  
+
 ; NOTE: an earlier version of this specification also included an "actors" field, however this was removed in version 2.0.
 source-map = {
   "type": $source-type, ; A value from among the enumerated list indicating whether the source of the assertion is a claim generator running in a rich execution environment (REE), a claim generator running in a trusted execution environment (TEE), a local data provider in REE (e.g. the location API from a mobile operating system), a local data running in a TEE (e.g. a trusted location trusted app from a chipset vendor), a remote data provider such as a server (e.g. Google's geolocation API service), or entry by a human.
@@ -4300,9 +4300,9 @@ In a `c2pa.hash.bmff.v2` (deprecated) and `c2pa.hash.bmff.v3` assertion, for any
 In addition, a `c2pa.hash.bmff.v2` (deprecated) and `c2pa.hash.bmff.v3` assertions includes the following features:
 
 *   The absolute file byte offset is included at the start of the input data contributed to the hash for any root box. This ensures that a root box included in the hash cannot change positions in the file.
-    
+
 *   The `mdat` box is no longer excluded in its entirety when the bmff-hash-map includes both the `hash` and `merkle` fields. Instead, a mandatory entry on the exclusion list excludes most of the box.
-    
+
 
 > **NOTE:**
 > These two features ensure that the `mdat` cannot change positions in the file while also eliminating the need for the offset for each individual Merkle tree hash when the bmff-hash-map includes both the `hash` and `merkle` fields.
@@ -4310,28 +4310,28 @@ In addition, a `c2pa.hash.bmff.v2` (deprecated) and `c2pa.hash.bmff.v3` assertio
 A box matches an exclusion entry in the exclusions array if and only if all of the following conditions are met:
 
 *   The box’s location in the file matches the `exclusions-map` entry’s `xpath` field. For example, exclusion xpath `/foo/bar[2]` would match locations `/foo[3]/bar[2]` and `/foo[2]/bar[2]`, but not `/foo[3]/bar[1]` or `/foo[3]/bar[2]/baz[1]`.
-    
+
 *   If `length` is specified in the `exclusions-map` entry, the box’s length exactly matches the `exclusions-map` entry’s `length` field. Note: The length includes the box headers.
-    
+
 *   If `version` is specified in the `exclusions-map` entry, the box is a FullBox and the box’s version exactly matches the `exclusions-map` entry’s `version` field.
-    
+
 *   If `flags` (byte array of exactly 3 bytes) is specified in the `exclusions-map` entry and the box is a FullBox. If `exact` is set to true or not specified, the box’s flags (bit(24), i.e., 3 bytes) also exactly matches the `exclusions-map` entry’s `flags` field. If `exact` is set to false, the bitwise-and of the box’s flags (bit(24), i.e., 3 bytes) with the `exclusions-map` entry’s `flags` field exactly matches the `exclusions-map` entry’s `flags` field (i.e., the box has at least those bits set but may also have additional bits set).
-    
+
 *   If `data` (array of objects) is specified in the `exclusions-map` entry, then for each item in the array, the box’s binary data at that item’s relative byte `offset` field exactly matches that item’s `bytes` field.
-    
+
 
 The `xpath` field’s string syntax shall be limited to the following strict subset.
 
 *   Only abbreviated syntax shall be used.
-    
+
 *   Only full paths shall be used.
-    
+
 *   Only node selection via `node` or `node[integer]` shall be used.
-    
+
 *   Descendent syntax, i.e., `//`, shall NOT be used.
-    
+
 *   All nodes shall be BMFF `4cc` codes.
-    
+
 
 Example 5. Complete Syntax for `xpath` Field
 
@@ -4359,31 +4359,31 @@ Embedding C2PA data into a BMFF-based asset via MP4 boxes changes file offsets i
 There are two possible ways an implementation can ensure that post-embed values for all file byte offsets are hashed:
 
 1.  Use `'free'` boxes.
-    
+
     1.  Determine reasonable maximum size(s) for the C2PA box(es) which will be embedded. All MP4 boxes for C2PA support unused padding bytes at the end, so it is fine to overestimate the size for the `'free'` boxes because any extra bytes will be ignored.
-        
+
     2.  Insert `'free'` box(es) of said size(s) into the asset file(s) and update all offsets appropriately.
-        
+
     3.  Perform hashing of the asset with "/free" on the exclusion list.
-        
+
     4.  Create and sign the manifest. Create the C2PA box(es).
-        
+
     5.  Overwrite the `'free'` box(es) with the C2PA box(es).
-        
-    
+
+
 2.  Use a two-pass approach.
-    
+
     1.  Compute the exact sizes of the BMFF-based hash assertion and the `merkle` box(es) if any. The latter will require parsing the asset file(s) to determine the size of the Merkle tree.
-        
+
     2.  Compute the exact size of the final manifest.
-        
+
     3.  Perform hashing of the asset file(s). Update any box that includes any file offsets to correct values before including that box in the input data contributed to the hash. Compute the input data contributed to the hash using `(offset || data)` using the updated absolute file offset as described above. As indicated above, the offset is not included in the data contributed for Merkle tree hashes when the bmff-hash-map includes both the `hash` and `merkle` fields.
-        
+
     4.  Create and sign the manifest. Create the C2PA box(es).
-        
+
     5.  Insert the C2PA box(es).
-        
-    
+
+
 
 While the latter method is significantly more complex, it does enable correct hashing without any foreknowledge of the maximum manifest size. It also minimizes the final asset’s size. Common boxes (**not** exhaustive) with file offsets include `'iloc'`, `'stco'`, `'co64'`, `'tfhd'`, `'sidx'`, and `'saio'`.
 
@@ -4782,11 +4782,11 @@ The hash of an IFD entry shall be computed over the 12 bytes of the IFD entry. I
 For some well known IFD entries - `StripOffsets` (273), `TileOffsets` (324), and `FreeOffsets` (288) - the data referenced by the IFD entry is itself a list of offsets to the actual data. In these cases, the data over which the hash is computed shall be the concatenation of the following in the order given:
 
 1.  The 12 bytes of the IFD,
-    
+
 2.  The bytes starting at `Value Offset` of length `Count` times the size of `Type` containing the offsets, and
-    
+
 3.  For each offset in the order it appears, the bytes at that offset, with the length given by the type’s associated byte count entry: `StripByteCounts` (279), `TileByteCounts` (325) and `FreeByteCounts` (289), respectively.
-    
+
 
 > **NOTE:**
 > The image data in a TIFF would therefore be hashed through this combination of "offsets" and "byte counts".
@@ -4794,16 +4794,16 @@ For some well known IFD entries - `StripOffsets` (273), `TileOffsets` (324), and
 TIFF also supports SubIFDs, an IFD type that points to and therefore incorporates one or more IFDs by reference. These include not only the type called `SubIFD` (330), but also `EXIF` (34665), `GPS` (34853), and `Interoperability` (40965). For all of these IFD types, and any other IFD types which reference other IFDs in this manner, the data over which the hash is computed shall be the concatenation of the following in the order given:
 
 1.  The 12 bytes of the IFD,
-    
+
 2.  Either:
-    
+
     1.  If `N = 1`, the bytes starting at `Value Offset` of length of the size of `Type` containing the offset of the referenced IFD, or
-        
+
     2.  If `N > 1`, the bytes starting at `Value Offset` of length of the size of `Type` containing the offset to the array of IFD offsets, concatenated with the bytes starting at that offset of length `Count` times the size of `Type` which contain the offsets to each "treed" IFD.
-        
-    
+
+
 3.  For each referenced IFD, recursively compute the data for the hash for that IFD at that offset as specified in this section.
-    
+
 
 <a id="_gif_specific_handling"></a>
 ##### 18.7.2.4. GIF-specific Handling
@@ -4817,22 +4817,22 @@ For all extension blocks, the naming convention is as follows: "<Extension Intro
 The only other blocks that are not described by the above naming convention are:
 
 *   The header will be marked with "GIF89a".
-    
+
 *   The Table Based Image Data will be marked with "TBID".
-    
+
 *   The Logical Screen Descriptor will be marked with "LSD".
-    
+
 
 For example:
 
 *   Header: "GIF89a".
-    
+
 *   Trailer: "3B".
-    
+
 *   Image Descriptor: "2C".
-    
+
 *   Comment Extension: "21FE".
-    
+
 
 <a id="_riff_specific_handling"></a>
 ##### 18.7.2.5. RIFF-specific Handling
@@ -4840,37 +4840,37 @@ For example:
 RIFF file chunks may be nested in a tree structure of arbitrary depth. The root of this structure consists of one or more **L0** chunks, each with the chunk identifier of `RIFF`. These `RIFF` chunks are defined with the following structure:
 
 *   Bytes 0-3: Chunk identifier, always `RIFF`.
-    
+
 *   Bytes 4-7: Chunk length (minus 8 bytes for the chunk identifier and chunk length fields).
-    
+
 *   Bytes 8-11: Media type identifier.
-    
+
 *   Bytes 12-n: Chunk data (all **L1** chunks).
-    
+
 
 After the media type identifier, the `RIFF` chunk may contain one or more **L1** sub-chunks, each with the following structure:
 
 *   Bytes 0-3: Chunk identifier.
-    
+
 *   Bytes 4-7: Chunk length (minus 8 bytes for the chunk identifier and chunk length fields).
-    
+
 *   Bytes 8-n: Chunk data.
-    
+
 *   Byte n+1: Padding byte (if necessary).
-    
+
 
 A special chunk identifier of `LIST` may be used to nest chunks within an **L1** chunk. These `LIST` chunks mimic the structure of **L0** `RIFF` chunks:
 
 *   Bytes 0-3: Chunk identifier, always `LIST`.
-    
+
 *   Bytes 4-7: Chunk length (minus 8 bytes for the chunk identifier and chunk length fields).
-    
+
 *   Bytes 8-11: List type identifier.
-    
+
 *   Bytes 12-n: Chunk data (all **L2** chunks).
-    
+
 *   Byte n+1: Padding byte (if necessary).
-    
+
 
 For the purposes of calculating a general boxes hash, each **L0** chunk shall be treated as a single box with a size of exactly 12 bytes, and a box name equal to the media type identifier (bytes 8-11). Each non-`LIST` **L1** chunk shall be treated as a box with a name equal to the chunk identifier (bytes 0-3) and content extending from the beginning of the chunk identifier (byte 0) to the padding byte, if any, inclusive. Each `LIST` **L1** chunk shall be treated as a box with a name equal to the list type identifier (bytes 8-11) and content extending from the beginning of the chunk identifier (byte 0) to the padding byte, if any, inclusive. All chunks nested within a `LIST` **L1** chunk (**L2** and higher) shall be treated as a part of the `LIST` **L1** chunk’s content and hashed as a single box.
 
@@ -4919,15 +4919,15 @@ box-name /= tstr .size (1..10)
 Five examples in CBOR Diagnostic Format (`.cbordiag`) are shown in [Example Boxes Hash](#example_boxes_hash):
 
 1.  JPEG;
-    
+
 2.  PNG;
-    
+
 3.  GIF;
-    
+
 4.  DNG (TIFF), with a SubIFD;
-    
+
 5.  TTF.
-    
+
 
 Example Boxes Hash
 
@@ -5579,9 +5579,9 @@ An example in CBOR Diagnostic Format (`.cbordiag`) is shown below:
 A thumbnail assertion provides an approximate visual representation of the asset at a specific event in the lifecycle of an asset. There are currently two specific events:
 
 *   ingredient import and claim creation;
-    
+
 *   each using a unique label for the assertion.
-    
+
 
 For thumbnails created at claim creation time, the thumbnail assertion shall have a label that starts with `c2pa.thumbnail.claim` and be followed by the [IANA registry image type](https://www.iana.org/assignments/media-types/media-types.xhtml#image) (e.g., `c2pa.thumbnail.claim.png`). For each of these types of thumbnails, there can be only one per claim.
 
@@ -5665,16 +5665,16 @@ In addition, the following set of pre-defined names (in [Table 9, “List of fon
 There shall be at least one actions assertion in every [standard C2PA Manifest](#_standard_manifests):
 
 *   If the asset was created _de novo_ (for example, as a result of performing a `File → New` operation in a creative tool, capturing a photo or video, or generating the media by a generative AI model), then the `actions` array in the `c2pa.actions` assertion shall begin with a `c2pa.created` action as its first element.
-    
+
     *   If the asset is created with no digital content, then there shall be no `digitalSourceType` value in conjunction with the `c2pa.created` action.
-        
+
     *   For all other assets, a corresponding `digitalSourceType` value shall be recorded with the `c2pa.created` action, to indicate the nature of the asset at its inception.
-        
-    
+
+
 *   If the asset was created by opening an existing asset as a `parentOf` [ingredient](#_relationship) for editing, then the `actions` array in the `c2pa.actions` assertion shall begin with an action of `c2pa.opened` as its first element. No `digitalSourceType` value is required in conjunction with a `c2pa.opened` action.
-    
+
 *   The mandatory `c2pa.created` or `c2pa.opened` action shall be recorded in the first instance of the `c2pa.actions.v2` assertion, that is, the one that does not have an instance label. Additionally, the `c2pa.actions.v2` assertion that does not have an instance label shall be placed earlier than any other actions assertion in the `created_assertions` array in `c2pa.claim.v2`.
-    
+
 
 Please note that this requirement does not apply to [Update Manifests](#_update_manifests).
 
@@ -5692,13 +5692,13 @@ An action may include a free-text description, in the `description` field, of wh
 If present, the `reason` field shall contain one of these standard values, or a custom value which conforms to the same syntax as [entity-specific namespacing](#_namespacing), for the rationale behind the action:
 
 *   `c2pa.PII.present`;
-    
+
 *   `c2pa.invalid.data`;
-    
+
 *   `c2pa.trade-secret.present`;
-    
+
 *   `c2pa.government.confidential`.
-    
+
 
 > **NOTE:**
 > Although the `reason` field can be used for any actions, only redaction-focused `c2pa` values are defined at this time.
@@ -5935,19 +5935,19 @@ The additional presence of a single "parentOf" ingredient provides a further sig
 The following actions were part of previous versions of this specification and have since been deprecated:
 
 *   `c2pa.copied`;
-    
+
 *   `c2pa.formatted`;
-    
+
 *   `c2pa.version_updated`;
-    
+
 *   `c2pa.printed`;
-    
+
 *   `c2pa.managed`;
-    
+
 *   `c2pa.produced`;
-    
+
 *   `c2pa.saved`.
-    
+
 
 They shall no longer be written into `c2pa.actions` or `c2pa.actions.v2` assertions but may appear in pre-existing C2PA Manifests.
 
@@ -6195,9 +6195,9 @@ When adding an ingredient, its relationship to the current asset shall be descri
 When adding an ingredient assertion, a claim generator shall add a `c2pa.actions` assertion (see [Section 18.12, “Actions”](#_actions)), if one does not already exist in the active manifest. Depending on the type of ingredient, one of the following new entries shall be added to the `actions` array of a `c2pa.actions` assertion.
 
 *   When adding an ingredient with a `parentOf` relationship, a `c2pa.opened` action shall be added to the `actions` array.
-    
+
 *   When adding an ingredient with a `componentOf` relationship, a `c2pa.placed` action shall be added to the `actions` array.
-    
+
 
 This requirement only applies to [Standard Manifests](#_standard_manifests), since recording actions is only supported in that manifest type.
 
@@ -6491,32 +6491,32 @@ If the ingredient has an existing C2PA Manifest Store, then all C2PA Manifests i
 To determine whether or not an existing manifest from the ingredient’s C2PA Manifest Store needs to be copied into the asset’s C2PA Manifest Store, the claim generator shall:
 
 1.  Validate the ingredient per the process described in [Section 18.13.12.1, “Ingredient validation”](#_ingredient_validation). In case of validation failures, the claim generator may skip the rest of these steps if directed to do so (for example, via user input or via configuration).
-    
+
 2.  For each manifest in the ingredient’s C2PA Manifest Store, compare its [URN identifier](#_unique_identifiers) with the URN identifiers of each C2PA Manifest already present in the asset’s C2PA Manifest Store.
-    
+
     1.  If a match is found, compute and compare the hash of the manifest box from ingredient’s C2PA Manifest Store to the hash of the matching manifest box from the asset’s C2PA Manifest Store
-        
+
         1.  If the hashes match, then the claim generator shall not copy the manifest from the ingredient’s C2PA Manifest Store to the asset’s C2PA Manifest Store.
-            
+
         2.  If the hashes do not match:
-            
+
             1.  The claim generator shall check if any assertions from either manifest were redacted (optionally utilizing the list of redactions compiled in the [Performing explicit validation](#_performing_explicit_validation) process).
-                
+
                 1.  If the validator is able to determine that the hashes differ only due to redaction, then:
-                    
+
                     1.  If all redactions were applied against the manifest already present in the asset’s C2PA Manifest Store, then the claim generator shall not copy the manifest from the ingredient’s C2PA Manifest Store into the asset’s C2PA Manifest Store.
-                        
+
                     2.  If all redactions were applied against the manifest from the ingredient’s Manifest Store, then the claim generator shall replace the manifest in the asset’s C2PA Manifest Store with the manifest from the ingredient’s C2PA Manifest Store.
-                        
+
                     3.  If different redactions were applied against both the C2PA Manifest from the ingredient’s C2PA Manifest Store and the asset’s C2PA Manifest Store, then the claim generator shall redact as many assertions as needed from the existing manifest in the asset’s C2PA Manifest Store to result in a union of the two sets of redactions.
-                        
-                    
+
+
                 2.  In all other cases, then the claim generator shall copy the manifest from the ingredient’s C2PA Manifest Store, re-label it with an updated URN per the process described in [Unique Identifiers](#_unique_identifiers), and insert the re-labeled version into the asset’s C2PA Manifest Store.
-                    
-                
-            
-        
-    
+
+
+
+
+
 
 > **NOTE:**
 > The process for determining whether the hashes differ only due to redaction is left up to the validator.
@@ -6565,14 +6565,14 @@ In a v3 ingredient assertion with no `activeManifest` field, the `validationResu
 In a v3 ingredient assertion with an `activeManifest` field, the `validationResults` field shall contain a `validation-results-map` object which in turn contains:
 
 1.  In `activeManifest`, full validation results for the ingredient’s active manifest.
-    
+
 2.  In `ingredientDeltas`, delta validation results for every ingredient assertion, that contains an `activeManifest` field, in every manifest in the ingredient’s C2PA Manifest Store. The delta validation results for an ingredient assertion shall contain the following:
-    
+
     1.  In `ingredientAssertionURI`, the URI of the ingredient assertion.
-        
+
     2.  In `validationDeltas`, the validation results for the manifest referenced by the ingredient assertion, omitting any status values present in the `activeManifest` field of the `validationResults` field in the ingredient assertion (or for v1 or v2 ingredient assertions, the `validationStatus` field). This status value comparison shall consider the status type (success, informational, or failure), `code`, and `url`, ignoring other fields.
-        
-    
+
+
 
 **EXAMPLE:** Consider a multi-ingredient Manifest `E` with a complex lineage. Claim generator `E` adds Manifest `C` and Manifest `D` as ingredients via ingredient assertions. Manifest `C` itself has Manifest `A` and Manifest `B` added via ingredient assertions. Manifest `D` also has Manifest `A` added via an ingredient assertion. When adding Manifest `C`, claim generator `E` creates an ingredient assertion with a `validationResults` object that stores validation results for the active manifest of `C` in `activeManifest`, and delta validation results for manifests `A` and `B` in `ingredientDeltas`. The `ingredientDeltas` array will have two elements: one for the delta results compared against the `activeManifest` object in the `validationResults` object in Manifest `C` 's ingredient assertion of Manifest `B` (with a `hashed-uri` link to said ingredient assertion in Manifest `C`), and another element of the same attributes but for Manifest `C` 's ingredient assertion of Manifest `A`. And likewise when adding Manifest `D`, claim generator `E` creates an ingredient assertion which stores `validationResults` for both the `activeManifest` of `D`, as well as `ingredientDeltas` with a single array element containing delta validation results compared against the `activeManifest` object in the `validationResults` object in Manifest `D` 's ingredient assertion of Manifest `A`. While this is an intentionally contrived example, it is designed to elucidate the expectation of how the `validationResults` data structure is to be used.
 
@@ -6695,7 +6695,7 @@ An example of an `c2pa.metadata` assertion for an image:
 	"exifEX:LensMake": "CameraCompany",
 	"exifEX:LensModel": "17.0-35.0 mm",
 	"exifEX:LensSpecification": { "@list": [ 1.55, 4.2, 1.6, 2.4 ] }
-  
+
 }
 ```
 
@@ -7034,15 +7034,15 @@ An example in CBOR Diagnostic Format (`.cbordiag`) is shown below:
 As defined by the GDepth specification, the following fields shall be present in all GDepth depth map assertions:
 
 *   GDepth:Format;
-    
+
 *   GDepth:Near;
-    
+
 *   GDepth:Far;
-    
+
 *   GDepth:Mime;
-    
+
 *   GDepth:Data.
-    
+
 
 <a id="_font_information"></a>
 ### 18.18. Font Information
@@ -7552,11 +7552,11 @@ All BMFF-based C2PA assets, whether they are timed (e.g., videos with or without
 Some file formats that are BMFF-based and would be supported via this method include:
 
 *   MPEG-4 code-points, either complete (`.mp4`) or fragmented (`.m4s`); downloadable audio files (`.m4a`);
-    
+
 *   HEIF (`.heif`, `.heic`);
-    
+
 *   AVIF (`.avif`).
-    
+
 
 <a id="_definition"></a>
 ##### A.4.1.1. Definition
@@ -7634,18 +7634,18 @@ However, for sufficiently large assets, including every subset’s hash in the m
 Avoiding such a large C2PA Manifest Store for a large asset is achieved by using one or more Merkle trees.
 
 *   For a large non-fragmented asset that contains one or more `'mdat'` boxes in a single large file, one Merkle tree is used for each `'mdat'` box.
-    
+
 *   For a large fragmented asset that contains a set of `'mdat'` boxes for a single track which may be spread across multiple files, one Merkle tree is used for each track.
-    
+
 
 In either case:
 
 *   Each leaf node of any given Merkle tree is the subset’s hash.
-    
+
 *   The manifest stores one row of each Merkle tree.
-    
+
 *   The auxiliary `'uuid'` C2PA box that exists for each subset indicates which Merkle tree row in the active manifest it requires and which leaf node it represents. It also includes any additional hash(es) from the Merkle tree necessary to derive a hash in the active manifest’s Merkle tree row.
-    
+
 
 The selection of which Merkle tree row to store in the manifest creates a size tradeoff within the asset. Specifically, storing a single hash per Merkle tree in the manifest minimizes the size of the manifest but requires log2(subsets) to be stored in each subset-specific box. Each time the number of hashes stored in the manifest for a Merkle tree is doubled (by moving "down" one Merkle tree row), the number of hashes stored in each subset-specific box decreases by one. Thus, increasing the size of the manifest decreases the size of the entire asset and vice-versa, and since hashes for individual subsets are replicated across subsets as required to derive a manifest-specified hash, the tradeoff is not 1 to 1.
 
@@ -7663,11 +7663,11 @@ The hash used for a given leaf node in the merkle tree shall be computed from th
 All such auxiliary `'uuid'` C2PA boxes shall meet the following requirements.
 
 *   They shall be in the same sequence as the subsets they hash as specified by the `'variableBlockSizes'` field.
-    
+
 *   They shall be grouped such that a single merkle tree’s auxiliary `'uuid'` C2PA boxes are sequential with no intervening boxes.
-    
+
 *   The `location` value in the first box shall be set to 0, in the second box shall be set to 1, and shall increase sequentially thereafter.
-    
+
 
 <a id="_fragmented_asset"></a>
 ###### A.4.4.1.2. Fragmented asset
@@ -7675,9 +7675,9 @@ All such auxiliary `'uuid'` C2PA boxes shall meet the following requirements.
 For fMP4 assets which are split across multiple files:
 
 *   One auxiliary `'uuid'` C2PA box with `box_purpose` set to `'merkle'` as described below shall be included in each fragment file immediately preceding the `'moof'` box.
-    
+
 *   The hash used for a given leaf node in the Merkle tree shall be over all data in its containing single fragment file except data excluded by the exclusion list.
-    
+
 
 > **NOTE:**
 > This specification does not enable support for fMP4 assets which are split across multiple files where individual fragment files contain more than one `'moof'` box or `'mdat'` box or both.
@@ -7685,9 +7685,9 @@ For fMP4 assets which are split across multiple files:
 For fMP4 assets which are stored as a single flat MP4 file with a single `'moov'` for all tracks and then one `'moof'`/`'mdat'` pair for each fragment:
 
 *   One auxiliary `'uuid'` C2PA box with `box_purpose` set to `'merkle'` as described below shall be included immediately preceding each `'moof'` box.
-    
+
 *   The hash used for a given leaf node in the Merkle tree shall be over that `'moof'` box plus all data preceding the next `'moof'` box or over all data through the end of the file if there is no further `'moof'` box. The hash shall not cover data excluded by the exclusion list.
-    
+
 
 > **IMPORTANT:**
 > Taking a C2PA-compliant fMP4 asset which is split across multiple files (i.e., has `'c2pa'` boxes of types `'manifest'` and `'merkle'`) and appending the individual files together will not produce a single file which is C2PA-compliant (nor vice-versa). This is because which boxes are included in each `'merkle'` hash will be different in the two cases. If both forms are desirable, the second form shall consider the first form as an ingredient and the new manifest shall include both an ingredient assertion with relationship `parentOf` and an actions assertion that includes an action of type `c2pa.repackaged`.
@@ -7863,15 +7863,15 @@ Because the ZIP file needs to be completed prior to the completion of the C2PA M
 One possible implementation of this two-pass approach would be:
 
 *   create a ZIP with an zero-filled C2PA Manifest Store file (large enough to be replaced);
-    
+
 *   compute the hash of the ZIP Central Directory;
-    
+
 *   add the hash to the `zip_central_directory_hash` field of the `collection-data-hash-map`;
-    
+
 *   complete the manifest ;
-    
+
 *   overwrite the zero-filled `content_credential.c2pa` file with the completed manifest data.
-    
+
 
 When creating the `content_credential.c2pa` file in the ZIP archive, it shall be stored (compression method 0) and not encrypted. Its `general purpose bit flag` and `crc-32` fields shall be set to 0. The date and time fields may be set to the time of creation of the ZIP archive, or set to 0. It may have a file comment.
 
@@ -7894,7 +7894,7 @@ EPUB’s digital signatures are based on [W3C XML DigSig Core](https://www.w3.or
 OOXML’s digital signatures are based on [W3C XML DigSig Core](https://www.w3.org/TR/xmldsig-core1/), where each file that is signed is listed as a `<Reference>` element in the `<Manifest>` element of the `<Signature>` element. In addition, no support exists for signing the ZIP Central Directory. As such, OOXML native signing shall take place before the introduction of the C2PA Manifest.
 
 > **NOTE:**
-> OpenXPS is based on the same Open Packaging Convention (OPC) standard as OOXML, and as such, the same approach applies. :revdate: 2026-10-16 :version-label!: :sectnums: :sectnumlevels: 5 :chapter-label: :source-highlighter: rouge
+> OpenXPS is based on the same Open Packaging Convention (OPC) standard as OOXML, and as such, the same approach applies. :revdate: 2026-11-09 :version-label!: :sectnums: :sectnumlevels: 5 :chapter-label: :source-highlighter: rouge
 
 <a id="metadata_annex"></a>
 ## Appendix B: Implementation Details for `c2pa.metadata`
@@ -7946,19 +7946,19 @@ The following schemas/namespaces, in [Table 16, “Partially supported schemas�
 Only the following Dublin Core (`dc`) properties are supported:
 
 *   `dc:coverage`
-    
+
 *   `dc:date`
-    
+
 *   `dc:format`
-    
+
 *   `dc:identifier`
-    
+
 *   `dc:language`
-    
+
 *   `dc:relation`
-    
+
 *   `dc:type`
-    
+
 
 <a id="_iptc_core"></a>
 #### B.2.2. IPTC Core
@@ -7966,7 +7966,7 @@ Only the following Dublin Core (`dc`) properties are supported:
 Only the following IPTC Core (`Iptc4xmpCore`) properties are supported:
 
 *   `Iptc4xmpCore:Scene`
-    
+
 
 > **NOTE:**
 > Some IPTC Core properties have been superseded by newer versions in the IPTC Extension schema.
@@ -7977,27 +7977,27 @@ Only the following IPTC Core (`Iptc4xmpCore`) properties are supported:
 Only the following IPTC Extension (`Iptc4xmpExt`) properties are supported:
 
 *   `Iptc4xmpExt:DigImageGUID`
-    
+
 *   `Iptc4xmpExt:DigitalSourceType`
-    
+
 *   `Iptc4xmpExt:EventId`
-    
+
 *   `Iptc4xmpExt:Genre`
-    
+
 *   `Iptc4xmpExt:ImageRating`
-    
+
 *   `Iptc4xmpExt:ImageRegion`
-    
+
 *   `Iptc4xmpExt:RegistryId`
-    
+
 *   `Iptc4xmpExt:LocationCreated`
-    
+
 *   `Iptc4xmpExt:LocationShown`
-    
+
 *   `Iptc4xmpExt:MaxAvailHeight`
-    
+
 *   `Iptc4xmpExt:MaxAvailWidth`
-    
+
 
 For more information about these, see [https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#xmp-namespaces-and-identifiers-2](https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#xmp-namespaces-and-identifiers-2).
 
@@ -8017,33 +8017,33 @@ Only the following Exif properties, in [Table 17, “Supported Exif Properties�
 Only the following ExifEx properties are supported:
 
 *   `exifEX:BodySerialNumber`
-    
+
 *   `exifEX:Gamma`
-    
+
 *   `exifEX:InteroperabilityIndex`
-    
+
 *   `exifEX:ISOSpeed`
-    
+
 *   `exifEX:ISOSpeedLatitudeyyy`
-    
+
 *   `exifEX:ISOSpeedLatitudezzz`
-    
+
 *   `exifEX:LensMake`
-    
+
 *   `exifEX:LensModel`
-    
+
 *   `exifEX:LensSerialNumber`
-    
+
 *   `exifEX:LensSpecification`
-    
+
 *   `exifEX:PhotographicSensitivity`
-    
+
 *   `exifEX:RecommendedExposureIndex`
-    
+
 *   `exifEX:SensitivityType`
-    
+
 *   `exifEX:StandardOutput-Sensitivity`
-    
+
 
 For more information about these, see [https://www.cipa.jp/std/documents/download\_e.html?DC-010-2020\_E](https://www.cipa.jp/std/documents/download_e.html?DC-010-2020_E).
 
@@ -8053,31 +8053,31 @@ For more information about these, see [https://www.cipa.jp/std/documents/downloa
 Only the following Photoshop properties are supported:
 
 *   `photoshop:Category`
-    
+
 *   `photoshop:City`
-    
+
 *   `photoshop:ColorMode`
-    
+
 *   `photoshop:Country`
-    
+
 *   `photoshop:DateCreated`
-    
+
 *   `photoshop:DocumentAncestors`
-    
+
 *   `photoshop:History`
-    
+
 *   `photoshop:ICCProfile`
-    
+
 *   `photoshop:State`
-    
+
 *   `photoshop:SupplementalCategories`
-    
+
 *   `photoshop:TextLayers`
-    
+
 *   `photoshop:TransmissionReference`
-    
+
 *   `photoshop:Urgency`
-    
+
 
 <a id="_tiff"></a>
 #### B.2.7. TIFF
@@ -8085,49 +8085,49 @@ Only the following Photoshop properties are supported:
 Only the following TIFF properties are supported:
 
 *   `tiff:BitsPerSample`
-    
+
 *   `tiff:Compression`
-    
+
 *   `tiff:DateTime`
-    
+
 *   `tiff:ImageLength`
-    
+
 *   `tiff:ImageWidth`
-    
+
 *   `tiff:Make`
-    
+
 *   `tiff:Model`
-    
+
 *   `tiff:Orientation`
-    
+
 *   `tiff:PhotometricInterpretation`
-    
+
 *   `tiff:PlanarConfiguration`
-    
+
 *   `tiff:PrimaryChromaticities`
-    
+
 *   `tiff:ReferenceBlackWhite`
-    
+
 *   `tiff:ResolutionUnit`
-    
+
 *   `tiff:SamplesPerPixel`
-    
+
 *   `tiff:Software`
-    
+
 *   `tiff:TransferFunction`
-    
+
 *   `tiff:WhitePoint`
-    
+
 *   `tiff:XResolution`
-    
+
 *   `tiff:YResolution`
-    
+
 *   `tiff:YCbCrCoefficients`
-    
+
 *   `tiff:YCbCrPositioning`
-    
+
 *   `tiff:YCbCrSubSampling`
-    
+
 
 <a id="_xmp_dynamic_media"></a>
 #### B.2.8. XMP Dynamic Media
@@ -8145,19 +8145,19 @@ Only the following XMP Dynamic Media (`xmpDM`) properties, in [Table 18, “XMP 
 Only the following PLUS properties are supported:
 
 *   `plus:FileNameAsDelivered`
-    
-*   `plus:FirstPublicationDate`
-    
-*   `plus:ImageFileFormatAsDelivered`
-    
-*   `plus:ImageFileSizeAsDelivered`
-    
-*   `plus:ImageType`
-    
-*   `plus:Version`
-    
 
-For more information about these, see [http://ns.useplus.org/LDF/ldf-XMPSpecification](http://ns.useplus.org/LDF/ldf-XMPSpecification). :revdate: 2026-10-16 :version-label!: :sectnums: :sectnumlevels: 5 :chapter-label: :source-highlighter: rouge
+*   `plus:FirstPublicationDate`
+
+*   `plus:ImageFileFormatAsDelivered`
+
+*   `plus:ImageFileSizeAsDelivered`
+
+*   `plus:ImageType`
+
+*   `plus:Version`
+
+
+For more information about these, see [http://ns.useplus.org/LDF/ldf-XMPSpecification](http://ns.useplus.org/LDF/ldf-XMPSpecification). :revdate: 2026-11-09 :version-label!: :sectnums: :sectnumlevels: 5 :chapter-label: :source-highlighter: rouge
 
 <a id="versioning_annex"></a>
 ## Appendix C: Considerations for Deprecation

@@ -7,7 +7,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 <a id="_introduction"></a>
 ## 1\. Introduction
 
-The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders. The results will balance uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback. Please reference the Glossary in the [C2PA Specifications](#1.1@specs:C2PA_Specification.adoc#_glossary) for clarifications on terminology used within this document. For general guidance on other areas of the specification, please see [Guidance for Implementors](#guidance:Guidance.adoc).
+The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders. The results will balance uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback. Please reference the Glossary in the [C2PA Specifications](../../1.3/specs/C2PA_Specification.html.md#_glossary) for clarifications on terminology used within this document. For general guidance on other areas of the specification, please see [Guidance for Implementors](../../1.2/guidance/Guidance.html.md).
 
 <a id="_principles"></a>
 ## 2\. Principles
@@ -15,9 +15,9 @@ The C2PA intends to provide clear guidance for implementers of provenance-enable
 The UX recommendations aim to define best practices for presenting C2PA provenance to consumers. The recommendations strive to describe standard, readily recognizable experiences that:
 
 *   provide asset creators a means to capture information and history about the content they are creating, and
-    
+
 *   provide asset consumers information and history about the content they are experiencing, thereby empowering them to understand where it came from and decide how much to trust it.
-    
+
 
 User interfaces designed for the consumption of C2PA provenance must be informed by the context of the asset. C2PA have studied four primary user groups and a collection of contexts in which C2PA assets are encountered. These user groups have been defined in the [C2PA Guiding Principles](https://c2pa.org/principles/) as Consumers, Creators, Publishers and Verifiers (or Investigators). To serve the needs of each of these groups across common contexts, exemplary user interfaces are presented for many common cases. These are recommendations, not mandates, and we expect best practices to evolve.
 
@@ -104,7 +104,7 @@ Behaviour of L1 indicators should reveal L2 progressive disclosure, either via a
 
 Figure 3. L1 validation states
 
-In the event that the active manifest is invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See Chapter 14, Validation in the [C2PA Technical Specifications](#1.1@specs:C2PA_Specification.adoc#_validation) for further information.
+In the event that the active manifest is invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See Chapter 14, Validation in the [C2PA Technical Specifications](../../1.3/specs/C2PA_Specification.html.md#_validation) for further information.
 
 <a id="l2-section"></a>
 ## 5\. L2 – provenance summaries
@@ -230,15 +230,15 @@ L3 should provide asset consumers as complete and comprehensive an overview of a
 Implementers should weigh the display of assertion information based on the needs of their anticipated audiences. Overly technical assertions or custom assertions from third-party implementers can be left to L4 displays only. The following types of assertions can be considered appropriate for L3 to display:
 
 *   Identity information
-    
+
 *   Actions
-    
+
 *   Creative Work
-    
+
 *   Fields pertaining to copyright, descriptions, and usage rights
-    
+
 *   Exif information and related metadata
-    
+
 
 <a id="_navigation"></a>
 ### 6.2. Navigation
@@ -288,7 +288,7 @@ Note the lack of thumbnail image in the update manifest. Since update manifests 
 
 Figure 22. No thumbnail in update manifest
 
-It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the [actions section of the technical specification](#1.1@specs:C2PA_Specification.adoc#_actions). Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.
+It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the [actions section of the technical specification](../../1.3/specs/C2PA_Specification.html.md#_actions). Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.
 
 ![l2tol3](_images/l2tol3.png)
 
@@ -307,11 +307,11 @@ In this section, the term _creator_ means a party creating _manifests_. This cou
 As per the [C2PA Guiding Principles](https://c2pa.org/principles/), C2PA implementations should provide a mechanism for creators of a given content to assert, in a verifiable manner, any information they wish to disclose about the creation of that content and any actions taken since the asset’s creation. As such, the creator experience requires the following:
 
 *   A clear acknowledgement of creator consent before a C2PA implementation can begin accumulating data;
-    
+
 *   Disclosure or preview of the nature of information that is being recorded;
-    
+
 *   Creator control over recorded information, with particular sensitivity to the creator’s identity and process.
-    
+
 
 C2PA recommends an opt-in flow that concisely represents these requirements and can be opted-out of just as easily at any time. Once opted-in, creators should be able to distinguish between non-removable information as defined by the C2PA specifications and information that can be adjusted according to the user’s preferences.
 
@@ -321,15 +321,15 @@ C2PA recommends an opt-in flow that concisely represents these requirements and 
 Creators should be able to control the information in their assertions as much as is allowed by C2PA specifications. The [Harms Modelling document](../../1.0/security/Harms_Modelling.html.md) covers the reasoning behind why creator control is imperative. To provide coverage against harms and misuse, C2PA suggests the following types of assertions be manageable by the creator:
 
 *   Identity information
-    
+
 *   Actions
-    
+
 *   Creative Work
-    
+
 *   Fields pertaining to copyright, descriptions, and usage rights
-    
+
 *   Exif information and related metadata
-    
+
 
 To be accommodating to the user’s preferences, C2PA recommends presenting a UI wherein these assertion categories can be toggled on or off on a per document basis. To assist the creator in understanding the tradeoffs they are making, C2PA also suggests displaying a manifest preview that concisely and accurately depicts what information will be added into the manifest.
 
@@ -362,9 +362,9 @@ Validation of an ingredient’s manifest is equally important to convey to creat
 It is important to provide clear guidance about the different manifest storage options available to creators. Creators want or need to know where their manifest data is being stored, either locally or remotely, when they export their content. The following options may be presented to creators regarding the location of their manifest data:
 
 *   An option indicating that the manifest will only be directly attached to and stored as part of the exported file.
-    
+
 *   An option indicating that the manifest will both be directly attached to and stored as part of the exported file, and stored in a separate remote storage location.
-    
+
 
 ![creator manifest storage](_images/creator-manifest-storage.png)
 
@@ -381,7 +381,7 @@ Storing manifests remotely can generally make them more resilient, persistent, a
 <a id="_exporting"></a>
 ### 7.7. Exporting
 
-The [C2PA Implementation Guidance](#guidance:Guidance.adoc) recommends that a manifest be created for an asset when a significant event in the lifecycle of the asset takes place, such as its initial creation or an "export" operation from an editing tool. This is in part due to the underlying technical process of digitally signing the manifest, but also aligns with natural creation workflows. When a creator is ready to export their work, they should be able to decide whether or not to attach the accumulated assertion data to their content.
+The [C2PA Implementation Guidance](../../1.2/guidance/Guidance.html.md) recommends that a manifest be created for an asset when a significant event in the lifecycle of the asset takes place, such as its initial creation or an "export" operation from an editing tool. This is in part due to the underlying technical process of digitally signing the manifest, but also aligns with natural creation workflows. When a creator is ready to export their work, they should be able to decide whether or not to attach the accumulated assertion data to their content.
 
 <a id="_media_formats"></a>
 ## 8\. Media formats
@@ -449,15 +449,15 @@ Depending on the media type, a meaningful ‘thumbnail’ can be comprised of mo
 Figure 29. Anatomy of a thumbnail
 
 *   Interactions (i.e. hover or long press to skip through a sequence or swipe to rotate model)
-    
+
 *   Where relevant, an L1 indication of provenance
-    
+
 *   Some representation of the media (see below for different approaches)
-    
+
 *   Data (i.e. media duration for temporal media)
-    
+
 *   Relevant iconography
-    
+
 
 **Media representations**
 
@@ -527,7 +527,7 @@ Please refer to [L1 interface language](#l1-language) for a reminder of the impo
 <a id="_user_facing_edit_and_activity_labels_and_descriptions"></a>
 ### 9.3. User-facing edit and activity labels and descriptions
 
-The [names and descriptions of C2PA actions](#1.1@specs:C2PA_Specification.adoc#_actions) have generally been written with implementers in mind. Users who are less familiar with the C2PA will benefit from clear labeling and descriptions of actions that capture as much of the related actions that may apply as possible.
+The [names and descriptions of C2PA actions](../../1.3/specs/C2PA_Specification.html.md#_actions) have generally been written with implementers in mind. Users who are less familiar with the C2PA will benefit from clear labeling and descriptions of actions that capture as much of the related actions that may apply as possible.
 
 Here we provide a matrix of current C2PA actions with recommended labels and optional descriptions for them in the "Edits and activity" section of consumer manifest UIs.
 
