@@ -17,6 +17,7 @@ This site contains the various specifications and informative documents produced
 * xref:2.4@security:Security_Considerations.adoc[Security Considerations] 
 * xref:2.4@security:Harms_Modelling.adoc[Harms Modelling] 
 * xref:2.3@ai-ml:ai_ml.adoc[Guidance for Artificial Intelligence and Machine Learning]
+* xref:2.4@music:guidance_applying_content_credential_music_assets.adoc[Guidance for Music Assets]
 
 == Recommendations
 * xref:2.4@identity:identity.adoc[Human and Organizational Identity Recommendation]
