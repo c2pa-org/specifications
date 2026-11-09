@@ -10,7 +10,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 <a id="_overview"></a>
 ### 1.1. Overview
 
-The Coalition for Content Provenance and Authenticity (C2PA) has developed their [technical specification](#1.1@specs:C2PA_Specification.adoc) for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.
+The Coalition for Content Provenance and Authenticity (C2PA) has developed their [technical specification](../specs/C2PA_Specification.html.md) for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.
 
 The specification has been, and continues to be, informed by scenarios, workflows and requirements gathered from industry experts and partner organizations. However many of these requirements are not normative in nature or may differ between organizations or workflows - in those cases it is important to provide non-normative guidance to implementers - which is the goal of this document.
 
@@ -42,7 +42,7 @@ Each of the actors in the system that creates or processes an asset will produce
 <a id="_encryption_of_assertions"></a>
 #### 3.1.2. Encryption of Assertions
 
-The [set of assertions](#1.1@specs:C2PA_Specification.adoc#_c2pa_standard_assertions), their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.
+The [set of assertions](../specs/C2PA_Specification.html.md#_c2pa_standard_assertions), their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.
 
 A use case for creating variants of existing assertions would be to encrypt them to prevent access to those not possessing the necessary decryption key. This might be for privacy protection or the establishment of a more secure end-to-end workflow.
 
@@ -102,7 +102,7 @@ Replacing an existing manifest store with a different manifest store is not reco
 <a id="_manifests_for_existing_media"></a>
 #### 3.3.7. Manifests for existing media
 
-It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described [here](#1.1@specs:C2PA_Specification.adoc#_external_manifests), all assets can have provenance, no matter their age.
+It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described [here](../specs/C2PA_Specification.html.md#_external_manifests), all assets can have provenance, no matter their age.
 
 <a id="_ingredients"></a>
 ### 3.4. Ingredients
@@ -140,14 +140,14 @@ Selection of the specific hashing algorithm to use for a hard binding should be 
 <a id="_byte_range_bindings"></a>
 #### 4.1.2. Byte Range Bindings
 
-The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in [the core specification](#1.1@specs:C2PA_Specification.adoc#_hashing). Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset. However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.
+The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in [the core specification](../specs/C2PA_Specification.html.md#_hashing). Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset. However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.
 
 <a id="_general_box_bindings"></a>
 #### 4.1.3. General Box Bindings
 
 Some file formats, such as JPEG, PNG, or GIF, use a general box structure, that can be used to improve the flexibility of the bindings over that of a byte range binding. When possible, the use of a general box binding is strongly recommended over a byte range binding.
 
-A [general box hash assertion](#1.1@specs:C2PA_Specification.adoc#_general_boxes_hash) consists of an array of structures, each one listing one or more boxes (by their name/identifier) and a hash that covers that data of those boxes, along with the algorithm used for hashing.
+A [general box hash assertion](../specs/C2PA_Specification.html.md#_general_boxes_hash) consists of an array of structures, each one listing one or more boxes (by their name/identifier) and a hash that covers that data of those boxes, along with the algorithm used for hashing.
 
 > **NOTE:**
 > Some formats, such as JPEG and GIF, require special handling.
@@ -169,9 +169,9 @@ Typically ISO BMFF content need only include the mandatory exclusions required b
 Do not add a box to the exclusion list if:
 
 *   the modification of the box can alter the audio-video presentation in any way.
-    
+
 *   the box declares content external to the asset which you wish to be tamper evident.
-    
+
 
 <a id="_hashing_assertions"></a>
 #### 4.1.5. Hashing Assertions
@@ -203,25 +203,25 @@ An alternative application of soft bindings is to mitigate the threat whereby an
 #### 4.2.3. Illustrative Scenarios for the use of Soft Bindings
 
 1.  Recovery from stripping of metadata
-    
+
     Alice is a photojournalist, and captures a photo of an important event, editing it to enhance visibility of some of the content. Alice’s camera device is C2PA capable, as is her image editing tool, and so a C2PA Manifest is added to document the capture and editing of her photo. The C2PA Manifest, added by the editing tool, is signed by Alice’s personal key. Bob works for Acme Corp, a news publisher, who wishes to license Alice’s photo for their publication. Bob decides to trust the content from Alice due to the presence of a C2PA Manifest documenting its provenance. Bob incorporates the photo into a composed image for his publication, using a C2PA capable editing tool. The C2PA Manifest is signed by Acme Corp. A soft binding assertion is computed by Acme Corp and added to the manifest prior to signing. A copy of the manifest is stored within a manifest repository maintained by a consortium of news providers. Bob publishes the photo and it is soon redistributed around social media.
-    
+
     Charlie is a news consumer and member of the general public. Charlie views a rendition of the photo on social media. The social media platform is not C2PA capable and no C2PA Manifest is contained within the rendition. Furthermore, the rendition of the photo has different resolution / form factor and changed by the social media platform.
-    
+
     Charlie wants to know about the provenance of the photo, since it documents an important event. Charlie right-clicks and submits the photo via a browser plug-in to a look-up service operated by a federation of news organisations, of which Acme Corp is a member. Charlie’s browser software computes the soft binding of the photo and send it to that service. Charlie is directed to a web page generated by the service showing matching assets. Charlie visually verifies that the retrieved asset matches the photo he is interested in, and views the manifest. Charlie uses the information in the manifest to help make an informed trust decision based on the provenance of the photo.
-    
+
 2.  Recovery from adversarial substitution of manifest
-    
+
     Alice is a citizen journalist, and captures a video of major civil unrest using a C2PA capable device, and edits it using C2PA capable editing software. After signing the manifest in her video, a copy of the manifest is stored within a manifest repository maintained by a consortium of news providers. The manifest contains both a hard and a soft binding. Several years pass.
-    
+
     Mallory wishes to use Alice’s video to substantiate his story about a recent civil unrest. Mallory strips the C2PA Manifest from Alice’s video and substitutes his own manifest. The manifest is signed and the video asset is distributed online.
-    
+
     Bob is a news producer who receives Mallory’s video. Bob suspects the video is fake news. Bob computes a soft binding of the video and submits it to a provenance service of which his organization is a member. The service retrieves the manifest associated with Alice’s video. Bob visually verifies the retrieved manifest matches the video (it includes a thumbnail) and validates the manifest. Bob notices that Alice’s manifest contains signed assertions with a timestamp earlier than those of Mallory’s video. Bob uses knowledge of this previous existing manifest to help make a more informed trust decision on whether to trust the provenance of Mallory’s video. Bob concludes not to trust Mallory’s video, since an earlier manifest explains the video with an alternative provenance trail.
-    
+
 3.  Preserving provenance through non-C2PA capable toolchains
-    
+
     Acme Corp maintains a content production pipeline where some stages are non-C2PA capable. Bob receives a photograph from freelance photographer Alice, containing a valid C2PA Manifest. Bob’s software inserts into the digital content of the image a watermark containing a unique identifier, and records the unique identifier as a soft binding assertion in the manifest. The manifest is placed within a manifest repository maintained internally by Acme Corp. The content passes through legacy content production processes that strip the C2PA Manifest. The final stages of production are C2PA compliant. The watermark is read from the image and submitted as a query to the manifest repository run internally by Acme Corp. After passing through the non-C2PA tools, the manifest is automatically matched using the embedded watermark, and is included as an ingredient in a new manifest, which documents that actions have been performed on the content prior to entering the C2PA capable final stage of the pipeline. The manifest is embedded into the asset in the usual way. The content is published and provenance of the image may be traced back to Alice by end consumers of the content.
-    
+
 
 <a id="_implementation_guidance"></a>
 #### 4.2.4. Implementation guidance
@@ -229,15 +229,15 @@ An alternative application of soft bindings is to mitigate the threat whereby an
 Soft bindings are not guaranteed to be exact, and so care should be taken in their use. Consider perceptual hashing; a common form of soft binding algorithm. By design, multiple renditions of the same digital content may generate the same soft binding. However different digital content, or renditions thereof, may generate the same soft binding either in error or due to attacks on the hashing function (for example, adversarial attacks on machine learning models). Therefore we make the following design recommendation on the implementation of soft bindings in C2PA.
 
 1.  Soft bindings must not be substituted for hard bindings in order to bind claims within a manifest.
-    
+
 2.  The matches made using a soft binding must be interactively verified via human-in-the-loop checking. For example, a thumbnail of an image stored within the manifest might be displayed to aid visual verification of the match made using a soft binding.
-    
+
 3.  Hard bindings (cryptographic hashes) may be used as an alternative to soft bindings, to query manifests within a manifest repository. However this method will fail if the digital content has been modified (for example, is an asset rendition).
-    
+
 4.  We recommend that services provided for the lookup of manifests using hard or soft bindings advertise the types of binding that may be used as query, using the unique identifier of that binding (per the hard or soft binding registry).
-    
+
 5.  We recommend that claim generators that add soft binding assertions to an asset’s manifest do so as an opt-in addition and not make it mandatory.
-    
+
 
 <a id="_trust_and_privacy_considerations"></a>
 #### 4.2.5. Trust and Privacy Considerations
@@ -268,7 +268,7 @@ Trust in the lookup process is derived from trust in the integrity of the manife
 
 As part of a workflow, some claim generators may allow actors to enter arbitrary text as the value for fields in some assertions - for example, as the value of the `copyright` field in a Creative Work assertion.
 
-The signer of the manifest is responsible for ensuring that any user generated text that will be present in the manifest is something they are willing to take responsibility for, since that is a key role of the signer as described in our [trust model](#1.1@specs:C2PA_Specification.adoc#_trust_model).
+The signer of the manifest is responsible for ensuring that any user generated text that will be present in the manifest is something they are willing to take responsibility for, since that is a key role of the signer as described in our [trust model](../specs/C2PA_Specification.html.md#_trust_model).
 
 <a id="_consumption"></a>
 ##### 5.1.1.2. Consumption
@@ -286,9 +286,9 @@ Manifest consumers should consider doing any necessary "character filtering" on 
 <a id="_general_4"></a>
 #### 5.2.1. General
 
-As described in [the actions section of the C2PA specification](#1.1@specs:C2PA_Specification.adoc#_actions), "an actions assertion provides information on edits and other actions taken that affect the asset’s content." Each action declares what took place on the asset, along with various other (optional) information such as when it took place or what software performed the action.
+As described in [the actions section of the C2PA specification](../specs/C2PA_Specification.html.md#_actions), "an actions assertion provides information on edits and other actions taken that affect the asset’s content." Each action declares what took place on the asset, along with various other (optional) information such as when it took place or what software performed the action.
 
-The listed C2PA actions are those that have been defined to date as common operations for various types of software and hardware actors operating on various asset types. However, because not all possible operations can be anticipated, the C2PA specification also allows for the use of custom actions using the standard [custom labels syntax](#1.1@specs:C2PA_Specification.adoc#_labels).
+The listed C2PA actions are those that have been defined to date as common operations for various types of software and hardware actors operating on various asset types. However, because not all possible operations can be anticipated, the C2PA specification also allows for the use of custom actions using the standard [custom labels syntax](../specs/C2PA_Specification.html.md#_labels).
 
 When using one of the C2PA actions, you should choose the one that most closely represents the action being taken. If there is not something specific, then either use a more general one (e.g., `c2pa.edited` or `c2pa.filtered`) or a custom one that specifically describes your case.
 
@@ -302,7 +302,7 @@ When using a generic action or a custom action, it is recommended to add a free-
 <a id="actions-aiml"></a>
 #### 5.2.2. Identifying use of AI/ML
 
-Each action can identify whether it was performed by an AI/ML system through the use of the `digitalSourceType` field. An example `c2pa.created` action is shown in the specification [in the parameters clause of Actions](#1.1@specs:C2PA_Specification.adoc#_parameters). The `digitalSourceType` field is used to identify the type of digital source that was used to create the asset, including the value `[http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia](http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia)` which indicates that the asset was created by an AI/ML system and is therefore "trained algorithmic media".
+Each action can identify whether it was performed by an AI/ML system through the use of the `digitalSourceType` field. An example `c2pa.created` action is shown in the specification [in the parameters clause of Actions](../specs/C2PA_Specification.html.md#_parameters). The `digitalSourceType` field is used to identify the type of digital source that was used to create the asset, including the value `[http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia](http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia)` which indicates that the asset was created by an AI/ML system and is therefore "trained algorithmic media".
 
 <a id="_ingredients_2"></a>
 ### 5.3. Ingredients
@@ -310,7 +310,7 @@ Each action can identify whether it was performed by an AI/ML system through the
 <a id="ingredients-aiml"></a>
 #### 5.3.1. Identifying use of AI/ML
 
-When an asset is the result of Generative AI, where the asset is produced as the result of inference on an specialized AI/ML model, it is important to be able to store not only that such a process took place, but also information about any input data to the model that was used, such as a prompt as well as the info about the model itself. This data can all be recorded as part of an ingredient assertion. An example of an asset produced from a text prompt can be found [here](#1.1@specs:C2PA_Specification.adoc#_ingredient_data).
+When an asset is the result of Generative AI, where the asset is produced as the result of inference on an specialized AI/ML model, it is important to be able to store not only that such a process took place, but also information about any input data to the model that was used, such as a prompt as well as the info about the model itself. This data can all be recorded as part of an ingredient assertion. An example of an asset produced from a text prompt can be found [here](../specs/C2PA_Specification.html.md#_ingredient_data).
 
 <a id="_trust"></a>
 ## 6\. Trust
@@ -357,11 +357,11 @@ C2PA claim generation and signing systems should consider industry best practice
 If possible, a claim generator should attempt to validate that the signing credential used is suitable for the expected audience of validators for the asset. C2PA currently only supports X.509 certificates as signing credentials. A claim generator should be configured with the same trust anchor list and Extended Key Usage (EKU) list as the validators. Then, at signing time, the claim generator should:
 
 1.  Validate that the certificate fulfills all the requirements for C2PA signing credentials as described Certificate Profile section of the Trust Model chapter.
-    
+
 2.  Validate that a chain of trust can be computed from the signing certificate to an entry in the trust anchor list using the contents of the `x5chain` COSE header, following the procedure in [RFC 5280 section 6](https://datatracker.ietf.org/doc/html/rfc5280#section-6). This header will include both the signing certificate and any intermediate certification authorities required to build a trust chain to the trust anchor.
-    
+
 3.  Validate that the signing certificate is valid for one of the Extended Key Usages listed.
-    
+
 
 If the claim generator is not configured with the trust anchor list and EKU list as the validators, it should not attempt any validation and sign with the provided credential.
 
@@ -394,16 +394,16 @@ Mistakes and accidents do happen, and credentials sometimes need to be revoked b
 When initially creating an application, its trust anchors, and determining how identities will be issued by those trust anchors, developers should answer the following questions:
 
 1.  Who are the creators of the content? These will typically be your signers, the recipients of credentials issued by the trust anchors, and the persons or entities who must be identified.
-    
+
 2.  Who is the audience of the content, and how and where will they consume it? These are your consumers who themselves will not receive credentials, but will rely upon the identities presented in the credentials of others.
-    
+
     > **NOTE:**
     > In some ecosystems, persons or entities will act as both creators and consumers, and so these two groups may overlap. However, persons or entities operating as creators is separate from when they operate as consumers, and so it is clearer to consider these groups separately for the purposes of this analysis.
-    
+
 3.  How does the audience already know and identify the creators? This will inform how the identity should be presented in the credential, and how it is presented to the consumers. C2PA publishes [User Experience Guidance](../../1.1/ux/UX_Recommendations.html.md) to help application developers determine how to present this information to the consumer.
-    
+
 4.  What is the risk to the ecosystem if a credential is issued in error or is compromised, where a malicious actor obtains a credential belonging to someone else and is able to sign with it, such as the result of a key compromise? This will inform the required real-world validation to achieve the needed level of assurance, and the importance of implementing, operating, and querying a revocation service.
-    
+
 
 To illustrate this exercise, we now present example applications, and for each one, the answers to the questions above and the resulting trust model configuration.
 
@@ -413,13 +413,13 @@ To illustrate this exercise, we now present example applications, and for each o
 This is the application in which people consume news and other media from outlets which we might expect them to be familiar with, recognize, and potentially trust.
 
 1.  Creators of content are news and media organizations that are _uniquely identifiable_ — even if the scope of the creator is intentionally focused on a particular population segment or geographic region.
-    
+
 2.  Regardless of the creator’s intended scope, particularly in today’s connected world, the audience is the entire global population. Even if a consumer is not personally aware of an organization’s name or brand, if they went in search of it, they would locate the same singular organization as everyone else.
-    
+
 3.  The organization has developed a brand, an audience, and a reputation with their audience that leads to the audience identifying the organization. This does not exclude independent or unconventional creators, but does require they have built up enough of an audience and a reputation with their audience that leads to their being identifiable in this way, in the same way conventional newspapers, television stations, networks, and other organizations have done in the past.
-    
+
 4.  Brand impersonation and incorrect attribution to the brand of content made by malicious impersonators can result in damage to the brand and the organization’s reputation and trustworthiness amongst its audience. Moreso, as such a failure of the provenance ecosystem becomes public knowledge, this can undermine the provenance and authenticity ecosystem and open the door to further mis/disinformation, not only because an inauthentic asset has been signed by a trusted credential, but now consumers may come to believe they cannot trust those credentials. This is critical early on, when the ecosystem is building and working to establish that trust with consumers.
-    
+
 
 > **NOTE:**
 > Here we define _uniquely identifiable_. A _uniquely identifiable_ organization has a unique name such that any two consumers with no relationship with one another, when presented with this name as the signer of an asset due to its placement in the signing credential, would resolve that name to the same real-world entity. Even though a consumer might not be aware of a content creator when presented with one of its assets, given this unique name, by "resolve" we mean they could track down the real-world organization through some out-of-band means. This would be the same organization any other consumer would find, as well, presented with that same unique name.
@@ -438,13 +438,13 @@ For entities and organizations whose identity is rooted in the identity of an on
 In contrast to news and media consumption, this is the application where a news or media organization internally creates and assembles a finished publication that is consumed in the previous example.
 
 1.  Creators of content are the subset of the employees of a news or media organization that are involved with publication activities. This includes anyone whose input appears in or otherwise impacts the final output of the organization: reporters, writers, editors, artists, designers, and so on.
-    
+
 2.  The audience is the subset of the employees of a news or media organization that receive assets which will appear or otherwise impact the final output of the organization. This will typically be everyone who also counts as a creator, but also any personnel who only review or otherwise consume the content without making any changes to it, such as fact-checkers or supervisors who approve assets for public release.
-    
+
 3.  The audience has the same employer as the creators, and rely upon the employer to provide a means to recognize and authenticate other employees.
-    
+
 4.  Potential introduction of malicious material into the publication process. The precise risk will depend upon the access granted to someone with those credentials, but this becomes a particular case of the general problem of the credentials of any member of an enterprise being compromised.
-    
+
 
 In this case, the trust anchors will be the enterprise’s own internal PKI, and existing processes for issuing digital credentials to employees can be used to issue these credentials as well. Such an enterprise is presumed to already have a process for connecting the real-world identity of an employee with their business records, and any credentials issued for use in that employment. As assets created in this scenario are generally intermediate outputs that will later be combined into a final output, their useful lifetime is expected to be relatively short. Existing procedures for invalidating and revoking compromised credentials, and issuing new ones, should be sufficient to cover C2PA credentials.
 
@@ -456,13 +456,13 @@ The audience will consume the content through production tools and processes com
 This application concerns the internal business processes of an enterprise; in this case, an insurance company and its business of underwriting policies and servicing claims. There are similarities with the News and Media Creation example in that this is also entirely internal to an existing enterprise.
 
 1.  Creators of content are the subset of the employees of an insurance company that generate photographs, video, or documents used in an insurance company’s business practices, including but not limited to underwriting policies and servicing claims.
-    
+
 2.  Consumers are the subset of the employees of an insurance company that use photographs, video, and documents generated by the creators in the insurance company’s business practices, including but not limited to underwriting policies and servicing claims.
-    
+
 3.  The audience has the same employer as the creators, and rely upon the employer to provide a means to recognize and authenticate other employees.
-    
+
 4.  Potential introduction of malicious (and perhaps fraudulent) material into the insurance company’s business processes, such as edited or fabricated evidence of a supposed claim for an insured hazard that did not actually take place, in order to commit insurance fraud.
-    
+
 
 As another enterprise case, the trust anchors here as well will be the enterprise’s own internal PKI, for the same reasons as the case above. Similarly, the audience will consume the content through tools and processes common within, and likely provided by, the organization, which can be configured with the above trust list for ingesting assets received from others before using them in their work.
 
@@ -472,20 +472,20 @@ As another enterprise case, the trust anchors here as well will be the enterpris
 This application concerns the sharing of content across social media, even across multiple networks. This assumes the social media network used by the creator is globally known, but is not necessarily where the consumer consumes the content.
 
 1.  Creators of content are the owners of accounts in social media networks. This makes the assumption that each social media network is globally-known and unique.
-    
+
 2.  Consumers are users of those social media networks, whether or not they have accounts, which covers the entire global population.
-    
+
 3.  There are a few possibilities:
-    
+
     1.  The owner of the account has built up a brand and reputation, in much the same way a news or media organization would, producing content from that account directly.
-        
+
     2.  The social media platform asserts that, through some process or due diligence they have performed, that the owner of the account is a person or organization with an existing global identity that consumers would recognize.
-        
+
     3.  The owner of the account is a person or organization with an existing global identity that consumers would recognize, and through their own established authenticated channels to their audience assert that they own a particular social media account.
-        
-    
+
+
 4.  Potential attribution of malicious content to the owner of a social media account. The precise risk will depend upon whether the account has any existing audience and trust relationship with their audience.
-    
+
 
 In this case, as the identifiability of the creator is rooted in the existing identity infrastructure of the platform, the platform makes the choice to issue C2PA-compliant credentials to the owner of the account, through whatever existing authentication infrastructure they already have for owners to access their accounts. Care must be taken to revoke credentials in case of account name changes, and timestamping is highly recommended so that names that are changed cannot have others later claim the same name and impersonate the former owner.
 
@@ -497,13 +497,13 @@ The audience will consume the content through the social media’s web site or a
 This application concerns the ad-hoc sharing of assets between creatives collaborating on a project, or communication between journalists and sources, using e-mail addresses as their primary means of identifying one another, whether or not e-mail is the principal means by which sharing occurs.
 
 1.  The creators are anyone with an e-mail address. So, anyone in the global population.
-    
+
 2.  The consumers are anyone who knows a creator by their e-mail address. This is anyone in the global population generally, but for a particular creator this will be a small group who has a direct two-way personal connection to the creator.
-    
+
 3.  The audience knows and recognizes the creators based on some pre-existing relationship by which e-mail is considered a reliable identifier and means of communicating with the person, based on an existing history of collaboration or a trustworthy introduction from another known person.
-    
+
 4.  There is an impersonation attack here but the risk is low, as the audience for a particular creator is small. It’s also unclear what benefit an attacker might have by impersonating a collaborative partner and sharing signed content that is in some way malicious. Malicious in this context does not mean technologically malicious in a way that could cause compromise of the recipient’s device due to a software bug in consuming software, as that threat exists with or without a C2PA manifest attached, but malicious in that the attacker is attempting to convince the recipient that the asset came from the compromised creator.
-    
+
 
 In this case, the existing secure e-mail PKI can be used, with existing e-mail verification processes implemented by the CAs for issuing these credentials. As the risk of compromise of an e-mail account is significant, it would be unwise to rely on these credentials for long-lived assets or for applications where impersonation brings significant risk due in a scenario with particular sensitivity.
 
@@ -515,9 +515,9 @@ The audience will consume the content through whatever ad-hoc tools they use for
 C2PA encourages creators to retrieve a time-stamp for their assets in order to prove that it was published within the validity period of the signing credential, so that it can continue to be considered valid even after the signing credential has expired. Time-stamp authorities (TSAs) receive a special kind of trust where time-stamps they issue remain valid even after the TSA’s certificate expires, so long as the attested time falls within the TSA’s certificate’s validity period. This combination allows an asset to be considered time-valid indefinitely. Without such a trusted time-stamp, consumers cannot trust an asset signed with a now-expired credential was not signed after the credential expired. Each application developer therefore needs to consider the list of trust anchors for TSAs, in addition to the C2PA signer trust list determined through the exercise described in the previous section. In this case, this trust anchor list does not define identity providers for signers of assets, but identity providers for TSAs that provide the time-stamps for assets which allow them to still be considered valid even after the signing credential has expired or been revoked. We recommend considering the following questions:
 
 1.  Are time-stamps needed? If the useful lifetime of assets will not exceed the lifetime of the signing credential, using time-stamps may not be required at all. Assets will become invalid when the signing credential expires, but in some applications this may be acceptable, or even desired. Drawing from our above examples, in the "News and Media Consumption" and "Social Media and Video Sharing" examples, these assets may be consumed years after their publication, which will require time-stamps. Other examples, like "News and Media Creation" and "Insurance Underwriting and Claims Servicing," may not have such a requirement. In these cases, the list of trust anchors for TSAs can be empty, and those applications can skip retrieving time-stamps.
-    
+
 2.  Who will provide them? Many operators of Certification Authorities in the PKI used for secure web sites also operate time-stamp authorities, possibly free of charge. Signed time-stamps are considered valid forever, when the attested time is within the validity period of the TSA’s signing credential, and so operating TSAs involves heightened security requirements that may be impractical for some entities, and so may choose to use one of the public ones and so the secure web PKI trust anchor list. Others who operate their own IT infrastructures or even data centers may choose to operate their own, and use their own trust anchors.
-    
+
 
 <a id="_ongoing_maintenance_of_an_identity_ecosystem"></a>
 #### 6.3.4. Ongoing Maintenance of an Identity Ecosystem
@@ -585,7 +585,7 @@ A manifest consumer that is performing validation (e.g., a web browser) may dete
 <a id="_validation_of_ingredient_manifests"></a>
 ### 7.2. Validation of Ingredient manifests
 
-As described in the [Validation section of the specification](#1.1@specs:C2PA_Specification.adoc#_validation), "The validator may optionally recursively validate the ingredient’s ingredients". To do so, the implementation resolves each ingredient’s `url` field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.
+As described in the [Validation section of the specification](../specs/C2PA_Specification.html.md#_validation), "The validator may optionally recursively validate the ingredient’s ingredients". To do so, the implementation resolves each ingredient’s `url` field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.
 
 <a id="_data_validation"></a>
 ### 7.3. Data validation
@@ -627,16 +627,16 @@ The right to use an asset for Data Mining and/or Training an AI model is communi
 > **NOTE:**
 > Since an AI/ML model is itself considered an asset, the Training and Data Mining assertion can also be used to indicate the rights to use a model for inference or to data mine the model. This is useful in the case of potentially preventing a [model extraction attack](https://ssg.aalto.fi/research/projects/mlsec/model-extraction/).
 
-The four possible rights, as described in the [specification](#1.1@specs:C2PA_Specification.adoc#<em>training_and_data_mining</em>) are:
+The four possible rights, as described in the [specification](../specs/C2PA_Specification.html.md#<em>training_and_data_mining</em>) are:
 
 *   `c2pa.data_mining`
-    
+
 *   `c2pa.ai_inference`
-    
+
 *   `c2pa.ai_training`
-    
+
 *   `c2pa.ai_generative_training`
-    
+
 
 For all such uses, rights are expressed as allowed, constrained or not allowed. This assertion is optional and its absence does not imply anything about the presence or absence of such a right.
 
@@ -668,38 +668,38 @@ On-chain storage of manifests may still be suitable, however, for use cases wher
 We outline several possible ways that DLT may be used to implement or instantiate aspects of the C2PA specification:
 
 1.  Underwriting the integrity of manifest repositories
-    
+
     Consider the case of a manifest repository, where manifests might be stored decoupled from the digital content they describe. Such a manifest repository may be used to store manifests and query those manifests via a lookup service using either a hard or a soft binding, for example to recover provenance for assets where manifests have been removed or corrupted.
-    
+
     The user of such a manifest repository trusts the governance of that manifest repository operator not to manipulate or remove manifests stored within. In other words, trust is centralized within the provider of the manifest repository. A DLT may be used to store hashes of manifests as they are committed to the manifest repository to assure consumers of the integrity of that manifest repository without the need to trust the manifest repository provider. In other words the trust placed in the centralized maintainer of the manifest repository is replaced by trust in the decentralized governance of the DLT.
-    
+
     Such an implementation does not guarantee the persistence or availability of the manifest repository.
-    
+
     > **NOTE:**
     > In order to adhere to the [C2PA Guiding Principles](https://c2pa.org/principles/) on Cost Burden and Performance, it is suggested that such proofs are rolled up in batches per a Layer 2 DLT solution in order to scale, and that an efficient consensus mechanism for DLT (such as proof of stake, or proof of history) is used to mitigate adverse cost or energy usage.
-    
+
 2.  Decentralized and self-sovereign identity
-    
+
     A separate use of DLT within the scope of C2PA might include the use of self-sovereign identity (SSI) schemes based upon DLT storage of DIDs. C2PA is agnostic to the provider of identity data and provides for the concept of an actor which is representable either via a simple identifier (such as a DID) or via a W3C Verifiable Credential (which could include a DID). In some use cases it may be preferable for users to create their own identity wallets rather than rely on a centralized or third party identity provider. In such cases DIDs stored on a DLT may provide a decentralized mechanism to ground trust in the public keys of SSI wallet holders.
-    
+
 3.  Decentralized claim signing
-    
+
     A smart contract is a computer program stored in a DLT system wherein the outcome of any execution of the program is recorded on the distributed ledger (ISO 22739:2020). Smart contracts may be configurable via a tokenized consensus mechanism. For example, a smart contract that may be upgraded or configured according to a vote by holders of a particular cryptographic token. Such contracts are referred to as 'decentralized autonomous organizations' or DAOs. Like regular programs, a DAO may be used to store and process data and even take payments for doing so.
-    
+
     A DAO might be set up to sign claims autonomously, according to a certificate installed by its operators. This would provide a decentralized alternative to the claim signing services run by centralized organizations tied to particular geographies or legislative zones.
-    
+
     Alternatively, or in addition, a DAO might be used to set up and manage a certificate trust list. Signing of claims is grounded in public key cryptography rooted in a trust list managed by a federation of partners. Since C2PA allows for the existence of multiple such trust lists, the DLT may be leveraged to manage the trust list via a tokenized governance system. This might be attractive to content creators and consumers wishing to utilize a decentralized governance for such a list, and in turn agency over the issuance and revocation of signing certificates
-    
+
 4.  Federated lookup for soft-bindings
-    
+
     A related application of DLT related to soft binding is in the creation of a federated lookup service for soft bindings. Soft bindings are identifiers derived from digital content that enable matching manifests to be recovered from within a manifest repository.
-    
+
     It is unlikely that a single manifest repository will exist for all manifests resolvable via soft bindings; multiple such manifest repositories are likely to emerge for any given vertical (e.g. journalism).
-    
+
     The DLT may be used to provide a decentralized list of such service endpoints, updated via a DAO offering a tokenized governance model.
-    
+
     Alternatively a DLT may be used to store directly a key-value index that maps soft bindings to the URLs of matching manifests within a manifest repository. A suitable sharding mechanism would be necessary to scale such a solution, for example maintaining different indexes for different portions of the soft binding hash space.
-    
+
 
 <a id="_digital_non_fungible_tokens_nfts"></a>
 ### 9.3. Digital Non-Fungible Tokens (NFTs)

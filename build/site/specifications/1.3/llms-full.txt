@@ -34,12 +34,12 @@ Provenance generally refers to the facts about the history of a piece of digital
 
 The provenance data and the asset are the two parts of the same puzzle - a unique puzzle. The possibility of any other pieces ever matching, either by coincidence or by a purposeful attempt to generate a match, is so low that it would be practically impossible. In other words, any alteration to either the asset or the provenance, however insignificant, would alter the mathematical algorithm - the shape of the piece of the puzzle - in such a way that they would no longer match.
 
-We refer to this as a hard binding. For more technical information on this see "hard binding" in the [glossary](#1.1@specs:C2PA_Specification.adoc#_glossary) and the [non-normative guidance](guidance/Guidance.html.md).
+We refer to this as a hard binding. For more technical information on this see "hard binding" in the [glossary](specs/C2PA_Specification.html.md#_glossary) and the [non-normative guidance](guidance/Guidance.html.md).
 
 <a id="_can_c2pa_help_with_assets_created_from_multiple_sources"></a>
 #### 3.1.3. Can C2PA help with assets created from multiple sources?
 
-When one asset is created from a series of other assets, those sources are referred to as the [ingredients](#1.1@specs:C2PA_Specification.adoc#_ingredient). Each ingredient that is used in the (composed) asset is recorded in that asset’s provenance, including the addition of the provenance of each individual ingredient. This process creates a chain of provenance that can stretch all the way back to each ingredient’s creation.
+When one asset is created from a series of other assets, those sources are referred to as the [ingredients](specs/C2PA_Specification.html.md#_ingredient). Each ingredient that is used in the (composed) asset is recorded in that asset’s provenance, including the addition of the provenance of each individual ingredient. This process creates a chain of provenance that can stretch all the way back to each ingredient’s creation.
 
 <a id="_what_is_redaction_and_how_does_it_work"></a>
 #### 3.1.4. What is redaction and how does it work?
@@ -51,7 +51,7 @@ For example, if a human rights organization wishes to remove assertions about th
 <a id="_is_provenance_always_complete"></a>
 #### 3.1.5. Is provenance always complete?
 
-No. Provenance is not always complete. It may happen that an asset is modified in a way that the provenance data is not updated. For example, if an asset is cropped using a non-C2PA aware tool, the provenance data may not be updated to reflect that action. However, if the asset is then brought back into a C2PA-aware tool for additional modification or preparation for publication, the actor responsible for signing the new C2PA Manifest also implicitly attests to the crop action. So even though there is missing provenance information, the asset can still be trusted based on the signer of the [active C2PA Manifest](#1.1@specs:C2PA_Specification.adoc#_active_manifest).
+No. Provenance is not always complete. It may happen that an asset is modified in a way that the provenance data is not updated. For example, if an asset is cropped using a non-C2PA aware tool, the provenance data may not be updated to reflect that action. However, if the asset is then brought back into a C2PA-aware tool for additional modification or preparation for publication, the actor responsible for signing the new C2PA Manifest also implicitly attests to the crop action. So even though there is missing provenance information, the asset can still be trusted based on the signer of the [active C2PA Manifest](specs/C2PA_Specification.html.md#_active_manifest).
 
 <a id="_trust"></a>
 ### 3.2. Trust
@@ -85,7 +85,7 @@ C2PA provenance only becomes useful to users when they can use the data and the 
 <a id="_do_the_ingredients_of_an_asset_have_verifiable_provenance"></a>
 #### 3.2.3. Do the ingredients of an asset have verifiable provenance?
 
-Each [ingredient](#1.1@specs:C2PA_Specification.adoc#_ingredient) that is included in a C2PA Manifest can include its own provenance data, specifically its C2PA Manifest is also included in the asset’s C2PA Manifest Store. However, while the provenance data of each ingredient may be present, the ingredient’s provenance cannot be verified in the same way as the provenance data of the asset in which it is contained. This is because the actual data of the ingredient is not usually included in the asset’s C2PA Manifest. Without the actual data, the ingredient’s hard bindings cannot be verified.
+Each [ingredient](specs/C2PA_Specification.html.md#_ingredient) that is included in a C2PA Manifest can include its own provenance data, specifically its C2PA Manifest is also included in the asset’s C2PA Manifest Store. However, while the provenance data of each ingredient may be present, the ingredient’s provenance cannot be verified in the same way as the provenance data of the asset in which it is contained. This is because the actual data of the ingredient is not usually included in the asset’s C2PA Manifest. Without the actual data, the ingredient’s hard bindings cannot be verified.
 
 <a id="_can_provenance_information_be_used_to_determine_whether_a_digital_asset_such_as_an_image_or_video_depicts_the_truth"></a>
 ### 3.3. Can provenance information be used to determine whether a digital asset, such as an image or video, depicts the truth?
@@ -96,7 +96,7 @@ C2PA signed provenance information can include assertions about the real-world i
 
 > Signed provenance information transits trust between a creator and a consumer, based on a trust relationship between those two that exists outside the scope of C2PA. Trust anchors operate by providing digital identities within a particular ecosystem that link to real-world identities, and perform an ecosystem-specific validation to ensure those identities are sufficiently trustworthy, and that consumers can be confident when an asset is verified as being signed by a known creator, they can rely upon their existing trust relationship with that known creator. — **_C2PA Implementation Guidance [Trust Model](#guidance:_trust)_**
 
-For additional information, see the [Trust Model](#1.1@specs:C2PA_Specification.adoc#_trust_model) section of the [Technical Specifications](#1.1@specs:C2PA_Specification.adoc).
+For additional information, see the [Trust Model](specs/C2PA_Specification.html.md#_trust_model) section of the [Technical Specifications](specs/C2PA_Specification.html.md).
 
 <a id="_what_does_it_mean_that_provenance_data_is_cryptographically_bound_to_the_asset_2"></a>
 ### 3.4. What does it mean that provenance data is cryptographically bound to the asset?
@@ -113,12 +113,12 @@ This inability to always be able to verify the provenance of an ingredient is no
 
 Each action that is performed on an asset is recorded in the asset’s C2PA Manifest. These actions can be performed by a human or by an AI/ML system. When an action was performed by an AI/ML system, it is clearly identified as such through it’s `digitalSourceType` field.
 
-An example of `c2pa.created` action that might appear in an asset that was produced by a Generative AI system appears in the specification’s [parameters clause of Actions](#1.1@specs:C2PA_Specification.adoc#_parameters).
+An example of `c2pa.created` action that might appear in an asset that was produced by a Generative AI system appears in the specification’s [parameters clause of Actions](specs/C2PA_Specification.html.md#_parameters).
 
 <a id="_can_c2pa_be_used_to_label_assets_that_should_not_be_used_for_training_or_data_mining"></a>
 #### 3.5.2. Can C2PA be used to label assets that should not be used for training or data mining?
 
-Yes. A C2PA Manifest include a [Training and Data Mining](#1.1@specs:C2PA_Specification.adoc#_training_and_data_mining) assertion that can be used to indicate that the asset should not be used for either training or data mining purposes. The assertion is flexible and allows the author of the asset to specify whether each type of process - data mining, general AI training, or training specific to generative AI - is permitted, or not.
+Yes. A C2PA Manifest include a [Training and Data Mining](specs/C2PA_Specification.html.md#_training_and_data_mining) assertion that can be used to indicate that the asset should not be used for either training or data mining purposes. The assertion is flexible and allows the author of the asset to specify whether each type of process - data mining, general AI training, or training specific to generative AI - is permitted, or not.
 
 <a id="_todo"></a>
 ## 4\. TODO
@@ -196,7 +196,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 <a id="_overview"></a>
 ### 1.1. Overview
 
-The Coalition for Content Provenance and Authenticity (C2PA) has developed their [technical specification](#1.1@specs:C2PA_Specification.adoc) for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.
+The Coalition for Content Provenance and Authenticity (C2PA) has developed their [technical specification](specs/C2PA_Specification.html.md) for providing content provenance and authenticity. It is designed to enable global, opt-in, adoption of digital provenance techniques through the creation of a rich ecosystem of digital provenance enabled applications for a wide range of individuals and organizations while meeting appropriate security requirements.
 
 The specification has been, and continues to be, informed by scenarios, workflows and requirements gathered from industry experts and partner organizations. However many of these requirements are not normative in nature or may differ between organizations or workflows - in those cases it is important to provide non-normative guidance to implementers - which is the goal of this document.
 
@@ -228,7 +228,7 @@ Each of the actors in the system that creates or processes an asset will produce
 <a id="_encryption_of_assertions"></a>
 #### 3.1.2. Encryption of Assertions
 
-The [set of assertions](#1.1@specs:C2PA_Specification.adoc#_c2pa_standard_assertions), their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.
+The [set of assertions](specs/C2PA_Specification.html.md#_c2pa_standard_assertions), their associated labels, and its serialization (i.e., CBOR or JSON-LD) are defined in the C2PA specification. In order to change any of these, such as the data/schema or its serialization, it is necessary to use a new label so that the new information can be clearly identified as different from the original.
 
 A use case for creating variants of existing assertions would be to encrypt them to prevent access to those not possessing the necessary decryption key. This might be for privacy protection or the establishment of a more secure end-to-end workflow.
 
@@ -288,7 +288,7 @@ Replacing an existing manifest store with a different manifest store is not reco
 <a id="_manifests_for_existing_media"></a>
 #### 3.3.7. Manifests for existing media
 
-It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described [here](#1.1@specs:C2PA_Specification.adoc#_external_manifests), all assets can have provenance, no matter their age.
+It may not always be possible (or practical) to embed a C2PA Manifest Store in an asset such as in the case of adding provenance information to assets that were created prior to the existence of C2PA. By creating an associated manifest repository for the asset and exposing its location via the methods described [here](specs/C2PA_Specification.html.md#_external_manifests), all assets can have provenance, no matter their age.
 
 <a id="_ingredients"></a>
 ### 3.4. Ingredients
@@ -326,14 +326,14 @@ Selection of the specific hashing algorithm to use for a hard binding should be 
 <a id="_byte_range_bindings"></a>
 #### 4.1.2. Byte Range Bindings
 
-The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in [the core specification](#1.1@specs:C2PA_Specification.adoc#_hashing). Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset. However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.
+The simplest type of hard binding that can be used to detect tampering is a cryptographic hashing algorithm over some or all of the bytes of an asset as described in [the core specification](specs/C2PA_Specification.html.md#_hashing). Traditionally, this type of binding is done over an inclusive list of byte ranges of the asset. However, a number of attacks on an inclusion list-based approach were identified and it was determined that they are prevented by the use of exclusions lists. These vulnerabilities would have allowed content to be added to an asset that altered the digital content without altering the hard bindings.
 
 <a id="_general_box_bindings"></a>
 #### 4.1.3. General Box Bindings
 
 Some file formats, such as JPEG, PNG, or GIF, use a general box structure, that can be used to improve the flexibility of the bindings over that of a byte range binding. When possible, the use of a general box binding is strongly recommended over a byte range binding.
 
-A [general box hash assertion](#1.1@specs:C2PA_Specification.adoc#_general_boxes_hash) consists of an array of structures, each one listing one or more boxes (by their name/identifier) and a hash that covers that data of those boxes, along with the algorithm used for hashing.
+A [general box hash assertion](specs/C2PA_Specification.html.md#_general_boxes_hash) consists of an array of structures, each one listing one or more boxes (by their name/identifier) and a hash that covers that data of those boxes, along with the algorithm used for hashing.
 
 > **NOTE:**
 > Some formats, such as JPEG and GIF, require special handling.
@@ -355,9 +355,9 @@ Typically ISO BMFF content need only include the mandatory exclusions required b
 Do not add a box to the exclusion list if:
 
 *   the modification of the box can alter the audio-video presentation in any way.
-    
+
 *   the box declares content external to the asset which you wish to be tamper evident.
-    
+
 
 <a id="_hashing_assertions"></a>
 #### 4.1.5. Hashing Assertions
@@ -389,25 +389,25 @@ An alternative application of soft bindings is to mitigate the threat whereby an
 #### 4.2.3. Illustrative Scenarios for the use of Soft Bindings
 
 1.  Recovery from stripping of metadata
-    
+
     Alice is a photojournalist, and captures a photo of an important event, editing it to enhance visibility of some of the content. Alice’s camera device is C2PA capable, as is her image editing tool, and so a C2PA Manifest is added to document the capture and editing of her photo. The C2PA Manifest, added by the editing tool, is signed by Alice’s personal key. Bob works for Acme Corp, a news publisher, who wishes to license Alice’s photo for their publication. Bob decides to trust the content from Alice due to the presence of a C2PA Manifest documenting its provenance. Bob incorporates the photo into a composed image for his publication, using a C2PA capable editing tool. The C2PA Manifest is signed by Acme Corp. A soft binding assertion is computed by Acme Corp and added to the manifest prior to signing. A copy of the manifest is stored within a manifest repository maintained by a consortium of news providers. Bob publishes the photo and it is soon redistributed around social media.
-    
+
     Charlie is a news consumer and member of the general public. Charlie views a rendition of the photo on social media. The social media platform is not C2PA capable and no C2PA Manifest is contained within the rendition. Furthermore, the rendition of the photo has different resolution / form factor and changed by the social media platform.
-    
+
     Charlie wants to know about the provenance of the photo, since it documents an important event. Charlie right-clicks and submits the photo via a browser plug-in to a look-up service operated by a federation of news organisations, of which Acme Corp is a member. Charlie’s browser software computes the soft binding of the photo and send it to that service. Charlie is directed to a web page generated by the service showing matching assets. Charlie visually verifies that the retrieved asset matches the photo he is interested in, and views the manifest. Charlie uses the information in the manifest to help make an informed trust decision based on the provenance of the photo.
-    
+
 2.  Recovery from adversarial substitution of manifest
-    
+
     Alice is a citizen journalist, and captures a video of major civil unrest using a C2PA capable device, and edits it using C2PA capable editing software. After signing the manifest in her video, a copy of the manifest is stored within a manifest repository maintained by a consortium of news providers. The manifest contains both a hard and a soft binding. Several years pass.
-    
+
     Mallory wishes to use Alice’s video to substantiate his story about a recent civil unrest. Mallory strips the C2PA Manifest from Alice’s video and substitutes his own manifest. The manifest is signed and the video asset is distributed online.
-    
+
     Bob is a news producer who receives Mallory’s video. Bob suspects the video is fake news. Bob computes a soft binding of the video and submits it to a provenance service of which his organization is a member. The service retrieves the manifest associated with Alice’s video. Bob visually verifies the retrieved manifest matches the video (it includes a thumbnail) and validates the manifest. Bob notices that Alice’s manifest contains signed assertions with a timestamp earlier than those of Mallory’s video. Bob uses knowledge of this previous existing manifest to help make a more informed trust decision on whether to trust the provenance of Mallory’s video. Bob concludes not to trust Mallory’s video, since an earlier manifest explains the video with an alternative provenance trail.
-    
+
 3.  Preserving provenance through non-C2PA capable toolchains
-    
+
     Acme Corp maintains a content production pipeline where some stages are non-C2PA capable. Bob receives a photograph from freelance photographer Alice, containing a valid C2PA Manifest. Bob’s software inserts into the digital content of the image a watermark containing a unique identifier, and records the unique identifier as a soft binding assertion in the manifest. The manifest is placed within a manifest repository maintained internally by Acme Corp. The content passes through legacy content production processes that strip the C2PA Manifest. The final stages of production are C2PA compliant. The watermark is read from the image and submitted as a query to the manifest repository run internally by Acme Corp. After passing through the non-C2PA tools, the manifest is automatically matched using the embedded watermark, and is included as an ingredient in a new manifest, which documents that actions have been performed on the content prior to entering the C2PA capable final stage of the pipeline. The manifest is embedded into the asset in the usual way. The content is published and provenance of the image may be traced back to Alice by end consumers of the content.
-    
+
 
 <a id="_implementation_guidance"></a>
 #### 4.2.4. Implementation guidance
@@ -415,15 +415,15 @@ An alternative application of soft bindings is to mitigate the threat whereby an
 Soft bindings are not guaranteed to be exact, and so care should be taken in their use. Consider perceptual hashing; a common form of soft binding algorithm. By design, multiple renditions of the same digital content may generate the same soft binding. However different digital content, or renditions thereof, may generate the same soft binding either in error or due to attacks on the hashing function (for example, adversarial attacks on machine learning models). Therefore we make the following design recommendation on the implementation of soft bindings in C2PA.
 
 1.  Soft bindings must not be substituted for hard bindings in order to bind claims within a manifest.
-    
+
 2.  The matches made using a soft binding must be interactively verified via human-in-the-loop checking. For example, a thumbnail of an image stored within the manifest might be displayed to aid visual verification of the match made using a soft binding.
-    
+
 3.  Hard bindings (cryptographic hashes) may be used as an alternative to soft bindings, to query manifests within a manifest repository. However this method will fail if the digital content has been modified (for example, is an asset rendition).
-    
+
 4.  We recommend that services provided for the lookup of manifests using hard or soft bindings advertise the types of binding that may be used as query, using the unique identifier of that binding (per the hard or soft binding registry).
-    
+
 5.  We recommend that claim generators that add soft binding assertions to an asset’s manifest do so as an opt-in addition and not make it mandatory.
-    
+
 
 <a id="_trust_and_privacy_considerations"></a>
 #### 4.2.5. Trust and Privacy Considerations
@@ -454,7 +454,7 @@ Trust in the lookup process is derived from trust in the integrity of the manife
 
 As part of a workflow, some claim generators may allow actors to enter arbitrary text as the value for fields in some assertions - for example, as the value of the `copyright` field in a Creative Work assertion.
 
-The signer of the manifest is responsible for ensuring that any user generated text that will be present in the manifest is something they are willing to take responsibility for, since that is a key role of the signer as described in our [trust model](#1.1@specs:C2PA_Specification.adoc#_trust_model).
+The signer of the manifest is responsible for ensuring that any user generated text that will be present in the manifest is something they are willing to take responsibility for, since that is a key role of the signer as described in our [trust model](specs/C2PA_Specification.html.md#_trust_model).
 
 <a id="_consumption"></a>
 ##### 5.1.1.2. Consumption
@@ -472,9 +472,9 @@ Manifest consumers should consider doing any necessary "character filtering" on 
 <a id="_general_4"></a>
 #### 5.2.1. General
 
-As described in [the actions section of the C2PA specification](#1.1@specs:C2PA_Specification.adoc#_actions), "an actions assertion provides information on edits and other actions taken that affect the asset’s content." Each action declares what took place on the asset, along with various other (optional) information such as when it took place or what software performed the action.
+As described in [the actions section of the C2PA specification](specs/C2PA_Specification.html.md#_actions), "an actions assertion provides information on edits and other actions taken that affect the asset’s content." Each action declares what took place on the asset, along with various other (optional) information such as when it took place or what software performed the action.
 
-The listed C2PA actions are those that have been defined to date as common operations for various types of software and hardware actors operating on various asset types. However, because not all possible operations can be anticipated, the C2PA specification also allows for the use of custom actions using the standard [custom labels syntax](#1.1@specs:C2PA_Specification.adoc#_labels).
+The listed C2PA actions are those that have been defined to date as common operations for various types of software and hardware actors operating on various asset types. However, because not all possible operations can be anticipated, the C2PA specification also allows for the use of custom actions using the standard [custom labels syntax](specs/C2PA_Specification.html.md#_labels).
 
 When using one of the C2PA actions, you should choose the one that most closely represents the action being taken. If there is not something specific, then either use a more general one (e.g., `c2pa.edited` or `c2pa.filtered`) or a custom one that specifically describes your case.
 
@@ -488,7 +488,7 @@ When using a generic action or a custom action, it is recommended to add a free-
 <a id="actions-aiml"></a>
 #### 5.2.2. Identifying use of AI/ML
 
-Each action can identify whether it was performed by an AI/ML system through the use of the `digitalSourceType` field. An example `c2pa.created` action is shown in the specification [in the parameters clause of Actions](#1.1@specs:C2PA_Specification.adoc#_parameters). The `digitalSourceType` field is used to identify the type of digital source that was used to create the asset, including the value `[http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia](http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia)` which indicates that the asset was created by an AI/ML system and is therefore "trained algorithmic media".
+Each action can identify whether it was performed by an AI/ML system through the use of the `digitalSourceType` field. An example `c2pa.created` action is shown in the specification [in the parameters clause of Actions](specs/C2PA_Specification.html.md#_parameters). The `digitalSourceType` field is used to identify the type of digital source that was used to create the asset, including the value `[http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia](http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia)` which indicates that the asset was created by an AI/ML system and is therefore "trained algorithmic media".
 
 <a id="_ingredients_2"></a>
 ### 5.3. Ingredients
@@ -496,7 +496,7 @@ Each action can identify whether it was performed by an AI/ML system through the
 <a id="ingredients-aiml"></a>
 #### 5.3.1. Identifying use of AI/ML
 
-When an asset is the result of Generative AI, where the asset is produced as the result of inference on an specialized AI/ML model, it is important to be able to store not only that such a process took place, but also information about any input data to the model that was used, such as a prompt as well as the info about the model itself. This data can all be recorded as part of an ingredient assertion. An example of an asset produced from a text prompt can be found [here](#1.1@specs:C2PA_Specification.adoc#_ingredient_data).
+When an asset is the result of Generative AI, where the asset is produced as the result of inference on an specialized AI/ML model, it is important to be able to store not only that such a process took place, but also information about any input data to the model that was used, such as a prompt as well as the info about the model itself. This data can all be recorded as part of an ingredient assertion. An example of an asset produced from a text prompt can be found [here](specs/C2PA_Specification.html.md#_ingredient_data).
 
 <a id="_trust"></a>
 ## 6\. Trust
@@ -543,11 +543,11 @@ C2PA claim generation and signing systems should consider industry best practice
 If possible, a claim generator should attempt to validate that the signing credential used is suitable for the expected audience of validators for the asset. C2PA currently only supports X.509 certificates as signing credentials. A claim generator should be configured with the same trust anchor list and Extended Key Usage (EKU) list as the validators. Then, at signing time, the claim generator should:
 
 1.  Validate that the certificate fulfills all the requirements for C2PA signing credentials as described Certificate Profile section of the Trust Model chapter.
-    
+
 2.  Validate that a chain of trust can be computed from the signing certificate to an entry in the trust anchor list using the contents of the `x5chain` COSE header, following the procedure in [RFC 5280 section 6](https://datatracker.ietf.org/doc/html/rfc5280#section-6). This header will include both the signing certificate and any intermediate certification authorities required to build a trust chain to the trust anchor.
-    
+
 3.  Validate that the signing certificate is valid for one of the Extended Key Usages listed.
-    
+
 
 If the claim generator is not configured with the trust anchor list and EKU list as the validators, it should not attempt any validation and sign with the provided credential.
 
@@ -580,16 +580,16 @@ Mistakes and accidents do happen, and credentials sometimes need to be revoked b
 When initially creating an application, its trust anchors, and determining how identities will be issued by those trust anchors, developers should answer the following questions:
 
 1.  Who are the creators of the content? These will typically be your signers, the recipients of credentials issued by the trust anchors, and the persons or entities who must be identified.
-    
+
 2.  Who is the audience of the content, and how and where will they consume it? These are your consumers who themselves will not receive credentials, but will rely upon the identities presented in the credentials of others.
-    
+
     > **NOTE:**
     > In some ecosystems, persons or entities will act as both creators and consumers, and so these two groups may overlap. However, persons or entities operating as creators is separate from when they operate as consumers, and so it is clearer to consider these groups separately for the purposes of this analysis.
-    
+
 3.  How does the audience already know and identify the creators? This will inform how the identity should be presented in the credential, and how it is presented to the consumers. C2PA publishes [User Experience Guidance](../1.1/ux/UX_Recommendations.html.md) to help application developers determine how to present this information to the consumer.
-    
+
 4.  What is the risk to the ecosystem if a credential is issued in error or is compromised, where a malicious actor obtains a credential belonging to someone else and is able to sign with it, such as the result of a key compromise? This will inform the required real-world validation to achieve the needed level of assurance, and the importance of implementing, operating, and querying a revocation service.
-    
+
 
 To illustrate this exercise, we now present example applications, and for each one, the answers to the questions above and the resulting trust model configuration.
 
@@ -599,13 +599,13 @@ To illustrate this exercise, we now present example applications, and for each o
 This is the application in which people consume news and other media from outlets which we might expect them to be familiar with, recognize, and potentially trust.
 
 1.  Creators of content are news and media organizations that are _uniquely identifiable_ — even if the scope of the creator is intentionally focused on a particular population segment or geographic region.
-    
+
 2.  Regardless of the creator’s intended scope, particularly in today’s connected world, the audience is the entire global population. Even if a consumer is not personally aware of an organization’s name or brand, if they went in search of it, they would locate the same singular organization as everyone else.
-    
+
 3.  The organization has developed a brand, an audience, and a reputation with their audience that leads to the audience identifying the organization. This does not exclude independent or unconventional creators, but does require they have built up enough of an audience and a reputation with their audience that leads to their being identifiable in this way, in the same way conventional newspapers, television stations, networks, and other organizations have done in the past.
-    
+
 4.  Brand impersonation and incorrect attribution to the brand of content made by malicious impersonators can result in damage to the brand and the organization’s reputation and trustworthiness amongst its audience. Moreso, as such a failure of the provenance ecosystem becomes public knowledge, this can undermine the provenance and authenticity ecosystem and open the door to further mis/disinformation, not only because an inauthentic asset has been signed by a trusted credential, but now consumers may come to believe they cannot trust those credentials. This is critical early on, when the ecosystem is building and working to establish that trust with consumers.
-    
+
 
 > **NOTE:**
 > Here we define _uniquely identifiable_. A _uniquely identifiable_ organization has a unique name such that any two consumers with no relationship with one another, when presented with this name as the signer of an asset due to its placement in the signing credential, would resolve that name to the same real-world entity. Even though a consumer might not be aware of a content creator when presented with one of its assets, given this unique name, by "resolve" we mean they could track down the real-world organization through some out-of-band means. This would be the same organization any other consumer would find, as well, presented with that same unique name.
@@ -624,13 +624,13 @@ For entities and organizations whose identity is rooted in the identity of an on
 In contrast to news and media consumption, this is the application where a news or media organization internally creates and assembles a finished publication that is consumed in the previous example.
 
 1.  Creators of content are the subset of the employees of a news or media organization that are involved with publication activities. This includes anyone whose input appears in or otherwise impacts the final output of the organization: reporters, writers, editors, artists, designers, and so on.
-    
+
 2.  The audience is the subset of the employees of a news or media organization that receive assets which will appear or otherwise impact the final output of the organization. This will typically be everyone who also counts as a creator, but also any personnel who only review or otherwise consume the content without making any changes to it, such as fact-checkers or supervisors who approve assets for public release.
-    
+
 3.  The audience has the same employer as the creators, and rely upon the employer to provide a means to recognize and authenticate other employees.
-    
+
 4.  Potential introduction of malicious material into the publication process. The precise risk will depend upon the access granted to someone with those credentials, but this becomes a particular case of the general problem of the credentials of any member of an enterprise being compromised.
-    
+
 
 In this case, the trust anchors will be the enterprise’s own internal PKI, and existing processes for issuing digital credentials to employees can be used to issue these credentials as well. Such an enterprise is presumed to already have a process for connecting the real-world identity of an employee with their business records, and any credentials issued for use in that employment. As assets created in this scenario are generally intermediate outputs that will later be combined into a final output, their useful lifetime is expected to be relatively short. Existing procedures for invalidating and revoking compromised credentials, and issuing new ones, should be sufficient to cover C2PA credentials.
 
@@ -642,13 +642,13 @@ The audience will consume the content through production tools and processes com
 This application concerns the internal business processes of an enterprise; in this case, an insurance company and its business of underwriting policies and servicing claims. There are similarities with the News and Media Creation example in that this is also entirely internal to an existing enterprise.
 
 1.  Creators of content are the subset of the employees of an insurance company that generate photographs, video, or documents used in an insurance company’s business practices, including but not limited to underwriting policies and servicing claims.
-    
+
 2.  Consumers are the subset of the employees of an insurance company that use photographs, video, and documents generated by the creators in the insurance company’s business practices, including but not limited to underwriting policies and servicing claims.
-    
+
 3.  The audience has the same employer as the creators, and rely upon the employer to provide a means to recognize and authenticate other employees.
-    
+
 4.  Potential introduction of malicious (and perhaps fraudulent) material into the insurance company’s business processes, such as edited or fabricated evidence of a supposed claim for an insured hazard that did not actually take place, in order to commit insurance fraud.
-    
+
 
 As another enterprise case, the trust anchors here as well will be the enterprise’s own internal PKI, for the same reasons as the case above. Similarly, the audience will consume the content through tools and processes common within, and likely provided by, the organization, which can be configured with the above trust list for ingesting assets received from others before using them in their work.
 
@@ -658,20 +658,20 @@ As another enterprise case, the trust anchors here as well will be the enterpris
 This application concerns the sharing of content across social media, even across multiple networks. This assumes the social media network used by the creator is globally known, but is not necessarily where the consumer consumes the content.
 
 1.  Creators of content are the owners of accounts in social media networks. This makes the assumption that each social media network is globally-known and unique.
-    
+
 2.  Consumers are users of those social media networks, whether or not they have accounts, which covers the entire global population.
-    
+
 3.  There are a few possibilities:
-    
+
     1.  The owner of the account has built up a brand and reputation, in much the same way a news or media organization would, producing content from that account directly.
-        
+
     2.  The social media platform asserts that, through some process or due diligence they have performed, that the owner of the account is a person or organization with an existing global identity that consumers would recognize.
-        
+
     3.  The owner of the account is a person or organization with an existing global identity that consumers would recognize, and through their own established authenticated channels to their audience assert that they own a particular social media account.
-        
-    
+
+
 4.  Potential attribution of malicious content to the owner of a social media account. The precise risk will depend upon whether the account has any existing audience and trust relationship with their audience.
-    
+
 
 In this case, as the identifiability of the creator is rooted in the existing identity infrastructure of the platform, the platform makes the choice to issue C2PA-compliant credentials to the owner of the account, through whatever existing authentication infrastructure they already have for owners to access their accounts. Care must be taken to revoke credentials in case of account name changes, and timestamping is highly recommended so that names that are changed cannot have others later claim the same name and impersonate the former owner.
 
@@ -683,13 +683,13 @@ The audience will consume the content through the social media’s web site or a
 This application concerns the ad-hoc sharing of assets between creatives collaborating on a project, or communication between journalists and sources, using e-mail addresses as their primary means of identifying one another, whether or not e-mail is the principal means by which sharing occurs.
 
 1.  The creators are anyone with an e-mail address. So, anyone in the global population.
-    
+
 2.  The consumers are anyone who knows a creator by their e-mail address. This is anyone in the global population generally, but for a particular creator this will be a small group who has a direct two-way personal connection to the creator.
-    
+
 3.  The audience knows and recognizes the creators based on some pre-existing relationship by which e-mail is considered a reliable identifier and means of communicating with the person, based on an existing history of collaboration or a trustworthy introduction from another known person.
-    
+
 4.  There is an impersonation attack here but the risk is low, as the audience for a particular creator is small. It’s also unclear what benefit an attacker might have by impersonating a collaborative partner and sharing signed content that is in some way malicious. Malicious in this context does not mean technologically malicious in a way that could cause compromise of the recipient’s device due to a software bug in consuming software, as that threat exists with or without a C2PA manifest attached, but malicious in that the attacker is attempting to convince the recipient that the asset came from the compromised creator.
-    
+
 
 In this case, the existing secure e-mail PKI can be used, with existing e-mail verification processes implemented by the CAs for issuing these credentials. As the risk of compromise of an e-mail account is significant, it would be unwise to rely on these credentials for long-lived assets or for applications where impersonation brings significant risk due in a scenario with particular sensitivity.
 
@@ -701,9 +701,9 @@ The audience will consume the content through whatever ad-hoc tools they use for
 C2PA encourages creators to retrieve a time-stamp for their assets in order to prove that it was published within the validity period of the signing credential, so that it can continue to be considered valid even after the signing credential has expired. Time-stamp authorities (TSAs) receive a special kind of trust where time-stamps they issue remain valid even after the TSA’s certificate expires, so long as the attested time falls within the TSA’s certificate’s validity period. This combination allows an asset to be considered time-valid indefinitely. Without such a trusted time-stamp, consumers cannot trust an asset signed with a now-expired credential was not signed after the credential expired. Each application developer therefore needs to consider the list of trust anchors for TSAs, in addition to the C2PA signer trust list determined through the exercise described in the previous section. In this case, this trust anchor list does not define identity providers for signers of assets, but identity providers for TSAs that provide the time-stamps for assets which allow them to still be considered valid even after the signing credential has expired or been revoked. We recommend considering the following questions:
 
 1.  Are time-stamps needed? If the useful lifetime of assets will not exceed the lifetime of the signing credential, using time-stamps may not be required at all. Assets will become invalid when the signing credential expires, but in some applications this may be acceptable, or even desired. Drawing from our above examples, in the "News and Media Consumption" and "Social Media and Video Sharing" examples, these assets may be consumed years after their publication, which will require time-stamps. Other examples, like "News and Media Creation" and "Insurance Underwriting and Claims Servicing," may not have such a requirement. In these cases, the list of trust anchors for TSAs can be empty, and those applications can skip retrieving time-stamps.
-    
+
 2.  Who will provide them? Many operators of Certification Authorities in the PKI used for secure web sites also operate time-stamp authorities, possibly free of charge. Signed time-stamps are considered valid forever, when the attested time is within the validity period of the TSA’s signing credential, and so operating TSAs involves heightened security requirements that may be impractical for some entities, and so may choose to use one of the public ones and so the secure web PKI trust anchor list. Others who operate their own IT infrastructures or even data centers may choose to operate their own, and use their own trust anchors.
-    
+
 
 <a id="_ongoing_maintenance_of_an_identity_ecosystem"></a>
 #### 6.3.4. Ongoing Maintenance of an Identity Ecosystem
@@ -771,7 +771,7 @@ A manifest consumer that is performing validation (e.g., a web browser) may dete
 <a id="_validation_of_ingredient_manifests"></a>
 ### 7.2. Validation of Ingredient manifests
 
-As described in the [Validation section of the specification](#1.1@specs:C2PA_Specification.adoc#_validation), "The validator may optionally recursively validate the ingredient’s ingredients". To do so, the implementation resolves each ingredient’s `url` field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.
+As described in the [Validation section of the specification](specs/C2PA_Specification.html.md#_validation), "The validator may optionally recursively validate the ingredient’s ingredients". To do so, the implementation resolves each ingredient’s `url` field to find the next ingredient in the chain. It is possible that an infinite recursion situation could occur during this resolution process (whether constructed on purpose as a DoS attack or not). Implementations should be careful to check for such situations when performing this recursive resolution of ingredients.
 
 <a id="_data_validation"></a>
 ### 7.3. Data validation
@@ -813,16 +813,16 @@ The right to use an asset for Data Mining and/or Training an AI model is communi
 > **NOTE:**
 > Since an AI/ML model is itself considered an asset, the Training and Data Mining assertion can also be used to indicate the rights to use a model for inference or to data mine the model. This is useful in the case of potentially preventing a [model extraction attack](https://ssg.aalto.fi/research/projects/mlsec/model-extraction/).
 
-The four possible rights, as described in the [specification](#1.1@specs:C2PA_Specification.adoc#<em>training_and_data_mining</em>) are:
+The four possible rights, as described in the [specification](specs/C2PA_Specification.html.md#<em>training_and_data_mining</em>) are:
 
 *   `c2pa.data_mining`
-    
+
 *   `c2pa.ai_inference`
-    
+
 *   `c2pa.ai_training`
-    
+
 *   `c2pa.ai_generative_training`
-    
+
 
 For all such uses, rights are expressed as allowed, constrained or not allowed. This assertion is optional and its absence does not imply anything about the presence or absence of such a right.
 
@@ -854,38 +854,38 @@ On-chain storage of manifests may still be suitable, however, for use cases wher
 We outline several possible ways that DLT may be used to implement or instantiate aspects of the C2PA specification:
 
 1.  Underwriting the integrity of manifest repositories
-    
+
     Consider the case of a manifest repository, where manifests might be stored decoupled from the digital content they describe. Such a manifest repository may be used to store manifests and query those manifests via a lookup service using either a hard or a soft binding, for example to recover provenance for assets where manifests have been removed or corrupted.
-    
+
     The user of such a manifest repository trusts the governance of that manifest repository operator not to manipulate or remove manifests stored within. In other words, trust is centralized within the provider of the manifest repository. A DLT may be used to store hashes of manifests as they are committed to the manifest repository to assure consumers of the integrity of that manifest repository without the need to trust the manifest repository provider. In other words the trust placed in the centralized maintainer of the manifest repository is replaced by trust in the decentralized governance of the DLT.
-    
+
     Such an implementation does not guarantee the persistence or availability of the manifest repository.
-    
+
     > **NOTE:**
     > In order to adhere to the [C2PA Guiding Principles](https://c2pa.org/principles/) on Cost Burden and Performance, it is suggested that such proofs are rolled up in batches per a Layer 2 DLT solution in order to scale, and that an efficient consensus mechanism for DLT (such as proof of stake, or proof of history) is used to mitigate adverse cost or energy usage.
-    
+
 2.  Decentralized and self-sovereign identity
-    
+
     A separate use of DLT within the scope of C2PA might include the use of self-sovereign identity (SSI) schemes based upon DLT storage of DIDs. C2PA is agnostic to the provider of identity data and provides for the concept of an actor which is representable either via a simple identifier (such as a DID) or via a W3C Verifiable Credential (which could include a DID). In some use cases it may be preferable for users to create their own identity wallets rather than rely on a centralized or third party identity provider. In such cases DIDs stored on a DLT may provide a decentralized mechanism to ground trust in the public keys of SSI wallet holders.
-    
+
 3.  Decentralized claim signing
-    
+
     A smart contract is a computer program stored in a DLT system wherein the outcome of any execution of the program is recorded on the distributed ledger (ISO 22739:2020). Smart contracts may be configurable via a tokenized consensus mechanism. For example, a smart contract that may be upgraded or configured according to a vote by holders of a particular cryptographic token. Such contracts are referred to as 'decentralized autonomous organizations' or DAOs. Like regular programs, a DAO may be used to store and process data and even take payments for doing so.
-    
+
     A DAO might be set up to sign claims autonomously, according to a certificate installed by its operators. This would provide a decentralized alternative to the claim signing services run by centralized organizations tied to particular geographies or legislative zones.
-    
+
     Alternatively, or in addition, a DAO might be used to set up and manage a certificate trust list. Signing of claims is grounded in public key cryptography rooted in a trust list managed by a federation of partners. Since C2PA allows for the existence of multiple such trust lists, the DLT may be leveraged to manage the trust list via a tokenized governance system. This might be attractive to content creators and consumers wishing to utilize a decentralized governance for such a list, and in turn agency over the issuance and revocation of signing certificates
-    
+
 4.  Federated lookup for soft-bindings
-    
+
     A related application of DLT related to soft binding is in the creation of a federated lookup service for soft bindings. Soft bindings are identifiers derived from digital content that enable matching manifests to be recovered from within a manifest repository.
-    
+
     It is unlikely that a single manifest repository will exist for all manifests resolvable via soft bindings; multiple such manifest repositories are likely to emerge for any given vertical (e.g. journalism).
-    
+
     The DLT may be used to provide a decentralized list of such service endpoints, updated via a DAO offering a tokenized governance model.
-    
+
     Alternatively a DLT may be used to store directly a key-value index that maps soft bindings to the URLs of matching manifests within a manifest repository. A suitable sharding mechanism would be necessary to scale such a solution, for example maintaining different indexes for different portions of the soft binding hash space.
-    
+
 
 <a id="_digital_non_fungible_tokens_nfts"></a>
 ### 9.3. Digital Non-Fungible Tokens (NFTs)
@@ -950,7 +950,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 <a id="_introduction"></a>
 ## 1\. Introduction
 
-The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders. The results will balance uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback. Please reference the Glossary in the [C2PA Specifications](#1.1@specs:C2PA_Specification.adoc#_glossary) for clarifications on terminology used within this document. For general guidance on other areas of the specification, please see [Guidance for Implementors](#guidance:Guidance.adoc).
+The C2PA intends to provide clear guidance for implementers of provenance-enabled user experiences (UX). Developing these recommendations is an ongoing process that involves diverse stakeholders. The results will balance uniformity and familiarity with utility and flexibility for users across contexts, platforms, and devices. Our intent is to present a comprehensive range of conventions for the user experience and evolve them based on feedback. Please reference the Glossary in the [C2PA Specifications](specs/C2PA_Specification.html.md#_glossary) for clarifications on terminology used within this document. For general guidance on other areas of the specification, please see [Guidance for Implementors](../1.2/guidance/Guidance.html.md).
 
 <a id="_principles"></a>
 ## 2\. Principles
@@ -958,9 +958,9 @@ The C2PA intends to provide clear guidance for implementers of provenance-enable
 The UX recommendations aim to define best practices for presenting C2PA provenance to consumers. The recommendations strive to describe standard, readily recognizable experiences that:
 
 *   provide asset creators a means to capture information and history about the content they are creating, and
-    
+
 *   provide asset consumers information and history about the content they are experiencing, thereby empowering them to understand where it came from and decide how much to trust it.
-    
+
 
 User interfaces designed for the consumption of C2PA provenance must be informed by the context of the asset. C2PA have studied four primary user groups and a collection of contexts in which C2PA assets are encountered. These user groups have been defined in the [C2PA Guiding Principles](https://c2pa.org/principles/) as Consumers, Creators, Publishers and Verifiers (or Investigators). To serve the needs of each of these groups across common contexts, exemplary user interfaces are presented for many common cases. These are recommendations, not mandates, and we expect best practices to evolve.
 
@@ -1047,7 +1047,7 @@ Behaviour of L1 indicators should reveal L2 progressive disclosure, either via a
 
 Figure 3. L1 validation states
 
-In the event that the active manifest is invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See Chapter 14, Validation in the [C2PA Technical Specifications](#1.1@specs:C2PA_Specification.adoc#_validation) for further information.
+In the event that the active manifest is invalid, a stateful indicator of data validation can be displayed. There are several scenarios when displaying a data validation state may be necessary. See Chapter 14, Validation in the [C2PA Technical Specifications](specs/C2PA_Specification.html.md#_validation) for further information.
 
 <a id="l2-section"></a>
 ## 5\. L2 – provenance summaries
@@ -1173,15 +1173,15 @@ L3 should provide asset consumers as complete and comprehensive an overview of a
 Implementers should weigh the display of assertion information based on the needs of their anticipated audiences. Overly technical assertions or custom assertions from third-party implementers can be left to L4 displays only. The following types of assertions can be considered appropriate for L3 to display:
 
 *   Identity information
-    
+
 *   Actions
-    
+
 *   Creative Work
-    
+
 *   Fields pertaining to copyright, descriptions, and usage rights
-    
+
 *   Exif information and related metadata
-    
+
 
 <a id="_navigation"></a>
 ### 6.2. Navigation
@@ -1231,7 +1231,7 @@ Note the lack of thumbnail image in the update manifest. Since update manifests 
 
 Figure 22. No thumbnail in update manifest
 
-It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the [actions section of the technical specification](#1.1@specs:C2PA_Specification.adoc#_actions). Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.
+It is up to individual implementations as to whether or not the details of the redaction are shown at L2, depending on use case. They must be displayed in L3 however where the additional context and a rationale for the additions can be given. For more on this see the [actions section of the technical specification](specs/C2PA_Specification.html.md#_actions). Update manifests should contain onward journeys to L3 directing the user to the relevant manifest for closer review.
 
 ![l2tol3](../1.1/ux/_images/l2tol3.png)
 
@@ -1250,11 +1250,11 @@ In this section, the term _creator_ means a party creating _manifests_. This cou
 As per the [C2PA Guiding Principles](https://c2pa.org/principles/), C2PA implementations should provide a mechanism for creators of a given content to assert, in a verifiable manner, any information they wish to disclose about the creation of that content and any actions taken since the asset’s creation. As such, the creator experience requires the following:
 
 *   A clear acknowledgement of creator consent before a C2PA implementation can begin accumulating data;
-    
+
 *   Disclosure or preview of the nature of information that is being recorded;
-    
+
 *   Creator control over recorded information, with particular sensitivity to the creator’s identity and process.
-    
+
 
 C2PA recommends an opt-in flow that concisely represents these requirements and can be opted-out of just as easily at any time. Once opted-in, creators should be able to distinguish between non-removable information as defined by the C2PA specifications and information that can be adjusted according to the user’s preferences.
 
@@ -1264,15 +1264,15 @@ C2PA recommends an opt-in flow that concisely represents these requirements and 
 Creators should be able to control the information in their assertions as much as is allowed by C2PA specifications. The [Harms Modelling document](../1.0/security/Harms_Modelling.html.md) covers the reasoning behind why creator control is imperative. To provide coverage against harms and misuse, C2PA suggests the following types of assertions be manageable by the creator:
 
 *   Identity information
-    
+
 *   Actions
-    
+
 *   Creative Work
-    
+
 *   Fields pertaining to copyright, descriptions, and usage rights
-    
+
 *   Exif information and related metadata
-    
+
 
 To be accommodating to the user’s preferences, C2PA recommends presenting a UI wherein these assertion categories can be toggled on or off on a per document basis. To assist the creator in understanding the tradeoffs they are making, C2PA also suggests displaying a manifest preview that concisely and accurately depicts what information will be added into the manifest.
 
@@ -1305,9 +1305,9 @@ Validation of an ingredient’s manifest is equally important to convey to creat
 It is important to provide clear guidance about the different manifest storage options available to creators. Creators want or need to know where their manifest data is being stored, either locally or remotely, when they export their content. The following options may be presented to creators regarding the location of their manifest data:
 
 *   An option indicating that the manifest will only be directly attached to and stored as part of the exported file.
-    
+
 *   An option indicating that the manifest will both be directly attached to and stored as part of the exported file, and stored in a separate remote storage location.
-    
+
 
 ![creator manifest storage](../1.1/ux/_images/creator-manifest-storage.png)
 
@@ -1324,7 +1324,7 @@ Storing manifests remotely can generally make them more resilient, persistent, a
 <a id="_exporting"></a>
 ### 7.7. Exporting
 
-The [C2PA Implementation Guidance](#guidance:Guidance.adoc) recommends that a manifest be created for an asset when a significant event in the lifecycle of the asset takes place, such as its initial creation or an "export" operation from an editing tool. This is in part due to the underlying technical process of digitally signing the manifest, but also aligns with natural creation workflows. When a creator is ready to export their work, they should be able to decide whether or not to attach the accumulated assertion data to their content.
+The [C2PA Implementation Guidance](../1.2/guidance/Guidance.html.md) recommends that a manifest be created for an asset when a significant event in the lifecycle of the asset takes place, such as its initial creation or an "export" operation from an editing tool. This is in part due to the underlying technical process of digitally signing the manifest, but also aligns with natural creation workflows. When a creator is ready to export their work, they should be able to decide whether or not to attach the accumulated assertion data to their content.
 
 <a id="_media_formats"></a>
 ## 8\. Media formats
@@ -1392,15 +1392,15 @@ Depending on the media type, a meaningful ‘thumbnail’ can be comprised of mo
 Figure 29. Anatomy of a thumbnail
 
 *   Interactions (i.e. hover or long press to skip through a sequence or swipe to rotate model)
-    
+
 *   Where relevant, an L1 indication of provenance
-    
+
 *   Some representation of the media (see below for different approaches)
-    
+
 *   Data (i.e. media duration for temporal media)
-    
+
 *   Relevant iconography
-    
+
 
 **Media representations**
 
@@ -1470,7 +1470,7 @@ Please refer to [L1 interface language](#l1-language) for a reminder of the impo
 <a id="_user_facing_edit_and_activity_labels_and_descriptions"></a>
 ### 9.3. User-facing edit and activity labels and descriptions
 
-The [names and descriptions of C2PA actions](#1.1@specs:C2PA_Specification.adoc#_actions) have generally been written with implementers in mind. Users who are less familiar with the C2PA will benefit from clear labeling and descriptions of actions that capture as much of the related actions that may apply as possible.
+The [names and descriptions of C2PA actions](specs/C2PA_Specification.html.md#_actions) have generally been written with implementers in mind. Users who are less familiar with the C2PA will benefit from clear labeling and descriptions of actions that capture as much of the related actions that may apply as possible.
 
 Here we provide a matrix of current C2PA actions with recommended labels and optional descriptions for them in the "Edits and activity" section of consumer manifest UIs.
 
@@ -1569,11 +1569,11 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 This document provides information security considerations for technology described in the [C2PA core specification](../1.0/specs/C2PA_Specification.html.md). It complements security-related content in other C2PA documents. This document includes:
 
 *   A summary of relevant security features of C2PA technology
-    
+
 *   Security considerations for practical use of C2PA technology
-    
+
 *   Threats to C2PA technology and respective treatment of those threats, including countermeasures
-    
+
 
 Analysis in this document does not assess security risk or likelihoods associated with threats or outcomes. These may vary based on a number of factors, such as the context in which C2PA technology is deployed and changes in the threat landscape. However, content in this document may be helpful in developing security risk and likelihood assessments related to use of C2PA technology.
 
@@ -1605,19 +1605,19 @@ Like other security activities, we expect our threat modelling process to evolve
 A variety of references and experiences are used to inform threat modelling and related security activities for the C2PA. This section provides a subset of public documents for reference.
 
 *   [IETF on security considerations](https://datatracker.ietf.org/doc/html/rfc3552#page-26)
-    
+
 *   [IETF on privacy considerations (guidelines)](https://datatracker.ietf.org/doc/html/rfc6973#section-7)
-    
+
 *   [W3C security and privacy self-review questionnaire](https://www.w3.org/TR/security-privacy-questionnaire/)
-    
+
 *   [OAuth2 threat model (example)](https://datatracker.ietf.org/doc/html/rfc6819)
-    
+
 *   [Threat Modelling: Designing for Security](https://shostack.org/books/threat-modeling-book)
-    
+
 *   [OWASP Threat Modelling](https://owasp.org/www-community/Threat_Modeling)
-    
+
 *   [Microsoft Threat Modelling](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling)
-    
+
 
 <a id="_security_features"></a>
 ## 2\. Security features
@@ -1710,13 +1710,13 @@ Validation checks provenance claim signatures and performs supporting operations
 C2PA provides features that can be used to protect confidentiality of personal information while still establishing the provenance of an asset.
 
 *   Anonymous or pseudo-anonymous identities may be used for signing claims.
-    
+
 *   Assertions that may contain sensitive information can be removed via [redaction](../1.0/specs/C2PA_Specification.html.md#_redaction_of_assertions).
-    
+
 *   Assertions can be customized for specific workflows, such as where specific information is required to remain encrypted end-to-end.
-    
+
 *   Manifests may include [W3C Verifiable Credentials](../1.0/specs/C2PA_Specification.html.md#_w3c_verifiable_credentials).
-    
+
 
 Note that confidentiality of personal information and other privacy-related concerns are addressed in the [Harms Considerations document](../1.0/security/Harms_Modelling.html.md).
 
@@ -1734,13 +1734,13 @@ Attempts to compromise the integrity of C2PA provenance data associated with a r
 For embedded C2PA Manifests, malicious association of an existing manifest with a differing asset is also tamper-evident. In addition, the following actions are tamper-evident for all manifests:
 
 *   C2PA Manifest Store: Malicious addition or removal of a manifest.
-    
+
 *   C2PA Manifest: Malicious modification of an active or ingredient manifest.
-    
+
 *   Claims and claim signatures: Addition, removal, or modification of an existing claim in an existing C2PA Manifest.
-    
+
 *   Assertions: Addition, removal, or modification of assertions in the assertion store referenced by an existing claim.
-    
+
 
 Availability
 
@@ -1755,20 +1755,20 @@ Confidentiality
 C2PA does not specify confidentiality properties for assets, provenance model primitives, private address books, or cryptographic secrets.
 
 *   They may be kept confidential via other means. For example by transmitting assets via TLS. However, enforcing this confidentiality is considered out-of-scope for this specification.
-    
+
 *   Some private data, such as claim signing keys or private address books, must adhere to conventional confidentiality principles. Compromise of this private data could lead to indirect violation of other principles specified in this section. Enforcing confidentiality of this adjacent private data is considered out-of-scope for this specification.
-    
+
 *   C2PA does not specify Digital Rights Management (DRM) technology.
-    
+
 *   C2PA does not specify guarantees of confidentiality of personal information.
-    
+
     *   However, C2PA provides features that can be used to protect confidentiality of personal information ([summary](#_protection_of_personal_information))
-        
+
     *   Confidentiality of personal information and other privacy-related concerns are addressed in the [Harms Considerations document](../1.0/security/Harms_Modelling.html.md).
-        
+
         In general, these assertions are achieved through application of the [C2PA Trust Model](../1.0/specs/C2PA_Specification.html.md#_trust_model) to the claim generation process, and corresponding checks in the validation process.
-        
-    
+
+
 
 <a id="_threat_model"></a>
 ## 4\. Threat model
@@ -1778,13 +1778,13 @@ This section documents information security threats to C2PA technology. Threats 
 Each threat scenarios is described as follows:
 
 *   Description: A short description of the threat scenario
-    
+
 *   Prerequisites: Relevant requirements for attempting an attack or threat scenario
-    
+
 *   Impact analysis: Summary of the impact of the threat scenario on the C2PA security model
-    
+
 *   Guidance: Any supplementary security guidance on addressing the threat scenario or treating potential residual security risk
-    
+
 
 > **NOTE:**
 > This document refers to threat sources, agents, actors and other malicious entities commonly as attackers.
@@ -1795,30 +1795,30 @@ Each threat scenarios is described as follows:
 The following assumptions are made about entities that may attack C2PA technology:
 
 *   Attackers have full access to public assets and associated public metadata, including C2PA Manifests.
-    
+
 *   Attackers may attempt to access claim generator software (e.g., C2PA-enabled photo editing software) as a typical user.
-    
+
 *   Attackers do not have access to private keys referenced within the C2PA ecosystem (e.g., claim signing private keys, Time-stamping Authority private keys, etc.). They may, however, attempt to access these keys via exploitation techniques.
-    
+
 *   Attackers have the ability to publish assets to an impactful audience, for example, as a social media user.
-    
+
 *   Quantum computing cryptanalytic attacks are considered out-of-scope.
-    
+
 
 The following additional assumptions are made about the threat model:
 
 *   Attacks that rely on bypassing conventional security models of non-C2PA technology are considered out-of-scope. For example:
-    
+
     *   Attacks against the C2PA Validator as an architectural component within a user agent (e.g., web browser) are considered in-scope.
-        
+
     *   A compromise of the C2PA validation logic via some non-C2PA attack vector within the user agent is considered out-of-scope, since this would typically require bypassing the security model of the user agent (e.g., escaping a web browser sandbox or compromising the host via other means).
-        
-    
+
+
 *   Attacks across conventional trust boundaries are considered in-scope.
-    
+
     *   For example, attacks against C2PA-enabled assets traversing the internet.
-        
-    
+
+
 
 <a id="_threats"></a>
 ### 4.2. Threats
@@ -2059,11 +2059,11 @@ An attacker copies a valid W3C Verified Credential (VC) from an existing C2PA Ma
 ###### 4.2.2.7.2. Prerequisites
 
 *   Ability to copy a valid VC from an existing C2PA Manifest
-    
+
 *   Ability to generate and sign a claim that passes validation
-    
+
 *   Ability to deliver assets to consumer(s), for example via publishing to social media
-    
+
 
 <a id="_impact_analysis_9"></a>
 ###### 4.2.2.7.3. Impact analysis
@@ -2178,15 +2178,15 @@ Who will be impacted by the use of the C2PA standard including non-users?
 In Phase II, the Taskforce reviewed and adapted Microsoft’s taxonomy of harm to better reflect the context and implications of the C2PA specifications. This process was intertwined with the actual assessment of the identified harms. The guiding questions in this phase were:
 
 *   How could people be harmed by the use of C2PA? What use-cases are most likely to cause harm? To whom?
-    
+
 *   What use-cases are most likely to cause harm? To whom?
-    
+
 *   How could a misuse or abuse of C2PA lead to harm? Who would be affected?
-    
+
 *   What contextual evidence from either an existing technology or societal phenomenon either provides direct evidence of this harm or harm in a related context?
-    
+
 *   What is the severity, scale, frequency, likelihood, and disproportionate impact on vulnerable groups of a particular potential harm?
-    
+
 
 <a id="_phase_iii_due_diligence_actions"></a>
 ### 2.3. Phase III: Due Diligence Actions
@@ -2194,11 +2194,11 @@ In Phase II, the Taskforce reviewed and adapted Microsoft’s taxonomy of harm t
 Phase III was aimed at mitigating potential abuse and misuse, and offering considerations and guidelines for the protection of human rights and for the optimization of the benefits that prompted the development of the C2PA standard. The questions that guided us in this phase were:
 
 *   How could the C2PA specifications be designed to prevent harmful impacts?
-    
+
 *   How could the C2PA specifications be built to protect human rights?
-    
+
 *   What guidance, compliance requirements or technical steps can address these?
-    
+
 
 Answers to these questions are reflected in the due diligence strategy that affects the specifications and its accompanying documents, which includes guidance for implementers, guidance on user experience, security considerations, and an explainer aimed at the general public.
 
@@ -2270,13 +2270,13 @@ Accompanying documentation
 The accompanying documentation should reflect considerations from the harms, misuse and abuse assessment. The documentation includes:
 
 *   Guidance for implementers;
-    
+
 *   Guidance on user experience;
-    
+
 *   Security considerations;
-    
+
 *   Explainer aimed for the general public.
-    
+
 
 Non-technical and multilateral harms response actions
 
@@ -2285,11 +2285,11 @@ The harms, misuse and abuse assessment has also highlighted the need for continu
 Other areas for due diligence actions include:
 
 *   Multilateral cooperation for the promotion of a diverse C2PA ecosystem, including efforts to resource public-interest implementations;
-    
+
 *   Sensitization of the specifications to a broad base of users and stakeholders;
-    
+
 *   Promote parallel efforts to ensure compliance around C2PA specs-enabled products
-    
+
 
 <a id="_public_review_and_feedback"></a>
 ## 4\. Public Review and Feedback
@@ -2318,7 +2318,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 <a id="_introduction"></a>
 ## 1\. Introduction
 
-The [C2PA specification](#1.1@specs:C2PA_Specification.adoc) can be used to add cryptographic information to detect the tampering of media files and streams. Similarly, the C2PA framework can also be used in artificial intelligence (AI) and machine learning (ML) systems to indicate the tampering of datasets, software, and models which are utilized during training and inference. This document provides guidance about how C2PA can be employed by AI and ML systems.
+The [C2PA specification](specs/C2PA_Specification.html.md) can be used to add cryptographic information to detect the tampering of media files and streams. Similarly, the C2PA framework can also be used in artificial intelligence (AI) and machine learning (ML) systems to indicate the tampering of datasets, software, and models which are utilized during training and inference. This document provides guidance about how C2PA can be employed by AI and ML systems.
 
 Recent research has demonstrated that ML systems are susceptible to different forms of poisoning attacks. For these types of attacks, the goal of the adversary is to cause the model to make incorrect predictions which can either be targeted or non-targeted attacks. In targeted attacks, a classifier can be maliciously trained to provide a backdoor that can be exploited by the attacker to produce a specific incorrect prediction class. One example of a targeted attack is to modify a face recognition system to allow the adversary to successfully log onto a computer as someone else. A model that has been poisoned using an untargeted attack may generate any result that is incorrect. At a minimum, the ML system must protect against three types of poisoning attacks including data poisoning, software poisoning, and model poisoning attacks [\[Stokes21\]](#Stokes21). C2PA can be used to help prevent these types of attacks by protecting the data, software, and models.
 
@@ -2331,7 +2331,7 @@ Many of the existing training sets are stored in a single file, and these files 
 
 In other settings, the training and inference data may be split across multiple files, including media files such as images which are used to train an object detection model. In addition, the training or inference data may be streamed. In these scenarios, the data may be protected by a top-level C2PA Content Credential which includes each of the files as ingredients. In the case where the ingredients are media files, they may contain their own Content Credentials.
 
-In images and videos, a C2PA Content Credential can be [embedded](#1.1@specs:C2PA_Specification.adoc#_embedding_manifests_into_assets) in the media file. However, existing machine learning datasets are either text or binary files which prevents the embedding of a Credential in the file. In these cases, the Content Credential can be stored in a separate, sidecar file. The Content Credential can then use the Asset Reference Assertion to provide a URI to the dataset file or streamed data chunk.
+In images and videos, a C2PA Content Credential can be [embedded](specs/C2PA_Specification.html.md#_embedding_manifests_into_assets) in the media file. However, existing machine learning datasets are either text or binary files which prevents the embedding of a Credential in the file. In these cases, the Content Credential can be stored in a separate, sidecar file. The Content Credential can then use the Asset Reference Assertion to provide a URI to the dataset file or streamed data chunk.
 
 <a id="_software_poisoning_attacks"></a>
 ## 3\. Software Poisoning Attacks
@@ -2366,13 +2366,13 @@ The C2PA Content Credential for an AI-ML model provides the consumer, e.g. a sys
 
 AI-ML output results have a wide range of concerns and risks depending on how the models were prepared and how the consumer uses the output. Accordingly, the AI-ML provenance information is explored in levels of depth, reflecting the consumers need to reduce risk by establishing deeper trust in the results. Briefly these levels describe the model itself, the training data used to create the model, and finally additional information about the training of the model, the training environment, and various extensions that relate explainability, transparency, and indicators of trust for the model.
 
-If the model provider does not want the model and its output to be used to train other models in an attempt to extract the model’s functionality, the model Content Credential can contain a data mining assertion that asserts rights as allowed, constrained, or not allowed for generative or non-generative AI-ML models or both. See [data mining](#1.1@specs:C2PA_Specification.adoc#<em>training_and_data_mining</em>) for more detail.
+If the model provider does not want the model and its output to be used to train other models in an attempt to extract the model’s functionality, the model Content Credential can contain a data mining assertion that asserts rights as allowed, constrained, or not allowed for generative or non-generative AI-ML models or both. See [data mining](specs/C2PA_Specification.html.md#<em>training_and_data_mining</em>) for more detail.
 
 ![Visual diagram of the elements contained in a model Content Credential](ai-ml/_images/Model-Manifest-v1.3.svg)
 
 The most basic provenance information allows the consumer to understand what type of model is being used, authenticate the claim signature, and to verify that the model had not been tampered with.
 
-An [asset type assertion](#1.1@specs:C2PA_Specification.adoc#_asset_type) provides the basic model information that a validator would use to further validate the model. By including the model’s name, machine learning framework, and the type, the consumer is better able to understand what the model does and how it does it.
+An [asset type assertion](specs/C2PA_Specification.html.md#_asset_type) provides the basic model information that a validator would use to further validate the model. By including the model’s name, machine learning framework, and the type, the consumer is better able to understand what the model does and how it does it.
 
 An example of an asset type assertion for an OpenVINO model, in CBOR Diagnostic Format (`.cbordiag`) would be:
 
@@ -2388,7 +2388,7 @@ An example of an asset type assertion for an OpenVINO model, in CBOR Diagnostic 
 }
 ```
 
-The [asset reference assertion](#1.1@specs:C2PA_Specification.adoc#_asset_reference) provides a URI to the data of the asset, such as a AI-ML model. This assertion is accompanied by a data hash that provides a hard binding to the asset (e.g., a model file) enabling the validator to confirm its integrity.
+The [asset reference assertion](specs/C2PA_Specification.html.md#_asset_reference) provides a URI to the data of the asset, such as a AI-ML model. This assertion is accompanied by a data hash that provides a hard binding to the asset (e.g., a model file) enabling the validator to confirm its integrity.
 
 OpenVINO represents the model in two files, included as ingredients. An XML file contains the topology:
 
@@ -2471,9 +2471,9 @@ In addition the AI-ML output may contain the prompt used for the input to a gene
 ## References
 
 *   \[Stokes21\] J. W. Stokes, P. England and K. Kane, "Preventing Machine Learning Poisoning Attacks Using Authentication and Provenance," MILCOM 2021 - 2021 IEEE Military Communications Conference (MILCOM), 2021, pp. 181-188.
-    
+
 *   \[EU19\] [https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32019R0881](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32019R0881)
-    
+
 *   \[Biden21\] [https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/).
 
 ---
@@ -2485,17 +2485,17 @@ The Coalition for Content Provenance and Authenticity (C2PA) addresses the preva
 This site contains the various specifications and documents produced by the C2PA.
 
 *   [Technical Specifications](specs/C2PA_Specification.html.md)
-    
+
 *   [Explainer](explainer/Explainer.html.md)
-    
+
 *   [Guidance for Implementers](guidance/Guidance.html.md)
-    
+
 *   [User Experience Guidance](../1.1/ux/UX_Recommendations.html.md)
-    
+
 *   [Security Considerations](../1.0/security/Security_Considerations.html.md)
-    
+
 *   [Harms Modelling](../1.0/security/Harms_Modelling.html.md)
-    
+
 
 PDF Versions of these documents are also available via the Download button in the page header.
 
@@ -2678,9 +2678,9 @@ A composed asset is an _asset_ that is created by building up a collection of mu
 **EXAMPLES:**
 
 *   A video created by importing existing video clips and audio segments into a "blank slate".
-    
+
 *   An image where another image is imported and super-imposed on top of the starting image.
-    
+
 
 <a id="_core_aspects_of_c2pa"></a>
 ### 2.3. Core Aspects of C2PA
@@ -2800,113 +2800,113 @@ Figure 3. Elements of C2PA
 ### 3.1. Core Formats
 
 *   [CBOR](https://tools.ietf.org/html/rfc8949)
-    
+
 *   [JSON](https://tools.ietf.org/html/rfc8259)
-    
+
 *   [JSON-LD](https://www.w3.org/TR/json-ld11/)
-    
+
 *   [JPEG universal metadata box format](https://www.iso.org/standard/73604.html) (JUMBF)
-    
+
 *   [W3C Verifiable Credentials Data Model](https://www.w3.org/TR/vc-data-model/)
-    
+
 
 <a id="_schemas"></a>
 ### 3.2. Schemas
 
 *   [CDDL](https://datatracker.ietf.org/doc/html/rfc8610)
-    
+
 *   [JSON Schema](https://json-schema.org/specification-links.html#2020-12)
-    
+
 *   [Dublin Core Metadata Initiative](https://www.dublincore.org/specifications/dublin-core/dces/)
-    
+
 
 <a id="_digital_electronic_signatures"></a>
 ### 3.3. Digital & Electronic Signatures
 
 *   [X.509 Certificates](https://tools.ietf.org/html/rfc5280)
-    
+
 *   [JSON Web Algorithms](https://tools.ietf.org/html/rfc7518) (JWA)
-    
+
 *   [CBOR Object Signing and Encryption](https://tools.ietf.org/html/rfc8152) (COSE)
-    
+
 *   [Using RSA Algorithms with COSE Messages](https://tools.ietf.org/html/rfc8230)
-    
+
 *   [Online Certificate Status Protocol](https://tools.ietf.org/html/rfc6960) (OCSP)
-    
+
 *   [Internet X.509 PKI Time-Stamp Protocol](https://tools.ietf.org/html/rfc3161)
-    
+
 *   [CBOR Object Signing and Encryption (COSE): Header Parameters for Carrying and Referencing X.509 Certificates](https://datatracker.ietf.org/doc/html/rfc9360)
-    
+
 *   [Algorithms and Identifiers for the Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile](https://tools.ietf.org/html/rfc3279)
-    
+
 *   [Internet X.509 Public Key Infrastructure: Additional Algorithms and Identifiers for DSA and ECDSA](https://tools.ietf.org/html/rfc5758)
-    
+
 *   [Algorithm Identifiers for Ed25519, Ed448, X25519, and X448 for Use in the Internet X.509 Public Key Infrastructure](https://tools.ietf.org/html/rfc8410)
-    
+
 *   [PKCS #1: RSA Cryptography Specifications Version 2.2](https://tools.ietf.org/html/rfc8017)
-    
+
 *   [Edwards-Curve Digital Signature Algorithm (EdDSA)](https://tools.ietf.org/html/rfc8032)
-    
+
 *   [JSON Advanced Electronic Signatures](https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.01.01_60/ts_11918201v010101p.pdf) (JAdES)
-    
+
 *   [US Secure Hash Algorithms](https://datatracker.ietf.org/doc/html/rfc6234)
-    
+
 *   [X.509 Certificate General-Purpose Extended Key Usage (EKU) for Document Signing](https://www.rfc-editor.org/rfc/rfc9336)
-    
+
 *   [RFC 6170](https://www.rfc-editor.org/rfc/rfc6170.html)
-    
+
 
 <a id="_embeddable_formats"></a>
 ### 3.4. Embeddable Formats
 
 *   [ISO Base Media File Format](https://www.iso.org/standard/74428.html) (BMFF)
-    
+
 *   [PDF 1.7](https://www.iso.org/standard/51502.html)
-    
+
 *   [PDF 2.0](https://www.iso.org/standard/75839.html)
-    
+
 *   [JPEG 1](https://www.iso.org/standard/18902.html)
-    
+
 *   [JPEG XT, ISO/IEC 18477-3](https://www.iso.org/standard/66071.html)
-    
+
 *   [PNG](https://www.w3.org/TR/2003/REC-PNG-20031110/)
-    
+
 *   [SVG](https://www.w3.org/TR/SVG11/)
-    
+
 *   [GIF](https://www.w3.org/Graphics/GIF/spec-gif89a.txt)
-    
+
 *   [ID3](https://id3.org/id3v2.3.0)
-    
+
 *   [Digital Negative or DNG](https://helpx.adobe.com/content/dam/help/en/photoshop/pdf/dng_spec_1_6_0_0.pdf)
-    
+
 *   [TIFF/EP](https://www.iso.org/standard/29377.html)
-    
+
 *   [TIFF v6](https://www.itu.int/itudoc/itu-t/com16/tiff-fx/docs/tiff6.pdf))
-    
+
 *   [RIFF](https://www.loc.gov/preservation/digital/formats/fdd/fdd000025.shtml)
-    
+
 *   [Multi-Picture Format (MPF)](https://www.cipa.jp/e/std/std-sec.html)
-    
+
 
 <a id="_other"></a>
 ### 3.5. Other
 
 *   [eXtensible Metadata Platform](https://www.iso.org/standard/75163.html) (XMP)
-    
+
 *   [JSON-LD serialization of XMP](https://www.iso.org/standard/79384.html)
-    
+
 *   [IPTC Photo Metadata Standard](http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata)
-    
+
 *   [Exif](https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E)
-    
+
 *   [UUID](https://tools.ietf.org/html/rfc4122)
-    
+
 *   [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)
-    
+
 *   [RFC 2326](https://www.ietf.org/rfc/rfc2326.txt)
-    
+
 *   [Media Fragments](https://www.w3.org/TR/media-frags/)
-    
+
 
 <a id="_standard_terms"></a>
 ## 4\. Standard Terms
@@ -2919,88 +2919,88 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 1.3 - April 2023
 
 *   New v2 version of the Action assertion with support for many new options
-    
+
 *   New v2 version of the Ingredient assertion with support for embedded data
-    
+
 *   New Asset Reference & Asset Type assertions
-    
+
 *   New Data boxes, for storing arbitrary data inside the Manifest
-    
+
 *   New generic box hash methodology for a more inclusive byte range hashing
-    
+
 *   New "Regions of Interest" data structures that can be applied to various assertions
-    
+
 *   Added document signing EKU as an alternative default EKU for C2PA signers when a validator is not configured with an EKU list
-    
+
 *   Added a new `digitalSourceType` field for use by C2PA
-    
+
 *   Added support for many new formats: MPF, WebP, AIFF, AVI, GIF
-    
+
 *   Updated Entity diagram to reflect additions since 1.0
-    
+
 *   Updated COSE header definition for X.509 certificates to RFC 9360
-    
+
 *   Updated the guidance on PDF embedding and its relationship to PDF signatures
-    
+
 *   Updated information about JUMBF hashing and JUMBF box toggles
-    
+
 *   Deprecated v1 of the BMFF Hash
-    
+
 *   Clarified use of the JUMBF Protection Box in a C2PA Manifest
-    
+
 *   Clarified C2PA-specific requirement that all intermediate X.509 certificates be included in COSE signatures
-    
+
 *   Clarified that time-stamps are valid indefinitely
-    
+
 *   LOTS of editorial improvements!!
-    
+
 
 1.2 - October 2022
 
 *   Added details about how to embed a C2PA Manifest in DNG or TIFF
-    
+
 *   Added new `digitalSourceType` field to Actions
-    
+
 *   Changed `stds.iptc.photometadata` → `stds.iptc` to support IPTC video metadata
-    
+
 *   Clarified versioning of assertions when adding optional fields
-    
+
 
 1.1 - September 2022
 
 *   Define a mechanism to support salting box hashing
-    
+
 *   New `c2pa.hash.bmff.v2` assertion, with changes to hashing model, to improve security
-    
+
 *   Enable assertion metadata for the Claim
-    
+
 *   Replaced `claim_generator_hints` with `claim_generator_info`
-    
+
 *   Added a new assertion to support the concept of Endorsements
-    
+
 *   Improvements to the `c2pa.actions` assertion
-    
+
 *   All Error & Status Codes are now prefixed with `c2pa`
-    
+
 *   Define mechanism for redaction of W3C VC’s
-    
+
 *   Clarify validation of EKUs in certificates
-    
+
 *   Validation algorithm revised to reflect technical changes
-    
+
 *   Corrections to the CDDL and JSON schemas to match normative text
-    
+
 *   Revise figures to reflect changes
-    
+
 *   Various Editorial and Typographical Corrections
-    
+
 *   Update Normative References (incl. JUMBF & W3C VC Data Model)
-    
+
 
 1.0 - December 2021
 
 *   Initial Release
-    
+
 
 <a id="_assertions"></a>
 ## 6\. Assertions
@@ -3013,13 +3013,13 @@ It is expected that each of the actors in the system that creates or processes a
 Some examples of assertions are:
 
 *   Exif information (e.g. camera information such as maker, lens)
-    
+
 *   Actions performed on the asset (e.g., clipping, color correction)
-    
+
 *   Thumbnail of the asset or its ingredients
-    
+
 *   Content bindings (e.g., cryptographic hashes)
-    
+
 
 Certain assertions may be redacted by subsequent claims (see [Section 6.7, “Redaction of Assertions”](#_redaction_of_assertions)), but they cannot be modified once made as part of a claim.
 
@@ -3217,9 +3217,9 @@ Because assertion stores shall be located in the same C2PA Manifest box as the c
 **EXAMPLES:**
 
 *   `self#jumbf=/c2pa/urn:uuid:f095f30e-6cd5-4bf7-8c44-ce8420ca9fb7/c2pa.assertions/c2pa.thumbnail.claim.jpeg` is relative to the entire store (since it starts with `/`),
-    
+
 *   `self#jumbf=c2pa.assertions/c2pa.thumbnail.claim.jpeg` would be relative to the manifest of the box containing the URI.
-    
+
 
 <a id="_external"></a>
 ##### 8.3.1.2. External
@@ -3259,11 +3259,11 @@ When creating a URI reference to an assertion (i.e., as part of constructing a [
 As described in the forthcoming dated revision to JUMBF (ISO 19566-5:2023), a new `Private` field can be present as part of any JUMBF Description box. This C2PA specification defines the C2PA salt as a `Private` field whose value is a standard box consisting of:
 
 *   a box length (LBox, as a 4-byte big-endian unsigned integer)
-    
+
 *   a box type (TBox, 4-byte big-endian unsigned integer, with a value of `c2sh` (for C2PA salt hash))
-    
+
 *   and payload data (consisting of randomly-generated binary data of either 16 or 32 bytes in length).
-    
+
 
 ![Example assertion structure](specs/_images/assertion_JUMBF.drawio.svg)
 
@@ -3427,9 +3427,9 @@ Because they serve a different purpose, a soft binding shall not be used as a ha
 All soft bindings shall be generated using one of the algorithms listed as supported by this specification. This section is intended to provide:
 
 *   A list of algorithms that are allowed for generating soft bindings of new content as well as required for validating or locating existing content (the allowed list), and
-    
+
 *   A list of algorithms that are required to be supported for validating or locating existing content but are not allowed for generating soft bindings of new content (the deprecated list).
-    
+
 
 <a id="_pre_defined"></a>
 #### 10.3.1. Pre-defined
@@ -3637,21 +3637,21 @@ If possible, the signer should use a RFC3161-compliant Time Stamp Authority (TSA
 All time-stamps shall be obtained as described in [RFC3161](https://tools.ietf.org/html/rfc3161) with the following additional requirements:
 
 *   The `MessageImprint` of the `TimeStampReq` structure ([RFC 3161 section 2.4.1](https://datatracker.ietf.org/doc/html/rfc3161#section-2.4.1)) shall be computed by creating the `ToBeSigned` value in [RFC 8152 section 4.4](https://datatracker.ietf.org/doc/html/rfc8152#section-4.4) with the following values for elements of `Sig_structure`:
-    
+
     *   The `context` element shall be `CounterSignature`.
-        
+
     *   The `payload` element shall be as described in [Section 11.3.2.4, “Signing a Claim”](#_signing_a_claim).
-        
+
     *   The remaining elements of `Sig_structure` are as described in [Section 14.2, “Digital Signatures”](#_digital_signatures).
-        
-    
+
+
 *   The `ToBeSigned` value is then hashed using a hash algorithm from the allowed list in [Section 14.1, “Hashing”](#_hashing) that the TSA supports, and that hash algorithm and value are placed in the `MessageImprint`. If the TSA does not support any hash algorithms from the allowed list, it cannot be used for time-stamping.
-    
+
     *   Where possible, the hash algorithm should use the same hash algorithm used in the digital signature of the claim.
-        
-    
+
+
 *   The `certReq` boolean of the `TimeStampReq` structure shall be asserted in the request to the TSA, to ensure its certificate chain is provided in the response.
-    
+
 
 Time-stamps shall be stored in a COSE unprotected header whose label is the string `sigTst`. If no time-stamps are included, the header shall be absent. When present, the value of this header shall be a `tstContainer` defined by the following CDDL:
 
@@ -3735,13 +3735,13 @@ At this point, the temporary claim is complete and can be added to the C2PA Mani
 Since the claim is only temporary at this time, it is not possible to sign it. To ensure the claim signature box contains a valid CBOR structure, create a temporary `COSE_Sign1_Tagged` structure as described in [RFC 8152 section 4.2](https://datatracker.ietf.org/doc/html/rfc8152#section-4.2). The `COSE_Sign1_Tagged` is a tag byte followed by a `COSE_Sign1` structure, which is a four-element CBOR array. Construct the array as follows:
 
 *   The first element is the `protected` header bucket ([RFC 8152 section 3](https://datatracker.ietf.org/doc/html/rfc8152#section-3)). Create an empty bucket by placing a `bstr` of size 0 in this position.
-    
+
 *   The second element is the `unprotected` header bucket, which is a CBOR map. Create a map of 1 pair. Use the string `pad` as the label, and place a `bstr` of the desired padding size filled with zero bytes (0x00) as the value. A 25 kilobyte size is recommended for the initial size of this padding.
-    
+
 *   The third element is the `payload`. Place the value `nil` (CBOR major type 7, value 22) here.
-    
+
 *   The fourth element is `signature`. Place a `bstr` of size 0 here.
-    
+
 
 <a id="_complete_the_c2pa_manifest"></a>
 #### 11.4.4. Complete the C2PA Manifest
@@ -3771,15 +3771,15 @@ If the serialized `COSE_Sign1_Tagged` structure exceeds the reserved size of the
 In order to support many of the requirements of C2PA, C2PA Manifests needed to be stored (serialized) into a structured binary data store that enables some specific functionality including:
 
 *   Ability to store multiple manifests (e.g., parents and ingredients) in a single container
-    
+
 *   Ability to refer to individual elements (both within and across manifests) via URIs
-    
+
 *   Ability to clearly identify the parts of an element to be hashed
-    
+
 *   Ability to store pre-defined data types used by C2PA (e.g., JSON and CBOR)
-    
+
 *   Ability to store arbitrary data formats (e.g., XML, JPEG, etc.)
-    
+
 
 In addition to supporting all of the requirements above, our chosen container format - [JUMBF, ISO 19566-5](https://www.iso.org/standard/73604.html) - is also natively supported by the JPEG family of formats and is compatible with the box-based model (i.e., [ISOBMFF, ISO 14496-12](https://www.iso.org/standard/68960.html)) used by many common image and video file formats. Using JUMBF enables all the same benefits (and a few extras, such as [URI References](#_uri_references)) while being able to work with classic image formats, such as JPEG/JFIF and PNG as well as 3D and document (e.g., PDF) formats. This serialized format shall be used also in formats that do not natively support JUMBF, or when C2PA Manifest Stores are stored separately from the asset, such as in a separate file or URI location.
 
@@ -4109,11 +4109,11 @@ All BMFF-based C2PA assets, whether they are timed (e.g., videos with or without
 Some file formats that are BMFF-based and would be supported via this method include:
 
 *   MPEG-4 code-points, either complete (`.mp4`) or fragmented (`.m4s`); downloadable audio files (`.m4a`)
-    
+
 *   HEIF (`.heif`, `.heic`)
-    
+
 *   AVIF (`.avif`)
-    
+
 
 <a id="_definition"></a>
 ###### 12.3.2.1.1. Definition
@@ -4186,18 +4186,18 @@ However, for sufficiently large assets, including every subset’s hash in the m
 Avoiding such a large C2PA Manifest Store for a large asset is achieved by using one or more Merkle trees.
 
 *   For a large non-fragmented asset that contains one or more `'mdat'` boxes in a single large file, one Merkle tree is used for each `'mdat'` box.
-    
+
 *   For a large fragmented asset that contains a set of `'mdat'` boxes for a single track which may be spread across multiple files, one Merkle tree is used for each track.
-    
+
 
 In either case:
 
 *   Each leaf node of any given Merkle tree is the subset’s hash.
-    
+
 *   The manifest stores one row of each Merkle tree.
-    
+
 *   The auxiliary `'uuid'` C2PA box that exists for each subset indicates which Merkle tree row in the active manifest it requires and which leaf node it represents. It also includes any additional hash(es) from the Merkle tree necessary to derive a hash in the active manifest’s Merkle tree row.
-    
+
 
 The selection of which Merkle tree row to store in the manifest creates a size tradeoff within the asset. Specifically, storing a single hash per Merkle tree in the manifest minimizes the size of the manifest but requires log2(subsets) to be stored in each subset-specific box. Each time the number of hashes stored in the manifest for a Merkle tree is doubled (by moving "down" one Merkle tree row), the number of hashes stored in each subset-specific box decreases by one. Thus, increasing the size of the manifest decreases the size of the entire asset and vice-versa, and since hashes for individual subsets are replicated across subsets as required to derive a manifest-specified hash, the tradeoff is not 1 to 1.
 
@@ -4214,11 +4214,11 @@ For untimed-media where an `'iloc'` box is present (such as HEIF or AVIF), the h
 Regardless of the subset-defining mechanism, all such auxiliary `'uuid'` C2PA boxes shall meet the following requirements.
 
 *   They shall be in the same sequence as the subsets they hash as specified by the `'stco'`, `'co64'`, or `'iloc'` box regardless of their location in the `'mdat'`.
-    
+
 *   They shall be grouped such that a single Merkle tree’s auxiliary `'uuid'` C2PA boxes are sequential with no intervening boxes.
-    
+
 *   The `location` value in the first box shall be set to 0, in the second box shall be set to 1, and shall increase sequentially thereafter.
-    
+
 
 > **NOTE:**
 > EDITORS NOTE
@@ -4228,9 +4228,9 @@ Regardless of the subset-defining mechanism, all such auxiliary `'uuid'` C2PA bo
 For fMP4 assets which are split across multiple files:
 
 *   One auxiliary `'uuid'` C2PA box with box\_purpose set to `'merkle'` as described below shall be included in each fragment file immediately preceding the `'moof'` box.
-    
+
 *   The hash used for a given leaf node in the Merkle tree shall be over all data in its containing single fragment file except data excluded by the exclusion list.
-    
+
 
 > **NOTE:**
 > This specification does not enable support for fMP4 assets which are split across multiple files where individual fragment files contain more than one `'moof'` box and/or `'mdat'` box.
@@ -4238,9 +4238,9 @@ For fMP4 assets which are split across multiple files:
 For fMP4 assets which are stored as a single flat MP4 file with a single `'moov'` for all tracks and then one `'moof'`/`'mdat'` pair for each fragment:
 
 *   One auxiliary `'uuid'` C2PA box with box\_purpose set to `'merkle'` as described below shall be included immediately preceding each `'moof'` box.
-    
+
 *   The hash used for a given leaf node in the Merkle tree shall be over that `'moof'` box plus all data preceding the next `'moof'` box or over all data through the end of the file if there is no further `'moof'` box. The hash shall not cover data excluded by the exclusion list.
-    
+
 
 > **IMPORTANT:**
 > Taking a c2pa-compliant fMP4 asset which is split across multiple files (i.e., has `'c2pa'` boxes of types `'manifest'` and `'merkle'`) and appending the individual files together will not produce a single file which is `'c2pa'` compliant (nor vice-versa). This is because which boxes are included in each `'merkle'` hash will be different in the two cases. If both forms are desirable, the second form shall consider the first form as an ingredient and the new manifest shall include both an 'Ingredient' assertion with relationship 'parentOf' and an 'Actions' assertion that includes an action of type 'c2pa.repackaged'.
@@ -4363,14 +4363,14 @@ In some cases, it may not be possible (or practical) to embed a C2PA Manifest St
 Some common reasons to use an external manifest are:
 
 *   It may not be technically possible, such as with a `.txt` file.
-    
+
 *   It may not be practical, such as when the size of the C2PA Manifest Store is larger than the asset’s digital content.
-    
+
 *   It may not be appropriate, such as when it would modify an asset that should not be modified.
-    
+
     > **NOTE:**
     > a good example of this is creating a manifest for a pre-existing asset.
-    
+
 
 <a id="_embedding_a_reference_to_the_active_manifest"></a>
 ### 12.5. Embedding a Reference to the Active Manifest
@@ -4401,9 +4401,9 @@ Figure 13. C2PA Entity Diagram
 All cryptographic hashes that are stored in a C2PA Manifest shall be generated using one of the hash algorithms as described in this section. This section defines both:
 
 *   A list of hash algorithms that are allowed for generating hashes of new content as well as required for validating hashes of existing content (the allowed list), and
-    
+
 *   A list of hash algorithms that are required to be supported for validating hashes of existing content but are not allowed for generating hashes of new content (the deprecated list).
-    
+
 
 > **NOTE:**
 > This section does not govern algorithms used for soft bindings as described in [Section 10.3, “Soft Bindings”](#_soft_bindings).
@@ -4417,11 +4417,11 @@ These lists establish the allowed algorithms for creating hashes and a string al
 The allowed list is:
 
 *   SHA2-256 ("sha256")
-    
+
 *   SHA2-384 ("sha384")
-    
+
 *   SHA2-512 ("sha512")
-    
+
 
 > **NOTE:**
 > The SHA-3 family of hash algorithms are not on the allowed list for consistency with the digital signature algorithm allowed list, because COSE has not yet established digital signature algorithms that use a SHA-3 algorithm as the hash algorithm. A future version of this specification will incorporate SHA-3 for hashing as well as COSE digital signature algorithms that use SHA-3 when they are available.
@@ -4434,9 +4434,9 @@ The deprecated list is empty.
 All digital signatures that are stored in a C2PA Manifest shall be generated using one of the digital signature algorithms and key types listed as described in this section. This section defines both:
 
 *   A list of digital signature algorithms and key types that are allowed for generating signatures of new content as well as required for validating signatures of existing content (the allowed list), and
-    
+
 *   A list of digital signature algorithms and key types that are required to be supported for validating signatures of existing content but are not allowed for generating signatures of new context (the deprecated list).
-    
+
 
 These lists establish the allowed algorithms and key types by referencing an algorithm identifier from the relevant standards that define algorithms for COSE and their mappings to CBOR identifiers, including but not limited to [RFC 8152](https://tools.ietf.org/html/rfc8152) and [RFC 8230](https://datatracker.ietf.org/doc/html/rfc8230/). These standards also specify the hash algorithm used in the signature scheme. Nothing in [Section 14.1, “Hashing”](#_hashing) shall apply to this use of hash algorithms; if a digital signature algorithm is present in the digital signature algorithm and key type registry, the use of its specified hash algorithm in the signature scheme shall be allowed and followed.
 
@@ -4449,36 +4449,36 @@ These lists establish the allowed algorithms and key types by referencing an alg
 The allowed list is:
 
 *   `ES256` (ECDSA with SHA-256)
-    
+
 *   `ES384` (ECDSA with SHA-384)
-    
+
 *   `ES512` (ECDSA with SHA-512)
-    
+
 *   `PS256` (RSASSA-PSS using SHA-256 and MGF1 with SHA-256)
-    
+
 *   `PS384` (RSASSA-PSS using SHA-384 and MGF1 with SHA-384)
-    
+
 *   `PS512` (RSASSA-PSS using SHA-512 and MGF1 with SHA-512)
-    
+
 *   `EdDSA` (Edwards-Curve DSA)
-    
+
     *   Ed25519 instance only. No other EdDSA instances are allowed.
-        
-    
+
+
 
 The deprecated list is empty.
 
 Implementations must check that keys provided for signing or verification operations are correct for the chosen algorithm, as required by [RFC 8152 section 8.1](https://datatracker.ietf.org/doc/html/rfc8152#section-8.1) for ECDSA, [RFC 8152 section 8.2](https://datatracker.ietf.org/doc/html/rfc8152#section-8.2) for EdDSA, and [RFC 8230 section 2](https://www.rfc-editor.org/rfc/rfc8230.html#section-2) and [section 4](https://www.rfc-editor.org/rfc/rfc8230.html#section-4) for RSASSA-PSS. These requirements are summarized here for convenience:
 
 *   ECDSA requires elliptic curve keys on the P-256, P-384, or P-521 elliptic curves.
-    
+
     *   Although it is recommended to use P-256 keys with `ES256`, P-384 keys with `ES384`, and P-521 keys with `ES512`, it is not required. Implementations must accept keys on any of these curves for all ECDSA algorithm choices.
-        
-    
+
+
 *   Ed25519 requires elliptic curve keys on the X25519 elliptic curve.
-    
+
 *   RSASSA-PSS requires RSA keys with a modulus length of at least 2048 bits.
-    
+
 
 Implementations must refuse to generate or verify signatures with keys that are not correct for the algorithm choice. Implementations may refuse RSA keys with modulus length greater than 16384 bits.
 
@@ -4499,29 +4499,29 @@ Regardless of whether the payload will be present in or detached from the `COSE_
 #### 14.2.3. Computing the Signature
 
 *   The signature is computed or verified as described in [RFC 8152 section 4.4](https://datatracker.ietf.org/doc/html/rfc8152#section-4.4). The following additional requirements apply to the construction of `Sig_structure`:
-    
+
     *   The value for the `context` element shall be `Signature1` except where a particular use of digital signatures in this specification specifies using `CounterSignature` instead. `Signature` shall not be used.
-        
+
     *   The value for the `payload` element will be specified by each use of digital signatures in this specification.
-        
+
     *   The `external_aad` element shall be a bstr of length zero. External authenticated data must not be used.
-        
+
     *   The `alg` header specifying the signature algorithm shall be present in the `body_protected` element. [RFC 8152 section 3.1](https://datatracker.ietf.org/doc/html/rfc8152#section-3.1)
-        
+
         > **NOTE:**
         > The `alg` header is a standard COSE header, and therefore is always included in the protected header map with the integer `1` as its label, as established in the [IANA COSE Header Parameters Registry](https://www.iana.org/assignments/cose/cose.xhtml#header-parameters). The literal string `alg` is never used as the label. The `sign_protected` element is always omitted when using `COSE_Sign1`.
-        
-    
+
+
 *   All digital signatures in C2PA structures shall be a `COSE_Sign1_Tagged` structure as defined in [RFC 8152 section 4.2](https://datatracker.ietf.org/doc/html/rfc8152#section-4.2). `COSE_Sign1_Tagged` contains a `COSE_Sign1` structure. The following additional requirements apply to the construction of `COSE_Sign1_Tagged`:
-    
+
     *   The same `alg` header in the `Sig_structure` above shall be present in the `protected` header bucket.
-        
+
     *   The value for the `payload` field and whether the payload is present in the signature or detached will be specified by each use of digital signatures in this specification. When the `payload` is specified as detached, its value here must be `nil`. Conversely, when the payload is present in the signature, the binary contents of the payload are stored in this field as a `bstr`.
-        
+
         > **NOTE:**
         > COSE defines `nil` to be major type 7, value 22 in [section 1.3](https://datatracker.ietf.org/doc/html/rfc8152#section-1.3) and uses this value exclusively for detached content. A byte array (major type 2) of length zero cannot be used to indicate detached content.
-        
-    
+
+
 
 <a id="_signature_validation"></a>
 #### 14.2.4. Signature Validation
@@ -4558,13 +4558,13 @@ The credential should be listed in the COSE protected headers of the `COSE_Sign1
 Each credential type will define the following data to be provided to the validator:
 
 *   How the credential is stored in the header value,
-    
+
 *   How a trust chain is computed from the signer to an entry in the validator’s trust anchor store for C2PA signers,
-    
+
 *   The public key in the credential used to validate the signature, and
-    
+
 *   The time validity period of the credential.
-    
+
 
 The name of the header to indicate credential type, how the credential is stored in the header value, and how trust chains are constructed are specified for each credential type in [Section 15.4, “Credential Types”](#_credential_types).
 
@@ -4576,11 +4576,11 @@ As part of the validation of an asset, the signer’s credential is validated as
 A validator shall maintain the following lists:
 
 *   A list of X.509 certificate trust anchors for C2PA signers,
-    
+
 *   A list of accepted Extended Key Usage (EKU) values for C2PA signers, and
-    
+
 *   A list of X.509 certificate trust anchors for Time Stamp Authorities.
-    
+
 
 In this section, "user" refers to human actors that are using C2PA-compliant validators in consumption and authoring scenarios.
 
@@ -4625,9 +4625,9 @@ The `subjectPublicKeyInfo` element of the first or only certificate will be the 
 A previous version of this specification required claim generators to write the string label `x5chain` only to avoid the unlikely possibility that the integer label 33 would not be standardized. Integer label 33 has now been standardized, and this specification now adopts it as standard, and deprecates use of the string label. Therefore:
 
 *   Claim generators should use only the integer 33 as the label when inserting this header into a COSE signature. Claim generators may continue to write the string label `x5chain` but this behaviour is now deprecated and claim generators should be updated to use the integer label only. Claim generators shall place this header only in the protected header bucket of the COSE signature as required above.
-    
+
 *   Validators shall accept either the string `x5chain` or the integer 33 as the label for this header. If both labels are present, validators shall use the header with the integer label 33 and ignore the header with the string `x5chain` as the label. Validators shall accept the header from either the protected or unprotected bucket, to maintain compatibility with previous versions of this specification. In compliance with [Section 15.2, “Identity of Signers”](#_identity_of_signers), if this header appears in both the protected and unprotected buckets with the same label, a validator must reject the claim signature as malformed due to the presence of multiple credentials.
-    
+
 
 <a id="_certificate_profile"></a>
 ##### 15.4.1.1. Certificate Profile
@@ -4637,103 +4637,103 @@ This section defines the requirements to validate that an X.509 certificate is a
 All certificates must fulfill the following requirements.
 
 *   The `algorithm` field of the `signatureAlgorithm` field shall be one of the following values:
-    
+
     `ecdsa-with-SHA256`
-    
+
     [RFC 5758 section 3.2](https://datatracker.ietf.org/doc/html/rfc5758#section-3.2)
-    
+
     `ecdsa-with-SHA384`
-    
+
     [RFC 5758 section 3.2](https://datatracker.ietf.org/doc/html/rfc5758#section-3.2)
-    
+
     `ecdsa-with-SHA512`
-    
+
     [RFC 5758 section 3.2](https://datatracker.ietf.org/doc/html/rfc5758#section-3.2)
-    
+
     `sha256WithRSAEncryption`
-    
+
     [RFC 8017 appendix A.2.4](https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.4)
-    
+
     `sha384WithRSAEncryption`
-    
+
     [RFC 8017 appendix A.2.4](https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.4)
-    
+
     `sha512WithRSAEncryption`
-    
+
     [RFC 8017 appendix A.2.4](https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.4)
-    
+
     `id-RSASSA-PSS`
-    
+
     [RFC 8017 appendix A.2.3](https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.3)
-    
+
     `id-Ed25519`
-    
+
     [RFC 8410 section 3](https://datatracker.ietf.org/doc/html/rfc8410#section-3)
-    
+
 *   If the `algorithm` field of the `signatureAlgorithm` field is `id-RSASSA-PSS`, the `parameters` field is of type `RSASSA-PSS-params`. Its fields shall have the following requirements: [RFC 8017 section A.2.3](https://datatracker.ietf.org/doc/html/rfc8017#appendix-A.2.3)
-    
+
     *   The `hashAlgorithm` field shall be present.
-        
+
     *   The `algorithm` field of the `hashAlgorithm` field shall be one of the following values: [RFC 8017 appendix B.1](https://datatracker.ietf.org/doc/html/rfc8017#appendix-B.1)
-        
+
         *   `id-sha256`
-            
+
         *   `id-sha384`
-            
+
         *   `id-sha512`
-            
-        
+
+
     *   The `maskGenAlgorithm` field shall be present.
-        
+
     *   The `algorithm` field of the `parameters` field of the `maskGenAlgorithm` field shall be equal to the `algorithm` field of the `hashAlgorithm` field.
-        
-    
+
+
 *   If the `algorithm` field of the `algorithm` field of the certificate’s `subjectPublicKeyInfo` is `id-ecPublicKey`, the `parameters` field shall be one of the following named curves: [RFC 5480 section 2.1.1.1](https://datatracker.ietf.org/doc/html/rfc5480#section-2.1.1.1)
-    
+
     *   `prime256v1`
-        
+
     *   `secp384r1`
-        
+
     *   `secp521r1`
-        
-    
+
+
 *   If the `algorithm` field of the `algorithm` field of the certificate’s `subjectPublicKeyInfo` is `rsaEncryption` or `rsaPSS`, the `modulus` field of the `parameters` field shall have a length of at least 2048 bits.
-    
+
 
 All certificates except those in the private credential store for X.509 certificates must fulfill the following additional requirements to be acceptable.
 
 *   Version must be v3. [RFC 5280 section 4.1.2.1](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.1)
-    
+
 *   The `issuerUniqueID` and `subjectUniqueID` optional fields of the `TBSCertificate` sequence must not be present. [RFC 5280 section 4.1.2.8](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.8)
-    
+
 *   The Basic Constraints extension must follow [RFC 5280 section 4.2.1.9](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.9). In particular, it must be present with the `cA` boolean asserted if the certificate issues certificates, and not asserted if it does not.
-    
+
 *   The Authority Key Identifier extension must be present in any certificate that is not self-signed. [RFC 5280 section 4.2.1.1](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.1)
-    
+
 *   The Subject Key Identifier extension must be present in any certificate that acts as a CA. It should be present in end entity certificates. [RFC 5280 section 4.2.1.2](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.2)
-    
+
 *   The Key Usage extension must be present and should be marked as critical. Certificates used to sign C2PA manifests must assert the `digitalSignature` bit. The `keyCertSign` bit must only be asserted if the `cA` boolean is asserted in the Basic Constraints extension. [RFC 5280 section 4.2.1.3](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.3)
-    
+
 *   The Extended Key Usage (EKU) extension must be present and non-empty in any certificate where the Basic Constraints extension is absent or the `cA` boolean is not asserted. These are commonly called "end entity" or "leaf" certificates. [RFC 5280 section 4.2.1.12](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.12)
-    
+
     *   The `anyExtendedKeyUsage` EKU (2.5.29.37.0) must not be present.
-        
+
     *   If the configuration store contains a list of EKUs, a certificate that signs C2PA manifests must be valid for at least one of the listed purposes.
-        
+
     *   If the configuration store does not contain a list of EKUs, a certificate that signs C2PA manifests must be valid for the `id-kp-emailProtection` (1.3.6.1.5.5.7.3.4) purpose and/or the `id-kp-documentSigning` (1.3.6.1.5.5.7.3.36) purpose.
-        
+
         *   The `id-kp-emailProtection` purpose is not implicitly included by default if a list of EKUs has been configured. If desired, it must explicitly be added to the list in the configuration store.
-            
-        
+
+
     *   A certificate that signs time-stamping countersignatures must be valid for the `id-kp-timeStamping` (1.3.6.1.5.5.7.3.8) purpose.
-        
+
     *   A certificate that signs OCSP responses for certificates must be valid for the `id-kp-OCSPSigning` (1.3.6.1.5.5.7.3.9) purpose.
-        
+
     *   If a certificate is valid for either `id-kp-timeStamping` or `id-kp-OCSPSigning`, it must be valid for exactly one of those two purposes, and not valid for any other purpose.
-        
+
     *   A certificate should not be valid for any other purposes outside of the purposes listed above, but the presence of any EKUs not mentioned in this profile and not in the list of EKUs in the configuration store shall not cause the certificate to be rejected.
-        
-    
+
+
 
 <a id="_certificate_trust_chain"></a>
 ###### 15.4.1.1.1. Certificate Trust Chain
@@ -4781,18 +4781,18 @@ Before signing a claim, if a signer’s certificate has the AIA extension, a sig
 A validator must follow the requirements of [RFC 6960](https://datatracker.ietf.org/doc/html/rfc6960), in particular [section 3](https://datatracker.ietf.org/doc/html/rfc6960#section-3), when constructing an OCSP query and accepting an OCSP response. If the response is not accepted, or contains a `certStatus` of `unknown`, nothing can be concluded about the certificate’s revocation status, and therefore:
 
 *   If the unusable response is in an `rVals` header, the validator must proceed as if the header was absent.
-    
+
 *   If the unusable response is received in reply to an OCSP query at validation time, the validator must proceed as if it chose not to make the query.
-    
+
 
 An accepted OCSP response in the `rVals` header establishes that the signer’s certificate was not revoked at the time of signing if all of the following requirements are met:
 
 *   The manifest has a valid time-stamp, and the attested time falls within the `(thisUpdate,nextUpdate)` interval of the response,
-    
+
 *   The `certStatus` field of the response is `good`, or `revoked` but with a `revocationReason` of `removeFromCRL`, and
-    
+
 *   The signer of the response is an "authorized responder" as defined by [RFC 6960 section 4.2.2.2](https://datatracker.ietf.org/doc/html/rfc6960#section-4.2.2.2).
-    
+
 
 > **NOTE:**
 > The `removeFromCRL` is unique amongst the values of `revocationReason` because it is equivalent to a `good` response. Despite being a type of `revoked` response, this response indicates the certificate had temporarily been put "on hold" (the `certificateHold` reason) previously due to some concern about its integrity, but that the concern has been resolved and the issuer is stating the certificate remains trustworthy.
@@ -4802,23 +4802,23 @@ Validators must check the `revocationReason` of any `revoked` response to disamb
 If the `rVals` header is not present or does not contain an accepted OCSP response, or if the manifest does not have a time-stamp, but the certificate has an AIA extension, the validator may choose to query the OCSP responder, as described in [Section 16.6, “Validate the Credential Revocation Information”](#_validate_the_credential_revocation_information). If it does, and the response is accepted per the requirements of RFC 6960, it shall establish the signer’s certificate was not revoked at the time of signing if either of the following requirements is fulfilled:
 
 *   The manifest has a valid time-stamp, and the attested time falls within the `(thisUpdate,nextUpdate)` interval of the response, or
-    
+
 *   The manifest does not have a valid time-stamp but the current time falls within the `(thisUpdate,nextUpdate)` interval of the response,
-    
+
 
 And both of the following requirements are fulfilled:
 
 *   The `certStatus` field of the response is `good`, or `revoked` but with a `revocationReason` of `removeFromCRL`, and
-    
+
 *   The signer of the response is an "authorized responder" as defined by [RFC 6960 section 4.2.2.2](https://datatracker.ietf.org/doc/html/rfc6960#section-4.2.2.2).
-    
+
 
 If the `certStatus` field of the response is `revoked` but with a `revocationReason` that is not `removeFromCRL`, it shall establish the signer’s certificate was not revoked at the time of signing if both of the following requirements are met:
 
 *   The manifest has a valid time-stamp, and the attested time falls within the `(thisUpdate,nextUpdate)` interval of the response, and
-    
+
 *   The `revocationTime` in the response is after the attested time-stamp.
-    
+
 
 Otherwise, the certificate shall be considered revoked at the time of signing and the claim shall be rejected.
 
@@ -4835,21 +4835,21 @@ A validator is a manifest consumer that will produce some [validation](#_validat
 A validator can make the following true or false statements about the asset they are validating, and no more.
 
 1.  The active manifest has not been modified since the active manifest was signed
-    
+
 2.  The portions of the asset that are covered by content bindings have not been modified since the active manifest was produced
-    
+
 3.  The claim was produced by a claim generator (typically software), and signed by an actor identified in the subject field of the signing credential
-    
+
 4.  The assertions of the active manifest are statements by the signer and their contents are not verified
-    
+
 5.  The assertions of the active manifest have not been modified since the active manifest was produced
-    
+
 6.  The assets referred to by ingredient assertions are not (necessarily) available at validation of the active manifest, and therefore their hashes cannot be validated
-    
+
 7.  The ingredient assertion may contain a `validationStatus` field that indicates the active manifest signer’s assessment of the validation state of the ingredient at the time of adding the ingredient
-    
+
 8.  The content of ingredient assertions, like all other assertions, is not independently validated
-    
+
 
 <a id="_endorsement"></a>
 ### 15.7. Endorsement
@@ -5011,15 +5011,15 @@ If there are multiple C2PA Manifest Stores present in a single update section, t
 If there is no embedded C2PA Manifest Store, the following attempts should be made to locate one at a remote location.
 
 *   If the asset was retrieved via an HTTP connection, the manifest consumer should look in the header of the HTTP response for a `Link` header, as defined in [RFC 8288](https://datatracker.ietf.org/doc/html/rfc8288), containing a parameter of `rel=c2pa-manifest`. If present, a C2PA Manifest Store can be retrieved from that URI reference.
-    
+
 
 > **NOTE:**
 > HTTP refers to the _Hypertext Transfer Protocol_ defined in [RFC 7230](https://tools.ietf.org/html/rfc7230), not the specific URL scheme `http://`.
 
 *   If the asset has XMP and the XMP contains a `dcterms:provenance` key, the provided URI should be used to locate the active manifest.
-    
+
 *   If no C2PA Manifest Store has been located, the manifest consumer should look for files at the same path or URI, but with a filename extension of `.c2pa`. If the C2PA Manifest Store is not found, a manifest consumer may look in whatever additional places it deems most appropriate to locate it. For example, a child folder of a file system.
-    
+
 
 > **NOTE:**
 > A manifest consumer is not restricted to only the above locations, it can choose to look in additional locations as well.
@@ -5058,13 +5058,13 @@ For the remainder of this chapter, headers refer to the union of the set of prot
 If the `sigTst` header is present, the claim is valid if the `tstTokens` array contains at least one `tstToken` whose `val` property is an RFC3161-compliant `TimeStampResp` which satisfies the following requirements. To aid in diagnosing time-stamp problems, a validator should maintain a list called `timeStampStatusCodes` which is also described in the following requirements:
 
 *   The time-stamp contains a message imprint as described in [Section 11.3.2.5, “Time-stamps”](#_time_stamps) that matches the claim being validated. If it does not, the time-stamp must be ignored, and the failure code `timeStamp.mismatch` should be added to `timeStampStatusCodes`.
-    
+
 *   The time attested by the Time Stamp Authority (TSA) falls within the validity period of the signing credential. If it does not, the time-stamp must be ignored.
-    
+
 *   The attested time falls within the validity period of the TSA’s signing certificate. If it does not, the time-stamp must be ignored, and the failure code `timeStamp.outsideValidity` should be added to `timeStampStatusCodes`.
-    
+
 *   A trust chain can be built to an entry in the TSA trust store as described in [Section 15.3, “Signer Credential Trust”](#_signer_credential_trust). If the TSA’s certificate cannot be located (as described in [RFC 3161 section 2.4.1](https://datatracker.ietf.org/doc/html/rfc3161#section-2.4.1)), the time-stamp must be ignored, the failure code `timeStamp.untrusted` should be added to `timeStampStatusCodes`.
-    
+
 
 > **NOTE:**
 > Time-stamps remain valid even after the signing credential of the time-stamp authority expires, so long as the attested time falls within the time-stamp authority’s certificate’s validity period. This is a special type of trust extended only to time-stamp authorities. At time of validation, when a time-stamp is present, validators must use the attested time, and not the current time, when determining the time validity of the signing certificate and the time-stamp authority’s certificate.
@@ -5085,14 +5085,14 @@ If the signer’s credential type does not support revocation status, or the cre
 If the signer’s credential type supports revocation, and the credential’s issuer provided a method to query its revocation status:
 
 *   If the `rVals` header is present, its contents shall be validated as described in [Section 15.4, “Credential Types”](#_credential_types) for the signer credential type.
-    
+
 *   If the `rVals` header is not present, and the signer’s credential is considered valid by the requirements of [Section 16.4, “Validate the Signature”](#_validate_the_signature) and [Chapter 15, _Trust Model_](#_trust_model), a validator may choose to query the credential status method to determine if the credential is currently revoked.
-    
+
     *   If the validator does not query the credential status, the validator shall presume the credential is not revoked.
-        
+
     *   If the validator does query the credential status, it shall determine the status from the response as described in [Section 15.4, “Credential Types”](#_credential_types) for the signer’s credential type.
-        
-    
+
+
 
 > **NOTE:**
 > Querying the credential status method can reveal to an observer the identity of the asset being validated, and so this query is optional.
@@ -5111,19 +5111,19 @@ In all cases, if the credential is deemed revoked at the time of signing, the cl
 Depending on the [type of manifest](#_types_of_manifests), there are assertions that are either required or forbidden. A validator shall check for required and not-permitted assertions.
 
 1.  If it is a [standard manifest](#_standard_manifests)
-    
+
     1.  Validate that there is exactly one [hard binding to content](#_binding_to_content) assertion - either a `c2pa.hash.data`, a `c2pa.hash.boxes`, a `c2pa.hash.bmff` (deprecated), or a `c2pa.hash.bmff.v2` based on the type of asset for which the manifest is destined. If no such assertion is present, the manifest must be rejected with a failure code of `claim.hardBindings.missing`. If there is more than one such assertion, the manifest must be rejected with a failure code of `assertion.multipleHardBindings`.
-        
+
     2.  Validate that there are zero or one `c2pa.ingredient` assertions whose `relationship` is `parentOf`. If there is more than one, the manifest must be rejected with a failure code of `manifest.multipleParents`.
-        
-    
+
+
 2.  If it is an [update manifest](#_update_manifests)
-    
+
     1.  Validate that there are not any `c2pa.hash.data`, `c2pa.hash.boxes`, `c2pa.hash.bmff`, `c2pa.hash.bmff.v2`, `c2pa.actions`, `c2pa.actions.v2` or [Thumbnail](#_thumbnails) assertions. If there are, the manifest must be rejected with a failure code of `manifest.update.invalid`.
-        
+
     2.  Validate that there is exactly one `c2pa.ingredient` assertion and whose `relationship` is `parentOf`. If there is not (i.e., either it is missing, there are more than one, or the value of `relationship` is not `parentOf`), the manifest must be rejected with a failure code of `manifest.update.wrongParents`.
-        
-    
+
+
 
 <a id="_preparing_the_list_of_redacted_assertions"></a>
 #### 16.7.2. Preparing the list of redacted assertions
@@ -5136,74 +5136,74 @@ For each manifest, there may be a set of its assertions that were redacted from 
 Each assertion in the `assertions` field of the claim is a `hashed_uri` structure. For each assertion, the validator must:
 
 1.  If the URI reference in the `url` field is in the [list of redacted assertions](#_preparing_the_list_of_redacted_assertions):
-    
+
     1.  If the assertion’s label is `c2pa.actions` or `c2pa.actions.v2`, the claim must be rejected with a failure code of `assertion.action.redacted` as `c2pa.actions` and `c2pa.actions.v2` assertions shall not be redacted.
-        
+
     2.  Otherwise, the redacted assertion is considered valid, and validation continues to the next assertion.
-        
-    
+
+
 2.  For all other assertions:
-    
+
     1.  Resolve the URI reference in the `url` field to obtain its data. If the URI does not refer to a location within the same C2PA Manifest Store (a `self#jumbf` location), the claim must be rejected. If the URI cannot be resolved and the data retrieved, the claim must be rejected with a failure code of `assertion.missing`.
-        
+
         > **NOTE:**
         > A claim can refer to an assertion in a different C2PA Manifest box than the one it is in, provided that they are both in the same C2PA Manifest Store.
-        
+
         1.  If the assertion’s label is `c2pa.cloud-data`:
-            
+
             1.  If the `label` field of the external assertion is `c2pa.hash.data`, `c2pa.hash.boxes`, `c2pa.hash.bmff`, or `c2pa.hash.bmff.v2`, the claim must be rejected with a failure code of `assertion.cloud-data.hardBinding`.
-                
+
             2.  If the manifest is an update manifest and the `label` field of the external assertion is `c2pa.actions` or `c2pa.actions.v2`, the claim must be rejected with a failure code of `assertion.cloud-data.actions`.
-                
-            
+
+
         2.  Determine the hash algorithm identifier as determined by following the procedure described in [Section 14.1, “Hashing”](#_hashing):
-            
+
             1.  If an `alg` field is present in the `hashed_uri` structure, that determines the hash algorithm.
-                
+
             2.  If an `alg` field is not present in the `hashed_uri` structure, an `alg` field must be present in an enclosing structure, and the nearest instance present determines the hash algorithm.
-                
+
             3.  If no `alg` field is found in any of these locations:
-                
+
                 1.  If an `alg` field is present in the claim, that determines the hash algorithm.
-                    
+
                 2.  If no `alg` field is present in the claim, the claim must be rejected with a failure code of `assertion.hashedURI.mismatch`.
-                    
-                
-            
+
+
+
         3.  If the assertion’s label is `c2pa.actions` or `c2pa.actions.v2`:
-            
+
             1.  For each action in the `actions` list:
-                
+
                 1.  If the `action` field is `c2pa.opened`, `c2pa.placed`, `c2pa.removed`, `c2pa.repackaged`, or `c2pa.transcoded`:
-                    
+
                     1.  Check the `ingredient` field that is a member of the `parameters` object for the presence of a JUMBF URI. If the JUMBF URI is not present, or cannot be resolved to the related ingredient assertion, the claim must be rejected with a failure code of `assertion.action.ingredientMismatch`.
-                        
+
                     2.  Follow the JUMBF URI link in the `ingredient` field to the ingredient assertion. Check that the URI link resolves to an assertion in the active manifest. If it does not, the claim must be rejected with a failure code of `assertion.action.ingredientMismatch`.
-                        
+
                     3.  For `c2pa.opened`, `c2pa.repackaged`, or `c2pa.transcoded`: Check that the value of the `relationship` field is `parentOf`. If it is not, the claim must be rejected with a failure code of `assertion.action.ingredientMismatch`.
-                        
+
                     4.  For `c2pa.placed` or `c2pa.removed`: Check that the value of the `relationship` field is `componentOf`. If it is not, the claim must be rejected with a failure code of `assertion.action.ingredientMismatch`.
-                        
+
                     5.  Check the `c2pa_manifest` field in the ingredient assertion for the presence of a hashed URI. If the hashed URI is not present, or cannot be resolved to a manifest, the claim must be rejected with a failure code of `assertion.action.ingredientMismatch`.
-                        
-                    
+
+
                 2.  If the `action` field is `c2pa.redacted`:
-                    
+
                     1.  Check the `redacted` field that is a member of the `parameters` object for the presence of a JUMBF URI. If the JUMBF URI is not present, or cannot be resolved to an assertion, the claim must be rejected with a failure code of `assertion.action.redactionMismatch`.
-                        
-                    
-                
-            
+
+
+
+
         4.  Locate the value of the `alg` field in the allowed list or the deprecated list in [Section 14.1, “Hashing”](#_hashing) to determine the hash algorithm. If it is not present in either list, the claim must be rejected with a failure code of `algorithm.unsupported`.
-            
+
         5.  Compute the hash of the assertion using that algorithm and the procedure described in [Section 8.3.1.3, “Hashing JUMBF Boxes”](#_hashing_jumbf_boxes).
-            
+
         6.  Compare the computed hash value with the value in the `hash` field. If they do not match, the claim must be rejected with a failure code of `assertion.hashedURI.mismatch`.
-            
+
         7.  Otherwise, the assertion is valid and validation continues to the next assertion.
-            
-        
-    
+
+
+
 
 Then, for each element of the claim’s own `redacted_assertions` array, if any element of the claim’s `assertions` array has a `url` field equal to that value, the claim must be rejected with a failure code of `assertion.selfRedacted`. A claim cannot redact its own assertions, only those of its ingredients.
 
@@ -5223,33 +5223,33 @@ The contents of a [cloud data assertion](#_cloud_data) contains the URI referenc
 If a validator chooses to retrieve any of the external data in a cloud data assertion, the validator must:
 
 1.  First, determine the hash algorithm to be used.
-    
+
     1.  If an `alg` field is present in the `hashed_ext_uri` structure, that determines the hash algorithm. If an `alg` field is not present, the validator must abort the attempt to retrieve the external data.
-        
+
     2.  Locate the value of the `alg` field in the allowed list or the deprecated list in [Section 14.1, “Hashing”](#_hashing) to determine the hash algorithm. If it is not present in either list, the validator must abort the attempt to retrieve the external data.
-        
+
         > **NOTE:**
         > The `alg` field is mandatory in `hashed_ext_uri`, so no recursive procedure to determine the hash algorithm is required.
-        
-    
+
+
 2.  Resolve the URI reference in the `url` field to obtain its data. If the URI cannot be resolved and the data retrieved, the validator must abort the attempt to retrieve the external data.
-    
+
 3.  If the size of the retrieved data is not equal to the value of the `size` field, the validator must return a failure code of `assertion.hashedURI.mismatch` to the application and not provide the retrieved data.
-    
+
 4.  Validate that the content type returned in the `Content-Type` header of the HTTP response is equal to the declared content type. If they do not match, the validator must return a failure code of `assertion.hashedURI.mismatch` to the application and not provide the retrieved data. The declared content type is determined by:
-    
+
     1.  For external data, the content type is determined by the `dc:format` field of the `hashed_ext_uri` structure. If the `dc:format` field is absent, content type validation is always successful.
-        
+
     2.  For a cloud data assertion, if the `dc:format` field is present in its `location` field, that determines the content type and the value of the cloud data assertion’s `content_type` field is ignored. If `location` does not have a `dc:format` field, then the assertion’s `content_type` field determines the content type.
-        
-    
+
+
 5.  Compute the hash of the data. For a cloud data assertion, use the hash algorithm and the procedure described in [Section 8.3.1.3, “Hashing JUMBF Boxes”](#_hashing_jumbf_boxes) on the retrieved content. For external data, use the hash algorithm and the exact retrieved content as input to the hash function.
-    
+
     1.  Compare the computed hash value with the value in the `hash` field. If they do not match, the validator must return a failure code of `assertion.hashedURI.mismatch` to the application and not provide the retrieved data.
-        
+
     2.  Otherwise, the retrieved data is successfully provided to the application.
-        
-    
+
+
 
 <a id="_recursively_validating_integrity_of_ingredients"></a>
 ### 16.8. Recursively Validating Integrity of Ingredients
@@ -5267,46 +5267,46 @@ In authoring scenarios, it may be desirable to more prominently raise warnings s
 If the manifest is an update manifest, or if a validator chooses to validate the ingredients of a standard manifest, then for each ingredient, it must recursively:
 
 *   If the ingredient does not have a `c2pa_manifest` field
-    
+
     1.  If the manifest is a standard manifest, then the ingredient is accepted.
-        
+
     2.  If the manifest is an update manifest, then the claim must be rejected with a failure code of `manifest.update.wrongParents`.
-        
-    
+
+
 *   If the ingredient does have a `c2pa_manifest` field:
-    
+
     1.  Create an [list of redacted assertions](#_preparing_the_list_of_redacted_assertions) which is the concatenation of the claim’s `redacted_assertions` array with any pre-existing redacted assertions list from previous recursive calls. This list is therefore only the redacted assertions from the active manifest’s claim and any ingredients along the path to the current ingredient.
-        
+
     2.  Resolve the URI reference in the `url` field to obtain the ingredient claim’s manifest. If the URI reference cannot be resolved, the ingredient claim is rejected with a failure code of `claim.missing`.
-        
+
     3.  Determine the hash algorithm identifier as determined by following the procedure described in [Section 14.1, “Hashing”](#_hashing):
-        
+
         1.  If an `alg` field is present in the `hashed_uri` structure, that determines the hash algorithm.
-            
+
         2.  If an `alg` field is not present in the `hashed_uri` structure, an `alg` field must be present in an enclosing structure, and the nearest instance present determines the hash algorithm.
-            
+
         3.  If no `alg` field is found in any of these locations, the claim must be rejected with a failure code of `ingredient.hashedURI.mismatch`.
-            
-        
+
+
     4.  Locate the value of the `alg` field in the allowed list or the deprecated list in [Section 14.1, “Hashing”](#_hashing) to determine the hash algorithm. If it is not present in either list, the claim must be rejected with a failure code of `algorithm.unsupported`.
-        
+
     5.  Compute the hash of the ingredient manifest’s data using that algorithm and the procedure described in [Section 8.3.1.3, “Hashing JUMBF Boxes”](#_hashing_jumbf_boxes).
-        
+
     6.  Compare the computed hash with the value in the `hash` field. If the hashes are not equal, the claim must be rejected with a failure code of `ingredient.hashedURI.mismatch`.
-        
+
     7.  If the ingredient contains a `validationStatus` field, each of the entries in the array shall be evaluated. If the `code` field of any `validationStatus` equals a failure code or has a `success` field with a value of `false`, as defined at [Section 16.1.2, “Failure codes”](#_failure_codes), the ingredient’s claim is admitted. An admitted manifest is treated like an accepted manifest, but with an explicit indication that it may contain validation errors that are known to the signer. If admitted in this way, the validator must present each `validationStatus` present in the `validationStatus` field array as part of any exploration of the provenance history. Validators should perform full validation if exploration of the provenance history of the ingredient is requested to indicate where there are validation errors.
-        
+
         > **NOTE:**
         > The presence of a `validationStatus` with a failure code or with a `success` field with a value of `false` is an explicit statement by the signer that they acknowledged and have chosen to override validation errors in the ingredient’s claim itself.
-        
+
     8.  Otherwise, validate the ingredient claim and assertions as described beginning in [Section 16.4, “Validate the Signature”](#_validate_the_signature), except skip establishing signer credential trust, as this is not applicable to ingredients.
-        
+
         1.  When validating the assertions as described in [Section 16.7, “Validate the Assertions”](#_validate_the_assertions), provide a [list of redacted assertions](#_preparing_the_list_of_redacted_assertions) as an input.
-            
+
         2.  The validator may optionally recursively validate the ingredient’s ingredients. If it does and those are accepted, the ingredient’s claim is accepted. If any are rejected, the ingredient’s claim is rejected. If the validator chooses not to recurse further, the ingredient’s claim is accepted.
-            
-        
-    
+
+
+
 
 <a id="_validate_the_endorsements"></a>
 ### 16.9. Validate the Endorsements
@@ -5314,37 +5314,37 @@ If the manifest is an update manifest, or if a validator chooses to validate the
 Endorsement validation shall only be attempted if the active manifest first meets a number of conditions:
 
 *   An `actions` assertion is present in the assertion store
-    
+
 *   There is exactly one `ingredient` assertion
-    
+
 
 Retrieve the endorsement assertion in the active manifest, as described in [Section 19.15, “Endorsement Assertion”](#_endorsement_assertion). In order to provide resilience in the case of a claim generator unexpectedly adding multiple endorsement assertions to an assertion store, a validator may iterate through the validation process below with each endorsement, stopping the iteration immediately if an endorsement validates successfully.
 
 For each `action` object in the [actions](#_actions) assertion:
 
 1.  Check that the `action` field is set to `c2pa.published`, `c2pa.transcoded` or `c2pa.repackaged`. If any other action is present, fail the endorsement process for this manifest and do not proceed with further validation.
-    
+
 2.  Check the `ingredient` field that is a member of the `parameters` object for the presence of a JUMBF URI. If the JUMBF URI is not present, or cannot be resolved to the related ingredient assertion, skip endorsement for this action.
-    
+
 3.  Follow the JUMBF URI link in the `ingredient` field to the ingredient assertion. Check that the URI link resolves to an assertion in the active manifest. If it does not, skip endorsement for this action. Check that the `relationship` field is `parentOf`. If it is not, skip endorsement for this action.
-    
+
 4.  Check the `c2pa_manifest` field in the ingredient assertion for the presence of a hashed URI. If the hashed URI is not present, or cannot be resolved to a manifest, skip endorsement for this action.
-    
+
 5.  Follow the JUMBF URI link in the `c2pa_manifest` field to the ingredient’s manifest. Ensure that this _ingredient_ manifest has been validated according to [Section 16.8, “Recursively Validating Integrity of Ingredients”](#_recursively_validating_integrity_of_ingredients), but do not skip the establishing of signer credential trust. If it does not validate, skip endorsement for this action.
-    
+
 6.  Validate the endorsement as described in [Section 16.4, “Validate the Signature”](#_validate_the_signature), using the credential of the ingredient manifest signer. If a signing credential is present in the endorsement’s signature’s headers, it shall not be used for validation. If validation fails, skip this action.
-    
+
 7.  Validate the `endorsement-target` payload itself, following the steps below:
-    
+
     1.  Compare the `endorseeCredential` to the credential of the active manifest signer, according to the table found in [Section 15.7.1.1, “Endorsement Credential Types”](#_endorsement_credential_types). If the comparison fails, skip this endorsement.
-        
+
     2.  If the active manifest is timestamped, then the _time-stamp_ must fall within the endorsement’s validity time range. If it does not, skip this endorsement.
-        
+
     3.  If the active manifest is not timestamped, then the _time of validation_ must fall within the endorsement’s validity time range. If it does not, skip this endorsement.
-        
+
     4.  If validation fails, skip this endorsement. If validation succeeds, mark that action as _endorsed_.
-        
-    
+
+
 
 When endorsement validation has completed, for each `actions` assertion in the active manifest where all actions are marked as _endorsed_, the `actions` assertion itself shall be marked as _endorsed_ in the validation results returned by the validator.
 
@@ -5424,9 +5424,9 @@ The C2PA intends to provide clear recommendations and guidance for implementers 
 The UX recommendations aim to define best practices for presenting C2PA provenance to consumers. The recommendations strive to describe standard, readily recognizable experiences that:
 
 *   provide asset creators a means to capture information and history about the content they are creating, and
-    
+
 *   provide asset consumers information and history about the content they are experiencing, thereby empowering them to understand where it came from and decide how much to trust it.
-    
+
 
 User interfaces designed for the consumption of C2PA provenance must be informed by the context of the asset. We have studied 4 primary user groups and a collection of contexts in which C2PA assets are encountered. These user groups have been defined in the [C2PA Guiding Principles](https://c2pa.org/principles/) as Consumers, Creators, Publishers and Verifiers (or Investigators). To serve the needs of each of these groups across common contexts, exemplary user interfaces are presented for many common cases. These are recommendations, not mandates, and we expect best practices to evolve.
 
@@ -5436,13 +5436,13 @@ User interfaces designed for the consumption of C2PA provenance must be informed
 Because the complete set of C2PA data for a given asset can be overwhelming to a user, we describe 4 levels of progressive disclosure which guide the designs:
 
 *   Level 1: An indication that C2PA data is present and its cryptographic validation status.
-    
+
 *   Level 2: A summary of C2PA data available for a given asset. This level should provide enough information for the particular content, user, and context to allow the consumer to understand to a sufficient degree how the asset came to its current state.
-    
+
 *   Level 3: A detailed display of all relevant provenance data. Note that the relevance of certain items over others is contextual and determined by the UX implementer.
-    
+
 *   Level 4: For sophisticated, forensic investigatory usage, a tool capable of revealing all the granular detail of signatures and trust signals is recommended.
-    
+
 
 <a id="_public_review_feedback_and_evolution"></a>
 ### 17.4. Public Review, Feedback and Evolution
@@ -5465,11 +5465,11 @@ Information security is a principal concern of C2PA. C2PA maintains a threat mod
 The C2PA is developing security considerations documentation that includes:
 
 *   A summary of relevant security features of C2PA technology
-    
+
 *   Security considerations for practical use of C2PA technology
-    
+
 *   Threats to C2PA technology and respective treatment of those threats, including countermeasures
-    
+
 
 <a id="_threat_modelling_process_overview"></a>
 #### 18.1.2. Threat modelling process overview
@@ -5488,19 +5488,19 @@ Like other security activities, we expect our threat modelling process to evolve
 A variety of references and experiences are used to inform threat modelling and related security activities for the C2PA. This section provides a subset of public documents for reference.
 
 *   [IETF on security considerations](https://datatracker.ietf.org/doc/html/rfc3552#page-26)
-    
+
 *   [IETF on privacy considerations (guidelines)](https://datatracker.ietf.org/doc/html/rfc6973#section-7)
-    
+
 *   [W3C security and privacy self-review questionnaire](https://www.w3.org/TR/security-privacy-questionnaire/)
-    
+
 *   [OAuth2 threat model (example)](https://datatracker.ietf.org/doc/html/rfc6819)
-    
+
 *   [Threat modelling: Designing for Security](https://shostack.org/books/threat-modelling-book)
-    
+
 *   [OWASP Threat modelling](https://owasp.org/www-community/Threat_modelling)
-    
+
 *   [Microsoft Threat modelling](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodelling)
-    
+
 
 <a id="_harms_misuse_and_abuse"></a>
 ### 18.2. Harms, Misuse, and Abuse
@@ -5515,11 +5515,11 @@ To ensure that the C2PA is meeting this aspect of its principles, the harms, mis
 In addition, the specifications are being reviewed to:
 
 *   Anticipate and mitigate potential abuse and misuse;
-    
+
 *   Address common privacy concerns of its users; and
-    
+
 *   Consider the needs of users and stakeholders throughout the world.
-    
+
 
 <a id="_considerations"></a>
 #### 18.2.2. Considerations
@@ -5549,13 +5549,13 @@ The [Harms Modelling documentation](../1.0/security/Harms_Modelling.html.md) des
 The harms, misuse and abuse assessment has informed, and should continue to inform, the development of the C2PA technical specifications as well as its accompanying documentation:
 
 *   [Guidance for implementers](../1.2/guidance/Guidance.html.md)
-    
+
 *   [User experience guidance](../1.1/ux/UX_Recommendations.html.md)
-    
+
 *   [Security Considerations](../1.0/security/Security_Considerations.html.md)
-    
+
 *   Explainer
-    
+
 
 In addition, the harms, misuse and abuse assessment should inform the governance of the Coalition and guide potential multilateral cooperation for the promotion of a diverse C2PA ecosystem that pushes for the optimization of the benefits in terms of trust in media, user control and transparency that prompted the development of the C2PA specifications.
 
@@ -5582,17 +5582,17 @@ All assertions shall have a label as described in [Section 6.2, “Labels”](#_
 An [actor](#_actor) object references a particular person or organisation. A valid actor object shall have either:
 
 1.  an `identifier` field containing an identifier, or,
-    
+
     > **NOTE:**
     > Since this field is a URL, it is possible to use various identity schemes such as [OpenID](https://openid.net/connect/), [WebID](https://www.w3.org/wiki/WebID) or [ISNI](https://isni.org/).
-    
+
 2.  a `credentials` or `credential` field containing at least one [`hashed_uri`](#_uri_references) to a [W3C Verifiable Credential](#_w3c_verifiable_credentials) in the [Credential Store](#_vcstore) that is associated with the actor, or,
-    
+
     > **NOTE:**
     > Most references to a W3C Verifiable Credentials are via a `credentials` field, the Creative Work assertion uses a `credential` field in order to align with the `schema.org` model of singular field names.
-    
+
 3.  both (in which case, the `id` field in the `credentialSubject` W3C Verifiable Credential object should match the `identifier` field of the actor).
-    
+
 
 <a id="_regions_of_interest"></a>
 ### 19.3. Regions of Interest
@@ -6333,35 +6333,35 @@ In BMFF-based hash v2, for any root box not excluded in its entirety, the input 
 There are two differences between BMFF-based hash v1 and v2.
 
 *   The absolute file byte offset is included at the start of the input data contributed to the hash for any root box. This ensures that a root box included in the hash cannot change positions in the file.
-    
+
 *   The `mdat` box is no longer excluded in its entirety when the bmff-hash-map includes both the `hash` and `merkle` fields. Instead, a mandatory entry on the exclusion list excludes most of the box. Along with the first difference, this ensures that the `mdat` cannot change positions in the file and also eliminates the need for the first difference to include the offset for each individual Merkle tree hash when the bmff-hash-map includes both the `hash` and `merkle` fields.
-    
+
 
 A box matches an exclusion entry in the exclusions array if and only if all of the following conditions are met.
 
 *   The box’s location in the file exactly matches the `exclusions-map` entry’s `xpath` field.
-    
+
 *   If `length` is specified in the `exclusions-map` entry, the box’s length exactly matches the `exclusions-map` entry’s `length` field. Note: The length includes the box headers.
-    
+
 *   If `version` is specified in the `exclusions-map` entry, the box is a FullBox and the box’s version exactly matches the `exclusions-map` entry’s `version` field.
-    
+
 *   If `flags` (byte array of exactly 3 bytes) is specified in the `exclusions-map` entry and the box is a FullBox. If `exact` is set to true or not specified, the box’s flags (bit(24), i.e., 3 bytes) also exactly matches the `exclusions-map` entry’s `flags` field. If `exact` is set to false, the bitwise-and of the box’s flags (bit(24), i.e., 3 bytes) with the `exclusions-map` entry’s `flags` field exactly matches the `exclusions-map` entry’s `flags` field (i.e., the box has at least those bits set but may also have additional bits set).
-    
+
 *   If `data` (array of objects) is specified in the `exclusions-map` entry, then for each item in the array, the box’s binary data at that item’s relative byte `offset` field exactly matches that item’s `bytes` field.
-    
+
 
 The `xpath` field’s string syntax shall be limited to the following strict subset.
 
 *   Only abbreviated syntax shall be used.
-    
+
 *   Only full paths shall be used.
-    
+
 *   Only node selection via `node` or `node[integer]` shall be used.
-    
+
 *   Descendent syntax, i.e., `//`, shall NOT be used.
-    
+
 *   All nodes shall be BMFF `4cc` codes.
-    
+
 
 Complete Syntax:
 
@@ -6936,9 +6936,9 @@ An example in CBOR Diagnostic Format (`.cbordiag`) is shown below:
 A **thumbnail** assertion provides an approximate visual representation of the asset at a specific event in the lifecycle of an asset. There are currently two specific events:
 
 *   ingredient import and claim creation
-    
+
 *   each using a unique label for the assertion.
-    
+
 
 For thumbnails created at claim creation time, the Thumbnail assertion shall have a label that starts with `c2pa.thumbnail.claim` and be followed by the [IANA registry](https://www.iana.org/assignments/media-types/media-types.xhtml#image) image type (e.g., `c2pa.thumbnail.claim.png`). For each of these types of thumbnails, there can be only one per claim.
 
@@ -6984,13 +6984,13 @@ An action may include a free-text description, in the `description` field, of wh
 If present, the `reason` field shall contain one of the standard values, or a custom value which conforms to the same syntax as [custom labels](#_labels), for the rationale behind the action.
 
 *   `c2pa.PII.present`
-    
+
 *   `c2pa.invalid.data`
-    
+
 *   `c2pa.trade-secret.present`
-    
+
 *   `c2pa.government.confidential`
-    
+
 
 > **NOTE:**
 > Although the `reason` field may be used for any actions, only redaction-focused `c2pa` values are defined at this time.
@@ -7149,19 +7149,19 @@ The additional presence of a single "parentOf" ingredient provides a further sig
 The following actions were part of previous versions of this specification and have since been deprecated. Accordingly, they shall no longer be written into `c2pa.actions` assertions but may appear in pre-existing C2PA Manifests.
 
 *   c2pa.copied
-    
+
 *   c2pa.formatted
-    
+
 *   c2pa.version\_updated
-    
+
 *   c2pa.printed
-    
+
 *   c2pa.managed
-    
+
 *   c2pa.produced
-    
+
 *   c2pa.saved
-    
+
 
 <a id="_schema_and_example_8"></a>
 #### 19.12.8. Schema and Example
@@ -7701,15 +7701,15 @@ An example in CBOR Diagnostic Format (`.cbordiag`) is shown below:
 As defined by the GDepth specification, the following fields shall be present in all GDepth depth map assertions:
 
 *   GDepth:Format
-    
+
 *   GDepth:Near
-    
+
 *   GDepth:Far
-    
+
 *   GDepth:Mime
-    
+
 *   GDepth:Data
-    
+
 
 <a id="_endorsement_assertion"></a>
 ### 19.15. Endorsement Assertion
@@ -7719,11 +7719,11 @@ An endorsement is a way of indicating approval for specific actions made on cont
 To attach an endorsement, a claim generator must ensure that:
 
 *   only the actions listed in the [Section 15.7, “Endorsement”](#_endorsement) section are present in the `actions` assertion
-    
+
 *   exactly one ingredient assertion is present in the assertion store, and,
-    
+
 *   that ingredient is the one referenced by the actions assertion’s `parameters.ingredient` field
-    
+
 
 An Endorsement assertion shall have a label of `c2pa.endorsement`, and there shall be at most one Endorsement assertion per manifest. The assertion contents shall be a `COSE_Sign1_Tagged` structure that is created as defined in [Section 15.7.1, “Endorsement Generation”](#_endorsement_generation).
 
@@ -7892,9 +7892,9 @@ The reviewRating property inside the ClaimReview assertion is of type [Rating](h
 The itemReviewed property inside the ClaimReview assertion may be used in one of two ways:
 
 1.  Directly reference an ingredient, by adding the appropriate ingredient JUMBF URI to the `url` property inside `itemReviewed`
-    
+
 2.  Describe another item of content that is not part of the C2PA manifest, using [Thing](https://schema.org/Thing) and [CreativeWork](https://schema.org/CreativeWork) properties ([https://www.claimreviewproject.com/user-guide](https://www.claimreviewproject.com/user-guide) provides a good guide on how to use the ClaimReview vocabulary)
-    
+
 
 > **NOTE:**
 > The `reviewRating` property in a ClaimReview is not the same as the [`reviewRatings` field](#_review_ratings) in the assertion metadata.
@@ -8493,35 +8493,35 @@ There are a number of open topics that have not yet been addressed in this speci
 ### 20.1. [Assertions](#_assertions)
 
 *   Support for marking a previous claim or assertion as "retracted", a feature commonly used in the news publication industry.
-    
+
 
 <a id="_binding_to_content_2"></a>
 ### 20.2. [Binding to Content](#_binding_to_content)
 
 *   Add support for the binding of live video streams, 3D formats and audio formats.
-    
+
 *   Addressing the case where servers make real-time modifications to content streamed to a client, potentially altering the cryptographic hash used to bind ISO BMFF content to a manifest.
-    
+
 *   Determining whether the box exclusion list used for hashing a BMFF-formatted asset in the fragmented MP4 case needs to support having each fragment have its own exclusion list (e.g. if the subset to hash must be fragment-specific).
-    
+
 
 <a id="_trust_model_2"></a>
 ### 20.3. [Trust Model](#_trust_model)
 
 *   Supporting additional credential types for use in signing manifests.
-    
+
 
 <a id="_validation_2"></a>
 ### 20.4. [Validation](#_validation)
 
 *   Design for how a video player can communicate with the media validator to indicate that a discontinuity in video playback is expected, perhaps due to seek, fast forward, or other types of "trick play".
-    
+
 
 <a id="_user_experience_2"></a>
 ### 20.5. [User Experience](#_user_experience)
 
 *   Working with the W3C and browser vendors to define a standardized model for exposing the provenance data to user agents.
-    
+
 
 <a id="_patent_policy"></a>
 ## 21\. Patent Policy
