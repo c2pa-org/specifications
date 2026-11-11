@@ -713,12 +713,10 @@
         "alg": "io.blockfact.audio.watermark.32",
         "type": "watermark",
         "decodedMediaTypes": [
-            "audio",
-            "image",
-            "video"
+            "image"
         ],
         "entryMetadata": {
-            "description": "BlockFact invisible watermarking for audio, image, and video provenance. Embeds a 32-bit lookup key derived from blockchain registration hash, enabling C2PA manifest recovery via the BlockFact Soft Binding Resolution API. Designed for robust provenance binding across compression, transcoding, and format conversion.",
+            "description": "BlockFact invisible image watermarking for provenance. Embeds a 32-bit lookup key derived from the on-chain registration hash, enabling C2PA manifest recovery via the BlockFact Soft Binding Resolution API.",
             "dateEntered": "2026-07-10T16:00:00.000Z",
             "contact": "egbert@blockfact.io",
             "informationalUrl": "https://blockfact.io"
@@ -948,6 +946,30 @@
         },
         "softBindingResolutionApis": [
             "https://aidr.studio/api/c2pa/v1"
+        ]
+    },
+    {
+        "identifier": 61,
+        "alg": "com.etchv.watermark.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "encodedMediaTypes": [
+            "image/jpeg",
+            "image/png",
+            "image/webp",
+            "image/tiff",
+            "image/gif"
+        ],
+        "entryMetadata": {
+            "description": "Etchv invisible image watermark carrying a 256-bit per-file identifier, embedded before C2PA signing. The manifest's c2pa.soft-binding assertion holds the identifier (base64 of its 32 bytes), and the identifier resolves to that manifest through Etchv's public Soft Binding Resolution API, so provenance can be recovered after metadata is stripped. Only files their owner opted in to public provenance resolve.",
+            "dateEntered": "2026-10-28T20:00:00.000Z",
+            "contact": "security@etchv.com",
+            "informationalUrl": "https://etchv.com/docs/guides/content-credentials"
+        },
+        "softBindingResolutionApis": [
+            "https://api.etchv.com/c2pa/v1"
         ]
     }
 ]
