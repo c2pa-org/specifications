@@ -903,6 +903,34 @@
         }
     },
     {
+        "identifier": 57,
+        "alg": "com.encypher.text.watermark.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "text"
+        ],
+        "entryMetadata": {
+            "description": "Encypher text watermark. Embeds an invisible identifier in signed text without changing how the text renders. The identifier can be recovered from the full text, from a copied excerpt of sufficient length, or from lightly edited text, and Encypher resolves it to the C2PA Manifest for that text, including when the embedded manifest has been removed.",
+            "dateEntered": "2026-10-19T00:00:00.000Z",
+            "contact": "c2pa@encypher.com",
+            "informationalUrl": "https://encypher.com/c2pa/soft-binding/text-watermark"
+        }
+    },
+    {
+        "identifier": 58,
+        "alg": "com.encypher.text.fingerprint.1",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "text"
+        ],
+        "entryMetadata": {
+            "description": "Encypher text content fingerprint. SHA-256 of the Unicode NFC-normalized visible text, computed before any Encypher marks or the embedded C2PA Manifest are added. Used to look up the C2PA Manifest for an exact copy of signed text.",
+            "dateEntered": "2026-10-19T00:00:00.000Z",
+            "contact": "c2pa@encypher.com",
+            "informationalUrl": "https://encypher.com/c2pa/soft-binding/text-fingerprint"
+        }
+    },
+    {
         "identifier": 60,
         "alg": "studio.aidr.silentcipher.1",
         "type": "watermark",
