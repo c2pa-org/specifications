@@ -971,5 +971,365 @@
         "softBindingResolutionApis": [
             "https://api.etchv.com/c2pa/v1"
         ]
+    },
+    {
+        "identifier": 62,
+        "alg": "com.ottxp.koltheia.photonote.1",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "entryMetadata": {
+            "description": "KolTheia photo note: spread ORB keypoints plus secret-pattern colour squares, matched with turn-and-resize or perspective fits, to recover the C2PA Manifest of a sealed photo from a recompressed, cropped, slanted or partly drawn-over copy",
+            "dateEntered": "2026-10-31T00:00:00.000Z",
+            "contact": "koltheia@ottxp.com",
+            "informationalUrl": "https://koltheia.ottxp.com/docs/soft-binding.html"
+        },
+        "softBindingResolutionApis": [
+            "https://koltheia.ottxp.com/api/softbinding/v1"
+        ]
+    },
+    {
+        "identifier": 63,
+        "alg": "ai.label4.watermark.walrus",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "image",
+            "video"
+        ],
+        "encodedMediaTypes": [
+            "image/jpeg",
+            "image/png",
+            "image/webp",
+            "video/mp4",
+            "video/x-matroska"
+        ],
+        "entryMetadata": {
+            "description": "Label4.ai invisible image/video watermark carrying a secret-keyed content identifier for C2PA soft binding.",
+            "categories": [
+                "ai.label4.watermarking",
+                "ai.label4.context.ai-generated"
+            ],
+            "dateEntered": "2026-11-04T00:00:00.000Z",
+            "contact": "tech@label4.ai",
+            "informationalUrl": "https://api.label4.ai/doc/v2/#walrus"
+        }
+    },
+    {
+        "identifier": 64,
+        "alg": "ai.label4.watermark.phaseal",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "audio"
+        ],
+        "encodedMediaTypes": [
+            "audio/x-wav",
+            "audio/mpeg",
+            "audio/mp4",
+            "audio/flac"
+        ],
+        "entryMetadata": {
+            "description": "Label4.ai imperceptible audio watermark carrying a secret-keyed content identifier for C2PA soft binding.",
+            "categories": [
+                "ai.label4.watermarking",
+                "ai.label4.context.ai-generated"
+            ],
+            "dateEntered": "2026-11-04T00:00:00.000Z",
+            "contact": "tech@label4.ai",
+            "informationalUrl": "https://api.label4.ai/doc/v2/#phaseal"
+        }
+    },
+    {
+        "identifier": 65,
+        "alg": "ai.label4.watermark.fastermax",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "text"
+        ],
+        "entryMetadata": {
+            "description": "Label4.ai text watermark detector identifying watermarks used for C2PA soft binding.",
+            "categories": [
+                "ai.label4.watermarking",
+                "ai.label4.context.ai-generated"
+            ],
+            "dateEntered": "2026-11-04T00:00:00.000Z",
+            "contact": "tech@label4.ai",
+            "informationalUrl": "https://api.label4.ai/doc/v2/#fastermax"
+        }
+    },
+    {
+        "identifier": 66,
+        "alg": "com.dreamartfields.signature.2",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "image",
+            "video"
+        ],
+        "entryMetadata": {
+            "description": "Dream Art Fields invisible signature, version 2 (tile), by YambaCode AB. A keyed spread-spectrum pattern in luminance: a 31 x 31-cell tile, a quarter of it pilot cells for synchronisation, repeated from the top-left corner of every picture and every video frame, with the cell size scaled to the short side, so a detector can still read it after re-encoding, resizing and crops. It carries a 64-bit payload: magic 0xDA, version 2 with an AI-generated flag, a 32-bit BLAKE2b hash of the library asset id and a CRC-16. The same 4-byte hash is the value of the c2pa.soft-binding block in the signed C2PA manifest the app writes. The detection key is published and the reference detector (daf-check, Apache-2.0) is free; the app looks a detected hash up in the creator's own library to find a matching item and its signed manifest.",
+            "dateEntered": "2026-11-08T00:00:00.000Z",
+            "contact": "hello@dreamartfields.com",
+            "informationalUrl": "https://github.com/yambacode/daf-check/blob/main/SPEC.md"
+        }
+    },
+    {
+        "identifier": 67,
+        "alg": "com.art-koffee.phash.1",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "entryMetadata": {
+            "description": "ArtKoffee perceptual fingerprint: 64-bit DCT pHash of artwork images (EXIF-oriented, alpha over white, ITU-R 601 grayscale, 32x32 Lanczos, unnormalized 8x8 low-frequency DCT-II vs. median), with mirrored lookup. Used as a soft binding to recover C2PA manifests of artwork registered by its authors on ArtKoffee; matches at Hamming distance <= 6.",
+            "dateEntered": "2026-11-10T00:00:00.000Z",
+            "contact": "developers@art-koffee.com",
+            "informationalUrl": "https://www.art-koffee.com/provenance/algorithm"
+        },
+        "softBindingResolutionApis": [
+            "https://www.art-koffee.com/c2pa/v1"
+        ]
+    },
+    {
+        "identifier": 68,
+        "alg": "com.originalpictures.pixelseal.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "encodedMediaTypes": [
+            "image/jpeg",
+            "image/png",
+            "image/webp",
+            "image/tiff",
+            "image/avif"
+        ],
+        "entryMetadata": {
+            "description": "Original Pictures' invisible image watermark built on Meta FAIR's PixelSeal model (facebookresearch/videoseal at 870ca7fb, pixelseal.pth). Original Pictures' own payload layout and error correction: a 61-bit opaque record identifier repeated four times with a CRC-12 in the model's 256 bits. Embedded at strength 0.15, stepping to 0.2 and then 0.25 only when the lighter mark does not read back and only above a 36 dB PSNR floor; detected when the soft-combined codeword agrees on at least 80% of bits and at most 2 CRC bits disagree. The identifier is resolved to the asset's C2PA Manifest by Original Pictures. Not interchangeable with other PixelSeal deployments, including com.aiwatermark.pixelseal.1 (31).",
+            "dateEntered": "2026-11-09T08:37:03.355Z",
+            "contact": "hello@originalpictures.com",
+            "informationalUrl": "https://originalpictures.com/soft-bindings/pixelseal/"
+        }
+    },
+    {
+        "identifier": 69,
+        "alg": "com.originalpictures.pixelseal-video.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "video"
+        ],
+        "encodedMediaTypes": [
+            "video/mp4"
+        ],
+        "entryMetadata": {
+            "description": "Original Pictures' invisible video watermark built on Meta FAIR's PixelSeal model (facebookresearch/videoseal at 870ca7fb, pixelseal.pth) applied in video mode. Original Pictures' own payload layout and error correction: a 51-bit opaque record identifier carried five times with parity in the model's 256 bits. Embedded at strength 0.2, stepping to 0.4 and then 0.6 only when an H.264 CRF 23 re-encode probe of the lighter mark does not recover the exact payload at 97% raw bit accuracy; detected on a repeat-agreement of at least 80% with a logit margin of at least 0.20. The identifier is resolved to the asset's C2PA Manifest by Original Pictures. Not interchangeable with other PixelSeal or VideoSeal deployments, including com.aiwatermark.pixelseal.1 (31) and com.aiwatermark.videoseal.1 (30).",
+            "dateEntered": "2026-11-09T08:37:03.355Z",
+            "contact": "hello@originalpictures.com",
+            "informationalUrl": "https://originalpictures.com/soft-bindings/pixelseal-video/"
+        }
+    },
+    {
+        "identifier": 70,
+        "alg": "com.originalpictures.audioseal.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "audio"
+        ],
+        "encodedMediaTypes": [
+            "audio/wav",
+            "audio/mpeg"
+        ],
+        "entryMetadata": {
+            "description": "Original Pictures' invisible audio watermark built on Meta FAIR's AudioSeal 0.2.0 streaming generator and detector (Hugging Face facebook/audioseal at 3c19eba). Carries a 16-bit opaque record identifier, the model's full message capacity, at 16 kHz. Embedded at alpha 0.5, stepping to 1.0 only when the lighter mark does not read back and the residual stays under Original Pictures' spectral-distortion floor; detected when at least 80% of frames score above 0.5, with message bits thresholded at 0.5. Original Pictures' own resampling, calibration and thresholds. The identifier is resolved to the asset's C2PA Manifest by Original Pictures. Not interchangeable with other AudioSeal deployments, including com.aiwatermark.audioseal.1 (32).",
+            "dateEntered": "2026-11-09T08:37:03.355Z",
+            "contact": "hello@originalpictures.com",
+            "informationalUrl": "https://originalpictures.com/soft-bindings/audioseal/"
+        }
+    },
+    {
+        "identifier": 71,
+        "alg": "com.originalpictures.videoseal.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "video"
+        ],
+        "encodedMediaTypes": [
+            "video/mp4"
+        ],
+        "entryMetadata": {
+            "description": "Original Pictures' invisible video watermark built on Meta FAIR's VideoSeal 1.0 (videoseal 1.0.1, TorchScript model y_256b_img.jit). Original Pictures' own payload layout and error correction: a 51-bit opaque record identifier carried five times with parity in the model's 256 bits. Embedded at strength 0.4, stepping to 0.7 and then 1.1 only when the exact payload is not recovered after both the delivered encode and an additional H.264 CRF 22 re-encode; detected on a repeat-agreement of at least 75% with a logit margin of at least 0.15. The identifier is resolved to the asset's C2PA Manifest by Original Pictures. Not interchangeable with other VideoSeal deployments, including com.aiwatermark.videoseal.1 (30), me.reconize.videoseal.1 (50) and be.immostory.videoseal.1 (54).",
+            "dateEntered": "2026-11-09T08:37:03.355Z",
+            "contact": "hello@originalpictures.com",
+            "informationalUrl": "https://originalpictures.com/soft-bindings/videoseal/"
+        }
+    },
+    {
+        "identifier": 72,
+        "alg": "com.originalpictures.videoseal-image.1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "encodedMediaTypes": [
+            "image/jpeg",
+            "image/png",
+            "image/webp",
+            "image/tiff",
+            "image/avif"
+        ],
+        "entryMetadata": {
+            "description": "Original Pictures' invisible image watermark built on Meta FAIR's VideoSeal 1.0 model in image mode (facebookresearch/videoseal at 870ca7fb, y_256b_img.pth). Original Pictures' own payload layout and error correction: a 61-bit opaque record identifier repeated four times with a CRC-12 in the model's 256 bits, embedded at strength 0.2; detected when the soft-combined codeword agrees on at least 80% of bits and at most 2 CRC bits disagree. The identifier is resolved to the asset's C2PA Manifest by Original Pictures. Not interchangeable with other VideoSeal deployments, including com.aiwatermark.videoseal.1 (30), me.reconize.videoseal.1 (50) and be.immostory.videoseal.1 (54), which are video entries.",
+            "dateEntered": "2026-11-09T08:37:03.355Z",
+            "contact": "hello@originalpictures.com",
+            "informationalUrl": "https://originalpictures.com/soft-bindings/videoseal-image/"
+        }
+    },
+    {
+        "identifier": 73,
+        "alg": "com.originalpictures.dinov2.1",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "encodedMediaTypes": [
+            "image/avif",
+            "image/jpeg",
+            "image/png",
+            "image/tiff",
+            "image/webp"
+        ],
+        "entryMetadata": {
+            "description": "Original Pictures' image descriptor built on Meta FAIR's DINOv2 ViT-S/14 model (Hugging Face facebook/dinov2-small at ed25f3a3; Apache-2.0 code and weights). The whole image is resized to 224x224 (bicubic, no centre crop) and the descriptor is the L2-normalised 384-dimension float32 CLS token after the final layer norm. A candidate matches at cosine similarity of at least 0.957, the threshold calibrated at a pair-level false-match rate of 1e-7 on Original Pictures' 2026 benchmark. Original Pictures' own preprocessing, calibration and threshold. Matching is done only by Original Pictures' own verification, among the bindings of the account that signed the file, and resolves to that asset's C2PA Manifest; there is no public resolution API.",
+            "dateEntered": "2026-11-09T08:37:03.355Z",
+            "contact": "hello@originalpictures.com",
+            "informationalUrl": "https://originalpictures.com/soft-bindings/dinov2/"
+        }
+    },
+    {
+        "identifier": 74,
+        "alg": "com.originalpictures.pdq.1",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "encodedMediaTypes": [
+            "image/avif",
+            "image/jpeg",
+            "image/png",
+            "image/tiff",
+            "image/webp"
+        ],
+        "entryMetadata": {
+            "description": "Original Pictures' deployment of Meta's PDQ perceptual image hash (facebook/ThreatExchange at baefb4ed, BSD), computed on luma by a float32 port of ThreatExchange pdq/cpp checked against the pdqhash 0.2.8 reference. The fingerprint is the 256-bit PDQ hash of the image as signed. A query is compared through all eight dihedral variants (flips and 90-degree rotations) and matches at a Hamming distance of at most 34 of 256 bits, the threshold calibrated at a pair-level false-match rate of 1e-7 on Original Pictures' 2026 benchmark. Matching is done only by Original Pictures' own verification, among the bindings of the account that signed the file, and resolves to that asset's C2PA Manifest; there is no public resolution API.",
+            "dateEntered": "2026-11-09T08:37:03.355Z",
+            "contact": "hello@originalpictures.com",
+            "informationalUrl": "https://originalpictures.com/soft-bindings/pdq/"
+        }
+    },
+    {
+        "identifier": 75,
+        "alg": "com.originalpictures.dinov2-lsh256.1",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "encodedMediaTypes": [
+            "image/avif",
+            "image/jpeg",
+            "image/png",
+            "image/tiff",
+            "image/webp"
+        ],
+        "entryMetadata": {
+            "description": "Original Pictures' keyed 256-bit hash of Meta FAIR's DINOv2 ViT-S/14 image descriptor (Hugging Face facebook/dinov2-small at ed25f3a3; Apache-2.0). The L2-normalised 384-dimension CLS token of the whole image resized to 224x224 is projected through a 384x256 Gaussian matrix generated from a key derived for each Original Pictures account, and the 256 sign bits are the fingerprint. A candidate matches at a Hamming distance of at most 19 of 256 bits, calibrated at a pair-level false-match rate of 1e-7. Without the account's key the bits cannot be recomputed or compared. Matching is done only by Original Pictures' own verification, among the bindings of the account that signed the file, and resolves to that asset's C2PA Manifest; there is no public resolution API.",
+            "dateEntered": "2026-11-09T08:37:03.355Z",
+            "contact": "hello@originalpictures.com",
+            "informationalUrl": "https://originalpictures.com/soft-bindings/dinov2-lsh256/"
+        }
+    },
+    {
+        "identifier": 76,
+        "alg": "com.originalpictures.chromaprint.1",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "audio"
+        ],
+        "encodedMediaTypes": [
+            "audio/mp4",
+            "audio/mpeg",
+            "audio/wav"
+        ],
+        "entryMetadata": {
+            "description": "Original Pictures' deployment of Chromaprint 1.6.1 (AcoustID; fpcalc, fingerprint algorithm 2; MIT core, the shipped fpcalc binary LGPL-2.1). The fingerprint is the raw sequence of 32-bit sub-fingerprints of the first 120 seconds of the audio. A candidate matches when its best alignment, shifted by at most 30 sub-fingerprints, has an aligned bit score of at least 0.75. Original Pictures' own calibration and threshold. Matching is done only by Original Pictures' own verification, among the bindings of the account that signed the file, and resolves to that asset's C2PA Manifest; there is no public resolution API.",
+            "dateEntered": "2026-11-09T08:37:03.355Z",
+            "contact": "hello@originalpictures.com",
+            "informationalUrl": "https://originalpictures.com/soft-bindings/chromaprint/"
+        }
+    },
+    {
+        "identifier": 77,
+        "alg": "com.originalpictures.audfprint.1",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "audio"
+        ],
+        "encodedMediaTypes": [
+            "audio/mp4",
+            "audio/mpeg",
+            "audio/wav"
+        ],
+        "entryMetadata": {
+            "description": "Original Pictures' deployment of Dan Ellis' audfprint landmark fingerprint (dpwe/audfprint at cb03ba99, MIT). Spectral peaks of the audio resampled to 11,025 Hz, at landmark density 20, are paired into 20-bit landmark hashes with their time offsets; at most the first ten minutes are analysed. A candidate matches when at least 20 landmark hashes agree on one time offset (plus or minus one analysis frame), Original Pictures' threshold calibrated at a query-level false-match rate of 1%. Matching is done only by Original Pictures' own verification, among the bindings of the account that signed the file, and resolves to that asset's C2PA Manifest; there is no public resolution API.",
+            "dateEntered": "2026-11-09T08:37:03.355Z",
+            "contact": "hello@originalpictures.com",
+            "informationalUrl": "https://originalpictures.com/soft-bindings/audfprint/"
+        }
+    },
+    {
+        "identifier": 78,
+        "alg": "com.originalpictures.tmk-pdqf.1",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "video"
+        ],
+        "encodedMediaTypes": [
+            "video/mp4"
+        ],
+        "entryMetadata": {
+            "description": "Original Pictures' deployment of TMK+PDQF from Meta's ThreatExchange (facebook/ThreatExchange tmk at baefb4ed, BSD), with ThreatExchange's default configuration: PDQF frame features of frames sampled at 15 fps and 64x64 pixels, combined by the Temporal Match Kernel into a whole-clip descriptor with a 256-dimension level-1 vector. A candidate matches when both the level-1 and level-2 scores are at least 0.70, ThreatExchange's default thresholds. Matching is done only by Original Pictures' own verification, among the bindings of the account that signed the file, and resolves to that asset's C2PA Manifest; there is no public resolution API.",
+            "dateEntered": "2026-11-09T08:37:03.355Z",
+            "contact": "hello@originalpictures.com",
+            "informationalUrl": "https://originalpictures.com/soft-bindings/tmk-pdqf/"
+        }
+    },
+    {
+        "identifier": 79,
+        "alg": "com.originalpictures.vpdq.1",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "video"
+        ],
+        "encodedMediaTypes": [
+            "video/mp4"
+        ],
+        "entryMetadata": {
+            "description": "Original Pictures' deployment of vPDQ from Meta's ThreatExchange (facebook/ThreatExchange at baefb4ed, BSD), run on the same PDQ port as com.originalpictures.pdq.1: the 256-bit PDQ hash, with its 0-100 quality, of one decoded frame per second of video at full resolution. A query matches when at least 40% of its frames of quality 50 or more have a stored frame within a Hamming distance of 31, Original Pictures' threshold calibrated at a query-level false-match rate of 1%. Matching is done only by Original Pictures' own verification, among the bindings of the account that signed the file, and resolves to that asset's C2PA Manifest; there is no public resolution API.",
+            "dateEntered": "2026-11-09T08:37:03.355Z",
+            "contact": "hello@originalpictures.com",
+            "informationalUrl": "https://originalpictures.com/soft-bindings/vpdq/"
+        }
+    },
+    {
+        "identifier": 80,
+        "alg": "castLabs.watermark.1.session-v1",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "video"
+        ],
+        "entryMetadata": {
+            "description": "castLabs forensic watermarking session-v1 variant for video manifest recovery. Supports embedding and extraction of a session identifier used to recover associated C2PA Manifests. Distinct from castLabs.watermark.1.",
+            "dateEntered": "2026-11-10T00:00:00.000Z",
+            "contact": "info@castlabs.com",
+            "informationalUrl": "https://castlabs.com/image-watermarking/"
+        }
     }
 ]
