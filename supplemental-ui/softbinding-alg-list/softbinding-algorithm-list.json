@@ -1349,5 +1349,64 @@
         "softBindingResolutionApis": [
             "https://api.blockfact.io/api/soft-binding/v1"
         ]
+    },
+    {
+        "identifier": 82,
+        "alg": "no.incremental.jeevo.videoseal-1.0",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "image",
+            "video"
+        ],
+        "encodedMediaTypes": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "video/mp4"
+        ],
+        "entryMetadata": {
+            "description": "Jeevo (Incremental AS) deployment of Meta FAIR's Video Seal 1.0 invisible watermark (256-bit model, MIT, weights unchanged). Every AI-generated picture and video frame carries one public 256-bit constant, SHA-256 of 'no.incremental.jeevo/watermark/v1', so a match means 'made with AI by Jeevo', not one file; it resolves to a manifest signed by Incremental AS that says so (EU AI Act Art. 50(2) second marking layer).",
+            "dateEntered": "2026-11-12T00:00:00Z",
+            "contact": "hello@jeevo.ai",
+            "informationalUrl": "https://api.jeevo.ai/check/developers#interop"
+        },
+        "softBindingResolutionApis": [
+            "https://api.jeevo.ai/v1/softbinding"
+        ]
+    },
+    {
+        "identifier": 83,
+        "alg": "no.incremental.jeevo.audioseal-0.2",
+        "type": "watermark",
+        "decodedMediaTypes": [
+            "audio"
+        ],
+        "encodedMediaTypes": [
+            "audio/mpeg",
+            "audio/wav"
+        ],
+        "entryMetadata": {
+            "description": "Jeevo (Incremental AS) deployment of Meta FAIR's AudioSeal 0.2.1 invisible audio watermark (16-bit message, MIT, weights unchanged) in AI-generated speech, music and video sound tracks. The message is the first 16 bits of SHA-256 of 'no.incremental.jeevo/watermark/v1' for every file; it resolves to a manifest signed by Incremental AS that says 'made with AI by Jeevo'.",
+            "dateEntered": "2026-11-12T00:00:00Z",
+            "contact": "hello@jeevo.ai",
+            "informationalUrl": "https://api.jeevo.ai/check/developers#interop"
+        },
+        "softBindingResolutionApis": [
+            "https://api.jeevo.ai/v1/softbinding"
+        ]
+    },
+    {
+        "identifier": 84,
+        "alg": "tech.lumid.fingerprint.v1",
+        "type": "fingerprint",
+        "decodedMediaTypes": [
+            "image"
+        ],
+        "entryMetadata": {
+            "description": "Lumid image fingerprinting algorithm v1.",
+            "dateEntered": "2026-11-19T00:00:00Z",
+            "contact": "info@lumid.tech",
+            "informationalUrl": "https://lumid.tech/fingerprinting"
+        }
     }
 ]
