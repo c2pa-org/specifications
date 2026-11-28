@@ -411,7 +411,7 @@ When using a generic action or a custom action, it is recommended to add a free-
 <a id="actions-aiml"></a>
 #### 5.2.2. Identifying use of AI/ML
 
-Each action can identify whether it was performed by an AI/ML system through the use of the `digitalSourceType` field, which is used to identify the type of digital source that was used to create the asset, including the value `http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia` which indicates that the asset was created by an AI/ML system and is therefore "trained algorithmic media". When an AI/ML performs an operation such an "inpainting" (i.e., where a portion of an image is filled in based on a text prompt), the action could be recorded as an `c2pa.edited` or `c2pa.placed` action with the `digitalSourceType` set to `http://cv.iptc.org/newscodes/digitalsourcetype/compositedWithTrainedAlgorithmicMedia`.
+Each action can identify whether it was performed by an AI/ML system through the use of the `digitalSourceType` field, which is used to identify the type of digital source that was used to create the asset, including the value `http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia` which indicates that the asset was created by an AI/ML system and is therefore "trained algorithmic media". When an AI/ML performs an operation such an "inpainting" (i.e., where a portion of an image is filled in based on a text prompt), the action could be recorded as an `c2pa.edited` or `c2pa.placed` action with the `digitalSourceType` set to `http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia`.
 
 <a id="_ingredients_2"></a>
 ### 5.3. Ingredients
